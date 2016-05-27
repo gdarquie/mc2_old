@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block fos_user_content %}{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="../css/style.css"/>
+{% endblock %}
+
+
+{% block body %}
+
+<section class='container'>
+
+    <div class="fond">
+    <header>
+        <h1>Musical MC2</h1>
+        <h2>Visualisations des données de comédie musicale</h2>
+    </header>
+
+    <section>
+        <p>Vous êtes ici sur la future page d'accueil de l'explorateur.</p>
+
+        <ul>
+            <li><a href="/stats">statistiques</a></li>
+            <li><a href="/editeur">éditeur</a></li>
+        </ul>
+        
+        <article>
+            <p>Il y a {{films|length}} films et {{numbers|length}} numbers.</p>
+        </article>
+
+        <article>
+            <table>
+            {% for number in numbers %}
+
+            <tr><td>{{number.title}}</td><td>{{number.length}}</td></tr>
+
+            {% endfor %}
+            </table>
+
+        </article>
+    </section>
+    </div>
+
+    
+</section>
+
+<script src="{{ asset('js/mc2.js') }}"></script>
+
+{% endblock %}

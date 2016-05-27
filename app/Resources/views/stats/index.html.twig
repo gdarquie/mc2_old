@@ -1,0 +1,271 @@
+{% extends 'base.html.twig' %}
+
+{% block fos_user_content %}{% endblock %}
+{% block stylesheets %}
+
+
+{% endblock %}
+
+
+{% block body %}
+
+
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <h1 class="header center" style="color:white;">Musical MC2</h1>
+      <div class="row center">
+              <h5 class="header col s12 light" style="color:black;"></h5>
+      </div>
+      <div class="row center">
+      </div>
+      <br><br>
+    </div>
+  </div>
+  <div class="parallax"><img src="img/19586.jpg" alt="Unsplashed background img 1"></div>
+</div>
+
+<section class='container'>
+    
+    
+    <div class='row'>
+      <h2 class="cut col s10">Le projet</h2>
+    </div>
+
+     <section class='row'>
+
+      <div class="col s12 cartouche">
+        
+        <div class='cartoucheContent row'>
+          <p class="col s4">Le musical hollywoodien a très souvent été à la pointe de l'innovation, notamment technologique, depuis l'époque des premiers talkies jusqu'aux explorations du classicisme finissant. Pourtant, les formes chorégraphiques et spectaculaires mises en avant par les films de l'âge d’or du musical hollywoodien témoignent, souvent au sein d'un même film, de l’influence de modèles culturels presque contradictoires : avant-garde chorégraphique (Ballets Russes) et modernité de Broadway (Bob Fosse, Jerome Robbins...) n'occultent pas des formes plus anciennes ou vernaculaires (danse de salon, claquettes, danse jazz, vestiges du vaudeville...).</p>
+
+          <p class="col s4">Pour la musique, les références à des styles classiques ou plus anciens (les pastiches de Kiss Me, Kate) sont aussi constitutives des spectacles de Broadway que la modernité d’un Bernstein. Alors que certains numéros puisent leur inspiration dans des milieux contemporains (les ballets urbains de Guys and Dolls, J. L Mankiewicz, 1955), d’autres font appel à un imaginaire nostalgique voire « rétro » (Un Américain à Paris, Vincente Minnelli, 1951, ou Can-Can, Walter Lang, 1960).</p>
+
+          <p class="col s4">L’objectif de ce séminaire est de mettre au jour les tensions et contradictions entre ces formules et références culturelles et technologiques. Si certaines d’entre elles sont héritées des pratiques de Broadway, nous verrons aussi comment et pour quelles raisons spectaculaires et idéologiques Hollywood a parfois renforcé cette dialectique entre le « rétro » et le moderne.</p>
+        </div>
+      </div>
+      
+    </section>
+  
+    <div class="row">
+      <h2 class='cut col s10 offset-s2'>Informations générales</h2>
+    </div>
+
+    <section class='row'>
+
+      <div class="col s6 cartouche">
+        
+        <div class='cartoucheContent'>
+          <p>Cette partie présente les informations générales relatives aux données comportées dans la BD MC2.</p>
+
+          <p>La base compte <strong>{{films|length}}</strong> films et <strong>{{numbers|length}} numbers</strong>.</p>
+          <p><strong>{{nbFilmsWithNumber|length}}</strong> numbers comportent au moins un numbers. La moyenne de numbers par films est de <strong>[à compléter]</strong> .</p>
+        </div>
+      </div>
+      
+      <div class='col s6 cartouche'>
+
+        <div class="cartoucheContent ">
+          
+          <p>Cette partie présente les informations générales relatives aux données comportées dans la BD MC2.</p>
+
+          <p>La base compte <strong>{{films|length}}</strong> films et <strong>{{numbers|length}} numbers</strong>.</p>
+          <p><strong>{{nbFilmsWithNumber|length}}</strong> numbers comportent au moins un numbers. La moyenne de numbers par films est de <strong>[à compléter]</strong> .</p>
+        </div>
+      </div>
+
+    </section>
+</section>
+
+
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <h1 class="header center" style="color:white;">Films</h1>
+      <div class="row center">
+              <h5 class="header col s12 light" style="color:black;"></h5>
+      </div>
+      <div class="row center">
+      </div>
+      <br><br>
+    </div>
+  </div>
+  <div class="parallax"><img src="img/affiche.jpg" alt="Unsplashed background img 1"></div>
+</div>
+
+<section class='container'>
+
+    <div class='cartouche'>
+      <h2 class='cut'>Les films</h2>
+
+      <article>
+        <h3>Les durées</h3>
+        <p>La durée cumulée des films dans la BD est de <strong>{% for film in filmsLength %}{{film.length/3600}}</strong>{% endfor %} heures, soit <strong>{% for film in filmsLength %}{{film.length/(3600*24)}}</strong>{% endfor %} jours.</p>
+        <p>Le temps moyen d'un film de notres corpus est de <strong>{% for film in filmsAverageLength %}{{film.average/60}}{% endfor %} minutes.</strong></p>
+        <p>Le film le plus long est <strong>{% for film in filmsMaxLength %}{{film.title}}{% endfor %}</strong>, il dure <strong>{% for film in filmsMaxLength %}{{film.length/60}}{% endfor %}</strong> minutes.</p> 
+        <p>Le film le plus court (dont nous connaissons la durée) est <strong>{% for film in filmsMinLength %}{{film.title}}{% endfor %}</strong>, il dure <strong>{% for film in filmsMinLength %}{{film.length/60}}{% endfor %}</strong> minutes.</p>
+
+        <p>Nous ne connaissons pas la durée des films suivants :</p>
+
+        <p>Clairement ces films semblent avoir un problème de durée :</p>
+
+      </article>
+        
+
+       <article>
+         <h3>Répartition par année des films du corpus</h3>
+          <div id="chart_div" style="height: 500px;"></div>
+       </article> 
+
+
+{#       <article>
+        <h3>Echantillon de films modifiés ???</h3>
+        <table>
+          {% for film in last10Films %}
+          <tr><td>{{film.title}}</td></tr>
+          {% endfor %}
+        </table>
+      </article>   #}  
+
+    </div>
+</section>
+
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <h1 class="header center" style="color:white;">Numbers</h1>
+      <div class="row center">
+              <h5 class="header col s12 light" style="color:black;"></h5>
+      </div>
+      <div class="row center">
+      </div>
+      <br><br>
+    </div>
+  </div>
+  <div class="parallax"><img src="img/19586.jpg" alt="Unsplashed background img 1"></div>
+</div>
+
+<section class='container'>
+    <section class='cartouche'>
+      <h2 class='cut'>Les numbers</h2>
+      <h3>Répartition par année des numbers du corpus</h3>
+       <div id="chart_numbersByYear" style="height: 500px;"></div>
+      <p>Représentativité du corpus : quelles sont années avec le plus de numéros? Est-ce le même que celui des films</p>
+
+    </section>
+
+    <section>
+      <h2 class='cut'>Les sources</h2>
+      //viz de la rochelle avec les nouvelles données
+
+      <article>
+      <h3>Cumul des numéros par année en fonction de leurs origines pour une source</h3>
+
+          <div id="chart_sourcesByYear" style="height: 500px;"></div>
+      </article>
+    </section>
+    
+</section>
+
+<section class="containuer">
+    <section class="cartouche">
+      <h2>Les acteurs</h2>
+    </section>
+</section>
+
+
+<script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>  
+
+    <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
+
+    <!-- Materialize -->
+    <script type="text/javascript" src="../bower_components/Materialize/js/parallax.js"></script>
+
+
+    <!-- D3.JS -->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../bower_components/nvd3/build/nv.d3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.com/libraries/Chart.js"></script>
+    <link rel="stylesheet" href="../bower_components/nvd3/build/nv.d3.css">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script src="{{ asset('js/mc2.js') }}"></script>
+
+    <script type="text/javascript">
+
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+          function drawChart() {
+           var data = google.visualization.arrayToDataTable([
+              ['Année', "Nombre de films"],
+                {% for film in nbFilmsByYear %}
+                    ['{{film.year}}',{{film.nb}}],
+                {% endfor %}
+            ]);
+
+            var options = {
+              title: 'Nombre de films par année',
+              hAxis: {title: 'Année de sortie',  titleTextStyle: {color: '#333'}},
+              vAxis: {minValue: 0}
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+
+        
+        //Nombre de number par an
+
+            var data2 = google.visualization.arrayToDataTable([
+              ['Année', "Nombre de numbers"],
+                {% for number in nbNumbersByYear %}
+                    ['{{number.year}}',{{number.nb}}],
+                {% endfor %}
+            ]);
+
+
+            var options = {
+              title: 'Nombre de numbers par année',
+              hAxis: {title: 'Année de sortie',  titleTextStyle: {color: '#333'}},
+              vAxis: {minValue: 0}
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_numbersByYear'));
+            chart.draw(data2, options);
+        
+        //Number par An pour une source
+
+
+             var data3 = google.visualization.arrayToDataTable([
+              ['Année', "Nombre de numbers"],
+                {% for number in source1ByYear %}
+                    ['{{number.year}}',{{number.nb}}],
+                {% endfor %}
+            ]);
+
+
+            var options = {
+              title: 'Nombre de numbers "borrowed from the musical repertoire" par année',
+              hAxis: {title: 'Année de sortie',  titleTextStyle: {color: '#333'}},
+              vAxis: {minValue: 0}
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_sourcesByYear'));
+            chart.draw(data3, options);
+          }
+
+    $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+    </script>
+     
+
+
+
+
+
+
+{% endblock %}

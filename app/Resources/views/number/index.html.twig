@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Number list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Begintc</th>
+                <th>Endtc</th>
+                <th>Length</th>
+                <th>Begin</th>
+                <th>Ending</th>
+                <th>Spectators</th>
+                <th>Musician</th>
+                <th>Lyrics</th>
+                <th>Dance</th>
+                <th>Tempo</th>
+                <th>Makeup</th>
+                <th>Shots</th>
+                <th>Order</th>
+                <th>Integration2</th>
+                <th>Weight</th>
+                <th>Structure</th>
+                <th>Diegetic</th>
+                <th>Source</th>
+                <th>Numberid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for number in numbers %}
+            <tr>
+                <td><a href="{{ path('editeur_number_show', { 'id': number.numberId }) }}">{{ number.title }}</a></td>
+                <td>{{ number.type }}</td>
+                <td>{{ number.beginTc }}</td>
+                <td>{{ number.endTc }}</td>
+                <td>{{ number.length }}</td>
+                <td>{{ number.begin }}</td>
+                <td>{{ number.ending }}</td>
+                <td>{{ number.spectators }}</td>
+                <td>{{ number.musician }}</td>
+                <td>{{ number.lyrics }}</td>
+                <td>{{ number.dance }}</td>
+                <td>{{ number.tempo }}</td>
+                <td>{{ number.makeup }}</td>
+                <td>{{ number.shots }}</td>
+                <td>{{ number.order }}</td>
+                <td>{{ number.integration2 }}</td>
+                <td>{{ number.weight }}</td>
+                <td>{{ number.structure }}</td>
+                <td>{{ number.diegetic }}</td>
+                <td>{{ number.source }}</td>
+                <td>{{ number.numberId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('editeur_number_show', { 'id': number.numberId }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('editeur_number_edit', { 'id': number.numberId }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('editeur_number_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

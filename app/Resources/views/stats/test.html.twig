@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block fos_user_content %}{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="../css/style.css"/>
+{% endblock %}
+
+
+{% block body %}
+
+<section class='container'>
+
+    <div class="fond xxl">
+    <header>
+        <h1>Musical MC2</h1>
+    </header>
+
+    <section>
+        
+        <article>
+            {% for film in films %}
+
+            <p>{{film.title}} : {{film.released}} </p>
+
+            {% endfor %}
+
+        </article>
+    </section>
+    </div>
+
+    
+</section>
+
+
+
+{% endblock %}

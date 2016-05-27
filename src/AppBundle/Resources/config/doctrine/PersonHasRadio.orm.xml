@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\PersonHasRadio" table="person_has_radio">
+    <indexes>
+      <index name="fk_person_has_radio_radio1_idx" columns="radio_id"/>
+      <index name="fk_person_has_radio_person1_idx" columns="person_id"/>
+      <index name="fk_person_has_radio_profession1_idx" columns="profession_id"/>
+    </indexes>
+    <id name="person" association-key="true"/>
+    <id name="profession" association-key="true"/>
+    <id name="radio" association-key="true"/>
+    <one-to-one field="radio" target-entity="Radio" fetch="LAZY">
+      <join-columns>
+        <join-column name="radio_id" referenced-column-name="radio_id"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="profession" target-entity="Profession" fetch="LAZY">
+      <join-columns>
+        <join-column name="profession_id" referenced-column-name="profession_id"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="person" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="person_id" referenced-column-name="person_id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

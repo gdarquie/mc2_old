@@ -1,0 +1,66 @@
+body{
+	/*background: url(../img/visuel3.jpg);*/
+/*	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+*/
+}
+
+nav{
+	background:#CC0000;
+}
+
+h1, h2, h3, h4, h5{
+	color:#CC0000;
+}
+
+div .cut {
+	color:white;
+	height:80px;
+	background:#CC0000;
+	padding : 10px;
+	text-align: center;
+}
+
+.cartouche{
+/*	border:1px solid #CC0000;
+	border-radius: 3px;
+	padding : 10px;
+	margin: 5 15px;*/
+}
+
+.cartoucheContent{
+	border:1px solid #CC0000;
+	border-radius: 3px;
+	padding : 10px;
+	margin: 5 15px;
+}
+
+.medium{
+	width: 750px;
+}
+
+.large{
+	width:1024px;
+}
+
+.fond{
+	background: rgba(255,255,255,0.7);
+	border-radius: 8px;
+	padding: 10px;
+	margin: auto;
+}
+
+.parallax-container {
+  height: 350px;
+  margin-bottom: 20px;
+}
+
+#index-banner{
+	height: 400px;
+	font-size: 2em;
+	text-transform: uppercase;
+	padding-top: 60px;
+}
+
+

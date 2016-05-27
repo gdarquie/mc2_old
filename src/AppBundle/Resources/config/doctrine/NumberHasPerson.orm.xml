@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\NumberHasPerson" table="number_has_person">
+    <indexes>
+      <index name="fk_number_has_person_person1_idx" columns="person_id"/>
+      <index name="fk_number_has_person_number1_idx" columns="number_id"/>
+      <index name="fk_number_has_person_profession1_idx" columns="profession_id"/>
+    </indexes>
+    <id name="number" association-key="true"/>
+    <id name="person" association-key="true"/>
+    <id name="profession" association-key="true"/>
+    <one-to-one field="profession" target-entity="Profession" fetch="LAZY">
+      <join-columns>
+        <join-column name="profession_id" referenced-column-name="profession_id"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="person" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="person_id" referenced-column-name="person_id"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="number" target-entity="Number" fetch="LAZY">
+      <join-columns>
+        <join-column name="number_id" referenced-column-name="number_id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

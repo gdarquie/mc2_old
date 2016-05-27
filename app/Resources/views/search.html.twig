@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block fos_user_content %}{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="../css/style.css"/>
+{% endblock %}
+
+
+{% block body %}
+	<h2>{{films|length}} film(s) trouvé(s)</h2>
+	{% for film in films %}
+		<p>{{film.title}}</p>
+	{% endfor %}
+{% endblock %}

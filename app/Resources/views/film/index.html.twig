@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Film list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Productionyear</th>
+                <th>Released</th>
+                <th>Notes</th>
+                <th>Idimdb</th>
+                <th>Studio</th>
+                <th>Distributor</th>
+                <th>Color</th>
+                <th>Ratio</th>
+                <th>Length</th>
+                <th>Contract</th>
+                <th>Rights</th>
+                <th>Negative</th>
+                <th>Pna</th>
+                <th>Usrentals</th>
+                <th>Foreignrentals</th>
+                <th>Totalrentals</th>
+                <th>Usboxoffice</th>
+                <th>Foreignboxoffice</th>
+                <th>Totalboxoffice</th>
+                <th>Sourceeco</th>
+                <th>Archives</th>
+                <th>Deleted</th>
+                <th>Adaptation</th>
+                <th>Remake</th>
+                <th>Song</th>
+                <th>Numbermedley</th>
+                <th>Numbercompletenessidcompleteness</th>
+                <th>Numberensemblemusic</th>
+                <th>Numberensembledance</th>
+                <th>Verdict</th>
+                <th>Pcatexte</th>
+                <th>Legion</th>
+                <th>Protestant</th>
+                <th>Harrisson</th>
+                <th>Bord</th>
+                <th>Filmid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for film in films %}
+            <tr>
+                <td><a href="{{ path('editeur_film_show', { 'id': film.filmId }) }}">{{ film.title }}</a></td>
+                <td>{{ film.productionyear }}</td>
+                <td>{{ film.released }}</td>
+                <td>{{ film.notes }}</td>
+                <td>{{ film.idImdb }}</td>
+                <td>{{ film.studio }}</td>
+                <td>{{ film.distributor }}</td>
+                <td>{{ film.color }}</td>
+                <td>{{ film.ratio }}</td>
+                <td>{{ film.length }}</td>
+                <td>{{ film.contract }}</td>
+                <td>{{ film.rights }}</td>
+                <td>{{ film.negative }}</td>
+                <td>{{ film.pna }}</td>
+                <td>{{ film.usRentals }}</td>
+                <td>{{ film.foreignRentals }}</td>
+                <td>{{ film.totalRentals }}</td>
+                <td>{{ film.usBoxoffice }}</td>
+                <td>{{ film.foreignBoxoffice }}</td>
+                <td>{{ film.totalBoxoffice }}</td>
+                <td>{{ film.sourceEco }}</td>
+                <td>{{ film.archives }}</td>
+                <td>{{ film.deleted }}</td>
+                <td>{{ film.adaptation }}</td>
+                <td>{{ film.remake }}</td>
+                <td>{{ film.song }}</td>
+                <td>{{ film.numberMedley }}</td>
+                <td>{{ film.numberCompletenessIdcompleteness }}</td>
+                <td>{{ film.numberEnsembleMusic }}</td>
+                <td>{{ film.numberEnsembleDance }}</td>
+                <td>{{ film.verdict }}</td>
+                <td>{{ film.pcaTexte }}</td>
+                <td>{{ film.legion }}</td>
+                <td>{{ film.protestant }}</td>
+                <td>{{ film.harrisson }}</td>
+                <td>{{ film.bord }}</td>
+                <td>{{ film.filmId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('editeur_film_show', { 'id': film.filmId }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('editeur_film_edit', { 'id': film.filmId }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('editeur_film_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

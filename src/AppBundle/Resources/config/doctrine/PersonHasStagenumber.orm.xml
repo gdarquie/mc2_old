@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\PersonHasStagenumber" table="person_has_stageNumber">
+    <indexes>
+      <index name="fk_person_has_stageNumber_stageNumber1_idx" columns="stageNumber_id"/>
+      <index name="fk_person_has_stageNumber_person1_idx" columns="person_id"/>
+      <index name="fk_person_has_stageNumber_profession1_idx" columns="profession_id"/>
+    </indexes>
+    <id name="person" association-key="true"/>
+    <id name="profession" association-key="true"/>
+    <id name="stagenumber" association-key="true"/>
+    <one-to-one field="stagenumber" target-entity="Stagenumber" fetch="LAZY">
+      <join-columns>
+        <join-column name="stageNumber_id" referenced-column-name="stageNumber_id"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="profession" target-entity="Profession" fetch="LAZY">
+      <join-columns>
+        <join-column name="profession_id" referenced-column-name="profession_id"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="person" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="person_id" referenced-column-name="person_id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>
