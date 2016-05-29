@@ -13,112 +13,103 @@ use Doctrine\ORM\Mapping as ORM;
 class PersonHasSong
 {
     /**
-     * @var \AppBundle\Entity\Song
+     * @var integer
      *
+     * @ORM\Column(name="profession_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Song")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
-     * })
      */
-    private $song;
+    private $professionId;
 
     /**
-     * @var \AppBundle\Entity\Profession
+     * @var integer
      *
+     * @ORM\Column(name="song_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Profession")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="profession_id", referencedColumnName="profession_id")
-     * })
      */
-    private $profession;
+    private $songId;
 
     /**
-     * @var \AppBundle\Entity\Person
+     * @var integer
      *
+     * @ORM\Column(name="person_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
-     * })
      */
-    private $person;
+    private $personId;
 
 
 
     /**
-     * Set song
+     * Set professionId
      *
-     * @param \AppBundle\Entity\Song $song
+     * @param integer $professionId
      *
      * @return PersonHasSong
      */
-    public function setSong(\AppBundle\Entity\Song $song)
+    public function setProfessionId($professionId)
     {
-        $this->song = $song;
+        $this->professionId = $professionId;
 
         return $this;
     }
 
     /**
-     * Get song
+     * Get professionId
      *
-     * @return \AppBundle\Entity\Song
+     * @return integer
      */
-    public function getSong()
+    public function getProfessionId()
     {
-        return $this->song;
+        return $this->professionId;
     }
 
     /**
-     * Set profession
+     * Set songId
      *
-     * @param \AppBundle\Entity\Profession $profession
+     * @param integer $songId
      *
      * @return PersonHasSong
      */
-    public function setProfession(\AppBundle\Entity\Profession $profession)
+    public function setSongId($songId)
     {
-        $this->profession = $profession;
+        $this->songId = $songId;
 
         return $this;
     }
 
     /**
-     * Get profession
+     * Get songId
      *
-     * @return \AppBundle\Entity\Profession
+     * @return integer
      */
-    public function getProfession()
+    public function getSongId()
     {
-        return $this->profession;
+        return $this->songId;
     }
 
     /**
-     * Set person
+     * Set personId
      *
-     * @param \AppBundle\Entity\Person $person
+     * @param integer $personId
      *
      * @return PersonHasSong
      */
-    public function setPerson(\AppBundle\Entity\Person $person)
+    public function setPersonId($personId)
     {
-        $this->person = $person;
+        $this->personId = $personId;
 
         return $this;
     }
 
     /**
-     * Get person
+     * Get personId
      *
-     * @return \AppBundle\Entity\Person
+     * @return integer
      */
-    public function getPerson()
+    public function getPersonId()
     {
-        return $this->person;
+        return $this->personId;
     }
 }

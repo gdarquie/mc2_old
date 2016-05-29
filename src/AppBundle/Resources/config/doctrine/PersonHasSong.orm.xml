@@ -6,23 +6,8 @@
       <index name="fk_person_has_song_person1_idx" columns="person_id"/>
       <index name="fk_person_has_song_profession1_idx" columns="profession_id"/>
     </indexes>
-    <id name="person" association-key="true"/>
-    <id name="profession" association-key="true"/>
-    <id name="song" association-key="true"/>
-    <one-to-one field="song" target-entity="Song" fetch="LAZY">
-      <join-columns>
-        <join-column name="song_id" referenced-column-name="song_id"/>
-      </join-columns>
-    </one-to-one>
-    <one-to-one field="profession" target-entity="Profession" fetch="LAZY">
-      <join-columns>
-        <join-column name="profession_id" referenced-column-name="profession_id"/>
-      </join-columns>
-    </one-to-one>
-    <one-to-one field="person" target-entity="Person" fetch="LAZY">
-      <join-columns>
-        <join-column name="person_id" referenced-column-name="person_id"/>
-      </join-columns>
-    </one-to-one>
+    <id name="professionId" type="integer" column="profession_id"/>
+    <id name="songId" type="integer" column="song_id"/>
+    <id name="personId" type="integer" column="person_id"/>
   </entity>
 </doctrine-mapping>

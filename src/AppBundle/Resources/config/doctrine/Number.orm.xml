@@ -154,16 +154,6 @@ Si 2 : fiction prime</option>
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="mood" target-entity="Mood" inversed-by="number" fetch="LAZY">
-      <join-table name="number_has_mood">
-        <join-columns>
-          <join-column name="number_id" referenced-column-name="number_id"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="mood_id" referenced-column-name="mood_id"/>
-        </inverse-join-columns>
-      </join-table>
-    </many-to-many>
     <many-to-many field="song" target-entity="Song" inversed-by="number" fetch="LAZY">
       <join-table name="number_has_song">
         <join-columns>
@@ -205,12 +195,6 @@ Si 2 : fiction prime</option>
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="ensemble" target-entity="Ensemble" mapped-by="number" fetch="LAZY"/>
-    <many-to-many field="costumes" target-entity="Costumes" mapped-by="number" fetch="LAZY"/>
-    <many-to-many field="completeness" target-entity="Completeness" mapped-by="number" fetch="LAZY"/>
-    <many-to-many field="dancing" target-entity="Dancing" mapped-by="number" fetch="LAZY"/>
-    <many-to-many field="integration" target-entity="Integration" mapped-by="number" fetch="LAZY"/>
-    <many-to-many field="musical" target-entity="Musical" mapped-by="number" fetch="LAZY"/>
     <many-to-many field="effects" target-entity="Effects" inversed-by="number" fetch="LAZY">
       <join-table name="number_has_effects">
         <join-columns>
@@ -221,5 +205,11 @@ Si 2 : fiction prime</option>
         </inverse-join-columns>
       </join-table>
     </many-to-many>
+    <many-to-many field="costumes" target-entity="Costumes" mapped-by="number" fetch="LAZY"/>
+    <many-to-many field="completeness" target-entity="Completeness" mapped-by="number" fetch="LAZY"/>
+    <many-to-many field="dancing" target-entity="Dancing" mapped-by="number" fetch="LAZY"/>
+    <many-to-many field="integration" target-entity="Integration" mapped-by="number" fetch="LAZY"/>
+    <many-to-many field="musical" target-entity="Musical" mapped-by="number" fetch="LAZY"/>
+    <many-to-many field="ensemble" target-entity="Ensemble" mapped-by="number" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

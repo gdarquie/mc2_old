@@ -15,7 +15,7 @@ class Song
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=45, nullable=false)
+     * @ORM\Column(name="title", type="string", length=500, nullable=false)
      */
     private $title;
 

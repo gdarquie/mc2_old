@@ -4,7 +4,7 @@
     <id name="songId" type="integer" column="song_id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="title" type="string" column="title" length="45" nullable="false">
+    <field name="title" type="string" column="title" length="500" nullable="false">
       <options>
         <option name="fixed"/>
       </options>

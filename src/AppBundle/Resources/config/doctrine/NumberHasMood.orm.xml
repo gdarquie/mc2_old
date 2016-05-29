@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\NumberHasMood" table="number_has_mood">
+    <indexes>
+      <index name="IDX_DE77805630A1DE10" columns="number_id"/>
+      <index name="IDX_DE778056B889D33E" columns="mood_id"/>
+    </indexes>
+    <id name="numberId" type="integer" column="number_id"/>
+    <id name="moodId" type="integer" column="mood_id"/>
+  </entity>
+</doctrine-mapping>

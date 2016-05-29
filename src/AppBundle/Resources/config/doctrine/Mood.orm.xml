@@ -4,7 +4,7 @@
     <id name="moodId" type="integer" column="mood_id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="title" type="string" column="title" length="45" nullable="false">
+    <field name="title" type="string" column="title" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -15,6 +15,5 @@
         <option name="comment">Définition</option>
       </options>
     </field>
-    <many-to-many field="number" target-entity="Number" mapped-by="mood" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

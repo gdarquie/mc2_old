@@ -189,21 +189,6 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Mood", inversedBy="number")
-     * @ORM\JoinTable(name="number_has_mood",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="mood_id", referencedColumnName="mood_id")
-     *   }
-     * )
-     */
-    private $mood;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Song", inversedBy="number")
      * @ORM\JoinTable(name="number_has_song",
      *   joinColumns={
@@ -271,9 +256,17 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ensemble", mappedBy="number")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Effects", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_effects",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="effects_id", referencedColumnName="effects_id")
+     *   }
+     * )
      */
-    private $ensemble;
+    private $effects;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -313,17 +306,9 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Effects", inversedBy="number")
-     * @ORM\JoinTable(name="number_has_effects",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="effects_id", referencedColumnName="effects_id")
-     *   }
-     * )
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ensemble", mappedBy="number")
      */
-    private $effects;
+    private $ensemble;
 
     /**
      * Constructor
@@ -331,19 +316,18 @@ class Number
     public function __construct()
     {
         $this->quotation = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->mood = new \Doctrine\Common\Collections\ArrayCollection();
         $this->song = new \Doctrine\Common\Collections\ArrayCollection();
         $this->place = new \Doctrine\Common\Collections\ArrayCollection();
         $this->stagenumber = new \Doctrine\Common\Collections\ArrayCollection();
         $this->socialplace = new \Doctrine\Common\Collections\ArrayCollection();
         $this->exoticism = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->ensemble = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->effects = new \Doctrine\Common\Collections\ArrayCollection();
         $this->costumes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->completeness = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dancing = new \Doctrine\Common\Collections\ArrayCollection();
         $this->integration = new \Doctrine\Common\Collections\ArrayCollection();
         $this->musical = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->effects = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ensemble = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -896,40 +880,6 @@ class Number
     }
 
     /**
-     * Add mood
-     *
-     * @param \AppBundle\Entity\Mood $mood
-     *
-     * @return Number
-     */
-    public function addMood(\AppBundle\Entity\Mood $mood)
-    {
-        $this->mood[] = $mood;
-
-        return $this;
-    }
-
-    /**
-     * Remove mood
-     *
-     * @param \AppBundle\Entity\Mood $mood
-     */
-    public function removeMood(\AppBundle\Entity\Mood $mood)
-    {
-        $this->mood->removeElement($mood);
-    }
-
-    /**
-     * Get mood
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMood()
-    {
-        return $this->mood;
-    }
-
-    /**
      * Add song
      *
      * @param \AppBundle\Entity\Song $song
@@ -1100,37 +1050,37 @@ class Number
     }
 
     /**
-     * Add ensemble
+     * Add effect
      *
-     * @param \AppBundle\Entity\Ensemble $ensemble
+     * @param \AppBundle\Entity\Effects $effect
      *
      * @return Number
      */
-    public function addEnsemble(\AppBundle\Entity\Ensemble $ensemble)
+    public function addEffect(\AppBundle\Entity\Effects $effect)
     {
-        $this->ensemble[] = $ensemble;
+        $this->effects[] = $effect;
 
         return $this;
     }
 
     /**
-     * Remove ensemble
+     * Remove effect
      *
-     * @param \AppBundle\Entity\Ensemble $ensemble
+     * @param \AppBundle\Entity\Effects $effect
      */
-    public function removeEnsemble(\AppBundle\Entity\Ensemble $ensemble)
+    public function removeEffect(\AppBundle\Entity\Effects $effect)
     {
-        $this->ensemble->removeElement($ensemble);
+        $this->effects->removeElement($effect);
     }
 
     /**
-     * Get ensemble
+     * Get effects
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEnsemble()
+    public function getEffects()
     {
-        return $this->ensemble;
+        return $this->effects;
     }
 
     /**
@@ -1304,36 +1254,36 @@ class Number
     }
 
     /**
-     * Add effect
+     * Add ensemble
      *
-     * @param \AppBundle\Entity\Effects $effect
+     * @param \AppBundle\Entity\Ensemble $ensemble
      *
      * @return Number
      */
-    public function addEffect(\AppBundle\Entity\Effects $effect)
+    public function addEnsemble(\AppBundle\Entity\Ensemble $ensemble)
     {
-        $this->effects[] = $effect;
+        $this->ensemble[] = $ensemble;
 
         return $this;
     }
 
     /**
-     * Remove effect
+     * Remove ensemble
      *
-     * @param \AppBundle\Entity\Effects $effect
+     * @param \AppBundle\Entity\Ensemble $ensemble
      */
-    public function removeEffect(\AppBundle\Entity\Effects $effect)
+    public function removeEnsemble(\AppBundle\Entity\Ensemble $ensemble)
     {
-        $this->effects->removeElement($effect);
+        $this->ensemble->removeElement($ensemble);
     }
 
     /**
-     * Get effects
+     * Get ensemble
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEffects()
+    public function getEnsemble()
     {
-        return $this->effects;
+        return $this->ensemble;
     }
 }

@@ -69,9 +69,9 @@ class Film
     private $ratio;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="length", type="string", length=255, nullable=true)
+     * @ORM\Column(name="length", type="integer", nullable=true)
      */
     private $length;
 
@@ -517,7 +517,7 @@ class Film
     /**
      * Set length
      *
-     * @param string $length
+     * @param integer $length
      *
      * @return Film
      */
@@ -531,7 +531,7 @@ class Film
     /**
      * Get length
      *
-     * @return string
+     * @return integer
      */
     public function getLength()
     {

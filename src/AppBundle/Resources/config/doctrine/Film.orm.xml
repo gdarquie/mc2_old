@@ -45,9 +45,9 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="length" type="string" column="length" length="255" nullable="true">
+    <field name="length" type="integer" column="length" nullable="true">
       <options>
-        <option name="fixed"/>
+        <option name="unsigned"/>
       </options>
     </field>
     <field name="contract" type="string" column="contract" length="255" nullable="true">

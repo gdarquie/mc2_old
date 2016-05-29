@@ -15,7 +15,7 @@ class Mood
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=45, nullable=false)
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
      */
     private $title;
 
@@ -35,20 +35,6 @@ class Mood
      */
     private $moodId;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Number", mappedBy="mood")
-     */
-    private $number;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->number = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
     /**
@@ -107,39 +93,5 @@ class Mood
     public function getMoodId()
     {
         return $this->moodId;
-    }
-
-    /**
-     * Add number
-     *
-     * @param \AppBundle\Entity\Number $number
-     *
-     * @return Mood
-     */
-    public function addNumber(\AppBundle\Entity\Number $number)
-    {
-        $this->number[] = $number;
-
-        return $this;
-    }
-
-    /**
-     * Remove number
-     *
-     * @param \AppBundle\Entity\Number $number
-     */
-    public function removeNumber(\AppBundle\Entity\Number $number)
-    {
-        $this->number->removeElement($number);
-    }
-
-    /**
-     * Get number
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getNumber()
-    {
-        return $this->number;
     }
 }
