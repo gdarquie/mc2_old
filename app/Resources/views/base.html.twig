@@ -33,6 +33,13 @@
             <div class="nav-wrapper">
               <a href="index.php" class="brand-logo center">MC2</a><!-- changer l'url -->
               <ul id="nav-mobile" class="left hide-on-med-and-down">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            Connecté en tant que {{ app.user.username }}
+            -
+            <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+            {% endif %}
             </div>
         </nav>
 

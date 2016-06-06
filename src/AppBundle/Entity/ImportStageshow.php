@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Stageshow
+ * ImportStageshow
  *
- * @ORM\Table(name="stageShow", indexes={@ORM\Index(name="fk_stageShow_film1_idx", columns={"film_id"})})
+ * @ORM\Table(name="import_stageShow", indexes={@ORM\Index(name="fk_stageShow_film1_idx", columns={"film_id"})})
  * @ORM\Entity
  */
-class Stageshow
+class ImportStageshow
 {
     /**
      * @var string
@@ -39,13 +39,6 @@ class Stageshow
      * @ORM\Column(name="revival", type="string", length=45, nullable=true)
      */
     private $revival;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="film_id", type="integer", nullable=true)
-     */
-    private $filmId;
 
     /**
      * @var integer
@@ -91,6 +84,16 @@ class Stageshow
      */
     private $stageshowId;
 
+    /**
+     * @var \AppBundle\Entity\Film
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Film")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
+     * })
+     */
+    private $film;
+
 
 
     /**
@@ -98,7 +101,7 @@ class Stageshow
      *
      * @param string $title
      *
-     * @return Stageshow
+     * @return ImportStageshow
      */
     public function setTitle($title)
     {
@@ -122,7 +125,7 @@ class Stageshow
      *
      * @param string $production
      *
-     * @return Stageshow
+     * @return ImportStageshow
      */
     public function setProduction($production)
     {
@@ -146,7 +149,7 @@ class Stageshow
      *
      * @param \DateTime $opening
      *
-     * @return Stageshow
+     * @return ImportStageshow
      */
     public function setOpening($opening)
     {
@@ -170,7 +173,7 @@ class Stageshow
      *
      * @param string $revival
      *
-     * @return Stageshow
+     * @return ImportStageshow
      */
     public function setRevival($revival)
     {
@@ -190,35 +193,11 @@ class Stageshow
     }
 
     /**
-     * Set filmId
-     *
-     * @param integer $filmId
-     *
-     * @return Stageshow
-     */
-    public function setFilmId($filmId)
-    {
-        $this->filmId = $filmId;
-
-        return $this;
-    }
-
-    /**
-     * Get filmId
-     *
-     * @return integer
-     */
-    public function getFilmId()
-    {
-        return $this->filmId;
-    }
-
-    /**
      * Set ibdb
      *
      * @param integer $ibdb
      *
-     * @return Stageshow
+     * @return ImportStageshow
      */
     public function setIbdb($ibdb)
     {
@@ -242,7 +221,7 @@ class Stageshow
      *
      * @param string $race
      *
-     * @return Stageshow
+     * @return ImportStageshow
      */
     public function setRace($race)
     {
@@ -266,7 +245,7 @@ class Stageshow
      *
      * @param string $status
      *
-     * @return Stageshow
+     * @return ImportStageshow
      */
     public function setStatus($status)
     {
@@ -290,7 +269,7 @@ class Stageshow
      *
      * @param \DateTime $closing
      *
-     * @return Stageshow
+     * @return ImportStageshow
      */
     public function setClosing($closing)
     {
@@ -314,7 +293,7 @@ class Stageshow
      *
      * @param integer $count
      *
-     * @return Stageshow
+     * @return ImportStageshow
      */
     public function setCount($count)
     {
@@ -341,5 +320,29 @@ class Stageshow
     public function getStageshowId()
     {
         return $this->stageshowId;
+    }
+
+    /**
+     * Set film
+     *
+     * @param \AppBundle\Entity\Film $film
+     *
+     * @return ImportStageshow
+     */
+    public function setFilm(\AppBundle\Entity\Film $film = null)
+    {
+        $this->film = $film;
+
+        return $this;
+    }
+
+    /**
+     * Get film
+     *
+     * @return \AppBundle\Entity\Film
+     */
+    public function getFilm()
+    {
+        return $this->film;
     }
 }

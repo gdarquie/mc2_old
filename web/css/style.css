@@ -63,4 +63,9 @@ div .cut {
 	padding-top: 60px;
 }
 
+.list-suggest-thematique li {
+        display: inline-block;
+        margin: 0px 5px 5px 0px;
+        padding:5px;
+}
 

@@ -54,6 +54,13 @@ class DefaultController extends Controller
         $query->setParameter('source', 'borrowed from the musical repertoire');
         $source1ByYear = $query->getResult();
 
+        //Répartition des socialPlaces pour les numbers (à reprendre avec la bonne requête)
+        $query = $em->createQuery(
+            'SELECT f.released as year, COUNT(DISTINCT(n.title)) as nb FROM AppBundle:Number n JOIN n.film f GROUP BY f.released'
+            );  
+        $nbSocialPlaceByNumber =$query->getResult();
+
+
 //changer avec la bonne requête
         //tous les films qui ont au moins un number -> ajouter la condition au moins un number...
         $query = $em->createQuery(
@@ -63,21 +70,25 @@ class DefaultController extends Controller
 
         $films = $em->getRepository('AppBundle:Film')->findAll();
 
+        //Sélection de 10 films (à limiter à 10)
         $last10Films = $em->getRepository('AppBundle:Film')->findAll(); //mettre un set max Results à 10
 
+        //Tous les numbers
         $numbers = $em->getRepository('AppBundle:Number')->findAll();
 
+        //Total des durées de film
         $query = $em->createQuery(
             'SELECT SUM(f.length) as length FROM AppBundle:Film f' 
             ); 
         $filmsLength = $query->getResult();
 
-
+        //Moyenne des durées de film
         $query = $em->createQuery(
             'SELECT SUM(f.length) / COUNT(f.title) as average FROM AppBundle:Film f'
             ); 
         $filmsAverageLength = $query->getResult();
 
+        //Le film le plus long
         $query = $em->createQuery(
             'SELECT f.title as title, f.length as length FROM AppBundle:Film f WHERE f.length = (SELECT MAX(m.length) FROM AppBundle:Film m WHERE m.length > 2700)' 
             ); 
@@ -87,7 +98,6 @@ class DefaultController extends Controller
         $query = $em->createQuery(
             'SELECT f.title as title, f.length as length FROM AppBundle:Film f WHERE f.length = (SELECT MIN(m.length) FROM AppBundle:Film m WHERE m.length > 2700)' 
             ); 
-
         $filmsMinLength = $query->setMaxResults(1)->getResult(); 
 
         return $this->render('stats/index.html.twig', array(
@@ -129,31 +139,6 @@ class DefaultController extends Controller
 
     }
 
-
-    /**
-     * @Route("/stats2", name="stats2")
-     */
-    public function testQuery2()
-        {
-
-        $repository = $this->getDoctrine()
-         ->getRepository('AppBundle:Film');   
-
-        // createQueryBuilder automatically selects FROM AppBundle:Film
-    // and aliases it to "p"
-    $query = $repository->createQueryBuilder('p')
-        ->where('p.released > :released')
-        ->setParameter('released', '1950')
-        ->orderBy('p.released', 'ASC')
-        ->getQuery(); 
-
-        $films = $query->getResult();
-
-        return $this->render('stats/test.html.twig', array(
-            'films' => $films,
-        ));
-
-    }
 
 
 }
