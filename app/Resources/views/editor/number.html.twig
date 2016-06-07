@@ -1,0 +1,54 @@
+{% extends 'editor/base.html.twig' %}
+
+{% block fos_user_content %}{% endblock %}
+{% block stylesheets %}
+
+<link rel="stylesheet" href="../../../../bower_components/Materialize/dist/css/materialize.css">
+<link rel="stylesheet" href="../../../../css/style.css"> 
+
+<style>
+.items li{
+  margin-bottom: 5px;
+  background-color:white; 
+  color : #CC0000;
+  border:  1px solid #CC0000;
+}
+</style>
+
+{% endblock %}
+
+
+{% block body %}
+
+
+<section class='container'>
+
+<div class="row">
+ <h1>{{number.title}}</h1>
+ <p><a href="/editor/film/{{film.filmId}}">retour</a></p>
+
+ <p>Nous ajoutons ici un formulaire pour number</p>
+
+  <h1>Number edit</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('number_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+</div>
+
+</section>
+  
+
+{% endblock %}

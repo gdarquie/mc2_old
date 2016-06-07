@@ -31,21 +31,36 @@
 
         <nav>
             <div class="nav-wrapper">
-              <a href="index.php" class="brand-logo center">MC2</a><!-- changer l'url -->
+              <a href="/" class="brand-logo center">MC2</a><!-- changer l'url -->
               <ul id="nav-mobile" class="left hide-on-med-and-down">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            Connecté en tant que {{ app.user.username }}
+            connected as {{ app.user.username }}
             -
-            <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+            <a href="{{ path('fos_user_security_logout') }}">logout</a>
             {% else %}
-                <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                <a href="{{ path('fos_user_security_login') }}">connexion</a>
             {% endif %}
             </div>
         </nav>
 
         <div>
             {% block body %}{% endblock %}
-            {% block javascripts %}{% endblock %}
+            {% block javascripts %}
+            <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>  
+
+    <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
+
+    <!-- Materialize -->
+    <script type="text/javascript" src="../bower_components/Materialize/js/parallax.js"></script>
+
+
+    <!-- D3.JS -->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../bower_components/nvd3/build/nv.d3.min.js"></script>
+{#     <script type="text/javascript" src="https://cdnjs.com/libraries/Chart.js"></script> #}
+    <link rel="stylesheet" href="../bower_components/nvd3/build/nv.d3.css">
+
+            {% endblock %}
         </div>
     </body>
 </html>

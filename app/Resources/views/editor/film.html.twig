@@ -1,7 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'editor/base.html.twig' %}
 
 {% block fos_user_content %}{% endblock %}
 {% block stylesheets %}
+ <link rel="stylesheet" href="../../bower_components/Materialize/dist/css/materialize.css">
+<link rel="stylesheet" href="../../css/style.css"> 
+<script src="../../bower_components/vis/dist/vis.js"></script>
+<link href="../../bower_components/vis/dist/vis.css" rel="stylesheet" type="text/css" />
 
 <style>
 .items li{
@@ -23,32 +27,103 @@
 <div class="row">
  <h1>{{film.title}}</h1>
 
- <h2>Liste des numbers</h2>
+ <h2>List of numbers</h2>
 
- <button>Ajouter un number</button>
+ {% for number in numbersOf1Film %}
+    <p>{{loop.index}} | {{number.title}} | {{number.beginTc}} | <a href="/editor/film/{{film.filmId}}/number/{{number.id}}">edit</a></p> 
+{% endfor %}
+
+  <h2>Pictures</h2>
+
+ <button>Add a number</button>
+
+<article class='cartouche'>
+<h2>Lengths</h2>
+
+  <h3>Movie Length</h3>
+  <p>{{film.length}} seconds</p> 
+
+  <h3>Sum of all number's lengths</h3>
+
+   {% for number in numberSumLength %}
+    {% if number.total > 0 %}
+    {{number.total}} seconds
+    {% else %}
+    <p>N/A</p>
+    {% endif %}
+
+  {% endfor %}
+
+  <h3>Ratio number/total length</h3>
+  
+  {% for number in numberSumLength %}
+    
+    {% if number.total > 0 %}
+    {{((number.total/number.length))|round(2, 'floor') }}%
+    {% else %}
+    <p>N/A</p>
+    {% endif %}
+
+  {% endfor %}
+
+
+  <h3>Average number length for {{film.title}}</h3> 
+
+  {% for number in numberAverageLength %}{{number.average|round}} seconds{% endfor %}
+
+  <h3>Average number length for all the movies</h3>
+  {% for number in numbersAverageLength %}{{number.average|round}} seconds{% endfor %}
+  
+  <h3>Graphe/ Timeline</h3>
+
+  <!-- un donut avec la répartition des numbers par durée-->
+  <div id="visualization"></div>
+</article>
 
 </div>
+
+
 
 </section>
   
 
-<script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>  
+  <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>  
 
-    <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
+  <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
 
-    <!-- Materialize -->
-    <script type="text/javascript" src="../bower_components/Materialize/js/parallax.js"></script>
+  <!-- Materialize -->
+  <script type="text/javascript" src="../../bower_components/Materialize/js/parallax.js"></script>
 
 
-    <!-- D3.JS -->
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../bower_components/nvd3/build/nv.d3.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.com/libraries/Chart.js"></script>
-    <link rel="stylesheet" href="../bower_components/nvd3/build/nv.d3.css">
+  <!-- D3.JS -->
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="../../bower_components/nvd3/build/nv.d3.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.com/libraries/Chart.js"></script>
+  <link rel="stylesheet" href="../../bower_components/nvd3/build/nv.d3.css">
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+{#  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> #}
 
-    <script src="{{ asset('js/mc2.js') }}"></script>
+  <script src="{{ asset('js/mc2.js') }}"></script>
+
+  <!-- Timeline -->
+  <script type="text/javascript">
+  // DOM element where the Timeline will be attached
+  var container = document.getElementById('visualization');
+
+
+  //title, begin-tc, ending-tc
+  var items = new vis.DataSet([
+    {% for number in numbersOf1Film %}
+    {id: {{loop.index}}, content: '{{number.title}}', start: '{{number.beginTc}}', end: '{{number.endTc}}'},
+    {% endfor %}
+  ]);
+
+  // Configuration for the Timeline
+  var options = {};
+
+  // Create a Timeline
+  var timeline = new vis.Timeline(container, items, options);
+</script>
 
 
 {% endblock %}
