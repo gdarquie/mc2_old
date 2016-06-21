@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Stageshow" table="stageShow">
+    <indexes>
+      <index name="fk_stageShow_film1_idx" columns="film_id"/>
+    </indexes>
+    <id name="stageshowId" type="integer" column="stageShow_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="title" type="string" column="title" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="production" type="string" column="production" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="opening" type="date" column="opening" nullable="true"/>
+    <field name="filmId" type="integer" column="film_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="ibdb" type="integer" column="ibdb" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="race" type="string" column="race" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="status" type="string" column="status" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="closing" type="date" column="closing" nullable="true"/>
+    <field name="count" type="integer" column="count" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Le nombre de dates
+</option>
+      </options>
+    </field>
+    <field name="timestamp" type="datetime" column="timestamp" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

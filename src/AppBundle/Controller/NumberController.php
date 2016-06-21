@@ -12,14 +12,14 @@ use AppBundle\Form\NumberType;
 /**
  * Number controller.
  *
- * @Route("/number")
+ * @Route("/editor/number")
  */
 class NumberController extends Controller
 {
     /**
      * Lists all Number entities.
      *
-     * @Route("/", name="number_index")
+     * @Route("/", name="editor_number_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class NumberController extends Controller
     /**
      * Creates a new Number entity.
      *
-     * @Route("/new", name="number_new")
+     * @Route("/new", name="editor_number_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -50,7 +50,7 @@ class NumberController extends Controller
             $em->persist($number);
             $em->flush();
 
-            return $this->redirectToRoute('number_show', array('id' => $number->getId()));
+            return $this->redirectToRoute('editor_number_show', array('id' => $number->getNumberId()));
         }
 
         return $this->render('number/new.html.twig', array(
@@ -62,7 +62,7 @@ class NumberController extends Controller
     /**
      * Finds and displays a Number entity.
      *
-     * @Route("/{id}", name="number_show")
+     * @Route("/{id}", name="editor_number_show")
      * @Method("GET")
      */
     public function showAction(Number $number)
@@ -78,7 +78,7 @@ class NumberController extends Controller
     /**
      * Displays a form to edit an existing Number entity.
      *
-     * @Route("/{id}/edit", name="number_edit")
+     * @Route("/{id}/edit", name="editor_number_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Number $number)
@@ -92,7 +92,7 @@ class NumberController extends Controller
             $em->persist($number);
             $em->flush();
 
-            return $this->redirectToRoute('number_edit', array('id' => $number->getId()));
+            return $this->redirectToRoute('editor_number_edit', array('id' => $number->getNumberId()));
         }
 
         return $this->render('number/edit.html.twig', array(
@@ -105,7 +105,7 @@ class NumberController extends Controller
     /**
      * Deletes a Number entity.
      *
-     * @Route("/{id}", name="number_delete")
+     * @Route("/{id}", name="editor_number_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Number $number)
@@ -119,7 +119,7 @@ class NumberController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('number_index');
+        return $this->redirectToRoute('editor_number_index');
     }
 
     /**
@@ -132,7 +132,7 @@ class NumberController extends Controller
     private function createDeleteForm(Number $number)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('number_delete', array('id' => $number->getId())))
+            ->setAction($this->generateUrl('editor_number_delete', array('id' => $number->getNumberId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

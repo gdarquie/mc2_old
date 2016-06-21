@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block fos_user_content %}{% endblock %}
+{% block stylesheets %}
+
+<link rel="stylesheet" href="../../bower_components/Materialize/dist/css/materialize.css">
+<link rel="stylesheet" href="../../css/style.css"> 
+<script src="../../bower_components/vis/dist/vis.js"></script>
+<link href="../../bower_components/vis/dist/vis.css" rel="stylesheet" type="text/css" />
+
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+		<h1>???</h1>
+		<article>
+			<h2>Liste des completeness</h2>
+			{% for completeness in completenesses %}<p>{{completeness.title}}</p>{% endfor %}
+		</article>
+		<article>
+			<h2>Type de complétudes des numéros</h2>
+
+{# 			<div id="chart_moodsByNumber" style="height: 500px;"></div> #}
+
+			<div id="donut">
+			    <svg style="height:500px;"></svg>
+			  </div>
+		</article>
+		
+		<article>
+			<h3>Pause</h3>
+			<p>Il y a <strong>{{pauseByFilms|length}}</strong> films qui ont au moins une pause.</p>
+			{% for completeness in pauseByFilms %}<p>{{completeness.year}} - {{completeness.title}} ({{completeness.nb}})</p>{% endfor %}
+			
+		</article>
+
+		<!-- Trouver les noms des numbers associés -->
+
+		<article>
+			<h3>Faux départ</h3>
+			<p>Il y a <strong>{{falseByFilms|length}}</strong> films qui ont au moins un faux départ.</p>
+			{% for completeness in pauseByFilms %}<p>{{completeness.year}} - {{completeness.title}} ({{completeness.nb}})</p>{% endfor %}
+			
+		</article>
+	</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="{{ asset('js/mc2.js') }}"></script>
+
+<script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>  
+
+<script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
+
+<!-- Materialize -->
+<script type="text/javascript" src="../../bower_components/Materialize/js/parallax.js"></script>
+
+
+<!-- D3.JS -->
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../bower_components/nvd3/build/nv.d3.min.js"></script>
+<link rel="stylesheet" href="../../bower_components/nvd3/build/nv.d3.css">
+
+<script type="text/javascript">
+ 	
+ 	google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+		var data = google.visualization.arrayToDataTable([
+		  ['Année', "Nombre de numbers"],
+		    {% for completeness in CompsByNumber %}
+		        ['{{completeness.title}}',{{completeness.nb}}],
+		    {% endfor %}
+		]);
+
+		var options = {
+		  title: 'Nombre de numbers "borrowed from the musical repertoire" par année',
+		  hAxis: {title: 'Année de sortie',  titleTextStyle: {color: '#333'}},
+		  vAxis: {minValue: 0}
+		};
+
+		var chart = new google.visualization.AreaChart(document.getElementById('chart_moodsByNumber'));
+		chart.draw(data, options);
+
+	}
+
+  nv.addGraph(function() {
+        var chart = nv.models.pieChart()
+            .x(function(d) { return d.label })
+            .y(function(d) { return d.value })
+            .showLabels(true)     //Display pie labels
+            .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+            .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+            .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+            .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
+            ;
+          d3.select("#donut svg")
+              .datum(completeNumberData ())
+              .transition().duration(350)
+              .call(chart);
+
+        return chart;
+      });
+
+  function completeNumberData() {
+  return  [
+      {% for completeness in CompsByNumber %}
+          {"label" : "{{completeness.title}}",
+          "value" : {{completeness.nb}} },
+      {% endfor %}
+    ];
+  }
+
+</script>
+
+{% endblock %}
+

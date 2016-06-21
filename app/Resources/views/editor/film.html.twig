@@ -25,58 +25,104 @@
 <section class='container'>
 
 <div class="row">
+
  <h1>{{film.title}}</h1>
+ <hr>
 
- <h2>List of numbers</h2>
+<article class='col s12 m6'>
+  <h2>List of numbers</h2>
+   {% for number in numbersOf1Film %}
+      <p>{{loop.index}} | {{number.title}} | {{number.beginTc}} | {{number.endTc}} <a href="/editor/number/{{number.id}}">edit</a></p> 
+  {% endfor %}
+<a href="/editor/number/new"><button class="btn teal">Add a number</button></a>
+<a href="/editor/number/new"><button class="btn red">Complete</button></a>
+</article>
 
- {% for number in numbersOf1Film %}
-    <p>{{loop.index}} | {{number.title}} | {{number.beginTc}} | <a href="/editor/film/{{film.filmId}}/number/{{number.id}}">edit</a></p> 
-{% endfor %}
+<article class='col s12 m6'> 
 
-  <h2>Pictures</h2>
+  <h2>Lengths</h2>
 
- <button>Add a number</button>
+  <article class="card red accent-2 col s12 m6">
+    <div class="card-content white-text center-align">
+        <p class="center-align number">{{film.length}} sec</p>
+        <p class="center-align number-label">Movie Length</p>
+    </div>
+  </article>
 
-<article class='cartouche'>
-<h2>Lengths</h2>
+  <article class="card light-green col s12 m6">
+    <div class="card-content white-text center-align">
+        <p class="center-align number">{{((film.length)/60)|round}} min</p>
+        <p class="center-align number-label">Movie Length</p>
+    </div>
+  </article>
 
-  <h3>Movie Length</h3>
-  <p>{{film.length}} seconds</p> 
+  <article class="card cyan col s12 m6">
+    <div class="card-content white-text center-align">
+        <p class="center-align number">   {% for number in numberSumLength %}
+      {% if number.total > 0 %}
+      {{(number.total/60)|round}} min
+      {% else %}
+      <p>N/A</p>
+      {% endif %}
 
-  <h3>Sum of all number's lengths</h3>
+    {% endfor %}</p>
+        <p class="center-align number-label">Sum of all numbers</p>
+    </div>
+  </article>
 
-   {% for number in numberSumLength %}
-    {% if number.total > 0 %}
-    {{number.total}} seconds
-    {% else %}
-    <p>N/A</p>
-    {% endif %}
+  <article class="card amber col s12 m6">
+    <div class="card-content white-text center-align">
+        <p class="center-align number">{% for number in numberSumLength %}
+      
+      {% if number.total > 0 %}
+      {{((number.total/number.length)*100)|round(2, 'floor') }}%
+      {% else %}
+      <p>N/A</p>
+      {% endif %}
 
+    {% endfor %}</p>
+        <p class="center-align number-label">Ratio number/total length</p>
+    </div>
+  </article>
+
+  <article class="card  deep-orange col s12 m6">
+    <div class="card-content white-text center-align">
+        <p class="center-align number">{% for number in numberAverageLength %}{{number.average|round}} sec{% endfor %}</p>
+        <p class="center-align number-label">Average number length for {{film.title}}</p>
+    </div>
+  </article>
+
+  <article class="card pink lighten-2 col s12 m6">
+    <div class="card-content white-text center-align">
+        <p class="center-align number">{% for number in numbersAverageLength %}{{number.average|round}} sec{% endfor %}</p>
+        <p class="center-align number-label">Average number length for all the movies</p>
+    </div>
+  </article>
+</article>
+
+<article>
+  <h3>Number's distribution</h3>
+
+  <div id="donut">
+    <svg style="height:500px;"></svg>
+  </div>
+</article>
+
+<article>
+  <h3>Pictures of numbers</h3>
+  <p>Soon...</p>
+</article>
+
+<article>
+  <h3>Persons linked</h3>
+  {% for person in persons1Film %}
+    {{person.personId}}
   {% endfor %}
 
-  <h3>Ratio number/total length</h3>
-  
-  {% for number in numberSumLength %}
-    
-    {% if number.total > 0 %}
-    {{((number.total/number.length))|round(2, 'floor') }}%
-    {% else %}
-    <p>N/A</p>
-    {% endif %}
+</article>
 
-  {% endfor %}
-
-
-  <h3>Average number length for {{film.title}}</h3> 
-
-  {% for number in numberAverageLength %}{{number.average|round}} seconds{% endfor %}
-
-  <h3>Average number length for all the movies</h3>
-  {% for number in numbersAverageLength %}{{number.average|round}} seconds{% endfor %}
-  
+<article>
   <h3>Graphe/ Timeline</h3>
-
-  <!-- un donut avec la répartition des numbers par durée-->
   <div id="visualization"></div>
 </article>
 
@@ -114,7 +160,7 @@
   //title, begin-tc, ending-tc
   var items = new vis.DataSet([
     {% for number in numbersOf1Film %}
-    {id: {{loop.index}}, content: '{{number.title}}', start: '{{number.beginTc}}', end: '{{number.endTc}}'},
+    {id: {{loop.index}}, content: '{{number.title}}', start: {{number.beginTc}}, end: {{number.endTc}}},
     {% endfor %}
   ]);
 
@@ -123,6 +169,59 @@
 
   // Create a Timeline
   var timeline = new vis.Timeline(container, items, options);
+
+  nv.addGraph(function() {
+        var chart = nv.models.pieChart()
+            .x(function(d) { return d.label })
+            .y(function(d) { return d.value })
+            .showLabels(true)     //Display pie labels
+            .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+            .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+            .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+            .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
+            ;
+          d3.select("#donut svg")
+              .datum(numberLengthData ())
+              .transition().duration(350)
+              .call(chart);
+
+        return chart;
+      });
+
+  function numberLengthData() {
+  return  [
+      {% for number in numbersOf1Film %}
+          {"label" : "{{number.title}}",
+          "value" : "{{number.length}}"},
+      {% endfor %}
+    ];
+
+  //Timeline 2
+
+  // nv.addGraph(function() {  
+  //   var chart = nv.models.bulletChart();
+
+  //   d3.select('#chart svg')
+  //       .datum(exampleData())
+  //       .transition().duration(1000)
+  //       .call(chart);
+
+  //   return chart;
+  // });
+
+
+  // function exampleData() {
+  //   return {
+  //     "title":"Revenue",    //Label the bullet chart
+  //     "subtitle":"US$, in thousands",   //sub-label for bullet chart
+  //     "ranges":[150,225,300],  //Minimum, mean and maximum values.
+  //     "measures":[220],    //Value representing current measurement (the thick blue line in the example)
+  //     "markers":[250]      //Place a marker on the chart (the white triangle marker)
+  //   };
+  // }
+
+}
+
 </script>
 
 

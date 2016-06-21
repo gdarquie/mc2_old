@@ -5,9 +5,13 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+
 
 use AppBundle\Entity\Film;
+use AppBundle\Entity\Person;
 use AppBundle\Entity\Number;
+use AppBundle\Form\NumberType;
 
 class EditorController extends Controller
 {
@@ -22,10 +26,22 @@ class EditorController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $films = $em->getRepository('AppBundle:Film')->findAll(); //voir tous les films + chercher un film = la page d'accueil de l'éditeur
+        //all films
+        $films = $em->getRepository('AppBundle:Film')->findAll(); 
+
+        //Films with number
+        $query = $em->createQuery(
+            'SELECT f.filmId as filmId, f.title as title, f.released as released  FROM AppBundle:Film f WHERE f.filmId IN (SELECT IDENTITY(n.film) FROM AppBundle:Number n WHERE n.film != 0)'
+            );  
+        $filmsWithNumber = $query->getResult();
+
+        //All Persons
+        $persons = $em->getRepository('AppBundle:Person')->findAll();
         
         return $this->render('editor/index.html.twig', array(
             'films' => $films,
+            'filmsWithNumber' => $filmsWithNumber,
+            'persons' => $persons,
         ));
     }
 
@@ -64,10 +80,26 @@ class EditorController extends Controller
 
         //addition de tous les numbers pour le film
          $query = $em->createQuery(
-            'SELECT SUM(f.length) as total, (f.length) as length FROM AppBundle:Number f WHERE f.film = :film'
+            'SELECT SUM(n.length) as total, (f.length) as length FROM AppBundle:Number n JOIN n.film f WHERE n.film = :film'
             ); 
         $query->setParameter('film', $film);
         $numberSumLength = $query->getResult();
+
+        //persons linked to a movie
+        $query = $em->createQuery(
+            'SELECT a.personId as personId FROM AppBundle:FilmHasPerson a WHERE a.filmId = :film' //film has person
+            ); //SELECT p.name FROM AppBundle:Person p WHERE p.personId IN ()
+        $query->setParameter('film', $film);
+        $persons1Film = $query->getResult();
+
+        //All Persons
+        $persons = $em->getRepository('AppBundle:Person')->findAll();
+
+        //All Professions
+        $professions = $em->getRepository('AppBundle:Profession')->findAll();
+
+        //All Numbers
+        $numbers = $em->getRepository('AppBundle:Number')->findAll();
 
 
 	    //faire une viz avec la chronologie des numbers
@@ -76,10 +108,14 @@ class EditorController extends Controller
         
         return $this->render('editor/film.html.twig', array(
             'film' => $film,
+            'numbers' => $numbers,
             'numbersOf1Film' => $numbersOf1Film,
             'numberAverageLength' => $numberAverageLength,
             'numbersAverageLength' => $numbersAverageLength,
             'numberSumLength' => $numberSumLength,
+            'persons' => $persons,
+            'professions' => $professions,
+            'persons1Film' => $persons1Film,
         ));
 
         //conversion en timecode : echo gmdate("H:i:s", 685);
@@ -104,5 +140,8 @@ class EditorController extends Controller
 
         ));
     }
+
+    
+
 
 }

@@ -34,7 +34,7 @@ class NumberType extends AbstractType
             ->add('weight')
             ->add('structure')
             ->add('diegetic')
-            ->add('source')
+            // ->add('source')
             // ->add('film')
             // ->add('quotation')
             // ->add('song')

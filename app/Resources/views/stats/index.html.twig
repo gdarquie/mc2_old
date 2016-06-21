@@ -28,12 +28,11 @@
 
 <section class='container'>
     
-    
     <div class='row'>
       <h2 class="cut col s10">Le projet</h2>
     </div>
 
-     <section class='row'>
+     <div class='row'>
 
       <div class="col s12 cartouche">
         
@@ -46,76 +45,94 @@
         </div>
       </div>
       
-    </section>
+    </div>
   
     <div class="row">
-      <h2 class='cut col s10 offset-s2'>Informations générales</h2>
+      <h2 class='cut col s10 offset-s2'>General informations</h2>
     </div>
 
     <section class='row'>
 
-      <div class="col s6 cartouche">
-        
-        <div class='cartoucheContent'>
-          <p>Cette partie présente les informations générales relatives aux données comportées dans la BD MC2.</p>
-
-          <p>La base compte <strong>{{films|length}}</strong> films et <strong>{{numbers|length}} numbers</strong>.</p>
-          <p><strong>{{nbFilmsWithNumber|length}}</strong> numbers comportent au moins un numbers. La moyenne de numbers par films est de <strong>[à compléter]</strong> .</p>
-        </div>
-      </div>
-      
-      <div class='col s6 cartouche'>
-
+      <div class="col s12 m4 cartouche">
         <div class="cartoucheContent ">
           
-          <p>Cette partie présente les informations générales relatives aux données comportées dans la BD MC2.</p>
+          <p>This part shows general informations from the MC2 database.</p>
 
-          <p>La base compte <strong>{{films|length}}</strong> films et <strong>{{numbers|length}} numbers</strong>.</p>
-          <p><strong>{{nbFilmsWithNumber|length}}</strong> numbers comportent au moins un numbers. La moyenne de numbers par films est de <strong>[à compléter]</strong> .</p>
+          <p><strong>{{nbFilmsWithNumber|length}}</strong> numbers have at least one number. Each movie has on average  <strong>{{((numbers|length)/(nbFilmsWithNumber|length))|round(1)}}</strong> numbers.</p>
         </div>
       </div>
-
-    </section>
-</section>
-
-
-<div id="index-banner" class="parallax-container">
-  <div class="section no-pad-bot">
-    <div class="container">
-      <br><br>
-      <h1 class="header center" style="color:white;">Films</h1>
-      <div class="row center">
-              <h5 class="header col s12 light" style="color:black;"></h5>
-      </div>
-      <div class="row center">
-      </div>
-      <br><br>
+      <div class="col s12 m4">
+          <div class="card teal">
+                <a href="#films" class="modal-trigger">
+                    <div class="card-content white-text center-align">
+                    <i class="material-icons">view_module</i>
+                    <p class="center-align number">{{films|length}}</p>
+                    <p class="center-align number-label">
+                        Films
+                    </p>
+                    </div>
+                </a>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card cyan">
+                <a href="#numbers" class="modal-trigger">
+                    <div class="card-content white-text center-align">
+                    <i class="material-icons">view_module</i>
+                    <p class="center-align number">{{numbers|length}}</p>
+                    <p class="center-align number-label">
+                        Numbers
+                    </p>
+                    </div>
+                </a>
+          </div>
+        </div>
     </div>
-  </div>
-  <div class="parallax"><img src="img/affiche.jpg" alt="Unsplashed background img 1"></div>
-</div>
+  </section>
 
-<section class='container'>
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center" style="color:white;">Movies</h1>
+        <div class="row center">
+                <h5 class="header col s12 light" style="color:black;"></h5>
+        </div>
+        <div class="row center">
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax"><img src="img/affiche.jpg" alt="Unsplashed background img 1"></div>
+  </div>
+
+  <section class='container'>
 
     <div class='cartouche'>
-      <h2 class='cut'>Les films</h2>
+      <h2 class='cut'>Movies</h2>
 
       <article>
-        <h3>Les durées</h3>
-        <p>La durée cumulée des films dans la BD est de <strong>{% for film in filmsLength %}{{film.length/3600}}</strong>{% endfor %} heures, soit <strong>{% for film in filmsLength %}{{film.length/(3600*24)}}</strong>{% endfor %} jours.</p>
-        <p>Le temps moyen d'un film de notres corpus est de <strong>{% for film in filmsAverageLength %}{{film.average/60}}{% endfor %} minutes.</strong></p>
-        <p>Le film le plus long est <strong>{% for film in filmsMaxLength %}{{film.title}}{% endfor %}</strong>, il dure <strong>{% for film in filmsMaxLength %}{{film.length/60}}{% endfor %}</strong> minutes.</p> 
-        <p>Le film le plus court (dont nous connaissons la durée) est <strong>{% for film in filmsMinLength %}{{film.title}}{% endfor %}</strong>, il dure <strong>{% for film in filmsMinLength %}{{film.length/60}}{% endfor %}</strong> minutes.</p>
+        <h3>Length</h3>
+        <p>The sum of all movies's length in the DB is <strong>{% for film in filmsLength %}{{(film.length/3600)|round}}</strong>{% endfor %} hours, or approximatively <strong>{% for film in filmsLength %}{{(film.length/(3600*24))|round}}</strong>{% endfor %} complete days.</p>
+        <p>Average length time is <strong>{% for film in filmsAverageLength %}{{(film.average/60)|round(2,'floor')}}{% endfor %} minutes.</strong></p>
+        <p>The longest movie is <strong>{% for film in filmsMaxLength %}{{film.title}}{% endfor %}</strong>, it lasts <strong>{% for film in filmsMaxLength %}{{film.length/60}}{% endfor %}</strong> minutes.</p> 
+        <p>The shortest film (with a not null length) is <strong>{% for film in filmsMinLength %}{{film.title}}{% endfor %}</strong>, it lasts <strong>{% for film in filmsMinLength %}{{film.length/60}}{% endfor %}</strong> minutes.</p>
 
-        <p>Nous ne connaissons pas la durée des films suivants :</p>
+        <p>We don't know the length of the following movies :
+        {% for film in filmsNoLength %}
+          <a href="/editor/film/{{film.filmId}}">{{film.title}}</a>/
+        {% endfor %}
+        </p>
 
-        <p>Clairement ces films semblent avoir un problème de durée :</p>
-
+        <p>Clearly this movies have a length problem :</p>
+        {% for film in filmsPbLength %}
+          <a href="/editor/film/{{film.filmId}}">{{film.title}}({{film.length}})</a>/
+        {% endfor %}
       </article>
         
 
        <article>
-         <h3>Répartition par année des films du corpus</h3>
+         <h3>Number of movies by year</h3>
           <div id="chart_div" style="height: 500px;"></div>
        </article> 
 
@@ -130,70 +147,101 @@
       </article>   #}  
 
     </div>
-</section>
+  </section>
 
-<div id="index-banner" class="parallax-container">
-  <div class="section no-pad-bot">
-    <div class="container">
-      <br><br>
-      <h1 class="header center" style="color:white;">Numbers</h1>
-      <div class="row center">
-              <h5 class="header col s12 light" style="color:black;"></h5>
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center" style="color:white;">Numbers</h1>
+        <div class="row center">
+                <h5 class="header col s12 light" style="color:black;"></h5>
+        </div>
+        <div class="row center">
+        </div>
+        <br><br>
       </div>
-      <div class="row center">
-      </div>
-      <br><br>
     </div>
+    <div class="parallax"><img src="img/oz.jpg" alt="Unsplashed background img 1"></div>
   </div>
-  <div class="parallax"><img src="img/oz.jpg" alt="Unsplashed background img 1"></div>
-</div>
 
-<section class='container'>
+  <section class='container'>
     <section class='cartouche'>
-      <h2 class='cut'>Les numbers</h2>
-      <h3>Répartition par année des numbers du corpus</h3>
+      <h2 class='cut'>Numbers</h2>
+      <h3>Number of numbers by year</h3>
        <div id="chart_numbersByYear" style="height: 500px;"></div>
       <p>Représentativité du corpus : quelles sont années avec le plus de numéros? Est-ce le même que celui des films</p>
 
-    </section>
-
-</section>
-
-<div id="index-banner" class="parallax-container">
-  <div class="section no-pad-bot">
-    <div class="container">
-      <br><br>
-      <h1 class="header center" style="color:white;">Sources</h1>
-      <div class="row center">
-              <h5 class="header col s12 light" style="color:black;"></h5>
-      </div>
-      <div class="row center">
-      </div>
-      <br><br>
-    </div>
-  </div>
-  <div class="parallax"><img src="img/couple.jpeg" alt="Unsplashed background img 1"></div>
-</div>
-
-<section class='container'>
-    <section>
-      <h2 class='cut'>Les sources</h2>
-      //viz de la rochelle avec les nouvelles données
-
-      <article>
-      <h3>Cumul des numéros par année en fonction de leurs origines pour une source</h3>
+    <article>
+      <h2 class='cut'>Sources</h2>
+      <h3>Total of numbers by year for one source type</h3>
 
           <div id="chart_sourcesByYear" style="height: 500px;"></div>
+    </article>
+  </section>
+</section>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center" style="color:white;">Stage Shows</h1>
+        <div class="row center">
+                <h5 class="header col s12 light" style="color:black;"></h5>
+        </div>
+        <div class="row center">
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax"><img src="img/couple.jpeg" alt="Unsplashed background img 1"></div>
+  </div>
+
+  <section class='container'>
+
+    <section class='row'>
+
+      <article class="col s12 m12">
+        <div class="card cyan">
+            <a href="#numbers" class="modal-trigger">
+                <div class="card-content white-text center-align">
+                <i class="material-icons">view_module</i>
+                <p class="center-align number">{{shows|length}}</p>
+                <p class="center-align number-label">
+                    Stage shows
+                </p>
+              </div>
+            </a>
+        </div>
       </article>
+
+      <article>
+        <h2>50 Longest Running Shows</h2>
+        <ul class="items">
+          {% for show in longRunShows %}
+          <a href="https://www.ibdb.com/Production/View/{{show.ibdb}}" target='_blank'><li class="btn" >{{show.title}}</li></a>
+          {% endfor %}
+        </ul>
+        
+      </article>
+
+{# Corriger avec les données de stage show (problème de date) #}
+{#       <article class="col s12 m12">
+        <h3>Number of stage show by year</h3>
+
+          <div id="chart_showsByYear" style="height: 500px;"></div>
+      </article> #}
+
     </section>
-    
+
+
 </section>
 
 <div id="index-banner" class="parallax-container">
   <div class="section no-pad-bot">
     <div class="container">
       <br><br>
-      <h1 class="header center" style="color:white;">Les acteurs</h1>
+      <h1 class="header center" style="color:white;">Persons</h1>
       <div class="row center">
               <h5 class="header col s12 light" style="color:black;"></h5>
       </div>
@@ -205,10 +253,36 @@
   <div class="parallax"><img src="img/star.png" alt="Unsplashed background img 1"></div>
 </div>
 
-<section class="containuer">
-    <section class="cartouche">
-      <h2 class='cut'>Les acteurs</h2>
+<section class="container">
+
+    <section class='row'>
+
+      <div class="col s12 m12">
+        <div class="card red accent-2">
+            <a href="#numbers" class="modal-trigger">
+                <div class="card-content white-text center-align">
+                <i class="material-icons">view_module</i>
+                <p class="center-align number">{{persons|length}}</p>
+                <p class="center-align number-label">
+                    Persons
+                </p>
+              </div>
+            </a>
+        </div>
+      </div>
+
     </section>
+
+    <article>
+        <h2>List of persons</h2>
+        <ul class="items">
+          {% for person in persons %}
+          <li class="btn" >{{person.name}}</li>
+          {% endfor %}
+        </ul>
+        
+    </article>
+
 </section>
 
 
@@ -276,6 +350,25 @@
 
             var chart = new google.visualization.AreaChart(document.getElementById('chart_sourcesByYear'));
             chart.draw(data3, options);
+
+        //Nombre de stageShow par an
+
+            var data4 = google.visualization.arrayToDataTable([
+              ['Year', "Number of Stage Show"],
+                {% for show in nbFilmsByYear %} //changer film par show
+                    ['{{show.year}}',{{show.nb}}],
+                {% endfor %}
+            ]);
+
+
+            var options = {
+              title: 'Number of Stage Show by year',
+              hAxis: {title: 'Released',  titleTextStyle: {color: '#333'}},
+              vAxis: {minValue: 0}
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_showsByYear'));
+            chart.draw(data4, options);
           }
 
     $(document).ready(function(){

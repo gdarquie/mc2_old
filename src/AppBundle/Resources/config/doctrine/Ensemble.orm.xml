@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Ensemble" table="ensemble">
+    <id name="ensembleId" type="integer" column="ensemble_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="title" type="string" column="title" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="type" type="string" column="type" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Musical ou Dance</option>
+      </options>
+    </field>
+    <many-to-many field="stagenumber" target-entity="Stagenumber" inversed-by="ensemble" fetch="LAZY">
+      <join-table name="stagenumber_has_ensemble">
+        <join-columns>
+          <join-column name="ensemble_id" referenced-column-name="ensemble_id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="stageNumber_id" referenced-column-name="stageNumber_id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="number" target-entity="Number" inversed-by="ensemble" fetch="LAZY">
+      <join-table name="number_has_ensemble">
+        <join-columns>
+          <join-column name="ensemble_id" referenced-column-name="ensemble_id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="number_id" referenced-column-name="number_id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

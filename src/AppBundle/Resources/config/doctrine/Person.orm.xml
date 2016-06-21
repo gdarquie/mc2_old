@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Person" table="person">
+    <id name="personId" type="integer" column="person_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="firstname" type="string" column="firstname" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lastname" type="string" column="lastname" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Si c’est un pseudo, devient le nom complet (il n’y aura pas de nom)</option>
+      </options>
+    </field>
+    <field name="gender" type="string" column="gender" length="5" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="race" type="string" column="race" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="firstshow" type="integer" column="firstShow" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Premier spectacle que la personne a réalisé</option>
+      </options>
+    </field>
+    <field name="type" type="string" column="type" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">
+Singulier ou pluriel (pour savoir si c’est un groupe ou non)
+
+Si c’est un groupe, on ne garde que le lastname.</option>
+      </options>
+    </field>
+    <many-to-many field="quotation" target-entity="Quotation" inversed-by="person" fetch="LAZY">
+      <join-table name="person_has_quotation">
+        <join-columns>
+          <join-column name="person_id" referenced-column-name="person_id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="quotation_id" referenced-column-name="quotation_id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

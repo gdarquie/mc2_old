@@ -63,5 +63,26 @@ div .cut {
 	padding-top: 60px;
 }
 
+.material-icons{
+	font-size:90px;
+}
 
+.items li{
+  margin-bottom: 5px;
+  background-color:white; 
+  color : #CC0000;
+  border:  1px solid #CC0000;
+}
 
+.number {
+	font-size: 2.6em;
+}
+
+.number-label {
+	font-size: 1.4em;
+}
+
+.card{
+	height:200px;
+	overflow : auto;
+}

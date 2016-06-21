@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Place" table="place">
+    <id name="placeId" type="integer" column="place_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="title" type="string" column="title" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Table place  = les lieux géolocalisés qu’ils soient réels ou imaginaires</option>
+      </options>
+    </field>
+    <field name="text" type="text" column="text" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lat" type="float" column="lat" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="comment">
+
+Géolocalisation x</option>
+      </options>
+    </field>
+    <field name="long" type="float" column="long" precision="10" scale="0" nullable="true">
+      <options>
+        <option name="comment">
+
+Géolocalisation y</option>
+      </options>
+    </field>
+    <field name="size" type="integer" column="size" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Taille de la zone, est-ce qu’il s’agit d’un point, précis, d’une ville ou d’un pays (de 1 à 6 par exemple- a définir : précis/ rue/ville/ état/ pays/ continent)</option>
+      </options>
+    </field>
+    <field name="real" type="string" column="real" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Lieu réel ou non (oui/Non), Lichtenborg? Oz? Des lieux non réels mais dont on attribuera arbitrairement une géolocalisation
+</option>
+      </options>
+    </field>
+    <field name="fiction" type="string" column="fiction" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Est-ce que les personnages sont vraiment dans le lieu ou est-ce qu’ils s’y projettent? (oui/non)</option>
+      </options>
+    </field>
+    <many-to-many field="numberNumber" target-entity="Number" inversed-by="place" fetch="LAZY">
+      <join-table name="place_has_number">
+        <join-columns>
+          <join-column name="place_id" referenced-column-name="place_id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="number_number_id" referenced-column-name="number_id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

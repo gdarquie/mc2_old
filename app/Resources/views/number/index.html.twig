@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '/number/base.html.twig' %}
 
 {% block body %}
     <h1>Number list</h1>
@@ -33,7 +33,7 @@
         <tbody>
         {% for number in numbers %}
             <tr>
-                <td><a href="{{ path('number_show', { 'id': number.numberId }) }}">{{ number.title }}</a></td>
+                <td><a href="{{ path('editor_number_show', { 'id': number.numberId }) }}">{{ number.title }}</a></td>
                 <td>{{ number.type }}</td>
                 <td>{{ number.beginTc }}</td>
                 <td>{{ number.endTc }}</td>
@@ -57,10 +57,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('number_show', { 'id': number.numberId }) }}">show</a>
+                            <a href="{{ path('editor_number_show', { 'id': number.numberId }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('number_edit', { 'id': number.numberId }) }}">edit</a>
+                            <a href="{{ path('editor_number_edit', { 'id': number.numberId }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -71,7 +71,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('number_new') }}">Create a new entry</a>
+            <a href="{{ path('editor_number_new') }}">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}
