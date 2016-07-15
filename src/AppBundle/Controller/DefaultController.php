@@ -237,9 +237,10 @@ class DefaultController extends Controller
         //Durée moyenne d'un number par source
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery(
-            'SELECT n.title as title, AVG(n.length) as length
-            FROM AppBundle:Number n GROUP BY n.source'
+            'SELECT n.source as title, AVG(n.length) as average, COUNT(n.length) as nb 
+            FROM AppBundle:Number n GROUP BY n.source ORDER BY nb DESC'
             );
+        $query->setMaxResults(6);
         $averageNumberLengthBySource = $query->getResult();
 
         

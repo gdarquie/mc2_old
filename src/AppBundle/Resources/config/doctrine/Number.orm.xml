@@ -12,12 +12,9 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="type" type="string" column="type" length="255" nullable="true">
+    <field name="validationTitle" type="integer" column="validation_title" nullable="true">
       <options>
-        <option name="fixed"/>
-        <option name="comment">Parmi des mots prédéfinis - voir thesaurus
-
-</option>
+        <option name="unsigned"/>
       </options>
     </field>
     <field name="beginTc" type="integer" column="begin_tc" nullable="true">
@@ -46,6 +43,33 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="validationTc" type="integer" column="validation_tc" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="shots" type="integer" column="shots" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="validationShots" type="integer" column="validation_shots" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="performance" type="string" column="performance" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Parmi des mots prédéfinis - voir thesaurus</option>
+      </options>
+    </field>
+    <field name="validationPerformance" type="integer" column="validation_performance" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Outlines et form</option>
+      </options>
+    </field>
     <field name="spectators" type="string" column="spectators" length="255" nullable="true">
       <options>
         <option name="fixed"/>
@@ -55,10 +79,27 @@ Si 1 : real prime
 Si 2 : fiction prime</option>
       </options>
     </field>
+    <field name="diegetic" type="string" column="diegetic" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">OnStage/voir thesaurus (1 réponse parmi  choix)</option>
+      </options>
+    </field>
     <field name="musician" type="string" column="musician" length="255" nullable="true">
       <options>
         <option name="fixed"/>
         <option name="comment">Une seule réponse possible par liste de mots (en cours de définition) / select</option>
+      </options>
+    </field>
+    <field name="integration0Id" type="integer" column="integration0_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Lien vers la table integration (many to many) - IntegrationOptions dans le thesaurus</option>
+      </options>
+    </field>
+    <field name="validationBackstage" type="integer" column="validation_backstage" nullable="true">
+      <options>
+        <option name="unsigned"/>
       </options>
     </field>
     <field name="lyrics" type="text" column="lyrics" length="16777215" nullable="true">
@@ -86,27 +127,6 @@ Select</option>
         <option name="comment">Select voir thesaurus</option>
       </options>
     </field>
-    <field name="shots" type="integer" column="shots" nullable="true">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
-    <field name="order" type="integer" column="order" nullable="true">
-      <options>
-        <option name="unsigned"/>
-        <option name="comment">Calculé à partir des timecode
-Calcul par le tc_begin
-</option>
-      </options>
-    </field>
-    <field name="integration2" type="string" column="integration2" length="255" nullable="true">
-      <options>
-        <option name="fixed"/>
-        <option name="comment">4 catégories (en plus de la table intégration) :
-- disconnected
-- </option>
-      </options>
-    </field>
     <field name="weight" type="string" column="weight" length="500" nullable="true">
       <options>
         <option name="fixed"/>
@@ -118,17 +138,6 @@ Si 1 : real prime
 Si 2 : fiction prime</option>
       </options>
     </field>
-    <field name="structure" type="string" column="structure" length="255" nullable="true">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
-    <field name="diegetic" type="string" column="diegetic" length="45" nullable="true">
-      <options>
-        <option name="fixed"/>
-        <option name="comment">OnStage/voir thesaurus (1 réponse parmi  choix)</option>
-      </options>
-    </field>
     <field name="source" type="string" column="source" length="45" nullable="true">
       <options>
         <option name="fixed"/>
@@ -137,6 +146,32 @@ Si 2 : fiction prime</option>
 -original
 - broadway
 …</option>
+      </options>
+    </field>
+    <field name="cost" type="integer" column="cost" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="costComment" type="text" column="cost_comment" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dubbing" type="string" column="dubbing" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">probablement yes / no</option>
+      </options>
+    </field>
+    <field name="arrangerComment" type="string" column="arranger_comment" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="timestamp" type="datetime" column="timestamp" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
       </options>
     </field>
     <many-to-one field="film" target-entity="Film" fetch="LAZY">
@@ -195,6 +230,11 @@ Si 2 : fiction prime</option>
         </inverse-join-columns>
       </join-table>
     </many-to-many>
+    <many-to-many field="ensemble" target-entity="Ensemble" mapped-by="number" fetch="LAZY"/>
+    <many-to-many field="completeness" target-entity="Completeness" mapped-by="number" fetch="LAZY"/>
+    <many-to-many field="dancing" target-entity="Dancing" mapped-by="number" fetch="LAZY"/>
+    <many-to-many field="integration" target-entity="Integration" mapped-by="number" fetch="LAZY"/>
+    <many-to-many field="musical" target-entity="Musical" mapped-by="number" fetch="LAZY"/>
     <many-to-many field="effects" target-entity="Effects" inversed-by="number" fetch="LAZY">
       <join-table name="number_has_effects">
         <join-columns>
@@ -205,11 +245,5 @@ Si 2 : fiction prime</option>
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="costumes" target-entity="Costumes" mapped-by="number" fetch="LAZY"/>
-    <many-to-many field="completeness" target-entity="Completeness" mapped-by="number" fetch="LAZY"/>
-    <many-to-many field="dancing" target-entity="Dancing" mapped-by="number" fetch="LAZY"/>
-    <many-to-many field="integration" target-entity="Integration" mapped-by="number" fetch="LAZY"/>
-    <many-to-many field="musical" target-entity="Musical" mapped-by="number" fetch="LAZY"/>
-    <many-to-many field="ensemble" target-entity="Ensemble" mapped-by="number" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

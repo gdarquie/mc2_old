@@ -1,0 +1,31 @@
+{% extends 'editor/base.html.twig' %}
+
+{% block fos_user_content %}{% endblock %}
+{% block stylesheets %}
+
+	<link rel="stylesheet" href="../../css/style.css"> 
+	<style>
+
+	.filter a{
+		margin-right: 4px;
+		margin-bottom: 5px;
+	  	background-color:white; 
+	  	color : #CC0000;
+	  	border:  1px solid #CC0000;
+	}
+		
+	</style>
+{% endblock %}
+
+
+{% block body %}
+
+<section class="container">
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+
+</section>
+
+{% endblock %}

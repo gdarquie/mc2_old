@@ -31,52 +31,5 @@ class NumberHasMood
     private $moodId;
 
 
-
-    /**
-     * Set numberId
-     *
-     * @param integer $numberId
-     *
-     * @return NumberHasMood
-     */
-    public function setNumberId($numberId)
-    {
-        $this->numberId = $numberId;
-
-        return $this;
-    }
-
-    /**
-     * Get numberId
-     *
-     * @return integer
-     */
-    public function getNumberId()
-    {
-        return $this->numberId;
-    }
-
-    /**
-     * Set moodId
-     *
-     * @param integer $moodId
-     *
-     * @return NumberHasMood
-     */
-    public function setMoodId($moodId)
-    {
-        $this->moodId = $moodId;
-
-        return $this;
-    }
-
-    /**
-     * Get moodId
-     *
-     * @return integer
-     */
-    public function getMoodId()
-    {
-        return $this->moodId;
-    }
 }
+

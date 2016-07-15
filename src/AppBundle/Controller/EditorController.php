@@ -11,13 +11,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Film;
 use AppBundle\Entity\Person;
 use AppBundle\Entity\Number;
+use AppBundle\Entity\Thesaurus;
+
 use AppBundle\Form\NumberType;
+use AppBundle\Form\ThesaurusType;
+
+
 
 class EditorController extends Controller
 {
 
-
-	//Tous les films
+//Films
 
     /**
      * @Route("/editor", name="editor")
@@ -92,6 +96,11 @@ class EditorController extends Controller
         $query->setParameter('film', $film);
         $persons1Film = $query->getResult();
 
+        // //Length
+        // $query = $em->createQuery('SELECT l FROM AppBundle:Length l WHERE l.number = :number');
+        // $query->setParameter('number', $number);
+        // $length = $query->getResult();
+
         //All Persons
         $persons = $em->getRepository('AppBundle:Person')->findAll();
 
@@ -123,24 +132,182 @@ class EditorController extends Controller
     }
 
 
+//Number
+
     /**
-     * @Route("/editor/film/{film}/number/{number}", name="editorNumber")
+     * @Route("/editor/number/{number}", name="editorNumber")
      */
-    public function editorNumberAction($film,$number)
+    public function editorNumberAction(Request $request, $number)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $film = $em->getRepository('AppBundle:Film')->findOneByFilmId($film);
+        // $film = $em->getRepository('AppBundle:Film')->findOneByFilmId($film);
         
         $number = $em->getRepository('AppBundle:Number')->findOneByNumberId($number); //voir un number d'un film + edit le number
-        
+
+        //formulaire Number (ne fonctionne pas pour l'instant)
+
+        $form = $this->createForm(NumberType::class, $number);
+        $form->handleRequest($request);
+
+
+        //All structures of a number
+        $query = $em->createQuery(
+            'SELECT t.title as structure, i.validationId as validation FROM AppBundle:Item i JOIN i.structure n JOIN i.thesaurus t WHERE n.numberId = :number '
+            ); 
+        $query->setParameter('number', $number);
+        $structuresNumber = $query->getResult();
+
+        //Length
+        // $query = $em->createQuery('SELECT l FROM AppBundle:Length l WHERE l.number = :number');
+        // $query->setParameter('number', $number);
+        // $length = $query->getResult();
+
+
         return $this->render('editor/number.html.twig', array(
-        	'film' => $film,
             'number' => $number,
+            // 'length' => $length,
+            'structuresNumber' => $structuresNumber,
+            'form' => $form->createView()
 
         ));
     }
 
+//Structure of 1 number
+
+    /**
+     * @Route("/editor/number/{number}/structure/new", name="numberStructureNew")
+     */
+    public function numberStructureNewAction(Request $request, $number){
+        $em = $this->getDoctrine()->getManager();
+
+        $number = $em->getRepository('AppBundle:Number')->findOneByNumberId($number);
+
+        $query = $em->createQuery('SELECT t.title FROM AppBundle:Thesaurus t WHERE t.type = :type');
+        $query->setParameter('type', "structure");
+        $structures = $query->getResult();
+       
+
+        $thesaurus = new Thesaurus();
+        $form = $this->createForm('AppBundle\Form\ThesaurusType', $thesaurus);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($thesaurus);
+            $em->flush();
+
+            return $this->redirectToRoute('numberStructureNew', array('id' => $thesaurus->getThesaurusId()));
+            // à reprendre
+        }
+
+        return $this->render('editor/structure/new.html.twig', array(
+            'thesaurus' => $thesaurus,
+            'structures' => $structures,
+            'number' => $number,
+            'form' => $form->createView(),
+        ));
+
+    }
+
+
+//Le thesaurus
+    /**
+     * @Route("/editor/thesaurus/{type}", name="editorThesaurus")
+     */
+    public function thesaurusEditorAction($type){
+
+        $em = $this->getDoctrine()->getManager();
+
+        if($type == "all")
+        {
+            $thesaurus = $em->getRepository('AppBundle:Thesaurus')->findAll();
+        }
+        else{
+            $query = $em->createQuery('SELECT t FROM AppBundle:Thesaurus t WHERE t.type = :type');
+            $query->setParameter('type', $type);
+            $thesaurus = $query->getResult();
+        }
+
+        $query = $em->createQuery('SELECT t FROM AppBundle:Thesaurus t GROUP BY t.type');
+        $thesaurusType = $query->getResult();
+
+        //compter le nombre d'item pour chaque thesaurus ???
+
+
+        return $this->render('editor/thesaurus.html.twig', array(
+            'thesaurus' => $thesaurus,
+            'thesaurusType' => $thesaurusType
+            ));
+
+
+    }
+
+    //Update Thesaurus
+
+    /**
+     * @Route("/editor/thesaurus/edit/{thesaurusId}", name="editorUpdateThesaurus") 
+     */
+    public function updateAction(Request $request, $thesaurusId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $thesaurus = $em->getRepository('AppBundle:Thesaurus')->find($thesaurusId);
+
+
+        if (!$thesaurus) {
+            throw $this->createNotFoundException(
+                'No item found for id '
+            );
+        }
+
+ 
+        $form = $this->createForm(ThesaurusType::class, $thesaurus);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted()){
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($thesaurus);
+            $em->flush();
+
+            return $this->redirectToRoute('editorThesaurus', array('type' => $thesaurus->getType() ));
+        }
+
+        return $this->render('editor/thesaurusNew.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+
+    //Nouveau item pour thesaurus
+
+    /**
+     * @Route("/editor/thesaurus/add/new", name="editorNewThesaurus")
+     */
+    public function addThesaurusEditorAction(Request $request){
+
+        $thesaurus = new Thesaurus();
+
+        $form = $this->createForm(ThesaurusType::class, $thesaurus);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted()){
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($thesaurus);
+            $em->flush();
+
+            return $this->redirectToRoute('editorThesaurus', array('type' => 'all' ));
+        }
+  
+
+        return $this->render('editor/thesaurusNew.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
+    }
     
 
 

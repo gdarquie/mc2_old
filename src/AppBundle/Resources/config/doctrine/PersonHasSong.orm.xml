@@ -8,6 +8,11 @@
     </indexes>
     <id name="professionId" type="integer" column="profession_id"/>
     <id name="songId" type="integer" column="song_id"/>
-    <id name="personId" type="integer" column="person_id"/>
+    <id name="person" association-key="true"/>
+    <one-to-one field="person" target-entity="Person" fetch="LAZY">
+      <join-columns>
+        <join-column name="person_id" referenced-column-name="person_id"/>
+      </join-columns>
+    </one-to-one>
   </entity>
 </doctrine-mapping>

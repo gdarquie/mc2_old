@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block fos_user_content %}{% endblock %}
+{% block stylesheets %}
+
+<style>
+.items li{
+  margin-bottom: 5px;
+  background-color:white; 
+  color : #CC0000;
+  border:  1px solid #CC0000;
+}
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+    <section class="container">
+    <h1>Thesaurus list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Comment</th>
+                <th>Link</th>
+                <th>Definition</th>
+                <th>Category</th>
+                <th>Timestamp</th>
+                <th>Thesaurusid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for thesaurus in thesauruses %}
+            <tr>
+                <td><a href="{{ path('editor_thesaurus_show', { 'id': thesaurus.thesaurusId }) }}">{{ thesaurus.title }}</a></td>
+                <td>{{ thesaurus.type }}</td>
+                <td>{{ thesaurus.comment }}</td>
+                <td>{{ thesaurus.link }}</td>
+                <td>{{ thesaurus.definition }}</td>
+                <td>{{ thesaurus.category }}</td>
+                <td>{% if thesaurus.timestamp %}{{ thesaurus.timestamp|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ thesaurus.thesaurusId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('editor_thesaurus_show', { 'id': thesaurus.thesaurusId }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('editor_thesaurus_edit', { 'id': thesaurus.thesaurusId }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('editor_thesaurus_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+</section>
+{% endblock %}

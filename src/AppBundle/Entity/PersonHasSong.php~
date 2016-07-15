@@ -31,85 +31,17 @@ class PersonHasSong
     private $songId;
 
     /**
-     * @var integer
+     * @var \AppBundle\Entity\Person
      *
-     * @ORM\Column(name="person_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     * })
      */
-    private $personId;
+    private $person;
 
 
-
-    /**
-     * Set professionId
-     *
-     * @param integer $professionId
-     *
-     * @return PersonHasSong
-     */
-    public function setProfessionId($professionId)
-    {
-        $this->professionId = $professionId;
-
-        return $this;
-    }
-
-    /**
-     * Get professionId
-     *
-     * @return integer
-     */
-    public function getProfessionId()
-    {
-        return $this->professionId;
-    }
-
-    /**
-     * Set songId
-     *
-     * @param integer $songId
-     *
-     * @return PersonHasSong
-     */
-    public function setSongId($songId)
-    {
-        $this->songId = $songId;
-
-        return $this;
-    }
-
-    /**
-     * Get songId
-     *
-     * @return integer
-     */
-    public function getSongId()
-    {
-        return $this->songId;
-    }
-
-    /**
-     * Set personId
-     *
-     * @param integer $personId
-     *
-     * @return PersonHasSong
-     */
-    public function setPersonId($personId)
-    {
-        $this->personId = $personId;
-
-        return $this;
-    }
-
-    /**
-     * Get personId
-     *
-     * @return integer
-     */
-    public function getPersonId()
-    {
-        return $this->personId;
-    }
 }
+

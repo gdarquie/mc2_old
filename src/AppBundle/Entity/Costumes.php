@@ -51,27 +51,11 @@ class Costumes
     private $stagenumber;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Number", inversedBy="costumes")
-     * @ORM\JoinTable(name="costumes_has_number",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="costumes_id", referencedColumnName="costumes_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
-     *   }
-     * )
-     */
-    private $number;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
         $this->stagenumber = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->number = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -165,39 +149,5 @@ class Costumes
     public function getStagenumber()
     {
         return $this->stagenumber;
-    }
-
-    /**
-     * Add number
-     *
-     * @param \AppBundle\Entity\Number $number
-     *
-     * @return Costumes
-     */
-    public function addNumber(\AppBundle\Entity\Number $number)
-    {
-        $this->number[] = $number;
-
-        return $this;
-    }
-
-    /**
-     * Remove number
-     *
-     * @param \AppBundle\Entity\Number $number
-     */
-    public function removeNumber(\AppBundle\Entity\Number $number)
-    {
-        $this->number->removeElement($number);
-    }
-
-    /**
-     * Get number
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getNumber()
-    {
-        return $this->number;
     }
 }

@@ -13,19 +13,26 @@
 
 {% block body %}
 	<div class="container">
-		<h1>???</h1>
-		<article>
-			<h2>Liste des completeness</h2>
-			{% for completeness in completenesses %}<p>{{completeness.title}}</p>{% endfor %}
-		</article>
-		<article>
-			<h2>Type de complétudes des numéros</h2>
+		<h1>Etude de la forme des numéros</h1>
+		<article class='row'>
+			<div class="col s8">
+			<h2>Liste des complétudes</h2>
+			<table class='striped'>
+			<tr><th>Nom</th><th>Nombre de numbers</th></tr>
+
+			 {% for completeness in CompsByNumber %}<p><tr><td><p>{{completeness.title}}</td><td>{{completeness.nb}}</tr></p>{% endfor %}
+			</table>
+		</div>
+
+		<div class="col s6">
+			{# <h2>Type de complétudes des numéros</h2> #}
 
 {# 			<div id="chart_moodsByNumber" style="height: 500px;"></div> #}
 
-			<div id="donut">
+			{# <div id="donut">
 			    <svg style="height:500px;"></svg>
-			  </div>
+			  </div> #}
+		</div>
 		</article>
 		
 		<article>
@@ -42,6 +49,11 @@
 			<p>Il y a <strong>{{falseByFilms|length}}</strong> films qui ont au moins un faux départ.</p>
 			{% for completeness in pauseByFilms %}<p>{{completeness.year}} - {{completeness.title}} ({{completeness.nb}})</p>{% endfor %}
 			
+		</article>
+
+		<article>
+			<h3>Sources</h3>
+			{% for completeness in averageNumberLengthBySource %}<p>{{completeness.title}}{{(completeness.average)|round}}({{completeness.nb}})</p>{% endfor %}
 		</article>
 	</div>
 

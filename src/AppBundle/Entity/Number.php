@@ -20,11 +20,11 @@ class Number
     private $title;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="type", type="string", length=255, nullable=true)
+     * @ORM\Column(name="validation_title", type="integer", nullable=true)
      */
-    private $type;
+    private $validationTitle;
 
     /**
      * @var integer
@@ -62,6 +62,41 @@ class Number
     private $ending;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_tc", type="integer", nullable=true)
+     */
+    private $validationTc;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="shots", type="integer", nullable=true)
+     */
+    private $shots;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_shots", type="integer", nullable=true)
+     */
+    private $validationShots;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="performance", type="string", length=255, nullable=true)
+     */
+    private $performance;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_performance", type="integer", nullable=true)
+     */
+    private $validationPerformance;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="spectators", type="string", length=255, nullable=true)
@@ -71,9 +106,30 @@ class Number
     /**
      * @var string
      *
+     * @ORM\Column(name="diegetic", type="string", length=45, nullable=true)
+     */
+    private $diegetic;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="musician", type="string", length=255, nullable=true)
      */
     private $musician;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="integration0_id", type="integer", nullable=true)
+     */
+    private $integration0Id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_backstage", type="integer", nullable=true)
+     */
+    private $validationBackstage;
 
     /**
      * @var string
@@ -104,27 +160,6 @@ class Number
     private $makeup;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="shots", type="integer", nullable=true)
-     */
-    private $shots;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="order", type="integer", nullable=true)
-     */
-    private $order;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="integration2", type="string", length=255, nullable=true)
-     */
-    private $integration2;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="weight", type="string", length=500, nullable=true)
@@ -134,23 +169,44 @@ class Number
     /**
      * @var string
      *
-     * @ORM\Column(name="structure", type="string", length=255, nullable=true)
-     */
-    private $structure;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="diegetic", type="string", length=45, nullable=true)
-     */
-    private $diegetic;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="source", type="string", length=45, nullable=true)
      */
     private $source;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cost", type="integer", nullable=true)
+     */
+    private $cost;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cost_comment", type="text", length=65535, nullable=true)
+     */
+    private $costComment;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dubbing", type="string", length=255, nullable=true)
+     */
+    private $dubbing;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="arranger_comment", type="string", length=500, nullable=true)
+     */
+    private $arrangerComment;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="timestamp", type="datetime", nullable=false)
+     */
+    private $timestamp = 'CURRENT_TIMESTAMP';
 
     /**
      * @var integer
@@ -256,24 +312,9 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Effects", inversedBy="number")
-     * @ORM\JoinTable(name="number_has_effects",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="effects_id", referencedColumnName="effects_id")
-     *   }
-     * )
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ensemble", mappedBy="number")
      */
-    private $effects;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Costumes", mappedBy="number")
-     */
-    private $costumes;
+    private $ensemble;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -306,9 +347,17 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ensemble", mappedBy="number")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Effects", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_effects",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="effects_id", referencedColumnName="effects_id")
+     *   }
+     * )
      */
-    private $ensemble;
+    private $effects;
 
     /**
      * Constructor
@@ -321,13 +370,12 @@ class Number
         $this->stagenumber = new \Doctrine\Common\Collections\ArrayCollection();
         $this->socialplace = new \Doctrine\Common\Collections\ArrayCollection();
         $this->exoticism = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->effects = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->costumes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ensemble = new \Doctrine\Common\Collections\ArrayCollection();
         $this->completeness = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dancing = new \Doctrine\Common\Collections\ArrayCollection();
         $this->integration = new \Doctrine\Common\Collections\ArrayCollection();
         $this->musical = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->ensemble = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->effects = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -356,27 +404,27 @@ class Number
     }
 
     /**
-     * Set type
+     * Set validationTitle
      *
-     * @param string $type
+     * @param integer $validationTitle
      *
      * @return Number
      */
-    public function setType($type)
+    public function setValidationTitle($validationTitle)
     {
-        $this->type = $type;
+        $this->validationTitle = $validationTitle;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get validationTitle
      *
-     * @return string
+     * @return integer
      */
-    public function getType()
+    public function getValidationTitle()
     {
-        return $this->type;
+        return $this->validationTitle;
     }
 
     /**
@@ -500,6 +548,126 @@ class Number
     }
 
     /**
+     * Set validationTc
+     *
+     * @param integer $validationTc
+     *
+     * @return Number
+     */
+    public function setValidationTc($validationTc)
+    {
+        $this->validationTc = $validationTc;
+
+        return $this;
+    }
+
+    /**
+     * Get validationTc
+     *
+     * @return integer
+     */
+    public function getValidationTc()
+    {
+        return $this->validationTc;
+    }
+
+    /**
+     * Set shots
+     *
+     * @param integer $shots
+     *
+     * @return Number
+     */
+    public function setShots($shots)
+    {
+        $this->shots = $shots;
+
+        return $this;
+    }
+
+    /**
+     * Get shots
+     *
+     * @return integer
+     */
+    public function getShots()
+    {
+        return $this->shots;
+    }
+
+    /**
+     * Set validationShots
+     *
+     * @param integer $validationShots
+     *
+     * @return Number
+     */
+    public function setValidationShots($validationShots)
+    {
+        $this->validationShots = $validationShots;
+
+        return $this;
+    }
+
+    /**
+     * Get validationShots
+     *
+     * @return integer
+     */
+    public function getValidationShots()
+    {
+        return $this->validationShots;
+    }
+
+    /**
+     * Set performance
+     *
+     * @param string $performance
+     *
+     * @return Number
+     */
+    public function setPerformance($performance)
+    {
+        $this->performance = $performance;
+
+        return $this;
+    }
+
+    /**
+     * Get performance
+     *
+     * @return string
+     */
+    public function getPerformance()
+    {
+        return $this->performance;
+    }
+
+    /**
+     * Set validationPerformance
+     *
+     * @param integer $validationPerformance
+     *
+     * @return Number
+     */
+    public function setValidationPerformance($validationPerformance)
+    {
+        $this->validationPerformance = $validationPerformance;
+
+        return $this;
+    }
+
+    /**
+     * Get validationPerformance
+     *
+     * @return integer
+     */
+    public function getValidationPerformance()
+    {
+        return $this->validationPerformance;
+    }
+
+    /**
      * Set spectators
      *
      * @param string $spectators
@@ -524,6 +692,30 @@ class Number
     }
 
     /**
+     * Set diegetic
+     *
+     * @param string $diegetic
+     *
+     * @return Number
+     */
+    public function setDiegetic($diegetic)
+    {
+        $this->diegetic = $diegetic;
+
+        return $this;
+    }
+
+    /**
+     * Get diegetic
+     *
+     * @return string
+     */
+    public function getDiegetic()
+    {
+        return $this->diegetic;
+    }
+
+    /**
      * Set musician
      *
      * @param string $musician
@@ -545,6 +737,54 @@ class Number
     public function getMusician()
     {
         return $this->musician;
+    }
+
+    /**
+     * Set integration0Id
+     *
+     * @param integer $integration0Id
+     *
+     * @return Number
+     */
+    public function setIntegration0Id($integration0Id)
+    {
+        $this->integration0Id = $integration0Id;
+
+        return $this;
+    }
+
+    /**
+     * Get integration0Id
+     *
+     * @return integer
+     */
+    public function getIntegration0Id()
+    {
+        return $this->integration0Id;
+    }
+
+    /**
+     * Set validationBackstage
+     *
+     * @param integer $validationBackstage
+     *
+     * @return Number
+     */
+    public function setValidationBackstage($validationBackstage)
+    {
+        $this->validationBackstage = $validationBackstage;
+
+        return $this;
+    }
+
+    /**
+     * Get validationBackstage
+     *
+     * @return integer
+     */
+    public function getValidationBackstage()
+    {
+        return $this->validationBackstage;
     }
 
     /**
@@ -644,78 +884,6 @@ class Number
     }
 
     /**
-     * Set shots
-     *
-     * @param integer $shots
-     *
-     * @return Number
-     */
-    public function setShots($shots)
-    {
-        $this->shots = $shots;
-
-        return $this;
-    }
-
-    /**
-     * Get shots
-     *
-     * @return integer
-     */
-    public function getShots()
-    {
-        return $this->shots;
-    }
-
-    /**
-     * Set order
-     *
-     * @param integer $order
-     *
-     * @return Number
-     */
-    public function setOrder($order)
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
-    /**
-     * Get order
-     *
-     * @return integer
-     */
-    public function getOrder()
-    {
-        return $this->order;
-    }
-
-    /**
-     * Set integration2
-     *
-     * @param string $integration2
-     *
-     * @return Number
-     */
-    public function setIntegration2($integration2)
-    {
-        $this->integration2 = $integration2;
-
-        return $this;
-    }
-
-    /**
-     * Get integration2
-     *
-     * @return string
-     */
-    public function getIntegration2()
-    {
-        return $this->integration2;
-    }
-
-    /**
      * Set weight
      *
      * @param string $weight
@@ -740,54 +908,6 @@ class Number
     }
 
     /**
-     * Set structure
-     *
-     * @param string $structure
-     *
-     * @return Number
-     */
-    public function setStructure($structure)
-    {
-        $this->structure = $structure;
-
-        return $this;
-    }
-
-    /**
-     * Get structure
-     *
-     * @return string
-     */
-    public function getStructure()
-    {
-        return $this->structure;
-    }
-
-    /**
-     * Set diegetic
-     *
-     * @param string $diegetic
-     *
-     * @return Number
-     */
-    public function setDiegetic($diegetic)
-    {
-        $this->diegetic = $diegetic;
-
-        return $this;
-    }
-
-    /**
-     * Get diegetic
-     *
-     * @return string
-     */
-    public function getDiegetic()
-    {
-        return $this->diegetic;
-    }
-
-    /**
      * Set source
      *
      * @param string $source
@@ -809,6 +929,126 @@ class Number
     public function getSource()
     {
         return $this->source;
+    }
+
+    /**
+     * Set cost
+     *
+     * @param integer $cost
+     *
+     * @return Number
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+
+        return $this;
+    }
+
+    /**
+     * Get cost
+     *
+     * @return integer
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
+
+    /**
+     * Set costComment
+     *
+     * @param string $costComment
+     *
+     * @return Number
+     */
+    public function setCostComment($costComment)
+    {
+        $this->costComment = $costComment;
+
+        return $this;
+    }
+
+    /**
+     * Get costComment
+     *
+     * @return string
+     */
+    public function getCostComment()
+    {
+        return $this->costComment;
+    }
+
+    /**
+     * Set dubbing
+     *
+     * @param string $dubbing
+     *
+     * @return Number
+     */
+    public function setDubbing($dubbing)
+    {
+        $this->dubbing = $dubbing;
+
+        return $this;
+    }
+
+    /**
+     * Get dubbing
+     *
+     * @return string
+     */
+    public function getDubbing()
+    {
+        return $this->dubbing;
+    }
+
+    /**
+     * Set arrangerComment
+     *
+     * @param string $arrangerComment
+     *
+     * @return Number
+     */
+    public function setArrangerComment($arrangerComment)
+    {
+        $this->arrangerComment = $arrangerComment;
+
+        return $this;
+    }
+
+    /**
+     * Get arrangerComment
+     *
+     * @return string
+     */
+    public function getArrangerComment()
+    {
+        return $this->arrangerComment;
+    }
+
+    /**
+     * Set timestamp
+     *
+     * @param \DateTime $timestamp
+     *
+     * @return Number
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
     }
 
     /**
@@ -1050,71 +1290,37 @@ class Number
     }
 
     /**
-     * Add effect
+     * Add ensemble
      *
-     * @param \AppBundle\Entity\Effects $effect
+     * @param \AppBundle\Entity\Ensemble $ensemble
      *
      * @return Number
      */
-    public function addEffect(\AppBundle\Entity\Effects $effect)
+    public function addEnsemble(\AppBundle\Entity\Ensemble $ensemble)
     {
-        $this->effects[] = $effect;
+        $this->ensemble[] = $ensemble;
 
         return $this;
     }
 
     /**
-     * Remove effect
+     * Remove ensemble
      *
-     * @param \AppBundle\Entity\Effects $effect
+     * @param \AppBundle\Entity\Ensemble $ensemble
      */
-    public function removeEffect(\AppBundle\Entity\Effects $effect)
+    public function removeEnsemble(\AppBundle\Entity\Ensemble $ensemble)
     {
-        $this->effects->removeElement($effect);
+        $this->ensemble->removeElement($ensemble);
     }
 
     /**
-     * Get effects
+     * Get ensemble
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEffects()
+    public function getEnsemble()
     {
-        return $this->effects;
-    }
-
-    /**
-     * Add costume
-     *
-     * @param \AppBundle\Entity\Costumes $costume
-     *
-     * @return Number
-     */
-    public function addCostume(\AppBundle\Entity\Costumes $costume)
-    {
-        $this->costumes[] = $costume;
-
-        return $this;
-    }
-
-    /**
-     * Remove costume
-     *
-     * @param \AppBundle\Entity\Costumes $costume
-     */
-    public function removeCostume(\AppBundle\Entity\Costumes $costume)
-    {
-        $this->costumes->removeElement($costume);
-    }
-
-    /**
-     * Get costumes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCostumes()
-    {
-        return $this->costumes;
+        return $this->ensemble;
     }
 
     /**
@@ -1254,36 +1460,36 @@ class Number
     }
 
     /**
-     * Add ensemble
+     * Add effect
      *
-     * @param \AppBundle\Entity\Ensemble $ensemble
+     * @param \AppBundle\Entity\Effects $effect
      *
      * @return Number
      */
-    public function addEnsemble(\AppBundle\Entity\Ensemble $ensemble)
+    public function addEffect(\AppBundle\Entity\Effects $effect)
     {
-        $this->ensemble[] = $ensemble;
+        $this->effects[] = $effect;
 
         return $this;
     }
 
     /**
-     * Remove ensemble
+     * Remove effect
      *
-     * @param \AppBundle\Entity\Ensemble $ensemble
+     * @param \AppBundle\Entity\Effects $effect
      */
-    public function removeEnsemble(\AppBundle\Entity\Ensemble $ensemble)
+    public function removeEffect(\AppBundle\Entity\Effects $effect)
     {
-        $this->ensemble->removeElement($ensemble);
+        $this->effects->removeElement($effect);
     }
 
     /**
-     * Get ensemble
+     * Get effects
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEnsemble()
+    public function getEffects()
     {
-        return $this->ensemble;
+        return $this->effects;
     }
 }

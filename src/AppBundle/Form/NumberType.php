@@ -6,6 +6,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 class NumberType extends AbstractType
 {
     /**
@@ -15,8 +20,8 @@ class NumberType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('type')
+            ->add('title', TextType::class)
+            // ->add('type')
             ->add('beginTc')
             ->add('endTc')
             ->add('length')
@@ -24,16 +29,16 @@ class NumberType extends AbstractType
             ->add('ending')
             ->add('spectators')
             ->add('musician')
-            ->add('lyrics')
-            ->add('dance')
-            ->add('tempo')
-            ->add('makeup')
-            ->add('shots')
-            ->add('order')
-            ->add('integration2')
-            ->add('weight')
-            ->add('structure')
-            ->add('diegetic')
+            // ->add('lyrics')
+            // ->add('dance')
+            // ->add('tempo')
+            // ->add('makeup')
+            // ->add('shots')
+            // ->add('order')
+            // ->add('integration2')
+            // ->add('weight')
+            // ->add('structure')
+            // ->add('diegetic')
             // ->add('source')
             // ->add('film')
             // ->add('quotation')
@@ -49,6 +54,7 @@ class NumberType extends AbstractType
             // ->add('integration')
             // ->add('musical')
             // ->add('ensemble')
+            ->add('save', SubmitType::class, array('label' => 'Save Number'))
         ;
     }
     

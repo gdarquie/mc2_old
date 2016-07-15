@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Number creation</h1>
+    <h1>Thesaurus creation</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -10,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('editor_number_index') }}">Back to the list</a>
+            <a href="{{ path('editor_thesaurus_index') }}">Back to the list</a>
         </li>
     </ul>
 {% endblock %}

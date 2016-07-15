@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Thesaurus</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Title</th>
+                <td>{{ thesaurus.title }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ thesaurus.type }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ thesaurus.comment }}</td>
+            </tr>
+            <tr>
+                <th>Link</th>
+                <td>{{ thesaurus.link }}</td>
+            </tr>
+            <tr>
+                <th>Definition</th>
+                <td>{{ thesaurus.definition }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ thesaurus.category }}</td>
+            </tr>
+            <tr>
+                <th>Timestamp</th>
+                <td>{% if thesaurus.timestamp %}{{ thesaurus.timestamp|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Thesaurusid</th>
+                <td>{{ thesaurus.thesaurusId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('editor_thesaurus_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('editor_thesaurus_edit', { 'id': thesaurus.thesaurusId }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

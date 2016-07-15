@@ -31,13 +31,16 @@ class PersonHasSong
     private $songId;
 
     /**
-     * @var integer
+     * @var \AppBundle\Entity\Person
      *
-     * @ORM\Column(name="person_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     * })
      */
-    private $personId;
+    private $person;
 
 
 
@@ -90,26 +93,26 @@ class PersonHasSong
     }
 
     /**
-     * Set personId
+     * Set person
      *
-     * @param integer $personId
+     * @param \AppBundle\Entity\Person $person
      *
      * @return PersonHasSong
      */
-    public function setPersonId($personId)
+    public function setPerson(\AppBundle\Entity\Person $person)
     {
-        $this->personId = $personId;
+        $this->person = $person;
 
         return $this;
     }
 
     /**
-     * Get personId
+     * Get person
      *
-     * @return integer
+     * @return \AppBundle\Entity\Person
      */
-    public function getPersonId()
+    public function getPerson()
     {
-        return $this->personId;
+        return $this->person;
     }
 }

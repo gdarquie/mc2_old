@@ -25,15 +25,5 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-many field="number" target-entity="Number" inversed-by="costumes" fetch="LAZY">
-      <join-table name="costumes_has_number">
-        <join-columns>
-          <join-column name="costumes_id" referenced-column-name="costumes_id"/>
-        </join-columns>
-        <inverse-join-columns>
-          <join-column name="number_id" referenced-column-name="number_id"/>
-        </inverse-join-columns>
-      </join-table>
-    </many-to-many>
   </entity>
 </doctrine-mapping>

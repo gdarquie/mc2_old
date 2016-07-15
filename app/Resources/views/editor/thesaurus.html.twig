@@ -1,0 +1,55 @@
+{% extends 'editor/base.html.twig' %}
+
+{% block fos_user_content %}{% endblock %}
+{% block stylesheets %}
+
+	<link rel="stylesheet" href="../../css/style.css"> 
+	<style>
+
+	.filter a{
+		margin-right: 4px;
+		margin-bottom: 5px;
+	  	background-color:white; 
+	  	color : #CC0000;
+	  	border:  1px solid #CC0000;
+	}
+		
+	</style>
+{% endblock %}
+
+
+{% block body %}
+
+	<section class="container">
+
+	<h2>Thesaurus ({% for item in thesaurus|slice(0,1) %}{{item.type}}{% endfor %})</h2>
+	<!-- ne fonctionne pas encore avec all - essayer de récupérer la valeur de l'url directement si possible depuis twig -->
+			
+		<article>
+			<p><a href="/editor/thesaurus/add/new">Create a new thesaurus item</a></p>
+		</article>
+
+		<article>
+			
+			<article class="row filter">
+					
+				<a class="col s2 waves-effect waves-light btn" href="/editor/thesaurus/all">All</a>
+
+				{% for item in thesaurusType%}
+						<a class="col s2 waves-effect waves-light btn" href="/editor/thesaurus/{{item.type}}">{{item.type}}</a>
+				{% endfor %}
+
+			</article>
+
+			<table class="striped">
+			<tr><th>title</th><th>type</th><th>comment</th><th>link</th><th>definition</th><th>category</th><th>action</th></tr>
+		{% for item in thesaurus %}
+			<tr><td>{{ item.title}}</td><td>{{ item.type }}</td><td>{{ item.comment }}</td><td>{{ item.link }}</td><td>{{ item.definition }}</td><td>{{ item.category }}</td><td><a href="/editor/thesaurus/edit/{{item.thesaurusId}}">edit</a></td></tr> 
+		{% endfor %}
+			</table>
+
+		</article>
+	</section>
+	
+
+{% endblock %}
