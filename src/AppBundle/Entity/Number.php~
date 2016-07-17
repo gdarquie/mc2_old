@@ -71,6 +71,20 @@ class Number
     /**
      * @var integer
      *
+     * @ORM\Column(name="structure_id", type="integer", nullable=true)
+     */
+    private $structureId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_structure", type="integer", nullable=true)
+     */
+    private $validationStructure;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="shots", type="integer", nullable=true)
      */
     private $shots;
@@ -120,9 +134,9 @@ class Number
     /**
      * @var integer
      *
-     * @ORM\Column(name="integration0_id", type="integer", nullable=true)
+     * @ORM\Column(name="integration_id", type="integer", nullable=true)
      */
-    private $integration0Id;
+    private $integrationId;
 
     /**
      * @var integer
@@ -134,16 +148,44 @@ class Number
     /**
      * @var string
      *
-     * @ORM\Column(name="lyrics", type="text", length=16777215, nullable=true)
+     * @ORM\Column(name="diegetic_place", type="string", length=255, nullable=true)
      */
-    private $lyrics;
+    private $diegeticPlace;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="dance", type="string", length=255, nullable=true)
+     * @ORM\Column(name="imaginary", type="string", length=500, nullable=true)
      */
-    private $dance;
+    private $imaginary;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_theme", type="integer", nullable=true)
+     */
+    private $validationTheme;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_mood", type="integer", nullable=true)
+     */
+    private $validationMood;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_dance", type="integer", nullable=true)
+     */
+    private $validationDance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dubbing", type="string", length=500, nullable=true)
+     */
+    private $dubbing;
 
     /**
      * @var string
@@ -155,23 +197,30 @@ class Number
     /**
      * @var string
      *
-     * @ORM\Column(name="makeUp", type="string", length=255, nullable=true)
+     * @ORM\Column(name="arranger_comment", type="string", length=500, nullable=true)
      */
-    private $makeup;
+    private $arrangerComment;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="weight", type="string", length=500, nullable=true)
+     * @ORM\Column(name="lyrics", type="text", length=16777215, nullable=true)
      */
-    private $weight;
+    private $lyrics;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="source", type="string", length=45, nullable=true)
+     * @ORM\Column(name="validation_music", type="integer", nullable=true)
      */
-    private $source;
+    private $validationMusic;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_director", type="integer", nullable=true)
+     */
+    private $validationDirector;
 
     /**
      * @var integer
@@ -188,18 +237,25 @@ class Number
     private $costComment;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="dubbing", type="string", length=255, nullable=true)
+     * @ORM\Column(name="validation_cost", type="integer", nullable=true)
      */
-    private $dubbing;
+    private $validationCost;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="arranger_comment", type="string", length=500, nullable=true)
+     * @ORM\Column(name="source", type="string", length=45, nullable=true)
      */
-    private $arrangerComment;
+    private $source;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_reference", type="integer", nullable=true)
+     */
+    private $validationReference;
 
     /**
      * @var \DateTime

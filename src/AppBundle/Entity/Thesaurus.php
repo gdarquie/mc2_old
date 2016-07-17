@@ -50,7 +50,7 @@ class Thesaurus
     /**
      * @var string
      *
-     * @ORM\Column(name="example", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="example", type="text", length=65535, nullable=true)
      */
     private $example;
 

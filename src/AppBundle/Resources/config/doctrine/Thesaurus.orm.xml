@@ -31,7 +31,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="example" type="text" column="example" length="65535" nullable="false">
+    <field name="example" type="text" column="example" length="65535" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

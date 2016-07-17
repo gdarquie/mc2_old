@@ -48,6 +48,16 @@
         <option name="unsigned"/>
       </options>
     </field>
+    <field name="structureId" type="integer" column="structure_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="validationStructure" type="integer" column="validation_structure" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
     <field name="shots" type="integer" column="shots" nullable="true">
       <options>
         <option name="unsigned"/>
@@ -91,7 +101,7 @@ Si 2 : fiction prime</option>
         <option name="comment">Une seule réponse possible par liste de mots (en cours de définition) / select</option>
       </options>
     </field>
-    <field name="integration0Id" type="integer" column="integration0_id" nullable="true">
+    <field name="integrationId" type="integer" column="integration_id" nullable="true">
       <options>
         <option name="unsigned"/>
         <option name="comment">Lien vers la table integration (many to many) - IntegrationOptions dans le thesaurus</option>
@@ -102,16 +112,35 @@ Si 2 : fiction prime</option>
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="lyrics" type="text" column="lyrics" length="16777215" nullable="true">
+    <field name="diegeticPlace" type="string" column="diegetic_place" length="255" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Texte des lyrics qui ont été censurés</option>
       </options>
     </field>
-    <field name="dance" type="string" column="dance" length="255" nullable="true">
+    <field name="imaginary" type="string" column="imaginary" length="500" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Une erreur/ case à ne pas remplir (on la garde au cas où)</option>
+      </options>
+    </field>
+    <field name="validationTheme" type="integer" column="validation_theme" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="validationMood" type="integer" column="validation_mood" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="validationDance" type="integer" column="validation_dance" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="dubbing" type="string" column="dubbing" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">probablement yes / no</option>
       </options>
     </field>
     <field name="tempo" type="string" column="tempo" length="255" nullable="true">
@@ -121,31 +150,25 @@ Si 2 : fiction prime</option>
 Select</option>
       </options>
     </field>
-    <field name="makeup" type="string" column="makeUp" length="255" nullable="true">
+    <field name="arrangerComment" type="string" column="arranger_comment" length="500" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Select voir thesaurus</option>
       </options>
     </field>
-    <field name="weight" type="string" column="weight" length="500" nullable="true">
+    <field name="lyrics" type="text" column="lyrics" length="16777215" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Lié au lieu
-
-Pondération de l’importance du statut réel ou imaginaire du lieu.
-Si 0 : les deux (real et fiction) sont à égalité
-Si 1 : real prime
-Si 2 : fiction prime</option>
+        <option name="comment">Texte des lyrics qui ont été censurés</option>
       </options>
     </field>
-    <field name="source" type="string" column="source" length="45" nullable="true">
+    <field name="validationMusic" type="integer" column="validation_music" nullable="true">
       <options>
-        <option name="fixed"/>
-        <option name="comment">
-1 réponse parmi les 4 :
--original
-- broadway
-…</option>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="validationDirector" type="integer" column="validation_director" nullable="true">
+      <options>
+        <option name="unsigned"/>
       </options>
     </field>
     <field name="cost" type="integer" column="cost" nullable="true">
@@ -158,15 +181,24 @@ Si 2 : fiction prime</option>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="dubbing" type="string" column="dubbing" length="255" nullable="true">
+    <field name="validationCost" type="integer" column="validation_cost" nullable="true">
       <options>
-        <option name="fixed"/>
-        <option name="comment">probablement yes / no</option>
+        <option name="unsigned"/>
       </options>
     </field>
-    <field name="arrangerComment" type="string" column="arranger_comment" length="500" nullable="true">
+    <field name="source" type="string" column="source" length="45" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">
+1 réponse parmi les 4 :
+-original
+- broadway
+…</option>
+      </options>
+    </field>
+    <field name="validationReference" type="integer" column="validation_reference" nullable="true">
+      <options>
+        <option name="unsigned"/>
       </options>
     </field>
     <field name="timestamp" type="datetime" column="timestamp" nullable="false">

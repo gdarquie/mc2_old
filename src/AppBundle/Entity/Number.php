@@ -71,6 +71,20 @@ class Number
     /**
      * @var integer
      *
+     * @ORM\Column(name="structure_id", type="integer", nullable=true)
+     */
+    private $structureId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_structure", type="integer", nullable=true)
+     */
+    private $validationStructure;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="shots", type="integer", nullable=true)
      */
     private $shots;
@@ -120,9 +134,9 @@ class Number
     /**
      * @var integer
      *
-     * @ORM\Column(name="integration0_id", type="integer", nullable=true)
+     * @ORM\Column(name="integration_id", type="integer", nullable=true)
      */
-    private $integration0Id;
+    private $integrationId;
 
     /**
      * @var integer
@@ -134,16 +148,44 @@ class Number
     /**
      * @var string
      *
-     * @ORM\Column(name="lyrics", type="text", length=16777215, nullable=true)
+     * @ORM\Column(name="diegetic_place", type="string", length=255, nullable=true)
      */
-    private $lyrics;
+    private $diegeticPlace;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="dance", type="string", length=255, nullable=true)
+     * @ORM\Column(name="imaginary", type="string", length=500, nullable=true)
      */
-    private $dance;
+    private $imaginary;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_theme", type="integer", nullable=true)
+     */
+    private $validationTheme;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_mood", type="integer", nullable=true)
+     */
+    private $validationMood;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_dance", type="integer", nullable=true)
+     */
+    private $validationDance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dubbing", type="string", length=500, nullable=true)
+     */
+    private $dubbing;
 
     /**
      * @var string
@@ -155,23 +197,30 @@ class Number
     /**
      * @var string
      *
-     * @ORM\Column(name="makeUp", type="string", length=255, nullable=true)
+     * @ORM\Column(name="arranger_comment", type="string", length=500, nullable=true)
      */
-    private $makeup;
+    private $arrangerComment;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="weight", type="string", length=500, nullable=true)
+     * @ORM\Column(name="lyrics", type="text", length=16777215, nullable=true)
      */
-    private $weight;
+    private $lyrics;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="source", type="string", length=45, nullable=true)
+     * @ORM\Column(name="validation_music", type="integer", nullable=true)
      */
-    private $source;
+    private $validationMusic;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_director", type="integer", nullable=true)
+     */
+    private $validationDirector;
 
     /**
      * @var integer
@@ -188,18 +237,25 @@ class Number
     private $costComment;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="dubbing", type="string", length=255, nullable=true)
+     * @ORM\Column(name="validation_cost", type="integer", nullable=true)
      */
-    private $dubbing;
+    private $validationCost;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="arranger_comment", type="string", length=500, nullable=true)
+     * @ORM\Column(name="source", type="string", length=45, nullable=true)
      */
-    private $arrangerComment;
+    private $source;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validation_reference", type="integer", nullable=true)
+     */
+    private $validationReference;
 
     /**
      * @var \DateTime
@@ -572,6 +628,54 @@ class Number
     }
 
     /**
+     * Set structureId
+     *
+     * @param integer $structureId
+     *
+     * @return Number
+     */
+    public function setStructureId($structureId)
+    {
+        $this->structureId = $structureId;
+
+        return $this;
+    }
+
+    /**
+     * Get structureId
+     *
+     * @return integer
+     */
+    public function getStructureId()
+    {
+        return $this->structureId;
+    }
+
+    /**
+     * Set validationStructure
+     *
+     * @param integer $validationStructure
+     *
+     * @return Number
+     */
+    public function setValidationStructure($validationStructure)
+    {
+        $this->validationStructure = $validationStructure;
+
+        return $this;
+    }
+
+    /**
+     * Get validationStructure
+     *
+     * @return integer
+     */
+    public function getValidationStructure()
+    {
+        return $this->validationStructure;
+    }
+
+    /**
      * Set shots
      *
      * @param integer $shots
@@ -740,27 +844,27 @@ class Number
     }
 
     /**
-     * Set integration0Id
+     * Set integrationId
      *
-     * @param integer $integration0Id
+     * @param integer $integrationId
      *
      * @return Number
      */
-    public function setIntegration0Id($integration0Id)
+    public function setIntegrationId($integrationId)
     {
-        $this->integration0Id = $integration0Id;
+        $this->integrationId = $integrationId;
 
         return $this;
     }
 
     /**
-     * Get integration0Id
+     * Get integrationId
      *
      * @return integer
      */
-    public function getIntegration0Id()
+    public function getIntegrationId()
     {
-        return $this->integration0Id;
+        return $this->integrationId;
     }
 
     /**
@@ -788,51 +892,147 @@ class Number
     }
 
     /**
-     * Set lyrics
+     * Set diegeticPlace
      *
-     * @param string $lyrics
+     * @param string $diegeticPlace
      *
      * @return Number
      */
-    public function setLyrics($lyrics)
+    public function setDiegeticPlace($diegeticPlace)
     {
-        $this->lyrics = $lyrics;
+        $this->diegeticPlace = $diegeticPlace;
 
         return $this;
     }
 
     /**
-     * Get lyrics
+     * Get diegeticPlace
      *
      * @return string
      */
-    public function getLyrics()
+    public function getDiegeticPlace()
     {
-        return $this->lyrics;
+        return $this->diegeticPlace;
     }
 
     /**
-     * Set dance
+     * Set imaginary
      *
-     * @param string $dance
+     * @param string $imaginary
      *
      * @return Number
      */
-    public function setDance($dance)
+    public function setImaginary($imaginary)
     {
-        $this->dance = $dance;
+        $this->imaginary = $imaginary;
 
         return $this;
     }
 
     /**
-     * Get dance
+     * Get imaginary
      *
      * @return string
      */
-    public function getDance()
+    public function getImaginary()
     {
-        return $this->dance;
+        return $this->imaginary;
+    }
+
+    /**
+     * Set validationTheme
+     *
+     * @param integer $validationTheme
+     *
+     * @return Number
+     */
+    public function setValidationTheme($validationTheme)
+    {
+        $this->validationTheme = $validationTheme;
+
+        return $this;
+    }
+
+    /**
+     * Get validationTheme
+     *
+     * @return integer
+     */
+    public function getValidationTheme()
+    {
+        return $this->validationTheme;
+    }
+
+    /**
+     * Set validationMood
+     *
+     * @param integer $validationMood
+     *
+     * @return Number
+     */
+    public function setValidationMood($validationMood)
+    {
+        $this->validationMood = $validationMood;
+
+        return $this;
+    }
+
+    /**
+     * Get validationMood
+     *
+     * @return integer
+     */
+    public function getValidationMood()
+    {
+        return $this->validationMood;
+    }
+
+    /**
+     * Set validationDance
+     *
+     * @param integer $validationDance
+     *
+     * @return Number
+     */
+    public function setValidationDance($validationDance)
+    {
+        $this->validationDance = $validationDance;
+
+        return $this;
+    }
+
+    /**
+     * Get validationDance
+     *
+     * @return integer
+     */
+    public function getValidationDance()
+    {
+        return $this->validationDance;
+    }
+
+    /**
+     * Set dubbing
+     *
+     * @param string $dubbing
+     *
+     * @return Number
+     */
+    public function setDubbing($dubbing)
+    {
+        $this->dubbing = $dubbing;
+
+        return $this;
+    }
+
+    /**
+     * Get dubbing
+     *
+     * @return string
+     */
+    public function getDubbing()
+    {
+        return $this->dubbing;
     }
 
     /**
@@ -860,75 +1060,99 @@ class Number
     }
 
     /**
-     * Set makeup
+     * Set arrangerComment
      *
-     * @param string $makeup
+     * @param string $arrangerComment
      *
      * @return Number
      */
-    public function setMakeup($makeup)
+    public function setArrangerComment($arrangerComment)
     {
-        $this->makeup = $makeup;
+        $this->arrangerComment = $arrangerComment;
 
         return $this;
     }
 
     /**
-     * Get makeup
+     * Get arrangerComment
      *
      * @return string
      */
-    public function getMakeup()
+    public function getArrangerComment()
     {
-        return $this->makeup;
+        return $this->arrangerComment;
     }
 
     /**
-     * Set weight
+     * Set lyrics
      *
-     * @param string $weight
+     * @param string $lyrics
      *
      * @return Number
      */
-    public function setWeight($weight)
+    public function setLyrics($lyrics)
     {
-        $this->weight = $weight;
+        $this->lyrics = $lyrics;
 
         return $this;
     }
 
     /**
-     * Get weight
+     * Get lyrics
      *
      * @return string
      */
-    public function getWeight()
+    public function getLyrics()
     {
-        return $this->weight;
+        return $this->lyrics;
     }
 
     /**
-     * Set source
+     * Set validationMusic
      *
-     * @param string $source
+     * @param integer $validationMusic
      *
      * @return Number
      */
-    public function setSource($source)
+    public function setValidationMusic($validationMusic)
     {
-        $this->source = $source;
+        $this->validationMusic = $validationMusic;
 
         return $this;
     }
 
     /**
-     * Get source
+     * Get validationMusic
      *
-     * @return string
+     * @return integer
      */
-    public function getSource()
+    public function getValidationMusic()
     {
-        return $this->source;
+        return $this->validationMusic;
+    }
+
+    /**
+     * Set validationDirector
+     *
+     * @param integer $validationDirector
+     *
+     * @return Number
+     */
+    public function setValidationDirector($validationDirector)
+    {
+        $this->validationDirector = $validationDirector;
+
+        return $this;
+    }
+
+    /**
+     * Get validationDirector
+     *
+     * @return integer
+     */
+    public function getValidationDirector()
+    {
+        return $this->validationDirector;
     }
 
     /**
@@ -980,51 +1204,75 @@ class Number
     }
 
     /**
-     * Set dubbing
+     * Set validationCost
      *
-     * @param string $dubbing
+     * @param integer $validationCost
      *
      * @return Number
      */
-    public function setDubbing($dubbing)
+    public function setValidationCost($validationCost)
     {
-        $this->dubbing = $dubbing;
+        $this->validationCost = $validationCost;
 
         return $this;
     }
 
     /**
-     * Get dubbing
+     * Get validationCost
      *
-     * @return string
+     * @return integer
      */
-    public function getDubbing()
+    public function getValidationCost()
     {
-        return $this->dubbing;
+        return $this->validationCost;
     }
 
     /**
-     * Set arrangerComment
+     * Set source
      *
-     * @param string $arrangerComment
+     * @param string $source
      *
      * @return Number
      */
-    public function setArrangerComment($arrangerComment)
+    public function setSource($source)
     {
-        $this->arrangerComment = $arrangerComment;
+        $this->source = $source;
 
         return $this;
     }
 
     /**
-     * Get arrangerComment
+     * Get source
      *
      * @return string
      */
-    public function getArrangerComment()
+    public function getSource()
     {
-        return $this->arrangerComment;
+        return $this->source;
+    }
+
+    /**
+     * Set validationReference
+     *
+     * @param integer $validationReference
+     *
+     * @return Number
+     */
+    public function setValidationReference($validationReference)
+    {
+        $this->validationReference = $validationReference;
+
+        return $this;
+    }
+
+    /**
+     * Get validationReference
+     *
+     * @return integer
+     */
+    public function getValidationReference()
+    {
+        return $this->validationReference;
     }
 
     /**
