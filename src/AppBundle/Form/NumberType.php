@@ -20,41 +20,89 @@ class NumberType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
+            // ->add('film')
+
+            //title
             ->add('title', TextType::class)
-            // ->add('type')
+            ->add('validationTitle')
+
+            //length
             ->add('beginTc')
             ->add('endTc')
-            ->add('length')
+            // ->add('length') //doit être calculé automatiquement
             ->add('begin')
             ->add('ending')
+            ->add('completeness')
+            ->add('validationTc')
+
+            //structure
+            //->add('structure')
+            ->add('validationStructure')
+
+            //Shots
+            ->add('shots')
+            ->add('validationShots')
+
+            //Performers
+            //person avec le job de performer
+            //person avec le job de figurant
+            ->add('performance')
+            ->add('validationPerformance')
+
+            //Backstage
             ->add('spectators')
+            ->add('diegetic')
             ->add('musician')
-            // ->add('lyrics')
-            // ->add('dance')
-            // ->add('tempo')
-            // ->add('makeup')
-            // ->add('shots')
-            // ->add('order')
-            // ->add('integration2')
-            // ->add('weight')
-            // ->add('structure')
-            // ->add('diegetic')
-            // ->add('source')
-            // ->add('film')
-            // ->add('quotation')
-            // ->add('song')
-            // ->add('place')
-            // ->add('stagenumber')
-            // ->add('socialplace')
-            // ->add('exoticism')
-            // ->add('effects')
-            // ->add('costumes')
-            // ->add('completeness')
-            // ->add('dancing')
-            // ->add('integration')
-            // ->add('musical')
-            // ->add('ensemble')
-            ->add('save', SubmitType::class, array('label' => 'Save Number'))
+            ->add('integration')
+            ->add('validationBackstage')
+            
+            //Themes
+            //->add('costumes') problème de relation
+            // ->add('stereotypes') ??? make up change de nom?
+            //->add('diegeticPlaces') ???
+            //->add('socialPlace') //pb pour le set au moment du flush
+            ->add('imaginary')
+            ->add('exoticism')
+            ->add('validationTheme')
+
+            //Mood
+            // ->add('mood') relation à reprendre (many to many)
+            ->add('validationMood')
+
+            //Dance
+            //person -> choregraphe
+            //ensemble type dancing
+            //type of dancing
+            ->add('validationDance')
+
+            //Music
+            ->add('song')
+            // ->add('musensemble') ???
+            ->add('dubbing')
+            ->add('tempo')
+            ->add('musical')
+            // ->add('arranger') ???
+            ->add('arrangerComment')
+            ->add('validationMusic')
+
+            //Director
+            //??? person si ce n'est pas lui qui a réalisé le film
+
+            //Complement
+            ->add('cost')
+            ->add('costComment')
+
+            //Reference
+            // ->add('sources')
+            ->add('quotation')
+            ->add('validationReference')
+
+
+            ->add('lyrics')
+
+
+            // ->add('save', SubmitType::class, array('label' => 'Save Number'))
         ;
     }
     

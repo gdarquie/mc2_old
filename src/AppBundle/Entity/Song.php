@@ -504,4 +504,9 @@ class Song
     {
         return $this->number;
     }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 }

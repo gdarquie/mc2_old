@@ -226,4 +226,9 @@ class Quotation
     {
         return $this->numberNumber;
     }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 }

@@ -119,4 +119,9 @@ class Integration
     {
         return $this->number;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

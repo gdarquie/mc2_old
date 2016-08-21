@@ -1,7 +1,9 @@
-{% extends 'editor/base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block fos_user_content %}{% endblock %}
 {% block stylesheets %}
+
+{{parent()}}
  <link rel="stylesheet" href="../../bower_components/Materialize/dist/css/materialize.css">
 <link rel="stylesheet" href="../../css/style.css"> 
 <script src="../../bower_components/vis/dist/vis.js"></script>
@@ -32,7 +34,13 @@
 <article class='col s12 m6'>
   <h2>List of numbers</h2>
    {% for number in numbersOf1Film %}
-      <p>{{loop.index}} | {{number.title}} | {{number.beginTc}} | {{number.endTc}} <a href="/editor/number/{{number.id}}">edit</a></p> 
+      <p>
+        {{loop.index}} | {{number.title}} | {{number.beginTc}} | {{number.endTc}} 
+        <!-- tout le monde a accès au film mais seuls les éditeurs peuvent le modifier -->
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          <a href="{{path('number_edit', { numberId : number.id })}}">edit</a>
+        {% endif %}
+      </p> 
   {% endfor %}
 <a href="/editor/number/new"><button class="btn teal">Add a number</button></a>
 <a href="/editor/number/new"><button class="btn red">Complete</button></a>

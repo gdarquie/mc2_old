@@ -1149,4 +1149,10 @@ class Film
     {
         return $this->censorship;
     }
+
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 }

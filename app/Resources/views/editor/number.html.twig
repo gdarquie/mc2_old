@@ -1,7 +1,9 @@
-{% extends 'editor/base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block fos_user_content %}{% endblock %}
 {% block stylesheets %}
+
+{{parent()}}
 
 <link rel="stylesheet" href="../../../../bower_components/Materialize/dist/css/materialize.css">
 <link rel="stylesheet" href="../../../../css/style.css"> 

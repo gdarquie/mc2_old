@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block fos_user_content %}{% endblock %}
+{% block fos_user_content %}
+{% endblock %}
+
 {% block stylesheets %}
-<link rel="stylesheet" href="../css/style.css"/>
+    {{ parent() }}
 {% endblock %}
 
 

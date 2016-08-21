@@ -135,7 +135,36 @@ class EditorController extends Controller
 //Number
 
     /**
-     * @Route("/editor/number/{number}", name="editorNumber")
+    * @Route("/editor/number/id/{numberId}/edit" , name = "number_edit")
+    */
+    public function numberEditAction(Request $request, $numberId){
+
+        $em = $this->getDoctrine()->getManager();
+        $number = $em->getRepository('AppBundle:Number')->findOneByNumberId($numberId);
+
+        $form = $this->createForm(NumberType::class, $number);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            // dump($form->getData());die;
+            $number = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($number);
+            $em->flush();
+        }
+
+        return $this->render('editor/number/edit.html.twig', array(
+            'number' => $number,
+            'numberForm' => $form->createView()
+            ));
+    }
+
+ 
+    //Modifier/supprimer après avoir ajouté number_edit - ce n'est pas une fonction d'edit du number
+    /**
+     * @Route("/editor/test/number/{number}", name="editorNumberTest")
      */
     public function editorNumberAction(Request $request, $number)
     {

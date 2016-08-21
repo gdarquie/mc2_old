@@ -14,15 +14,19 @@
 
       <title>{% block title %}MC2 - plateforme de visualisation de comédie musicale{% endblock %}</title>
 
-      {% block stylesheets %}{% endblock %}
+      {% block stylesheets %}
 
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       
       <!--Import materialize.css-->
-      <link rel="stylesheet" href="../bower_components/Materialize/dist/css/materialize.css">
-      <link rel="stylesheet" href="../css/style.css"> 
+      <link rel="stylesheet" href="{{ asset('bower_components/Materialize/dist/css/materialize.css')}}">
+      <link rel="stylesheet" href="{{ asset('css/style.css')}}"> 
 
+
+      {% endblock %}
+
+     
 
 
     </head>

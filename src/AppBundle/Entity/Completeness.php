@@ -119,4 +119,9 @@ class Completeness
     {
         return $this->number;
     }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 }

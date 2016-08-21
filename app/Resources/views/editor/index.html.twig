@@ -1,8 +1,9 @@
-{% extends 'editor/base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block fos_user_content %}{% endblock %}
 {% block stylesheets %}
 
+{{parent()}}
 <style>
 .items li{
   margin-bottom: 5px;
