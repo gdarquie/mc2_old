@@ -7,29 +7,150 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\Query\ResultSetMapping;
 
-use AppBundle\Entity\Film;
-use AppBundle\Entity\Number;
-use AppBundle\Entity\Person;
-use AppBundle\Entity\Mood;
 
 class DefaultController extends Controller
 {
+
+//Home Page
+
     /**
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request)
     {
+
         $em = $this->getDoctrine()->getManager();
-        
-        $films = $em->getRepository('AppBundle:Film')->findAll();
+        dump($em->getRepository('AppBundle:Number'));
+
+        //all films
+        $films = $em->getRepository('AppBundle:Film')->findAll(); 
+        // $films = $em->getRepository('AppBundle:Film')
+        //     ->findAllOrderdByTitle();
+
+
+        //Films with number
+        $query = $em->createQuery(
+            'SELECT f.filmId as filmId, f.title as title, f.released as released  FROM AppBundle:Film f WHERE f.filmId IN (SELECT IDENTITY(n.film) FROM AppBundle:Number n WHERE n.film != 0)'
+            );  
+        $filmsWithNumber = $query->getResult();
+
         $numbers = $em->getRepository('AppBundle:Number')->findAll();
-        
-        return $this->render('default/index.html.twig', array(
+
+
+
+        //All Persons
+        $persons = $em->getRepository('AppBundle:Person')->findAll();
+
+
+        return $this->render('index.html.twig', array(
             'films' => $films,
+            'filmsWithNumber' => $filmsWithNumber,
+            'persons' => $persons,
             'numbers' => $numbers,
         ));
     }
 
+//All movies
+
+    /**
+    * @Route("/films/{page}", name = "films")
+    */
+    public function filmsAction($page){
+        $em = $this->getDoctrine()->getManager();
+        $films = $em->getRepository('AppBundle:Film')->findAll();
+
+        return $this->render('films.html.twig', array(
+                'films' => $films,
+                'page' => $page,
+            ));
+    }
+
+//1 Movie By Id
+
+    /**
+    * @Route("/film/id/{filmId}", name="film")
+    */
+    public function filmAction($filmId){
+
+        $em = $this->getDoctrine()->getManager();
+        $film = $em->getRepository('AppBundle:Film')->findOneByFilmId($filmId);
+
+        //tous les numbers du film
+        $query = $em->createQuery(
+            'SELECT  (n.numberId) as id, (n.title) as title, (n.film) as film, (n.beginTc) as beginTc, (n.endTc) as endTc, (n.length) as length FROM AppBundle:Number n WHERE n.film = :film ORDER BY n.beginTc' 
+            ); 
+        $query->setParameter('film', $film);
+        $numbersOf1Film = $query->getResult(); 
+
+        //moyenne des number pour le film
+        $query = $em->createQuery(
+            'SELECT SUM(f.length) / COUNT(f.title) as average FROM AppBundle:Number f WHERE f.film = :film'
+            ); 
+        $query->setParameter('film', $film);
+        $numberAverageLength = $query->getResult();
+
+        //moyenne des number pour tous les films
+        $query = $em->createQuery(
+            'SELECT SUM(f.length) / COUNT(f.title) as average FROM AppBundle:Number f'
+            ); 
+        $numbersAverageLength = $query->getResult();
+
+        //addition de tous les numbers pour le film
+         $query = $em->createQuery(
+            'SELECT SUM(n.length) as total, (f.length) as length FROM AppBundle:Number n JOIN n.film f WHERE n.film = :film'
+            ); 
+        $query->setParameter('film', $film);
+        $numberSumLength = $query->getResult();
+
+        //persons linked to a movie
+        $query = $em->createQuery(
+            'SELECT a.personId as personId FROM AppBundle:FilmHasPerson a WHERE a.filmId = :film' //film has person
+            ); //SELECT p.name FROM AppBundle:Person p WHERE p.personId IN ()
+        $query->setParameter('film', $film);
+        $persons1Film = $query->getResult();
+
+        // //Length
+        // $query = $em->createQuery('SELECT l FROM AppBundle:Length l WHERE l.number = :number');
+        // $query->setParameter('number', $number);
+        // $length = $query->getResult();
+
+        //All Persons
+        $persons = $em->getRepository('AppBundle:Person')->findAll();
+
+        //All Professions
+        $professions = $em->getRepository('AppBundle:Profession')->findAll();
+
+        //All Numbers
+        $numbers = $em->getRepository('AppBundle:Number')->findAll();
+
+
+        //faire une viz avec la chronologie des numbers
+
+        //voir tous les numbers d'un film (lien pour modifier le number) + ajouter un number
+
+        if (!$film) {
+        
+            return $this->render('404.html.twig', array(
+                'message' => 'No Film found for id '.$filmId
+                ));
+        }
+
+        return $this->render('film.html.twig', array(
+            'film' => $film,
+            'numbers' => $numbers,
+            'numbersOf1Film' => $numbersOf1Film,
+            'numberAverageLength' => $numberAverageLength,
+            'numbersAverageLength' => $numbersAverageLength,
+            'numberSumLength' => $numberSumLength,
+            'persons' => $persons,
+            'professions' => $professions,
+            'persons1Film' => $persons1Film,
+        ));
+
+
+    }
+
+//Stats (créer un controller spécial???)
     /**
      * @Route("/stats", name="stats")
      */

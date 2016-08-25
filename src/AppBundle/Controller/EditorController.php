@@ -7,15 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
-
-use AppBundle\Entity\Film;
-use AppBundle\Entity\Person;
 use AppBundle\Entity\Number;
-use AppBundle\Entity\Thesaurus;
 
 use AppBundle\Form\NumberType;
 use AppBundle\Form\ThesaurusType;
 
+use Symfony\Component\Validator\Constraints\DateTime;
 
 
 class EditorController extends Controller
@@ -50,89 +47,35 @@ class EditorController extends Controller
     }
 
 
-    //Tous les numbers d'un film
+//Number (add a number for a pre-existing film)
 
     /**
-     * @Route("/editor/film/{film}", name="editorFilm")
-     */
-    public function editorFilmAction($film)
+    * @Route("/editor/film/id/{filmId}/number/new" , name = "number_new")
+    */
+    public function numberNewAction(Request $request, $filmId)
     {
-        $em = $this->getDoctrine()->getManager();
+        // $number = new Number();
+        //régler pb des dates
+        // $number = new Number;
 
-        //les infos du film
-        $film = $em->getRepository('AppBundle:Film')->findOneByFilmId($film);
+        $form = $this->createForm(NumberType::class); //add $number
 
-        //tous les numbers du film
-	    $query = $em->createQuery(
-	        'SELECT  (n.numberId) as id, (n.title) as title, (n.film) as film, (n.beginTc) as beginTc, (n.endTc) as endTc, (n.length) as length FROM AppBundle:Number n WHERE n.film = :film ORDER BY n.beginTc' 
-	        ); 
-	    $query->setParameter('film', $film);
-	    $numbersOf1Film = $query->getResult(); 
+        $form->handleRequest($request);
+ 
+         if ($form->isSubmitted() && $form->isValid()){
 
-	    //moyenne des number pour le film
-        $query = $em->createQuery(
-            'SELECT SUM(f.length) / COUNT(f.title) as average FROM AppBundle:Number f WHERE f.film = :film'
-            ); 
-        $query->setParameter('film', $film);
-        $numberAverageLength = $query->getResult();
+            $number = $form->getData();
 
-        //moyenne des number pour tous les films
-        $query = $em->createQuery(
-            'SELECT SUM(f.length) / COUNT(f.title) as average FROM AppBundle:Number f'
-            ); 
-        $numbersAverageLength = $query->getResult();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($number);
+            $em->flush();
+        }
 
-        //addition de tous les numbers pour le film
-         $query = $em->createQuery(
-            'SELECT SUM(n.length) as total, (f.length) as length FROM AppBundle:Number n JOIN n.film f WHERE n.film = :film'
-            ); 
-        $query->setParameter('film', $film);
-        $numberSumLength = $query->getResult();
-
-        //persons linked to a movie
-        $query = $em->createQuery(
-            'SELECT a.personId as personId FROM AppBundle:FilmHasPerson a WHERE a.filmId = :film' //film has person
-            ); //SELECT p.name FROM AppBundle:Person p WHERE p.personId IN ()
-        $query->setParameter('film', $film);
-        $persons1Film = $query->getResult();
-
-        // //Length
-        // $query = $em->createQuery('SELECT l FROM AppBundle:Length l WHERE l.number = :number');
-        // $query->setParameter('number', $number);
-        // $length = $query->getResult();
-
-        //All Persons
-        $persons = $em->getRepository('AppBundle:Person')->findAll();
-
-        //All Professions
-        $professions = $em->getRepository('AppBundle:Profession')->findAll();
-
-        //All Numbers
-        $numbers = $em->getRepository('AppBundle:Number')->findAll();
-
-
-	    //faire une viz avec la chronologie des numbers
-
-        //voir tous les numbers d'un film (lien pour modifier le number) + ajouter un number
-        
-        return $this->render('editor/film.html.twig', array(
-            'film' => $film,
-            'numbers' => $numbers,
-            'numbersOf1Film' => $numbersOf1Film,
-            'numberAverageLength' => $numberAverageLength,
-            'numbersAverageLength' => $numbersAverageLength,
-            'numberSumLength' => $numberSumLength,
-            'persons' => $persons,
-            'professions' => $professions,
-            'persons1Film' => $persons1Film,
-        ));
-
-        //conversion en timecode : echo gmdate("H:i:s", 685);
-
+        return $this->render('editor/number/new.html.twig',array(
+            'numberForm' => $form->createView(),
+            'filmId' => $filmId,
+            ));
     }
-
-
-//Number
 
     /**
     * @Route("/editor/number/id/{numberId}/edit" , name = "number_edit")

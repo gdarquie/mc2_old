@@ -1,19 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block fos_user_content %}{% endblock %}
-{% block stylesheets %}
 
-{{parent()}}
-<style>
-.items li{
-  margin-bottom: 5px;
-  background-color:white; 
-  color : #CC0000;
-  border:  1px solid #CC0000;
-}
-</style>
-
-{% endblock %}
 
 
 {% block body %}
@@ -21,60 +8,7 @@
 
 <section class='container'>
 
-<div class="row">
-  <div class="col s9">
-    <h2>Find a movie</h2>
-
-    <article>
-      <h3>Films with numbers</h3>
-      <p>Order by alphabetical order | Order by date</p>
-      <ul class="items">
-      {% for film in filmsWithNumber %}
-        <a href="/editor/film/{{film.filmId}}"><li class="btn" >{{film.title}}({{film.released}})</li></a>
-      {% endfor %}
-      </ul>
-    </article>
-    
-    <article>
-      <h3>All movies</h3>
-      <p>Order by alphabetical order | Order by date</p>
-      <ul class="items">
-      {% for film in films %}
-        <a href="/editor/film/{{film.filmId}}"><li class="btn" >{{film.title}}({{film.released}})</li></a>
-      {% endfor %}
-      </ul>
-    </article>
-
-    <article>
-      <h3>List of persons</h3>
-      <ul class='items'>
-       {% for person in persons %}
-        <li class="btn" >{{person.name}}</li>
-      {% endfor %}
-      </ul>
-    </article>
-  </div>
-  <div class='col s3'>
-    <h2>Filters</h2>
-
-    <article>
-      <h3>Title</h3>
-      <input type="text">
-    </article>
-    
-    <article>
-      <h3>Released date</h3>
-      <input type="text">
-    </article>
-
-    <article>
-      <h3>Persons</h3>
-      <input type="text">
-      <p>Select a particular profession</p>
-    </article>
-
-  </div>
-</div>
+  <p>En construction...</p>
 
 </section>
   

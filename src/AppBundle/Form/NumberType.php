@@ -11,6 +11,12 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+
+use AppBundle\Entity\Film;
+use AppBundle\Repository\FilmRepository;
+
 class NumberType extends AbstractType
 {
     /**
@@ -20,11 +26,19 @@ class NumberType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
-            // ->add('film')
-
             //title
-            ->add('title', TextType::class)
+            ->add('title', TextType::class, array(
+                //'data' => 'Test', 
+                ))
+            ->add('film', EntityType::class, array(
+                'placeholder' => 'Choose a Film',
+                'class' => 'AppBundle:Film',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(FilmRepository $repo) {
+                    return $repo->createAlphabeticalQueryBuilder();
+                }
+                //'disabled' => true, //mais false si admin?
+            ))
             ->add('validationTitle')
 
             //length
@@ -33,7 +47,7 @@ class NumberType extends AbstractType
             // ->add('length') //doit être calculé automatiquement
             ->add('begin')
             ->add('ending')
-            ->add('completeness')
+            // ->add('completeness') //problème ajout add new 
             ->add('validationTc')
 
             //structure
@@ -98,8 +112,10 @@ class NumberType extends AbstractType
             ->add('quotation')
             ->add('validationReference')
 
-
+            //???
             ->add('lyrics')
+            // ->add('timestamp')
+
 
 
             // ->add('save', SubmitType::class, array('label' => 'Save Number'))

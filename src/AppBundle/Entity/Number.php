@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Number
  *
  * @ORM\Table(name="number", indexes={@ORM\Index(name="fk_number_film1_idx", columns={"film_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\NumberRepository")
  */
 class Number
 {
@@ -257,12 +257,6 @@ class Number
      */
     private $validationReference;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="timestamp", type="datetime", nullable=false)
-     */
-    private $timestamp = 'CURRENT_TIMESTAMP';
 
     /**
      * @var integer
@@ -278,7 +272,7 @@ class Number
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Film")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
+     *   @ORM\JoinColumn(name="film_id", referencedColumnName="film_id", nullable=false)
      * })
      */
     private $film;
@@ -414,6 +408,11 @@ class Number
      * )
      */
     private $effects;
+
+    /** 
+    * @ORM\Column(name="timestamp", type="datetime") 
+    */
+    private $timestamp;
 
     /**
      * Constructor
@@ -1276,30 +1275,6 @@ class Number
     }
 
     /**
-     * Set timestamp
-     *
-     * @param \DateTime $timestamp
-     *
-     * @return Number
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->timestamp = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Get timestamp
-     *
-     * @return \DateTime
-     */
-    public function getTimestamp()
-    {
-        return $this->timestamp;
-    }
-
-    /**
      * Get numberId
      *
      * @return integer
@@ -1739,5 +1714,30 @@ class Number
     public function getEffects()
     {
         return $this->effects;
+    }
+
+
+    /**
+     * Gets the value of timestamp.
+     *
+     * @return mixed
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * Sets the value of timestamp.
+     *
+     * @param mixed $timestamp the timestamp
+     *
+     * @return self
+     */
+    private function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+
+        return $this;
     }
 }

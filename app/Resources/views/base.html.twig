@@ -20,26 +20,26 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       
       <!--Import materialize.css-->
-      <link rel="stylesheet" href="{{ asset('bower_components/Materialize/dist/css/materialize.css')}}">
+      <link rel="stylesheet" href="{{ asset('assets/vendor/materialize/dist/css/materialize.css')}}">
       <link rel="stylesheet" href="{{ asset('css/style.css')}}"> 
 
+      <!-- NVD3 -->
+      <link rel="stylesheet" href="{{asset('assets/vendor/nvd3/build/nv.d3.css')}}">
 
       {% endblock %}
-
-     
-
-
+    
     </head>
 
     <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-    <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>  
 
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.css"></script>
+    <body>
 
+        
+    <!-- Nav & Log FOS -->
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper container">
               <a href="/" class="brand-logo center">MC2</a>
-              <ul id="nav-mobile" class="left hide-on-med-and-down">
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             connected as {{ app.user.username }}
             -
@@ -50,31 +50,42 @@
             </div>
         </nav>
 
-        <div>
-            {% block body %}{% endblock %}
-            {% block javascripts %}
-            <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>  
+    <div>
+  
+    <!-- Block body -->
 
-    <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
+    {% block body %}{% endblock %}
 
+    <!-- end block body -->
+
+
+    {% block javascripts %} 
+
+    <!-- JQuery -->
+    <script src = "{{ asset('assets/vendor/jquery/dist/jquery.js') }}"></script>
+  
     <!-- Materialize -->
-    <script type="text/javascript" src="../bower_components/Materialize/js/parallax.js"></script>
+    <script type="text/javascript" src="{{asset('assets/vendor/materialize/dist/js/materialize.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/vendor/materialize/js/parallax.js')}}"></script>
 
 
     <!-- D3.JS -->
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../bower_components/nvd3/build/nv.d3.min.js"></script>
+    <script src="{{ asset('assets/vendor/d3/d3.min.js') }}"></script>
 {#  <script type="text/javascript" src="https://cdnjs.com/libraries/Chart.js"></script> #}
-    <link rel="stylesheet" href="../bower_components/nvd3/build/nv.d3.css">
+    
     <!-- END D3.JS -->
 
+    <!-- modifier avec les assets -->
     <!-- jqcloud -->
     <script src="../bower_components/jqcloud/dist/jqcloud.min.js"></script>
     <link rel="stylesheet" href="../bower_components/jqcloud/dist/jqcloud.min.css">
     <!-- END jqcloud -->
+        
+    <script src="{{ asset('js/mc2.js') }}"></script>
 
-            {% endblock %}
-        </div>
+    {% endblock %} <!-- javascript block -->
+
+    </div>
     </body>
 </html>
 
