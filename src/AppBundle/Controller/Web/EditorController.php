@@ -67,6 +67,8 @@ class EditorController extends Controller
             $em->persist($number);
             $em->flush();
 
+            //ajouter redirection
+
         }
 
         return $this->render('editor/number/new.html.twig',array(

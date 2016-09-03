@@ -4,27 +4,15 @@
 {% block stylesheets %}
 
 {{parent()}}
- <link rel="stylesheet" href="../../bower_components/Materialize/dist/css/materialize.css">
-<link rel="stylesheet" href="../../css/style.css"> 
-<script src="../../bower_components/vis/dist/vis.js"></script>
-<link href="../../bower_components/vis/dist/vis.css" rel="stylesheet" type="text/css" />
 
-<style>
-.items li{
-  margin-bottom: 5px;
-  background-color:white; 
-  color : #CC0000;
-  border:  1px solid #CC0000;
-}
-</style>
+<link href="{{asset('assets/vendor/vis/dist/vis.css')}}" rel="stylesheet" type="text/css" />
 
 {% endblock %}
 
 
 {% block body %}
 
-
-<section class='container'>
+<section class='container' id='film'>
 
 <div class="row">
 
@@ -139,28 +127,14 @@
 
 </div>
 
-
-
 </section>
+
+{% endblock %}
   
+{% block javascripts %} 
 
-  <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>  
+  {{parent()}}
 
-  <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
-
-  <!-- Materialize -->
-  <script type="text/javascript" src="../../bower_components/Materialize/js/parallax.js"></script>
-
-
-  <!-- D3.JS -->
-  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-  <script type="text/javascript" src="../../bower_components/nvd3/build/nv.d3.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.com/libraries/Chart.js"></script>
-  <link rel="stylesheet" href="../../bower_components/nvd3/build/nv.d3.css">
-
-{#  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> #}
-
-  <script src="{{ asset('js/mc2.js') }}"></script>
 
   <!-- Timeline -->
   <script type="text/javascript">
@@ -234,6 +208,5 @@
 }
 
 </script>
-
 
 {% endblock %}

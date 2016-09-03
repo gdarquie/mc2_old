@@ -36,7 +36,7 @@ class NumberType extends AbstractType
                     // 'data' => "Test", 
                 ))
             ->add('film', EntityType::class, array(
-                'placeholder' => 'Choose a Film',
+                // 'placeholder' => 'Choose a Film',
                 'class' => 'AppBundle:Film',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(FilmRepository $repo) {
@@ -59,7 +59,7 @@ class NumberType extends AbstractType
             // ->add('length') //doit être calculé automatiquement
             // Begin (Thesaurus)
             ->add('beginThesaurus', EntityType::class, array(
-                'placeholder' => 'Choose a Begin Type',
+                // 'placeholder' => 'Choose a Begin Type',
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
@@ -68,14 +68,14 @@ class NumberType extends AbstractType
             ))
             //Ending (Thesaurus)
             ->add('endingThesaurus', EntityType::class, array(
-                'placeholder' => 'Choose an Ending Type',
+                // 'placeholder' => 'Choose an Ending Type',
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
                     return $repo->findAllEnding();
                 },
             ))
-            //->add('completeness') //problème ajout add new 
+            // //->add('completeness') //problème ajout add new 
             ->add('validationTc', ChoiceType::class, [
                 'choices' => [
                     //créer un repository pour validation?
@@ -145,21 +145,20 @@ class NumberType extends AbstractType
 
             //Reference
             // ->add('sources')
-            // ->add('quotation')
-            ->add('quotation', EntityType::class, array(
-                'placeholder' => 'Choose a Quotation',
-                'class' => 'AppBundle:Quotation',
-                'choice_label' => 'title', //order by alpha
-                'query_builder' => function(QuotationRepository $repo) {
-                    return $repo->createAlphabeticalQueryBuilder();
-                },
-                //'disabled' => true, //mais false si admin?
-            ))
+            // ->add('quotation', EntityType::class, array(
+            //     // 'placeholder' => 'Choose a Quotation',
+            //     'class' => 'AppBundle:Quotation',
+            //     'choice_label' => 'title', //order by alpha
+            //     'query_builder' => function(QuotationRepository $repo) {
+            //         return $repo->createAlphabeticalQueryBuilder();
+            //     },
+            //     //'disabled' => true, //mais false si admin?
+            // ))
             ->add('validationReference')
 
             //???
             ->add('lyrics')
-            // ->add('timestamp')
+            ->add('timestamp')
 
             // ->add('save', SubmitType::class, array('label' => 'Save Number'))
         ;
