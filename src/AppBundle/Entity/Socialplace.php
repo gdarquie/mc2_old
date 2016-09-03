@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Socialplace
  *
- * @ORM\Table(name="socialPlace")
+ * @ORM\Table(name="socialplace")
  * @ORM\Entity
  */
 class Socialplace
@@ -22,7 +22,7 @@ class Socialplace
     /**
      * @var integer
      *
-     * @ORM\Column(name="socialPlace_id", type="integer")
+     * @ORM\Column(name="socialplace_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -33,14 +33,14 @@ class Socialplace
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Number", mappedBy="socialplace")
      */
-    private $numberNumber;
+    private $number;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->numberNumber = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->number = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -79,36 +79,36 @@ class Socialplace
     }
 
     /**
-     * Add numberNumber
+     * Add number
      *
-     * @param \AppBundle\Entity\Number $numberNumber
+     * @param \AppBundle\Entity\Number $number
      *
      * @return Socialplace
      */
-    public function addNumberNumber(\AppBundle\Entity\Number $numberNumber)
+    public function addNumber(\AppBundle\Entity\Number $number)
     {
-        $this->numberNumber[] = $numberNumber;
+        $this->number[] = $number;
 
         return $this;
     }
 
     /**
-     * Remove numberNumber
+     * Remove number
      *
-     * @param \AppBundle\Entity\Number $numberNumber
+     * @param \AppBundle\Entity\Number $number
      */
-    public function removeNumberNumber(\AppBundle\Entity\Number $numberNumber)
+    public function removeNumber(\AppBundle\Entity\Number $number)
     {
-        $this->numberNumber->removeElement($numberNumber);
+        $this->number->removeElement($number);
     }
 
     /**
-     * Get numberNumber
+     * Get number
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getNumberNumber()
+    public function getNumber()
     {
-        return $this->numberNumber;
+        return $this->number;
     }
 }

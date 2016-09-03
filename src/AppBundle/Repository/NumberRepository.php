@@ -12,4 +12,8 @@ class NumberRepository extends EntityRepository
 
 	//Moyenne des length des numbers
 
+	//Nouveau number associé à un film
+
+
 }
+

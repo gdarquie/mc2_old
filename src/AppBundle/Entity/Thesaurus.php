@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Thesaurus
  *
  * @ORM\Table(name="thesaurus")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ThesaurusRepository")
  */
 class Thesaurus
 {
@@ -248,5 +248,10 @@ class Thesaurus
     public function getThesaurusId()
     {
         return $this->thesaurusId;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 }

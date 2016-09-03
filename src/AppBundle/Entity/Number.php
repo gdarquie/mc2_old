@@ -15,7 +15,7 @@ class Number
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
      */
     private $title;
 
@@ -332,13 +332,13 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Socialplace", inversedBy="numberNumber")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Socialplace", inversedBy="number")
      * @ORM\JoinTable(name="socialplace_has_number",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="number_number_id", referencedColumnName="number_id")
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="socialPlace_id", referencedColumnName="socialPlace_id")
+     *     @ORM\JoinColumn(name="socialplace_id", referencedColumnName="socialplace_id")
      *   }
      * )
      */
@@ -408,6 +408,28 @@ class Number
      * )
      */
     private $effects;
+
+
+    /**
+     * @var \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="begin_thesaurus", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $beginThesaurus;
+
+    /**
+     * @var \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ending_thesaurus", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $endingThesaurus;
+
 
     /** 
     * @ORM\Column(name="timestamp", type="datetime") 
@@ -1734,10 +1756,60 @@ class Number
      *
      * @return self
      */
-    private function setTimestamp($timestamp)
+    public function setTimestamp($timestamp)
     {
         $this->timestamp = $timestamp;
 
         return $this;
     }
+
+
+    /**
+     * Gets the value of BeginThesaurus.
+     *
+     * @return \AppBundle\Entity\Thesaurus
+     */
+    public function getBeginThesaurus()
+    {
+        return $this->beginThesaurus;
+    }
+
+    /**
+     * Sets the value of BeginThesaurus.
+     *
+     * @param \AppBundle\Entity\Thesaurus $beginThesaurus 
+     *
+     * @return self
+     */
+    public function setBeginThesaurus(\AppBundle\Entity\Thesaurus $beginThesaurus)
+    {
+        $this->beginThesaurus = $beginThesaurus;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of EndingThesaurus.
+     *
+     * @return \AppBundle\Entity\Thesaurus
+     */
+    public function getEndingThesaurus()
+    {
+        return $this->endingThesaurus;
+    }
+
+    /**
+     * Sets the value of EndingThesaurus.
+     *
+     * @param \AppBundle\Entity\Thesaurus $endingThesaurus 
+     *
+     * @return self
+     */
+    public function setEndingThesaurus(\AppBundle\Entity\Thesaurus $endingThesaurus)
+    {
+        $this->endingThesaurus = $endingThesaurus;
+
+        return $this;
+    }
+
 }

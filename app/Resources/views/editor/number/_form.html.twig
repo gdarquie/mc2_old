@@ -1,57 +1,55 @@
-{{ form_start(numberForm)}}
+{{form_row(numberForm.title)}}
 
-	{# 		{{form_widget(numberForm)}} #}
-
-	{{form_row(numberForm.title)}}
-	
-	{# {% if filmId %}
-		numberForm.film = filmId
-	{% elseif filmId is null %} #}
-		{{form_row(numberForm.film)}}
+{# {% if filmId %}
+	numberForm.film = filmId
+{% elseif filmId is null %} #}
+{{form_row(numberForm.film)}}
 {# 	{% endif %} #}
-	{{form_row(numberForm.film)}}
-	{{form_row(numberForm.validationTitle)}}
+{{form_row(numberForm.film)}}
+{{form_row(numberForm.validationTitle)}}
 
-	{{form_row(numberForm.beginTc, {
-		'label' : "Begin timecode"
-	})}}
-	{{form_row(numberForm.endTc, {
-		'label' : "End timecode"
-	})}}
-	{{form_row(numberForm.begin)}}
-	{{form_row(numberForm.ending)}}
-	{{form_row(numberForm.validationTc)}}
-	{{form_row(numberForm.validationStructure)}}
-	{{form_row(numberForm.shots)}}
-	{{form_row(numberForm.validationShots)}}
-	{{form_row(numberForm.performance)}}
-	{{form_row(numberForm.validationPerformance)}}
-	{{form_row(numberForm.spectators)}}
-	{{form_row(numberForm.diegetic)}}
-	{{form_row(numberForm.musician)}}
+{{form_row(numberForm.beginTc, {
+	'label' : "Begin timecode"
+})}}
+{{form_row(numberForm.endTc, {
+	'label' : "End timecode"
+})}}
+{{form_row(numberForm.beginThesaurus,{ 
+	'label' : "Begin (from thesaurus)"
+})}}
+{{form_row(numberForm.endingThesaurus,{ 
+	'label' : "Ending (from thesaurus)"
+})}}
+{{form_row(numberForm.validationTc)}}
+{{form_row(numberForm.validationStructure)}}
+{{form_row(numberForm.shots)}}
+{{form_row(numberForm.validationShots)}}
+{{form_row(numberForm.performance)}}
+{{form_row(numberForm.validationPerformance)}}
+{{form_row(numberForm.spectators)}}
+{{form_row(numberForm.diegetic)}}
+{{form_row(numberForm.musician)}}
 
-	{{form_row(numberForm.integration)}}
+{{form_row(numberForm.integration)}}
 
-	{{form_row(numberForm.validationBackstage)}}
-	{{form_row(numberForm.imaginary)}}
-	{{form_row(numberForm.exoticism)}}
-	{{form_row(numberForm.validationTheme)}}
-	{{form_row(numberForm.validationMood)}}
-	{{form_row(numberForm.validationDance)}}
-	{{form_row(numberForm.song)}}
-	{{form_row(numberForm.dubbing)}}
-	{{form_row(numberForm.tempo)}}
+{{form_row(numberForm.validationBackstage)}}
+{{form_row(numberForm.imaginary)}}
+{{form_row(numberForm.exoticism)}}
+{{form_row(numberForm.validationTheme)}}
+{{form_row(numberForm.validationMood)}}
+{{form_row(numberForm.validationDance)}}
+{{form_row(numberForm.song)}}
+{{form_row(numberForm.dubbing)}}
+{{form_row(numberForm.tempo)}}
 
-	{{form_row(numberForm.musical)}}
-	{{form_row(numberForm.arrangerComment)}}
-	{{form_row(numberForm.validationMusic)}}
-	{{form_row(numberForm.cost)}}
-	{{form_row(numberForm.costComment)}}
-	{{form_row(numberForm.quotation)}}
-	{{form_row(numberForm.validationReference)}}
-	{{form_row(numberForm.lyrics)}}
+{{form_row(numberForm.musical)}}
+{{form_row(numberForm.arrangerComment)}}
+{{form_row(numberForm.validationMusic)}}
+{{form_row(numberForm.cost)}}
+{{form_row(numberForm.costComment)}}
+{{form_row(numberForm.quotation)}}
+{{form_row(numberForm.validationReference)}}
+{{form_row(numberForm.lyrics)}}
 
 
-{# 	<button type="submit" class="btn" >Save Number</button> #}
 	
-	{{ form_end(numberForm)}}

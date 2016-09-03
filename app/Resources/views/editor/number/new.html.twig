@@ -6,7 +6,12 @@
 
 <h1>Add a number</h1>
 
-{{ include('editor/number/_form.html.twig')}}
+{{ form_start(numberForm)}}
+
+	{{ include('editor/number/_form.html.twig')}}
+	<button class="btn black" type="submit" novalidate >New Number</button>
+
+{{ form_end(numberForm)}}
 
 </div>
 

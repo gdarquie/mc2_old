@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\Web;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,7 +20,7 @@ class DefaultController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        dump($em->getRepository('AppBundle:Number'));
+        // dump($em->getRepository('AppBundle:Number'));
 
         //all films
         $films = $em->getRepository('AppBundle:Film')->findAll(); 

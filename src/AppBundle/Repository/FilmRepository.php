@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityRepository;
 
 class FilmRepository extends EntityRepository
 {
-	 public function findAllOrderdByTitle()
+	public function findAllOrderdByTitle()
 	    {
 	        return $this->createQueryBuilder('film')
 	            ->orderBy('film.title', 'ASC')
@@ -18,8 +18,12 @@ class FilmRepository extends EntityRepository
     {
         return $this->createQueryBuilder('film')
             ->orderBy('film.title', 'ASC');
+ 
     }
 
+    public function findFilmNumber(){
+
+    }
 }
 
 

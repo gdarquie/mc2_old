@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\Web;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -54,9 +54,6 @@ class EditorController extends Controller
     */
     public function numberNewAction(Request $request, $filmId)
     {
-        // $number = new Number();
-        //régler pb des dates
-        // $number = new Number;
 
         $form = $this->createForm(NumberType::class); //add $number
 
@@ -69,6 +66,7 @@ class EditorController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($number);
             $em->flush();
+
         }
 
         return $this->render('editor/number/new.html.twig',array(
@@ -104,46 +102,6 @@ class EditorController extends Controller
             ));
     }
 
- 
-    //Modifier/supprimer après avoir ajouté number_edit - ce n'est pas une fonction d'edit du number
-    /**
-     * @Route("/editor/test/number/{number}", name="editorNumberTest")
-     */
-    public function editorNumberAction(Request $request, $number)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        // $film = $em->getRepository('AppBundle:Film')->findOneByFilmId($film);
-        
-        $number = $em->getRepository('AppBundle:Number')->findOneByNumberId($number); //voir un number d'un film + edit le number
-
-        //formulaire Number (ne fonctionne pas pour l'instant)
-
-        $form = $this->createForm(NumberType::class, $number);
-        $form->handleRequest($request);
-
-
-        //All structures of a number
-        $query = $em->createQuery(
-            'SELECT t.title as structure, i.validationId as validation FROM AppBundle:Item i JOIN i.structure n JOIN i.thesaurus t WHERE n.numberId = :number '
-            ); 
-        $query->setParameter('number', $number);
-        $structuresNumber = $query->getResult();
-
-        //Length
-        // $query = $em->createQuery('SELECT l FROM AppBundle:Length l WHERE l.number = :number');
-        // $query->setParameter('number', $number);
-        // $length = $query->getResult();
-
-
-        return $this->render('editor/number.html.twig', array(
-            'number' => $number,
-            // 'length' => $length,
-            'structuresNumber' => $structuresNumber,
-            'form' => $form->createView()
-
-        ));
-    }
 
 //Structure of 1 number
 

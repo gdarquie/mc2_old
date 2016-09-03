@@ -7,15 +7,20 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-
 use AppBundle\Entity\Film;
+use AppBundle\Entity\Quotation;
+use AppBundle\Entity\Thesaurus;
+
 use AppBundle\Repository\FilmRepository;
+use AppBundle\Repository\QuotationRepository;
+use AppBundle\Repository\ThesaurusRepository;
 
 class NumberType extends AbstractType
 {
@@ -28,7 +33,7 @@ class NumberType extends AbstractType
         $builder
             //title
             ->add('title', TextType::class, array(
-                //'data' => 'Test', 
+                    // 'data' => "Test", 
                 ))
             ->add('film', EntityType::class, array(
                 'placeholder' => 'Choose a Film',
@@ -36,19 +41,49 @@ class NumberType extends AbstractType
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(FilmRepository $repo) {
                     return $repo->createAlphabeticalQueryBuilder();
-                }
+                },
                 //'disabled' => true, //mais false si admin?
             ))
-            ->add('validationTitle')
+            ->add('validationTitle', ChoiceType::class, [
+                'choices' => [
+                    //créer un repository pour validation?
+                    'No validation' => 0,
+                    'Validation 1' => 1,
+                    'Validation 2' => 3,
+                ]  
+                ])
 
             //length
-            ->add('beginTc')
-            ->add('endTc')
+            ->add('beginTc') // convertir en min/secondes
+            ->add('endTc') // convertir en min/secondes
             // ->add('length') //doit être calculé automatiquement
-            ->add('begin')
-            ->add('ending')
-            // ->add('completeness') //problème ajout add new 
-            ->add('validationTc')
+            // Begin (Thesaurus)
+            ->add('beginThesaurus', EntityType::class, array(
+                'placeholder' => 'Choose a Begin Type',
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllBegin();
+                },
+            ))
+            //Ending (Thesaurus)
+            ->add('endingThesaurus', EntityType::class, array(
+                'placeholder' => 'Choose an Ending Type',
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllEnding();
+                },
+            ))
+            //->add('completeness') //problème ajout add new 
+            ->add('validationTc', ChoiceType::class, [
+                'choices' => [
+                    //créer un repository pour validation?
+                    'No validation' => 0,
+                    'Validation 1' => 1,
+                    'Validation 2' => 3,
+                ]  
+                ])
 
             //structure
             //->add('structure')
@@ -107,16 +142,24 @@ class NumberType extends AbstractType
             ->add('cost')
             ->add('costComment')
 
+
             //Reference
             // ->add('sources')
-            ->add('quotation')
+            // ->add('quotation')
+            ->add('quotation', EntityType::class, array(
+                'placeholder' => 'Choose a Quotation',
+                'class' => 'AppBundle:Quotation',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(QuotationRepository $repo) {
+                    return $repo->createAlphabeticalQueryBuilder();
+                },
+                //'disabled' => true, //mais false si admin?
+            ))
             ->add('validationReference')
 
             //???
             ->add('lyrics')
             // ->add('timestamp')
-
-
 
             // ->add('save', SubmitType::class, array('label' => 'Save Number'))
         ;

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Quotation
  *
  * @ORM\Table(name="quotation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\QuotationRepository")
  */
 class Quotation
 {

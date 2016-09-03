@@ -6,14 +6,13 @@
 
 <h1>{{number.title}}</h1>
 
-	{{ form_start(numberForm)}}
+{{ form_start(numberForm)}}
 
-	{{ include('editor/number/_form.html.twig')}}
+{{ include('editor/number/_form.html.twig')}}
 
+<button class="btn black" type="submit" novalidate>Edit Number</button>
 
-	<button type="submit">Edit Number</button>
-	
-	{{ form_end(numberForm)}}
+{{ form_end(numberForm)}}
 
 </div>
 
