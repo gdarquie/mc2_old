@@ -26,11 +26,19 @@
 {{form_row(numberForm.validationStructure)}}
 {{form_row(numberForm.shots)}}
 {{form_row(numberForm.validationShots)}}
-{{form_row(numberForm.performance)}}
+{{form_row(numberForm.performance, {
+	'label' : "Performance type"
+})}}
 {{form_row(numberForm.validationPerformance)}}
-{{form_row(numberForm.spectators)}}
-{{form_row(numberForm.diegetic)}}
-{{form_row(numberForm.musician)}}
+{{form_row(numberForm.spectators, {
+	'label' : "Spectators - Are there spectators within the scene ?"
+})}}
+{{form_row(numberForm.diegetic,{
+	'label' : "Diegetic - Is this an onstage number or a diegetic performance ?"
+} )}}
+{{form_row(numberForm.musician, {
+	'label' : "Musician - Are there visible musician?"
+})}}
 
 {{form_row(numberForm.integration)}}
 

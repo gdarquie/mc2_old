@@ -69,8 +69,9 @@ class EditorController extends Controller
             $em->persist($number);
             $em->flush();
 
-            //ajouter redirection
+            $this->addFlash('success', 'Number created!');
 
+            return $this->redirectToRoute('film', array('filmId' => $filmId));
         }
 
         return $this->render('editor/number/new.html.twig',array(

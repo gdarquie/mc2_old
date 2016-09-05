@@ -141,6 +141,7 @@ class NumberType extends AbstractType
             //Complement
             ->add('cost')
             ->add('costComment')
+            //ajouter un système de validation
 
 
             //Reference

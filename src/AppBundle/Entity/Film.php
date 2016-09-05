@@ -284,6 +284,11 @@ class Film
     private $censorship;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isComplete = false;
+
+    /**
      * Constructor
      */
     public function __construct()
