@@ -8,9 +8,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 use AppBundle\Entity\Number;
+use AppBundle\Entity\ValidationCategory;
 
 use AppBundle\Form\NumberType;
 use AppBundle\Form\ThesaurusType;
+use AppBundle\Form\ValidationCategoryType;
 
 use Symfony\Component\Validator\Constraints\DateTime;
 
@@ -240,7 +242,36 @@ class EditorController extends Controller
         ));
 
     }
-    
+
+//-----------------------------------------
+// ---Validation Category-----------------
+//-----------------------------------------
+
+    /**
+     * @Route("/editor/validationcategory/add/new", name="editorNewValidationCategory")
+     */
+    public function addValidationCategoryEditorAction(Request $request){
+
+        $validationCategory = new ValidationCategory();
+
+        $form = $this->createForm(ValidationCategory::class, $validationCategory);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted()){
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($thesaurus);
+            $em->flush();
+
+            return $this->redirectToRoute('editor');
+        }
+
+        return $this->render('editor/validationCategory/new.html.twig', array(
+
+            ));
+
+    }
 
 
 }

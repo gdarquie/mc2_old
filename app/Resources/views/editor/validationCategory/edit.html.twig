@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+
+<h1>Edit a category of validation</h1>
+
+{{ form_start(validationCategoryForm)}}
+
+	{{ include('editor/validationCategory/_form.html.twig')}}
+
+	<button class="btn black" type="submit" novalidate >Edit Category</button>
+
+{{ form_end(validationCategoryForm)}}
+
+</div>
+
+{% endblock %}
