@@ -292,6 +292,7 @@ class Number
      */
     private $quotation;
 
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
@@ -306,6 +307,40 @@ class Number
      * )
      */
     private $song;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Completeness", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_completeness",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="completeness_id", referencedColumnName="completeness_id")
+     *   }
+     * )
+     */
+    private $completeness;
+
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="completeness_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $completenessThesaurus;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="completoptions_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $completOptions;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -369,13 +404,6 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Completeness", mappedBy="number")
-     */
-    private $completeness;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Dancing", mappedBy="number")
      */
     private $dancing;
@@ -386,6 +414,26 @@ class Number
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Integration", mappedBy="number")
      */
     private $integration;
+
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="integration_thesaurus_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $integration_thesaurus;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="integoptions_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $integoptions;
+
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -409,7 +457,6 @@ class Number
      */
     private $effects;
 
-
     /**
      * @var \AppBundle\Entity\Thesaurus
      *
@@ -429,6 +476,129 @@ class Number
      * })
      */
     private $endingThesaurus;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="structure_id", referencedColumnName="thesaurus_id")
+     * })
+    */
+    private $structure;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="musensemble_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $musensemble;
+
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="costume_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $costumes;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="stereotype_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $stereotype;
+
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="mood_thesaurus_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $mood_thesaurus;
+
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="source_thesaurus_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $source_thesaurus;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="performance_thesaurus_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $performance_thesaurus;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="spectators_thesaurus_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $spectators_thesaurus;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="diegetic_thesaurus_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $diegetic_thesaurus;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="musician_thesaurus_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $musician_thesaurus;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_performer",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $performers;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_figurant",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $figurants;
 
 
     /** 
@@ -1811,5 +1981,266 @@ class Number
 
         return $this;
     }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getStructure()
+    {
+        return $this->structure;
+    }
+
+    /**
+     * @param Thesaurus $structure
+     */
+    public function setStructure($structure)
+    {
+        $this->structure = $structure;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getMusensemble()
+    {
+        return $this->musensemble;
+    }
+
+    /**
+     * @param Thesaurus $musensemble
+     */
+    public function setMusensemble($musensemble)
+    {
+        $this->musensemble = $musensemble;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getIntegoptions()
+    {
+        return $this->integoptions;
+    }
+
+    /**
+     * @param Thesaurus $integoptions
+     */
+    public function setIntegoptions($integoptions)
+    {
+        $this->integoptions = $integoptions;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getIntegrationThesaurus()
+    {
+        return $this->integration_thesaurus;
+    }
+
+    /**
+     * @param Thesaurus $integration_thesaurus
+     */
+    public function setIntegrationThesaurus($integration_thesaurus)
+    {
+        $this->integration_thesaurus = $integration_thesaurus;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getCostumes()
+    {
+        return $this->costumes;
+    }
+
+    /**
+     * @param Thesaurus $costumes
+     */
+    public function setCostumes($costumes)
+    {
+        $this->costumes = $costumes;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getStereotype()
+    {
+        return $this->stereotype;
+    }
+
+    /**
+     * @param Thesaurus $stereotype
+     */
+    public function setStereotype($stereotype)
+    {
+        $this->stereotype = $stereotype;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getMoodThesaurus()
+    {
+        return $this->mood_thesaurus;
+    }
+
+    /**
+     * @param Thesaurus $mood_thesaurus
+     */
+    public function setMoodTheasurus($mood_thesaurus)
+    {
+        $this->mood_thesaurus = $mood_thesaurus;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getSourceThesaurus()
+    {
+        return $this->source_thesaurus;
+    }
+
+    /**
+     * @param Thesaurus $source_thesaurus
+     */
+    public function setSourceThesaurus($source_thesaurus)
+    {
+        $this->source_thesaurus = $source_thesaurus;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getCompletenessThesaurus()
+    {
+        return $this->completenessThesaurus;
+    }
+
+    /**
+     * @param mixed $completenessThesaurus
+     */
+    public function setCompletenessThesaurus($completenessThesaurus)
+    {
+        $this->completenessThesaurus = $completenessThesaurus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompletOptions()
+    {
+        return $this->completOptions;
+    }
+
+    /**
+     * @param mixed $completOptions
+     */
+    public function setCompletOptions($completOptions)
+    {
+        $this->completOptions = $completOptions;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getPerformanceThesaurus()
+    {
+        return $this->performance_thesaurus;
+    }
+
+    /**
+     * @param Thesaurus $performance_thesaurus
+     */
+    public function setPerformanceThesaurus($performance_thesaurus)
+    {
+        $this->performance_thesaurus = $performance_thesaurus;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPerformers()
+    {
+        return $this->performers;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $performers
+     */
+    public function setPerformers($performers)
+    {
+        $this->performers = $performers;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFigurants()
+    {
+        return $this->figurants;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $figurants
+     */
+    public function setFigurants($figurants)
+    {
+        $this->figurants = $figurants;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getSpectatorsThesaurus()
+    {
+        return $this->spectators_thesaurus;
+    }
+
+    /**
+     * @param Thesaurus $spectators_thesaurus
+     */
+    public function setSpectatorsThesaurus($spectators_thesaurus)
+    {
+        $this->spectators_thesaurus = $spectators_thesaurus;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getDiegeticThesaurus()
+    {
+        return $this->diegetic_thesaurus;
+    }
+
+    /**
+     * @param Thesaurus $diegetic_thesaurus
+     */
+    public function setDiegeticThesaurus($diegetic_thesaurus)
+    {
+        $this->diegetic_thesaurus = $diegetic_thesaurus;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getMusicianThesaurus()
+    {
+        return $this->musician_thesaurus;
+    }
+
+    /**
+     * @param Thesaurus $musician_thesaurus
+     */
+    public function setMusicianThesaurus($musician_thesaurus)
+    {
+        $this->musician_thesaurus = $musician_thesaurus;
+    }
+
+
+
+
 
 }

@@ -21,20 +21,12 @@ class ThesaurusRepository extends EntityRepository
  
     }
 
-    public function findAllBegin()
+    public function findAllThesaurusByType($type)
     {
-	        return $this->createQueryBuilder('thesaurus')
-	        	->where('thesaurus.type = :type')
-	            ->orderBy('thesaurus.title', 'ASC')
-	            ->setParameter('type', 'begin');
-    }
-
-    public function findAllEnding()
-    {
-	        return $this->createQueryBuilder('thesaurus')
-	        	->where('thesaurus.type = :type')
-	            ->orderBy('thesaurus.title', 'ASC')
-	            ->setParameter('type', 'ending');
+        return $this->createQueryBuilder('thesaurus')
+            ->where('thesaurus.type = :type')
+            ->orderBy('thesaurus.title', 'ASC')
+            ->setParameter('type', $type);
     }
 }
 

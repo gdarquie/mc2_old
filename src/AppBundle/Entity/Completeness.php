@@ -28,18 +28,11 @@ class Completeness
      */
     private $completenessId;
 
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Number", inversedBy="completeness")
-     * @ORM\JoinTable(name="completeness_has_number",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="completeness_id", referencedColumnName="completeness_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
-     *   }
-     * )
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Number", mappedBy="number")
      */
     private $number;
 

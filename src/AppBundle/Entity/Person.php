@@ -305,4 +305,9 @@ class Person
     {
         return $this->quotation;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

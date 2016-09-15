@@ -5,14 +5,14 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Validation
+ * ValidationCategory
  *
  * @ORM\Table(name="validation_category")
  * @ORM\Entity
  */
 class ValidationCategory
 {
-	/**
+    /**
      * @var integer
      *
      * @ORM\Column(name="validation_id", type="integer")
@@ -20,14 +20,51 @@ class ValidationCategory
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $validationCategoryId;
- 	
- 	/**
-     * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=255, nullable=false)
+
+    /**
+     * @ORM\Column(type="string")
      */
     private $title;
 
+    /**
+     * @return int
+     */
+    public function getValidationCategoryId()
+    {
+        return $this->validationCategoryId;
+    }
+
+    /**
+     * @param int $validationCategoryId
+     */
+    public function setValidationCategoryId($validationCategoryId)
+    {
+        $this->validationCategoryId = $validationCategoryId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 
 }
+
+
+
 

@@ -1,68 +1,232 @@
-{{form_row(numberForm.title)}}
+<div class="cartouche">
 
-{{form_row(numberForm.film)}}
-{# {% if filmId %}
-	numberForm.film = filmId
-{% elseif filmId is null %} #}
-{# {{form_row(numberForm.film)}} #}
-{# 	{% endif %} #}
+	<h3>Title</h3>
 
-{# {{form_row(numberForm.film)}} #}
-{{form_row(numberForm.validationTitle)}}
+	{{form_row(numberForm.title)}}
 
-{{form_row(numberForm.beginTc, {
-	'label' : "Begin timecode"
-})}}
-{{form_row(numberForm.endTc, {
-	'label' : "End timecode"
-})}}
-{{form_row(numberForm.beginThesaurus,{ 
-	'label' : "Begin (from thesaurus)"
-})}}
-{{form_row(numberForm.endingThesaurus,{ 
-	'label' : "Ending (from thesaurus)"
-})}}
-{{form_row(numberForm.validationTc)}}
-{{form_row(numberForm.validationStructure)}}
-{{form_row(numberForm.shots)}}
-{{form_row(numberForm.validationShots)}}
-{{form_row(numberForm.performance, {
-	'label' : "Performance type"
-})}}
-{{form_row(numberForm.validationPerformance)}}
-{{form_row(numberForm.spectators, {
-	'label' : "Spectators - Are there spectators within the scene ?"
-})}}
-{{form_row(numberForm.diegetic,{
-	'label' : "Diegetic - Is this an onstage number or a diegetic performance ?"
-} )}}
-{{form_row(numberForm.musician, {
-	'label' : "Musician - Are there visible musician?"
-})}}
+	{{form_row(numberForm.film)}}
+	{# {% if filmId %}
+		numberForm.film = filmId
+	{% elseif filmId is null %} #}
+	{# {{form_row(numberForm.film)}} #}
+	{# 	{% endif %} #}
 
-{{form_row(numberForm.integration)}}
+	{# {{form_row(numberForm.film)}} #}
 
-{{form_row(numberForm.validationBackstage)}}
-{{form_row(numberForm.imaginary)}}
-{{form_row(numberForm.exoticism)}}
-{{form_row(numberForm.validationTheme)}}
-{{form_row(numberForm.validationMood)}}
-{{form_row(numberForm.validationDance)}}
-{{form_row(numberForm.song)}}
-{{form_row(numberForm.dubbing)}}
-{{form_row(numberForm.tempo)}}
+	{{form_row(numberForm.validationTitle)}}
+</div>
 
-{{form_row(numberForm.musical, {
-	'label' : "Musical style"
-})}}
-{{form_row(numberForm.arrangerComment)}}
-{{form_row(numberForm.validationMusic)}}
-{{form_row(numberForm.cost)}}
-{{form_row(numberForm.costComment)}}
-{# {{form_row(numberForm.quotation)}} #}
-{{form_row(numberForm.validationReference)}}
-{{form_row(numberForm.lyrics)}}
-{{form_row(numberForm.timestamp)}}
+{# ok pour title sauf pb avec sélection auto de film  -
+todo : selction auto de film quand new number
+todo : validation
+#}
+
+<div class="cartouche">
+
+	<h3>Outlines</h3>
+
+	{{form_row(numberForm.beginTc, {
+		'label' : "Begin timecode"
+	})}}
+	{{form_row(numberForm.endTc, {
+		'label' : "End timecode"
+	})}}
+	{{form_row(numberForm.beginThesaurus,{ 
+		'label' : "Begin (from thesaurus) (1 choice) (mandatory)"
+	})}}
+	{{form_row(numberForm.endingThesaurus,{ 
+		'label' : "Ending (from thesaurus) (1 choice) (mandatory)"
+	})}}
+	{{ form_row(numberForm.completenessThesaurus, {
+		'label' : "Completeness (from thesaurus) (1 choice) (mandatory)"
+	}) }}
+	{{ form_row(numberForm.completOptions, {
+		'label' : "Completeness Options (from thesaurus) (1 choice only for the moment) (optional)"
+	}) }}
+
+	{{form_row(numberForm.validationTc)}}
+</div>
+
+{# ok pour outlines sauf
+todo : many to many completOptions
+todo : validation
+#}
+
+<div class="cartouche">
+
+	<h3>Structure</h3>
+
+	{{form_row(numberForm.structure, {
+		'label' : "Structure (from thesaurus) (1 choice) (mandatory)"
+	})}}
+	{{form_row(numberForm.validationStructure)}}
+
+</div>
+
+{# ok pour structure sauf
+todo : validation
+#}
+
+<div class="cartouche">
+	<h3>Shots</h3>
+
+	{{form_row(numberForm.shots)}}
+	{{form_row(numberForm.validationShots)}}
+
+</div>
+
+{# ok pour shots sauf
+todo : validation
+#}
+
+<div class="cartouche">
+
+	<h3>Performers</h3>
+
+	{{form_row(numberForm.performance_thesaurus, {
+		'label' : "Performance type (from thesaurus) (1 choice) (mandatory)"
+	})}}
+	{{ form_row(numberForm.performers, {
+		'label' : "Performers (multi)"
+	})}}
+	{{ form_row(numberForm.figurants, {
+		'label' : "Figurants (multi)"
+	}) }}
+	{{form_row(numberForm.validationPerformance)}}
+
+</div>
+
+{# ok pour Performers sauf
+todo : validation
+todo : créer une fonction ordre alpha dans repository pour les persons by name?
+#}
+
+<div class="cartouche">
+
+	<h3>Backstage & integration</h3>
+
+	{{form_row(numberForm.spectators_thesaurus, {
+		'label' : "Spectators - Are there spectators within the scene ? (from thesaurus) (1 choice) (mandatory)"
+	})}}
+	{{form_row(numberForm.diegetic_thesaurus,{
+		'label' : "Diegetic - Is this an onstage number or a diegetic performance ? (from thesaurus) (1 choice) (mandatory)"
+	} )}}
+	{{form_row(numberForm.musician_thesaurus, {
+		'label' : "Musician - Are there visible musician? (from thesaurus) (1 choice) (mandatory)"
+	})}}
+	{#{{form_row(numberForm.integration)}}#}
+	{{form_row(numberForm.integration_thesaurus, {
+		'label' : "Integration (from thesaurus) (1 choice) (mandatory)"
+	})}}
+	{{form_row(numberForm.integoptions, {
+		'label' : "Integration Options (from thesaurus) (multi) (optional)"
+	})}}
+	{{form_row(numberForm.validationBackstage)}}
+
+</div>
+
+{#
+ok sauf
+todo : integoptions (plusieurs possibles - many to many)
+todo : validation
+#}
+
+<div class="cartouche">
+
+	<h3>Themes</h3>
+
+	{{form_row(numberForm.costumes, {
+		'label' : "Costumes (from thesaurus)"
+	})}}
+
+	{{ form_row(numberForm.stereotype, {
+		'label' : "Stereotypes (from thesaurus)"
+	}) }}
+	{#
+		{{ form_row(numberForm.diegeticPlace) }}
+	#}
+	{{form_row(numberForm.imaginary)}}
+	{{form_row(numberForm.exoticism)}}
+	{{form_row(numberForm.validationTheme)}}
+</div>
+
+<div class="cartouche">
+
+	<h3>Mood</h3>
+	{{form_row(numberForm.source_thesaurus, {
+		'label' : "Mood (from thesaurus)"
+	})}}
+	{{form_row(numberForm.validationMood)}}
+</div>
+
+<div class="cartouche">
+
+	<h3>Dance</h3>
+
+	{#
+	{{form_row(numberForm.person)}} //choregraph
+	{{form_row(numberForm.dancing)}}
+	{{form_row(numberForm.dancingType)}} //voir avec Marguerite
+	#}
+	{{form_row(numberForm.validationDance)}}
+</div>
+
+<div class="cartouche">
+
+	<h3>Music</h3>
+
+	{{form_row(numberForm.song)}}
+	{{form_row(numberForm.musensemble)}}
+	{{form_row(numberForm.dubbing)}}
+	{{form_row(numberForm.tempo)}}
+
+	{{form_row(numberForm.musical, {
+		'label' : "Musical style"
+	})}}
+	{#{{form_row(numberForm.person )}} //arranger #}
+	{{form_row(numberForm.arrangerComment)}}
+	{{form_row(numberForm.validationMusic)}}
 
 
+</div>
+
+<div class="cartouche">
+	<h3>Director of the number</h3>
+	{#{{form_row(numberForm.person)}} //director // vide si c'est celui du film#}
+</div>
+
+<div class="cartouche">
+
+	<h3>Complement</h3>
+
+	{{form_row(numberForm.cost)}}
+	{{form_row(numberForm.costComment)}}
+	{{form_row(numberForm.validationCost)}}
+
+
+</div>
+
+<div class="cartouche">
+
+	<h3>Reference</h3>
+	{{form_row(numberForm.source_thesaurus, {
+		'label' : "Source (from thesaurus)"
+	})}}
+	{{form_row(numberForm.quotation)}}
+	{{form_row(numberForm.validationReference)}}
+
+</div>
+
+
+
+<div class="cartouche">
+	<h3>Others</h3>
+	{{form_row(numberForm.lyrics)}}
+</div>
+
+
+<div>
+	<h3>Timestamp</h3>
+	{{form_row(numberForm.timestamp)}}
+</div>
 	
