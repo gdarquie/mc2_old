@@ -183,10 +183,11 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("Ethnic stereotypes");
                 }
             ))
-            //->add('diegeticPlaces') ???
-            //->add('socialPlace') //pb pour le set au moment du flush
+            ->add('diegeticPlace')
+//            ->add('socialPlace') //pb pour le set au moment du flush
             ->add('imaginary')
-            ->add('exoticism')
+//            ->add('exoticism')
+            ->add('exoticism_thesaurus')
             ->add('validationTheme')
 
             //Mood
@@ -201,9 +202,23 @@ class NumberType extends AbstractType
             ->add('validationMood')
 
             //Dance
-            //person -> choregraphe
+            ->add('choregraphers')
             //ensemble type dancing
             //type of dancing
+            ->add('dancemble', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("musensemble");
+                }// il faudra ne prendre que ceux de type dance
+            ))
+            ->add('dance', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("dance");
+                }// diviser par type ensuite
+            ))
             ->add('validationDance')
 
             //Music
@@ -213,12 +228,12 @@ class NumberType extends AbstractType
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
                     return $repo->findAllThesaurusByType("musensemble");
-                }
+                }//il faudra ne prendre que ceux de type music
             ))
             ->add('dubbing')
             ->add('tempo')
             ->add('musical')
-            // ->add('arranger') ???
+            ->add('arrangers')
             ->add('arrangerComment')
             ->add('validationMusic')
 
@@ -226,13 +241,15 @@ class NumberType extends AbstractType
             //??? person si ce n'est pas lui qui a réalisé le film
 
             //Complement
+            ->add('director')
             ->add('cost')
             ->add('costComment')
             ->add('validationCost')
 
-
-
             //Reference
+            ->add('quotation')
+            ->add('quotation_text')
+            //->add('source')
             ->add('source_thesaurus', EntityType::class, array(
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
@@ -240,7 +257,6 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("source");
                 }
             ))
-            ->add('quotation')
             ->add('validationReference')
 
             //???

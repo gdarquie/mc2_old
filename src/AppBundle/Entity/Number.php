@@ -294,6 +294,11 @@ class Number
 
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $quotation_text;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Song", inversedBy="number")
@@ -415,7 +420,6 @@ class Number
      */
     private $integration;
 
-
     /** @var  \AppBundle\Entity\Thesaurus
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
@@ -434,6 +438,15 @@ class Number
      */
     private $integoptions;
 
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="$dance_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $dance;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -569,6 +582,70 @@ class Number
      * })
      */
     private $musician_thesaurus;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="exoticism_thesaurus_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $exoticism_thesaurus;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="dancemble_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $dancemble;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_choregraph",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $choregraphers;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_arranger",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $arrangers;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_director",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $director;
+
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -2239,6 +2316,117 @@ class Number
         $this->musician_thesaurus = $musician_thesaurus;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getQuotationText()
+    {
+        return $this->quotation_text;
+    }
+
+    /**
+     * @param mixed $quotation_text
+     */
+    public function setQuotationText($quotation_text)
+    {
+        $this->quotation_text = $quotation_text;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getExoticismThesaurus()
+    {
+        return $this->exoticism_thesaurus;
+    }
+
+    /**
+     * @param Thesaurus $exoticism_thesaurus
+     */
+    public function setExoticismThesaurus($exoticism_thesaurus)
+    {
+        $this->exoticism_thesaurus = $exoticism_thesaurus;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getDancemble()
+    {
+        return $this->dancemble;
+    }
+
+    /**
+     * @param Thesaurus $dancemble
+     */
+    public function setDancemble($dancemble)
+    {
+        $this->dancemble = $dancemble;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChoregraphers()
+    {
+        return $this->choregraphers;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $choregraphers
+     */
+    public function setChoregraphers($choregraphers)
+    {
+        $this->choregraphers = $choregraphers;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArrangers()
+    {
+        return $this->arrangers;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $arrangers
+     */
+    public function setArrangers($arrangers)
+    {
+        $this->arrangers = $arrangers;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDirector()
+    {
+        return $this->director;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $director
+     */
+    public function setDirector($director)
+    {
+        $this->director = $director;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getDance()
+    {
+        return $this->dance;
+    }
+
+    /**
+     * @param Thesaurus $dance
+     */
+    public function setDance($dance)
+    {
+        $this->dance = $dance;
+    }
 
 
 

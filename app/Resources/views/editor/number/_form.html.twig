@@ -136,23 +136,21 @@ todo : validation
 	<h3>Themes</h3>
 
 	{{form_row(numberForm.costumes, {
-		'label' : "Costumes (from thesaurus)"
+		'label' : "Costumes (from thesaurus) (multi) (mandatory)"
 	})}}
 
 	{{ form_row(numberForm.stereotype, {
 		'label' : "Stereotypes (from thesaurus)"
 	}) }}
-	{#
-		{{ form_row(numberForm.diegeticPlace) }}
-	#}
+	{{ form_row(numberForm.diegeticPlace) }}
 	{{form_row(numberForm.imaginary)}}
-	{{form_row(numberForm.exoticism)}}
+	{{form_row(numberForm.exoticism_thesaurus)}}
 	{{form_row(numberForm.validationTheme)}}
 </div>
 
 <div class="cartouche">
 
-	<h3>Mood</h3>
+	<h3>Tone</h3>
 	{{form_row(numberForm.source_thesaurus, {
 		'label' : "Mood (from thesaurus)"
 	})}}
@@ -163,11 +161,10 @@ todo : validation
 
 	<h3>Dance</h3>
 
-	{#
-	{{form_row(numberForm.person)}} //choregraph
-	{{form_row(numberForm.dancing)}}
-	{{form_row(numberForm.dancingType)}} //voir avec Marguerite
-	#}
+
+	{{form_row(numberForm.choregraphers)}}
+	{{form_row(numberForm.dancemble)}}
+	{{form_row(numberForm.dance)}}
 	{{form_row(numberForm.validationDance)}}
 </div>
 
@@ -183,50 +180,46 @@ todo : validation
 	{{form_row(numberForm.musical, {
 		'label' : "Musical style"
 	})}}
-	{#{{form_row(numberForm.person )}} //arranger #}
+	{{form_row(numberForm.arrangers )}}
 	{{form_row(numberForm.arrangerComment)}}
+	{{form_row(numberForm.lyrics)}}
+
 	{{form_row(numberForm.validationMusic)}}
 
 
 </div>
 
-<div class="cartouche">
-	<h3>Director of the number</h3>
-	{#{{form_row(numberForm.person)}} //director // vide si c'est celui du film#}
-</div>
 
 <div class="cartouche">
 
 	<h3>Complement</h3>
 
+	{{form_row(numberForm.director)}}
 	{{form_row(numberForm.cost)}}
 	{{form_row(numberForm.costComment)}}
 	{{form_row(numberForm.validationCost)}}
-
 
 </div>
 
 <div class="cartouche">
 
-	<h3>Reference</h3>
-	{{form_row(numberForm.source_thesaurus, {
-		'label' : "Source (from thesaurus)"
+	<h3>Intertextuality / References</h3>
+
+	{{form_row(numberForm.quotation, {
+		'label' : "Quotation (multi)"
 	})}}
-	{{form_row(numberForm.quotation)}}
+	{{form_row(numberForm.quotation_text)}}
+	{{form_row(numberForm.source_thesaurus, {
+		'label' : "Source (from thesaurus) (mandatory) (multi)"
+	})}}
 	{{form_row(numberForm.validationReference)}}
 
 </div>
 
 
-
 <div class="cartouche">
 	<h3>Others</h3>
-	{{form_row(numberForm.lyrics)}}
-</div>
-
-
-<div>
-	<h3>Timestamp</h3>
 	{{form_row(numberForm.timestamp)}}
 </div>
-	
+
+
