@@ -443,7 +443,7 @@ class Number
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="$dance_id", referencedColumnName="thesaurus_id")
+     *   @ORM\JoinColumn(name="dance_id", referencedColumnName="thesaurus_id")
      * })
      */
     private $dance;
