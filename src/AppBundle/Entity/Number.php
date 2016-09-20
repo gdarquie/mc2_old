@@ -678,8 +678,8 @@ class Number
     private $figurants;
 
 
-    /** 
-    * @ORM\Column(name="timestamp", type="datetime") 
+    /**
+    * @ORM\Column(name="timestamp", type="datetime")
     */
     private $timestamp;
 
@@ -700,6 +700,8 @@ class Number
         $this->integration = new \Doctrine\Common\Collections\ArrayCollection();
         $this->musical = new \Doctrine\Common\Collections\ArrayCollection();
         $this->effects = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->performers = new \Doctrine\Common\Collections\ArrayCollection();
+
     }
 
 
@@ -2024,7 +2026,7 @@ class Number
     /**
      * Sets the value of BeginThesaurus.
      *
-     * @param \AppBundle\Entity\Thesaurus $beginThesaurus 
+     * @param \AppBundle\Entity\Thesaurus $beginThesaurus
      *
      * @return self
      */
@@ -2048,7 +2050,7 @@ class Number
     /**
      * Sets the value of EndingThesaurus.
      *
-     * @param \AppBundle\Entity\Thesaurus $endingThesaurus 
+     * @param \AppBundle\Entity\Thesaurus $endingThesaurus
      *
      * @return self
      */

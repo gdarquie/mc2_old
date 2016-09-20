@@ -14,65 +14,106 @@
 
 <section class='container' id='film'>
 
-<div class="row">
+    <div class="row">
 
- <h1>{{film.title}}</h1>
- <hr>
-
-<article class='col s12 m6'>
-  <h2>List of numbers</h2>
-   {% for number in numbersOf1Film %}
-      <p>
-        {{loop.index}} | {{number.title}} | {{number.beginTc}} | {{number.endTc}} 
-        <!-- tout le monde a accès au film mais seuls les éditeurs peuvent le modifier -->
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-          <a href="{{path('number_edit', { numberId : number.id })}}">edit</a>
-        {% endif %}
-      </p> 
-  {% endfor %}
-
-{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} <!-- combiner les deux fonctionnalités admin dans un même champ ? -->
-  <a href="{{path('number_new', {filmId : film.filmId }) }}"><button class="btn teal">Add a number</button></a>
-  <a href="#"><button class="btn red">Complete</button></a> <!-- définir une fonction pour bloquer les numbers -->
- {% endif %}
-</article>
-
-<article class='col s12 m6'> 
-
-  <h2>Lengths</h2>
-
-  <article class="card red accent-2 col s12 m6">
-    <div class="card-content white-text center-align">
-        <p class="center-align number">{{film.length}} sec</p>
-        <p class="center-align number-label">Movie Length</p>
+         <h1>{{film.title}}</h1>
+         <hr>
     </div>
-  </article>
 
-  <article class="card light-green col s12 m6">
-    <div class="card-content white-text center-align">
-        <p class="center-align number">{{((film.length)/60)|round}} min</p>
-        <p class="center-align number-label">Movie Length</p>
+    <div class="row">
+
+        <article class='col s12 m6'>
+          <h2>List of numbers</h2>
+           {% for number in numbersOf1Film %}
+              <p>
+                {{loop.index}} | {{number.title}} ({{number.beginTc}}) <!-- structure-->
+                <!-- tout le monde a accès au film mais seuls les éditeurs peuvent le modifier -->
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <a href="{{path('number_edit', { numberId : number.id })}}">edit</a>
+                    |
+                    <a href="{{path('number_edit', { numberId : number.id })}}">view</a> <!-- ajouter une view des numbers -->
+                {% endif %}
+              </p>
+          {% endfor %}
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} <!-- combiner les deux fonctionnalités admin dans un même champ ? -->
+          <a href="{{path('number_new', {filmId : film.filmId }) }}"><button class="btn teal">Add a number</button></a>
+          <a href="#"><button class="btn red">Complete</button></a> <!-- définir une fonction pour bloquer les numbers -->
+         {% endif %}
+        </article>
+
+        <article class='col s12 m6'>
+            <h2>Vue synthétique</h2>
+
+            <p>todo : Faire fusionner avec la partie gauche</p>
+            <table class="table striped">
+                <tr>
+                    <th>title</th>
+                    <th>Structure</th>
+                    <th>Performers</th>
+                    <th>Dance</th>
+                    <th>Musical Style</th>
+                </tr>
+                <tr>
+                    <td>Le principe</td>
+                    <td>Le principe</td>
+                    <td>Le principe</td>
+                    <td>Le principe</td>
+                    <td>Le principe</td>
+                </tr>
+                <tr>
+                    <td>Le principe</td>
+                    <td>Le principe</td>
+                    <td>Le principe</td>
+                    <td>Le principe</td>
+                    <td>Le principe</td>
+                </tr>
+            </table>
+
+        </article>
+
     </div>
-  </article>
 
-  <article class="card cyan col s12 m6">
-    <div class="card-content white-text center-align">
-        <p class="center-align number">   {% for number in numberSumLength %}
-      {% if number.total > 0 %}
-      {{(number.total/60)|round}} min
-      {% else %}
-      <p>N/A</p>
-      {% endif %}
 
-    {% endfor %}</p>
-        <p class="center-align number-label">Sum of all numbers</p>
+    <div class="row">
+
+        <article class='s12 m6'>
+
+          <h2>Lengths</h2>
+
+          <article class="card red accent-2 col s12 m6">
+            <div class="card-content white-text center-align">
+                <p class="center-align number">{{film.length}} sec</p>
+                <p class="center-align number-label">Movie Length</p>
+            </div>
+          </article>
+
+          <article class="card light-green col s12 m6">
+            <div class="card-content white-text center-align">
+                <p class="center-align number">{{((film.length)/60)|round}} min</p>
+                <p class="center-align number-label">Movie Length</p>
+            </div>
+          </article>
+
+          <article class="card cyan s12 m6">
+            <div class="card-content white-text center-align">
+                <p class="center-align number">   {% for number in numberSumLength %}
+              {% if number.total > 0 %}
+              {{(number.total/60)|round}} min
+              {% else %}
+              <p>N/A</p>
+              {% endif %}
+
+            {% endfor %}</p>
+                <p class="center-align number-label">Sum of all numbers</p>
+            </div>
+          </article>
     </div>
-  </article>
 
   <article class="card amber col s12 m6">
     <div class="card-content white-text center-align">
         <p class="center-align number">{% for number in numberSumLength %}
-      
+
       {% if number.total > 0 %}
       {{((number.total/number.length)*100)|round(2, 'floor') }}%
       {% else %}
