@@ -648,7 +648,6 @@ class Number
 
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="number")
      * @ORM\JoinTable(name="number_has_performer",

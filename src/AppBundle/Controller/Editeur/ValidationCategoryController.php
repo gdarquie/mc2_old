@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Web\Editeur;
+namespace AppBundle\Controller\Editeur;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

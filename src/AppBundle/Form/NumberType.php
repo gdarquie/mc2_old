@@ -114,7 +114,15 @@ class NumberType extends AbstractType
             ->add('validationShots')
 
             //Performers
-            ->add('performers')
+            ->add('performers'
+//                , EntityType::class, array(
+//                'class' => 'AppBundle:Person',
+//                'choice_label' => 'name',
+//                'query_builder' => function(PersonRepository $repo) {
+//                    return $repo->createAlphabeticalQueryBuilder();
+//                }
+//                )
+            )
             ->add('figurants')
             ->add('performance_thesaurus', EntityType::class, array(
                 'class' => 'AppBundle:Thesaurus',

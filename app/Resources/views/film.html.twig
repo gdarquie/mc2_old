@@ -3,10 +3,10 @@
 {% block fos_user_content %}{% endblock %}
 {% block stylesheets %}
 
-{{parent()}}
+    {{parent()}}
 
-<link href="{{asset('assets/vendor/vis/dist/vis.css')}}" rel="stylesheet" type="text/css" />
-
+    <link href="{{asset('assets/vendor/vis/dist/vis.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/film.css')}}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 
@@ -22,62 +22,60 @@
 
     <div class="row">
 
-        <article class='col s12 m6'>
-          <h2>List of numbers</h2>
-           {% for number in numbersOf1Film %}
-              <p>
-                {{loop.index}} | {{number.title}} ({{number.beginTc}}) <!-- structure-->
-                <!-- tout le monde a accès au film mais seuls les éditeurs peuvent le modifier -->
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <a href="{{path('number_edit', { numberId : number.id })}}">edit</a>
-                    |
-                    <a href="{{path('number_edit', { numberId : number.id })}}">view</a> <!-- ajouter une view des numbers -->
-                {% endif %}
-              </p>
-          {% endfor %}
+        <article class='col s12 m12'>
 
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} <!-- combiner les deux fonctionnalités admin dans un même champ ? -->
-          <a href="{{path('number_new', {filmId : film.filmId }) }}"><button class="btn teal">Add a number</button></a>
-          <a href="#"><button class="btn red">Complete</button></a> <!-- définir une fonction pour bloquer les numbers -->
-         {% endif %}
-        </article>
-
-        <article class='col s12 m6'>
-            <h2>Vue synthétique</h2>
-
-            <p>todo : Faire fusionner avec la partie gauche</p>
             <table class="table striped">
                 <tr>
+                    <th>Order</th>
                     <th>title</th>
+                    <th>Begin Timecode</th>
                     <th>Structure</th>
                     <th>Performers</th>
                     <th>Dance</th>
                     <th>Musical Style</th>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <th>Edit</th>
+                    {% endif %}
+                    <th>View</th>
                 </tr>
+
+                {% for number in numbersOf1Film %}
                 <tr>
-                    <td>Le principe</td>
-                    <td>Le principe</td>
-                    <td>Le principe</td>
-                    <td>Le principe</td>
-                    <td>Le principe</td>
+                    <td>{{loop.index}}</td>
+                    <td>{{ number.title  }}</td>
+                    <td>{{ number.beginTc }}</td>
+                    <td>Structure</td>
+                    <td>Performers</td>
+                    <td>Dance</td>
+                    <td>Musical Style</td>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <td>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <a href="{{path('number_edit', { numberId : number.id })}}">edit</a>
+                        {% endif %}
+                    </td>
+                    {% endif %}
+                    <td>
+                        <a href="{{path('number', { numberId : number.id })}}">view</a>
+                    </td>
                 </tr>
-                <tr>
-                    <td>Le principe</td>
-                    <td>Le principe</td>
-                    <td>Le principe</td>
-                    <td>Le principe</td>
-                    <td>Le principe</td>
-                </tr>
+                {% endfor %}
+
             </table>
+
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} <!-- combiner les deux fonctionnalités admin dans un même champ ? -->
+                <a href="{{path('number_new', {filmId : film.filmId }) }}"><button class="btn teal">Add a number</button></a>
+                <a href="#"><button class="btn red">Complete</button></a> <!-- définir une fonction pour bloquer les numbers -->
+            {% endif %}
 
         </article>
 
     </div>
 
-
+    <hr>
     <div class="row">
 
-        <article class='s12 m6'>
+        <article class='col s12 m6'>
 
           <h2>Lengths</h2>
 
@@ -108,46 +106,48 @@
                 <p class="center-align number-label">Sum of all numbers</p>
             </div>
           </article>
+
+          <article class="card amber col s12 m6">
+            <div class="card-content white-text center-align">
+                <p class="center-align number">{% for number in numberSumLength %}
+
+              {% if number.total > 0 %}
+              {{((number.total/number.length)*100)|round(2, 'floor') }}%
+              {% else %}
+              <p>N/A</p>
+              {% endif %}
+
+            {% endfor %}</p>
+                <p class="center-align number-label">Ratio number/total length</p>
+            </div>
+          </article>
+
+          <article class="card  deep-orange col s12 m6">
+            <div class="card-content white-text center-align">
+                <p class="center-align number">{% for number in numberAverageLength %}{{number.average|round}} sec{% endfor %}</p>
+                <p class="center-align number-label">Average number length for {{film.title}}</p>
+            </div>
+          </article>
+
+          <article class="card pink lighten-2 col s12 m6">
+            <div class="card-content white-text center-align">
+                <p class="center-align number">{% for number in numbersAverageLength %}{{number.average|round}} sec{% endfor %}</p>
+                <p class="center-align number-label">Average number length for all the movies</p>
+            </div>
+          </article>
+        </article>
+
+        <article class="col s12 m6">
+            <h3>Number's distribution</h3>
+
+            <div id="donut">
+                <svg style="height:500px;"></svg>
+            </div>
+        </article>
+
     </div>
 
-  <article class="card amber col s12 m6">
-    <div class="card-content white-text center-align">
-        <p class="center-align number">{% for number in numberSumLength %}
-
-      {% if number.total > 0 %}
-      {{((number.total/number.length)*100)|round(2, 'floor') }}%
-      {% else %}
-      <p>N/A</p>
-      {% endif %}
-
-    {% endfor %}</p>
-        <p class="center-align number-label">Ratio number/total length</p>
-    </div>
-  </article>
-
-  <article class="card  deep-orange col s12 m6">
-    <div class="card-content white-text center-align">
-        <p class="center-align number">{% for number in numberAverageLength %}{{number.average|round}} sec{% endfor %}</p>
-        <p class="center-align number-label">Average number length for {{film.title}}</p>
-    </div>
-  </article>
-
-  <article class="card pink lighten-2 col s12 m6">
-    <div class="card-content white-text center-align">
-        <p class="center-align number">{% for number in numbersAverageLength %}{{number.average|round}} sec{% endfor %}</p>
-        <p class="center-align number-label">Average number length for all the movies</p>
-    </div>
-  </article>
-</article>
-
-<article>
-  <h3>Number's distribution</h3>
-
-  <div id="donut">
-    <svg style="height:500px;"></svg>
-  </div>
-</article>
-
+    <hr>
 <article>
   <h3>Pictures of numbers</h3>
   <p>Soon...</p>

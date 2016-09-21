@@ -92,11 +92,13 @@ todo : validation
 	{{ form_row(numberForm.performers, {
 		'label' : "Performers (multi)"
 	})}}
+	<a href="{{ path('editorNewPerson') }}" title="Create a new person if not already in the database">add a person</a>
+
 
 	{{ form_row(numberForm.figurants, {
 		'label' : "Figurants (multi)"
 	}) }}
-	<a href="{{ path('editorNewPerson') }}">ajouter une personne</a>
+	<a href="{{ path('editorNewPerson') }}" title="Create a new person if not already in the database">add a person</a>
 
 	{{form_row(numberForm.validationPerformance)}}
 
@@ -173,7 +175,8 @@ todo : validation
 	{{form_row(numberForm.choregraphers, {
 		'label' : "Choregraphers"
 	})}}
-	<a href="#">ajouter une personne</a>
+	<a href="{{ path('editorNewPerson') }}" title="Create a new person if not already in the database">add a person</a>
+
 
 	{{form_row(numberForm.dancemble)}}
 	{{form_row(numberForm.dance)}}
@@ -194,6 +197,8 @@ todo : validation
 	})}}
 
 	{{form_row(numberForm.arrangers )}}
+	<a href="{{ path('editorNewPerson') }}" title="Create a new person if not already in the database">add a person</a>
+
 	{{form_row(numberForm.arrangerComment)}}
 	{{form_row(numberForm.lyrics)}}
 
@@ -224,6 +229,7 @@ todo : validation
 	<h3>Complement</h3>
 
 	{{form_row(numberForm.director)}}
+	<a href="{{ path('editorNewPerson') }}" title="Create a new person if not already in the database">add a person</a>
 	{{form_row(numberForm.cost)}}
 	{{form_row(numberForm.costComment)}}
 	{{form_row(numberForm.validationCost)}}

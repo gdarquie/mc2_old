@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/number.css')}}">
+{% endblock %}
+
+{% block body %}
+    <div class="container" id="number">
+
+        <div class="row ">
+            <h1 class="center">{{ number.title }}({{ number.film }}){% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<small> - <a href="{{ path('number_edit', {'numberId' : number.numberId}) }}">edit</a></small>{% endif %} </h1>
+        </div>
+
+
+        <div class="row">
+            <section class="col s3">
+                <h2 class="center">Outlines</h2>
+
+                <p>Begin timecode : <span class="chip">{{ number.beginTc }}</span></p>
+                <p>End timecode :  <span class="chip">{{ number.EndTc }}</span></p>
+                <p>Begin :  <span class="chip">{{ number.begin }}</span></p>
+                <p>Ending :  <span class="chip">{{ number.ending }}</span></p>
+                <p>Completeness: {% for completeness in number.completeness %} <span class="chip">{{ completeness }}</span>{% endfor %}</p>
+                <p>Completeness Options  : {% for completeness in number.completoptions %} <span class="chip">{{ completeness }}</span>{% endfor %}</p>
+                <p>Completed : <span class="chip"></span></p>
+                <p>Validation :<span class="chip"></span></p>
+            </section>
+
+            <section class="col s3">
+                <h2 class="center">Structure</h2>
+                <p>Structure : {% for structure in number.structure %} <span class="chip">{{ structure }}</span>{% endfor %}</span></p>
+                <p>Completed :<span class="chip"></span></p>
+                <p>Validation : <span class="chip"></span></p>
+            </section>
+
+            <section class="col s3">
+                <h2 class="center">Shots</h2>
+                <p>Shots : <span class="chip">{{ number.shots }}</span></p>
+                <p>Completed :<span class="chip"></span></p>
+                <p>Validation :<span class="chip"></span></p>
+            </section>
+
+            <section class="col s3">
+                <h2 class="center">Performers</h2>
+                <p>Performers</p>
+                <p>Performance :<span class="chip">{{ number.performance }}</span> </p>
+                <p>Performers : {% for person in number.performers %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
+                <p>Figurants : {% for person in number.figurants %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
+                <p>Completed :<span class="chip"></span></p>
+                <p>Validation :<span class="chip"></span></p>
+            </section>
+        </div>
+
+        <div class="row">
+
+            <section class="col s3">
+                <h2 class="center">Backstage</h2>
+                <p>Spectators : <span class="chip">{{ number.spectators }}</span></p>
+                <p>Diegetic : <span class="chip">{{ number.diegetic }}</span></p>
+                <p>Musician : <span class="chip">{{ number.musician }}</span></p>
+                <p>Integration : {% for integration in number.integration %} <span class="chip">{{ integration }}</span>{% endfor %}</span></p>
+                <p>Integration Options : {% for integration in number.integoptions %} <span class="chip">{{ integration }}</span>{% endfor %}</p>
+                <p>Completed :<span class="chip"></span></p>
+                <p>Validation :<span class="chip"></span></p>
+            </section>
+
+            <section class="col s3">
+                <h2 class="center">Themes</h2>
+                <p>Costumes : {% for costume in number.costumes %} <span class="chip">{{ costume }}</span>{% endfor %}</p>
+                <p>Stereotypes : {% for stereotype in number.stereotype %} <span class="chip">{{ stereotype }}</span>{% endfor %}</p>
+                <p>Diegetic place : <span class="chip">{{ number.diegetic }}</span></p>
+                <p>Imaginary : <span class="chip">{{ number.imaginary }}</span></p>
+                <p>Exoticism : {% for exoticism in number.exoticism %} <span class="chip">{{ exoticism }}</span>{% endfor %}</span></p>
+                <p>Completed :<span class="chip"></span></p>
+                <p>Validation :<span class="chip"></span></p>
+            </section>
+
+            <section class="col s3">
+                <h2>Tone</h2>
+                <p>Mood : {#{% for mood in number.mood_thesaurus %} <span class="chip">{{ mood }}</span>{% endfor %}#} </p>
+                <p>Completed :<span class="chip"></span></p>
+                <p>Validation :<span class="chip"></span></p>
+            </section>
+
+            <section class="col s3">
+                <h2>Dance</h2>
+                <p>Choregraphers : {% for person in number.choregraphers %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
+                <p>Dance Ensemble : <span class="chip">{{ number.musensemble }}</span></p>
+                <p>Dance : </p>
+                <p>Completed :<span class="chip"></span></p>
+                <p>Validation :<span class="chip"></span></p>
+            </section>
+        </div>
+
+        <div class="row">
+            <section class="col s6">
+                <h2>Music</h2>
+                <p>Song : {% for song in number.song %} <span class="chip">{{ song }}</span>{% endfor %}</span></p>
+                <p>Music ensemble : <span class="chip">{{ number.musensemble }}</span></p>
+                <p>Dubbing : <span class="chip">{{ number.dubbing }}</span></p>
+                <p>Tempo : <span class="chip">{{ number.tempo }}</span></p>
+                <p>Musician style (import) : <span class="chip">{{ number.musician }}</span> </p>
+                <p>Musician style (from thesaurus) : <span class="chip">{{ number.musicianThesaurus }}</span> </p>
+                <p>Arrangers :  {% for person in number.arrangers %} <span class="chip">{{ person }}</span>{% endfor %}</span> </p>
+                <p>Arranger comment : <span>{{ number.arrangerComment }}</span></p>
+                <p>Lyrics : <span>{{ number.lyrics }}</span></p>
+                <p>Completed :<span class="chip"></span></p>
+                <p>Validation :<span class="chip"></span></p>
+            </section>
+
+            <section class="col s6">
+                <h2>Complement</h2>
+                <p>Director : {% for person in number.director %} <span class="chip">{{ person }}</span>{% endfor %}</p>
+                <p>Cost : <span>{{ number.cost }}</span></p>
+                <p>Cost Comment : <span>{{ number.costComment }}</span></p>
+                <p>Completed :<span class="chip"></span></p>
+                <p>Validation :<span class="chip"></span></p>
+            </section>
+        </div>
+    </div>
+{% endblock %}

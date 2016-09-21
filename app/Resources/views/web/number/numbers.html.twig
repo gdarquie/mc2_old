@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>List of all numbers</h1>
+
+        {% for number in numbers %}
+            <span class="chip truncate">{{ number.title }}</span>
+        {% endfor %}
+    </div>
+{% endblock %}

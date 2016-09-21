@@ -7,13 +7,16 @@ use Doctrine\ORM\EntityRepository;
 
 class NumberRepository extends EntityRepository
 {
-
-	//allNumbers of a film
-
-	//Moyenne des length des numbers
-
-	//Nouveau number associé à un film
-
-
+    public function findAllOrderdByTitle()
+    {
+        return $this->createQueryBuilder('number')
+            ->orderBy('number.title', 'ASC')
+            ->getQuery()
+            ->execute();
+    }
 }
+
+
+
+
 

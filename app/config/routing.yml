@@ -2,6 +2,10 @@ app:
     resource: "@AppBundle/Controller/Web"
     type:     annotation
 
+app_editeur:
+    resource: "@AppBundle/Controller/Editeur"
+    type:     annotation
+
 app_api:
     resource: "@AppBundle/Controller/Api"
     type:     annotation

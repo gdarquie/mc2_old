@@ -4,14 +4,7 @@
 {% block stylesheets %}
 
 {{parent()}}
-<style>
-.items li{
-  margin-bottom: 5px;
-  background-color:white; 
-  color : #CC0000;
-  border:  1px solid #CC0000;
-}
-</style>
+
 
 {% endblock %}
 
@@ -22,7 +15,8 @@
 <section class='container'>
 
 <div>
-  <p>MC2 database contains <strong>{{films|length}}</strong> films and <strong>{{numbers|length}}</strong> numbers.</p>
+  <p>MC2 database contains <strong>{{films|length}}</strong> films and <strong>{{numbers|length}}</strong> <a
+            href="{{ path('numbers') }}">numbers</a>.</p>
 </div>
 
 <div class="row">

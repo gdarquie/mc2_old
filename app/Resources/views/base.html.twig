@@ -43,15 +43,16 @@
     <!-- Nav & Log FOS -->
         <nav>
             <div class="nav-wrapper container">
-              <a href="/" class="brand-logo center">MC2</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            connected as {{ app.user.username }}
-            -
-            <a href="{{ path('fos_user_security_logout') }}">logout</a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}">connexion</a>
-            {% endif %}
+                <a href="/" class="brand-logo left">MC2</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li> - connected as {{ app.user.username }} -</li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">logout</a></li>
+                    {% else %}
+                        <li><a href="{{ path('fos_user_security_login') }}">connexion</a></li>
+                    {% endif %}
+                </ul>
+
             </div>
         </nav>
 
