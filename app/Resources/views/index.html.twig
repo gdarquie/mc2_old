@@ -29,6 +29,7 @@
       <ul class="items">
       {% for film in filmsWithNumber %}
         <a href="/film/id/{{film.filmId}}"><li class="btn" >{{film.title}}({{film.released}})</li></a>
+        {# [{% for nb in nbNumbers %}{{ nb }}{% endfor %}]#}
       {% endfor %}
       </ul>
     </article>

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Editeur;
+namespace AppBundle\Controller\Web;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +13,7 @@ class ThesaurusController extends Controller
 {
 
     /**
-     * @Route("/editor/thesaurus/{type}", name="editorThesaurus")
+     * @Route("/thesaurus/{type}", name="thesaurus")
      */
     public function thesaurusEditorAction($type){
 
@@ -35,7 +35,7 @@ class ThesaurusController extends Controller
         //compter le nombre d'item pour chaque thesaurus ???
 
 
-        return $this->render('editor/thesaurus.html.twig', array(
+        return $this->render('web/thesaurus/thesaurus.html.twig', array(
             'thesaurus' => $thesaurus,
             'thesaurusType' => $thesaurusType
         ));
@@ -46,7 +46,7 @@ class ThesaurusController extends Controller
     //Update Thesaurus
 
     /**
-     * @Route("/editor/thesaurus/edit/{thesaurusId}", name="editorUpdateThesaurus")
+     * @Route("/thesaurus/edit/{thesaurusId}", name="updateThesaurus")
      */
     public function updateAction(Request $request, $thesaurusId)
     {
@@ -71,10 +71,10 @@ class ThesaurusController extends Controller
             $em->persist($thesaurus);
             $em->flush();
 
-            return $this->redirectToRoute('editorThesaurus', array('type' => $thesaurus->getType() ));
+            return $this->redirectToRoute('thesaurus', array('type' => $thesaurus->getType() ));
         }
 
-        return $this->render('editor/thesaurusNew.html.twig', array(
+        return $this->render('web/thesaurus/thesaurusNew.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -83,7 +83,7 @@ class ThesaurusController extends Controller
     //Nouveau item pour thesaurus
 
     /**
-     * @Route("/editor/thesaurus/add/new", name="editorNewThesaurus")
+     * @Route("/thesaurus/add/new", name="newThesaurus")
      */
     public function addThesaurusEditorAction(Request $request){
 
@@ -99,11 +99,11 @@ class ThesaurusController extends Controller
             $em->persist($thesaurus);
             $em->flush();
 
-            return $this->redirectToRoute('editorThesaurus', array('type' => 'all' ));
+            return $this->redirectToRoute('thesaurus', array('type' => 'all' ));
         }
 
 
-        return $this->render('editor/thesaurusNew.html.twig', array(
+        return $this->render('web/thesaurus/thesaurusNew.html.twig', array(
             'form' => $form->createView(),
         ));
 

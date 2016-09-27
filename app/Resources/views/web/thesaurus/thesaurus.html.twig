@@ -27,17 +27,17 @@
 	<!-- ne fonctionne pas encore avec all - essayer de récupérer la valeur de l'url directement si possible depuis twig -->
 			
 		<article>
-			<p><a href="/editor/thesaurus/add/new">Create a new thesaurus item</a></p>
+			<p><a href="{{ path('newThesaurus') }}">Create a new thesaurus item</a></p>
 		</article>
 
 		<article>
 			
 			<article class="row filter">
 					
-				<a class="col s2 waves-effect waves-light btn" href="/editor/thesaurus/all">All</a>
+				<a class="col s2 waves-effect waves-light btn" href="{{ path('thesaurus', {'type' : "all"}) }}">All</a>
 
 				{% for item in thesaurusType%}
-						<a class="col s2 waves-effect waves-light btn" href="/editor/thesaurus/{{item.type}}">{{item.type}}</a>
+						<a class="col s2 waves-effect waves-light btn" href="{{ path('thesaurus', {'type' : item.type }) }}">{{item.type}}</a>
 				{% endfor %}
 
 			</article>

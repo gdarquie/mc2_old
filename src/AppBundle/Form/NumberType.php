@@ -38,10 +38,12 @@ class NumberType extends AbstractType
             ->add('film', EntityType::class, array(
                  //'placeholder' => 'Choose a Film',
                 'class' => 'AppBundle:Film',
-                'choice_label' => 'title', //order by alpha
+                'choice_label' => 'title', //order by alpha + ajouter released
+//                'choice_label' => function(){ return title}
                 'query_builder' => function(FilmRepository $repo) {
                     return $repo->createAlphabeticalQueryBuilder();
                 },
+
                 //'disabled' => true, //mais false si admin?
             ))
             ->add('validationTitle', ChoiceType::class, [
@@ -74,14 +76,14 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("ending");
                 }
             ))
-//            ->add('completenessThesaurus', EntityType::class, array(
-//                // 'placeholder' => 'Choose a Begin Type',
-//                'class' => 'AppBundle:Thesaurus',
-//                'choice_label' => 'title', //order by alpha
-//                'query_builder' => function(ThesaurusRepository $repo) {
-//                    return $repo->findAllThesaurusByType("completeness");
-//                }
-//            ))
+            ->add('completenessThesaurus', EntityType::class, array(
+                // 'placeholder' => 'Choose a Begin Type',
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("completeness");
+                }
+            ))
             ->add('completOptions', EntityType::class, array(
                 // 'placeholder' => 'Choose a Begin Type',
                 'class' => 'AppBundle:Thesaurus',
@@ -190,22 +192,39 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("Ethnic stereotypes");
                 }
             ))
-            ->add('diegeticPlace')
-//            ->add('socialPlace') //pb pour le set au moment du flush (avec le thesaurus - importer dans le thesaurus)
-            ->add('imaginary')
-            ->add('exoticism')
-//            ->add('exoticism_thesaurus', EntityType::class, array(
-//                'class' => 'AppBundle:Thesaurus',
-//                'choice_label' => 'title', //order by alpha
-//                'query_builder' => function(ThesaurusRepository $repo) {
-//                    return $repo->findAllThesaurusByType("exoticism");
-//                }
-//            ))
+//            ->add('diegeticPlace')
+            ->add('diegetic_place_thesaurus', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("diegetic place");
+                }
+            ))
+            ->add('general_localisation', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("general localisation");
+                }
+            ))
+            ->add('imaginary', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("imaginary place");
+                }
+            ))
+//            ->add('exoticism')
+            ->add('exoticism_thesaurus', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("exoticism");
+                }
+            ))
             ->add('validationTheme')
 
             //Mood
-//             ->add('mood_thesaurus')
-//
 //            ->add('mood_thesaurus', EntityType::class, array(
 //                'class' => 'AppBundle:Thesaurus',
 //                'choice_label' => 'title', //order by alpha
@@ -213,6 +232,20 @@ class NumberType extends AbstractType
 //                    return $repo->findAllThesaurusByType("mood");
 //                }
 //            ))
+            ->add('general_mood', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByTypeAndCategory("mood", "general");
+                }// diviser par type ensuite
+            ))
+            ->add('genre', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByTypeAndCategory("mood", "genre");
+                }// diviser par type ensuite
+            ))
             ->add('validationMood')
 
             //Dance
@@ -226,11 +259,25 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("dancemble");
                 }// il faudra ne prendre que ceux de type dance
             ))
-            ->add('dance', EntityType::class, array(
+            ->add('dancingType', EntityType::class, array(
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("dance");
+                    return $repo->findAllThesaurusByTypeAndCategory("dance", "Dancing type");
+                }// diviser par type ensuite
+            ))
+            ->add('danceSubgenre', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByTypeAndCategory("dance", "Dance sub-genre");
+                }// diviser par type ensuite
+            ))
+            ->add('danceContent', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByTypeAndCategory("dance", "Dance content");
                 }// diviser par type ensuite
             ))
             ->add('validationDance')
@@ -245,7 +292,14 @@ class NumberType extends AbstractType
                 }//il faudra ne prendre que ceux de type music
             ))
             ->add('dubbing')
-            ->add('tempo')
+//            ->add('tempo')
+            ->add('tempo_thesaurus', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("tempo");
+                }//il faudra ne prendre que ceux de type music
+            ))
             ->add('musical')
             //add('musical_thesaurus')
             ->add('arrangers')
@@ -260,21 +314,22 @@ class NumberType extends AbstractType
             ->add('validationCost')
 
             //Reference
-            ->add('quotation')
+            ->add('quotation_thesaurus')
             ->add('quotation_text')
             //->add('source')
-//            ->add('source_thesaurus', EntityType::class, array(
-//                'class' => 'AppBundle:Thesaurus',
-//                'choice_label' => 'title', //order by alpha
-//                'query_builder' => function(ThesaurusRepository $repo) {
-//                    return $repo->findAllThesaurusByType("source");
-//                }
-//            ))
+            ->add('source_thesaurus', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("source");
+                }
+            ))
             ->add('validationReference')
 
             //???
             ->add('lyrics')
-            ->add('timestamp') //https://github.com/Atlantic18/DoctrineExtensions/blob/master/doc/timestampable.md
+            ->add('timestamp', DateTimeType::class, array(
+            )) //https://github.com/Atlantic18/DoctrineExtensions/blob/master/doc/timestampable.md
 //            ->add('timestamp', DateTimeType::class, [
 //                'widget' => 'single_text',
 //                'attr' => ['class' => 'datepicker'] ,

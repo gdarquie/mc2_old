@@ -28,6 +28,15 @@ class ThesaurusRepository extends EntityRepository
             ->orderBy('thesaurus.title', 'ASC')
             ->setParameter('type', $type);
     }
+
+    public function findAllThesaurusByTypeAndCategory($type, $category)
+    {
+        return $this->createQueryBuilder('thesaurus')
+            ->where('thesaurus.type = :type')
+            ->andWhere("thesaurus.category = :category")
+            ->orderBy('thesaurus.title', 'ASC')
+            ->setParameters(array( 'type' => $type, 'category' => $category));
+    }
 }
 
 

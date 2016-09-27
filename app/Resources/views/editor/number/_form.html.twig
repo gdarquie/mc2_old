@@ -37,13 +37,11 @@ todo : validation
 	{{form_row(numberForm.endingThesaurus,{ 
 		'label' : "Ending (from thesaurus) (1 choice) (mandatory)"
 	})}}
-{#
 	{{ form_row(numberForm.completenessThesaurus, {
-		'label' : "Completeness (from thesaurus) (1 choice) (mandatory)"
+		'label' : "Is the number closed and \"satisfying\"? (from thesaurus) (1 choice) (mandatory)"
 	}) }}
-#}
 	{{ form_row(numberForm.completOptions, {
-		'label' : "Completeness Options (from thesaurus) (1 choice only for the moment) (optional)"
+		'label' : "Is the number interrupted and are there reprises? (from thesaurus) (1 choice only for the moment) (optional)"
 	}) }}
 
 	{{form_row(numberForm.validationTc)}}
@@ -72,7 +70,9 @@ todo : validation
 <div class="cartouche">
 	<h3>Shots</h3>
 
-	{{form_row(numberForm.shots)}}
+	{{form_row(numberForm.shots, {
+		'label' : "Number of shots"
+	})}}
 	{{form_row(numberForm.validationShots)}}
 
 </div>
@@ -92,13 +92,13 @@ todo : validation
 	{{ form_row(numberForm.performers, {
 		'label' : "Performers (multi)"
 	})}}
-	<a href="{{ path('editorNewPerson') }}" title="Create a new person if not already in the database">add a person</a>
+	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
 
 
 	{{ form_row(numberForm.figurants, {
-		'label' : "Figurants (multi)"
+		'label' : "Stars who don't participate (ex : as spectators) (multi)"
 	}) }}
-	<a href="{{ path('editorNewPerson') }}" title="Create a new person if not already in the database">add a person</a>
+	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
 
 	{{form_row(numberForm.validationPerformance)}}
 
@@ -114,20 +114,20 @@ todo : créer une fonction ordre alpha dans repository pour les persons by name?
 	<h3>Backstage & integration</h3>
 
 	{{form_row(numberForm.spectators_thesaurus, {
-		'label' : "Spectators - Are there spectators within the scene ? (from thesaurus) (1 choice) (mandatory)"
+		'label' : "Are there spectators within the scene ? + Is there a direct adress (from thesaurus) (1 choice) (mandatory)"
 	})}}
 	{{form_row(numberForm.diegetic_thesaurus,{
-		'label' : "Diegetic - Is this an onstage number or a diegetic performance ? (from thesaurus) (1 choice) (mandatory)"
+		'label' : "Is this an onstage number or a diegetic performance ? (from thesaurus) (1 choice) (mandatory)"
 	} )}}
 	{{form_row(numberForm.musician_thesaurus, {
-		'label' : "Musician - Are there visible musician? (from thesaurus) (1 choice) (mandatory)"
+		'label' : "Are there visible musicians? (from thesaurus) (1 choice) (mandatory)"
 	})}}
 	{#{{form_row(numberForm.integration)}}#}
 	{{form_row(numberForm.integration_thesaurus, {
 		'label' : "Integration (from thesaurus) (1 choice) (mandatory)"
 	})}}
 	{{form_row(numberForm.integoptions, {
-		'label' : "Integration Options (from thesaurus) (multi) (optional)"
+		'label' : "Integration : specific effects (from thesaurus) (multi) (optional)"
 	})}}
 	{{form_row(numberForm.validationBackstage)}}
 
@@ -148,12 +148,23 @@ todo : validation
 	})}}
 
 	{{ form_row(numberForm.stereotype, {
-		'label' : "Stereotypes (from thesaurus) (multi)"
+		'label' : "Ethnic stereotypes : is there any ethnic impersonation (accent,  make up, ...)? (from thesaurus) (multi)"
 	}) }}
-	{{ form_row(numberForm.diegeticPlace) }}
-	{{form_row(numberForm.imaginary)}}
-	{{form_row(numberForm.exoticism)}}
-	{#{{form_row(numberForm.exoticism_thesaurus)}}#}
+	{#{{ form_row(numberForm.diegeticPlace) }}#}
+	{#{{ form_row(numberForm.socialPlace) }}#}
+	{{ form_row(numberForm.diegetic_place_thesaurus, {
+		'label' : "Diegetic place (from thesaurus) (multi) (mandatory)"
+	}) }}
+	{{ form_row(numberForm.general_localisation, {
+		"label" : "General localisation (from thesaurus) (multi) (optional)"
+	}) }}
+	{{form_row(numberForm.imaginary, {
+		'label' : "Imaginary place (from thesaurus) (multi) (optional)"
+	})}}
+	{#{{form_row(numberForm.exoticism)}}#}
+	{{form_row(numberForm.exoticism_thesaurus, {
+		"label" : "General exoticism (linked to dancing styles, settings, ...) (from thesaurus) (multi) (optional)"
+	})}}
 	{{form_row(numberForm.validationTheme)}}
 </div>
 
@@ -165,6 +176,8 @@ todo : validation
 		'label' : "Mood (from thesaurus)"
 	})}}
 	#}
+	{{ form_row(numberForm.general_mood) }}
+	{{ form_row(numberForm.genre) }}
 	{{form_row(numberForm.validationMood)}}
 </div>
 
@@ -175,11 +188,15 @@ todo : validation
 	{{form_row(numberForm.choregraphers, {
 		'label' : "Choregraphers"
 	})}}
-	<a href="{{ path('editorNewPerson') }}" title="Create a new person if not already in the database">add a person</a>
+	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
 
 
-	{{form_row(numberForm.dancemble)}}
-	{{form_row(numberForm.dance)}}
+	{{form_row(numberForm.dancemble, {
+		"label" : "Dancing ensemble (from thesaurus) (multi) (mandatory)"
+	})}}
+	{{form_row(numberForm.dancingType)}}
+	{{form_row(numberForm.danceSubgenre)}}
+	{{form_row(numberForm.danceContent)}}
 	{{form_row(numberForm.validationDance)}}
 </div>
 
@@ -190,17 +207,17 @@ todo : validation
 	{{form_row(numberForm.song)}}
 	{{form_row(numberForm.musensemble)}}
 	{{form_row(numberForm.dubbing)}}
-	{{form_row(numberForm.tempo)}}
+	{{form_row(numberForm.tempo_thesaurus)}}
 
 	{{form_row(numberForm.musical, {
 		'label' : "Musical style"
 	})}}
 
 	{{form_row(numberForm.arrangers )}}
-	<a href="{{ path('editorNewPerson') }}" title="Create a new person if not already in the database">add a person</a>
+	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
 
 	{{form_row(numberForm.arrangerComment)}}
-	{{form_row(numberForm.lyrics)}}
+	{{form_row(numberForm.lyrics, { 'attr': {'class': 'materialize-textarea'}})}}
 
 	{{form_row(numberForm.validationMusic)}}
 
@@ -211,13 +228,11 @@ todo : validation
 
 	<h3>Intertextuality / References</h3>
 
-	{#
 	{{form_row(numberForm.source_thesaurus, {
 		'label' : "Source (from thesaurus) (mandatory) (multi)"
 	})}}
-	#}
-	{{form_row(numberForm.quotation, {
-		'label' : "Quotation (multi)"
+	{{form_row(numberForm.quotation_thesaurus, {
+		'label' : "Quotation (1 choice)"
 	})}}
 	{{form_row(numberForm.quotation_text)}}
 	{{form_row(numberForm.validationReference)}}
@@ -229,9 +244,9 @@ todo : validation
 	<h3>Complement</h3>
 
 	{{form_row(numberForm.director)}}
-	<a href="{{ path('editorNewPerson') }}" title="Create a new person if not already in the database">add a person</a>
+	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
 	{{form_row(numberForm.cost)}}
-	{{form_row(numberForm.costComment)}}
+	{{form_row(numberForm.costComment, { 'attr': {'class': 'materialize-textarea'}}) }}
 	{{form_row(numberForm.validationCost)}}
 
 	</div>

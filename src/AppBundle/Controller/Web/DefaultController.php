@@ -23,7 +23,7 @@ class DefaultController extends Controller
         // dump($em->getRepository('AppBundle:Number'));
 
         //all films
-        $films = $em->getRepository('AppBundle:Film')->findAll(); 
+        $films = $em->getRepository('AppBundle:Film')->findAll();
         // $films = $em->getRepository('AppBundle:Film')
         //     ->findAllOrderdByTitle();
 

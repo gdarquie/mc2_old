@@ -1,18 +1,63 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+	{{ parent() }}
+	<style>
+		.menu li{
+			padding-left: 15px;
+			cursor:pointer;
+		}
+	</style>
+{% endblock %}
+
 {% block body %}
 
-<div class="container">
+<div class="container-fluid row">
 
-<h1>Add a number</h1>
+	<section class="col s3 menu">
+		<h3>Navigation</h3>
+		<li >Title</li>
+		<li>Outlines</li>
+		<li>Structure</li>
+		<li>Shots</li>
+		<li>Performers</li>
+		<li>Backstage & integration</li>
+		<li>Themes</li>
+		<li>Tone</li>
+		<li>Dance</li>
+		<li>Music</li>
+		<li>Intertextuality / References</li>
+		<li>Complement</li>
+	</section>
 
-{{ form_start(numberForm)}}
+	<section class="col s8">
 
-	{{ include('editor/number/_form.html.twig')}}
-	<button class="btn black" type="submit" novalidate >New Number</button>
+	<h1>Add a number</h1>
 
-{{ form_end(numberForm)}}
+	{{ form_start(numberForm)}}
 
+		{{ include('editor/number/_form.html.twig')}}
+		<button class="btn black" type="submit" novalidate >New Number</button>
+
+	{{ form_end(numberForm)}}
+	</section>
 </div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+//		$(".menu li:not(.active)").hide();
+
+		$(".menu li").click(function(){
+			$(".menu li").removeClass("active");
+			$(this).addClass("active");
+
+			var nbItem = $(this ).index();
+			$(".cartouche").hide();
+			$("form .cartouche:nth-child("+nbItem+")").fadeIn();
+		});
+	</script>
 
 {% endblock %}

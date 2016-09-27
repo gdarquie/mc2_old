@@ -153,13 +153,6 @@ class Number
     private $diegeticPlace;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="imaginary", type="string", length=500, nullable=true)
-     */
-    private $imaginary;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="validation_theme", type="integer", nullable=true)
@@ -443,10 +436,28 @@ class Number
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="dance_id", referencedColumnName="thesaurus_id")
+     *   @ORM\JoinColumn(name="$dancingtype_id", referencedColumnName="thesaurus_id")
      * })
      */
-    private $dance;
+    private $dancingType;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="$dancingtype_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $danceSubgenre;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="$dancecontent_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $danceContent;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -600,6 +611,69 @@ class Number
      * })
      */
     private $dancemble;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="imaginary_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $imaginary;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="diegetic_place_thesaurus_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $diegetic_place_thesaurus;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="general_localisation_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $general_localisation;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tempo_thesaurus", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $tempo_thesaurus;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="quotation_thesaurus", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $quotation_thesaurus;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="general_mood_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $general_mood;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="genre_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $genre;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -1182,30 +1256,6 @@ class Number
     public function getDiegeticPlace()
     {
         return $this->diegeticPlace;
-    }
-
-    /**
-     * Set imaginary
-     *
-     * @param string $imaginary
-     *
-     * @return Number
-     */
-    public function setImaginary($imaginary)
-    {
-        $this->imaginary = $imaginary;
-
-        return $this;
-    }
-
-    /**
-     * Get imaginary
-     *
-     * @return string
-     */
-    public function getImaginary()
-    {
-        return $this->imaginary;
     }
 
     /**
@@ -2413,22 +2463,166 @@ class Number
         $this->director = $director;
     }
 
+
     /**
      * @return Thesaurus
      */
-    public function getDance()
+    public function getDancingType()
     {
-        return $this->dance;
+        return $this->dancingType;
     }
 
     /**
-     * @param Thesaurus $dance
+     * @param Thesaurus $dancingType
      */
-    public function setDance($dance)
+    public function setDancingType($dancingType)
     {
-        $this->dance = $dance;
+        $this->dancingType = $dancingType;
     }
 
+    /**
+     * @return Thesaurus
+     */
+    public function getDanceSubgenre()
+    {
+        return $this->danceSubgenre;
+    }
+
+    /**
+     * @param Thesaurus $danceSubgenre
+     */
+    public function setDanceSubgenre($danceSubgenre)
+    {
+        $this->danceSubgenre = $danceSubgenre;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getDanceContent()
+    {
+        return $this->danceContent;
+    }
+
+    /**
+     * @param Thesaurus $danceContent
+     */
+    public function setDanceContent($danceContent)
+    {
+        $this->danceContent = $danceContent;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getGeneralLocalisation()
+    {
+        return $this->general_localisation;
+    }
+
+    /**
+     * @param Thesaurus $general_localisation
+     */
+    public function setGeneralLocalisation($general_localisation)
+    {
+        $this->general_localisation = $general_localisation;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getDiegeticPlaceThesaurus()
+    {
+        return $this->diegetic_place_thesaurus;
+    }
+
+    /**
+     * @param Thesaurus $diegetic_place_thesaurus
+     */
+    public function setDiegeticPlaceThesaurus($diegetic_place_thesaurus)
+    {
+        $this->diegetic_place_thesaurus = $diegetic_place_thesaurus;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getImaginary()
+    {
+        return $this->imaginary;
+    }
+
+    /**
+     * @param Thesaurus $imaginary
+     */
+    public function setImaginary($imaginary)
+    {
+        $this->imaginary = $imaginary;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getGeneralMood()
+    {
+        return $this->general_mood;
+    }
+
+    /**
+     * @param Thesaurus $general_mood
+     */
+    public function setGeneralMood($general_mood)
+    {
+        $this->general_mood = $general_mood;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+
+    /**
+     * @param Thesaurus $genre
+     */
+    public function setGenre($genre)
+    {
+        $this->genre = $genre;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getTempoThesaurus()
+    {
+        return $this->tempo_thesaurus;
+    }
+
+    /**
+     * @param Thesaurus $tempo_thesaurus
+     */
+    public function setTempoThesaurus($tempo_thesaurus)
+    {
+        $this->tempo_thesaurus = $tempo_thesaurus;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getQuotationThesaurus()
+    {
+        return $this->quotation_thesaurus;
+    }
+
+    /**
+     * @param Thesaurus $quotation_thesaurus
+     */
+    public function setQuotationThesaurus($quotation_thesaurus)
+    {
+        $this->quotation_thesaurus = $quotation_thesaurus;
+    }
 
 
 
