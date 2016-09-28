@@ -27,6 +27,11 @@ class Number
     private $validationTitle;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeTitle;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="begin_tc", type="integer", nullable=true)
@@ -68,6 +73,12 @@ class Number
      */
     private $validationTc;
 
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeTc;
+
     /**
      * @var integer
      *
@@ -81,6 +92,11 @@ class Number
      * @ORM\Column(name="validation_structure", type="integer", nullable=true)
      */
     private $validationStructure;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeStructure;
 
     /**
      * @var integer
@@ -97,6 +113,11 @@ class Number
     private $validationShots;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeShots;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="performance", type="string", length=255, nullable=true)
@@ -109,6 +130,11 @@ class Number
      * @ORM\Column(name="validation_performance", type="integer", nullable=true)
      */
     private $validationPerformance;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completePerformance;
 
     /**
      * @var string
@@ -146,6 +172,11 @@ class Number
     private $validationBackstage;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeBackstage;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="diegetic_place", type="string", length=255, nullable=true)
@@ -160,6 +191,11 @@ class Number
     private $validationTheme;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeTheme;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="validation_mood", type="integer", nullable=true)
@@ -167,11 +203,21 @@ class Number
     private $validationMood;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeMood;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="validation_dance", type="integer", nullable=true)
      */
     private $validationDance;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeDance;
 
     /**
      * @var string
@@ -209,11 +255,21 @@ class Number
     private $validationMusic;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeMusic;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="validation_director", type="integer", nullable=true)
      */
     private $validationDirector;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeDirector;
 
     /**
      * @var integer
@@ -237,6 +293,11 @@ class Number
     private $validationCost;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeCost;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="source", type="string", length=45, nullable=true)
@@ -249,6 +310,11 @@ class Number
      * @ORM\Column(name="validation_reference", type="integer", nullable=true)
      */
     private $validationReference;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeReference;
 
 
     /**
@@ -2622,6 +2688,214 @@ class Number
     public function setQuotationThesaurus($quotation_thesaurus)
     {
         $this->quotation_thesaurus = $quotation_thesaurus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteTitle()
+    {
+        return $this->completeTitle;
+    }
+
+    /**
+     * @param mixed $completeTitle
+     */
+    public function setCompleteTitle($completeTitle)
+    {
+        $this->completeTitle = $completeTitle;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteTc()
+    {
+        return $this->completeTc;
+    }
+
+    /**
+     * @param mixed $completeTc
+     */
+    public function setCompleteTc($completeTc)
+    {
+        $this->completeTc = $completeTc;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteStructure()
+    {
+        return $this->completeStructure;
+    }
+
+    /**
+     * @param mixed $completeStructure
+     */
+    public function setCompleteStructure($completeStructure)
+    {
+        $this->completeStructure = $completeStructure;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteShots()
+    {
+        return $this->completeShots;
+    }
+
+    /**
+     * @param mixed $completeShots
+     */
+    public function setCompleteShots($completeShots)
+    {
+        $this->completeShots = $completeShots;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompletePerformance()
+    {
+        return $this->completePerformance;
+    }
+
+    /**
+     * @param mixed $completePerformance
+     */
+    public function setCompletePerformance($completePerformance)
+    {
+        $this->completePerformance = $completePerformance;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteBackstage()
+    {
+        return $this->completeBackstage;
+    }
+
+    /**
+     * @param mixed $completeBackstage
+     */
+    public function setCompleteBackstage($completeBackstage)
+    {
+        $this->completeBackstage = $completeBackstage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteTheme()
+    {
+        return $this->completeTheme;
+    }
+
+    /**
+     * @param mixed $completeTheme
+     */
+    public function setCompleteTheme($completeTheme)
+    {
+        $this->completeTheme = $completeTheme;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteMood()
+    {
+        return $this->completeMood;
+    }
+
+    /**
+     * @param mixed $completeMood
+     */
+    public function setCompleteMood($completeMood)
+    {
+        $this->completeMood = $completeMood;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteDance()
+    {
+        return $this->completeDance;
+    }
+
+    /**
+     * @param mixed $completeDance
+     */
+    public function setCompleteDance($completeDance)
+    {
+        $this->completeDance = $completeDance;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteMusic()
+    {
+        return $this->completeMusic;
+    }
+
+    /**
+     * @param mixed $completeMusic
+     */
+    public function setCompleteMusic($completeMusic)
+    {
+        $this->completeMusic = $completeMusic;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteDirector()
+    {
+        return $this->completeDirector;
+    }
+
+    /**
+     * @param mixed $completeDirector
+     */
+    public function setCompleteDirector($completeDirector)
+    {
+        $this->completeDirector = $completeDirector;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteCost()
+    {
+        return $this->completeCost;
+    }
+
+    /**
+     * @param mixed $completeCost
+     */
+    public function setCompleteCost($completeCost)
+    {
+        $this->completeCost = $completeCost;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteReference()
+    {
+        return $this->completeReference;
+    }
+
+    /**
+     * @param mixed $completeReference
+     */
+    public function setCompleteReference($completeReference)
+    {
+        $this->completeReference = $completeReference;
     }
 
 

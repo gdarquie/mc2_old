@@ -13,6 +13,10 @@
 
 	{# {{form_row(numberForm.film)}} #}
 
+	{{ form_widget(numberForm.completeTitle) }}
+	{{ form_label(numberForm.completeTitle, "Completed?") }}
+	{{ form_errors(numberForm.completeTitle) }}
+
 	{{form_row(numberForm.validationTitle)}}
 </div>
 
@@ -44,6 +48,11 @@ todo : validation
 		'label' : "Is the number interrupted and are there reprises? (from thesaurus) (1 choice only for the moment) (optional)"
 	}) }}
 
+	{{ form_widget(numberForm.completeTc) }}
+	{{ form_label(numberForm.completeTc, "Completed?") }}
+	{{ form_errors(numberForm.completeTc) }}
+
+
 	{{form_row(numberForm.validationTc)}}
 </div>
 
@@ -59,6 +68,10 @@ todo : validation
 	{{form_row(numberForm.structure, {
 		'label' : "Structure (from thesaurus) (1 choice) (mandatory)"
 	})}}
+
+	{{ form_widget(numberForm.completeStructure) }}
+	{{ form_label(numberForm.completeStructure, "Completed?") }}
+	{{ form_errors(numberForm.completeStructure) }}
 	{{form_row(numberForm.validationStructure)}}
 
 </div>
@@ -73,6 +86,9 @@ todo : validation
 	{{form_row(numberForm.shots, {
 		'label' : "Number of shots"
 	})}}
+	{{ form_widget(numberForm.completeShots) }}
+	{{ form_label(numberForm.completeShots, "Completed?") }}
+	{{ form_errors(numberForm.completeShots) }}
 	{{form_row(numberForm.validationShots)}}
 
 </div>
@@ -100,6 +116,9 @@ todo : validation
 	}) }}
 	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
 
+	{{ form_widget(numberForm.completePerformance) }}
+	{{ form_label(numberForm.completePerformance, "Completed?") }}
+	{{ form_errors(numberForm.completePerformance) }}
 	{{form_row(numberForm.validationPerformance)}}
 
 </div>
@@ -129,6 +148,10 @@ todo : créer une fonction ordre alpha dans repository pour les persons by name?
 	{{form_row(numberForm.integoptions, {
 		'label' : "Integration : specific effects (from thesaurus) (multi) (optional)"
 	})}}
+
+	{{ form_widget(numberForm.completeBackstage) }}
+	{{ form_label(numberForm.completeBackstage, "Completed?") }}
+	{{ form_errors(numberForm.completeBackstage) }}
 	{{form_row(numberForm.validationBackstage)}}
 
 </div>
@@ -165,6 +188,10 @@ todo : validation
 	{{form_row(numberForm.exoticism_thesaurus, {
 		"label" : "General exoticism (linked to dancing styles, settings, ...) (from thesaurus) (multi) (optional)"
 	})}}
+	{{ form_widget(numberForm.completeTheme) }}
+	{{ form_label(numberForm.completeTheme, "Completed?") }}
+	{{ form_errors(numberForm.completeTheme) }}
+
 	{{form_row(numberForm.validationTheme)}}
 </div>
 
@@ -178,6 +205,10 @@ todo : validation
 	#}
 	{{ form_row(numberForm.general_mood) }}
 	{{ form_row(numberForm.genre) }}
+
+	{{ form_widget(numberForm.completeMood) }}
+	{{ form_label(numberForm.completeMood, "Completed?") }}
+	{{ form_errors(numberForm.completeMood) }}
 	{{form_row(numberForm.validationMood)}}
 </div>
 
@@ -197,6 +228,11 @@ todo : validation
 	{{form_row(numberForm.dancingType)}}
 	{{form_row(numberForm.danceSubgenre)}}
 	{{form_row(numberForm.danceContent)}}
+
+	{{ form_widget(numberForm.completeDance) }}
+	{{ form_label(numberForm.completeDance, "Completed?") }}
+	{{ form_errors(numberForm.completeDance) }}
+
 	{{form_row(numberForm.validationDance)}}
 </div>
 
@@ -219,6 +255,10 @@ todo : validation
 	{{form_row(numberForm.arrangerComment)}}
 	{{form_row(numberForm.lyrics, { 'attr': {'class': 'materialize-textarea'}})}}
 
+	{{ form_widget(numberForm.completeMusic) }}
+	{{ form_label(numberForm.completeMusic, "Completed?") }}
+	{{ form_errors(numberForm.completeMusic) }}
+
 	{{form_row(numberForm.validationMusic)}}
 
 
@@ -235,11 +275,16 @@ todo : validation
 		'label' : "Quotation (1 choice)"
 	})}}
 	{{form_row(numberForm.quotation_text)}}
+
+	{{ form_widget(numberForm.completeReference) }}
+	{{ form_label(numberForm.completeReference, "Completed?") }}
+	{{ form_errors(numberForm.completeReference) }}
+
 	{{form_row(numberForm.validationReference)}}
 
-	</div>
+</div>
 
-	<div class="cartouche">
+<div class="cartouche">
 
 	<h3>Complement</h3>
 
@@ -247,9 +292,14 @@ todo : validation
 	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
 	{{form_row(numberForm.cost)}}
 	{{form_row(numberForm.costComment, { 'attr': {'class': 'materialize-textarea'}}) }}
+
+	{{ form_widget(numberForm.completeCost) }}
+	{{ form_label(numberForm.completeCost, "Completed?") }}
+	{{ form_errors(numberForm.completeCost) }}
+
 	{{form_row(numberForm.validationCost)}}
 
-	</div>
+</div>
 
 
 	<div class="cartouche">

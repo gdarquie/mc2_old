@@ -46,6 +46,7 @@ class NumberType extends AbstractType
 
                 //'disabled' => true, //mais false si admin?
             ))
+            ->add('completeTitle')
             ->add('validationTitle', ChoiceType::class, [
                 'choices' => [
                     //créer un repository pour validation?
@@ -92,6 +93,7 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("completOptions");
                 }
             ))
+            ->add('completeTc')
             ->add('validationTc', ChoiceType::class, [
                 'choices' => [
                     //créer un repository pour validation?
@@ -109,10 +111,12 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("structure");
                 }
             ))
+            ->add('completeStructure')
             ->add('validationStructure')
 
             //Shots
             ->add('shots')
+            ->add('completeShots')
             ->add('validationShots')
 
             //Performers
@@ -133,6 +137,7 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("performance");
                 }
             ))
+            ->add('completePerformance')
             ->add('validationPerformance')
 
             //Backstage
@@ -175,6 +180,7 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("integoptions");
                 }
             ))
+            ->add('completeBackstage')
             ->add('validationBackstage')
             
             //Themes
@@ -222,6 +228,7 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("exoticism");
                 }
             ))
+            ->add('completeTheme')
             ->add('validationTheme')
 
             //Mood
@@ -246,6 +253,7 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByTypeAndCategory("mood", "genre");
                 }// diviser par type ensuite
             ))
+            ->add('completeMood')
             ->add('validationMood')
 
             //Dance
@@ -280,6 +288,7 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByTypeAndCategory("dance", "Dance content");
                 }// diviser par type ensuite
             ))
+            ->add('completeDance')
             ->add('validationDance')
 
             //Music
@@ -304,6 +313,7 @@ class NumberType extends AbstractType
             //add('musical_thesaurus')
             ->add('arrangers')
             ->add('arrangerComment')
+            ->add('completeMusic')
             ->add('validationMusic')
 
 
@@ -311,6 +321,7 @@ class NumberType extends AbstractType
             ->add('director')
             ->add('cost')
             ->add('costComment')
+            ->add('completeCost')
             ->add('validationCost')
 
             //Reference
@@ -324,6 +335,7 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("source");
                 }
             ))
+            ->add('completeReference')
             ->add('validationReference')
 
             //???
