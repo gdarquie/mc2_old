@@ -16,18 +16,18 @@
 
     <section class="col s3 menu">
         <h3>Navigation</h3>
-        <li >Title</li>
-        <li>Outlines</li>
-        <li>Structure</li>
-        <li>Shots</li>
-        <li>Performers</li>
-        <li>Backstage & integration</li>
-        <li>Themes</li>
-        <li>Tone</li>
-        <li>Dance</li>
-        <li>Music</li>
-        <li>Intertextuality / References</li>
-        <li>Complement</li>
+        <li >Title {% if number.completeTitle %}<i class="material-icons tiny green-text">done</i>{% endif %}</li>
+        <li>Outlines {% if number.completeTc %}<i class="material-icons tiny green-text">done</i>{% endif %}</li>
+        <li>Structure {% if number.completeStructure %}<i class="material-icons tiny green-text">done</i>{% endif %}</li>
+        <li>Shots {% if number.completeShots %}<i class="material-icons tiny green-text">done</i>{% endif %}</li>
+        <li>Performers {% if number.completePerformance %}<i class="material-icons tiny green-text">done</i>{% endif %}</li>
+        <li>Backstage & integration {% if number.completeBackstage %}<i class="material-icons tiny green-text">done</i>{% endif %}</li>
+        <li>Themes {% if number.completeTheme %}<i class="material-icons tiny green-text">done</i>{% endif %}</li>
+        <li>Tone {% if number.completeMood %}<i class="material-icons tiny green-text">done</i>{% endif %}</li>
+        <li>Dance {% if number.completeDance %}<i class="material-icons tiny green-text">done</i>{% endif %}</li>
+        <li>Music {% if number.completeMusic %}<i class="material-icons tiny green-text">done</i>{% endif %}</li>
+        <li>Intertextuality / References {% if number.completeReference %}<i class="material-icons tiny green-text">done</i>{% endif %}</li>
+        <li>Complement {% if number.completeCost %}<i class="material-icons tiny green-text">done</i>{% endif %}</li>
     </section>
 
     <section class="col s8">
@@ -38,8 +38,8 @@
 
         {{ include('editor/number/_form.html.twig')}}
 
-        <button class="btn black" type="submit" novalidate>Save</button>
-        <button class="btn black" type="submit" novalidate>Save & Exit</button>
+        <button class="btn black" type="submit" formnovalidate>Save</button>
+        <button class="btn black" type="submit" formnovalidate>Save & Exit</button>
 
         {{ form_end(numberForm)}}
     </section>

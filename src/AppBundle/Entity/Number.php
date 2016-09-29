@@ -2,7 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Number
@@ -13,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Number
 {
     /**
+     * @Assert\NotBlank()
+     *
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
@@ -20,6 +24,7 @@ class Number
     private $title;
 
     /**
+     *
      * @var integer
      *
      * @ORM\Column(name="validation_title", type="integer", nullable=true)
@@ -99,6 +104,8 @@ class Number
     private $completeStructure;
 
     /**
+     * @Assert\Range(min=0, minMessage="Negative number of shots! Come on...")
+     *
      * @var integer
      *
      * @ORM\Column(name="shots", type="integer", nullable=true)
@@ -488,40 +495,64 @@ class Number
      */
     private $integration_thesaurus;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="integoptions_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_thesaurus",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="integoptions_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $integoptions;
 
-
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="$dancingtype_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_dancingtype",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="$dancingtype_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $dancingType;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="$dancingtype_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_dancesubgenre",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="$dancesubgenre_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $danceSubgenre;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="$dancecontent_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_dancecontent",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="$dancecontent_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $danceContent;
 
@@ -576,31 +607,48 @@ class Number
     */
     private $structure;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="musensemble_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_musensemble",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="musensemble_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $musensemble;
 
-
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="costume_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_costume",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="costume_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $costumes;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="stereotype_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_stereotype",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="stereotype_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $stereotype;
 
@@ -614,13 +662,18 @@ class Number
      */
     private $mood_thesaurus;
 
-
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="source_thesaurus_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_source",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="source_thesaurus_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $source_thesaurus;
 
@@ -660,48 +713,79 @@ class Number
      */
     private $musician_thesaurus;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="exoticism_thesaurus_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_exoticismthesaurus",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="exoticism_thesaurus_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $exoticism_thesaurus;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="dancemble_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_dancemble",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="dancemble_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $dancemble;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="imaginary_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_imaginary",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="imaginary_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $imaginary;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="diegetic_place_thesaurus_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_diegeticplace",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="diegetic_place_thesaurus_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $diegetic_place_thesaurus;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="general_localisation_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_generallocalisation",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="general_localisation_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $general_localisation;
 
@@ -723,14 +807,35 @@ class Number
      */
     private $quotation_thesaurus;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="general_mood_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_generalmood",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="general_mood_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $general_mood;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_musicalthesaurus",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="musical_thesaurus_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $musical_thesaurus;
 
     /** @var  \AppBundle\Entity\Thesaurus
      *
@@ -2896,6 +3001,22 @@ class Number
     public function setCompleteReference($completeReference)
     {
         $this->completeReference = $completeReference;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getMusicalThesaurus()
+    {
+        return $this->musical_thesaurus;
+    }
+
+    /**
+     * @param Thesaurus $musical_thesaurus
+     */
+    public function setMusicalThesaurus($musical_thesaurus)
+    {
+        $this->musical_thesaurus = $musical_thesaurus;
     }
 
 

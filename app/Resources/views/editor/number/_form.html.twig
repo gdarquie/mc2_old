@@ -198,13 +198,13 @@ todo : validation
 <div class="cartouche">
 
 	<h3>Tone</h3>
-	{#
-	{{form_row(numberForm.mood_thesaurus, {
-		'label' : "Mood (from thesaurus)"
-	})}}
-	#}
-	{{ form_row(numberForm.general_mood) }}
-	{{ form_row(numberForm.genre) }}
+
+	{{ form_row(numberForm.general_mood, {
+		"label" : "Tone (from thesaurus) (multi) (optional if genre is completed)",
+	}) }}
+	{{ form_row(numberForm.genre, {
+		"label" : "Genre (from thesaurus) (1 choice) (optional)"
+	}) }}
 
 	{{ form_widget(numberForm.completeMood) }}
 	{{ form_label(numberForm.completeMood, "Completed?") }}
@@ -225,9 +225,15 @@ todo : validation
 	{{form_row(numberForm.dancemble, {
 		"label" : "Dancing ensemble (from thesaurus) (multi) (mandatory)"
 	})}}
-	{{form_row(numberForm.dancingType)}}
-	{{form_row(numberForm.danceSubgenre)}}
-	{{form_row(numberForm.danceContent)}}
+	{{form_row(numberForm.dancingType, {
+		"label" : "Dancing type (from thesaurus) (multi) (mandatory)"
+	})}}
+	{{form_row(numberForm.danceSubgenre, {
+		"label" : "Dance subgenre (from thesaurus) (multi) (optional)"
+	})}}
+	{{form_row(numberForm.danceContent, {
+		"label" : "Dance content (from thesaurus) (multi) (optional)"
+	})}}
 
 	{{ form_widget(numberForm.completeDance) }}
 	{{ form_label(numberForm.completeDance, "Completed?") }}
@@ -241,12 +247,16 @@ todo : validation
 	<h3>Music</h3>
 
 	{{form_row(numberForm.song)}}
-	{{form_row(numberForm.musensemble)}}
+	{{form_row(numberForm.musensemble, {
+		"label" : "Music ensemble (from thesaurus) (multi) (mandatory)"
+	})}}
 	{{form_row(numberForm.dubbing)}}
-	{{form_row(numberForm.tempo_thesaurus)}}
+	{{form_row(numberForm.tempo_thesaurus, {
+		"label" : "Tempo (from thesaurus) (1 choice) (mandatory)"
+	})}}
 
-	{{form_row(numberForm.musical, {
-		'label' : "Musical style"
+	{{form_row(numberForm.musical_thesaurus, {
+		'label' : "Musical style (from thesaurus) (multi) (mandatory)"
 	})}}
 
 	{{form_row(numberForm.arrangers )}}
@@ -272,7 +282,7 @@ todo : validation
 		'label' : "Source (from thesaurus) (mandatory) (multi)"
 	})}}
 	{{form_row(numberForm.quotation_thesaurus, {
-		'label' : "Quotation (1 choice)"
+		'label' : "Quotation (from thesaurus) (1 choice)"
 	})}}
 	{{form_row(numberForm.quotation_text)}}
 

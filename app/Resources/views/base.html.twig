@@ -45,6 +45,7 @@
             <div class="nav-wrapper container">
                 <a href="/" class="brand-logo left">MC2</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li>Version 0.1.0 (alpha)</li>
                     <li><a href="{{ path('thesaurus', {'type' : "all"}) }}">thesaurus</a></li>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <li>connected as {{ app.user.username }}</li>
