@@ -74,7 +74,8 @@ class NumberType extends AbstractType
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
                     return $repo->findAllThesaurusByType("begin");
-                }
+                },
+                'empty_data' => null,
             ))
             //Ending (Thesaurus)
             ->add('endingThesaurus', EntityType::class, array(
@@ -83,7 +84,8 @@ class NumberType extends AbstractType
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
                     return $repo->findAllThesaurusByType("ending");
-                }
+                },
+                'empty_data' => null
             ))
             ->add('completenessThesaurus', EntityType::class, array(
                 'placeholder' => '',
