@@ -3,16 +3,19 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Song
  *
  * @ORM\Table(name="song")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SongRepository")
  */
 class Song
 {
     /**
+     * @Assert\NotBlank()
+     *
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=500, nullable=false)
@@ -33,12 +36,6 @@ class Song
      */
     private $type;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="timestamp", type="datetime", nullable=false)
-     */
-    private $timestamp = 'CURRENT_TIMESTAMP';
 
     /**
      * @var integer
@@ -231,30 +228,6 @@ class Song
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * Set timestamp
-     *
-     * @param \DateTime $timestamp
-     *
-     * @return Song
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->timestamp = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Get timestamp
-     *
-     * @return \DateTime
-     */
-    public function getTimestamp()
-    {
-        return $this->timestamp;
     }
 
     /**

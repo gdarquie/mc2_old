@@ -16,8 +16,13 @@
 
     <div class="row">
 
-         <h1>{{film.title}}</h1>
-         <hr>
+        <h1>{{film.title}}</h1>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} <!-- combiner les deux fonctionnalités admin dans un même champ ? -->
+        <div class="right">
+            <a href="{{path('number_new', {filmId : film.filmId }) }}"><button class="btn teal">Add a number</button></a>
+            {#<a href="#"><button class="btn red">Complete</button></a> <!-- définir une fonction pour bloquer les numbers -->#}
+        </div>
+        {% endif %}
     </div>
 
     <div class="row">
@@ -63,10 +68,7 @@
 
             </table>
 
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} <!-- combiner les deux fonctionnalités admin dans un même champ ? -->
-                <a href="{{path('number_new', {filmId : film.filmId }) }}"><button class="btn teal">Add a number</button></a>
-                <a href="#"><button class="btn red">Complete</button></a> <!-- définir une fonction pour bloquer les numbers -->
-            {% endif %}
+
 
         </article>
 

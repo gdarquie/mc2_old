@@ -36,6 +36,7 @@ class EditorController extends Controller
 
         //All Persons
         $persons = $em->getRepository('AppBundle:Person')->findAll();
+
         
         return $this->render('editor/index.html.twig', array(
             'films' => $films,
@@ -54,16 +55,40 @@ class EditorController extends Controller
     {
 
         $form = $this->createForm(NumberType::class); //add $number
-
+        //add a number
+        //add an user
         $form->handleRequest($request);
+
+//        dump($form->getData());
+//        dump($filmId);
  
          if ($form->isSubmitted() && $form->isValid()){
 
             $number = $form->getData();
+            //récupération d'un film
+             $em = $this->getDoctrine()->getManager();
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($number);
-            $em->flush();
+             //all films
+             $film = $em->getRepository('AppBundle:Film')->findOneByFilmId($filmId);
+
+             //get user
+             $collection = new \Doctrine\Common\Collections\ArrayCollection();
+             $user = $this->getUser();
+             $collection->add($user);
+
+//             dump($collection);die;
+
+             $number->setFilm($film);
+             $number->setEditors($collection);
+
+             $em->persist($number);
+             $em->flush();
+
+             //ajout du film
+             //$filmId
+             //
+
+             //ajout de l'user
 
             $this->addFlash('success', 'Number created!');
 
@@ -90,7 +115,11 @@ class EditorController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()){
             // dump($form->getData());die;
-            $number = $form->getData();
+
+            $collection = new \Doctrine\Common\Collections\ArrayCollection();
+            $user = $this->getUser();
+            $collection->add($user);
+            $number->setEditors($collection);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($number);

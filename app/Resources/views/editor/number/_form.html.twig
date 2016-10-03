@@ -4,7 +4,7 @@
 
 	{{form_row(numberForm.title)}}
 
-	{{form_row(numberForm.film)}}
+	{#{{form_row(numberForm.film)}}#}
 	{# {% if filmId %}
 		numberForm.film = filmId
 	{% elseif filmId is null %} #}
@@ -13,16 +13,21 @@
 
 	{# {{form_row(numberForm.film)}} #}
 
+	{{ form_label(numberForm.commentTitle, "Title comment(s)") }}
+	{{ form_widget(numberForm.commentTitle, {
+		'attr': {'class': 'materialize-textarea'}
+	}) }}
+
+
 	{{ form_widget(numberForm.completeTitle) }}
-	{{ form_label(numberForm.completeTitle, "Completed?") }}
+	{{ form_label(numberForm.completeTitle, "Completed? (check when you're done with the whole section)") }}
 	{{ form_errors(numberForm.completeTitle) }}
 
-	{{form_row(numberForm.validationTitle)}}
+	{#{{form_row(numberForm.validationTitle)}}#}
 </div>
 
 {# ok pour title sauf pb avec sélection auto de film  -
 todo : selction auto de film quand new number
-todo : validation
 #}
 
 <div class="cartouche">
@@ -48,18 +53,19 @@ todo : validation
 		'label' : "Is the number interrupted and are there reprises? (from thesaurus) (1 choice only for the moment) (optional)"
 	}) }}
 
+	{{ form_label(numberForm.commentTc, "Timecode comment(s)") }}
+	{{ form_widget(numberForm.commentTc, {
+		'attr': {'class': 'materialize-textarea'}
+	}) }}
+
 	{{ form_widget(numberForm.completeTc) }}
 	{{ form_label(numberForm.completeTc, "Completed?") }}
 	{{ form_errors(numberForm.completeTc) }}
 
 
-	{{form_row(numberForm.validationTc)}}
+	{#{{form_row(numberForm.validationTc)}}#}
 </div>
 
-{# ok pour outlines sauf
-todo : many to many completOptions
-todo : validation
-#}
 
 <div class="cartouche">
 
@@ -69,33 +75,50 @@ todo : validation
 		'label' : "Structure (from thesaurus) (1 choice) (mandatory)"
 	})}}
 
+	{{ form_label(numberForm.commentStructure, "Structure comment(s)") }}
+	{{ form_widget(numberForm.commentStructure, {
+		'attr': {'class': 'materialize-textarea'}
+	}) }}
+
 	{{ form_widget(numberForm.completeStructure) }}
 	{{ form_label(numberForm.completeStructure, "Completed?") }}
 	{{ form_errors(numberForm.completeStructure) }}
-	{{form_row(numberForm.validationStructure)}}
+	{#{{form_row(numberForm.validationStructure)}}#}
 
 </div>
-
-{# ok pour structure sauf
-todo : validation
-#}
 
 <div class="cartouche">
 	<h3>Shots</h3>
 
+	<div id="tc_widget">
+		<div class="col s3">
+			<label for="tc_hour" >Hour(s)</label><input name="tc_hour" id="tc_hour" type="number"  min="0" max="4" />
+		</div>
+		<div class="col s3">
+			<label for="tc_min">Minute(s)</label><input name="tc_min" id="tc_min" type="number" min="0" max="60">
+		</div>
+		<div class="col s3">
+			<label for="tc_sec">Seconde(s)</label> <input name="tc_sec" id="tc_sec" type="number" min="0" max="60">
+		</div>
+	</div>
+	<div class="col s3">
 	{{form_row(numberForm.shots, {
 		'label' : "Number of shots"
 	})}}
+	</div>
+
+	{{ form_label(numberForm.commentShots, "Shots comment(s)") }}
+	{{ form_widget(numberForm.commentShots, {
+		'attr': {'class': 'materialize-textarea'}
+	}) }}
+
 	{{ form_widget(numberForm.completeShots) }}
 	{{ form_label(numberForm.completeShots, "Completed?") }}
 	{{ form_errors(numberForm.completeShots) }}
-	{{form_row(numberForm.validationShots)}}
+	{#{{form_row(numberForm.validationShots)}}#}
 
 </div>
 
-{# ok pour shots sauf
-todo : validation
-#}
 
 <div class="cartouche">
 
@@ -116,16 +139,19 @@ todo : validation
 	}) }}
 	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
 
+	{{ form_label(numberForm.commentPerformance, "Performance comment(s)") }}
+	{{ form_widget(numberForm.commentPerformance, {
+		'attr': {'class': 'materialize-textarea'}
+	}) }}
+
 	{{ form_widget(numberForm.completePerformance) }}
 	{{ form_label(numberForm.completePerformance, "Completed?") }}
 	{{ form_errors(numberForm.completePerformance) }}
-	{{form_row(numberForm.validationPerformance)}}
+	{#{{form_row(numberForm.validationPerformance)}}#}
 
 </div>
 
 {# ok pour Performers sauf
-todo : validation
-todo : créer une fonction ordre alpha dans repository pour les persons by name?
 #}
 
 <div class="cartouche">
@@ -149,18 +175,18 @@ todo : créer une fonction ordre alpha dans repository pour les persons by name?
 		'label' : "Integration : specific effects (from thesaurus) (multi) (optional)"
 	})}}
 
+	{{ form_label(numberForm.commentBackstage, "Backstage comment(s)") }}
+	{{ form_widget(numberForm.commentBackstage, {
+		'attr': {'class': 'materialize-textarea'}
+	}) }}
+
 	{{ form_widget(numberForm.completeBackstage) }}
 	{{ form_label(numberForm.completeBackstage, "Completed?") }}
 	{{ form_errors(numberForm.completeBackstage) }}
-	{{form_row(numberForm.validationBackstage)}}
+	{#{{form_row(numberForm.validationBackstage)}}#}
 
 </div>
 
-{#
-ok sauf
-todo : integoptions (plusieurs possibles - many to many)
-todo : validation
-#}
 
 <div class="cartouche">
 
@@ -188,11 +214,17 @@ todo : validation
 	{{form_row(numberForm.exoticism_thesaurus, {
 		"label" : "General exoticism (linked to dancing styles, settings, ...) (from thesaurus) (multi) (optional)"
 	})}}
+
+	{{ form_label(numberForm.commentTheme, "Theme comment(s)") }}
+	{{ form_widget(numberForm.commentTheme, {
+		'attr': {'class': 'materialize-textarea'}
+	}) }}
+
 	{{ form_widget(numberForm.completeTheme) }}
 	{{ form_label(numberForm.completeTheme, "Completed?") }}
 	{{ form_errors(numberForm.completeTheme) }}
 
-	{{form_row(numberForm.validationTheme)}}
+	{#{{form_row(numberForm.validationTheme)}}#}
 </div>
 
 <div class="cartouche">
@@ -203,13 +235,20 @@ todo : validation
 		"label" : "Tone (from thesaurus) (multi) (optional if genre is completed)",
 	}) }}
 	{{ form_row(numberForm.genre, {
-		"label" : "Genre (from thesaurus) (1 choice) (optional)"
+		"label" : "Genre (from thesaurus) (multi) (optional)"
+	}) }}
+	{{ form_label(numberForm.commentMood, "Mood comment(s)") }}
+	{{ form_widget(numberForm.commentMood, {
+		'attr': {'class': 'materialize-textarea'}
 	}) }}
 
 	{{ form_widget(numberForm.completeMood) }}
 	{{ form_label(numberForm.completeMood, "Completed?") }}
 	{{ form_errors(numberForm.completeMood) }}
-	{{form_row(numberForm.validationMood)}}
+
+	{#{{form_row(numberForm.validationMood)}}#}
+
+
 </div>
 
 <div class="cartouche">
@@ -235,11 +274,16 @@ todo : validation
 		"label" : "Dance content (from thesaurus) (multi) (optional)"
 	})}}
 
+	{{ form_label(numberForm.commentDance, "Dance comment(s)") }}
+	{{ form_widget(numberForm.commentDance, {
+		'attr': {'class': 'materialize-textarea'}
+	}) }}
+
 	{{ form_widget(numberForm.completeDance) }}
 	{{ form_label(numberForm.completeDance, "Completed?") }}
 	{{ form_errors(numberForm.completeDance) }}
 
-	{{form_row(numberForm.validationDance)}}
+	{#{{form_row(numberForm.validationDance)}}#}
 </div>
 
 <div class="cartouche">
@@ -250,7 +294,9 @@ todo : validation
 	{{form_row(numberForm.musensemble, {
 		"label" : "Music ensemble (from thesaurus) (multi) (mandatory)"
 	})}}
-	{{form_row(numberForm.dubbing)}}
+	{{form_row(numberForm.dubbing, {
+		"label" : "Dubber name + star name in brackets. Ex. Martha Mears (Rita Hayworth). If no dubbing : \"no\""
+	})}}
 	{{form_row(numberForm.tempo_thesaurus, {
 		"label" : "Tempo (from thesaurus) (1 choice) (mandatory)"
 	})}}
@@ -265,11 +311,16 @@ todo : validation
 	{{form_row(numberForm.arrangerComment)}}
 	{{form_row(numberForm.lyrics, { 'attr': {'class': 'materialize-textarea'}})}}
 
+	{{ form_label(numberForm.commentMusic, "Music comment(s)") }}
+	{{ form_widget(numberForm.commentMusic, {
+		'attr': {'class': 'materialize-textarea'}
+	}) }}
+
 	{{ form_widget(numberForm.completeMusic) }}
 	{{ form_label(numberForm.completeMusic, "Completed?") }}
 	{{ form_errors(numberForm.completeMusic) }}
 
-	{{form_row(numberForm.validationMusic)}}
+	{#{{form_row(numberForm.validationMusic)}}#}
 
 
 </div>
@@ -286,11 +337,16 @@ todo : validation
 	})}}
 	{{form_row(numberForm.quotation_text)}}
 
+	{{ form_label(numberForm.commentReference, "Reference comment(s)") }}
+	{{ form_widget(numberForm.commentReference, {
+		'attr': {'class': 'materialize-textarea'}
+	}) }}
+
 	{{ form_widget(numberForm.completeReference) }}
 	{{ form_label(numberForm.completeReference, "Completed?") }}
 	{{ form_errors(numberForm.completeReference) }}
 
-	{{form_row(numberForm.validationReference)}}
+	{#{{form_row(numberForm.validationReference)}}#}
 
 </div>
 
@@ -303,11 +359,16 @@ todo : validation
 	{{form_row(numberForm.cost)}}
 	{{form_row(numberForm.costComment, { 'attr': {'class': 'materialize-textarea'}}) }}
 
+	{{ form_label(numberForm.commentDirector, "Complement comment(s)") }}
+	{{ form_widget(numberForm.commentDirector, {
+		'attr': {'class': 'materialize-textarea'}
+	}) }}
+
 	{{ form_widget(numberForm.completeCost) }}
 	{{ form_label(numberForm.completeCost, "Completed?") }}
 	{{ form_errors(numberForm.completeCost) }}
 
-	{{form_row(numberForm.validationCost)}}
+	{#{{form_row(numberForm.validationCost)}}#}
 
 </div>
 

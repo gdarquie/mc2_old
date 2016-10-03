@@ -5,7 +5,9 @@
         <h1>List of all numbers</h1>
 
         {% for number in numbers %}
-            <span class="chip truncate">{{ number.title }}</span>
+            {#<a href="{{ path("number_edit", {"numberId" : number.numberId }) }}">#}
+                <span class="chip truncate">{{ number.title }}</span>
+            {#</a>#}
         {% endfor %}
     </div>
 {% endblock %}

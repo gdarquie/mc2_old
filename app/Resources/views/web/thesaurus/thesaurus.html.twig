@@ -45,7 +45,7 @@
 			<table class="striped">
 			<tr><th>title</th><th>type</th><th>comment</th><th>definition</th><th>example</th><th>category</th><th>action</th></tr>
 		{% for item in thesaurus %}
-			<tr><td>{{ item.title}}</td><td>{{ item.type }}</td><td>{{ item.comment }}</td><td>{{ item.definition }}</td><td>{{ item.example }}</td><td>{{ item.category }}</td><td><a href="/editor/thesaurus/edit/{{item.thesaurusId}}">edit</a></td></tr> 
+			<tr><td>{{ item.title}}</td><td>{{ item.type }}</td><td>{{ item.comment }}</td><td>{{ item.definition }}</td><td>{{ item.example }}</td><td>{{ item.category }}</td><td><a href="{{ path('updateThesaurus', {'thesaurusId' : item.thesaurusId}) }}">edit</a></td></tr>
 		{% endfor %}
 			</table>
 

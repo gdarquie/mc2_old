@@ -4,8 +4,10 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_USER:        ROLE_VISITOR
+        ROLE_EDITOR:      ROLE_USER
+        ROLE_ADMIN:       ROLE_EDITOR
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         fos_userbundle:
@@ -25,7 +27,6 @@ security:
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: ROLE_USER }
+        - { path: ^/register, role: ROLE_VISITOR }
         - { path: ^/resetting, role: ROLE_USER }
-        - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/editor, role: ROLE_USER } #changer par la suite par un rôle d'éditeur

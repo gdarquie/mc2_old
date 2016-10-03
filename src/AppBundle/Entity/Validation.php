@@ -27,7 +27,12 @@ class Validation
     private $validationId;
 
     /**
-     * @ORM\Column(type="string")
+     * @var \AppBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     * })
      */
     private $user; //user id
 

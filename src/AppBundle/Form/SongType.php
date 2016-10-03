@@ -8,9 +8,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-use AppBundle\Entity\Person;
+use AppBundle\Entity\Song;
+use AppBundle\Repository\SongRepository;
 
-class PersonType extends AbstractType
+class SongType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -19,12 +20,7 @@ class PersonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('firstname')
-            ->add('lastname')
-            ->add('gender')
-            ->add('race')
-            ->add('type')
+            ->add('title', TextType::class)
         ;
     }
 
@@ -34,7 +30,7 @@ class PersonType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Person'
+            'data_class' => 'AppBundle\Entity\Song'
         ));
     }
 }

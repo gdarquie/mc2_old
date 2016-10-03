@@ -36,6 +36,12 @@ class Number
      */
     private $completeTitle;
 
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentTitle;
+
     /**
      * @var integer
      *
@@ -85,6 +91,11 @@ class Number
     private $completeTc;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentTc;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="structure_id", type="integer", nullable=true)
@@ -104,6 +115,11 @@ class Number
     private $completeStructure;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentStructure;
+
+    /**
      * @Assert\Range(min=0, minMessage="Negative number of shots! Come on...")
      *
      * @var integer
@@ -118,6 +134,11 @@ class Number
      * @ORM\Column(name="validation_shots", type="integer", nullable=true)
      */
     private $validationShots;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentShots;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -142,6 +163,11 @@ class Number
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $completePerformance;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentPerformance;
 
     /**
      * @var string
@@ -184,6 +210,11 @@ class Number
     private $completeBackstage;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentBackstage;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="diegetic_place", type="string", length=255, nullable=true)
@@ -203,6 +234,11 @@ class Number
     private $completeTheme;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentTheme;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="validation_mood", type="integer", nullable=true)
@@ -215,6 +251,11 @@ class Number
     private $completeMood;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentMood;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="validation_dance", type="integer", nullable=true)
@@ -225,6 +266,11 @@ class Number
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $completeDance;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentDance;
 
     /**
      * @var string
@@ -267,6 +313,11 @@ class Number
     private $completeMusic;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentMusic;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="validation_director", type="integer", nullable=true)
@@ -277,6 +328,11 @@ class Number
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $completeDirector;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentDirector;
 
     /**
      * @var integer
@@ -323,6 +379,10 @@ class Number
      */
     private $completeReference;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentReference;
 
     /**
      * @var integer
@@ -837,12 +897,18 @@ class Number
      */
     private $musical_thesaurus;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="genre_id", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_genre",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="genre_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $genre;
 
@@ -921,11 +987,30 @@ class Number
      */
     private $figurants;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_editor",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="editors", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $editors;
 
     /**
     * @ORM\Column(name="timestamp", type="datetime")
     */
     private $timestamp;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $completeAll;
 
     /**
      * Constructor
@@ -945,6 +1030,7 @@ class Number
         $this->musical = new \Doctrine\Common\Collections\ArrayCollection();
         $this->effects = new \Doctrine\Common\Collections\ArrayCollection();
         $this->performers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->editors = new \Doctrine\Common\Collections\ArrayCollection();
 
     }
 
@@ -3018,6 +3104,231 @@ class Number
     {
         $this->musical_thesaurus = $musical_thesaurus;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentTitle()
+    {
+        return $this->commentTitle;
+    }
+
+    /**
+     * @param mixed $commentTitle
+     */
+    public function setCommentTitle($commentTitle)
+    {
+        $this->commentTitle = $commentTitle;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentTc()
+    {
+        return $this->commentTc;
+    }
+
+    /**
+     * @param mixed $commentTc
+     */
+    public function setCommentTc($commentTc)
+    {
+        $this->commentTc = $commentTc;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentStructure()
+    {
+        return $this->commentStructure;
+    }
+
+    /**
+     * @param mixed $commentStructure
+     */
+    public function setCommentStructure($commentStructure)
+    {
+        $this->commentStructure = $commentStructure;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentShots()
+    {
+        return $this->commentShots;
+    }
+
+    /**
+     * @param mixed $commentShots
+     */
+    public function setCommentShots($commentShots)
+    {
+        $this->commentShots = $commentShots;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentPerformance()
+    {
+        return $this->commentPerformance;
+    }
+
+    /**
+     * @param mixed $commentPerformance
+     */
+    public function setCommentPerformance($commentPerformance)
+    {
+        $this->commentPerformance = $commentPerformance;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentTheme()
+    {
+        return $this->commentTheme;
+    }
+
+    /**
+     * @param mixed $commentTheme
+     */
+    public function setCommentTheme($commentTheme)
+    {
+        $this->commentTheme = $commentTheme;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentMood()
+    {
+        return $this->commentMood;
+    }
+
+    /**
+     * @param mixed $commentMood
+     */
+    public function setCommentMood($commentMood)
+    {
+        $this->commentMood = $commentMood;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentDance()
+    {
+        return $this->commentDance;
+    }
+
+    /**
+     * @param mixed $commentDance
+     */
+    public function setCommentDance($commentDance)
+    {
+        $this->commentDance = $commentDance;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentMusic()
+    {
+        return $this->commentMusic;
+    }
+
+    /**
+     * @param mixed $commentMusic
+     */
+    public function setCommentMusic($commentMusic)
+    {
+        $this->commentMusic = $commentMusic;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentDirector()
+    {
+        return $this->commentDirector;
+    }
+
+    /**
+     * @param mixed $commentDirector
+     */
+    public function setCommentDirector($commentDirector)
+    {
+        $this->commentDirector = $commentDirector;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentBackstage()
+    {
+        return $this->commentBackstage;
+    }
+
+    /**
+     * @param mixed $commentBackstage
+     */
+    public function setCommentBackstage($commentBackstage)
+    {
+        $this->commentBackstage = $commentBackstage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentReference()
+    {
+        return $this->commentReference;
+    }
+
+    /**
+     * @param mixed $commentReference
+     */
+    public function setCommentReference($commentReference)
+    {
+        $this->commentReference = $commentReference;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEditors()
+    {
+        return $this->editors;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $editors
+     */
+    public function setEditors($editors)
+    {
+        $this->editors = $editors;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompleteAll()
+    {
+        return $this->completeAll;
+    }
+
+    /**
+     * @param mixed $completeAll
+     */
+    public function setCompleteAll($completeAll)
+    {
+        $this->completeAll = $completeAll;
+    }
+
 
 
 

@@ -17,7 +17,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Comment
 {
-
     /**
      * @var integer
      *
@@ -37,7 +36,12 @@ class Comment
     private $content;
 
     /**
-     * @ORM\Column(type="string")
+     * @var \AppBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     * })
      */
     private $user;
 
@@ -88,5 +92,23 @@ class Comment
     {
         $this->user = $user;
     }
+
+    /**
+     * @return int
+     */
+    public function getCommentId()
+    {
+        return $this->commentId;
+    }
+
+    /**
+     * @param int $commentId
+     */
+    public function setCommentId($commentId)
+    {
+        $this->commentId = $commentId;
+    }
+
+
 
 }

@@ -16,7 +16,7 @@
 
 	<section class="col s3 menu">
 		<h3>Navigation</h3>
-		<li >Title</li>
+		<li>Title</li>
 		<li>Outlines</li>
 		<li>Structure</li>
 		<li>Shots</li>
@@ -47,6 +47,7 @@
 
 {% block javascripts %}
 	{{ parent() }}
+	<script src="{{ asset('js/timecode.js') }}"></script>
 	<script>
 //		$(".menu li:not(.active)").hide();
 

@@ -29,7 +29,7 @@
 
             <section class="col s3">
                 <h2 class="center">Structure</h2>
-                <p>Structure : {% for structure in number.structure %} <span class="chip">{{ structure }}</span>{% endfor %}</span></p>
+                <p>Structure : {# {% for structure in number.structure %} <span class="chip">{{ structure }}</span>{% endfor %} #}</span></p>
                 <p>Completed :<span class="chip"></span></p>
                 <p>Validation : <span class="chip"></span></p>
             </section>
@@ -70,7 +70,7 @@
                 <p>Costumes : {% for costume in number.costumes %} <span class="chip">{{ costume }}</span>{% endfor %}</p>
                 <p>Stereotypes : {% for stereotype in number.stereotype %} <span class="chip">{{ stereotype }}</span>{% endfor %}</p>
                 <p>Diegetic place : <span class="chip">{{ number.diegetic }}</span></p>
-                <p>Imaginary : <span class="chip">{{ number.imaginary }}</span></p>
+                <p>Imaginary : <span class="chip">{# {{ number.imaginary }}#}</span></p>
                 <p>Exoticism : {% for exoticism in number.exoticism %} <span class="chip">{{ exoticism }}</span>{% endfor %}</span></p>
                 <p>Completed :<span class="chip"></span></p>
                 <p>Validation :<span class="chip"></span></p>
@@ -86,7 +86,7 @@
             <section class="col s3">
                 <h2>Dance</h2>
                 <p>Choregraphers : {% for person in number.choregraphers %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
-                <p>Dance Ensemble : <span class="chip">{{ number.musensemble }}</span></p>
+                <p>Dance Ensemble : <span class="chip">{# {{ number.musensemble }} #}</span></p>
                 <p>Dance : </p>
                 <p>Completed :<span class="chip"></span></p>
                 <p>Validation :<span class="chip"></span></p>
@@ -97,7 +97,7 @@
             <section class="col s6">
                 <h2>Music</h2>
                 <p>Song : {% for song in number.song %} <span class="chip">{{ song }}</span>{% endfor %}</span></p>
-                <p>Music ensemble : <span class="chip">{{ number.musensemble }}</span></p>
+                <p>Music ensemble : <span class="chip">{# {{ number.musensemble }}#}</span></p>
                 <p>Dubbing : <span class="chip">{{ number.dubbing }}</span></p>
                 <p>Tempo : <span class="chip">{{ number.tempo }}</span></p>
                 <p>Musician style (import) : <span class="chip">{{ number.musician }}</span> </p>

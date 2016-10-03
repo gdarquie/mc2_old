@@ -15,7 +15,7 @@ class PersonRepository extends EntityRepository
     public function createAlphabeticalQueryBuilder()
     {
         return $this->createQueryBuilder('person')
-            ->orderBy('person.name', 'DESC');
+            ->orderBy('person.name', 'ASC');
     }
 }
 

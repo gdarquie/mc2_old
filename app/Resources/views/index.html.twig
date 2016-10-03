@@ -12,6 +12,57 @@
 {% block body %}
 
 
+  <section class="container">
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+      {% if myNumbers|length > 0  %}
+        <h2>My numbers</h2>
+
+        <table class="striped">
+          <tr>
+            <th>number</th>
+            <th>title</th>
+            <th>outlines</th>
+            <th>structure</th>
+            <th>shots</th>
+            <th>performers</th>
+            <th>backstage</th>
+            <th>themes</th>
+            <th>tone</th>
+            <th>dance</th>
+            <th>music</th>
+            <th>reference</th>
+            <th>director</th>
+            <th>edit</th>
+            <th>finish</th>
+          </tr>
+          {% for number in myNumbers  %}
+            <tr>
+              <td>{{ number.title }}</td>
+              <td>{% if number.completeTitle %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td>{% if number.completeTc %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td>{% if number.completeStructure %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td>{% if number.completeShots %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td>{% if number.completePerformance %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td>{% if number.completeBackstage %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td>{% if number.completeTheme %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td>{% if number.completeMood %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td>{% if number.completeDance %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td>{% if number.completeMusic %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td>{% if number.completeReference %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td>{% if number.completeDirector %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td><a href="{{ path('number_edit', {'numberId' : number.numberId }) }}">link</a></td>
+              <td>soon</td>
+
+
+            </tr>
+          {% endfor %}
+        </table>
+      {% endif %}
+
+    {% endif %}
+  </section>
+
 <section class='container'>
 
 <div>

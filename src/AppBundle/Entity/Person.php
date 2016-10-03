@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Person
@@ -13,9 +14,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Person
 {
     /**
+     * @Assert\NotBlank()
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=500, nullable=true)
+     * @ORM\Column(name="name", type="string", length=500, nullable=false)
      */
     private $name;
 

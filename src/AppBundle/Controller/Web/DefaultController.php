@@ -41,12 +41,24 @@ class DefaultController extends Controller
         //All Persons
         $persons = $em->getRepository('AppBundle:Person')->findAll();
 
+        //My numbers
+
+        $myNumbers = "";
+
+        if($this->getUser()){
+            $user = $this->getUser()->getId();
+            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.editors e WHERE e.id = :user');
+            $query->setParameter('user', $user );
+            $myNumbers = $query->getResult();
+        }
+
 
         return $this->render('index.html.twig', array(
             'films' => $films,
             'filmsWithNumber' => $filmsWithNumber,
             'persons' => $persons,
             'numbers' => $numbers,
+            'myNumbers' => $myNumbers,
         ));
     }
 
