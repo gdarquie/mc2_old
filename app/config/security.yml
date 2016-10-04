@@ -28,5 +28,6 @@ security:
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: ROLE_VISITOR }
+        - { path: ^/thesaurus, role: ROLE_VISITOR }
         - { path: ^/resetting, role: ROLE_USER }
         - { path: ^/editor, role: ROLE_USER } #changer par la suite par un rôle d'éditeur

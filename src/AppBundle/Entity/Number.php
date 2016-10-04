@@ -858,12 +858,18 @@ class Number
      */
     private $tempo_thesaurus;
 
-    /** @var  \AppBundle\Entity\Thesaurus
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="quotation_thesaurus", referencedColumnName="thesaurus_id")
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_quotationthesaurus",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="quotation_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
     private $quotation_thesaurus;
 
@@ -1003,9 +1009,14 @@ class Number
     private $editors;
 
     /**
-    * @ORM\Column(name="timestamp", type="datetime")
-    */
-    private $timestamp;
+     * @ORM\Column(name="date_creation", type="datetime")
+     */
+    private $date_creation;
+
+    /**
+     * @ORM\Column(name="last_update", type="datetime")
+     */
+    private $last_update;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -2293,32 +2304,6 @@ class Number
         return $this->effects;
     }
 
-
-    /**
-     * Gets the value of timestamp.
-     *
-     * @return mixed
-     */
-    public function getTimestamp()
-    {
-        return $this->timestamp;
-    }
-
-    /**
-     * Sets the value of timestamp.
-     *
-     * @param mixed $timestamp the timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->timestamp = $timestamp;
-
-        return $this;
-    }
-
-
     /**
      * Gets the value of BeginThesaurus.
      *
@@ -3327,6 +3312,38 @@ class Number
     public function setCompleteAll($completeAll)
     {
         $this->completeAll = $completeAll;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateCreation()
+    {
+        return $this->date_creation;
+    }
+
+    /**
+     * @param mixed $date_creation
+     */
+    public function setDateCreation($date_creation)
+    {
+        $this->date_creation = $date_creation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastUpdate()
+    {
+        return $this->last_update;
+    }
+
+    /**
+     * @param mixed $last_update
+     */
+    public function setLastUpdate($last_update)
+    {
+        $this->last_update = $last_update;
     }
 
 

@@ -47,11 +47,12 @@
             <li><a href="{{ path('editorNewSong') }}">song</a></li>
         </ul>
 
+    <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper container">
                 <a href="/" class="brand-logo left">MC2</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li>Version 0.2 (beta)</li>
+                    <li>Version 0.2.1 (beta)</li>
                     <li><a href="{{ path('thesaurus', {'type' : "all"}) }}">thesaurus</a></li>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <li><a href="{{ path('numbers') }}">all numbers</a></li>
@@ -65,9 +66,9 @@
 
             </div>
         </nav>
+    </div>
 
     <div>
-
 
     {% for msg in app.session.flashBag.get('success') %}
         <div class="container">

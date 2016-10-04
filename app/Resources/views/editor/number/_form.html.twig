@@ -34,12 +34,38 @@ todo : selction auto de film quand new number
 
 	<h3>Outlines</h3>
 
+	<div id="tc_widget_beginTc">
+		<div class="col s3">
+			<label for="tc_hour_begin" >Hour(s)</label><input name="tc_hour_begin" id="tc_hour_begin" type="number"  min="0" max="4">
+		</div>
+		<div class="col s3">
+			<label for="tc_min_begin">Minute(s)</label><input name="tc_min_begin" id="tc_min_begin" type="number" min="0" max="60">
+		</div>
+		<div class="col s3">
+			<label for="tc_sec_begin">Seconde(s)</label><input name="tc_sec_begin" id="tc_sec_begin" type="number" min="0" max="60">
+		</div>
+	</div>
+	<div class="col s3">
 	{{form_row(numberForm.beginTc, {
 		'label' : "Begin timecode"
 	})}}
+	</div>
+	<div id="tc_widget_endTc">
+		<div class="col s3">
+			<label for="tc_hour_end" >Hour(s)</label><input name="tc_hour_end" id="tc_hour_end" type="number"  min="0" max="4">
+		</div>
+		<div class="col s3">
+			<label for="tc_min_end">Minute(s)</label><input name="tc_min_end" id="tc_min_end" type="number" min="0" max="60">
+		</div>
+		<div class="col s3">
+			<label for="tc_sec_end">Seconde(s)</label> <input name="tc_sec_end" id="tc_sec_end" type="number" min="0" max="60">
+		</div>
+	</div>
+	<div class="col s3">
 	{{form_row(numberForm.endTc, {
 		'label' : "End timecode"
 	})}}
+	</div>
 	{{form_row(numberForm.beginThesaurus,{ 
 		'label' : "Begin (from thesaurus) (1 choice) (mandatory)"
 	})}}
@@ -90,23 +116,11 @@ todo : selction auto de film quand new number
 <div class="cartouche">
 	<h3>Shots</h3>
 
-	<div id="tc_widget">
-		<div class="col s3">
-			<label for="tc_hour" >Hour(s)</label><input name="tc_hour" id="tc_hour" type="number"  min="0" max="4" />
-		</div>
-		<div class="col s3">
-			<label for="tc_min">Minute(s)</label><input name="tc_min" id="tc_min" type="number" min="0" max="60">
-		</div>
-		<div class="col s3">
-			<label for="tc_sec">Seconde(s)</label> <input name="tc_sec" id="tc_sec" type="number" min="0" max="60">
-		</div>
-	</div>
-	<div class="col s3">
+
+
 	{{form_row(numberForm.shots, {
 		'label' : "Number of shots"
 	})}}
-	</div>
-
 	{{ form_label(numberForm.commentShots, "Shots comment(s)") }}
 	{{ form_widget(numberForm.commentShots, {
 		'attr': {'class': 'materialize-textarea'}
@@ -135,7 +149,7 @@ todo : selction auto de film quand new number
 
 
 	{{ form_row(numberForm.figurants, {
-		'label' : "Stars who don't participate (ex : as spectators) (multi)"
+		'label' : "Stars who don't participate (ex : as spectators) (optional) (multi)"
 	}) }}
 	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
 
@@ -333,7 +347,7 @@ todo : selction auto de film quand new number
 		'label' : "Source (from thesaurus) (mandatory) (multi)"
 	})}}
 	{{form_row(numberForm.quotation_thesaurus, {
-		'label' : "Quotation (from thesaurus) (1 choice)"
+		'label' : "Quotation (from thesaurus) (optional) (multi)"
 	})}}
 	{{form_row(numberForm.quotation_text)}}
 
@@ -373,10 +387,5 @@ todo : selction auto de film quand new number
 </div>
 
 
-	<div class="cartouche">
-	<h3>Others</h3>
-	{{form_row(numberForm.timestamp)}}
-
-</div>
 
 

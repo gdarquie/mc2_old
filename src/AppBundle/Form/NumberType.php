@@ -136,10 +136,9 @@ class NumberType extends AbstractType
             //Performers
             ->add('performers'
                 , EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Person',
                 'multiple' => true,
-                'empty_data' => null,
+//                'empty_data' => null,
                 'choice_label' => 'name',
                 'query_builder' => function(PersonRepository $repo) {
                     return $repo->createAlphabeticalQueryBuilder();
@@ -147,7 +146,6 @@ class NumberType extends AbstractType
                 )
             )
             ->add('figurants', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Person',
                 'multiple' => true,
                 'choice_label' => 'name',
@@ -226,13 +224,11 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("costumes");
                 },
                 'required'    => false,
-                'placeholder' => 'Choose costumes',
                 'empty_data'  => null
             ))
 
 
             ->add('stereotype', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Thesaurus',
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
@@ -241,7 +237,6 @@ class NumberType extends AbstractType
                 }
             ))
             ->add('diegetic_place_thesaurus', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Thesaurus',
                 'multiple' => true,
                 'choice_label' => 'title',
@@ -250,7 +245,7 @@ class NumberType extends AbstractType
                 }
             ))
             ->add('general_localisation', EntityType::class, array(
-                'data' => null,
+
                 'class' => 'AppBundle:Thesaurus',
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
@@ -259,7 +254,6 @@ class NumberType extends AbstractType
                 }
             ))
             ->add('imaginary', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Thesaurus',
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
@@ -269,7 +263,6 @@ class NumberType extends AbstractType
             ))
 //            ->add('exoticism')
             ->add('exoticism_thesaurus', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Thesaurus',
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
@@ -283,7 +276,6 @@ class NumberType extends AbstractType
 
             //Mood
             ->add('general_mood', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Thesaurus',
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
@@ -292,7 +284,6 @@ class NumberType extends AbstractType
                 }// diviser par type ensuite
             ))
             ->add('genre', EntityType::class, array(
-                'data' => null,
                 'multiple' => true,
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
@@ -306,7 +297,6 @@ class NumberType extends AbstractType
 
             //Dance
             ->add('choregraphers', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Person',
                 'multiple' => true,
                 'choice_label' => 'name',
@@ -317,7 +307,6 @@ class NumberType extends AbstractType
             //ensemble type dancing
             //type of dancing
             ->add('dancemble', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'multiple' => true,
@@ -326,7 +315,6 @@ class NumberType extends AbstractType
                 }// il faudra ne prendre que ceux de type dance
             ))
             ->add('dancingType', EntityType::class, array(
-                'data' => null,
                 'multiple' => true,
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
@@ -335,7 +323,6 @@ class NumberType extends AbstractType
                 }
             ))
             ->add('danceSubgenre', EntityType::class, array(
-                'data' => null,
                 'multiple' => true,
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
@@ -344,7 +331,6 @@ class NumberType extends AbstractType
                 }
             ))
             ->add('danceContent', EntityType::class, array(
-                'data' => null,
                 'multiple' => true,
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
@@ -359,7 +345,6 @@ class NumberType extends AbstractType
             //Music
                 //todo : mettre les songs par ordre alpha + enlever placehodler
             ->add('song', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Song',
                 'multiple' => true,
                 'empty_data' => null,
@@ -369,7 +354,6 @@ class NumberType extends AbstractType
                 },
             ))
             ->add('musensemble', EntityType::class, array(
-                'data' => null,
                 'multiple' => true,
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
@@ -397,7 +381,6 @@ class NumberType extends AbstractType
                     }//il faudra ne prendre que ceux de type music
                 ))
             ->add('arrangers', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Person',
                 'multiple' => true,
                 'choice_label' => 'name',
@@ -413,7 +396,6 @@ class NumberType extends AbstractType
 
             //Complement
             ->add('director', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Person',
                 'multiple' => true,
                 'choice_label' => 'name',
@@ -428,11 +410,18 @@ class NumberType extends AbstractType
 //            ->add('validationCost')
 
             //Reference
-            ->add('quotation_thesaurus')
+            ->add('quotation_thesaurus', EntityType::class, array(
+                'multiple' => true,
+                'class' => 'AppBundle:Thesaurus',
+                'multiple' => true,
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("quotation");
+                }
+            ))
             ->add('quotation_text')
             //->add('source')
             ->add('source_thesaurus', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Thesaurus',
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
@@ -447,15 +436,7 @@ class NumberType extends AbstractType
 
             //???
             ->add('lyrics')
-            ->add('timestamp', DateTimeType::class, array(
-            )) //https://github.com/Atlantic18/DoctrineExtensions/blob/master/doc/timestampable.md
-//            ->add('timestamp', DateTimeType::class, [
-//                'widget' => 'single_text',
-//                'attr' => ['class' => 'datepicker'] ,
-//                'html5' => false,
-//            ]) //format attendu yyyy-mm-dd
 
-            // ->add('save', SubmitType::class, array('label' => 'Save Number'))
         ;
     }
     

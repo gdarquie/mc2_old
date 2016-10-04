@@ -78,17 +78,17 @@ class EditorController extends Controller
 
 //             dump($collection);die;
 
+//             dump(new \DateTime());die;
+
              $number->setFilm($film);
              $number->setEditors($collection);
 
+             $now = new \DateTime();
+             $number->setDateCreation($now);
+             $number->setLastUpdate($now);
+
              $em->persist($number);
              $em->flush();
-
-             //ajout du film
-             //$filmId
-             //
-
-             //ajout de l'user
 
             $this->addFlash('success', 'Number created!');
 
@@ -120,6 +120,9 @@ class EditorController extends Controller
             $user = $this->getUser();
             $collection->add($user);
             $number->setEditors($collection);
+
+            $now = new \DateTime();
+            $number->setLastUpdate($now);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($number);
