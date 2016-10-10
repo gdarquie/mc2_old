@@ -83,6 +83,10 @@ div .cut {
 }
 
 
-
+#logo{
+	height:60px;
+	position:fixed;
+	left:10px;
+}
 
 

@@ -50,9 +50,12 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper container">
+
+                <img id="logo" src="{{ asset('img/labex_web-develop-gris-clair.png') }}" alt="">
+
                 <a href="/" class="brand-logo left">MC2</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li>Version 0.2.1 (beta)</li>
+                    <li>Version 0.2.2 (beta)</li>
                     <li><a href="{{ path('thesaurus', {'type' : "all"}) }}">thesaurus</a></li>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <li><a href="{{ path('numbers') }}">all numbers</a></li>

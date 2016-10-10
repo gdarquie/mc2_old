@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Stagenumber
  *
- * @ORM\Table(name="stageNumber", indexes={@ORM\Index(name="fk_stageNumber_setting1_idx", columns={"setting_id"}), @ORM\Index(name="fk_stageNumber_stageShow1_idx", columns={"stageShow_id"})})
+ * @ORM\Table(name="stageNumber")
  * @ORM\Entity
  */
 class Stagenumber
@@ -64,12 +64,9 @@ class Stagenumber
     private $stagenumberId;
 
     /**
-     * @var \AppBundle\Entity\Place
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Place")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="setting_id", referencedColumnName="place_id")
-     * })
+     * @ORM\Column(name="setting", type="text", length=1000, nullable=true)
      */
     private $setting;
 

@@ -35,7 +35,7 @@ class Number
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $completeTitle;
-
+    
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -464,21 +464,21 @@ class Number
      */
     private $completenessThesaurus;
 
-    /** @var  \AppBundle\Entity\Thesaurus
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="completoptions_id", referencedColumnName="thesaurus_id")
-     * })
-     */
-    private $completOptions;
-
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Place", mappedBy="numberNumber")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="number_has_completoptions",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="completoptions_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
-    private $place;
+    private $completOptions;
+
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -580,7 +580,7 @@ class Number
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="$dancingtype_id", referencedColumnName="thesaurus_id")
+     *     @ORM\JoinColumn(name="dancingtype_id", referencedColumnName="thesaurus_id")
      *   }
      * )
      */
@@ -595,7 +595,7 @@ class Number
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="$dancesubgenre_id", referencedColumnName="thesaurus_id")
+     *     @ORM\JoinColumn(name="dancesubgenre_id", referencedColumnName="thesaurus_id")
      *   }
      * )
      */
@@ -610,7 +610,7 @@ class Number
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="$dancecontent_id", referencedColumnName="thesaurus_id")
+     *     @ORM\JoinColumn(name="dancecontent_id", referencedColumnName="thesaurus_id")
      *   }
      * )
      */
@@ -1964,39 +1964,6 @@ class Number
         return $this->song;
     }
 
-    /**
-     * Add place
-     *
-     * @param \AppBundle\Entity\Place $place
-     *
-     * @return Number
-     */
-    public function addPlace(\AppBundle\Entity\Place $place)
-    {
-        $this->place[] = $place;
-
-        return $this;
-    }
-
-    /**
-     * Remove place
-     *
-     * @param \AppBundle\Entity\Place $place
-     */
-    public function removePlace(\AppBundle\Entity\Place $place)
-    {
-        $this->place->removeElement($place);
-    }
-
-    /**
-     * Get place
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPlace()
-    {
-        return $this->place;
-    }
 
     /**
      * Add stagenumber

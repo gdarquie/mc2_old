@@ -97,6 +97,7 @@ class NumberType extends AbstractType
             ))
             ->add('completOptions', EntityType::class, array(
                 'placeholder' => '',
+                'multiple' => true,
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
@@ -372,7 +373,6 @@ class NumberType extends AbstractType
                 }//il faudra ne prendre que ceux de type music
             ))
             ->add('musical_thesaurus', EntityType::class, array(
-                    'data' => null,
                     'multiple' => true,
                     'class' => 'AppBundle:Thesaurus',
                     'choice_label' => 'title', //order by alpha
@@ -429,13 +429,11 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("source");
                 }
             ))
-
             ->add('commentReference')
             ->add('completeReference')
 //            ->add('validationReference')
-
-            //???
             ->add('lyrics')
+
 
         ;
     }

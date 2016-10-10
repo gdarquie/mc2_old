@@ -58,7 +58,9 @@
 			var nbItem = $(this ).index();
 			$(".cartouche").hide();
 			$("form .cartouche:nth-child("+nbItem+")").fadeIn();
+			$(".select-dropdown").val("");
 		});
+
 	</script>
 
 {% endblock %}
