@@ -291,28 +291,21 @@ class Stagenumber
     }
 
     /**
-     * Set setting
-     *
-     * @param \AppBundle\Entity\Place $setting
-     *
-     * @return Stagenumber
-     */
-    public function setSetting(\AppBundle\Entity\Place $setting = null)
-    {
-        $this->setting = $setting;
-
-        return $this;
-    }
-
-    /**
-     * Get setting
-     *
-     * @return \AppBundle\Entity\Place
+     * @return string
      */
     public function getSetting()
     {
         return $this->setting;
     }
+
+    /**
+     * @param string $setting
+     */
+    public function setSetting($setting)
+    {
+        $this->setting = $setting;
+    }
+
 
     /**
      * Set stageshow
