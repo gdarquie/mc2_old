@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Editeur;
+namespace AppBundle\Controller\Editor;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

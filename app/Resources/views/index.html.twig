@@ -31,8 +31,8 @@
             <th>tone</th>
             <th>dance</th>
             <th>music</th>
-            <th>reference</th>
-            <th>director</th>
+            <th>references</th>
+            <th>complement</th>
             <th>edit</th>
             <th>finish</th>
           </tr>
@@ -50,7 +50,7 @@
               <td>{% if number.completeDance %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
               <td>{% if number.completeMusic %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
               <td>{% if number.completeReference %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
-              <td>{% if number.completeDirector %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td>{% if number.completeCost %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
               <td><a href="{{ path('number_edit', {'numberId' : number.numberId }) }}">edit</a></td>
               <td>soon</td>
 

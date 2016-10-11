@@ -2,12 +2,8 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <style>
-        .menu li{
-            padding-left: 15px;
-            cursor:pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/editor/number.css')}}">
+
 {% endblock %}
 
 {% block body %}
@@ -33,7 +29,7 @@
 
     <section class="col s8">
 
-        <h1>{{number.title}}</h1>
+        <h1>{{number.title}} ({{ number.film }})</h1>
 
         {{ form_start(numberForm)}}
 

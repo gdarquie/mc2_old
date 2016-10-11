@@ -2,12 +2,7 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	<style>
-		.menu li{
-			padding-left: 15px;
-			cursor:pointer;
-		}
-	</style>
+	<link rel="stylesheet" href="{{ asset('css/editor/number.css')}}">
 {% endblock %}
 
 {% block body %}
@@ -32,7 +27,7 @@
 
 	<section class="col s8">
 
-	<h1>Add a number</h1>
+	<h1>Add a number </h1>
 
 	{{ form_start(numberForm)}}
 
@@ -58,7 +53,6 @@
 			var nbItem = $(this ).index();
 			$(".cartouche").hide();
 			$("form .cartouche:nth-child("+nbItem+")").fadeIn();
-			$(".select-dropdown").val("");
 		});
 
 	</script>

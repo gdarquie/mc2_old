@@ -6,7 +6,7 @@
  * Time: 11:22
  */
 
-namespace AppBundle\Controller\Editeur;
+namespace AppBundle\Controller\Editor;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

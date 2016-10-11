@@ -5,9 +5,13 @@
         <h1>List of all numbers</h1>
 
         {% for number in numbers %}
-            {#<a href="{{ path("number_edit", {"numberId" : number.numberId }) }}">#}
-                <span class="chip truncate">{{ number.title }}</span>
-            {#</a>#}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <a href="{{ path("number_edit", {"numberId" : number.numberId }) }}">
+            {%  endif %}
+                <span class="chip truncate">{{ number.title }} ({{ number.film }} - {{ number.film.released }})</span>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            </a>
+            {%  endif %}
         {% endfor %}
     </div>
 {% endblock %}

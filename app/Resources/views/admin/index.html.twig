@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <section class='container'>
+        <h1>Admin Page</h1>
+
+        <article>
+            <h2>All users</h2>
+            <table class="striped">
+                <tr>
+                    <th>Username</th>
+                    <th>email</th>
+                    <th>enabled</th>
+                    <th>role</th>
+                    <th>last login</th>
+                </tr>
+                {%  for user in users %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.enabled }}</td>
+                    <td>
+                    {% for role in user.roles %}
+                        {{ role }}{% if loop|last %}{% else %},{% endif %}
+                    {% endfor %}
+                    </td>
+                    <td>
+                        {{ user.lastLogin|date() }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </article>
+
+        <article>
+            <h2>Numbers by editor</h2>
+
+            <table class="striped">
+                <tr>
+                    <th>Username</th>
+                    <th>Count</th>
+                </tr>
+            {%  for number in numbersByEditor %}
+                <tr>
+                    <td>{{  number.name }}</td>
+                    <td>{{ number.nb }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </article>
+
+        <article>
+            <h2>Last numbers</h2>
+            <table class="striped">
+            {% for number in lastNumbers %}
+                <tr>
+                    <td>{{ number.title }}</td>
+                    <td>{{ number.lastUpdate | date() }}</td>
+                    {#<td>{{ number.editors.username }}</td>#}
+                </tr>
+            {% endfor %}
+            </table>
+        </article>
+
+        <article>
+            <h2>Numbers waiting for validation</h2>
+            <p>[in progress]</p>
+        </article>
+
+        <article>
+            <h2>Count of new numbers by day</h2>
+            <table class="striped">
+                <tr>
+                    <td>Count</td>
+                    <td>Date</td>
+                </tr>
+                {% for number in numberByMonth %}
+                <tr>
+                    <td>{{ number.nb }}</td>
+                    <td>{{ number.day }} - {{ number.month }} - {{ number.year }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </article>
+
+
+
+
+    </section>
+
+
+
+{% endblock %}
