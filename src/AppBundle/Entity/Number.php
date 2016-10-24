@@ -98,13 +98,6 @@ class Number
     /**
      * @var integer
      *
-     * @ORM\Column(name="structure_id", type="integer", nullable=true)
-     */
-    private $structureId;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="validation_structure", type="integer", nullable=true)
      */
     private $validationStructure;
@@ -438,21 +431,6 @@ class Number
      * )
      */
     private $song;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Completeness", inversedBy="number")
-     * @ORM\JoinTable(name="number_has_completeness",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="completeness_id", referencedColumnName="completeness_id")
-     *   }
-     * )
-     */
-    private $completeness;
 
 
     /** @var  \AppBundle\Entity\Thesaurus
@@ -1035,7 +1013,6 @@ class Number
         $this->socialplace = new \Doctrine\Common\Collections\ArrayCollection();
         $this->exoticism = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ensemble = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->completeness = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dancing = new \Doctrine\Common\Collections\ArrayCollection();
         $this->integration = new \Doctrine\Common\Collections\ArrayCollection();
         $this->musical = new \Doctrine\Common\Collections\ArrayCollection();
@@ -1238,29 +1215,6 @@ class Number
         return $this->validationTc;
     }
 
-    /**
-     * Set structureId
-     *
-     * @param integer $structureId
-     *
-     * @return Number
-     */
-    public function setStructureId($structureId)
-    {
-        $this->structureId = $structureId;
-
-        return $this;
-    }
-
-    /**
-     * Get structureId
-     *
-     * @return integer
-     */
-    public function getStructureId()
-    {
-        return $this->structureId;
-    }
 
     /**
      * Set validationStructure
@@ -2099,40 +2053,6 @@ class Number
     public function getEnsemble()
     {
         return $this->ensemble;
-    }
-
-    /**
-     * Add completeness
-     *
-     * @param \AppBundle\Entity\Completeness $completeness
-     *
-     * @return Number
-     */
-    public function addCompleteness(\AppBundle\Entity\Completeness $completeness)
-    {
-        $this->completeness[] = $completeness;
-
-        return $this;
-    }
-
-    /**
-     * Remove completeness
-     *
-     * @param \AppBundle\Entity\Completeness $completeness
-     */
-    public function removeCompleteness(\AppBundle\Entity\Completeness $completeness)
-    {
-        $this->completeness->removeElement($completeness);
-    }
-
-    /**
-     * Get completeness
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCompleteness()
-    {
-        return $this->completeness;
     }
 
     /**

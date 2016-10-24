@@ -21,33 +21,37 @@
                 <p>End timecode :  <span class="chip">{{ number.EndTc }}</span></p>
                 <p>Begin :  <span class="chip">{{ number.begin }}</span></p>
                 <p>Ending :  <span class="chip">{{ number.ending }}</span></p>
-                <p>Completeness: {% for completeness in number.completeness %} <span class="chip">{{ completeness }}</span>{% endfor %}</p>
-                <p>Completeness Options  : {% for completeness in number.completoptions %} <span class="chip">{{ completeness }}</span>{% endfor %}</p>
-                <p>Completed : <span class="chip"></span></p>
+                <p>Begin (from thesaurus) :  <span class="chip">{{ number.beginThesaurus  }}</span></p>
+                <p>Ending (from thesaurus) :  <span class="chip">{{ number.endingThesaurus  }}</span></p>
+                <p>Comments : {{ number.commentTc }}</p>
+                <p>Completeness (from thesaurus): <span class="chip">{{ number.completenessThesaurus }}</span></p>
+                <p>Completeness Options (from thesaurus): {% for completoption in number.completoptions %}<span class="chip">{{ completoption }}</span>{% endfor %}</p>
+                <p>Completed : {% if number.completeTc %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
                 <p>Validation :<span class="chip"></span></p>
             </section>
 
             <section class="col s3">
                 <h2 class="center">Structure</h2>
-                <p>Structure : {# {% for structure in number.structure %} <span class="chip">{{ structure }}</span>{% endfor %} #}</span></p>
-                <p>Completed :<span class="chip"></span></p>
+                <p>Structure (from thesaurus) : <span class="chip">{{ number.structure }}</span></p>
+                <p>Comment : <span>{{ number.commentStructure }}</span></p>
+                <p>Completed : {% if number.completeStructure %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
                 <p>Validation : <span class="chip"></span></p>
             </section>
 
             <section class="col s3">
                 <h2 class="center">Shots</h2>
                 <p>Shots : <span class="chip">{{ number.shots }}</span></p>
-                <p>Completed :<span class="chip"></span></p>
+                <p>Completed : {% if number.completeShots %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
                 <p>Validation :<span class="chip"></span></p>
             </section>
 
             <section class="col s3">
                 <h2 class="center">Performers</h2>
-                <p>Performers</p>
                 <p>Performance :<span class="chip">{{ number.performance }}</span> </p>
+                <p>Performance (from thesaurus) : <span class="chip">{{ number.performanceThesaurus }}</span></p>
                 <p>Performers : {% for person in number.performers %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
                 <p>Figurants : {% for person in number.figurants %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
-                <p>Completed :<span class="chip"></span></p>
+                <p>Completed : {% if number.validationPerformance %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
                 <p>Validation :<span class="chip"></span></p>
             </section>
         </div>
@@ -57,36 +61,46 @@
             <section class="col s3">
                 <h2 class="center">Backstage</h2>
                 <p>Spectators : <span class="chip">{{ number.spectators }}</span></p>
+                <p>Spectators (from thesaurus) : <span>{{ number.spectatorsThesaurus }}</span></p>
                 <p>Diegetic : <span class="chip">{{ number.diegetic }}</span></p>
+                <p>Diegetic (from thesaurus) : <span class="chip">{{ number.diegeticThesaurus }}</span></p>
                 <p>Musician : <span class="chip">{{ number.musician }}</span></p>
+                <p>Musician (from thesaurus) : <span class="chip">{{ number.musicianThesaurus }}</span></p>
                 <p>Integration : {% for integration in number.integration %} <span class="chip">{{ integration }}</span>{% endfor %}</span></p>
-                <p>Integration Options : {% for integration in number.integoptions %} <span class="chip">{{ integration }}</span>{% endfor %}</p>
-                <p>Completed :<span class="chip"></span></p>
+                <p>Integration (from thesaurus) : <span class="chip">{{ number.integrationThesaurus }}</span></p>
+                <p>Integration Options (from thesaurus) : {% for integration in number.integoptions %} <span class="chip">{{ integration }}</span>{% endfor %}</p>
+                <p>Completed : {% if number.completeBackstage %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
                 <p>Validation :<span class="chip"></span></p>
             </section>
 
             <section class="col s3">
                 <h2 class="center">Themes</h2>
-                <p>Costumes : {% for costume in number.costumes %} <span class="chip">{{ costume }}</span>{% endfor %}</p>
-                <p>Stereotypes : {% for stereotype in number.stereotype %} <span class="chip">{{ stereotype }}</span>{% endfor %}</p>
+                <p>Costumes (from thesaurus) : {% for costume in number.costumes %} <span class="chip">{{ costume }}</span>{% endfor %}</p>
+                <p>Stereotypes (from thesaurus) : {% for stereotype in number.stereotype %} <span class="chip">{{ stereotype }}</span>{% endfor %}</p>
                 <p>Diegetic place : <span class="chip">{{ number.diegetic }}</span></p>
-                <p>Imaginary : <span class="chip">{# {{ number.imaginary }}#}</span></p>
+                <p>Diegetic place (from thesarus) : {% for place in  number.diegeticPlaceThesaurus %}<span class="chip">{{ place }}</span>{% endfor %}</p>
+                <p>Imaginary (from thesaurus) : <span class="chip">{% for imagination in number.imaginary %}{{ imagination }}{% endfor %} </span></p>
                 <p>Exoticism : {% for exoticism in number.exoticism %} <span class="chip">{{ exoticism }}</span>{% endfor %}</span></p>
-                <p>Completed :<span class="chip"></span></p>
+                <p>Exoticism (from thesaurus) : {% for exoticism in number.exoticismThesaurus%} <span class="chip">{{ exoticism }}</span>{% endfor %}</p>
+                <p>Completed : {% if number.completeTheme %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
                 <p>Validation :<span class="chip"></span></p>
             </section>
 
             <section class="col s3">
                 <h2>Tone</h2>
-                <p>Mood : {#{% for mood in number.mood_thesaurus %} <span class="chip">{{ mood }}</span>{% endfor %}#} </p>
-                <p>Completed :<span class="chip"></span></p>
+                <p>Mood : ???</p>
+                <p>Tone (from thesaurus : {% for mood in number.generalMood %} <span class="chip">{{ mood }}</span>{% endfor %}</p>
+                <p>Genre (from thesaurus) : {% for mood in number.moodThesaurus %} <span class="chip">{{ mood }}</span>{% endfor %}</p>
+                <p>Comment : {{ number.commentMood }}</p>
+                <p>Completed : {% if number.completeMood %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
                 <p>Validation :<span class="chip"></span></p>
             </section>
 
             <section class="col s3">
                 <h2>Dance</h2>
                 <p>Choregraphers : {% for person in number.choregraphers %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
-                <p>Dance Ensemble : <span class="chip">{# {{ number.musensemble }} #}</span></p>
+                <p>Dance Ensemble (from thesaurus)  : {% for item in number.musensemble %} <span class="chip">{{ item }}</span>{% endfor %}</p>
+                <p>Dance Ensemble : </p>
                 <p>Dance : </p>
                 <p>Completed :<span class="chip"></span></p>
                 <p>Validation :<span class="chip"></span></p>
