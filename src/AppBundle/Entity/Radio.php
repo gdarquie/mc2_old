@@ -63,12 +63,6 @@ class Radio
      */
     private $song;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Musical", mappedBy="radio")
-     */
-    private $musical;
 
     /**
      * Constructor
@@ -76,7 +70,6 @@ class Radio
     public function __construct()
     {
         $this->song = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->musical = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -244,37 +237,4 @@ class Radio
         return $this->song;
     }
 
-    /**
-     * Add musical
-     *
-     * @param \AppBundle\Entity\Musical $musical
-     *
-     * @return Radio
-     */
-    public function addMusical(\AppBundle\Entity\Musical $musical)
-    {
-        $this->musical[] = $musical;
-
-        return $this;
-    }
-
-    /**
-     * Remove musical
-     *
-     * @param \AppBundle\Entity\Musical $musical
-     */
-    public function removeMusical(\AppBundle\Entity\Musical $musical)
-    {
-        $this->musical->removeElement($musical);
-    }
-
-    /**
-     * Get musical
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMusical()
-    {
-        return $this->musical;
-    }
 }

@@ -47,10 +47,10 @@
 
             <section class="col s3">
                 <h2 class="center">Performers</h2>
-                <p>Performance :<span class="chip">{{ number.performance }}</span> </p>
+                <p>Performance type :<span class="chip">{{ number.performance }}</span> </p>
                 <p>Performance (from thesaurus) : <span class="chip">{{ number.performanceThesaurus }}</span></p>
                 <p>Performers : {% for person in number.performers %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
-                <p>Figurants : {% for person in number.figurants %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
+                <p>Stars who don't participate : {% for person in number.figurants %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
                 <p>Completed : {% if number.validationPerformance %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
                 <p>Validation :<span class="chip"></span></p>
             </section>
@@ -62,10 +62,10 @@
                 <h2 class="center">Backstage</h2>
                 <p>Spectators : <span class="chip">{{ number.spectators }}</span></p>
                 <p>Spectators (from thesaurus) : <span>{{ number.spectatorsThesaurus }}</span></p>
-                <p>Diegetic : <span class="chip">{{ number.diegetic }}</span></p>
-                <p>Diegetic (from thesaurus) : <span class="chip">{{ number.diegeticThesaurus }}</span></p>
-                <p>Musician : <span class="chip">{{ number.musician }}</span></p>
-                <p>Musician (from thesaurus) : <span class="chip">{{ number.musicianThesaurus }}</span></p>
+                <p>Diegetic performance ? <span class="chip">{{ number.diegetic }}</span></p>
+                <p>Diegetic performance ? (from thesaurus) : <span class="chip">{{ number.diegeticThesaurus }}</span></p>
+                <p>Visible musicians : <span class="chip">{{ number.musician }}</span></p>
+                <p>Visible musicians (from thesaurus) : <span class="chip">{{ number.musicianThesaurus }}</span></p>
                 <p>Integration : {% for integration in number.integration %} <span class="chip">{{ integration }}</span>{% endfor %}</span></p>
                 <p>Integration (from thesaurus) : <span class="chip">{{ number.integrationThesaurus }}</span></p>
                 <p>Integration Options (from thesaurus) : {% for integration in number.integoptions %} <span class="chip">{{ integration }}</span>{% endfor %}</p>
@@ -76,11 +76,10 @@
             <section class="col s3">
                 <h2 class="center">Themes</h2>
                 <p>Costumes (from thesaurus) : {% for costume in number.costumes %} <span class="chip">{{ costume }}</span>{% endfor %}</p>
-                <p>Stereotypes (from thesaurus) : {% for stereotype in number.stereotype %} <span class="chip">{{ stereotype }}</span>{% endfor %}</p>
-                <p>Diegetic place : <span class="chip">{{ number.diegetic }}</span></p>
+                <p>Ethinc stereotypes (from thesaurus) : {% for stereotype in number.stereotype %} <span class="chip">{{ stereotype }}</span>{% endfor %}</p>
                 <p>Diegetic place (from thesarus) : {% for place in  number.diegeticPlaceThesaurus %}<span class="chip">{{ place }}</span>{% endfor %}</p>
-                <p>Imaginary (from thesaurus) : <span class="chip">{% for imagination in number.imaginary %}{{ imagination }}{% endfor %} </span></p>
-                <p>Exoticism : {% for exoticism in number.exoticism %} <span class="chip">{{ exoticism }}</span>{% endfor %}</span></p>
+                <p>General localisation (from thesaurus) : {% for place in  number.generallocalisation %}</p><span class="chip">{{ place }}</span>{% endfor %}</p>
+                <p>Imaginary place (from thesaurus) : <span class="chip">{% for imagination in number.imaginary %}{{ imagination }}{% endfor %} </span></p>
                 <p>Exoticism (from thesaurus) : {% for exoticism in number.exoticismThesaurus%} <span class="chip">{{ exoticism }}</span>{% endfor %}</p>
                 <p>Completed : {% if number.completeTheme %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
                 <p>Validation :<span class="chip"></span></p>
@@ -88,9 +87,8 @@
 
             <section class="col s3">
                 <h2>Tone</h2>
-                <p>Mood : ???</p>
-                <p>Tone (from thesaurus : {% for mood in number.generalMood %} <span class="chip">{{ mood }}</span>{% endfor %}</p>
-                <p>Genre (from thesaurus) : {% for mood in number.moodThesaurus %} <span class="chip">{{ mood }}</span>{% endfor %}</p>
+                <p>Tone (from thesaurus : {% for mood in number.generalMood %}<span class="chip">{{ mood.title }}</span>{% endfor %}</p>
+                <p>Genre (from thesaurus) : {% for mood in number.genre %} <span class="chip">{{ mood.title }}</span>{% endfor %}</p>
                 <p>Comment : {{ number.commentMood }}</p>
                 <p>Completed : {% if number.completeMood %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
                 <p>Validation :<span class="chip"></span></p>
@@ -99,9 +97,12 @@
             <section class="col s3">
                 <h2>Dance</h2>
                 <p>Choregraphers : {% for person in number.choregraphers %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
-                <p>Dance Ensemble (from thesaurus)  : {% for item in number.musensemble %} <span class="chip">{{ item }}</span>{% endfor %}</p>
-                <p>Dance Ensemble : </p>
-                <p>Dance : </p>
+                <p>Dance Ensemble :  {% for item in number.ensemble %} {% if item.type == "dancing" %}<span class="chip">{{ item.title }}</span>{% endif %}{% endfor %}</span></p>
+                <p>Dance Ensemble (from thesaurus)  : {% for item in number.dancemble %} <span class="chip">{{ item }}</span>{% endfor %}</p>
+                <p>Dancing type (from dancing) :{% for item in number.dancing %}<span class="chip">{{ item.title }}</span>{% endfor %}</p>
+                <p>Dancing type (from thesaurus): {% for item in number.dancingtype %}<span class="chip">{{ item.title }}</span>{% endfor %}</p>
+                <p>Dance subgenre (from thesaurus): {% for item in number.dancesubgenre %}<span class="chip">{{ item.title }}</span>{% endfor %} </p>
+                <p>Dance content (from thesaurus): {% for item in number.dancecontent %}<span class="chip">{{ item.title }}</span>{% endfor %} </p>
                 <p>Completed :<span class="chip"></span></p>
                 <p>Validation :<span class="chip"></span></p>
             </section>
@@ -112,10 +113,10 @@
                 <h2>Music</h2>
                 <p>Song : {% for song in number.song %} <span class="chip">{{ song }}</span>{% endfor %}</span></p>
                 <p>Music ensemble : <span class="chip">{# {{ number.musensemble }}#}</span></p>
+                <p>Music ensemble (from thesaurus) : {% for item in number.musensemble %} <span class="chip">{{ item }}</span>{% endfor %}</p>
                 <p>Dubbing : <span class="chip">{{ number.dubbing }}</span></p>
                 <p>Tempo : <span class="chip">{{ number.tempo }}</span></p>
-                <p>Musician style (import) : <span class="chip">{{ number.musician }}</span> </p>
-                <p>Musician style (from thesaurus) : <span class="chip">{{ number.musicianThesaurus }}</span> </p>
+                <p>Musical style (from thesaurus) : {% for item in number.musicalthesaurus %}<span class="chip">{{ item.title }}</span>{% endfor %}</p>
                 <p>Arrangers :  {% for person in number.arrangers %} <span class="chip">{{ person }}</span>{% endfor %}</span> </p>
                 <p>Arranger comment : <span>{{ number.arrangerComment }}</span></p>
                 <p>Lyrics : <span>{{ number.lyrics }}</span></p>

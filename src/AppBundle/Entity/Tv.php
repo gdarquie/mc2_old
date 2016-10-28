@@ -56,12 +56,6 @@ class Tv
      */
     private $song;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Musical", mappedBy="tv")
-     */
-    private $musical;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -76,7 +70,6 @@ class Tv
     public function __construct()
     {
         $this->song = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->musical = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dancing = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -221,39 +214,6 @@ class Tv
         return $this->song;
     }
 
-    /**
-     * Add musical
-     *
-     * @param \AppBundle\Entity\Musical $musical
-     *
-     * @return Tv
-     */
-    public function addMusical(\AppBundle\Entity\Musical $musical)
-    {
-        $this->musical[] = $musical;
-
-        return $this;
-    }
-
-    /**
-     * Remove musical
-     *
-     * @param \AppBundle\Entity\Musical $musical
-     */
-    public function removeMusical(\AppBundle\Entity\Musical $musical)
-    {
-        $this->musical->removeElement($musical);
-    }
-
-    /**
-     * Get musical
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMusical()
-    {
-        return $this->musical;
-    }
 
     /**
      * Add dancing

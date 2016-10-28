@@ -33,6 +33,7 @@
             <th>music</th>
             <th>references</th>
             <th>complement</th>
+            <th>view</th>
             <th>edit</th>
             <th>finish</th>
           </tr>
@@ -51,6 +52,7 @@
               <td>{% if number.completeMusic %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
               <td>{% if number.completeReference %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
               <td>{% if number.completeCost %}<i class="material-icons tiny green-text">done</i>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
+              <td><a href="{{path('number', { 'numberId' : number.numberId })}}">view</a></td>
               <td><a href="{{ path('number_edit', {'numberId' : number.numberId }) }}">edit</a></td>
               <td>soon</td>
 

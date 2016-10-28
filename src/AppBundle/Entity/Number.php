@@ -207,12 +207,6 @@ class Number
      */
     private $commentBackstage;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="diegetic_place", type="string", length=255, nullable=true)
-     */
-    private $diegeticPlace;
 
     /**
      * @var integer
@@ -473,20 +467,6 @@ class Number
      */
     private $stagenumber;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Socialplace", inversedBy="number")
-     * @ORM\JoinTable(name="socialplace_has_number",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="socialplace_id", referencedColumnName="socialplace_id")
-     *   }
-     * )
-     */
-    private $socialplace;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -594,12 +574,6 @@ class Number
      */
     private $danceContent;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Musical", mappedBy="number")
-     */
-    private $musical;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -1010,12 +984,10 @@ class Number
         $this->song = new \Doctrine\Common\Collections\ArrayCollection();
         $this->place = new \Doctrine\Common\Collections\ArrayCollection();
         $this->stagenumber = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->socialplace = new \Doctrine\Common\Collections\ArrayCollection();
         $this->exoticism = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ensemble = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dancing = new \Doctrine\Common\Collections\ArrayCollection();
         $this->integration = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->musical = new \Doctrine\Common\Collections\ArrayCollection();
         $this->effects = new \Doctrine\Common\Collections\ArrayCollection();
         $this->performers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->editors = new \Doctrine\Common\Collections\ArrayCollection();
@@ -1454,30 +1426,6 @@ class Number
     public function getValidationBackstage()
     {
         return $this->validationBackstage;
-    }
-
-    /**
-     * Set diegeticPlace
-     *
-     * @param string $diegeticPlace
-     *
-     * @return Number
-     */
-    public function setDiegeticPlace($diegeticPlace)
-    {
-        $this->diegeticPlace = $diegeticPlace;
-
-        return $this;
-    }
-
-    /**
-     * Get diegeticPlace
-     *
-     * @return string
-     */
-    public function getDiegeticPlace()
-    {
-        return $this->diegeticPlace;
     }
 
     /**
@@ -1953,39 +1901,6 @@ class Number
         return $this->stagenumber;
     }
 
-    /**
-     * Add socialplace
-     *
-     * @param \AppBundle\Entity\Socialplace $socialplace
-     *
-     * @return Number
-     */
-    public function addSocialplace(\AppBundle\Entity\Socialplace $socialplace)
-    {
-        $this->socialplace[] = $socialplace;
-
-        return $this;
-    }
-
-    /**
-     * Remove socialplace
-     *
-     * @param \AppBundle\Entity\Socialplace $socialplace
-     */
-    public function removeSocialplace(\AppBundle\Entity\Socialplace $socialplace)
-    {
-        $this->socialplace->removeElement($socialplace);
-    }
-
-    /**
-     * Get socialplace
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSocialplace()
-    {
-        return $this->socialplace;
-    }
 
     /**
      * Add exoticism
@@ -2123,39 +2038,6 @@ class Number
         return $this->integration;
     }
 
-    /**
-     * Add musical
-     *
-     * @param \AppBundle\Entity\Musical $musical
-     *
-     * @return Number
-     */
-    public function addMusical(\AppBundle\Entity\Musical $musical)
-    {
-        $this->musical[] = $musical;
-
-        return $this;
-    }
-
-    /**
-     * Remove musical
-     *
-     * @param \AppBundle\Entity\Musical $musical
-     */
-    public function removeMusical(\AppBundle\Entity\Musical $musical)
-    {
-        $this->musical->removeElement($musical);
-    }
-
-    /**
-     * Get musical
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMusical()
-    {
-        return $this->musical;
-    }
 
     /**
      * Add effect
