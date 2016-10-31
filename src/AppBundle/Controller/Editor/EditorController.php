@@ -72,7 +72,7 @@ class EditorController extends Controller
 
         }
 
-        return $this->render('myfilm.html.twig', array(
+        return $this->render('editor/myfilm.html.twig', array(
             'myNumbers' => $myNumbers,
             'myFilms' => $myFilms,
             'user' => $user
