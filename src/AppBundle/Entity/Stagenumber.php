@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Stagenumber
@@ -80,12 +81,6 @@ class Stagenumber
      */
     private $stageshow;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ensemble", mappedBy="stagenumber")
-     */
-    private $ensemble;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -117,11 +112,40 @@ class Stagenumber
     private $song;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber")
+     * @ORM\JoinTable(name="stagenumer_has_musensemble",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="musensemble_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $musensemble;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber")
+     * @ORM\JoinTable(name="stagenumber_has_dancemble",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="dancemble_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $dancemble;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->ensemble = new \Doctrine\Common\Collections\ArrayCollection();
         $this->number = new \Doctrine\Common\Collections\ArrayCollection();
         $this->costumes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dancing = new \Doctrine\Common\Collections\ArrayCollection();
@@ -325,40 +349,6 @@ class Stagenumber
     }
 
     /**
-     * Add ensemble
-     *
-     * @param \AppBundle\Entity\Ensemble $ensemble
-     *
-     * @return Stagenumber
-     */
-    public function addEnsemble(\AppBundle\Entity\Ensemble $ensemble)
-    {
-        $this->ensemble[] = $ensemble;
-
-        return $this;
-    }
-
-    /**
-     * Remove ensemble
-     *
-     * @param \AppBundle\Entity\Ensemble $ensemble
-     */
-    public function removeEnsemble(\AppBundle\Entity\Ensemble $ensemble)
-    {
-        $this->ensemble->removeElement($ensemble);
-    }
-
-    /**
-     * Get ensemble
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEnsemble()
-    {
-        return $this->ensemble;
-    }
-
-    /**
      * Add number
      *
      * @param \AppBundle\Entity\Number $number
@@ -493,4 +483,38 @@ class Stagenumber
     {
         return $this->song;
     }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMusensemble()
+    {
+        return $this->musensemble;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $musensemble
+     */
+    public function setMusensemble($musensemble)
+    {
+        $this->musensemble = $musensemble;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDancemble()
+    {
+        return $this->dancemble;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $dancemble
+     */
+    public function setDancemble($dancemble)
+    {
+        $this->dancemble = $dancemble;
+    }
+
+
 }

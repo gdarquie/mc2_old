@@ -62,9 +62,7 @@
                 <h2 class="center">Backstage</h2>
                 <p>Spectators : <span class="chip">{{ number.spectators }}</span></p>
                 <p>Spectators (from thesaurus) : <span class="chip">{{ number.spectatorsThesaurus }}</span></p>
-                <p>Diegetic performance ? <span class="chip">{{ number.diegetic }}</span></p>
                 <p>Diegetic performance ? (from thesaurus) : <span class="chip">{{ number.diegeticThesaurus }}</span></p>
-                <p>Visible musicians : <span class="chip">{{ number.musician }}</span></p>
                 <p>Visible musicians (from thesaurus) : <span class="chip">{{ number.musicianThesaurus }}</span></p>
                 <p>Integration (from thesaurus) : <span class="chip">{{ number.integrationThesaurus }}</span></p>
                 <p>Integration Options (from thesaurus) : {% for integration in number.integoptions %} <span class="chip">{{ integration }}</span>{% endfor %}</p>
@@ -96,8 +94,8 @@
             <section class="col s3">
                 <h2>Dance</h2>
                 <p>Choregraphers : {% for person in number.choregraphers %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
-                <p>Dance Ensemble :  {% for item in number.ensemble %} {% if item.type == "dancing" %}<span class="chip">{{ item.title }}</span>{% endif %}{% endfor %}</span></p>
                 <p>Dance Ensemble (from thesaurus)  : {% for item in number.dancemble %} <span class="chip">{{ item }}</span>{% endfor %}</p>
+                <!-- vérifier dancing type -->
                 <p>Dancing type (from dancing) :{% for item in number.dancing %}<span class="chip">{{ item.title }}</span>{% endfor %}</p>
                 <p>Dancing type (from thesaurus): {% for item in number.dancingtype %}<span class="chip">{{ item.title }}</span>{% endfor %}</p>
                 <p>Dance subgenre (from thesaurus): {% for item in number.dancesubgenre %}<span class="chip">{{ item.title }}</span>{% endfor %} </p>
@@ -111,11 +109,11 @@
             <section class="col s6">
                 <h2>Music</h2>
                 <p>Song : {% for song in number.song %} <span class="chip">{{ song }}</span>{% endfor %}</span></p>
-                <p>Music ensemble : {% for item in number.ensemble %} {% if item.type == "musical" %}<span class="chip">{{ item.title }}</span>{% endif %}{% endfor %}</span></p>
                 <p>Music ensemble (from thesaurus) : {% for item in number.musensemble %} <span class="chip">{{ item }}</span>{% endfor %}</p>
                 <p>Dubbing : <span class="chip">{{ number.dubbing }}</span></p>
-                <p>Tempo : <span class="chip">{{ number.tempo }}</span></p>
                 <p>Tempo  (from thesaurus) : <span class="chip">{{ number.tempoThesaurus }}</span></p>
+                <!-- dernier import à faire -->
+                <p>Muscical style : à rechercher + importer from csv [en cours]</p>
                 <p>Musical style (from thesaurus) : {% for item in number.musicalThesaurus %}<span class="chip">{{ item.title }}</span>{% endfor %}</p>
                 <p>Arrangers :  {% for person in number.arrangers %} <span class="chip">{{ person }}</span>{% endfor %}</span> </p>
                 <p>Arranger comment : <span>{{ number.arrangerComment }}</span></p>

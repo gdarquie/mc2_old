@@ -170,22 +170,6 @@ class Number
     private $spectators;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="diegetic", type="string", length=45, nullable=true)
-     */
-    private $diegetic;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="musician", type="string", length=255, nullable=true)
-     */
-    private $musician;
-
-
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="validation_backstage", type="integer", nullable=true)
@@ -261,12 +245,6 @@ class Number
      */
     private $dubbing;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tempo", type="string", length=255, nullable=true)
-     */
-    private $tempo;
 
     /**
      * @var string
@@ -477,13 +455,6 @@ class Number
      * )
      */
     private $exoticism;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ensemble", mappedBy="number")
-     */
-    private $ensemble;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -964,7 +935,6 @@ class Number
         $this->place = new \Doctrine\Common\Collections\ArrayCollection();
         $this->stagenumber = new \Doctrine\Common\Collections\ArrayCollection();
         $this->exoticism = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->ensemble = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dancing = new \Doctrine\Common\Collections\ArrayCollection();
         $this->effects = new \Doctrine\Common\Collections\ArrayCollection();
         $this->performers = new \Doctrine\Common\Collections\ArrayCollection();
@@ -1311,54 +1281,6 @@ class Number
     }
 
     /**
-     * Set diegetic
-     *
-     * @param string $diegetic
-     *
-     * @return Number
-     */
-    public function setDiegetic($diegetic)
-    {
-        $this->diegetic = $diegetic;
-
-        return $this;
-    }
-
-    /**
-     * Get diegetic
-     *
-     * @return string
-     */
-    public function getDiegetic()
-    {
-        return $this->diegetic;
-    }
-
-    /**
-     * Set musician
-     *
-     * @param string $musician
-     *
-     * @return Number
-     */
-    public function setMusician($musician)
-    {
-        $this->musician = $musician;
-
-        return $this;
-    }
-
-    /**
-     * Get musician
-     *
-     * @return string
-     */
-    public function getMusician()
-    {
-        return $this->musician;
-    }
-
-    /**
      * Set validationBackstage
      *
      * @param integer $validationBackstage
@@ -1476,30 +1398,6 @@ class Number
     public function getDubbing()
     {
         return $this->dubbing;
-    }
-
-    /**
-     * Set tempo
-     *
-     * @param string $tempo
-     *
-     * @return Number
-     */
-    public function setTempo($tempo)
-    {
-        $this->tempo = $tempo;
-
-        return $this;
-    }
-
-    /**
-     * Get tempo
-     *
-     * @return string
-     */
-    public function getTempo()
-    {
-        return $this->tempo;
     }
 
     /**
@@ -1888,40 +1786,6 @@ class Number
     public function getExoticism()
     {
         return $this->exoticism;
-    }
-
-    /**
-     * Add ensemble
-     *
-     * @param \AppBundle\Entity\Ensemble $ensemble
-     *
-     * @return Number
-     */
-    public function addEnsemble(\AppBundle\Entity\Ensemble $ensemble)
-    {
-        $this->ensemble[] = $ensemble;
-
-        return $this;
-    }
-
-    /**
-     * Remove ensemble
-     *
-     * @param \AppBundle\Entity\Ensemble $ensemble
-     */
-    public function removeEnsemble(\AppBundle\Entity\Ensemble $ensemble)
-    {
-        $this->ensemble->removeElement($ensemble);
-    }
-
-    /**
-     * Get ensemble
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEnsemble()
-    {
-        return $this->ensemble;
     }
 
     /**
