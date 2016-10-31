@@ -45,6 +45,40 @@ class EditorController extends Controller
         ));
     }
 
+//Myfilm
+
+    /**
+     * @Route("editor/user/{userId}/film/{filmId}", name="myFilm")
+     */
+    public function indexAction(Request $request, $filmId)
+    {
+
+        $myNumbers = "";
+        $myFilms = "";
+
+        $em = $this->getDoctrine()->getManager();
+
+        if($this->getUser()){
+            $user = $this->getUser()->getId();
+            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.editors e JOIN n.film f WHERE e.id = :user AND f.filmId = :filmId');
+            $query->setParameter('user', $user );
+            $query->setParameter('filmId', $filmId );
+            $myNumbers = $query->getResult();
+
+            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.editors e WHERE e.id = :user GROUP BY n.film')
+                ->setParameter('user', $user)
+            ;
+            $myFilms = $query->getResult();
+
+        }
+
+        return $this->render('editor/myfilm.html.twig', array(
+            'myNumbers' => $myNumbers,
+            'myFilms' => $myFilms,
+            'user' => $user
+        ));
+    }
+
 
 //Number (add a number for a pre-existing film)
 

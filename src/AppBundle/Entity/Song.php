@@ -144,6 +144,31 @@ class Song
     private $number;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", inversedBy="song")
+     * @ORM\JoinTable(name="song_has_editor",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="editors", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $editors;
+
+    /**
+     * @ORM\Column(name="date_creation", type="datetime")
+     */
+    private $date_creation;
+
+    /**
+     * @ORM\Column(name="last_update", type="datetime")
+     */
+    private $last_update;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -482,4 +507,53 @@ class Song
     {
         return $this->getTitle();
     }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEditors()
+    {
+        return $this->editors;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $editors
+     */
+    public function setEditors($editors)
+    {
+        $this->editors = $editors;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateCreation()
+    {
+        return $this->date_creation;
+    }
+
+    /**
+     * @param mixed $date_creation
+     */
+    public function setDateCreation($date_creation)
+    {
+        $this->date_creation = $date_creation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastUpdate()
+    {
+        return $this->last_update;
+    }
+
+    /**
+     * @param mixed $last_update
+     */
+    public function setLastUpdate($last_update)
+    {
+        $this->last_update = $last_update;
+    }
+    
 }

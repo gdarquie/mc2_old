@@ -27,6 +27,8 @@ class DefaultController extends Controller
         // $films = $em->getRepository('AppBundle:Film')
         //     ->findAllOrderdByTitle();
 
+        //get user
+        $user = $this->getUser();
 
         //Films with number
         $query = $em->createQuery(
@@ -44,12 +46,19 @@ class DefaultController extends Controller
         //My numbers
 
         $myNumbers = "";
+        $myFilms = "";
 
         if($this->getUser()){
             $user = $this->getUser()->getId();
             $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.editors e WHERE e.id = :user');
             $query->setParameter('user', $user );
             $myNumbers = $query->getResult();
+
+            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.editors e WHERE e.id = :user GROUP BY n.film')
+                ->setParameter('user', $user)
+            ;
+            $myFilms = $query->getResult();
+
         }
 
 
@@ -59,8 +68,11 @@ class DefaultController extends Controller
             'persons' => $persons,
             'numbers' => $numbers,
             'myNumbers' => $myNumbers,
+            'myFilms' => $myFilms,
+            'user' => $user
         ));
     }
+
 
 //All movies
 

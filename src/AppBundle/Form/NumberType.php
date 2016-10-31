@@ -53,7 +53,13 @@ class NumberType extends AbstractType
 //                //'disabled' => true, //mais false si admin?
 //            ))
             ->add('commentTitle')
-            ->add('completeTitle')
+            ->add('completeTitle', ChoiceType::class, [
+                'choices' =>[
+                    "not complete" => 0,
+                    "complete" => 1,
+                    "complete for me but need help" => 2,
+                    ]
+            ])
 //            ->add('validationTitle', ChoiceType::class, [
 //                'choices' => [
 //                    //créer un repository pour validation?
@@ -105,7 +111,13 @@ class NumberType extends AbstractType
                 }
             ))
             ->add('commentTc')
-            ->add('completeTc')
+            ->add('completeTc', ChoiceType::class, [
+                'choices' =>[
+                    "not complete" => 0,
+                    "complete" => 1,
+                    "complete for me but need help" => 2,
+                ]
+            ])
 //            ->add('validationTc', ChoiceType::class, [
 //                'choices' => [
 //                    //créer un repository pour validation?
@@ -125,13 +137,25 @@ class NumberType extends AbstractType
                 }
             ))
             ->add('commentStructure')
-            ->add('completeStructure')
+            ->add('completeStructure', ChoiceType::class, [
+                'choices' =>[
+                    "not complete" => 0,
+                    "complete" => 1,
+                    "complete for me but need help" => 2,
+                ]
+            ])
 //            ->add('validationStructure')
 
             //Shots
             ->add('shots')
             ->add('commentShots')
-            ->add('completeShots')
+            ->add('completeShots', ChoiceType::class, [
+                'choices' =>[
+                    "not complete" => 0,
+                    "complete" => 1,
+                    "complete for me but need help" => 2,
+                ]
+            ])
 //            ->add('validationShots')
 
             //Performers
@@ -163,7 +187,13 @@ class NumberType extends AbstractType
                 }
             ))
             ->add('commentPerformance')
-            ->add('completePerformance')
+            ->add('completePerformance', ChoiceType::class, [
+                'choices' =>[
+                    "not complete" => 0,
+                    "complete" => 1,
+                    "complete for me but need help" => 2,
+                ]
+            ])
 //            ->add('validationPerformance')
 
             //Backstage
@@ -213,7 +243,13 @@ class NumberType extends AbstractType
                 }
             ))
             ->add('commentBackstage')
-            ->add('completeBackstage')
+            ->add('completeBackstage', ChoiceType::class, [
+                'choices' =>[
+                    "not complete" => 0,
+                    "complete" => 1,
+                    "complete for me but need help" => 2,
+                ]
+            ])
 //            ->add('validationBackstage')
             
             //Themes
@@ -272,7 +308,13 @@ class NumberType extends AbstractType
                 }
             ))
             ->add('commentTheme')
-            ->add('completeTheme')
+            ->add('completeTheme', ChoiceType::class, [
+                'choices' =>[
+                    "not complete" => 0,
+                    "complete" => 1,
+                    "complete for me but need help" => 2,
+                ]
+            ])
 //            ->add('validationTheme')
 
             //Mood
@@ -293,7 +335,13 @@ class NumberType extends AbstractType
                 }// diviser par type ensuite
             ))
             ->add('commentMood')
-            ->add('completeMood')
+            ->add('completeMood', ChoiceType::class, [
+                'choices' =>[
+                    "not complete" => 0,
+                    "complete" => 1,
+                    "complete for me but need help" => 2,
+                ]
+            ])
 //            ->add('validationMood')
 
             //Dance
@@ -340,7 +388,13 @@ class NumberType extends AbstractType
                 }
             ))
             ->add('commentDance')
-            ->add('completeDance')
+            ->add('completeDance', ChoiceType::class, [
+                'choices' =>[
+                    "not complete" => 0,
+                    "complete" => 1,
+                    "complete for me but need help" => 2,
+                ]
+            ])
 //            ->add('validationDance')
 
             //Music
@@ -390,7 +444,13 @@ class NumberType extends AbstractType
             ))
             ->add('arrangerComment')
             ->add('commentMusic')
-            ->add('completeMusic')
+            ->add('completeMusic', ChoiceType::class, [
+                'choices' =>[
+                    "not complete" => 0,
+                    "complete" => 1,
+                    "complete for me but need help" => 2,
+                ]
+            ])
 //            ->add('validationMusic')
 
 
@@ -406,7 +466,13 @@ class NumberType extends AbstractType
             ->add('cost')
             ->add('costComment')
             ->add('commentDirector')
-            ->add('completeCost')
+            ->add('completeCost', ChoiceType::class, [
+                'choices' =>[
+                    "not complete" => 0,
+                    "complete" => 1,
+                    "complete for me but need help" => 2,
+                ]
+            ])
 //            ->add('validationCost')
 
             //Reference
@@ -423,14 +489,21 @@ class NumberType extends AbstractType
             //->add('source')
             ->add('source_thesaurus', EntityType::class, array(
                 'class' => 'AppBundle:Thesaurus',
-                'multiple' => true,
+                'placeholder' => "",
+                'multiple' => false,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
                     return $repo->findAllThesaurusByType("source");
                 }
             ))
             ->add('commentReference')
-            ->add('completeReference')
+            ->add('completeReference', ChoiceType::class, [
+                'choices' =>[
+                    "not complete" => 0,
+                    "complete" => 1,
+                    "complete for me but need help" => 2,
+                ]
+            ])
 //            ->add('validationReference')
             ->add('lyrics')
 

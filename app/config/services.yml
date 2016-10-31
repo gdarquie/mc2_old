@@ -7,3 +7,11 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+  maintenance_listener:
+    class: AppBundle\Event\MaintenanceListener
+    arguments:
+        - "%lockFilePath%"
+        - "@twig"
+    tags:
+        - { name : kernel.event_listener, event : kernel.request, method : onKernelRequest }

@@ -32,7 +32,7 @@ class Number
     private $validationTitle;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $completeTitle;
     
@@ -86,12 +86,12 @@ class Number
 
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer",  nullable=true)
      */
     private $completeTc;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="integer",  nullable=true)
      */
     private $commentTc;
 
@@ -103,7 +103,7 @@ class Number
     private $validationStructure;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $completeStructure;
 
@@ -134,7 +134,7 @@ class Number
     private $commentShots;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $completeShots;
 
@@ -153,7 +153,7 @@ class Number
     private $validationPerformance;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $completePerformance;
 
@@ -183,12 +183,7 @@ class Number
      */
     private $musician;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="integration_id", type="integer", nullable=true)
-     */
-    private $integrationId;
+
 
     /**
      * @var integer
@@ -198,7 +193,7 @@ class Number
     private $validationBackstage;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $completeBackstage;
 
@@ -216,7 +211,7 @@ class Number
     private $validationTheme;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $completeTheme;
 
@@ -233,7 +228,7 @@ class Number
     private $validationMood;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $completeMood;
 
@@ -250,7 +245,7 @@ class Number
     private $validationDance;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $completeDance;
 
@@ -295,7 +290,7 @@ class Number
     private $validationMusic;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $completeMusic;
 
@@ -312,7 +307,7 @@ class Number
     private $validationDirector;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $completeDirector;
 
@@ -343,7 +338,7 @@ class Number
     private $validationCost;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $completeCost;
 
@@ -362,7 +357,7 @@ class Number
     private $validationReference;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $completeReference;
 
@@ -496,13 +491,6 @@ class Number
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Dancing", mappedBy="number")
      */
     private $dancing;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Integration", mappedBy="number")
-     */
-    private $integration;
 
     /** @var  \AppBundle\Entity\Thesaurus
      *
@@ -664,15 +652,6 @@ class Number
      */
     private $stereotype;
 
-
-    /** @var  \AppBundle\Entity\Thesaurus
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="mood_thesaurus_id", referencedColumnName="thesaurus_id")
-     * })
-     */
-    private $mood_thesaurus;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -987,7 +966,6 @@ class Number
         $this->exoticism = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ensemble = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dancing = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->integration = new \Doctrine\Common\Collections\ArrayCollection();
         $this->effects = new \Doctrine\Common\Collections\ArrayCollection();
         $this->performers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->editors = new \Doctrine\Common\Collections\ArrayCollection();
@@ -1378,30 +1356,6 @@ class Number
     public function getMusician()
     {
         return $this->musician;
-    }
-
-    /**
-     * Set integrationId
-     *
-     * @param integer $integrationId
-     *
-     * @return Number
-     */
-    public function setIntegrationId($integrationId)
-    {
-        $this->integrationId = $integrationId;
-
-        return $this;
-    }
-
-    /**
-     * Get integrationId
-     *
-     * @return integer
-     */
-    public function getIntegrationId()
-    {
-        return $this->integrationId;
     }
 
     /**
@@ -2005,41 +1959,6 @@ class Number
     }
 
     /**
-     * Add integration
-     *
-     * @param \AppBundle\Entity\Integration $integration
-     *
-     * @return Number
-     */
-    public function addIntegration(\AppBundle\Entity\Integration $integration)
-    {
-        $this->integration[] = $integration;
-
-        return $this;
-    }
-
-    /**
-     * Remove integration
-     *
-     * @param \AppBundle\Entity\Integration $integration
-     */
-    public function removeIntegration(\AppBundle\Entity\Integration $integration)
-    {
-        $this->integration->removeElement($integration);
-    }
-
-    /**
-     * Get integration
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIntegration()
-    {
-        return $this->integration;
-    }
-
-
-    /**
      * Add effect
      *
      * @param \AppBundle\Entity\Effects $effect
@@ -2215,22 +2134,6 @@ class Number
     public function setStereotype($stereotype)
     {
         $this->stereotype = $stereotype;
-    }
-
-    /**
-     * @return Thesaurus
-     */
-    public function getMoodThesaurus()
-    {
-        return $this->mood_thesaurus;
-    }
-
-    /**
-     * @param Thesaurus $mood_thesaurus
-     */
-    public function setMoodTheasurus($mood_thesaurus)
-    {
-        $this->mood_thesaurus = $mood_thesaurus;
     }
 
     /**
@@ -2618,6 +2521,7 @@ class Number
     {
         $this->tempo_thesaurus = $tempo_thesaurus;
     }
+
 
     /**
      * @return Thesaurus
