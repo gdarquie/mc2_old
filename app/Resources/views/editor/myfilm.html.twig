@@ -21,7 +21,7 @@
                 <h2>My numbers</h2>
 
                 {% if myFilms|length > 1 %}
-                    <a class="chip" @href="{{ path('homepage') }}">All</a>
+                    <a class="chip" href="{{ path('homepage') }}">All</a>
                     {% for item in myFilms %}
                         <a class="chip" href="{{ path("myFilm", {"userId" : user, "filmId" : item.film.filmId }) }}">{{ item.film }}</a>
                     {% endfor %}
