@@ -13,8 +13,9 @@
 
 
   <section class="container">
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
+
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
       {% if myNumbers|length > 0  %}
 
@@ -84,9 +85,14 @@
             href="{{ path('numbers') }}">numbers</a>.</p>
 </div>
 
+
 <div class="row">
   <div class="col s9">
     <h2>Find a movie</h2>
+
+    <article class="findFilm">
+
+    </article>
 
     <article>
       <h3>Films with numbers</h3>
@@ -123,7 +129,7 @@
 
     <article>
       <h3>Title</h3>
-      <input type="text">
+      <input type="text" class="searchFilm">
     </article>
     
     <article>
@@ -148,5 +154,10 @@
 {% block javascripts %}
 
   {{ parent() }}
+  <script src="{{ asset("assets/vendor/react/react.js") }}"></script>
+  <script src="{{ asset("assets/vendor/react/react-dom.js") }}"></script>
+  <script src="{{ asset("assets/vendor/babel/browser.min.js") }}"></script>
+
+  <script src="{{ asset('js/accueil.js') }}"></script>
 
 {% endblock %}

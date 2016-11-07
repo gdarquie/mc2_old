@@ -152,7 +152,17 @@ class EditorController extends Controller
 
             $collection = new \Doctrine\Common\Collections\ArrayCollection();
             $user = $this->getUser();
+
+//
+//            $query = $em->createQuery('SELECT n FROM AppBundle:Number n WHERE n.numberId = :numberId');
+//            $query->setParameter('numberId', $numberId );
+//             récupérer tous les user d'un number
+//
+//            $user = $query->getResult();
+
             $collection->add($user);
+
+            //récupérer les anciens user
             $number->setEditors($collection);
 
             $now = new \DateTime();

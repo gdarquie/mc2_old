@@ -490,7 +490,7 @@ class NumberType extends AbstractType
             ->add('source_thesaurus', EntityType::class, array(
                 'class' => 'AppBundle:Thesaurus',
                 'placeholder' => "",
-                'multiple' => false,
+                'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
                     return $repo->findAllThesaurusByType("source");
