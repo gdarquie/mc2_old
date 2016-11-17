@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73570d6e-9db4-42de-8645-db93b49ffcf6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Shots.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_gohuuapmcuio4j1doiqdevpjc2" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/admin/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/admin/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/editor/number/_form.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/editor/number/_form.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/film.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/film.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/web/thesaurus/thesaurus.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/thesaurus/thesaurus.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/Api/FilmController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/Api/FilmController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/Web/DefaultController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/Web/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/Web/ThesaurusController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/Web/ThesaurusController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Film.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Film.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Number.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Number.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/State.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/State.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/NumberType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/NumberType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/film.css" afterPath="$PROJECT_DIR$/web/css/film.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/style.css" afterPath="$PROJECT_DIR$/web/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_0on0tsvikepvuc37o3nae9ig56" afterPath="$PROJECT_DIR$/var/sessions/dev/sess_0on0tsvikepvuc37o3nae9ig56" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/accueil.js" afterPath="$PROJECT_DIR$/web/js/accueil.js" />
     </list>
     <ignored path="application.iws" />
@@ -108,8 +91,8 @@
       <file leaf-file-name="accueil.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/js/accueil.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="2" column="354" selection-start-line="2" selection-start-column="354" selection-end-line="2" selection-end-column="354" />
+            <state relative-caret-position="348">
+              <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -935,12 +918,12 @@
       <workItem from="1479148145039" duration="2108000" />
       <workItem from="1479325205141" duration="267000" />
       <workItem from="1479335118217" duration="10014000" />
-      <workItem from="1479411306173" duration="9970000" />
+      <workItem from="1479411306173" duration="10472000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="295748000" />
+    <option name="totallyTimeSpent" value="296250000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="all">
@@ -1463,8 +1446,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/accueil.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="2" column="354" selection-start-line="2" selection-start-column="354" selection-end-line="2" selection-end-column="354" />
+        <state relative-caret-position="348">
+          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
           <folding />
         </state>
       </provider>

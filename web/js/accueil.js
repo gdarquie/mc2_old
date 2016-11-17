@@ -19,7 +19,7 @@ $("#searchMovie").keyup(function(){
     var selection = [];
 
     jQuery.when(
-        jQuery.getJSON('http://127.0.0.1:8000/api/films/')
+        jQuery.getJSON('/api/films/')
     ).done(function (json){
 
         if (input.length > 2){
