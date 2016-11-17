@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="container">
+
+    <h2>Liste des numbers</h2>
+    {% for number in thesaurus %}
+        <p class="chip">{{ number.title }}</p>
+    {% endfor %}
+
+    </section>
+
+{% endblock %}

@@ -108,4 +108,39 @@ class ThesaurusController extends Controller
         ));
 
     }
+
+    /**
+     * @Route("/thesaurus/type/{type}/item/{item}", name="getItemTypeThesaurus")
+     */
+    public function getNumbersFromItemTypeThesaurus($type, $item){
+
+        $em = $this->getDoctrine()->getManager();
+
+        if($type == 'costumes'){
+            $query = $em->createQuery('SELECT n.title FROM AppBundle:Number n INNER JOIN n.costumes c WHERE c.type = :type AND c.title = :item');
+        }
+        else if($type == 'exoticism'){
+            $query = $em->createQuery('SELECT n.title FROM AppBundle:Number n INNER JOIN n.exoticism_thesaurus c WHERE c.type = :type AND c.title = :item');
+        }
+
+        //ajouter une catégorie facultative
+//        else if($type == 'mood'){
+//            $query = $em->createQuery('SELECT n.title FROM AppBundle:Number n INNER JOIN n.general_mood c WHERE c.type = :type AND c.title = :item');
+//        }
+//        else if($type =='mood'){
+//                $query = $em->createQuery('SELECT n.title FROM AppBundle:Number n INNER JOIN n.genre c WHERE c.type = :type AND c.title = :item');
+//        }
+
+        //continuer avec les autres types
+
+        $query->setParameter('type', $type);
+        $query->setParameter('item', $item);
+        $thesaurus = $query->getResult();
+
+        return $this->render('web/thesaurus/numbersFromItem.html.twig', array(
+            'thesaurus' => $thesaurus,
+        ));
+
+    }
+
 }

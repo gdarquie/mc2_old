@@ -27,9 +27,7 @@ class FilmController extends Controller{
 	/**
 	* @Route("/")
 	*/
-	public function filmsByAction(){
-
-		//retourner les titres de tous les films par ordre alphabétique
+	public function filmsAction(){
 
 		$em = $this->getDoctrine()->getManager();
 		$films = $em->getRepository('AppBundle:Film')->findAll(); 
@@ -42,6 +40,7 @@ class FilmController extends Controller{
 
 		 return $response;
 	}
+
 
 	/**
 	* @Route("/title")
@@ -62,6 +61,9 @@ class FilmController extends Controller{
 		 return $response;
 	}
 
+	//si l'user est connecté : tous ses films?
+
+
 	private function serializeFilmTitle(Film $film)
     {
         return array(
@@ -74,6 +76,7 @@ class FilmController extends Controller{
         return array(
             'title' => $film->getTitle(),
             'released' => $film->getReleased(),
+            'filmId' => $film->getFilmId(),
         );
     }
 

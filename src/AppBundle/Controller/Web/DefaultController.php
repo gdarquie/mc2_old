@@ -61,6 +61,15 @@ class DefaultController extends Controller
 
         }
 
+        $query = $em->createQuery(
+            'SELECT COUNT(f.filmId) as nb, f.released as year FROM AppBundle:Film f  WHERE f.released > 1900 GROUP BY f.released'
+        );
+        $nbFilmsByYear = $query->getResult();
+
+        $query = $em->createQuery(
+            'SELECT COUNT(f.filmId) as nb, f.released as year FROM AppBundle:Film f  WHERE f.released > 1900 AND f.filmId IN (SELECT IDENTITY(n.film) FROM AppBundle:Number n WHERE n.film != 0)GROUP BY f.released'
+        );
+        $nbFilmsWithNumbersByYear = $query->getResult();
 
         return $this->render('index.html.twig', array(
             'films' => $films,
@@ -69,7 +78,9 @@ class DefaultController extends Controller
             'numbers' => $numbers,
             'myNumbers' => $myNumbers,
             'myFilms' => $myFilms,
-            'user' => $user
+            'user' => $user,
+            'nbFilmsByYear' => $nbFilmsByYear,
+            'nbFilmsWithNumbersByYear' => $nbFilmsWithNumbersByYear
         ));
     }
 

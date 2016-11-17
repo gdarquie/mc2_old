@@ -234,7 +234,6 @@ class NumberType extends AbstractType
                 }
             ))
             ->add('integoptions', EntityType::class, array(
-                'data' => null,
                 'class' => 'AppBundle:Thesaurus',
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha

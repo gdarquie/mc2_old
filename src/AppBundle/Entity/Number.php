@@ -91,7 +91,7 @@ class Number
     private $completeTc;
 
     /**
-     * @ORM\Column(type="integer",  nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $commentTc;
 

@@ -22,6 +22,14 @@ h2{
 	font-size: 2em;
 }
 
+h3{
+	font-size:1.5em;
+}
+
+h4{
+	font-size : 1em;
+}
+
 div .cut {
 	color:white;
 	height:80px;
@@ -70,11 +78,15 @@ div .cut {
 	font-size:90px;
 }
 
-.items li{
+.items li, .resultMovies{
   margin-bottom: 5px;
   background-color:white; 
   color : #CC0000;
   border:  1px solid #CC0000;
+}
+
+.resultMovies{
+	margin :2px;
 }
 
 .number {
@@ -99,4 +111,19 @@ div .cut {
 
 .cursor{
 	cursor:pointer;
+}
+
+#results  a{
+	display : block;
+	margin-top : 5px;
+	margin-bottom: 5px;
+}
+
+#results h3{
+	text-align: center;
+	margin-bottom: 2em;
+}
+
+.myNumbers{
+	margin-bottom: 2em;
 }

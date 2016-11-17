@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>List of films from one thesaurus item</h1>
+
+        <table class="striped">
+            <tr><th>Title</th><th>Number of number</th><th>Released</th><th>Studio</th></tr>
+        {% for item in films  %}
+            <tr><td>{{ item.film }}</td><td>{{ item.nb }}</td><td>{{ item.released }}</td><td>{{ item.studio }}</td></tr>
+        {% endfor %}
+        </table>
+
+    </div>
+{% endblock %}

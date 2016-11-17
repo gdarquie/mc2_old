@@ -25,6 +25,21 @@
         {% endif %}
     </div>
 
+    <div class="row card">
+        <div class="col s12">
+          <h2>General information</h2>
+        </div>
+        <div class="col s6">
+            <p><strong>Studio :</strong> {{ film.studio }}</p>
+            <p><strong>Distributor :</strong>{{ film.distributor }}</li>
+        </div>
+
+        <div class="col s6">
+            <p><strong>Director :</strong> {% for director in film.directors  %}{{ director.title }}{% endfor %}</p>
+            <p><strong>Released :</strong> {{ film.released }}</p>
+        </div>
+    </div>
+
     <div class="row">
 
         <article class='col s12 m12'>

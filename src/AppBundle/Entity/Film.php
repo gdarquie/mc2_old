@@ -284,6 +284,37 @@ class Film
     private $censorship;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="filmDirector")
+     * @ORM\JoinTable(name="film_has_director",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $directors;
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="filmProducer")
+     * @ORM\JoinTable(name="film_has_producer",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $producers;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private $isComplete = false;
@@ -1153,6 +1184,54 @@ class Film
     public function getCensorship()
     {
         return $this->censorship;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDirectors()
+    {
+        return $this->directors;
+    }
+
+    /**
+     * @param mixed $directors
+     */
+    public function setDirectors($directors)
+    {
+        $this->directors = $directors;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsComplete()
+    {
+        return $this->isComplete;
+    }
+
+    /**
+     * @param mixed $isComplete
+     */
+    public function setIsComplete($isComplete)
+    {
+        $this->isComplete = $isComplete;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProducers()
+    {
+        return $this->producers;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $producers
+     */
+    public function setProducers($producers)
+    {
+        $this->producers = $producers;
     }
 
 

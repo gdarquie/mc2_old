@@ -327,7 +327,7 @@ todo : selction auto de film quand new number
 	{{form_row(numberForm.arrangerComment)}}
 	{{form_row(numberForm.lyrics, { 'attr': {'class': 'materialize-textarea'}})}}
 
-	{{ form_label(numberForm.commentMusic, "Music comment(s)") }}
+	{{ form_label(numberForm.commentMusic, "Music comment(s) (for openings please list here the order of the musical themes)") }}
 	{{ form_widget(numberForm.commentMusic, {
 		'attr': {'class': 'materialize-textarea'}
 	}) }}
@@ -354,7 +354,7 @@ todo : selction auto de film quand new number
 	})}}
 	{{form_row(numberForm.quotation_text)}}
 
-	{{ form_label(numberForm.commentReference, "Reference comment(s)") }}
+	{{ form_label(numberForm.commentReference, 'Besides your comments, use here one of the four keywords : "history", "literature and arts", "mythology" and "Bible"') }}
 	{{ form_widget(numberForm.commentReference, {
 		'attr': {'class': 'materialize-textarea'}
 	}) }}
@@ -371,15 +371,17 @@ todo : selction auto de film quand new number
 
 	<h3>Complement</h3>
 
+	<h4>Director</h4>
 	{{form_row(numberForm.director)}}
-	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
-	{{form_row(numberForm.cost)}}
-	{{form_row(numberForm.costComment, { 'attr': {'class': 'materialize-textarea'}}) }}
-
-	{{ form_label(numberForm.commentDirector, "Complement comment(s)") }}
+	<p><a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a></p>
+	{{ form_label(numberForm.commentDirector, "Director comments and source") }}
 	{{ form_widget(numberForm.commentDirector, {
 		'attr': {'class': 'materialize-textarea'}
 	}) }}
+
+	<h4>Cost</h4>
+	{{form_row(numberForm.cost)}}
+	{{form_row(numberForm.costComment, { 'attr': {'class': 'materialize-textarea'}}) }}
 
 	{{ form_widget(numberForm.completeCost) }}
 	{{ form_label(numberForm.completeCost, "Completed?") }}

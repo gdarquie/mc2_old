@@ -15,9 +15,9 @@ class State
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
-    private $nom;
+    private $title;
 
     /**
      * @var float
@@ -57,30 +57,22 @@ class State
         $this->film = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
     /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return State
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
      * @return string
      */
-    public function getNom()
+    public function getTitle()
     {
-        return $this->nom;
+        return $this->title;
     }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
 
     /**
      * Set lat
