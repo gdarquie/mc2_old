@@ -60,7 +60,8 @@
                     <li>Version 0.2.8 (beta)</li>
                     <li><a href="{{ path('thesaurus', {'type' : "all"}) }}">thesaurus</a></li>
                     <li><a href="{{ path('numbers') }}">all numbers</a></li>
-
+                    <li><a href="{{ path('howto')}}">how to</a></li>
+                    <li><a href="{{ path('about')}}">about</a></li>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <li><a class="dropdown-button" href="#!" data-activates="menu_add">add<i class="material-icons right">arrow_drop_down</i></a></li>
                         <li>connected as {{ app.user.username }}</li>
@@ -68,7 +69,7 @@
                     {% else %}
                         <li><a href="{{ path('fos_user_security_login') }}">connexion</a></li>
                     {% endif %}
-                    <li><a href="{{ path('about')}}">about</a></li>
+
                 </ul>
 
             </div>

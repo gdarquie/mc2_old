@@ -441,6 +441,14 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/howto", name="howto")
+     */
+    public function howto(){
+
+        return $this->render('howto.html.twig');
+    }
+
+    /**
      * @Route("/about", name="about")
      */
     public function apropos(){
