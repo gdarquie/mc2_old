@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<section class="container">
+    <h1>Exoticism : {% for item in exoticism %}{{ item.title }}{% endfor %}</h1>
+</section>
+
+{% endblock %}

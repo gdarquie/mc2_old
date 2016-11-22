@@ -14,6 +14,7 @@
 
   <section class="container">
 
+
     <article class="row">
 
       <div class="col s4">
@@ -22,6 +23,10 @@
       </div>
       <div class="col s8 result card" id="findMovie">
       </div>
+    </article>
+
+    <article id="results" class="row">
+
     </article>
 
     <article class="myNumbers">
@@ -89,11 +94,6 @@
       {% endif %}
     </article>
 
-
-    <article id="results" class="row">
-
-    </article>
-
     <article>
       <h2>Number of films by Year</h2>
       <div id="chart_div"></div>
@@ -146,19 +146,15 @@
 
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'Year');
+      data.addColumn('number', 'Number of Numbers');
       data.addColumn('number', 'Number of Films');
 
-      data.addRows([
-        {% for item in nbFilmsByYear %}
-          [{{ item.year }}, {{ item.nb }}],
-        {% endfor %}
-
-      ]);
 
       data.addRows([
-        {% for item in nbFilmsWithNumbersByYear %}
-        [{{ item.year }}, {{ item.nb }}],
+        {% for item in nbNumbersByYear %}
+        [{{ item.released }}, {{ item.nb }}, {{ item.nbFilms }}],
         {% endfor %}
+
       ]);
 
       var options = {
@@ -166,7 +162,7 @@
           title: 'Years'
         },
         vAxis: {
-          title: 'Films'
+          title: 'Films & Numbers'
         },
       };
 

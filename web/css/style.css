@@ -102,6 +102,10 @@ div .cut {
 	overflow : auto;
 }
 
+#about .card{
+	height:auto;
+	overflow : auto;
+}
 
 #logo{
 	height:60px;

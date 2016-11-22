@@ -143,4 +143,21 @@ class ThesaurusController extends Controller
 
     }
 
+    /**
+     * @Route("/exoticism/{item}", name="getExoticism")
+     */
+    public function getExoticism($item){
+
+        $em = $this -> getDoctrine()->getManager();
+        $query = $em -> createQuery('SELECT e FROM AppBundle:Thesaurus e WHERE e.type = :type AND e.title = :item');
+        $query->setParameter('type', 'exoticism');
+        $query->setParameter('item', $item);
+        $exoticism = $query->getResult();
+
+        return $this->render('web/thesaurus/exoticism.html.twig' , array(
+            'exoticism' => $exoticism
+        ));
+
+    }
+
 }

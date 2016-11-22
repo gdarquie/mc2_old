@@ -320,6 +320,11 @@ class Film
     private $isComplete = false;
 
     /**
+     * @ORM\OneToMany(targetEntity="Number", mappedBy="film")
+     */
+    private $numbers;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -327,6 +332,7 @@ class Film
         $this->underscoring = new \Doctrine\Common\Collections\ArrayCollection();
         $this->state = new \Doctrine\Common\Collections\ArrayCollection();
         $this->censorship = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->numbers = new ArrayCollection();
     }
 
 
@@ -1232,6 +1238,22 @@ class Film
     public function setProducers($producers)
     {
         $this->producers = $producers;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumbers()
+    {
+        return $this->numbers;
+    }
+
+    /**
+     * @param mixed $numbers
+     */
+    public function setNumbers($numbers)
+    {
+        $this->numbers = $numbers;
     }
 
 

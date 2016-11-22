@@ -356,7 +356,7 @@ class Number
     /**
      * @var \AppBundle\Entity\Film
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Film")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Film", inversedBy="numbers")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="film_id", referencedColumnName="film_id", nullable=false)
      * })

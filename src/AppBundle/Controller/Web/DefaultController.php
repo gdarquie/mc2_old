@@ -58,7 +58,6 @@ class DefaultController extends Controller
                 ->setParameter('user', $user)
             ;
             $myFilms = $query->getResult();
-
         }
 
         $query = $em->createQuery(
@@ -71,6 +70,12 @@ class DefaultController extends Controller
         );
         $nbFilmsWithNumbersByYear = $query->getResult();
 
+        //All numbers by Year
+        $query = $em->createQuery(
+            'SELECT f.released, COUNT(n.title) as nb, COUNT(DISTINCT(f.title)) as nbFilms FROM AppBundle:Film f LEFT JOIN f.numbers n WHERE f.released > 0 GROUP BY f.released   ORDER BY f.released ASC'
+        );
+        $nbNumbersByYear = $query->getResult();
+
         return $this->render('index.html.twig', array(
             'films' => $films,
             'filmsWithNumber' => $filmsWithNumber,
@@ -80,7 +85,8 @@ class DefaultController extends Controller
             'myFilms' => $myFilms,
             'user' => $user,
             'nbFilmsByYear' => $nbFilmsByYear,
-            'nbFilmsWithNumbersByYear' => $nbFilmsWithNumbersByYear
+            'nbFilmsWithNumbersByYear' => $nbFilmsWithNumbersByYear,
+            'nbNumbersByYear' => $nbNumbersByYear
         ));
     }
 
@@ -434,6 +440,11 @@ class DefaultController extends Controller
 
     }
 
+    /**
+     * @Route("/about", name="about")
+     */
+    public function apropos(){
 
-
+        return $this->render('about.html.twig');
+    }
 }
