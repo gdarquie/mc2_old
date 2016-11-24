@@ -22,6 +22,13 @@ class Thesaurus
     /**
      * @var string
      *
+     * @ORM\Column(name="code", type="string", length=255, nullable=false)
+     */
+    private $code;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="type", type="string", length=255, nullable=false)
      */
     private $type;
@@ -254,6 +261,23 @@ class Thesaurus
     {
         return $this->getTitle();
     }
+
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
 
 
 }

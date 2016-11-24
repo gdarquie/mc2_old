@@ -98,7 +98,7 @@ div .cut {
 }
 
 .card{
-	height:200px;
+	height:auto;
 	overflow : auto;
 }
 
@@ -129,5 +129,10 @@ div .cut {
 }
 
 .myNumbers{
+	margin-bottom: 2em;
+}
+
+#exoticism .intro{
+	margin-top:1em;
 	margin-bottom: 2em;
 }
