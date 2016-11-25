@@ -320,6 +320,21 @@ class Film
     private $isComplete = false;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Studio", inversedBy="films")
+     * @ORM\JoinTable(name="film_has_studio",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="studio_id", referencedColumnName="studio_id")
+     *   }
+     * )
+     */
+    private $studios;
+
+    /**
      * @ORM\OneToMany(targetEntity="Number", mappedBy="film")
      */
     private $numbers;
@@ -1256,6 +1271,21 @@ class Film
         $this->numbers = $numbers;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getStudios()
+    {
+        return $this->studios;
+    }
+
+    /**
+     * @param mixed $studios
+     */
+    public function setStudios($studios)
+    {
+        $this->studios = $studios;
+    }
 
     public function __toString()
     {

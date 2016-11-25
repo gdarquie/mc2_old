@@ -22,7 +22,7 @@ class Thesaurus
     /**
      * @var string
      *
-     * @ORM\Column(name="code", type="string", length=255, nullable=false)
+     * @ORM\Column(name="code", type="string", length=255, nullable=true)
      */
     private $code;
 

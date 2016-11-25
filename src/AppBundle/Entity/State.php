@@ -50,6 +50,16 @@ class State
     private $film;
 
     /**
+     * @ORM\Column(name="date_creation", type="datetime")
+     */
+    private $date_creation;
+
+    /**
+     * @ORM\Column(name="last_update", type="datetime")
+     */
+    private $last_update;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -165,4 +175,37 @@ class State
     {
         return $this->film;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDateCreation()
+    {
+        return $this->date_creation;
+    }
+
+    /**
+     * @param mixed $date_creation
+     */
+    public function setDateCreation($date_creation)
+    {
+        $this->date_creation = $date_creation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastUpdate()
+    {
+        return $this->last_update;
+    }
+
+    /**
+     * @param mixed $last_update
+     */
+    public function setLastUpdate($last_update)
+    {
+        $this->last_update = $last_update;
+    }
+
 }
