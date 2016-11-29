@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{%  block stylesheets %}
+    {{ parent() }}
+    <style>
+        .card{
+            height: 100px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <section class="container">
+        <h1>Dance : {{ myDance.title }}</h1>
+
+        <article>
+            <p>[visualisation : chronologie de l'emploi de ce type de dance]</p>
+            <table class="striped">
+                <tr>
+                    <th>Year</th>
+                    <th>Occurences</th>
+                </tr>
+                {% for item in danceContentByYear %}
+                    <tr><td>{{ item.released }}</td><td>{{ item.nb }}</td></tr>
+                {% endfor %}
+
+            </table>
+        </article>
+
+        <article>
+            <h2>Dancing ensemble</h2>
+        </article>
+
+        <article>
+            <h2>Exoticism</h2>
+        </article>
+
+        <article>
+            <h2>List of movies with {{ myDance.title }} dance</h2>
+
+            <div class="liste row">
+                {% for film in filmsByDance  %}
+                    <div class="card horizontal col s4 ">
+                        {% if film.imdb %}
+                            <img src="http://img.omdbapi.com/?i={{ film.imdb }}&apikey=1733f6a&h=100" alt="poster">
+                        {% endif %}
+                        <a href="{{ path('film', {'filmId' : film.filmId}) }}"><h3>{{ film.title }}</h3></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </article>
+
+        <p>Ajouter la liste des numbers</p>
+
+        {#<article>#}
+        {#<div id="chart_div"></div>#}
+
+        {#</article>#}
+
+        {#<article>#}
+            {#<h2>List of numbers with {% for item in dance %}{{ item.title }}{% endfor %} dance</h2>#}
+
+            {#<div class="liste row">#}
+                {#<table class="striped">#}
+                    {#<tr>#}
+                        {#<th>number</th>#}
+                        {#<th>Released</th>#}
+                        {#<th>film</th>#}
+
+                    {#</tr>#}
+                    {#{% for number in numbers  %}#}
+                        {#<tr>#}
+                            {#<td><a href="{{ path('number', {'numberId' : number.numberId}) }}">{{ number.title }}</a></td>#}
+                            {#<td>{{ number.released }}</td>#}
+                            {#<td>{{ number.filmTitle }}</td>#}
+
+                        {#</tr>#}
+                    {#{% endfor %}#}
+                {#</table>#}
+            {#</div>#}
+        {#</article>#}
+    </section>
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Name', 'Occurences'],
+                {% for genre in genres %}
+                ['{{ genre.title }}', {{ genre.nb }}],
+                {% endfor %}
+            ]);
+
+            var options = {
+                title: 'Ratio',
+                pieHole: 0.4,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+
+        }
+    </script>
+
+{% endblock %}

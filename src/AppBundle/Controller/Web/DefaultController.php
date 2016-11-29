@@ -454,4 +454,13 @@ class DefaultController extends Controller
 
         return $this->render('about.html.twig');
     }
+
+    /**
+     * @Route("/news", name="news")
+     */
+    public function newTo(){
+
+        return $this->render('news.html.twig');
+    }
+
 }

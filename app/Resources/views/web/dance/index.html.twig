@@ -24,7 +24,7 @@
         <article class="">
             <h2>Dancing type</h2>
             {% for item in dancing  %}
-                {{ item.title }}
+                <a href="{{ path('getOneDancingType', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }}</p></a>
             {% endfor %}
         </article>
 
@@ -37,7 +37,7 @@
         <article>
             <h2>Dance subgenre</h2>
             {% for item in subgenre  %}
-                {{ item.title }}
+                <div class="chip"><a href="{{ path('getOneDanceSubgenre', {'dance' : item.thesaurusId}) }}">{{ item.title }}</a></div>
             {% endfor %}
         </article>
 
@@ -49,7 +49,7 @@
         <article>
             <h2>Dance content</h2>
             {% for item in content  %}
-                <div class="chip"><a href="{{ path('getOneDancing', {'id' : item.thesaurusId}) }}">{{ item.title }}</a></div>
+                <div class="chip"><a href="{{ path('getOneDanceContent', {'dance' : item.thesaurusId}) }}">{{ item.title }}</a></div>
             {% endfor %}
         </article>
 

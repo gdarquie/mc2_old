@@ -2,689 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73570d6e-9db4-42de-8645-db93b49ffcf6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/web/censorship/index.html.twig" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/views/web/scenario/censorship.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/Web/ScenarioController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_0s5ostt8nrk7ni2f5tqktgd1n0" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/.editorconfig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/.gitattributes" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/bin/materialize.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/bin/materialize.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/css/materialize.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/css/materialize.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/material-design-icons/Material-Design-Icons.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Bold.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Bold.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Bold.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Bold.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Light.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Light.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Light.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Light.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Medium.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Medium.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Medium.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Medium.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Thin.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Thin.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Thin.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/font/roboto/Roboto-Thin.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Bold.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Bold.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Bold.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Bold.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Light.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Light.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Light.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Light.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Medium.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Medium.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Medium.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Medium.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Thin.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Thin.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Thin.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/fonts/roboto/Roboto-Thin.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/js/materialize.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/dist/js/materialize.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/extras/noUiSlider/nouislider.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/extras/noUiSlider/nouislider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/extras/noUiSlider/nouislider.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Bold.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Bold.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Bold.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Bold.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Light.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Light.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Light.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Light.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Medium.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Medium.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Medium.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Medium.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Thin.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Thin.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Thin.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/fonts/roboto/Roboto-Thin.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/animation.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/buttons.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/cards.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/carousel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/character_counter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/chips.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/collapsible.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/date_picker/picker.date.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/date_picker/picker.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/dropdown.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/forms.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/global.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/hammer.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/initial.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/jquery.easing.1.3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/jquery.hammer.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/jquery.timeago.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/leanModal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/materialbox.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/parallax.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/pushpin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/scrollFire.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/scrollspy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/sideNav.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/slider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/tabs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/toasts.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/tooltip.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/transitions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/velocity.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/js/waves.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/package.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_buttons.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_cards.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_carousel.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_chips.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_collapsible.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_color.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_dropdown.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_global.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_grid.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_icons-material-design.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_materialbox.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_mixins.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_modal.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_navbar.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_normalize.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_prefixer.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_preloader.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_roboto.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_sideNav.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_slider.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_table_of_contents.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_tabs.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_toast.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_tooltip.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_typography.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_variables.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/_waves.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/date_picker/_default.date.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/date_picker/_default.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/date_picker/_default.time.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/forms/_checkboxes.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/forms/_file-input.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/forms/_forms.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/forms/_input-fields.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/forms/_radio-buttons.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/forms/_range.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/forms/_select.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/components/forms/_switches.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/sass/materialize.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/masonry-template/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/masonry-template/background1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/masonry-template/background2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/masonry-template/background3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/masonry-template/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/masonry-template/js/init.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/masonry-template/js/masonry.pkgd.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/parallax-template/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/parallax-template/background1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/parallax-template/background2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/parallax-template/background3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/parallax-template/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/parallax-template/js/init.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/starter-template/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/starter-template/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/templates/starter-template/js/init.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/tests/spec/cards/cardsSpec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/tests/spec/collapsible/collapsibleSpec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/tests/spec/helper.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/tests/spec/scrollFire/scrollFireSpec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/tests/spec/select/selectSpec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/tests/spec/tabs/tabsSpec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/tests/spec/toast/toastSpec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/Materialize/tests/spec/tooltip/tooltipSpec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/d3/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/d3/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/d3/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/d3/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/d3/d3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/d3/d3.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/Gruntfile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/dist/jqcloud.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/dist/jqcloud.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/dist/jqcloud.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/dist/jqcloud.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/src/jqcloud.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/src/jqcloud.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/test/core_tests.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jqcloud/test/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/AUTHORS.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/dist/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/dist/jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/dist/jquery.min.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/external/sizzle/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/external/sizzle/dist/sizzle.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/external/sizzle/dist/sizzle.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/external/sizzle/dist/sizzle.min.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/.jshintrc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/ajax.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/ajax/jsonp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/ajax/load.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/ajax/parseJSON.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/ajax/parseXML.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/ajax/script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/ajax/var/location.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/ajax/var/nonce.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/ajax/var/rquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/ajax/xhr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/attributes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/attributes/attr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/attributes/classes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/attributes/prop.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/attributes/support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/attributes/val.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/callbacks.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/core.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/core/access.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/core/init.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/core/parseHTML.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/core/ready.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/core/var/rsingleTag.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/addGetHookIf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/adjustCSS.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/curCSS.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/defaultDisplay.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/hiddenVisibleSelectors.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/showHide.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/var/cssExpand.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/var/getStyles.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/var/isHidden.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/var/rmargin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/var/rnumnonpx.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/css/var/swap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/data.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/data/Data.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/data/var/acceptData.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/data/var/dataPriv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/data/var/dataUser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/deferred.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/deprecated.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/dimensions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/effects.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/effects/Tween.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/effects/animatedSelector.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/event.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/event/ajax.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/event/alias.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/event/focusin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/event/support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/event/trigger.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/exports/amd.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/exports/global.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/intro.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/manipulation.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/manipulation/_evalUrl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/manipulation/buildFragment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/manipulation/getAll.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/manipulation/setGlobalEval.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/manipulation/support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/manipulation/var/rcheckableType.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/manipulation/var/rscriptType.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/manipulation/var/rtagName.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/manipulation/wrapMap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/offset.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/outro.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/queue.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/queue/delay.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/selector-native.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/selector-sizzle.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/selector.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/serialize.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/traversing.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/traversing/findFilter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/traversing/var/dir.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/traversing/var/rneedsContext.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/traversing/var/siblings.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/arr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/class2type.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/concat.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/document.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/documentElement.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/hasOwn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/indexOf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/pnum.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/push.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/rcssNum.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/rnotwhite.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/slice.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/var/toString.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/jquery/src/wrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/nvd3/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/nvd3/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/nvd3/build/nv.d3.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/nvd3/build/nv.d3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/nvd3/build/nv.d3.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/nvd3/build/nv.d3.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/nvd3/build/nv.d3.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/nvd3/build/nv.d3.min.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/nvd3/meteor/export.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/nvd3/package.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/HISTORY.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/LICENSE-APACHE-2.0" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/LICENSE-MIT" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/NOTICE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/acceptDeleteIcon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/addNodeIcon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/backIcon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/connectIcon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/cross.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/cross2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/deleteIcon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/downArrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/editIcon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/leftArrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/minus.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/plus.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/rightArrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/upArrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/network/zoomExtends.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/img/timeline/delete.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/vis-graph3d.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/vis-network.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/vis-timeline-graph2d.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/vis.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/vis.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/vis.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/vis.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/dist/vis.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/css/bootstrap-theme.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/css/bootstrap-theme.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/css/bootstrap-theme.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/css/bootstrap.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/css/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/css/carousel.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/css/prettify.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/css/tipuesearch.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/data/dataset.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/data/dataview.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/data/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/graph2d/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/graph3d/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/arrow.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/crossword.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/crosswordStrong.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/external-link-icons/external-link-icon-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/external-link-icons/external-link-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/external-link-icons/license.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/graph/graph.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/graph/graph120x60.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/graph3d.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/graph3d120x60.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/timeline/timeline.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/timeline/timeline120x60.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/vis_overview.odg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/img/vis_overview.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/docs.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/googleAnalytics.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/ie-emulation-modes-warning.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/ie10-viewport-bug-workaround.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/jquery.highlight.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/jquery.url.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-apollo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-css.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-hs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-lisp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-lua.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-ml.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-proto.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-scala.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-sql.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-vb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-vhdl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-wiki.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/lang-yaml.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/prettify.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/prettify/prettify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/smooth-scroll.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/tipuesearch.config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/tipuesearch.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/tipuesearch.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/js/toggleTable.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/network/configure.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/network/edges.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/network/groups.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/network/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/network/interaction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/network/layout.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/network/manipulation.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/network/nodes.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/network/physics.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/docs/timeline/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/googleAnalytics.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/01_basic.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/02_bars.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/03_groups.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/04_rightAxis.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/05_bothAxis.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/06_interpolation.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/07_scrollingAndSorting.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/08_performance.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/09_external_legend.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/10_barsSideBySide.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/11_barsSideBySideGroups.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/12_customRange.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/13_localization.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/14_toggleGroups.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/15_streaming_data.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/16_bothAxisTitles.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/17_dynamicStyling.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/18_scatterplot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/19_labels.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/20_shading.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph2d/default.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/01_basics.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/02_camera.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/03_filter_data.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/04_animation.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/05_line.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/06_moving_dots.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/07_dot_cloud_colors.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/08_dot_cloud_size.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/09_mobile.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/10_styling.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/11_tooltips.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/12_custom_labels.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/default.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/csv2array.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/csv2datatable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/datasource.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/datasource.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/playground.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/playground.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-apollo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-css.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-hs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-lisp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-lua.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-ml.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-proto.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-scala.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-sql.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-vb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-vhdl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-wiki.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/lang-yaml.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/prettify.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/graph3d/playground/prettify/prettify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/basicUsage.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/datasets.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/data/cellular_automata.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/data/computer_network.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/data/simple.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/dotLanguage.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/dotPlayground.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/fsm.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/hello.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/process.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/screenshots/fsm.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/screenshots/hello.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/screenshots/softmaint.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/screenshots/traffic_lights.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/siblings.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/softmaint.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/traffic_lights.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/transparency.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/twopi2.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/unix.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dotLanguage/graphvizGallery/world.gv.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/dynamicData.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/importingFromGephi.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/scalingCustom.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/scalingNodesEdges.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/data/scalingNodesEdgesLabels.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/datasources/WorldCup2014.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/datasources/WorldCup2014.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/datasources/largeHierarchicalDataset.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/edgeStyles/arrows.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/edgeStyles/colors.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/edgeStyles/dashes.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/edgeStyles/smooth.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/edgeStyles/smoothWorldCup.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/events/interactionEvents.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/events/physicsEvents.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/events/renderEvents.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/exampleApplications/disassemblerExample.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/exampleApplications/lesMiserables.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/exampleApplications/loadingBar.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/exampleApplications/neighbourhoodHighlight.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/exampleApplications/nodeLegend.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/exampleApplications/worldCupPerformance.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/exampleUtil.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/10.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/11.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/12.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/13.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/14.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/5.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/7.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/8.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/indonesia/9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Hardware-Fax-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Hardware-Laptop-1-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Hardware-Mobile-Phone-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Hardware-My-Computer-3-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Hardware-My-PDA-02-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Hardware-My-PDA-04-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Hardware-My-PDA-05-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Hardware-My-Phone-Picture-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Hardware-Printer-Blue-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Misc-Scanner-default-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Network-Drive-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Network-Internet-Connection-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/Network-Pipe-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/System-Firewall-2-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/System-Globe-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/refresh-cl/license.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/Document-icon24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/Document-icon32.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/Document-icon48.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/Email-icon24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/Email-icon32.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/Email-icon48.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/Folder-icon24.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/Folder-icon32.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/Folder-icon48.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/Folder-icon64.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/Smiley-Angry-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/Smiley-Grin-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/User-Administrator-Blue-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/User-Administrator-Green-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/User-Coat-Blue-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/User-Coat-Green-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/User-Coat-Red-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/User-Executive-Green-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/User-Preppy-Blue-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/User-Preppy-Red-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/img/soft-scraps-icons/license.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/labels/labelAlignment.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/labels/labelBackground.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/labels/labelColorAndSize.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/labels/labelStroke.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/labels/multilineText.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/layout/hierarchicalLayout.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/layout/hierarchicalLayoutMethods.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/layout/hierarchicalLayoutUserdefined.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/layout/hierarchicalLayoutWithoutPhysics.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/layout/randomSeed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/nodeStyles/HTMLInNodes.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/nodeStyles/circularImages.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/nodeStyles/colors.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/nodeStyles/customGroups.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/nodeStyles/groups.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/nodeStyles/icons.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/nodeStyles/images.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/nodeStyles/imagesWithBorders.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/nodeStyles/shadows.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/nodeStyles/shapes.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/nodeStyles/shapesWithDashedBorders.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/other/animationShowcase.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/other/clustering.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/other/clusteringByZoom.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/other/configuration.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/other/manipulation.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/other/navigation.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/other/performance.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/network/physics/physicsConfiguration.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/basicUsage.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/dataHandling/dataSerialization.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/dataHandling/loadExternalData.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/editing/customSnappingOfItems.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/editing/editingItems.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/editing/editingItemsCallbacks.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/editing/individualEditableItems.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/editing/updateDataOnEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/groups/groups.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/groups/groupsEditable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/groups/groupsOrdering.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/groups/subgroups.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/interaction/animateWindow.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/interaction/clickToUse.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/interaction/eventListeners.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/interaction/limitMoveAndZoom.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/interaction/navigationMenu.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/interaction/setSelection.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/items/backgroundAreas.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/items/backgroundAreasWithGroups.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/items/htmlContents.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/items/itemOrdering.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/items/pointItems.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/items/rangeOverflowItem.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/other/customTimeBars.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/other/dataAttributes.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/other/dataAttributesAll.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/other/groupsPerformance.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/other/hidingPeriods.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/other/localization.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/other/performance.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/other/requirejs/requirejs_example.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/other/requirejs/scripts/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/other/requirejs/scripts/require.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/other/rtl.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/other/timezone.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/data/basic.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/data/wk2014.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/img/Hardware-Mobile-Phone-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/img/attachment-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/img/blog-post-edit-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/img/comments-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/img/community-users-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/img/license.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/img/license_aesthetica-2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/img/license_refresh-cl.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/img/mail-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/img/notes-edit-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/img/product-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/resources/img/truck-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/styling/axisOrientation.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/styling/customCss.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/styling/gridStyling.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/styling/itemClassNames.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/examples/timeline/styling/itemTemplates.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/gulpfile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/index-graph3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/index-network.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/index-timeline-graph2d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/bower_components/vis/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_c2g30cmv12bt8o45n5cg6ha367" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/web/thesaurus/dance.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/dance/index.html.twig" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/web/thesaurus/onedance.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/dance/dancingType.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/web/thesaurus/dance.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/thesaurus/dance.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/web/thesaurus/exoticism.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/thesaurus/exoticism.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/web/thesaurus/mood.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/thesaurus/mood.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/web/censorship/content.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/censorship/content.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/web/censorship/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/censorship/index.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/Web/DefaultController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/Web/DefaultController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/Web/ThesaurusController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/Web/ThesaurusController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/style.css" afterPath="$PROJECT_DIR$/web/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/accueil.js" afterPath="$PROJECT_DIR$/web/js/accueil.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/mc2.js" afterPath="$PROJECT_DIR$/web/js/mc2.js" />
     </list>
     <ignored path="application.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -713,71 +39,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CensorshipController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Web/CensorshipController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-164">
-              <caret line="199" column="90" selection-start-line="199" selection-start-column="63" selection-end-line="199" selection-end-column="90" />
-              <folding>
-                <element signature="e#44#103#0#PHP" expanded="true" />
-                <element signature="e#3357#3389#0#PHP" expanded="true" />
-                <element signature="e#5408#5442#0#PHP" expanded="true" />
-                <element signature="e#7078#7112#0#PHP" expanded="true" />
-                <element signature="e#9270#9303#0#PHP" expanded="true" />
-                <element signature="e#10646#10688#0#PHP" expanded="true" />
-                <marker date="1480382052000" expanded="true" signature="431:588" ph="SELECT f.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="697:863" ph="SELECT f.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="1020:1192" ph="SELECT f.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="1345:1494" ph="SELECT f.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="1644:1803" ph="SELECT f.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="2007:2133" ph="SELECT f.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="2243:2408" ph="SELECT f.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="2519:2594" ph="SELECT COUNT... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="2784:2931" ph="SELECT s.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="3127:3280" ph="SELECT c.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="4069:4153" ph="SELECT DISTI... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="4315:4372" ph="SELECT f FRO... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="4541:4690" ph="SELECT s.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="4861:4936" ph="SELECT COUNT... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="5126:5273" ph="SELECT s.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="5961:6061" ph="SELECT DISTI... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="6199:6299" ph="SELECT DISTI... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="6438:6623" ph="SELECT g.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="6753:6945" ph="SELECT d.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="7583:7683" ph="SELECT DISTI... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="7818:7932" ph="SELECT DISTI... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="8068:8172" ph="SELECT COUNT... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="8315:8479" ph="SELECT g.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="8609:8822" ph="SELECT d.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="8992:9139" ph="SELECT s.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="9858:9972" ph="SELECT DISTI... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="10108:10259" ph="SELECT n.tit... AppBundle" />
-                <marker date="1480382052000" expanded="true" signature="10437:10523" ph="SELECT DISTI... AppBundle" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="legionThesaurus.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/web/censorship/legionThesaurus.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="92" selection-start-line="6" selection-start-column="92" selection-end-line="6" selection-end-column="92" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="legion.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/web/censorship/legion.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="63" column="73" selection-start-line="63" selection-start-column="73" selection-end-line="63" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="mc2.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/js/mc2.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -789,20 +50,73 @@
         </entry>
       </file>
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/index.html.twig">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/web/dance/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="32" />
+            <state relative-caret-position="375">
+              <caret line="51" column="70" selection-start-line="51" selection-start-column="70" selection-end-line="51" selection-end-column="70" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="verdict.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/web/censorship/verdict.html.twig">
+      <file leaf-file-name="dancingType.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/web/dance/dancingType.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state relative-caret-position="195">
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="46" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DanceController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Web/DanceController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="205" column="245" selection-start-line="205" selection-start-column="245" selection-end-line="205" selection-end-column="245" />
+              <folding>
+                <element signature="e#44#101#0#PHP" expanded="true" />
+                <element signature="e#4533#4560#0#PHP" expanded="true" />
+                <element signature="e#6529#6562#0#PHP" expanded="true" />
+                <element signature="e#8230#8264#0#PHP" expanded="true" />
+                <element signature="e#10301#10336#0#PHP" expanded="true" />
+                <marker date="1480436873000" expanded="true" signature="459:542" ph="SELECT d FRO... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="753:836" ph="SELECT d FRO... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="1051:1134" ph="SELECT d FRO... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="1344:1522" ph="SELECT t.tit... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="1739:1919" ph="SELECT t.tit... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="2139:2318" ph="SELECT t.tit... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="2548:2693" ph="SELECT COUNT... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="2974:3138" ph="SELECT COUNT... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="3449:3558" ph="SELECT COUNT... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="3815:3951" ph="SELECT AVG((... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="5311:5471" ph="SELECT DISTI... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="5621:5713" ph="SELECT DISTI... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="5621:5743" ph="SELECT DISTI... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="5621:5746" ph="SELECT DISTI... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="5893:6082" ph="SELECT g.tit... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="6238:6397" ph="SELECT f.rel... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="7007:7168" ph="SELECT DISTI... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="7318:7441" ph="SELECT DISTI... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="7538:7590" ph="SELECT DISTI... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="7591:7781" ph="SELECT g.tit... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="7936:8096" ph="SELECT f.rel... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="8714:8876" ph="SELECT DISTI... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="9026:9150" ph="SELECT DISTI... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="9300:9491" ph="SELECT g.tit... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="9645:9806" ph="SELECT f.rel... AppBundle" />
+                <marker date="1480436873000" expanded="true" signature="9965:10162" ph="SELECT d.tit... AppBunle" />
+                <marker date="1480436873000" expanded="true" signature="9965:10179" ph="SELECT s.tit... AppBundle" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="danceSubgenre.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/web/dance/danceSubgenre.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -811,28 +125,18 @@
       <file leaf-file-name="Number.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
+            <state relative-caret-position="534">
               <caret line="533" column="25" selection-start-line="533" selection-start-column="12" selection-end-line="533" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="accueil.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/js/accueil.js">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/web/censorship/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="4" column="154" selection-start-line="4" selection-start-column="154" selection-end-line="4" selection-end-column="154" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="59" column="38" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
+            <state relative-caret-position="210">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -846,15 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/FilmController.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/editor/film/new.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Editor/FilmController.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/editor/film/edit.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Form/FilmType.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/editor/film/_form.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/admin/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Api/FilmController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Editor/EditorController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/about.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/howto.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/editor/number/_form.html.twig" />
@@ -872,14 +167,11 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Thesaurus.php" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Web/DefaultController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/stats/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/thesaurus/thesaurusNew.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/scenario/verdict.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/scenario/content.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/scenario/censorship.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/web/thesaurus/dance.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Web/ThesaurusController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/Web/ScenarioController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/thesaurus/onedance.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/scenario/legion.html.twig" />
@@ -890,13 +182,25 @@
         <option value="$PROJECT_DIR$/web/css/style.css" />
         <option value="$PROJECT_DIR$/web/js/mc2.js" />
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/web/censorship/index.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/censorship/verdict.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/censorship/legionThesaurus.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/Web/CensorshipController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/censorship/legion.html.twig" />
         <option value="$PROJECT_DIR$/web/js/accueil.js" />
+        <option value="$PROJECT_DIR$/app/Resources/views/news.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Web/DefaultController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/web/thesaurus/dance.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DanceController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Web/ThesaurusController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/web/censorship/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/web/censorship/content.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/web/dance/dance.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/web/dance/dancingType.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/web/dance/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/web/dance/danceContent.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Web/DanceController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/web/dance/danceSubgenre.html.twig" />
       </list>
     </option>
   </component>
@@ -1312,6 +616,36 @@
               <option name="myItemId" value="web" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="thesaurus" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1339,7 +673,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="stats" />
+              <option name="myItemId" value="dance" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -1477,17 +811,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Resources/views/web/dance" />
       <recent name="$PROJECT_DIR$/app/Resources/views/editor/film" />
       <recent name="$PROJECT_DIR$/src/AppBundle/Controller/Editeur" />
       <recent name="$PROJECT_DIR$/src/AppBundle/Form" />
       <recent name="$PROJECT_DIR$/app/Resources/views/editor/song" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Resources/views/web/dance" />
       <recent name="$PROJECT_DIR$/src/AppBundle/Controller/Web" />
+      <recent name="$PROJECT_DIR$/app/Resources/views" />
       <recent name="$PROJECT_DIR$/src/AppBundle/Controller/Editor" />
       <recent name="$PROJECT_DIR$/src/AppBundle/Controller/Api" />
-      <recent name="$PROJECT_DIR$/src/AppBundle/Controller/Admin" />
-      <recent name="$PROJECT_DIR$/app/Resources/views/web/thesaurus" />
     </key>
   </component>
   <component name="RunManager">
@@ -1627,12 +962,12 @@
       <workItem from="1479890664812" duration="18937000" />
       <workItem from="1479986568357" duration="6354000" />
       <workItem from="1480017311621" duration="21615000" />
-      <workItem from="1480332737292" duration="10540000" />
+      <workItem from="1480332737292" duration="17662000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="373819000" />
+    <option name="totallyTimeSpent" value="380941000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="all">
@@ -1693,35 +1028,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/editor/film/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/films/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/number/number.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="191" selection-start-line="11" selection-start-column="160" selection-end-line="11" selection-end-column="191" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/films/filmsByThesaurus.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/films.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1935,78 +1241,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/thesaurus/dance.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1695">
-          <caret line="113" column="9" selection-start-line="68" selection-start-column="8" selection-end-line="113" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Web/ThesaurusController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7095">
-          <caret line="478" column="59" selection-start-line="478" selection-start-column="59" selection-end-line="478" selection-end-column="59" />
-          <folding>
-            <marker date="1480093343000" expanded="true" signature="674:730" ph="SELECT t FRO... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="875:926" ph="SELECT t FRO... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="3190:3293" ph="SELECT n.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="3385:3499" ph="SELECT n.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="4486:4542" ph="SELECT e FRO... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="4725:4884" ph="SELECT t.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="5053:5213" ph="SELECT t.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="5409:5510" ph="SELECT COUNT... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="5689:5800" ph="SELECT COUNT... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="6489:6565" ph="SELECT e FRO... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="6787:7006" ph="SELECT n.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="7224:7441" ph="SELECT f.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="7656:7872" ph="SELECT e.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="8495:8578" ph="SELECT e FRO... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="8804:9032" ph="SELECT t.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="9244:9424" ph="SELECT t.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="9668:9789" ph="SELECT COUNT... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="10016:10147" ph="SELECT COUNT... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="10374:10457" ph="SELECT e FRO... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="10686:10907" ph="SELECT t.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="11122:11302" ph="SELECT t.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="11549:11670" ph="SELECT COUNT... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="11900:12031" ph="SELECT COUNT... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="12948:13030" ph="SELECT e FRO... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="12948:13057" ph="SELECT e FRO... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="13383:13601" ph="SELECT n.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="13717:13928" ph="SELECT n.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="14220:14436" ph="SELECT f.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="14554:14763" ph="SELECT f.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="14993:15209" ph="SELECT e.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="15810:15893" ph="SELECT d FRO... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="16104:16187" ph="SELECT d FRO... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="16402:16485" ph="SELECT d FRO... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="16695:16873" ph="SELECT t.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="17090:17270" ph="SELECT t.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="17490:17669" ph="SELECT t.tit... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="17899:18044" ph="SELECT COUNT... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="18325:18489" ph="SELECT COUNT... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="18800:18909" ph="SELECT COUNT... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="19166:19172" ph="SELECT COUNT... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="19166:19282" ph="SELECT AVG(n... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="19166:19302" ph="SELECT AVG((... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="19569:19676" ph="SELECT AVG(n... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="20626:20787" ph="SELECT f.fil... " />
-            <marker date="1480093343000" expanded="true" signature="20884:21138" ph="..." />
-            <marker date="1480093343000" expanded="true" signature="20919:21042" ph="SELECT DISTI... AppBundle" />
-            <marker date="1480093343000" expanded="true" signature="21175:21365" ph="SELECT g.tit... AppBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/thesaurus/onedance.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/web/thesaurus/mood.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -2027,14 +1261,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/censorship/content.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="26" selection-start-line="0" selection-start-column="0" selection-end-line="154" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -2071,84 +1297,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/censorship/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="45" column="73" selection-start-line="45" selection-start-column="73" selection-end-line="45" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="59" column="38" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/web/censorship/verdict.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Web/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="87" column="49" selection-start-line="87" selection-start-column="49" selection-end-line="87" selection-end-column="49" />
-          <folding>
-            <marker date="1480071294000" expanded="true" signature="829:1004" ph="SELECT f.fil... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="829:1005" ph="SELECT f.fil... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="829:1007" ph="SELECT f.fil... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="1481:1549" ph="SELECT n FRO... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="1689:1773" ph="SELECT n FRO... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="1939:2054" ph="SELECT COUNT... " />
-            <marker date="1480071294000" expanded="true" signature="2162:2360" ph="SELECT COUNT... " />
-            <marker date="1480071294000" expanded="true" signature="2509:2575" ph="SELECT COUNT... " />
-            <marker date="1480071294000" expanded="true" signature="2509:2696" ph="SELECT f.rel... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="3967:4161" ph="SELECT (n.nu... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="4364:4457" ph="SELECT SUM(f... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="4670:4742" ph="SELECT SUM(f... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="4915:5025" ph="SELECT SUM(n... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="5221:5304" ph="SELECT a.per... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="7046:7158" ph="SELECT p.rel... " />
-            <marker date="1480071294000" expanded="true" signature="7329:7444" ph="SELECT f.rel... " />
-            <marker date="1480071294000" expanded="true" signature="7608:7748" ph="SELECT f.rel... " />
-            <marker date="1480071294000" expanded="true" signature="8035:8150" ph="SELECT f.rel... " />
-            <marker date="1480071294000" expanded="true" signature="8324:8455" ph="SELECT f.tit... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="8949:9001" ph="SELECT SUM(f... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="9150:9220" ph="SELECT SUM(f... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="9369:9518" ph="SELECT f.tit... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="9688:9837" ph="SELECT f.tit... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="10002:10086" ph="SELECT f.fil... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="10230:10375" ph="SELECT f.fil... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="10615:10689" ph="SELECT s.tit... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="10859:11000" ph="SELECT s.tit... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="12910:12967" ph="SELECT m.tit... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="13877:14009" ph="SELECT c.tit... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="14321:14510" ph="SELECT f.tit... " />
-            <marker date="1480071294000" expanded="true" signature="14799:14988" ph="SELECT f.tit... " />
-            <marker date="1480071294000" expanded="true" signature="15259:15404" ph="SELECT n.sou... AppBundle" />
-            <marker date="1480071294000" expanded="true" signature="16239:16319" ph="SELECT (f.ti... AppBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="533" column="25" selection-start-line="533" selection-start-column="12" selection-end-line="533" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -2206,8 +1358,144 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/web/censorship/legion.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="75">
           <caret line="63" column="73" selection-start-line="63" selection-start-column="73" selection-end-line="63" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/accueil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="706" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="706" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/news.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Web/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6474">
+          <caret line="460" column="25" selection-start-line="460" selection-start-column="25" selection-end-line="460" selection-end-column="25" />
+          <folding>
+            <element signature="e#583#599#1#PHP" expanded="true" />
+            <element signature="e#1096#1114#1#PHP" expanded="true" />
+            <element signature="e#1168#1186#1#PHP" expanded="true" />
+            <element signature="e#1261#1279#1#PHP" expanded="true" />
+            <element signature="e#3455#3471#1#PHP" expanded="true" />
+            <element signature="e#3838#3854#1#PHP" expanded="true" />
+            <element signature="e#5767#5785#1#PHP" expanded="true" />
+            <element signature="e#5868#5890#1#PHP" expanded="true" />
+            <element signature="e#5965#5983#1#PHP" expanded="true" />
+            <element signature="e#8582#8598#1#PHP" expanded="true" />
+            <element signature="e#8704#8720#1#PHP" expanded="true" />
+            <element signature="e#8833#8851#1#PHP" expanded="true" />
+            <element signature="e#10501#10522#1#PHP" expanded="true" />
+            <element signature="e#11376#11394#1#PHP" expanded="true" />
+            <element signature="e#12600#12616#1#PHP" expanded="true" />
+            <element signature="e#12668#12686#1#PHP" expanded="true" />
+            <element signature="e#12736#12752#1#PHP" expanded="true" />
+            <element signature="e#13542#13558#1#PHP" expanded="true" />
+            <element signature="e#13610#13628#1#PHP" expanded="true" />
+            <element signature="e#13687#13711#1#PHP" expanded="true" />
+            <element signature="e#17015#17031#1#PHP" expanded="true" />
+            <marker date="1480415830000" expanded="true" signature="829:1004" ph="SELECT f.fil... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="829:1005" ph="SELECT f.fil... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="829:1007" ph="SELECT f.fil... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="1481:1549" ph="SELECT n FRO... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="1689:1773" ph="SELECT n FRO... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="1939:2054" ph="SELECT COUNT... " />
+            <marker date="1480415830000" expanded="true" signature="2162:2360" ph="SELECT COUNT... " />
+            <marker date="1480415830000" expanded="true" signature="2509:2575" ph="SELECT COUNT... " />
+            <marker date="1480415830000" expanded="true" signature="2509:2696" ph="SELECT f.rel... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="3967:4161" ph="SELECT (n.nu... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="4364:4457" ph="SELECT SUM(f... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="4670:4742" ph="SELECT SUM(f... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="4915:5025" ph="SELECT SUM(n... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="5221:5304" ph="SELECT a.per... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="7046:7158" ph="SELECT p.rel... " />
+            <marker date="1480415830000" expanded="true" signature="7329:7444" ph="SELECT f.rel... " />
+            <marker date="1480415830000" expanded="true" signature="7608:7748" ph="SELECT f.rel... " />
+            <marker date="1480415830000" expanded="true" signature="8035:8150" ph="SELECT f.rel... " />
+            <marker date="1480415830000" expanded="true" signature="8324:8455" ph="SELECT f.tit... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="8949:9001" ph="SELECT SUM(f... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="9150:9220" ph="SELECT SUM(f... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="9369:9518" ph="SELECT f.tit... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="9688:9837" ph="SELECT f.tit... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="10002:10086" ph="SELECT f.fil... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="10230:10375" ph="SELECT f.fil... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="10615:10689" ph="SELECT s.tit... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="10859:11000" ph="SELECT s.tit... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="12910:12967" ph="SELECT m.tit... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="13877:14009" ph="SELECT c.tit... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="14321:14510" ph="SELECT f.tit... " />
+            <marker date="1480415830000" expanded="true" signature="14799:14988" ph="SELECT f.tit... " />
+            <marker date="1480415830000" expanded="true" signature="15259:15404" ph="SELECT n.sou... AppBundle" />
+            <marker date="1480415830000" expanded="true" signature="16239:16319" ph="SELECT (f.ti... AppBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="63" column="53" selection-start-line="63" selection-start-column="53" selection-end-line="63" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Web/ThesaurusController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="59" />
+          <folding>
+            <marker date="1480426500000" expanded="true" signature="674:730" ph="SELECT t FRO... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="875:926" ph="SELECT t FRO... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="3190:3293" ph="SELECT n.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="3385:3499" ph="SELECT n.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="4486:4542" ph="SELECT e FRO... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="4725:4884" ph="SELECT t.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="5053:5213" ph="SELECT t.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="5409:5510" ph="SELECT COUNT... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="5689:5800" ph="SELECT COUNT... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="6489:6565" ph="SELECT e FRO... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="6787:7006" ph="SELECT n.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="7224:7441" ph="SELECT f.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="7656:7872" ph="SELECT e.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="8495:8578" ph="SELECT e FRO... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="8804:9032" ph="SELECT t.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="9244:9424" ph="SELECT t.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="9668:9789" ph="SELECT COUNT... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="10016:10147" ph="SELECT COUNT... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="10374:10457" ph="SELECT e FRO... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="10686:10907" ph="SELECT t.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="11122:11302" ph="SELECT t.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="11549:11670" ph="SELECT COUNT... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="11900:12031" ph="SELECT COUNT... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="12948:13030" ph="SELECT e FRO... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="12948:13057" ph="SELECT e FRO... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="13383:13601" ph="SELECT n.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="13717:13928" ph="SELECT n.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="14220:14436" ph="SELECT f.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="14554:14763" ph="SELECT f.tit... AppBundle" />
+            <marker date="1480426500000" expanded="true" signature="14993:15209" ph="SELECT e.tit... AppBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
+          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -2220,10 +1508,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/accueil.js">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/censorship/content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="4" column="154" selection-start-line="4" selection-start-column="154" selection-end-line="4" selection-end-column="154" />
+        <state relative-caret-position="240">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="533" column="25" selection-start-line="533" selection-start-column="12" selection-end-line="533" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/dance/danceContent.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/dance/dancingType.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="46" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/censorship/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/dance/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="51" column="70" selection-start-line="51" selection-start-column="70" selection-end-line="51" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Web/DanceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="205" column="245" selection-start-line="205" selection-start-column="245" selection-end-line="205" selection-end-column="245" />
+          <folding>
+            <element signature="e#44#101#0#PHP" expanded="true" />
+            <element signature="e#4533#4560#0#PHP" expanded="true" />
+            <element signature="e#6529#6562#0#PHP" expanded="true" />
+            <element signature="e#8230#8264#0#PHP" expanded="true" />
+            <element signature="e#10301#10336#0#PHP" expanded="true" />
+            <marker date="1480436873000" expanded="true" signature="459:542" ph="SELECT d FRO... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="753:836" ph="SELECT d FRO... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="1051:1134" ph="SELECT d FRO... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="1344:1522" ph="SELECT t.tit... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="1739:1919" ph="SELECT t.tit... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="2139:2318" ph="SELECT t.tit... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="2548:2693" ph="SELECT COUNT... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="2974:3138" ph="SELECT COUNT... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="3449:3558" ph="SELECT COUNT... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="3815:3951" ph="SELECT AVG((... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="5311:5471" ph="SELECT DISTI... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="5621:5713" ph="SELECT DISTI... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="5621:5743" ph="SELECT DISTI... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="5621:5746" ph="SELECT DISTI... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="5893:6082" ph="SELECT g.tit... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="6238:6397" ph="SELECT f.rel... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="7007:7168" ph="SELECT DISTI... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="7318:7441" ph="SELECT DISTI... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="7538:7590" ph="SELECT DISTI... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="7591:7781" ph="SELECT g.tit... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="7936:8096" ph="SELECT f.rel... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="8714:8876" ph="SELECT DISTI... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="9026:9150" ph="SELECT DISTI... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="9300:9491" ph="SELECT g.tit... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="9645:9806" ph="SELECT f.rel... AppBundle" />
+            <marker date="1480436873000" expanded="true" signature="9965:10162" ph="SELECT d.tit... AppBunle" />
+            <marker date="1480436873000" expanded="true" signature="9965:10179" ph="SELECT s.tit... AppBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/dance/danceSubgenre.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
           <folding />
         </state>
       </provider>

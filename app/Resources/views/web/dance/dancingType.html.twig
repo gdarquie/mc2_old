@@ -15,6 +15,28 @@
         <h1>Dance : {{ myDance.title }}</h1>
 
         <article>
+            <p>[visualisation : chronologie de l'emploi de ce type de dance]</p>
+            <table class="striped">
+                <tr>
+                    <th>Year</th>
+                    <th>Occurences</th>
+                </tr>
+                {% for item in dancingTypeByYear %}
+                    <tr><td>{{ item.released }}</td><td>{{ item.nb }}</td></tr>
+                {% endfor %}
+
+            </table>
+        </article>
+
+        <article>
+            <h2>Dancing ensemble</h2>
+        </article>
+
+        <article>
+            <h2>Exoticism</h2>
+        </article>
+
+        <article>
             <h2>List of movies with {{ myDance.title }} dance</h2>
 
             <div class="liste row">
