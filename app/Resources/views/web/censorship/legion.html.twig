@@ -1,0 +1,182 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        #chart_div{
+            height: 400px;
+        }
+
+        .film{margin-bottom: 1em;}
+
+        .poster{
+            height:300px;
+        }
+
+        tr{
+            line-height: 0.2em;
+        }
+
+        #chart_div2{
+            height: 400px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section class="container">
+
+        <h1>Legion of Decency Grade : {{ myLegion.title }}</h1>
+
+        <p>Total of disctincts films with this verdict : <span class="number">{{ myLegion.nb }}</span>, total of numbers concerned : <span class="number">{{ numberForLegion.nb }}</span></p>
+        <h2>Studios</h2>
+
+        <p>Number of films with this grade for each studio (a film can have more than one studio).</p>
+        <p>[camembert comme pour verdict]</p>
+
+        <table class="striped">
+            <tr>
+                <th>Studio</th>
+                <th>Count</th>
+            </tr>
+            {% for item in studiosByLegion  %}
+                <tr>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.nb }}</td>
+                </tr>
+            {% endfor %}
+            <tr></tr>
+        </table>
+
+
+
+        {#<table>#}
+            {#<tr></tr>#}
+            {#<tr></tr>#}
+        {#</table>#}
+
+        <h2>Dance contents</h2>
+
+        <div id="chart_div2"></div>
+
+        {% for item in danceContents %}
+            <p class="chip"><a href="{{ path('censorship_legion_thesaurus', {'legion' : item.legion , 'type' : 'dance','id' : item.id}) }}">{{ item.title }} ({{ item.nb }})</a></p>
+        {% endfor %}
+
+        <h2>Number genres</h2>
+
+        {#{% for genre in genres %}#}
+        {#<p>{{ genre.title }} ({{ genre.nb }})</p>#}
+        {#{% endfor %}#}
+        <div id="chart_div"></div>
+
+        <h2>Films</h2>
+
+        <div class="row">
+            {% for film in filmsByLegion %}
+                <div class="col s3">
+                    <h4>{{ film.title }}</h4>
+                    <img class="poster" src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=300" alt="poster">
+                </div>
+            {% endfor %}
+        </div>
+
+        <h2>To do</h2>
+        <ul>
+            <li>Costumes</li>
+            <li>Ethnic</li>
+        </ul>
+        {#<h1>PCA verdict {% for item in verdict  %}{{ item.title }}{% endfor %}</h1>#}
+
+        {#<p><span class="number">{{ filmsByVerdict|length }}</span> films / <span class="number">{{ nbFilmsWithVerdict.nb }}</span> studied films.</p>#}
+
+        {#<article>#}
+        {#<h2>Studios</h2>#}
+
+        {#<div id="chart_div"></div>#}
+
+        {#<table class="striped">#}
+        {#<tr><th>Studio</th><th>Number of studied films</th></tr>#}
+        {#{% for studio in nbFilmsWithVerdictByStudio %}#}
+        {#<tr>#}
+        {#<td>{{ studio.title }}</td><td>{{ studio.nb }}</td>#}
+        {#</tr>#}
+        {#{% endfor %}#}
+        {#</table>#}
+        {#</article>#}
+
+        {#<h2>Films</h2>#}
+
+        {#<div class="row">#}
+        {#{% for film in filmsByVerdict  %}#}
+        {#<a href="">#}
+        {#<div class="col s3 film">#}
+        {#<h4 class="center">{{ film.title }} ({{ film.released }})</h4>#}
+        {#<img class="poster" src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=300" alt="poster">#}
+        {#</div>#}
+        {#</a>#}
+        {#{% endfor %}#}
+        {#</div>#}
+
+        {#<table class="striped">#}
+        {#{% for film in filmsByVerdict  %}#}
+        {#<tr>#}
+        {#<td>{{ film.title }}</td>#}
+        {#</tr>#}
+        {#{% endfor %}#}
+        {#</table>#}
+
+
+    </section>
+{% endblock %}
+
+
+{% block javascripts %}
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            //donut des genres
+            var data = google.visualization.arrayToDataTable([
+                ['Name', 'Occurences'],
+                {% for genre in genres %}
+                ['{{ genre.title }}', {{ genre.nb }}],
+                {% endfor %}
+            ]);
+
+
+            var options = {
+                title: 'Ratio',
+                pieHole: 0.4,
+            };
+
+
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+
+            //donut des dance contents
+            var data2 = google.visualization.arrayToDataTable([
+                ['Name', 'Occurences'],
+                {% for item in danceContents %}
+                ['{{ item.title }}', {{ item.nb }}],
+                {% endfor %}
+            ]);
+
+
+            var options = {
+                title: 'Ratio',
+                pieHole: 0.4,
+            };
+
+
+            var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+            chart2.draw(data2, options);
+
+
+        }
+    </script>
+
+{% endblock %}

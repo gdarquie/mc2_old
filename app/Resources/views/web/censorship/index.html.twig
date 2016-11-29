@@ -1,0 +1,226 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .donut{
+            height: 400px;
+        }
+        .chip a{
+            color:black;
+        }
+
+        .card{
+            padding:2em;
+            height:auto;
+        }
+
+        body{
+            background: #f7f7f7;
+        }
+
+        .parallax-container {
+            height: 340px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="parallax-container">
+        <br><br>
+        <h1 class="center uppercase">Censorship</h1>
+        <p class="center white-text">Informations about censorship : verdicts, legion, harrison, etc.</p>
+        <div class="parallax"><img src="{{ asset('img/42nd-street-poster.jpg') }}"></div>
+    </div>
+
+    <section class="container">
+
+        <article class="card">
+            <h2>PCA verdict</h2>
+
+            <p>Total : <span class="number">{{ nbFilmsWithVerdict.nb }}</span> films</p>
+
+            <!-- Diagramme du nombre de films avec verdict par années -->
+            <div id="diagram"></div>
+
+            <div class="row ">
+
+                <div id="chart_div" class="donut s7 col"></div>
+                <div class="col s5">
+                    <h3>List of items</h3>
+                    {% for item in verdict  %}
+                    <span class="chip"><a href="{{ path('censorship_verdict', {'verdict' : item.verdict}) }}">{{ item.verdict }}({{ item.nb }})</a></span>
+                {% endfor %}</div>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>Censored contents</h2>
+
+            <div class="row ">
+
+                <div id="chart_div2" class="donut s7 col"></div>
+                <div class="col s5">
+                {% for item in censorship  %}
+                    <p class="chip"><a href="{{ path('censorship_content', {'content' : item.title}) }}">{{ item.title }} ({{ item.nb }})</a></p>
+                {% endfor %}
+            </div>
+        </article>
+
+
+        {##}
+        {#<h2>Films by Studio</h2>#}
+        {#{% for item in studios  %}#}
+            {#<p>{{ item.studio }}({{ item.nb }})</p>#}
+        {#{% endfor %}#}
+
+        <article class="card">
+            <h2>Legion of Decency</h2>
+
+            <div class="row ">
+
+                <div id="chart_div3" class="donut s7 col"></div>
+
+                <div class="col s5">
+                {% for item in legion  %}
+                    <p class="chip"><a href="{{ path('censorship_legion' , {'legion' : item.legion}) }}">{{ item.legion }}({{ item.nb }})</a></p>
+                {% endfor %}
+            </div>
+        </article>
+
+
+        {#<h2>Harrison</h2>#}
+        {#<p>(pb avec l'import, doublons de protestant - à refaire avec la bonne colonne)</p>#}
+        {#{% for item in harrison  %}#}
+            {#<p>{{ item.harrison }}({{ item.nb }})</p>#}
+        {#{% endfor %}#}
+
+        {#<h2>Protestant</h2>#}
+        {#{% for item in protestant  %}#}
+            {#<p>{{ item.protestant }}({{ item.nb }})</p>#}
+        {#{% endfor %}#}
+
+        {#<h2>Board</h2>#}
+        {#{% for item in board  %}#}
+            {#<p>{{ item.board }}({{ item.nb }})</p>#}
+        {#{% endfor %}#}
+
+
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+
+            //Donuts verdict
+            var data = google.visualization.arrayToDataTable([
+                ['Name', 'Occurences'],
+                {% for item in verdict  %}
+                ['{{ item.verdict }}', {{ item.nb }}],
+                {% endfor %}
+            ]);
+
+
+            var options = {
+                title: 'PCA verdict',
+                pieHole: 0.4,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+
+
+            //Donuts Censorship
+            var data2 = google.visualization.arrayToDataTable([
+                ['Name', 'Occurences'],
+                {% for item in censorship  %}
+                ['{{ item.title }}', {{ item.nb }}],
+                {% endfor %}
+            ]);
+
+
+            var options = {
+                title: 'Censored content',
+                pieHole: 0.4,
+            };
+
+            var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+            chart2.draw(data2, options);
+
+            //Donuts censorship
+            var data3 = google.visualization.arrayToDataTable([
+                ['Name', 'Occurences'],
+                {% for item in legion  %}
+                ['{{ item.legion }}', {{ item.nb }}],
+                {% endfor %}
+            ]);
+
+
+            var options = {
+                title: 'Legion of Decency',
+                pieHole: 0.4,
+            };
+
+            var chart3 = new google.visualization.PieChart(document.getElementById('chart_div3'));
+            chart3.draw(data3, options);
+
+        }
+
+        google.charts.setOnLoadCallback(drawBasic);
+
+        function drawBasic() {
+
+            var data4 = new google.visualization.DataTable();
+            data4.addColumn('number', 'Year');
+            data4.addColumn('number', 'Number of Films with Verdict');
+
+
+            data4.addRows([
+                {% for item in nbVerdict  %}
+                [{{ item.released }}, {{ item.nb }}],
+                {% endfor %}
+
+            ]);
+
+            var options = {
+                hAxis: {
+                    title: 'Years'
+                },
+                vAxis: {
+                    title: 'Films & Numbers'
+                },
+            };
+
+
+            var chart4 = new google.visualization.LineChart(document.getElementById('diagram'));
+
+            chart4.draw(data4, options);
+        }
+
+
+
+        function myParallax(){
+            $('.parallax').parallax();
+        }
+
+        myParallax();
+
+
+    </script>
+
+
+
+{% endblock %}
+

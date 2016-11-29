@@ -414,17 +414,81 @@ class ThesaurusController extends Controller
         $query->setParameter('category', 'Dance content');
         $popularcontent = $query->getResult();
 
+        //number of danced numbers
+        $query = $em -> createQuery('SELECT COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.dancingType t WHERE t.type = :type AND t.category = :category AND t.title != :na');
+        $query->setParameter('type', 'dance');
+        $query->setParameter('category', 'Dancing type');
+        $query->setParameter('na', 'NA');
+        $numberDancedNumber = $query->getSingleResult();
+
+        //number of danced numbers
+        $query = $em -> createQuery('SELECT COUNT(DISTINCT(f.filmId)) as nb FROM AppBundle:Number n JOIN n.dancingType t JOIN n.film f WHERE t.type = :type AND t.category = :category AND t.title != :na');
+        $query->setParameter('type', 'dance');
+        $query->setParameter('category', 'Dancing type');
+        $query->setParameter('na', 'NA');
+        $nbfilmsWithDancedNumber = $query->getSingleResult();
+
+        //number of danced numbers (other technic to count)
+        $query = $em -> createQuery('SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n WHERE n.performance = :instru OR n.performance = :song ');
+        $query->setParameter('instru', 'instrumental+dance');
+        $query->setParameter('song', 'song+dance');
+        $numberDancedNumber2 = $query->getSingleResult();
+
+        //average number of shots by year
+        $query = $em -> createQuery('SELECT AVG((n.length)/n.shots) as nb, f.released as released FROM AppBundle:Number n JOIN n.film f WHERE n.shots > 0 GROUP BY f.released');
+//        $query->setParameter('instru', 'instrumental+dance');
+//        $query->setParameter('song', 'song+dance');
+        $avgNbShots = $query->getResult();
+
+//        //average number of shots by year for danced number
+//        $query = $em -> createQuery('SELECT AVG(n.shots) as nb, f.released as released FROM AppBundle:Number n JOIN f.film f GROUP BY f.released ');
+////        $query->setParameter('instru', 'instrumental+dance');
+////        $query->setParameter('song', 'song+dance');
+//        $avgNbShots = $query->getSingleResult();
+
         return $this->render('web/thesaurus/dance.html.twig' , array(
             'dancing' => $dancing,
             'subgenre' => $subgenre,
             'content' => $content,
             'populardancing' => $populardancing,
             'popularsubgenre' => $popularsubgenre,
-            'popularcontent' => $popularcontent
+            'popularcontent' => $popularcontent,
+            'numberDancedNumber' => $numberDancedNumber,
+            'nbfilmsWithDancedNumber' => $nbfilmsWithDancedNumber,
+            'numberDancedNumber2' => $numberDancedNumber2,
+            'avgNbShots' => $avgNbShots
         ));
 
     }
 
+    /**
+     * @Route("/dance/{dance}", name="getOneDancing")
+     */
+    public function getOneDancing($dance){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em -> createQuery('SELECT DISTINCT(f.title) as title, f.filmId as filmId, f.idImdb as imdb FROM AppBundle:Film f JOIN f.numbers n JOIN n.danceContent d WHERE d.thesaurusId = :dance');
+        $query->setParameter('dance', $dance);
+        $filmsByDance = $query->getResult();
+
+        $query = $em->createQuery('SELECT DISTINCT(d.title) as title FROM AppBundle:Film f JOIN f.numbers n JOIN n.danceContent d WHERE d.thesaurusId = :dance');
+        $query->setParameter('dance', $dance);
+        $myDance = $query->getSingleResult();
+
+        $query = $em->createQuery('SELECT g.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.genre g JOIN n.danceContent d WHERE d.thesaurusId = :dance GROUP BY g.thesaurusId ORDER BY nb DESC');
+        $query->setParameter('dance', $dance);
+        $genres = $query->getResult();
+//
+
+        return $this->render('web/thesaurus/onedance.html.twig', array(
+            'filmsByDance' => $filmsByDance,
+            'myDance' => $myDance,
+            'genres' => $genres
+
+        ));
+
+    }
 
 
 }

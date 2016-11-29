@@ -31,14 +31,13 @@ class DefaultController extends Controller
         $user = $this->getUser();
 
         //Films with number
-        $query = $em->createQuery(
-            'SELECT f.filmId as filmId, f.title as title, f.released as released  FROM AppBundle:Film f WHERE f.filmId IN (SELECT IDENTITY(n.film) FROM AppBundle:Number n WHERE n.film != 0)'
-            );  
+        $query = $em->createQuery('SELECT f.filmId as filmId, f.title as title, f.released as released  FROM AppBundle:Film f WHERE f.filmId IN (SELECT IDENTITY(n.film) FROM AppBundle:Number n WHERE n.film != 0)');
         $filmsWithNumber = $query->getResult();
 
         $numbers = $em->getRepository('AppBundle:Number')->findAll();
 
 
+        $numbers = $em->getRepository('AppBundle:Number')->findAll();
 
         //All Persons
         $persons = $em->getRepository('AppBundle:Person')->findAll();

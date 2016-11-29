@@ -8,6 +8,13 @@
             <h1 class="center">Dance</h1>
         </header>
 
+        <article>
+            <h2>Danced number</h2>
+            <p>Number of danced numbered : <span class="number">{{ numberDancedNumber.nb }}</span> or {{ numberDancedNumber2.nb }}</p>
+            <p>Number of films with danced numbered : <span class="number">{{ nbfilmsWithDancedNumber.nb }}</span></p>
+            <p>Average shots length for year : {% for item in avgNbShots %}<li>{{ item.released }} : {{ item.nb }}</li>{% endfor %}</p>
+        </article>
+
         <article class="card row">
             <div class=" col s12">
                 <p><span class="number">{{ dancing|length }}</span> different dancing types, <span class="number">{{ subgenre|length }}</span> dance sub-genre and <span class="number">{{ content|length }}</span> dance content exist.</p>
@@ -42,7 +49,7 @@
         <article>
             <h2>Dance content</h2>
             {% for item in content  %}
-                {{ item.title }}
+                <div class="chip"><a href="{{ path('getOneDancing', {'id' : item.thesaurusId}) }}">{{ item.title }}</a></div>
             {% endfor %}
         </article>
 
