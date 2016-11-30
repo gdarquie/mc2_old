@@ -1,68 +1,129 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .card{
+            padding : 20px;
+        }
+
+        body{
+            background: #f7f7f7;
+        }
+
+        .parallax-container {
+            height: 340px;
+            margin-bottom: 2em;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
+
+
+    <div class="parallax-container">
+        <br><br>
+        <h1 class="center uppercase">Dance</h1>
+        <div class="parallax"><img src="{{ asset('img/gentlemen prefer blondes.jpg') }}"></div>
+    </div>
 
     <section class="container">
 
-        <header>
-            <h1 class="center">Dance</h1>
-        </header>
+        <article class="card">
+            <div class="col s12">
+                <h2>Danced number</h2>
+                <p>Number of danced numbered : <span class="number">{{ numberDancedNumber.nb }}</span> (or <span class="number">{{ numberDancedNumber2.nb }}</span>)</p>
+                <p>Number of films with danced numbered : <span class="number">{{ nbfilmsWithDancedNumber.nb }}</span></p>
+            </div>
+        </article>
 
         <article>
-            <h2>Danced number</h2>
-            <p>Number of danced numbered : <span class="number">{{ numberDancedNumber.nb }}</span> or {{ numberDancedNumber2.nb }}</p>
-            <p>Number of films with danced numbered : <span class="number">{{ nbfilmsWithDancedNumber.nb }}</span></p>
-            <p>Average shots length for year : {% for item in avgNbShots %}<li>{{ item.released }} : {{ item.nb }}</li>{% endfor %}</p>
+
+        <article class="card">
+            <div class="col s12">
+                <h2>Average shots length for year </h2>
+                <div id="diagram"></div>
+            </div>
+        </article>
+
         </article>
 
         <article class="card row">
             <div class=" col s12">
+                <h2>Dance by categories</h2>
                 <p><span class="number">{{ dancing|length }}</span> different dancing types, <span class="number">{{ subgenre|length }}</span> dance sub-genre and <span class="number">{{ content|length }}</span> dance content exist.</p>
             </div>
         </article>
 
-        <article class="">
-            <h2>Dancing type</h2>
-            {% for item in dancing  %}
-                <a href="{{ path('getOneDancingType', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }}</p></a>
-            {% endfor %}
-        </article>
 
-        <article>
+    </section>
+
+<!-- Dancing type-->
+    <div class="parallax-container">
+        <br><br>
+        <h1 class="center">Dancing Type</h1>
+        <div class="parallax"><img src="{{ asset('img/my gal sal.jpg') }}"></div>
+    </div>
+
+    <section class="container">
+
+        <article class="card">
+            <h2>List of used dancing types</h2>
+            {% for item in populardancing  %}
+                <a href="{{ path('getOneDancingType', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
+            {% endfor %}
+
             <h2>Number of dancing type</h2>
             <div id="chart_div"></div>
         </article>
 
+    </section>
 
-        <article>
+<!-- Dancing subgenre-->
+    <div class="parallax-container">
+        <br><br>
+        <h1 class="center">Dance Sub-genre</h2>
+        <div class="parallax"><img src="{{ asset('img/my fair lady.jpg') }}"></div>
+    </div>
+
+    <section class="container">
+        <article class="card">
             <h2>Dance subgenre</h2>
-            {% for item in subgenre  %}
-                <div class="chip"><a href="{{ path('getOneDanceSubgenre', {'dance' : item.thesaurusId}) }}">{{ item.title }}</a></div>
+            {% for item in popularsubgenre  %}
+               <a href="{{ path('getOneDanceSubgenre', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
             {% endfor %}
-        </article>
 
-        <article>
             <h2>Number of dance subgenre</h2>
             <div id="chart_div2"></div>
         </article>
 
-        <article>
-            <h2>Dance content</h2>
-            {% for item in content  %}
-                <div class="chip"><a href="{{ path('getOneDanceContent', {'dance' : item.thesaurusId}) }}">{{ item.title }}</a></div>
-            {% endfor %}
-        </article>
+     </section>
 
-        <article>
+    <!-- Dancing content-->
+    <div class="parallax-container">
+        <br><br>
+        <h1 class="center">Dance Content</h1>
+        <div class="parallax"><img src="{{ asset('img/gold-diggers-1933.jpg') }}"></div>
+    </div>
+
+    <section class="container">
+
+        <article class="card">
+            <h2>Dance content</h2>
+            {% for item in popularcontent  %}
+               <a href="{{ path('getOneDanceContent', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
+            {% endfor %}
+
             <h2>Number of dance content</h2>
             <div id="chart_div3"></div>
         </article>
-
     </section>
 
 {% endblock %}
 
 {% block javascripts %}
+
+    {{ parent() }}
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -112,6 +173,36 @@
             chart3.draw(data3, options);
 
         }
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawBasic);
+        function drawBasic() {
+            //diagram
+            var data4 = new google.visualization.DataTable();
+            data4.addColumn('number', 'Year');
+            data4.addColumn('number', 'Average shots length in seconds');
+
+            data4.addRows([
+                {% for item in avgNbShots %}
+                [{{ item.released }}, {{ item.nb |number_format(0) }}],
+                {% endfor %}
+
+            ]);
+
+            var options = {
+                hAxis: {
+                    title: 'Years'
+                },
+                vAxis: {
+                    title: 'Average shots length in seconds'
+                },
+            };
+
+
+            var chart4 = new google.visualization.LineChart(document.getElementById('diagram'));
+
+            chart4.draw(data4, options);
+        }
+
     </script>
 
 {% endblock %}

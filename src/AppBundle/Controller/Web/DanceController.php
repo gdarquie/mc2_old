@@ -35,19 +35,19 @@ class DanceController extends Controller
         $content = $query->getResult();
 
         //top dancing
-        $query = $em -> createQuery('SELECT t.title as title, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.dancingType t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC');
+        $query = $em -> createQuery('SELECT t.title as title, t.thesaurusId as thesaurusId, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.dancingType t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC');
         $query->setParameter('type', 'dance');
         $query->setParameter('category', 'Dancing type');
         $populardancing = $query->getResult();
 
         //top subgenre
-        $query = $em -> createQuery('SELECT t.title as title, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC');
+        $query = $em -> createQuery('SELECT t.title as title, t.thesaurusId as thesaurusId, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC');
         $query->setParameter('type', 'dance');
         $query->setParameter('category', 'Dance sub-genre');
         $popularsubgenre = $query->getResult();
 
         //top content
-        $query = $em -> createQuery('SELECT t.title as title, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.danceContent t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC');
+        $query = $em -> createQuery('SELECT t.title as title, t.thesaurusId as thesaurusId, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.danceContent t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC');
         $query->setParameter('type', 'dance');
         $query->setParameter('category', 'Dance content');
         $popularcontent = $query->getResult();
@@ -207,12 +207,43 @@ class DanceController extends Controller
         $query->setParameter('dance', $dance);
         $contents = $query->getResult();
 
+        //dancings
+        $query = $em->createQuery('SELECT s.title as title, s.thesaurusId as thesaurusId, COUNT(d.thesaurusId) as nb  FROM AppBundle:Number n JOIN n.dancingType s JOIN n.danceSubgenre d WHERE d.thesaurusId = :dance GROUP BY s.title ORDER BY nb DESC');
+        $query->setParameter('dance', $dance);
+        $dancings = $query->getResult();
+
+        //ensembles
+        $query = $em->createQuery('SELECT s.title as title, s.thesaurusId as thesaurusId, COUNT(d.thesaurusId) as nb  FROM AppBundle:Number n JOIN n.dancemble s JOIN n.danceSubgenre d WHERE d.thesaurusId = :dance GROUP BY s.title ORDER BY nb DESC');
+        $query->setParameter('dance', $dance);
+        $dancembles = $query->getResult();
+
+        //costumes
+        $query = $em->createQuery('SELECT s.title as title, s.thesaurusId as thesaurusId, COUNT(d.thesaurusId) as nb  FROM AppBundle:Number n JOIN n.costumes s JOIN n.danceSubgenre d WHERE d.thesaurusId = :dance GROUP BY s.title ORDER BY nb DESC');
+        $query->setParameter('dance', $dance);
+        $costumes = $query->getResult();
+
+        //exoticisms
+        $query = $em->createQuery('SELECT s.title as title, s.thesaurusId as thesaurusId, COUNT(d.thesaurusId) as nb  FROM AppBundle:Number n JOIN n.exoticism_thesaurus s JOIN n.danceSubgenre d WHERE d.thesaurusId = :dance GROUP BY s.title ORDER BY nb DESC');
+        $query->setParameter('dance', $dance);
+        $exoticisms = $query->getResult();
+
+        //films and numbers
+        $query = $em->createQuery('SELECT n.title as number, f.title as film FROM AppBundle:Number n JOIN n.film f JOIN n.danceSubgenre d WHERE d.thesaurusId = :dance');
+        $query->setParameter('dance', $dance);
+        $numbers = $query->getResult();
+
+
         return $this->render('web/dance/danceSubgenre.html.twig', array(
             'filmsByDance' => $filmsByDance,
             'myDance' => $myDance,
             'genres' => $genres,
             'danceSubgenreByYear' => $danceSubgenreByYear,
-            'contents' => $contents
+            'contents' => $contents,
+            'dancings' => $dancings,
+            'dancembles' => $dancembles,
+            'costumes' => $costumes,
+            'exoticisms' => $exoticisms,
+            "numbers" => $numbers
 
         ));
 

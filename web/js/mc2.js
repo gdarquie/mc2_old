@@ -6,7 +6,10 @@ function myParallax(){
 	$('.parallax').parallax();
 }
 
+
+
 $(document).ready(function() {
+	myParallax();
     $('select').material_select();
 	$('textarea').trigger('autoresize');
 	$('.datepicker').pickadate({

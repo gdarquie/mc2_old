@@ -4,7 +4,7 @@
     {{ parent() }}
     <style>
         .card{
-            height: 100px;
+            padding: 20px;
         }
     </style>
 {% endblock %}
@@ -14,46 +14,53 @@
     <section class="container">
         <h1>Dance : {{ myDance.title }}</h1>
 
-        <article>
-            <p>[visualisation : chronologie de l'emploi de ce type de dance]</p>
-            <table class="striped">
-                <tr>
-                    <th>Year</th>
-                    <th>Occurences</th>
-                </tr>
-                {% for item in danceSubgenreByYear %}
-                    <tr><td>{{ item.released }}</td><td>{{ item.nb }}</td></tr>
-                {% endfor %}
+        <article class="card">
 
-            </table>
+            <p>There are  numbers in films with {{ myDance.title }} dance sub-genre.</p>
+
+            <div id="diagram"></div>
+
         </article>
-
-
 
         <article>
             <h2>Dancing type</h2>
+
+            {% for item in dancings  %}
+                <a href=""><span class="chip">{{ item.title }} ({{ item.nb }})</span></a>
+            {% endfor %}
         </article>
 
         <article>
             <h2>Dance content</h2>
 
             {% for item in contents %}
-                <div class="chip">{{ item.title }}({{ item.nb }})</div>
-
+                <a href=""><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
             {% endfor %}
 
         </article>
 
         <article>
             <h2>Dancing ensemble</h2>
+
+            {% for item in dancembles %}
+                <a href=""><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
+            {% endfor %}
         </article>
 
         <article>
             <h2>Costumes</h2>
+
+            {% for item in costumes %}
+                <a href=""><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
+            {% endfor %}
         </article>
 
         <article>
             <h2>Exoticism</h2>
+
+            {% for item in exoticisms %}
+                <a href=""><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
+            {% endfor %}
         </article>
 
         <article>
@@ -71,7 +78,16 @@
             </div>
         </article>
 
-        <p>Ajouter la liste des numbers</p>
+        <h2>List of numbers with {{ myDance.title }} dance</h2>
+
+        <table class="striped">
+        {% for item in numbers %}
+            <tr>
+                <td>{{ item.number }}</td>
+                <td>{{ item.film }}</td>
+            </tr>
+        {% endfor %}
+        </table>
 
         {#<article>#}
         {#<div id="chart_div"></div>#}
@@ -109,25 +125,55 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-        google.charts.load("current", {packages:["corechart"]});
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Name', 'Occurences'],
-                {% for genre in genres %}
-                ['{{ genre.title }}', {{ genre.nb }}],
+        {#google.charts.load("current", {packages:["corechart"]});#}
+        {#google.charts.setOnLoadCallback(drawChart);#}
+        {#function drawChart() {#}
+            {#var data = google.visualization.arrayToDataTable([#}
+                {#['Name', 'Occurences'],#}
+                {#{% for genre in genres %}#}
+                {#['{{ genre.title }}', {{ genre.nb }}],#}
+                {#{% endfor %}#}
+            {#]);#}
+
+            {#var options = {#}
+                {#title: 'Ratio',#}
+                {#pieHole: 0.4,#}
+            {#};#}
+
+            {#var chart = new google.visualization.PieChart(document.getElementById('chart_div'));#}
+            {#chart.draw(data, options);#}
+
+        {#}#}
+
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawBasic);
+        function drawBasic() {
+            //diagram
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Year');
+            data.addColumn('number', 'Occurence');
+
+            data.addRows([
+                {% for item in danceSubgenreByYear %}
+                [{{ item.released }}, {{ item.nb }}],
                 {% endfor %}
             ]);
 
             var options = {
-                title: 'Ratio',
-                pieHole: 0.4,
+                hAxis: {
+                    title: 'Years'
+                },
+                vAxis: {
+                    title: 'Occurences'
+                },
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
 
+            var chart = new google.visualization.LineChart(document.getElementById('diagram'));
+
+            chart.draw(data, options);
         }
+
     </script>
 
 {% endblock %}
