@@ -44,7 +44,7 @@
             <p>Total : <span class="number">{{ nbFilmsWithVerdict.nb }}</span> films</p>
 
             <!-- Diagramme du nombre de films avec verdict par années -->
-            <div id="diagram"></div>
+            <div id="diagram_verdict"></div>
 
             <div class="row ">
 
@@ -55,10 +55,14 @@
                     <span class="chip"><a href="{{ path('censorship_verdict', {'verdict' : item.verdict}) }}">{{ item.verdict }}({{ item.nb }})</a></span>
                 {% endfor %}</div>
             </div>
+
         </article>
 
         <article class="card">
             <h2>Censored contents</h2>
+
+            <p>Total : <span class="number">{{ nbFilmsWithCensorship.nb }}</span> films</p>
+            <div id="diagram_censorship"></div>
 
             <div class="row ">
 
@@ -71,14 +75,13 @@
         </article>
 
 
-        {##}
-        {#<h2>Films by Studio</h2>#}
-        {#{% for item in studios  %}#}
-            {#<p>{{ item.studio }}({{ item.nb }})</p>#}
-        {#{% endfor %}#}
-
         <article class="card">
+
             <h2>Legion of Decency</h2>
+
+            <p>Total : <span class="number">{{ nbFilmsWithLegion.nb }}</span> films</p>
+
+            <div id="diagram_legion"></div>
 
             <div class="row ">
 
@@ -182,10 +185,10 @@
 
         function drawBasic() {
 
+            //diagram censorship
             var data4 = new google.visualization.DataTable();
             data4.addColumn('number', 'Year');
             data4.addColumn('number', 'Number of Films with Verdict');
-
 
             data4.addRows([
                 {% for item in nbVerdict  %}
@@ -194,19 +197,69 @@
 
             ]);
 
-            var options = {
+            var options4 = {
                 hAxis: {
                     title: 'Years'
                 },
                 vAxis: {
-                    title: 'Films & Numbers'
+                    title: 'Films'
                 },
             };
 
+            var chart4 = new google.visualization.LineChart(document.getElementById('diagram_verdict'));
+            chart4.draw(data4, options4);
 
-            var chart4 = new google.visualization.LineChart(document.getElementById('diagram'));
 
-            chart4.draw(data4, options);
+            //diagram verdict
+            var data5 = new google.visualization.DataTable();
+            data5.addColumn('number', 'Year');
+            data5.addColumn('number', 'Number of Films with Censored content');
+
+
+            data5.addRows([
+                {% for item in nbCensorship  %}
+                [{{ item.released }}, {{ item.nb }}],
+                {% endfor %}
+
+            ]);
+
+            var options5 = {
+                hAxis: {
+                    title: 'Years'
+                },
+                vAxis: {
+                    title: 'Films'
+                },
+            };
+
+            var chart5 = new google.visualization.LineChart(document.getElementById('diagram_censorship'));
+            chart5.draw(data5, options5);
+
+        //diagram legion
+        var data6 = new google.visualization.DataTable();
+        data6.addColumn('number', 'Year');
+        data6.addColumn('number', 'Number of Films with verdict from the legion of decency');
+
+
+        data6.addRows([
+            {% for item in nbLegion  %}
+            [{{ item.released }}, {{ item.nb }}],
+            {% endfor %}
+
+        ]);
+
+        var options6 = {
+            hAxis: {
+                title: 'Years'
+            },
+            vAxis: {
+                title: 'Films'
+            },
+        };
+
+        var chart6 = new google.visualization.LineChart(document.getElementById('diagram_legion'));
+
+        chart6.draw(data6, options6);
         }
 
     </script>

@@ -18,6 +18,16 @@ class CensorshipController extends Controller
         $query = $em -> createQuery('SELECT f.title as title, f.legion as legion, f.released as released, COUNT(f.filmId) as nb FROM AppBundle:Film f WHERE f.legion IS NOT NULL GROUP BY f.legion');
         $legion = $query->getResult();
 
+        //Nb legion par année
+        $query = $em -> createQuery('SELECT f.title, f.released, COUNT(f.legion) as nb FROM AppBundle:Film as f WHERE f.released > 0 AND f.legion != :null GROUP BY f.released');
+        $query->setParameter('null', '');
+        $nbLegion = $query->getResult();
+
+        //nb of all legion
+        $query = $em -> createQuery('SELECT COUNT(f.filmId) as nb FROM AppBundle:Film f WHERE f.legion != :null');
+        $query->setParameter('null', '');
+        $nbFilmsWithLegion = $query->getSingleResult();
+
         //Films by Harrison
         $query = $em -> createQuery('SELECT f.title as title, f.harrisson as harrison, f.released as released, COUNT(f.filmId) as nb FROM AppBundle:Film f WHERE f.harrisson != :value GROUP BY f.harrisson ');
         $query->setParameter('value', '');
@@ -39,7 +49,8 @@ class CensorshipController extends Controller
         $verdict = $query->getResult();
 
         //Nb verdict par année // à reprendre pour récupérer toutes les années
-        $query = $em -> createQuery('SELECT f.title, f.released, COUNT(DISTINCT(f.verdict)) as nb FROM AppBundle:Film as f WHERE f.released > 0 GROUP BY f.released');
+        $query = $em -> createQuery('SELECT f.title, f.released, COUNT(f.verdict) as nb FROM AppBundle:Film as f WHERE f.released > 0 AND f.verdict != :null GROUP BY f.released');
+        $query->setParameter('null', '');
         $nbVerdict = $query->getResult();
 
         //Films by studio
@@ -56,13 +67,23 @@ class CensorshipController extends Controller
         $query->setParameter('null', '');
         $nbFilmsWithVerdictByStudio = $query->getResult();
 
-
         //number of censored contents (censorships)
         $query = $em -> createQuery('SELECT c.title as title, f.released as released, COUNT(f.filmId) as nb FROM AppBundle:Film f JOIN f.censorship c GROUP BY c.censorshipId ORDER BY nb DESC');
         $censorship = $query->getResult();
 
+        //Nb verdict par année // à reprendre pour récupérer toutes les années
+        $query = $em -> createQuery('SELECT f.title, f.released, COUNT(c.title) as nb FROM AppBundle:Film f JOIN f.censorship c WHERE f.released > 0 GROUP BY f.released');
+        $nbCensorship = $query->getResult();
+
+        //nb of all censorships
+        $query = $em -> createQuery('SELECT COUNT(f.filmId) as nb FROM AppBundle:Film f JOIN f.censorship c');
+        $nbFilmsWithCensorship = $query->getSingleResult();
+
+
         return $this->render('web/censorship/index.html.twig', array(
             'legion' => $legion,
+            'nbLegion' => $nbLegion,
+            'nbFilmsWithLegion' => $nbFilmsWithLegion,
             'harrison' => $harrison,
             'protestant' => $protestant,
             'board' => $board,
@@ -71,7 +92,9 @@ class CensorshipController extends Controller
             'studios' =>$studios,
             'nbFilmsWithVerdict' => $nbFilmsWithVerdict,
             'nbFilmsWithVerdictByStudio' => $nbFilmsWithVerdictByStudio,
-            'censorship' => $censorship
+            'censorship' => $censorship,
+            'nbCensorship' => $nbCensorship,
+            'nbFilmsWithCensorship' =>$nbFilmsWithCensorship
         ));
     }
 
@@ -163,6 +186,10 @@ class CensorshipController extends Controller
         $query->setParameter('legion', $legion);
         $filmsByLegion = $query->getResult();
 
+        $query = $em -> createQuery('SELECT DISTINCT(f.title) as title, f.released as released, COUNT(DISTINCT(f.filmId)) as nb, f.idImdb as idImdb, f.legion as legion FROM AppBundle:Film f WHERE f.legion = :legion GROUP BY f.released');
+        $query->setParameter('legion', $legion);
+        $filmsByYear = $query->getResult();
+
         $query = $em->createQuery('SELECT DISTINCT(f.legion) as title, COUNT(DISTINCT(f.filmId)) as nb FROM AppBundle:Film f WHERE f.legion = :legion');
         $query->setParameter('legion', $legion);
         $myLegion = $query->getSingleResult();
@@ -171,13 +198,25 @@ class CensorshipController extends Controller
         $query->setParameter('legion', $legion);
         $numberForLegion = $query->getSingleResult();
 
+        //genres
         $query = $em->createQuery('SELECT g.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.genre g WHERE f.legion = :legion GROUP BY g.thesaurusId ORDER BY nb DESC');
         $query->setParameter('legion', $legion);
         $genres = $query->getResult();
-//
+
+        //dance contents
         $query = $em->createQuery('SELECT d.title as title, f.legion as legion, d.thesaurusId as id, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.danceContent d  WHERE f.legion = :legion GROUP BY d.thesaurusId ORDER BY nb DESC');
         $query->setParameter('legion', $legion);
         $danceContents = $query->getResult();
+
+        //costumes
+        $query = $em->createQuery('SELECT g.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.costumes g WHERE f.legion = :legion GROUP BY g.thesaurusId ORDER BY nb DESC');
+        $query->setParameter('legion', $legion);
+        $costumes = $query->getResult();
+
+        //costumes
+        $query = $em->createQuery('SELECT g.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.stereotype g WHERE f.legion = :legion GROUP BY g.thesaurusId ORDER BY nb DESC');
+        $query->setParameter('legion', $legion);
+        $stereotypes = $query->getResult();
 
         //group legion by studio
         $query = $em -> createQuery('SELECT s.title as title, COUNT(f.filmId) as nb FROM AppBundle:Film f JOIN f.studios s WHERE f.legion = :legion GROUP BY s.studioId ORDER BY nb DESC');
@@ -188,9 +227,12 @@ class CensorshipController extends Controller
             'filmsByLegion' => $filmsByLegion,
             'myLegion' => $myLegion,
             'genres' => $genres,
+            'costumes' =>$costumes,
+            'stereotypes' => $stereotypes,
             'danceContents' => $danceContents,
             'studiosByLegion' => $studiosByLegion,
-            'numberForLegion' => $numberForLegion
+            'numberForLegion' => $numberForLegion,
+            'filmsByYear' => $filmsByYear
 
         ));
 
@@ -222,5 +264,25 @@ class CensorshipController extends Controller
             'thesaurus' => $thesaurus,
             'type' => $type
         ));
+    }
+
+    /**
+     * @Route("/censorship/legion/{legion}/{year}", name="censorship_legion_year")
+     */
+    public function getOnelegionByYear($legion, $year){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->createQuery('SELECT f FROM AppBundle:Film f WHERE f.legion = :legion AND f.released = :year');
+        $query->setParameter('legion', $legion);
+        $query->setParameter('year', $year);
+        $films= $query->getResult();
+
+        return $this->render('web/censorship/year.html.twig', array(
+            'films' => $films,
+            'year' => $year,
+            'legion' => $legion
+        ));
+
     }
 }
