@@ -6,6 +6,10 @@
         .card{
             padding: 20px;
         }
+
+        .donut{
+            height: 400px;
+        }
     </style>
 {% endblock %}
 
@@ -16,51 +20,82 @@
 
         <article class="card">
 
-            <p>There are  numbers in films with {{ myDance.title }} dance sub-genre.</p>
+            <p>There are <span class="number">{{ numbers|length }}</span> numbers in <span class="number">{{ filmsByDance|length }}</span> films with {{ myDance.title }} dance sub-genre.</p>
+
+            {#<p>[visualisation générale???  http://nvd3.org/examples/scatter.html or  http://bl.ocks.org/mbostock/4063570]</p>#}
 
             <div id="diagram"></div>
 
         </article>
 
-        <article>
+        <article class="card row">
             <h2>Dancing type</h2>
 
+            <div class="col s7 donut" id="donut_type">
+                <svg></svg>
+            </div>
+
+            <div class="col s5">
             {% for item in dancings  %}
-                <a href=""><span class="chip">{{ item.title }} ({{ item.nb }})</span></a>
+                <a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'dancing' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }} ({{ item.nb }})</span></a>
             {% endfor %}
+            </div>
         </article>
 
-        <article>
+        <article class="card row">
             <h2>Dance content</h2>
 
-            {% for item in contents %}
-                <a href=""><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
-            {% endfor %}
+            <div class="col s7 donut" id="donut_content">
+                <svg></svg>
+            </div>
 
+            <div class="col s5">
+            {% for item in contents %}
+                <a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'content' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
+            {% endfor %}
+            </div>
         </article>
 
-        <article>
+        <article class="card row">
             <h2>Dancing ensemble</h2>
 
+            <div class="col s7 donut" id="donut_ensemble">
+                <svg></svg>
+            </div>
+
+            <div class="col s5">
             {% for item in dancembles %}
-                <a href=""><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
+                <a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'ensemble' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
             {% endfor %}
+            </div>
         </article>
 
-        <article>
+        <article class="card row">
             <h2>Costumes</h2>
 
+            <div class="col s7 donut" id="donut_costumes">
+                <svg></svg>
+            </div>
+
+            <div class="col s5">
             {% for item in costumes %}
-                <a href=""><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
+                <a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'costume' , 'itemId' :item.thesaurusId }) }}"><span class="chip truncate">{{ item.title }}({{ item.nb }})</span></a>
             {% endfor %}
+            </div>
         </article>
 
-        <article>
+        <article class="card row">
             <h2>Exoticism</h2>
 
+            <div class="col s7 donut" id="donut_exoticisms">
+                <svg></svg>
+            </div>
+
+            <div class="col s5">
             {% for item in exoticisms %}
-                <a href=""><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
+                <a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'exoticism' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
             {% endfor %}
+            </div>
         </article>
 
         <article>
@@ -72,7 +107,7 @@
                         {% if film.imdb %}
                             <img src="http://img.omdbapi.com/?i={{ film.imdb }}&apikey=1733f6a&h=100" alt="poster">
                         {% endif %}
-                        <a href="{{ path('film', {'filmId' : film.filmId}) }}"><h3>{{ film.title }}</h3></a>
+                        <a href="{{ path('film', {'filmId' : film.filmId}) }}"><h3>{{ film.title }} ({{ film.released }})</h3></a>
                     </div>
                 {% endfor %}
             </div>
@@ -83,39 +118,12 @@
         <table class="striped">
         {% for item in numbers %}
             <tr>
-                <td>{{ item.number }}</td>
+                <td><a href="{{ path('number', { 'numberId' : item.numberId }) }}">{{ item.number }}</a></td>
                 <td>{{ item.film }}</td>
             </tr>
         {% endfor %}
         </table>
 
-        {#<article>#}
-        {#<div id="chart_div"></div>#}
-
-        {#</article>#}
-
-        {#<article>#}
-            {#<h2>List of numbers with {% for item in dance %}{{ item.title }}{% endfor %} dance</h2>#}
-
-            {#<div class="liste row">#}
-                {#<table class="striped">#}
-                    {#<tr>#}
-                        {#<th>number</th>#}
-                        {#<th>Released</th>#}
-                        {#<th>film</th>#}
-
-                    {#</tr>#}
-                    {#{% for number in numbers  %}#}
-                        {#<tr>#}
-                            {#<td><a href="{{ path('number', {'numberId' : number.numberId}) }}">{{ number.title }}</a></td>#}
-                            {#<td>{{ number.released }}</td>#}
-                            {#<td>{{ number.filmTitle }}</td>#}
-
-                        {#</tr>#}
-                    {#{% endfor %}#}
-                {#</table>#}
-            {#</div>#}
-        {#</article>#}
     </section>
 
 {% endblock %}
@@ -123,6 +131,7 @@
 
 {% block javascripts %}
 
+    {{ parent() }}
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         {#google.charts.load("current", {packages:["corechart"]});#}
@@ -172,8 +181,274 @@
             var chart = new google.visualization.LineChart(document.getElementById('diagram'));
 
             chart.draw(data, options);
+
+
+            //Regular pie chart example
+            nv.addGraph(function() {
+                var chart = nv.models.pieChart()
+                        .x(function(d) { return d.label })
+                        .y(function(d) { return d.value })
+                        .showLabels(true);
+
+                d3.select("#chart svg")
+                        .datum(exampleData())
+                        .transition().duration(350)
+                        .call(chart);
+
+                return chart;
+            });
+
+        //Donut type
+            nv.addGraph(function() {
+                var chart = nv.models.pieChart()
+                                .x(function(d) { return d.label })
+                                .y(function(d) { return d.value })
+                                .showLabels(true)     //Display pie labels
+                                .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+                                .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+                                .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+                                .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
+                        ;
+
+                d3.select("#donut_type svg")
+                        .datum(exampleData())
+                        .transition().duration(350)
+                        .call(chart);
+
+                return chart;
+            });
+
+            function exampleData() {
+                return  [
+                    {% for item in dancings %}
+                    {
+                        "label" : "{{ item.title }}",
+                        "value" : {{ item.nb }} },
+                    {% endfor %}
+                ];
+            }
+
+        }
+
+        //Donut content
+        nv.addGraph(function() {
+            var chart = nv.models.pieChart()
+                            .x(function(d) { return d.label })
+                            .y(function(d) { return d.value })
+                            .showLabels(true)     //Display pie labels
+                            .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+                            .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+                            .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+                            .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
+                    ;
+
+            d3.select("#donut_content svg")
+                    .datum(exampleData2())
+                    .transition().duration(350)
+                    .call(chart);
+
+            return chart;
+        });
+
+        //Pie chart example data. Note how there is only a single array of key-value pairs.
+        function exampleData2() {
+            return  [
+                {% for item in contents %}
+                {
+                    "label" : "{{ item.title }}",
+                    "value" : {{ item.nb }} },
+                {% endfor %}
+            ];
+        }
+
+        //Donut ensemble
+        nv.addGraph(function() {
+            var chart = nv.models.pieChart()
+                            .x(function(d) { return d.label })
+                            .y(function(d) { return d.value })
+                            .showLabels(true)     //Display pie labels
+                            .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+                            .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+                            .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+                            .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
+                    ;
+
+            d3.select("#donut_ensemble svg")
+                    .datum(exampleData3())
+                    .transition().duration(350)
+                    .call(chart);
+
+            return chart;
+        });
+
+        //Pie chart example data. Note how there is only a single array of key-value pairs.
+        function exampleData3() {
+            return  [
+                {% for item in dancembles %}
+                {
+                    "label" : "{{ item.title }}",
+                    "value" : {{ item.nb }} },
+                {% endfor %}
+            ];
+        }
+
+        //Donut costumes
+        nv.addGraph(function() {
+            var chart = nv.models.pieChart()
+                            .x(function(d) { return d.label })
+                            .y(function(d) { return d.value })
+                            .showLabels(true)     //Display pie labels
+                            .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+                            .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+                            .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+                            .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
+                    ;
+
+            d3.select("#donut_costumes svg")
+                    .datum(exampleData4())
+                    .transition().duration(350)
+                    .call(chart);
+
+            return chart;
+        });
+
+        //Pie chart example data. Note how there is only a single array of key-value pairs.
+        function exampleData4() {
+            return  [
+                {% for item in costumes %}
+                {
+                    "label" : "{{ item.title }}",
+                    "value" : {{ item.nb }} },
+                {% endfor %}
+            ];
+        }
+
+        //Donut exoticisms
+        nv.addGraph(function() {
+            var chart = nv.models.pieChart()
+                            .x(function(d) { return d.label })
+                            .y(function(d) { return d.value })
+                            .showLabels(true)     //Display pie labels
+                            .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+                            .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+                            .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+                            .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
+                    ;
+
+            d3.select("#donut_exoticisms svg")
+                    .datum(exampleData5())
+                    .transition().duration(350)
+                    .call(chart);
+
+            return chart;
+        });
+
+        //Pie chart example data. Note how there is only a single array of key-value pairs.
+        function exampleData5() {
+            return  [
+                {% for item in exoticisms %}
+                {
+                    "label" : "{{ item.title }}",
+                    "value" : {{ item.nb }} },
+                {% endfor %}
+            ];
         }
 
     </script>
+
+    {#<script>#}
+
+        {#var margin = {top: 20, right: 20, bottom: 30, left: 40},#}
+                {#width = 960 - margin.left - margin.right,#}
+                {#height = 500 - margin.top - margin.bottom;#}
+
+        {#var x = d3.scale.linear()#}
+                {#.range([0, width]);#}
+
+        {#var y = d3.scale.linear()#}
+                {#.range([height, 0]);#}
+
+        {#var color = d3.scale.category10();#}
+
+        {#var xAxis = d3.svg.axis()#}
+                {#.scale(x)#}
+                {#.orient("bottom");#}
+
+        {#var yAxis = d3.svg.axis()#}
+                {#.scale(y)#}
+                {#.orient("left");#}
+
+        {#var svg = d3.select("body").append("svg")#}
+                {#.attr("width", width + margin.left + margin.right)#}
+                {#.attr("height", height + margin.top + margin.bottom)#}
+                {#.append("g")#}
+                {#.attr("transform", "translate(" + margin.left + "," + margin.top + ")");#}
+
+        {#d3.tsv("data.tsv", function(error, data) {#}
+            {#if (error) throw error;#}
+
+            {#data.forEach(function(d) {#}
+                {#d.sepalLength = +d.sepalLength;#}
+                {#d.sepalWidth = +d.sepalWidth;#}
+            {#});#}
+
+            {#x.domain(d3.extent(data, function(d) { return d.sepalWidth; })).nice();#}
+            {#y.domain(d3.extent(data, function(d) { return d.sepalLength; })).nice();#}
+
+            {#svg.append("g")#}
+                    {#.attr("class", "x axis")#}
+                    {#.attr("transform", "translate(0," + height + ")")#}
+                    {#.call(xAxis)#}
+                    {#.append("text")#}
+                    {#.attr("class", "label")#}
+                    {#.attr("x", width)#}
+                    {#.attr("y", -6)#}
+                    {#.style("text-anchor", "end")#}
+                    {#.text("Sepal Width (cm)");#}
+
+            {#svg.append("g")#}
+                    {#.attr("class", "y axis")#}
+                    {#.call(yAxis)#}
+                    {#.append("text")#}
+                    {#.attr("class", "label")#}
+                    {#.attr("transform", "rotate(-90)")#}
+                    {#.attr("y", 6)#}
+                    {#.attr("dy", ".71em")#}
+                    {#.style("text-anchor", "end")#}
+                    {#.text("Sepal Length (cm)")#}
+
+            {#svg.selectAll(".dot")#}
+                    {#.data(data)#}
+                    {#.enter().append("circle")#}
+                    {#.attr("class", "dot")#}
+                    {#.attr("r", 3.5)#}
+                    {#.attr("cx", function(d) { return x(d.sepalWidth); })#}
+                    {#.attr("cy", function(d) { return y(d.sepalLength); })#}
+                    {#.style("fill", function(d) { return color(d.species); });#}
+
+            {#var legend = svg.selectAll(".legend")#}
+                    {#.data(color.domain())#}
+                    {#.enter().append("g")#}
+                    {#.attr("class", "legend")#}
+                    {#.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });#}
+
+            {#legend.append("rect")#}
+                    {#.attr("x", width - 18)#}
+                    {#.attr("width", 18)#}
+                    {#.attr("height", 18)#}
+                    {#.style("fill", color);#}
+
+            {#legend.append("text")#}
+                    {#.attr("x", width - 24)#}
+                    {#.attr("y", 9)#}
+                    {#.attr("dy", ".35em")#}
+                    {#.style("text-anchor", "end")#}
+                    {#.text(function(d) { return d; });#}
+
+        {#});#}
+
+
+
+    {#</script>#}
 
 {% endblock %}

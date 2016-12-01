@@ -57,7 +57,7 @@
 
                 <a href="/" class="brand-logo left">MC2</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li>Version 0.2.11 (beta)</li>
+                    <li>Version 0.2.12 (beta)</li>
                     <li><a href="{{ path('thesaurus', {'type' : "all"}) }}">thesaurus</a></li>
                     <li><a href="{{ path('numbers') }}">all numbers</a></li>
                     <li><a href="{{ path('howto')}}">how to</a></li>
@@ -100,15 +100,19 @@
     {% block javascripts %} 
 
     <!-- JQuery -->
-    {#<script src = "{{ asset('assets/vendor/jquery/dist/jquery.js') }}"></script>#}
+
+
+    <script src = "{{ asset('assets/vendor/jquery/dist/jquery.js') }}"></script>
     {#<script#}
             {#src="https://code.jquery.com/jquery-3.1.1.min.js"#}
             {#integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="#}
             {#crossorigin="anonymous"></script>#}
-    <script
-            src="https://code.jquery.com/jquery-2.2.4.min.js"
-            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-            crossorigin="anonymous"></script>
+
+        <!-- jquery 2 for parallax -->
+        <script
+                src="https://code.jquery.com/jquery-2.2.4.min.js"
+                integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+                crossorigin="anonymous"></script>
 
     <!-- Vis.js -->
     <script src="{{ asset('assets/vendor/vis/dist/vis.js') }}"></script>

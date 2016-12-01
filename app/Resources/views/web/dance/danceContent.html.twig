@@ -4,7 +4,11 @@
     {{ parent() }}
     <style>
         .card{
-            height: 100px;
+            padding : 30px;
+        }
+
+        .donut{
+            height: 400px;
         }
     </style>
 {% endblock %}
@@ -15,26 +19,35 @@
         <h1>Dance : {{ myDance.title }}</h1>
 
         <article>
-            <p>[visualisation : chronologie de l'emploi de ce type de dance]</p>
-            <table class="striped">
-                <tr>
-                    <th>Year</th>
-                    <th>Occurences</th>
-                </tr>
-                {% for item in danceContentByYear %}
-                    <tr><td>{{ item.released }}</td><td>{{ item.nb }}</td></tr>
-                {% endfor %}
-
-            </table>
+            <h2>"{{ myDance.title }}" by year</h2>
+           <div id="diagram"></div>
         </article>
 
-        <article>
+        <article class="card row">
             <h2>Dancing ensemble</h2>
+
+            <div class="col s7 donut" id="donut_ensemble"><svg></svg></div>
+
+            <div class="col s5">
+                {% for item in dancembles  %}
+                    <span class="chip">{{ item.title }} ({{ item.nb }})</span>
+                {% endfor %}
+            </div>
         </article>
 
-        <article>
+
+        <article class="card row">
             <h2>Exoticism</h2>
+
+            <div class="col s7 donut" id="donut_exoticisms"><svg></svg></div>
+
+            <div class="col s5">
+                {% for item in exoticisms  %}
+                    <span class="chip">{{ item.title }} ({{ item.nb }})</span>
+                {% endfor %}
+            </div>
         </article>
+
 
         <article>
             <h2>List of movies with {{ myDance.title }} dance</h2>
@@ -51,7 +64,25 @@
             </div>
         </article>
 
-        <p>Ajouter la liste des numbers</p>
+        <article class="card">
+
+            <h2>List of numbers</h2>
+
+            <table class="striped">
+                <tr>
+                    <th>Number</th>
+                    <th>Film</th>
+                </tr>
+                {% for item in numbers %}
+                    <tr>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.film }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        </article>
+
 
         {#<article>#}
         {#<div id="chart_div"></div>#}
@@ -87,26 +118,99 @@
 
 {% block javascripts %}
 
+    {{ parent() }}
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-        google.charts.load("current", {packages:["corechart"]});
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Name', 'Occurences'],
-                {% for genre in genres %}
-                ['{{ genre.title }}', {{ genre.nb }}],
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawBasic);
+        function drawBasic() {
+            //diagram
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Year');
+            data.addColumn('number', 'Occurence');
+
+            data.addRows([
+                {% for item in danceContentByYear %}
+                [{{ item.released }}, {{ item.nb }}],
                 {% endfor %}
             ]);
 
             var options = {
-                title: 'Ratio',
-                pieHole: 0.4,
+                hAxis: {
+                    title: 'Years'
+                },
+                vAxis: {
+                    title: 'Occurences'
+                },
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+
+            var chart = new google.visualization.LineChart(document.getElementById('diagram'));
+
             chart.draw(data, options);
 
+        }
+        //Donut ensemble
+        nv.addGraph(function() {
+            var chart = nv.models.pieChart()
+                            .x(function(d) { return d.label })
+                            .y(function(d) { return d.value })
+                            .showLabels(true)     //Display pie labels
+                            .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+                            .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+                            .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+                            .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
+                    ;
+
+            d3.select("#donut_ensemble svg")
+                    .datum(exampleData3())
+                    .transition().duration(350)
+                    .call(chart);
+
+            return chart;
+        });
+
+        //Pie chart example data. Note how there is only a single array of key-value pairs.
+        function exampleData3() {
+            return  [
+                {% for item in dancembles %}
+                {
+                    "label" : "{{ item.title }}",
+                    "value" : {{ item.nb }} },
+                {% endfor %}
+            ];
+        }
+
+        //Donut exoticisms
+        nv.addGraph(function() {
+            var chart = nv.models.pieChart()
+                            .x(function(d) { return d.label })
+                            .y(function(d) { return d.value })
+                            .showLabels(true)     //Display pie labels
+                            .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+                            .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+                            .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+                            .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
+                    ;
+
+            d3.select("#donut_exoticisms svg")
+                    .datum(exampleData5())
+                    .transition().duration(350)
+                    .call(chart);
+
+            return chart;
+        });
+
+        //Pie chart example data. Note how there is only a single array of key-value pairs.
+        function exampleData5() {
+            return  [
+                {% for item in exoticisms %}
+                {
+                    "label" : "{{ item.title }}",
+                    "value" : {{ item.nb }} },
+                {% endfor %}
+            ];
         }
     </script>
 
