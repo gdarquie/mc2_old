@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller\Api;
 
-use AppBundle\Entity\Number;
+use AppBundle\Entity\Song;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -12,23 +12,23 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 /**
- * @Route("api/numbers")
+ * @Route("api/songs")
  */
-class NumberController extends Controller
+class SongController extends Controller
 {
 
     /**
      * @Route("/")
      */
-    public function filmsByAction(){
+    public function songsByAction(){
 
         //retourner les titres de tous les films par ordre alphabétique
 
         $em = $this->getDoctrine()->getManager();
-        $numbers = $em->getRepository('AppBundle:Number')->findAll();
-        $data = array('number' => array());
-        foreach ($numbers as $number) {
-            $data['number'][] = $this->serializeNumber($number);
+        $songs = $em->getRepository('AppBundle:Song')->findAll();
+        $data = array('song' => array());
+        foreach ($songs as $song) {
+            $data['song'][] = $this->serializeSong($song);
         }
 
         $response = new JsonResponse($data, 200);
@@ -36,13 +36,11 @@ class NumberController extends Controller
         return $response;
     }
 
-    private function serializeNumber(Number $number)
+    private function serializeSong(Song $song)
     {
         return array(
-            'numberId' => $number->getNumberId(),
-            'title' => $number->getTitle(),
-            'film' => $number->getFilm()->getTitle(),
-            'released' =>$number->getFilm()->getReleased(),
+            'songId' => $song->getSongId(),
+            'title' => $song->getTitle(),
         );
     }
 

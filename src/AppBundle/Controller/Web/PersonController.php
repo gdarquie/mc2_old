@@ -14,6 +14,23 @@ class PersonController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('web/person/index.html');
+        return $this->render('web/person/index.html.twig');
     }
+
+    /**
+     * @Route("/person/{personId}", name = "getPersons")
+     */
+    public function getOnePerson($personId){
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT p FROM AppBundle:Person p WHERE p.personId = :personId");
+        $query->setParameter('personId', $personId);
+        $person = $query->getSingleResult();
+
+        return $this->render('web/person/person.html.twig', array(
+            'person' => $person
+        ));
+    }
+
+
 }

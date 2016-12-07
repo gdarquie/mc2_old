@@ -14,7 +14,21 @@
 	  	color : #CC0000;
 	  	border:  1px solid #CC0000;
 	}
-		
+
+	.myCard{
+		padding : 0px 20px;
+	}
+
+	.myBtn{
+		margin-bottom: 5px;
+		background-color:white;
+		color : #CC0000;
+		border:  1px solid #CC0000;
+	}
+
+	.card{
+		padding:30px;
+	}
 	</style>
 {% endblock %}
 
@@ -25,7 +39,15 @@
 
 	<h2>Thesaurus ({% for item in thesaurus|slice(0,1) %}{{item.type}}{% endfor %})</h2>
 	<!-- ne fonctionne pas encore avec all - essayer de récupérer la valeur de l'url directement si possible depuis twig -->
-			
+
+		<article class="card row">
+			<div class="col s12">
+				<h3>Search an item</h3>
+				<input type="text" id="searchItem" placeholder ="Write the title of an item (3 characters min)">
+			</div>
+		</article>
+		<article id="resultsItem" class="row card myCard"></article>
+
 		<article>
 			<p><a href="{{ path('newThesaurus') }}">Create a new thesaurus item</a></p>
 		</article>
@@ -53,4 +75,54 @@
 	</section>
 	
 
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+	function searchItem(){
+
+	$("#searchItem").keyup(function(){
+		input = $("#searchItem").val();
+
+		var selection = [];
+
+		jQuery.when(
+		jQuery.getJSON('/api/thesaurus/')
+		).done(function (json){
+
+		if (input.length > 2) {
+			for(var i= 0; i < json.thesaurus.length;i++){
+			// if(input == json.films[i].title)
+
+				str = json.thesaurus[i].title;
+
+				str = str.toLowerCase();
+				input = input.toLowerCase();
+
+				if (str.indexOf(input)> -1) {
+					// console.log(input+"ca marche"+json.films[i].title);
+					res = json.thesaurus[i];
+					selection.push(res);
+					// console.log(selection);
+				}
+			}
+		}
+
+
+		if (selection.length > 0){
+
+		$("#resultsItem").html("<div class='col s12'><h2>Result(s)</h2></div>");
+		for(var i = 0; i < selection.length ; i++){
+			txt = "<a href='/thesaurus/item/"+selection[i]['thesaurusId']+"'><span class='btn myBtn'>"+selection[i]['title']+"</span></a>";
+			$("#resultsItem").append(txt);
+			}
+		}
+		});
+		});
+
+	}
+
+	searchItem();
+	</script>
 {% endblock %}

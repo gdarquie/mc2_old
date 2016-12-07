@@ -38,10 +38,6 @@ h4{
 	text-transform : uppercase;
 }
 
-.myNumbers{
-	margin-bottom: 2em;
-}
-
 .cursor{
 	cursor:pointer;
 }
@@ -70,9 +66,9 @@ h4{
 	width:1024px;
 }
 
-.material-icons{
-	font-size:90px;
-}
+/*.material-icons{*/
+	/*font-size:90px;*/
+/*}*/
 /* Other */
 
 div .cut {

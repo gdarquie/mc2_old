@@ -40,7 +40,8 @@ class PersonController extends Controller
     private function serializePerson(Person $person)
     {
         return array(
-            'name' => $person->getName(),
+            'personId' => $person->getPersonId(),
+            'name' => $person->getName()
         );
     }
 

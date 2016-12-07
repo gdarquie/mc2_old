@@ -43,6 +43,25 @@ class ThesaurusController extends Controller
 
     }
 
+
+    /**
+     * @Route("/thesaurus/item/{thesaurusId}", name="getOneThesaurus")
+     */
+    public function getOneThesaurus($thesaurusId){
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em -> createQuery('SELECT t FROM AppBundle:Thesaurus t WHERE t.thesaurusId = :thesaurusId');
+        $query->setParameter('thesaurusId', $thesaurusId);
+        $thesaurus = $query->getSingleResult();
+
+
+        return $this->render('web/thesaurus/item.html.twig', array(
+            'thesaurus' => $thesaurus,
+        ));
+
+
+    }
+
     //Update Thesaurus
 
     /**

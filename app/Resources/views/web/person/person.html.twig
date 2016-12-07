@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <section class="container">
+        <h1>{{ person.name }}</h1>
+
+        <article class="card row">
+            <div class="col s12">
+            <p>First name : {{ person.firstname }}</p>
+            <p>Last name : {{ person.lastname }}</p>
+            <p>Gender : {{ person.gender }}</p>
+            <p>Race : {{ person.race }}</p>
+            </div>
+        </article>
+
+        <article class="card row">
+            <div class="col s12">
+                <h2>Films connected</h2>
+                <p>Soon...</p>
+            </div>
+        </article>
+    </section>
+
+{% endblock %}
