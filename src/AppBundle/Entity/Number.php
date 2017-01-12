@@ -456,12 +456,6 @@ class Number
      */
     private $exoticism;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Dancing", mappedBy="number")
-     */
-    private $dancing;
 
     /** @var  \AppBundle\Entity\Thesaurus
      *
@@ -488,6 +482,7 @@ class Number
      */
     private $integoptions;
 
+    //à supprimer quand les données sont vérifiées
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
@@ -624,6 +619,7 @@ class Number
     private $stereotype;
 
 
+//    todo : Passe en many to one
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
@@ -935,7 +931,6 @@ class Number
         $this->place = new \Doctrine\Common\Collections\ArrayCollection();
         $this->stagenumber = new \Doctrine\Common\Collections\ArrayCollection();
         $this->exoticism = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->dancing = new \Doctrine\Common\Collections\ArrayCollection();
         $this->effects = new \Doctrine\Common\Collections\ArrayCollection();
         $this->performers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->editors = new \Doctrine\Common\Collections\ArrayCollection();
@@ -1786,40 +1781,6 @@ class Number
     public function getExoticism()
     {
         return $this->exoticism;
-    }
-
-    /**
-     * Add dancing
-     *
-     * @param \AppBundle\Entity\Dancing $dancing
-     *
-     * @return Number
-     */
-    public function addDancing(\AppBundle\Entity\Dancing $dancing)
-    {
-        $this->dancing[] = $dancing;
-
-        return $this;
-    }
-
-    /**
-     * Remove dancing
-     *
-     * @param \AppBundle\Entity\Dancing $dancing
-     */
-    public function removeDancing(\AppBundle\Entity\Dancing $dancing)
-    {
-        $this->dancing->removeElement($dancing);
-    }
-
-    /**
-     * Get dancing
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDancing()
-    {
-        return $this->dancing;
     }
 
     /**

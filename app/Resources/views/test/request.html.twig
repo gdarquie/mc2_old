@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <section class="container">
+        <h1>Test des requêtes GET</h1>
+
+        <p>Ce que je cherche à faire = </p>
+        <ul>
+            <li>J'envoie une requête en get (et post par la suite) à une url (_SERVER?)</li>
+            <li>L'url affiche du json, par exemple /api/films</li>
+            <li>Je récupère les titres des films en PHP</li>
+        </ul>
+
+        <p>Tout d'abord, le fait d'être sur la page doit envoyer une requête en get à une certaine adresse / une api externe ou interne : http://symfony.com/doc/current/introduction/http_fundamentals.html</p>
+        <p>http://stackoverflow.com/questions/11620739/symfony2-how-to-pass-url-querystring-parameters-to-controllers</p>
+
+        {#<p>Le contenu  = {{ content }}</p>#}
+
+        {% for item in data  %}
+            <div>
+            {{ item.id }}
+            {{ item.name }}
+            {{ item.slug }}
+            </div>
+        {% endfor %}
+
+
+    </section>
+{% endblock %}

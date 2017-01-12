@@ -3,133 +3,309 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/number.css')}}">
+    <style>
+
+        h1{
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            text-align: center;
+        }
+        .row{
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
-    <div class="container" id="number">
+
+
+    {#Liste des éléments à supprimer dans la BD
+
+    - begin
+    - ending
+    - performance type
+    - spectators
+    - Dancing type
+
+    #}
+
+    {#
+        - rendre les items de la page cliquable à partir de completeness (sauf données numériques) (vers une page listant tous les films et tous les numbers)
+        - faire apparaitre les paroles de la chanson
+        - faire apparaitre l'image du number (en haut à gauche par exemple)
+    #}
+
+    <section class="container" id="number">
 
         <div class="row ">
-            <h1 class="center">{{ number.title }}({{ number.film }}){% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<small> - <a href="{{ path('number_edit', {'numberId' : number.numberId}) }}">edit</a></small>{% endif %} </h1>
-        </div>
-
-
-        <div class="row">
-            <section class="col s3">
-                <h2 class="center">Outlines</h2>
-
-                <p>Begin timecode : <span class="chip">{{ number.beginTc }}</span></p>
-                <p>End timecode :  <span class="chip">{{ number.EndTc }}</span></p>
-                <p>Begin :  <span class="chip">{{ number.begin }}</span></p>
-                <p>Ending :  <span class="chip">{{ number.ending }}</span></p>
-                <p>Begin (from thesaurus) :  <span class="chip">{{ number.beginThesaurus  }}</span></p>
-                <p>Ending (from thesaurus) :  <span class="chip">{{ number.endingThesaurus  }}</span></p>
-                <p>Comments : {{ number.commentTc }}</p>
-                <p>Completeness (from thesaurus): <span class="chip">{{ number.completenessThesaurus }}</span></p>
-                <p>Completeness Options (from thesaurus): {% for completoption in number.completoptions %}<span class="chip">{{ completoption }}</span>{% endfor %}</p>
-                <p>Completed : {% if number.completeTc %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
-                <p>Validation :<span class="chip"></span></p>
-            </section>
-
-            <section class="col s3">
-                <h2 class="center">Structure</h2>
-                <p>Structure (from thesaurus) : <span class="chip">{{ number.structure }}</span></p>
-                <p>Comment : <span>{{ number.commentStructure }}</span></p>
-                <p>Completed : {% if number.completeStructure %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
-                <p>Validation : <span class="chip"></span></p>
-            </section>
-
-            <section class="col s3">
-                <h2 class="center">Shots</h2>
-                <p>Shots : <span class="chip">{{ number.shots }}</span></p>
-                <p>Completed : {% if number.completeShots %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
-                <p>Validation :<span class="chip"></span></p>
-            </section>
-
-            <section class="col s3">
-                <h2 class="center">Performers</h2>
-                <p>Performance type :<span class="chip">{{ number.performance }}</span> </p>
-                <p>Performance (from thesaurus) : <span class="chip">{{ number.performanceThesaurus }}</span></p>
-                <p>Performers : {% for person in number.performers %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
-                <p>Stars who don't participate : {% for person in number.figurants %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
-                <p>Completed : {% if number.validationPerformance %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
-                <p>Validation :<span class="chip"></span></p>
-            </section>
+            <h1 class="center">{{ number.title }} <i>[{{ number.film }}]</i>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<small> - <a href="{{ path('number_edit', {'numberId' : number.numberId}) }}">edit</a></small>{% endif %} </h1>
         </div>
 
         <div class="row">
 
-            <section class="col s3">
-                <h2 class="center">Backstage</h2>
-                <p>Spectators : <span class="chip">{{ number.spectators }}</span></p>
-                <p>Spectators (from thesaurus) : <span class="chip">{{ number.spectatorsThesaurus }}</span></p>
-                <p>Diegetic performance ? (from thesaurus) : <span class="chip">{{ number.diegeticThesaurus }}</span></p>
-                <p>Visible musicians (from thesaurus) : <span class="chip">{{ number.musicianThesaurus }}</span></p>
-                <p>Integration (from thesaurus) : <span class="chip">{{ number.integrationThesaurus }}</span></p>
-                <p>Integration Options (from thesaurus) : {% for integration in number.integoptions %} <span class="chip">{{ integration }}</span>{% endfor %}</p>
-                <p>Completed : {% if number.completeBackstage %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
-                <p>Validation :<span class="chip"></span></p>
-            </section>
+            <div class="col s12">
 
-            <section class="col s3">
-                <h2 class="center">Themes</h2>
-                <p>Costumes (from thesaurus) : {% for costume in number.costumes %} <span class="chip">{{ costume }}</span>{% endfor %}</p>
-                <p>Ethinc stereotypes (from thesaurus) : {% for stereotype in number.stereotype %} <span class="chip">{{ stereotype }}</span>{% endfor %}</p>
-                <p>Diegetic place (from thesarus) : {% for place in  number.diegeticPlaceThesaurus %}<span class="chip">{{ place }}</span>{% endfor %}</p>
-                <p>General localisation (from thesaurus) : {% for place in  number.generalLocalisation %}</p><span class="chip">{{ place }}</span>{% endfor %}</p>
-                <p>Imaginary place (from thesaurus) : <span class="chip">{% for imagination in number.imaginary %}{{ imagination }}{% endfor %} </span></p>
-                <p>Exoticism (from thesaurus) : {% for exoticism in number.exoticismThesaurus%} <span class="chip">{{ exoticism }}</span>{% endfor %}</p>
-                <p>Completed : {% if number.completeTheme %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
-                <p>Validation :<span class="chip"></span></p>
-            </section>
+                <h2>Outlines</h2>
 
-            <section class="col s3">
-                <h2>Tone</h2>
-                <p>Tone (from thesaurus : {% for mood in number.generalMood %}<span class="chip">{{ mood.title }}</span>{% endfor %}</p>
-                <p>Genre (from thesaurus) : {% for mood in number.genre %} <span class="chip">{{ mood.title }}</span>{% endfor %}</p>
-                <p>Comment : {{ number.commentMood }}</p>
-                <p>Completed : {% if number.completeMood %}<span><i class="material-icons small green-text">done</i></span>{% endif %}</p>
-                <p>Validation :<span class="chip"></span></p>
-            </section>
+                <table class="striped middle-table">
+                    <tr>
+                        <th>Begin timecode</th>
+                        <th>End timecode</th>
+                        <th>Begin</th>
+                        <th>Ending</th>
+                        <th>Comments</th>
+                        <th>Completeness</th>
+                        <th>Completeness Options</th>
+                    </tr>
 
-            <section class="col s3">
+                    <tr>
+                        <td>{{ ((number.beginTc)/(60*60))|round(0, 'floor') }}h{{ ((number.beginTc)/(60)) |round(0, 'floor')-(60*((number.beginTc)/(60*60)) |round(0, 'floor'))  }}m{{ (number.beginTc) |round(0, 'floor')-(60*((number.beginTc)/(60)) |round(0, 'floor')) }}s</td>
+                        <td>{{ ((number.EndTc)/(60*60))|round(0, 'floor') }}h{{ ((number.EndTc)/(60)) |round(0, 'floor')-(60*((number.EndTc)/(60*60)) |round(0, 'floor'))  }}m{{ (number.EndTc) |round(0, 'floor')-(60*((number.EndTc)/(60)) |round(0, 'floor')) }}s</td>
+                        <td>{{ number.beginThesaurus  }}</td>
+                        <td>{{ number.endingThesaurus  }}</td>
+                        <td>{{ number.commentTc }}</td>
+                        <td>{{ number.completenessThesaurus }}</td>
+                        <td>{% for completoption in number.completoptions %}{{ completoption }}{% endfor %}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s4">
+                <h2>Structure</h2>
+                <table class="striped middle-table">
+                    <tr>
+                        <th>Structure</th>
+                        <th>Comments</th>
+                    </tr>
+                    <tr>
+                        <td>{{ number.structure }}</td>
+                        <td>{{ number.commentStructure }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col s1">
+                <h2>Shots</h2>
+
+                <table class="striped middle-table">
+                    <tr>
+                        <th>Shots</th>
+                    </tr>
+                    <tr>
+                        <td>{{ number.shots }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col s7">
+                <h2>Title comments</h2>
+                <table class="striped middle-table">
+                    <tr>
+                        <th>Comments</th>
+                    </tr>
+                    <tr>
+                        <td>{{ number.commentTitle }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <h2>Performers</h2>
+                <table class="striped middle-table">
+                    <tr>
+                        <th>Performance</th>
+                        <th>Performers</th>
+                        <th>Stars who don't participate</th>
+
+                    </tr>
+                    <tr>
+                        <td>{{ number.performanceThesaurus }}</td>
+                        <td>{% for person in number.performers %}{{ person }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{% for person in number.figurants %}{{ person }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s6">
+                <h2>Backstage</h2>
+                <table class="striped middle-table">
+                    <tr>
+                        <th>Spectators</th>
+                        <th>Diegetic performance ?</th>
+                        <th>Visible musicians</th>
+                    </tr>
+                    <tr>
+                        <td>{{  number.spectatorsThesaurus }}</td>
+                        <td>{{ number.diegeticThesaurus }}</td>
+                        <td>{{ number.musicianThesaurus }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col s6">
+                <h2>Tone and topic</h2>
+
+                <table class="striped middle-table">
+                    <tr>
+                        <th>Tone</th>
+                        <th>Topic</th>
+                        <th>Comment</th>
+                    </tr>
+                    <tr>
+                        <td>{% for mood in number.generalMood %}{{ mood.title }}{% if loop|last %}{% else %}; {% endif %}{% endfor %}</td>
+                        <td>{% for mood in number.genre %}{{ mood.title }}{% if loop|last %}{% else %}; {% endif %}{% endfor %}</td>
+                        <td>{{ number.commentMood }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <h2>Themes</h2>
+                <table class="striped middle-table">
+                    <tr>
+                        <th>Costumes</th>
+                        <th>Ethinc stereotypes</th>
+                        <th>Diegetic place</th>
+                        <th>General localisation</th>
+                        <th>Imaginary place </th>
+                        <th>Exoticism</th>
+                    </tr>
+                    <tr>
+                        <td>{% for costume in number.costumes %} {{ costume }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{% for stereotype in number.stereotype %} {{ stereotype }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{% for place in  number.diegeticPlaceThesaurus %}{{ place }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{% for place in  number.generalLocalisation %}{{ place }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{% for imagination in number.imaginary %}{{ imagination }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{% for exoticism in number.exoticismThesaurus%}{{ exoticism }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col s12">
                 <h2>Dance</h2>
-                <p>Choregraphers : {% for person in number.choregraphers %} <span class="chip">{{ person }}</span>{% endfor %}</span></p>
-                <p>Dance Ensemble (from thesaurus)  : {% for item in number.dancemble %} <span class="chip">{{ item }}</span>{% endfor %}</p>
-                <!-- vérifier dancing type -->
-                <p>Dancing type (from dancing) :{% for item in number.dancing %}<span class="chip">{{ item.title }}</span>{% endfor %}</p>
-                <p>Dancing type (from thesaurus): {% for item in number.dancingtype %}<span class="chip">{{ item.title }}</span>{% endfor %}</p>
-                <p>Dance subgenre (from thesaurus): {% for item in number.dancesubgenre %}<span class="chip">{{ item.title }}</span>{% endfor %} </p>
-                <p>Dance content (from thesaurus): {% for item in number.dancecontent %}<span class="chip">{{ item.title }}</span>{% endfor %} </p>
-                <p>Completed :<span class="chip"></span></p>
-                <p>Validation :<span class="chip"></span></p>
-            </section>
+
+                <table class="striped middle-table">
+                    <tr>
+                        <th>Choregraphers</th>
+                        <th>Dance Ensemble</th>
+                        <th>Dancing type (thesaurus)</th>
+                        <th>Dance subgenre</th>
+                        <th>Dance content</th>
+                        <th>Dance comments</th>
+                    </tr>
+                    <tr>
+                        <td>{% for person in number.choregraphers %}{{ person }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</span></td>
+                        <td>{% for item in number.dancemble %}{{ item }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{% for item in number.dancingtype %}{{ item.title }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{% for item in number.dancesubgenre %}{{ item.title }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{% for item in number.dancecontent %}{{ item.title }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{{ number.commentDance }}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
         <div class="row">
-            <section class="col s6">
+            <div class="col s12">
                 <h2>Music</h2>
-                <p>Song : {% for song in number.song %} <span class="chip">{{ song }}</span>{% endfor %}</span></p>
-                <p>Music ensemble (from thesaurus) : {% for item in number.musensemble %} <span class="chip">{{ item }}</span>{% endfor %}</p>
-                <p>Dubbing : <span class="chip">{{ number.dubbing }}</span></p>
-                <p>Tempo  (from thesaurus) : <span class="chip">{{ number.tempoThesaurus }}</span></p>
-                <!-- dernier import à faire -->
-                <p>Muscical style : à rechercher + importer from csv [en cours]</p>
-                <p>Musical style (from thesaurus) : {% for item in number.musicalThesaurus %}<span class="chip">{{ item.title }}</span>{% endfor %}</p>
-                <p>Arrangers :  {% for person in number.arrangers %} <span class="chip">{{ person }}</span>{% endfor %}</span> </p>
-                <p>Arranger comment : <span>{{ number.arrangerComment }}</span></p>
-                <p>Lyrics : <span>{{ number.lyrics }}</span></p>
-                <p>Completed :<span class="chip"></span></p>
-                <p>Validation :<span class="chip"></span></p>
-            </section>
 
-            <section class="col s6">
-                <h2>Complement</h2>
-                <p>Director : {% for person in number.director %} <span class="chip">{{ person }}</span>{% endfor %}</p>
-                <p>Cost : <span>{{ number.cost }}</span></p>
-                <p>Cost Comment : <span>{{ number.costComment }}</span></p>
-                <p>Completed :<span class="chip"></span></p>
-                <p>Validation :<span class="chip"></span></p>
-            </section>
+                <table class="striped middle-table">
+                    <tr>
+                        <th>Song</th>
+                        <th>Music ensemble</th>
+                        <th>Dubbing</th>
+                        <th>Tempo</th>
+                        <th>Musical style</th>
+                        <th>Arrangers</th>
+                        <th>Arrangers comment</th>
+                        {#<th>Lyrics</th>#}
+                        <th>Music comment</th>
+                    </tr>
+                    <tr>
+                        <td>{% for song in number.song %} {{ song }}{% if loop|last %}{% else %}; {% endif %}{% endfor %}</td>
+                        <td>{% for item in number.musensemble %}{{ item }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{{ number.dubbing }}</td>
+                        <td>{{ number.tempoThesaurus }}</td>
+                        <td>{% for item in number.musicalThesaurus %}{{ item.title }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{% for person in number.arrangers %}{{ person }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{{ number.arrangerComment }}</td>
+                        {#<td>{{ number.lyrics }}</td>#}
+                        <td>{{ number.commentMusic }}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </div>
+
+        <div class="row">
+            <div class="col s12">
+                <h2>Intertextuality</h2>
+
+                <table class="striped middle-table">
+                    <tr>
+                        <th>Source</th>
+                        <th>Quotation</th>
+                        <th>Quotation text</th>
+                        <th>Comments</th>
+                    </tr>
+                    <tr>
+                        <td>{% for item in number.sourceThesaurus  %}{{ item }}{% endfor %}</td>
+                        <td>{%  for item in number.quotationThesaurus %}{{ item }}{% endfor %}</td>
+                        <td>{{ number.quotationText }}</td>
+                        <td>{{  number.commentReference }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <h2>Complement</h2>
+
+                <table class="striped middle-table">
+                    <tr>
+                        <th>Director</th>
+                        <th>Cost</th>
+                        <th>Cost comments</th>
+                    </tr>
+                    <tr>
+                        <td>{% for person in number.director %}{{ person }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
+                        <td>{%  if number.cost == 0 %}{% else %}{{ number.cost }}{%  endif %}</td>
+                        <td>{{ number.costComment }}</td>
+
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <h2>Lyrics</h2>
+                <p>{{ number.lyrics }}</p>
+            </div>
+        </div>
+
+
+        </section>
+
+        {#If admin : une page décrivant l'état #}
+
+
+
 {% endblock %}

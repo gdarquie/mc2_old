@@ -100,13 +100,6 @@ class Stagenumber
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Dancing", mappedBy="stagenumber")
-     */
-    private $dancing;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Song", mappedBy="stagenumber")
      */
     private $song;
@@ -148,7 +141,6 @@ class Stagenumber
     {
         $this->number = new \Doctrine\Common\Collections\ArrayCollection();
         $this->costumes = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->dancing = new \Doctrine\Common\Collections\ArrayCollection();
         $this->song = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -414,40 +406,6 @@ class Stagenumber
     public function getCostumes()
     {
         return $this->costumes;
-    }
-
-    /**
-     * Add dancing
-     *
-     * @param \AppBundle\Entity\Dancing $dancing
-     *
-     * @return Stagenumber
-     */
-    public function addDancing(\AppBundle\Entity\Dancing $dancing)
-    {
-        $this->dancing[] = $dancing;
-
-        return $this;
-    }
-
-    /**
-     * Remove dancing
-     *
-     * @param \AppBundle\Entity\Dancing $dancing
-     */
-    public function removeDancing(\AppBundle\Entity\Dancing $dancing)
-    {
-        $this->dancing->removeElement($dancing);
-    }
-
-    /**
-     * Get dancing
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDancing()
-    {
-        return $this->dancing;
     }
 
     /**

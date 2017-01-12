@@ -24,6 +24,7 @@ class FilmController extends Controller{
 		return new Response("Test de l'API de MC2");
 	}
 
+
 	/**
 	* @Route("/")
 	*/

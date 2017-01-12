@@ -225,22 +225,22 @@ class NumberType extends AbstractType
                 }
             ))
             //->add('integration')
-            ->add('integration_thesaurus', EntityType::class, array(
-                'placeholder' => '',
-                'class' => 'AppBundle:Thesaurus',
-                'choice_label' => 'title', //order by alpha
-                'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("integration");
-                }
-            ))
-            ->add('integoptions', EntityType::class, array(
-                'class' => 'AppBundle:Thesaurus',
-                'multiple' => true,
-                'choice_label' => 'title', //order by alpha
-                'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("integoptions");
-                }
-            ))
+//            ->add('integration_thesaurus', EntityType::class, array(
+//                'placeholder' => '',
+//                'class' => 'AppBundle:Thesaurus',
+//                'choice_label' => 'title', //order by alpha
+//                'query_builder' => function(ThesaurusRepository $repo) {
+//                    return $repo->findAllThesaurusByType("integration");
+//                }
+//            ))
+//            ->add('integoptions', EntityType::class, array(
+//                'class' => 'AppBundle:Thesaurus',
+//                'multiple' => true,
+//                'choice_label' => 'title', //order by alpha
+//                'query_builder' => function(ThesaurusRepository $repo) {
+//                    return $repo->findAllThesaurusByType("integoptions");
+//                }
+//            ))
             ->add('commentBackstage')
             ->add('completeBackstage', ChoiceType::class, [
                 'choices' =>[
@@ -465,7 +465,7 @@ class NumberType extends AbstractType
             ->add('cost')
             ->add('costComment')
             ->add('commentDirector')
-            ->add('completeCost', ChoiceType::class, [
+            ->add('completeDirector', ChoiceType::class, [
                 'choices' =>[
                     "not complete" => 0,
                     "complete" => 1,

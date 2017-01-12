@@ -119,6 +119,21 @@ div .cut {
 	overflow : auto;
 }
 
+
+.mini-table td, .mini-table th{
+	font-size:0.8em;
+	line-height: 1em;
+	padding: 2px 5px;
+
+}
+
+.middle-table td, .middle-table th{
+	font-size:0.9em;
+	line-height: 1.2em;
+	padding: 3px 5px;
+
+}
+
 #about .card{
 	height:auto;
 	overflow : auto;

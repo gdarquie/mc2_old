@@ -5,7 +5,8 @@ security:
 
     role_hierarchy:
         ROLE_USER:        ROLE_VISITOR
-        ROLE_EDITOR:      ROLE_USER
+        ROLE_EXPERT:      ROLE_USER
+        ROLE_EDITOR:      ROLE_EXPERT
         ROLE_ADMIN:       ROLE_EDITOR
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 

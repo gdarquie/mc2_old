@@ -14,6 +14,10 @@ app_api:
     resource: "@AppBundle/Controller/Api"
     type:     annotation
 
+app_test:
+    resource: "@AppBundle/Controller/Test"
+    type:     annotation
+
 #FoS
 fos_user:
   resource: "@FOSUserBundle/Resources/config/routing/all.xml"

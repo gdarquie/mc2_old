@@ -58,13 +58,6 @@ class Tv
 
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Dancing", mappedBy="tv")
-     */
-    private $dancing;
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -214,38 +207,4 @@ class Tv
         return $this->song;
     }
 
-
-    /**
-     * Add dancing
-     *
-     * @param \AppBundle\Entity\Dancing $dancing
-     *
-     * @return Tv
-     */
-    public function addDancing(\AppBundle\Entity\Dancing $dancing)
-    {
-        $this->dancing[] = $dancing;
-
-        return $this;
-    }
-
-    /**
-     * Remove dancing
-     *
-     * @param \AppBundle\Entity\Dancing $dancing
-     */
-    public function removeDancing(\AppBundle\Entity\Dancing $dancing)
-    {
-        $this->dancing->removeElement($dancing);
-    }
-
-    /**
-     * Get dancing
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDancing()
-    {
-        return $this->dancing;
-    }
 }
