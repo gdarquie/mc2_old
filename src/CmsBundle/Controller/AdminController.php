@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Admin;
+namespace CmsBundle\Controller;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -18,7 +18,7 @@ class AdminController extends Controller
     /**
      * @Route("", name="admin")
      */
-    public function adminAction(Request $request)
+    public function adminAction()
     {
 
         $em = $this->getDoctrine()->getManager();
@@ -46,8 +46,7 @@ class AdminController extends Controller
         );
         $numberByMonth = $query->getResult();
 
-
-        return $this->render('/admin/index.html.twig', array(
+        return $this->render('CmsBundle:Admin:index.html.twig', array(
             'users' => $users,
             'numbersByEditor' => $numbersByEditor,
             'lastNumbers' => $lastNumbers,

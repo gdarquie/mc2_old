@@ -8,8 +8,8 @@ body{
 */
 }
 
-nav{
-	background:#CC0000;
+nav, footer{
+	background:#CC0000 !important;
 }
 
 h1, h2, h3, h4, h5{
@@ -51,6 +51,14 @@ h4{
 	border-radius: 8px;
 	padding: 10px;
 	margin: auto;
+}
+
+.pointer{
+	cursor: pointer;
+}
+
+.inline{
+	display:inline-block;
 }
 
 .parallax-container {

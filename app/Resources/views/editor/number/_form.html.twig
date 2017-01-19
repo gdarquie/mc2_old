@@ -95,7 +95,7 @@ todo : selction auto de film quand new number
 		'label' : "Is the number closed and \"satisfying\"? (from thesaurus) (1 choice) (mandatory)"
 	}) }}
 	{{ form_row(numberForm.completOptions, {
-		'label' : "Is the number interrupted and are there reprises? (from thesaurus) (multi) (optional)"
+		'label' : "Is the number interrupted and/or the song repeated in the film ? (from thesaurus) (multi) (optional)"
 	}) }}
 
 	{{ form_label(numberForm.commentTc, "Timecode comment(s)") }}
@@ -194,13 +194,13 @@ todo : selction auto de film quand new number
 	<h3>Backstage</h3>
 
 	{{form_row(numberForm.spectators_thesaurus, {
-		'label' : "Are there spectators within the scene ? + Is there a direct adress (from thesaurus) (1 choice) (mandatory)"
+		'label' : "Are there spectators within the scene ? + Is there a direct adress (camera look and / or stage frontality) (from thesaurus) (1 choice) (mandatory)"
 	})}}
 	{{form_row(numberForm.diegetic_thesaurus,{
 		'label' : "Is this an onstage number or a diegetic performance ? (from thesaurus) (1 choice) (mandatory)"
 	} )}}
 	{{form_row(numberForm.musician_thesaurus, {
-		'label' : "Are there visible musicians? (from thesaurus) (1 choice) (mandatory)"
+		'label' : "Are there diegetic musicians? (from thesaurus) (1 choice) (mandatory)"
 	})}}
 	{#{{form_row(numberForm.integration)}}#}
 	{#{{form_row(numberForm.integration_thesaurus, {#}
@@ -225,7 +225,7 @@ todo : selction auto de film quand new number
 
 <div class="cartouche">
 
-	<h3>Themes</h3>
+	<h3>Themes, spaces and exotocisms</h3>
 
 	{{form_row(numberForm.costumes, {
 		'label' : "Costumes (from thesaurus) (multi) (mandatory)"
@@ -264,15 +264,15 @@ todo : selction auto de film quand new number
 
 <div class="cartouche">
 
-	<h3>Tone</h3>
+	<h3>Tone and topics</h3>
 
 	{{ form_row(numberForm.general_mood, {
 		"label" : "Tone (from thesaurus) (multi) (optional if genre is completed)",
 	}) }}
 	{{ form_row(numberForm.genre, {
-		"label" : "Genre (from thesaurus) (multi) (optional)"
+		"label" : "Topic(s) (from thesaurus) (multi) (optional)"
 	}) }}
-	{{ form_label(numberForm.commentMood, "Mood comment(s)") }}
+	{{ form_label(numberForm.commentMood, "Comment(s)") }}
 	{{ form_widget(numberForm.commentMood, {
 		'attr': {'class': 'materialize-textarea'}
 	}) }}

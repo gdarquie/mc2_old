@@ -1,13 +1,14 @@
+cms:
+    resource: "@CmsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/Web"
     type:     annotation
 
 app_editor:
     resource: "@AppBundle/Controller/Editor"
-    type:     annotation
-
-app_admin:
-    resource: "@AppBundle/Controller/Admin"
     type:     annotation
 
 app_api:

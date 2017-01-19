@@ -41,12 +41,21 @@
 
 
     {% block header %}
-        
+
     <!-- Nav & Log FOS -->
 
-        <ul id="menu_add" class="dropdown-content">
-            <li><a href="{{ path('editorNewPerson') }}">person</a></li>
-            <li><a href="{{ path('editorNewSong') }}">song</a></li>
+        <ul id="menu_editor" class="dropdown-content">
+            <li><a href="{{ path('editor') }}">dashboard</a></li>
+            <li><a href="{{ path('editor_assist') }}">assist</a></li>
+            <li class="divider"></li>
+            <li><a href="{{ path('editorNewPerson') }}">add person</a></li>
+            <li><a href="{{ path('editorNewSong') }}">add song</a></li>
+        </ul>
+
+        <ul id="menu_admin" class="dropdown-content">
+            <li><a href="{{ path('admin') }}">my admin page</a></li>
+            <li class="divider"></li>
+            <li><a href="{{ path('editorNewFilm') }}">add Film</a></li>
         </ul>
 
     <div class="navbar-fixed">
@@ -57,19 +66,23 @@
 
                 <a href="/" class="brand-logo left">MC2</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li>Version 0.3.1 (beta)</li>
-                    <li><a href="{{ path('thesaurus', {'type' : "all"}) }}">thesaurus</a></li>
-                    <li><a href="{{ path('howto')}}">how to</a></li>
-                    <li><a href="{{ path('news')}}">news</a></li>
-                    <li><a href="{{ path('about')}}">about</a></li>
+
+
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li><a class="dropdown-button" href="#!" data-activates="menu_add">add<i class="material-icons right">arrow_drop_down</i></a></li>
-                        <li>connected as {{ app.user.username }}</li>
+                        <li><a class="dropdown-button" href="#!" data-activates="menu_editor">edition<i class="material-icons right">arrow_drop_down</i></a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a class="dropdown-button" href="#!" data-activates="menu_admin">admin<i class="material-icons right">arrow_drop_down</i></a></li>
+                        {% endif %}
+                    {% endif %}
+
+                    <li><a href="{{ path('thesaurus', {'type' : "all"}) }}">thesaurus</a></li>
+
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="{{ path('editor') }}" class="inline">connected as {{ app.user.username }}</a></li>
                         <li><a href="{{ path('fos_user_security_logout') }}">logout</a></li>
                     {% else %}
                         <li><a href="{{ path('fos_user_security_login') }}">connexion</a></li>
                     {% endif %}
-
                 </ul>
 
             </div>
@@ -96,6 +109,35 @@
 
     {% block body %}{% endblock %}
 
+    {% block footer %}
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Partnerships</h5>
+
+                        <p class="grey-text text-lighten-4">This project is supported by the Labex Arts-H2H and benefits from financial support from the ANR as part of the “Investments for the future” program (ANR-10-LABX-80-01).</p>
+
+                        {#<p class="grey-text text-lighten-4">Logo and list of partners - in progress</p>#}
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Links</h5>
+                        <ul class="browser-default">
+                            <li><a class="grey-text text-lighten-3" href="{{ path('howto')}}">how to</a></li>
+                            <li><a class="grey-text text-lighten-3" href="{{ path('news')}}">news</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    2017 - Version 0.3.5
+                    <a class="grey-text text-lighten-4 right" href="{{ path('about')}}">About</a>
+                </div>
+            </div>
+        </footer>
+    {% endblock %}
+
     {% block javascripts %} 
 
     <!-- JQuery -->
@@ -107,11 +149,15 @@
             {#integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="#}
             {#crossorigin="anonymous"></script>#}
 
-        <!-- jquery 2 for parallax -->
-        <script
-                src="https://code.jquery.com/jquery-2.2.4.min.js"
-                integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-                crossorigin="anonymous"></script>
+    <!-- jquery 2 for parallax -->
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+
+
+    <!--  Isotope -->
+    <script src="{{ asset('assets/vendor/isotope/dist/isotope.pkgd.js') }}"></script>
 
     <!-- Vis.js -->
     <script src="{{ asset('assets/vendor/vis/dist/vis.js') }}"></script>

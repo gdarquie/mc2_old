@@ -59,19 +59,19 @@
                     <th>last login</th>
                 </tr>
                 {%  for user in users %}
-                <tr>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.enabled }}</td>
-                    <td>
-                    {% for role in user.roles %}
-                        {{ role }}{% if loop|last %}{% else %},{% endif %}
-                    {% endfor %}
-                    </td>
-                    <td>
-                        {{ user.lastLogin|date() }}
-                    </td>
-                </tr>
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.enabled }}</td>
+                        <td>
+                            {% for role in user.roles %}
+                                {{ role }}{% if loop|last %}{% else %},{% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {{ user.lastLogin|date() }}
+                        </td>
+                    </tr>
                 {% endfor %}
             </table>
         </article>
@@ -84,25 +84,25 @@
                     <th>Username</th>
                     <th>Count</th>
                 </tr>
-            {%  for number in numbersByEditor %}
-                <tr>
-                    <td>{{  number.name }}</td>
-                    <td>{{ number.nb }}</td>
-                </tr>
-            {% endfor %}
+                {%  for number in numbersByEditor %}
+                    <tr>
+                        <td>{{  number.name }}</td>
+                        <td>{{ number.nb }}</td>
+                    </tr>
+                {% endfor %}
             </table>
         </article>
 
         <article>
             <h2>Last numbers</h2>
             <table class="striped">
-            {% for number in lastNumbers %}
-                <tr>
-                    <td>{{ number.title }}</td>
-                    <td>{{ number.lastUpdate | date() }}</td>
-                    {#<td>{{ number.editors.username }}</td>#}
-                </tr>
-            {% endfor %}
+                {% for number in lastNumbers %}
+                    <tr>
+                        <td>{{ number.title }}</td>
+                        <td>{{ number.lastUpdate | date() }}</td>
+                        {#<td>{{ number.editors.username }}</td>#}
+                    </tr>
+                {% endfor %}
             </table>
         </article>
 
@@ -137,9 +137,9 @@
 
 
             {#data.addRows([#}
-                {#{% for item in numberByMonth %}#}
-                {#[{{ item.day }}{{ item.month }}, {{ item.nb }}],#}
-                {#{% endfor %}#}
+            {#{% for item in numberByMonth %}#}
+            {#[{{ item.day }}{{ item.month }}, {{ item.nb }}],#}
+            {#{% endfor %}#}
 
             {#]);#}
 
