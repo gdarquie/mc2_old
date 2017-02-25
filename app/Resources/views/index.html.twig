@@ -74,6 +74,10 @@
     height : 300px;
   }
 
+  .valign{
+    margin-top : 35px;
+  }
+
 </style>
 
 {% endblock %}
@@ -320,7 +324,10 @@
     <div class="parallax"><img src="{{ asset('img/oz.jpg') }}"></div>
     <section class="container box">
       <div class="col s12">
-        <h2>Search a person</h2>
+        <div class="row">
+          <h2 class="col">Search a person</h2>
+          <span class="col valign"><a href="{{ path('persons') }}">all persons</a></span>
+        </div>
         <input type="text" id="searchPerson" placeholder ="Write the name of a person (3 characters min)">
       </div>
       <article id="resultsPerson" class="row myCard"></article>
@@ -333,7 +340,10 @@
     {#<div class="parallax"><img src="{{ asset('img/gold-diggers-1933.jpg') }}"></div>#}
     <section class="container box">
       <div class="col s12">
-        <h2>Search a song</h2>
+        <div class="row">
+          <h2 class="col">Search a song</h2>
+          <span class="col valign"><a href="{{ path('songs') }}">all songs</a></span>
+        </div>
         <input type="text" id="searchSong" class="black-text" placeholder ="Write the name of a song (3 characters min)">
       </div>
       <article id="resultsSong" class="row myCard"></article>
@@ -420,6 +430,7 @@
 
     $("#searchMovie").keyup(function(){
       input = $("#searchMovie").val();
+      console.log("Search movie activée")
 
       var selection = [];
 
@@ -433,15 +444,20 @@
 
             str = json.films[i].title;
 
+            //en cas de null dans la BD
+            if (str == null){
+              str = "null";
+            }
+
             str = str.toLowerCase();
             input = input.toLowerCase();
 
             if (str.indexOf(input)> -1)
             {
-              // console.log(input+"ca marche"+json.films[i].title);
+               console.log(input+"ca marche"+json.films[i].title);
               res = json.films[i];
               selection.push(res);
-              // console.log(selection);
+//               console.log(selection);
             }
           }
         }
@@ -530,7 +546,6 @@
                 // console.log(input+"ca marche"+json.films[i].title);
                 res = json.number[i];
                 selection.push(res);
-                // console.log(selection);
               }
             }
           }
@@ -584,7 +599,8 @@
 
             $("#resultsSong").html("<div class='col s12'><h2>Result(s)</h2></div>");
             for(var i = 0; i < selection.length ; i++){
-              txt = "<span class='btn myBtn'>"+selection[i]['title']+"</span>";
+              txt = "<a href='song/id/"+selection[i]['songId']+"'><span class='btn myBtn'>"+selection[i]['title']+"</span></a>";
+              {#txt = "<a href=\"{{ path('song' , { 'songId'  : selection[i]['songId'] }) }}\"><span class='btn myBtn'>"+selection[i]['title']+"</span></a>";#}
               $("#resultsSong").append(txt);
             }
           }

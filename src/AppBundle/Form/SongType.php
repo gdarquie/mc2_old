@@ -6,10 +6,15 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use AppBundle\Entity\Song;
 use AppBundle\Repository\SongRepository;
+
+use AppBundle\Entity\Thesaurus;
+
+use AppBundle\Repository\ThesaurusRepository;
 
 class SongType extends AbstractType
 {
@@ -21,6 +26,17 @@ class SongType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
+            ->add('date')
+            ->add('lyricist')
+            ->add('composer')
+            ->add('songtype', EntityType::class, array(
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title',
+                'multiple' => true,
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("songtype");
+                }
+            ))
         ;
     }
 

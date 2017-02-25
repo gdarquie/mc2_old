@@ -88,6 +88,31 @@ class Person
     private $quotation;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Number", mappedBy="choregraphers")
+     */
+    private $numbersChoregrapher;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Number", mappedBy="arrangers")
+     */
+    private $numbersArranger;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Number", mappedBy="director")
+     */
+    private $numbersDirector;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Number", mappedBy="performers")
+     */
+    private $numbersPerformer;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Number", mappedBy="figurants")
+     */
+    private $numbersFigurant;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", inversedBy="person")
@@ -385,5 +410,88 @@ class Person
     {
         $this->last_update = $last_update;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNumbersChoregrapher()
+    {
+        return $this->numbersChoregrapher;
+    }
+
+    /**
+     * @param mixed $numbersChoregrapher
+     */
+    public function setNumbersChoregrapher($numbersChoregrapher)
+    {
+        $this->numbersChoregrapher = $numbersChoregrapher;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumbersArranger()
+    {
+        return $this->numbersArranger;
+    }
+
+    /**
+     * @param mixed $numbersArranger
+     */
+    public function setNumbersArranger($numbersArranger)
+    {
+        $this->numbersArranger = $numbersArranger;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumbersDirector()
+    {
+        return $this->numbersDirector;
+    }
+
+    /**
+     * @param mixed $numbersDirector
+     */
+    public function setNumbersDirector($numbersDirector)
+    {
+        $this->numbersDirector = $numbersDirector;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumbersPerformer()
+    {
+        return $this->numbersPerformer;
+    }
+
+    /**
+     * @param mixed $numbersPerformer
+     */
+    public function setNumbersPerformer($numbersPerformer)
+    {
+        $this->numbersPerformer = $numbersPerformer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumbersFigurant()
+    {
+        return $this->numbersFigurant;
+    }
+
+    /**
+     * @param mixed $numbersFigurant
+     */
+    public function setNumbersFigurant($numbersFigurant)
+    {
+        $this->numbersFigurant = $numbersFigurant;
+    }
+
+
+
 
 }

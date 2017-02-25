@@ -380,7 +380,7 @@ class Number
 
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $quotation_text;
 
@@ -819,7 +819,7 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="number")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="numbersChoregrapher")
      * @ORM\JoinTable(name="number_has_choregraph",
      *   joinColumns={
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
@@ -834,7 +834,7 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="number")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="numbers_arranger")
      * @ORM\JoinTable(name="number_has_arranger",
      *   joinColumns={
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
@@ -849,7 +849,7 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="number")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="numbers_director")
      * @ORM\JoinTable(name="number_has_director",
      *   joinColumns={
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
@@ -864,7 +864,7 @@ class Number
 
     /**
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="number")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="numbers_performers")
      * @ORM\JoinTable(name="number_has_performer",
      *   joinColumns={
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
@@ -879,7 +879,7 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="number")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="numbers_figurant")
      * @ORM\JoinTable(name="number_has_figurant",
      *   joinColumns={
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
@@ -907,8 +907,8 @@ class Number
     private $editors;
 
     /**
-     * @ORM\Column(name="date_creation", type="datetime")
-     */
+ * @ORM\Column(name="date_creation", type="datetime")
+ */
     private $date_creation;
 
     /**

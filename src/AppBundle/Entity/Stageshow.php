@@ -7,11 +7,22 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Stageshow
  *
- * @ORM\Table(name="stageShow", indexes={@ORM\Index(name="fk_stageShow_film1_idx", columns={"film_id"})})
- * @ORM\Entity
+ * @ORM\Table(name="stageShow")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\StageshowRepository")
  */
 class Stageshow
 {
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="stageShow_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $stageshowId;
+
     /**
      * @var string
      *
@@ -34,11 +45,9 @@ class Stageshow
     private $opening;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="film_id", type="integer", nullable=true)
+     * @ORM\OneToMany(targetEntity="Film", mappedBy="stageshow")
      */
-    private $filmId;
+    private $films;
 
     /**
      * @var integer
@@ -83,14 +92,110 @@ class Stageshow
     private $timestamp = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var integer
+     * @var \DateTime
      *
-     * @ORM\Column(name="stageShow_id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="last_update", type="datetime", nullable=false)
      */
-    private $stageshowId;
+    private $lastUpdate = 'CURRENT_TIMESTAMP';
 
+
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowComposer")
+     * @ORM\JoinTable(name="stageshow_has_composer",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $composers;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowBook")
+     * @ORM\JoinTable(name="stageshow_has_book",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $books;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowLyricist")
+     * @ORM\JoinTable(name="stageshow_has_lyricist",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $lyricists;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowChoreographer")
+     * @ORM\JoinTable(name="stageshow_has_choreographer",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $choreographers;
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowDirector")
+     * @ORM\JoinTable(name="stageshow_has_director",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $directors;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowDesign")
+     * @ORM\JoinTable(name="stageshow_has_design",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $designs;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $comment;
 
 
     /**
@@ -342,4 +447,155 @@ class Stageshow
     {
         return $this->stageshowId;
     }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFilms()
+    {
+        return $this->films;
+    }
+
+    /**
+     * @param mixed $films
+     */
+    public function setFilms($films)
+    {
+        $this->films = $films;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastUpdate()
+    {
+        return $this->lastUpdate;
+    }
+
+    /**
+     * @param mixed $lastUpdate
+     */
+    public function setLastUpdate($lastUpdate)
+    {
+        $this->lastUpdate = $lastUpdate;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComposers()
+    {
+        return $this->composers;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $composers
+     */
+    public function setComposers($composers)
+    {
+        $this->composers = $composers;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBooks()
+    {
+        return $this->books;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $books
+     */
+    public function setBooks($books)
+    {
+        $this->books = $books;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLyricists()
+    {
+        return $this->lyricists;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $lyricists
+     */
+    public function setLyricists($lyricists)
+    {
+        $this->lyricists = $lyricists;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChoreographers()
+    {
+        return $this->choreographers;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $choreographers
+     */
+    public function setChoreographers($choreographers)
+    {
+        $this->choreographers = $choreographers;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDirectors()
+    {
+        return $this->directors;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $directors
+     */
+    public function setDirectors($directors)
+    {
+        $this->directors = $directors;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDesigns()
+    {
+        return $this->designs;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $designs
+     */
+    public function setDesigns($designs)
+    {
+        $this->designs = $designs;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param mixed $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    }
+
+
 }

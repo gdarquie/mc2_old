@@ -4,8 +4,8 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_USER:        ROLE_VISITOR
-        ROLE_EXPERT:      ROLE_USER
+        ROLE_MEMBER:      ROLE_USER
+        ROLE_EXPERT:      ROLE_MEMBER
         ROLE_EDITOR:      ROLE_EXPERT
         ROLE_ADMIN:       ROLE_EDITOR
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
@@ -28,12 +28,15 @@ security:
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: ROLE_VISITOR }
-        - { path: ^/thesaurus, role: ROLE_VISITOR }
-        - { path: ^/resetting, role: ROLE_USER }
-        - { path: ^/editor, role: ROLE_USER } #changer par la suite par un rôle d'éditeur
+        - { path: ^/register, role: ROLE_USER }
+        - { path: ^/thesaurus, role: ROLE_USER }
+        - { path: ^/resetting, role: ROLE_MEMBER }
+        - { path: ^/editor, role: ROLE_MEMBER } #attention, il faut promovoir les users
         - { path: ^/admin, role: ROLE_ADMIN }
-        - { path: ^/censorship, role: ROLE_VISITOR }
-        - { path: ^/mood, role: ROLE_VISITOR }
-        - { path: ^/exoticism, role: ROLE_VISITOR }
-        - { path: ^/dance, role: ROLE_VISITOR }
+        - { path: ^/censorship, role: ROLE_USER }
+        - { path: ^/mood, role: ROLE_USER }
+        - { path: ^/exoticism, role: ROLE_USER }
+        - { path: ^/dance, role: ROLE_USER }
+
+
+

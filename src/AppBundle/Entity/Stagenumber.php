@@ -13,12 +13,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Stagenumber
 {
+
     /**
      * @var integer
      *
-     * @ORM\Column(name="group_id", type="integer", nullable=true)
+     * @ORM\Column(name="stageNumber_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $groupId;
+    private $stagenumberId;
 
     /**
      * @var string
@@ -34,12 +37,106 @@ class Stagenumber
      */
     private $order;
 
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="type_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $type;
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_costumes")
+     * @ORM\JoinTable(name="stageNumber_has_costume",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="costume_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $costumes;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_musicals")
+     * @ORM\JoinTable(name="stageNumber_has_musical",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="musical_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $musicals;
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_dancingstyles")
+     * @ORM\JoinTable(name="stageNumber_has_dancingstyle",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="dancingstyle_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $dancingstyle;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_musensembles")
+     * @ORM\JoinTable(name="stageNumber_has_musensemble",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="musensemble_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $musensemble;
+
+    //ensemble du thesaurus?
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_genres")
+     * @ORM\JoinTable(name="stageNumber_has_genre",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="genre_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $genre;
+
+    //person (quelles personnes? Les mêmes que pour stage number?)
+
+//    private $person;
+
+
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255, nullable=true)
+     * @ORM\Column(name="characters", type="string", length=500,  nullable=true)
      */
-    private $type;
+    private $characters;
 
     /**
      * @var string
@@ -55,14 +152,6 @@ class Stagenumber
      */
     private $ibdb;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="stageNumber_id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $stagenumberId;
 
     /**
      * @var string
@@ -89,13 +178,6 @@ class Stagenumber
      */
     private $number;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Costumes", mappedBy="stagenumber")
-     */
-    private $costumes;
-
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -103,21 +185,6 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Song", mappedBy="stagenumber")
      */
     private $song;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber")
-     * @ORM\JoinTable(name="stagenumer_has_musensemble",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="musensemble_id", referencedColumnName="thesaurus_id")
-     *   }
-     * )
-     */
-    private $musensemble;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -473,6 +540,56 @@ class Stagenumber
     {
         $this->dancemble = $dancemble;
     }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMusicals()
+    {
+        return $this->musicals;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $musicals
+     */
+    public function setMusicals($musicals)
+    {
+        $this->musicals = $musicals;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDancingstyle()
+    {
+        return $this->dancingstyle;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $dancingstyle
+     */
+    public function setDancingstyle($dancingstyle)
+    {
+        $this->dancingstyle = $dancingstyle;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $genre
+     */
+    public function setGenre($genre)
+    {
+        $this->genre = $genre;
+    }
+
+
 
 
 }

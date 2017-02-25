@@ -16,8 +16,37 @@
 
         <article class="card row">
             <div class="col s12">
-                <h2>Films connected</h2>
-                <p>Soon...</p>
+                <h2>Numbers</h2>
+
+                <h3>Choregrapher</h3>
+
+                {% for item in person.numbersChoregrapher %}
+                    <span class="chip">{{ item.title }} ({{ item.film }})</span>
+                {% endfor %}
+
+                <h3>Arranger</h3>
+
+                {% for item in person.numbersArranger %}
+                    <span class="chip">{{ item.title }} ({{ item.film }})</span>
+                {% endfor %}
+
+                <h3>Director</h3>
+
+                {% for item in person.numbersDirector %}
+                    <span class="chip">{{ item.title }} ({{ item.film }})</span>
+                {% endfor %}
+
+                <h3>Performer</h3>
+
+                {% for item in person.numbersPerformer %}
+                    <span class="chip">{{ item.title }} ({{ item.film }})</span>
+                {% endfor %}
+
+                <h3>Numbers where s.he doesn't participate</h3>
+
+                {% for item in person.numbersFigurant %}
+                    <span class="chip">{{ item.title }} ({{ item.film }})</span>
+                {% endfor %}
             </div>
         </article>
     </section>

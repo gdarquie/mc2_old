@@ -26,6 +26,9 @@ class AdminController extends Controller
         //all les users
         $users = $em->getRepository('AppBundle:User')->findAll();
 
+        //all films
+        $films = $em->getRepository('AppBundle:Film')->findAll();
+
         //number of numbers by users
         $query = $em->createQuery(
             'SELECT COUNT(n) as nb, u.username as name FROM AppBundle:Number n JOIN n.editors u GROUP by u ORDER BY nb DESC'
@@ -51,7 +54,23 @@ class AdminController extends Controller
             'numbersByEditor' => $numbersByEditor,
             'lastNumbers' => $lastNumbers,
             'numberByMonth' => $numberByMonth,
+            'films' => $films
         ));
+    }
+
+    /**
+     * @Route("/users", name="admin_users")
+     */
+    public function RoleAdmin(){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $users = $em->getRepository('AppBundle:User')->findAll();
+
+        return $this->render('CmsBundle:Admin:roles.html.twig', array(
+            'users' => $users,
+        ));
+
     }
 
 

@@ -153,4 +153,9 @@ class Censorship
         $this->last_update = $last_update;
     }
 
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
 }

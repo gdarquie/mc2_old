@@ -58,7 +58,7 @@ class SongController extends Controller
     public function songEditAction(Request $request, $songId){
 
         $em = $this->getDoctrine()->getManager();
-        $song = $em->getRepository('AppBundle:song')->findOneBysongId($songId);
+        $song = $em->getRepository('AppBundle:Song')->findOneBysongId($songId);
 
         $form = $this->createForm(songType::class, $song);
 
@@ -77,6 +77,10 @@ class SongController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($song);
             $em->flush();
+
+            $this->addFlash('success', 'Sauvegarde effecuté');
+
+//            return $this->redirectToRoute('import'); //ramène à la fiche song de départ
         }
 
         return $this->render('editor/song/edit.html.twig', array(

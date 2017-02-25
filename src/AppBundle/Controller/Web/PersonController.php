@@ -10,15 +10,22 @@ use Symfony\Component\HttpFoundation\Request;
 class PersonController extends Controller
 {
     /**
-     * @Route("/person", name = "getPersons")
+     * @Route("/persons", name = "persons")
      */
     public function indexAction()
     {
-        return $this->render('web/person/index.html.twig');
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT p FROM AppBundle:Person p");
+        $persons = $query->getResult();
+
+        return $this->render('web/person/index.html.twig', array(
+            "persons" => $persons
+        ));
     }
 
     /**
-     * @Route("/person/{personId}", name = "getPersons")
+     * @Route("/person/{personId}", name = "person")
      */
     public function getOnePerson($personId){
 

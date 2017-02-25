@@ -32,6 +32,7 @@ h4{
 	font-size : 1em;
 }
 
+
 /* - Classes - */
 
 .uppercase{
@@ -125,8 +126,14 @@ div .cut {
 .card{
 	height:auto;
 	overflow : auto;
+	padding : 10px;
 }
 
+
+.mini-form{
+	font-size:0.8em;
+	line-height: 0.8em;
+}
 
 .mini-table td, .mini-table th{
 	font-size:0.8em;
@@ -171,3 +178,6 @@ div .cut {
 	margin-bottom: 2em;
 }
 
+.float{
+	float : right;
+}

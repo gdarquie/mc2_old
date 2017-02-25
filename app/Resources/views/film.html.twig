@@ -20,7 +20,15 @@
         <img src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=400" alt="poster">
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} <!-- combiner les deux fonctionnalités admin dans un même champ ? -->
         <div class="right">
-            <a href="{{path('number_new', {filmId : film.filmId }) }}"><button class="btn teal">Add a number</button></a>
+
+            {% if is_granted("ROLE_USER") %}
+                <a href="{{path('number_new', {filmId : film.filmId }) }}"><button class="btn teal">Add a number</button></a>
+            {% endif %}
+
+            {% if is_granted("ROLE_EDITOR") %}
+                <a href="{{path('film_edit', { filmId : film.filmId })}}"><button class="btn teal">edit</button></a>
+            {% endif %}
+
             {#<a href="#"><button class="btn red">Complete</button></a> <!-- définir une fonction pour bloquer les numbers -->#}
         </div>
         {% endif %}
@@ -31,12 +39,12 @@
           <h2>General information</h2>
         </div>
         <div class="col s6">
-            <p><strong>Studio :</strong> {{ film.studio }}</p>
-            <p><strong>Distributor :</strong>{{ film.distributor }}</li>
+            <p><strong>Studio :</strong> {% for item in film.studios  %}{{ item.title }}{%  if loop.last %}{% else %} ;{% endif %} {% endfor %}</p>
+            <p><strong>Distributor :</strong>{% for item in film.distributors %}{{ item.title }}{%  if loop.last %}{% else %} ;{% endif %} {% endfor %}</p>
         </div>
 
         <div class="col s6">
-            <p><strong>Director :</strong> {% for director in film.directors  %}{{ director.title }}{% endfor %}</p>
+            <p><strong>Director :</strong> {% for director in film.directors  %}{{ director.title }}{%  if loop.last %}{% else %} ;{% endif %}{% endfor %}</p>
             <p><strong>Released :</strong> {{ film.released }}</p>
         </div>
     </div>
@@ -54,8 +62,8 @@
                     <th>Performers</th>
                     <th>Dance</th>
                     <th>Musical Style</th>
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <th>Edit</th>
+                    {% if is_granted("ROLE_EDITOR") %}
+                        <th>Edit</th>
                     {% endif %}
                     <th>View</th>
                 </tr>
@@ -69,13 +77,14 @@
                     <td>Performers</td>
                     <td>Dance</td>
                     <td>Musical Style</td>
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                    {% if is_granted("ROLE_EDITOR") %}
                     <td>
-                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            <a href="{{path('number_edit', { numberId : number.id })}}">edit</a>
-                        {% endif %}
+                        <a href="{{path('number_edit', { numberId : number.id })}}">edit</a>
                     </td>
                     {% endif %}
+
+
                     <td>
                         <a href="{{path('number', { numberId : number.id })}}">view</a>
                     </td>

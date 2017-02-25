@@ -41,19 +41,37 @@ class Film
      */
     private $idImdb;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="studio", type="string", length=255, nullable=true)
-     */
-    private $studio;
 
     /**
-     * @var string
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\Column(name="distributor", type="string", length=255, nullable=true)
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Distributor")
+     * @ORM\JoinTable(name="film_has_distributor",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="distributor_id", referencedColumnName="distributor_id")
+     *   }
+     * )
      */
-    private $distributor;
+    private $distributors;
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Stageshow")
+     * @ORM\JoinTable(name="film_has_stageshow",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *   }
+     * )
+     */
+    private $stageshows;
 
     /**
      * @var string
@@ -167,26 +185,23 @@ class Film
      */
     private $deleted;
 
+
     /**
-     * @var string
+     * @var \AppBundle\Entity\Thesaurus
      *
-     * @ORM\Column(name="adaptation", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="adapatation", referencedColumnName="thesaurus_id")
+     * })
      */
     private $adaptation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="remake", type="string", length=45, nullable=true)
+     * @ORM\Column(name="remake", type="boolean", nullable=true)
      */
     private $remake;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="song", type="integer", nullable=true)
-     */
-    private $song;
 
     /**
      * @var string
@@ -349,6 +364,7 @@ class Film
         $this->state = new \Doctrine\Common\Collections\ArrayCollection();
         $this->censorship = new \Doctrine\Common\Collections\ArrayCollection();
         $this->numbers = new ArrayCollection();
+        $this->distributors = new ArrayCollection();
     }
 
 
@@ -448,53 +464,6 @@ class Film
         return $this->idImdb;
     }
 
-    /**
-     * Set studio
-     *
-     * @param string $studio
-     *
-     * @return Film
-     */
-    public function setStudio($studio)
-    {
-        $this->studio = $studio;
-
-        return $this;
-    }
-
-    /**
-     * Get studio
-     *
-     * @return string
-     */
-    public function getStudio()
-    {
-        return $this->studio;
-    }
-
-    /**
-     * Set distributor
-     *
-     * @param string $distributor
-     *
-     * @return Film
-     */
-    public function setDistributor($distributor)
-    {
-        $this->distributor = $distributor;
-
-        return $this;
-    }
-
-    /**
-     * Get distributor
-     *
-     * @return string
-     */
-    public function getDistributor()
-    {
-        return $this->distributor;
-    }
 
     /**
      * Set color
@@ -881,27 +850,19 @@ class Film
     }
 
     /**
-     * Set adaptation
-     *
-     * @param string $adaptation
-     *
-     * @return Film
-     */
-    public function setAdaptation($adaptation)
-    {
-        $this->adaptation = $adaptation;
-
-        return $this;
-    }
-
-    /**
-     * Get adaptation
-     *
-     * @return string
+     * @return Thesaurus
      */
     public function getAdaptation()
     {
         return $this->adaptation;
+    }
+
+    /**
+     * @param Thesaurus $adaptation
+     */
+    public function setAdaptation($adaptation)
+    {
+        $this->adaptation = $adaptation;
     }
 
     /**
@@ -926,30 +887,6 @@ class Film
     public function getRemake()
     {
         return $this->remake;
-    }
-
-    /**
-     * Set song
-     *
-     * @param integer $song
-     *
-     * @return Film
-     */
-    public function setSong($song)
-    {
-        $this->song = $song;
-
-        return $this;
-    }
-
-    /**
-     * Get song
-     *
-     * @return integer
-     */
-    public function getSong()
-    {
-        return $this->song;
     }
 
     /**
@@ -1292,4 +1229,41 @@ class Film
     {
         return $this->getTitle();
     }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDistributors()
+    {
+        return $this->distributors;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $distributors
+     */
+    public function setDistributors($distributors)
+    {
+        $this->distributors = $distributors;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStageshows()
+    {
+        return $this->stageshows;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $stageshows
+     */
+    public function setStageshows($stageshows)
+    {
+        $this->stageshows = $stageshows;
+    }
+
+
+
+
+
 }

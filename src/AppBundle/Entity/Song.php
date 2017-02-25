@@ -23,9 +23,9 @@ class Song
     private $title;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="date", type="string", length=45, nullable=true)
+     * @ORM\Column(name="date", type="integer", nullable=true)
      */
     private $date;
 
@@ -109,17 +109,60 @@ class Song
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Songtype", inversedBy="song")
-     * @ORM\JoinTable(name="songtype_has_song",
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="song")
+     * @ORM\JoinTable(name="song_has_songtype",
      *   joinColumns={
      *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="songType_id", referencedColumnName="songType_id")
+     *     @ORM\JoinColumn(name="songtype_id", referencedColumnName="thesaurus_id")
      *   }
      * )
      */
     private $songtype;
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="song_lyricist")
+     * @ORM\JoinTable(name="song_has_lyricist",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $lyricist;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="song_composer")
+     * @ORM\JoinTable(name="song_has_composer",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="composer_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $composer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lyrics", type="text", length=16777215, nullable=true)
+     */
+    private $lyrics;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $comment;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -402,38 +445,21 @@ class Song
     }
 
     /**
-     * Add songtype
-     *
-     * @param \AppBundle\Entity\Songtype $songtype
-     *
-     * @return Song
-     */
-    public function addSongtype(\AppBundle\Entity\Songtype $songtype)
-    {
-        $this->songtype[] = $songtype;
-
-        return $this;
-    }
-
-    /**
-     * Remove songtype
-     *
-     * @param \AppBundle\Entity\Songtype $songtype
-     */
-    public function removeSongtype(\AppBundle\Entity\Songtype $songtype)
-    {
-        $this->songtype->removeElement($songtype);
-    }
-
-    /**
-     * Get songtype
-     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getSongtype()
     {
         return $this->songtype;
     }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $songtype
+     */
+    public function setSongtype($songtype)
+    {
+        $this->songtype = $songtype;
+    }
+
 
     /**
      * Add tv
@@ -555,5 +581,70 @@ class Song
     {
         $this->last_update = $last_update;
     }
-    
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLyricist()
+    {
+        return $this->lyricist;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $lyricist
+     */
+    public function setLyricist($lyricist)
+    {
+        $this->lyricist = $lyricist;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComposer()
+    {
+        return $this->composer;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $composer
+     */
+    public function setComposer($composer)
+    {
+        $this->composer = $composer;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLyrics()
+    {
+        return $this->lyrics;
+    }
+
+    /**
+     * @param string $lyrics
+     */
+    public function setLyrics($lyrics)
+    {
+        $this->lyrics = $lyrics;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param mixed $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    }
+
+
 }
