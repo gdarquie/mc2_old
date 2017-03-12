@@ -2,66 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73570d6e-9db4-42de-8645-db93b49ffcf6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Censorship.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Completeness.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Costumes.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/CostumesHasNumber.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Dancing.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Disc.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/DiscHasPerson.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Effects.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Ensemble.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Exoticism.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Film.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/FilmHasPerson.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Filmdirector.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/ImportComposer.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/ImportLocation.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/ImportQuotation.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/ImportStageshow.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Integration.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Item.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Link.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Mood.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Musical.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Number.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/NumberHasMood.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/NumberHasPerson.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Person.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/PersonHasRadio.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/PersonHasSong.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/PersonHasStagenumber.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Place.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Profession.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Quotation.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Radio.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Shots.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Socialplace.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Song.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Songtype.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Stagenumber.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Stageshow.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/StageshowHasPerson.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/State.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Thesaurus.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Tv.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/TvHasPerson.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/Underscoring.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine[XML-dontUseNow]/User.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_359adrv5l4h6s77d9eapokrvp2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_8d7c08p2qgj73t4crjr1q3mu70" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_hkrom238okr5qlvhg1btr8vkn4" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_l4lhl93sr6if1gvv8uvnnqqe06" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/editor/film/_form.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/editor/film/_form.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/news.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/news.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/web/person/person.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/person/person.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/security.yml" afterPath="$PROJECT_DIR$/app/config/security.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/Editor/PersonController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/Editor/PersonController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/FilmType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/FilmType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_o1v5tprb22fjg18lfd7m034ph2" afterPath="$PROJECT_DIR$/var/sessions/dev/sess_o1v5tprb22fjg18lfd7m034ph2" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/PersonType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/PersonType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/StageshowRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/StageshowRepository.php" />
     </list>
     <ignored path="application.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -134,18 +76,8 @@
       <file leaf-file-name="PersonType.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="28" column="33" lean-forward="false" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FilmRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/FilmRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+            <state relative-caret-position="120">
+              <caret line="8" column="58" lean-forward="false" selection-start-line="8" selection-start-column="58" selection-end-line="8" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -154,8 +86,8 @@
       <file leaf-file-name="NumberType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/NumberType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="250" column="14" lean-forward="true" selection-start-line="244" selection-start-column="12" selection-end-line="250" selection-end-column="14" />
+            <state relative-caret-position="150">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -886,12 +818,12 @@
       <workItem from="1488933518488" duration="32000" />
       <workItem from="1488982721135" duration="2074000" />
       <workItem from="1489071594261" duration="1583000" />
-      <workItem from="1489322384375" duration="3864000" />
+      <workItem from="1489322384375" duration="4012000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="592335000" />
+    <option name="totallyTimeSpent" value="592483000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="all">
@@ -1351,22 +1283,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/FilmRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/NumberType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="250" column="14" lean-forward="true" selection-start-line="244" selection-start-column="12" selection-end-line="250" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/FilmType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -1375,10 +1291,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/FilmRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/NumberType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="28" column="33" lean-forward="false" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+        <state relative-caret-position="120">
+          <caret line="8" column="58" lean-forward="false" selection-start-line="8" selection-start-column="58" selection-end-line="8" selection-end-column="58" />
           <folding />
         </state>
       </provider>

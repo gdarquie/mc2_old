@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use AppBundle\Entity\Person;
@@ -26,7 +27,8 @@ class PersonType extends AbstractType
             ->add('gender', ChoiceType::class, [
                 'choices' =>[
                     "Female" => "F",
-                    "Male" => "M"
+                    "Male" => "M",
+                    "Other" => "O",
                 ]
             ])
             ->add('race')
