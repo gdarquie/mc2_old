@@ -1,9 +1,22 @@
 {% extends "base.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .small-h1{
+            font-size: 0.8em;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
 
     <section class="container">
-        <h1>{{ person.name }}</h1>
+
+        <article class="row">
+
+            <h1>{{ person.name }} <span class="small-h1">{% if is_granted("ROLE_EDITOR") %} - <a href="{{ path('person_edit' , {"personId" : person.personId}) }}">edit</a>{% endif %}</span></h1>
+        </article>
 
         <article class="card row">
             <div class="col s12">

@@ -8,6 +8,7 @@ class StageshowRepository extends EntityRepository
 {
     public function findAllOrderdByTitle()
     {
+
         return $this->createQueryBuilder('stageshow')
             ->orderBy('stageshow.title', 'ASC')
             ->getQuery()
@@ -16,6 +17,7 @@ class StageshowRepository extends EntityRepository
 
     public function createAlphabeticalQueryBuilder()
     {
+
         return $this->createQueryBuilder('stageshow')
             ->orderBy('stageshow.title', 'ASC');
 

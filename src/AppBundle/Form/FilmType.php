@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use AppBundle\Repository\ThesaurusRepository;
+use AppBundle\Repository\PersonRepository;
 use AppBundle\Repository\StageshowRepository;
 
 use AppBundle\Entity\Stageshow;
@@ -61,15 +62,46 @@ class FilmType extends AbstractType
                 },
                 'empty_data' => null,
             ))
-            ->add('stageshows')
+//            ->add('stageshows')
+            ->add('stageshows'
+                , EntityType::class, array(
+                    'class' => 'AppBundle:Stageshow',
+                    'multiple' => true,
+                    'choice_label' => 'title',
+                    'query_builder' => function(StageshowRepository $repo) {
+                        return $repo->createAlphabeticalQueryBuilder();
+                    }
+                )
+            )
             ->add('remake')
             ->add('pcaTexte')
             ->add('protestant')
             ->add('harrisson')
             ->add('bord')
             ->add('underscoring')
-            ->add('censorship') //à remettre
-            ->add('directors')
+            ->add('censorship')
+            ->add('producers'
+                , EntityType::class, array(
+                    'class' => 'AppBundle:Person',
+                    'multiple' => true,
+//                'empty_data' => null,
+                    'choice_label' => 'name',
+                    'query_builder' => function(PersonRepository $repo) {
+                        return $repo->createAlphabeticalQueryBuilder();
+                    }
+                )
+            )
+            ->add('directors'
+                , EntityType::class, array(
+                    'class' => 'AppBundle:Person',
+                    'multiple' => true,
+//                'empty_data' => null,
+                    'choice_label' => 'name',
+                    'query_builder' => function(PersonRepository $repo) {
+                        return $repo->createAlphabeticalQueryBuilder();
+                    }
+                )
+            )
             ->add('verdict', ChoiceType::class, array(
             'choices'  => array(
                 'acceptable' => "acceptable",
@@ -88,7 +120,6 @@ class FilmType extends AbstractType
                     "B" => "B",
                     "NA" => "NA"
                 )))
-            ->add('producers')
 //            ->add('isComplete')
             ->add('studios')
             ->add('state')

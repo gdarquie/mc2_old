@@ -61,7 +61,7 @@ class PersonController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AppBundle:person')->findOneBypersonId($personId);
+        $person = $em->getRepository('AppBundle:Person')->findOneBypersonId($personId);
 
         $form = $this->createForm(personType::class, $person);
 

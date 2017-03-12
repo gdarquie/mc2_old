@@ -11,7 +11,9 @@
             {{ form_row(filmForm.distributors) }}
             {{ form_row(filmForm.producers) }}
             {{ form_row(filmForm.directors) }}
-            {{form_row(filmForm.productionyear)}}
+            {{form_row(filmForm.productionyear, {
+                'label' : "Production year"
+            })}}
             {{form_row(filmForm.released)}}
         </div>
     </div>
@@ -47,16 +49,17 @@
             <h3>Censorship</h3>
 
             {{form_row(filmForm.verdict, {
-                'label' : "PCA Verdict"
+                'label' : "First opinion by the on the submitted script"
             }) }}
             {{form_row(filmForm.censorship, {
                 'label' : "Censored Content"
             }) }}
             {{form_row(filmForm.state, {
-                'label' : "States"
+                'label' : "States where the film was censored"
             }) }}
             {{ form_row(filmForm.pcaTexte, {
-                'attr': {'class': 'materialize-textarea'}
+                'attr': {'class': 'materialize-textarea'},
+                'label' : "PCA text"
             }) }}
             {{form_row(filmForm.legion, {
                 'label' : "Legion of Decency"

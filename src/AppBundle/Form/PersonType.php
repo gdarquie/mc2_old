@@ -23,6 +23,12 @@ class PersonType extends AbstractType
             ->add('firstname')
             ->add('lastname')
             ->add('gender')
+            ->add('gender', ChoiceType::class, [
+                'choices' =>[
+                    "Female" => "F",
+                    "Male" => "M"
+                ]
+            ])
             ->add('race')
         ;
     }
