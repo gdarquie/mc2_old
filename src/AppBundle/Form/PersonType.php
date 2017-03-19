@@ -23,7 +23,6 @@ class PersonType extends AbstractType
             ->add('name')
             ->add('firstname')
             ->add('lastname')
-            ->add('gender')
             ->add('gender', ChoiceType::class, [
                 'choices' =>[
                     "Female" => "F",
@@ -31,7 +30,6 @@ class PersonType extends AbstractType
                     "Other" => "O",
                 ]
             ])
-            ->add('race')
         ;
     }
 

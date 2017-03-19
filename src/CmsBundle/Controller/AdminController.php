@@ -24,7 +24,11 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         //all les users
-        $users = $em->getRepository('AppBundle:User')->findAll();
+        $query = $em->createQuery(
+            'SELECT u FROM AppBundle:User u ORDER BY u.lastLogin DESC'
+        );
+        $users = $query->getResult();
+
 
         //all films
         $films = $em->getRepository('AppBundle:Film')->findAll();

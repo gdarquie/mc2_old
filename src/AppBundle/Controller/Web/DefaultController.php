@@ -49,7 +49,7 @@ class DefaultController extends Controller
 
         if($this->getUser()){
             $user = $this->getUser()->getId();
-            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.editors e WHERE e.id = :user');
+            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.editors e WHERE e.id = :user ORDER BY n.last_update DESC');
             $query->setParameter('user', $user );
             $myNumbers = $query->getResult();
 

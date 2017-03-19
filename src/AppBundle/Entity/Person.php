@@ -42,12 +42,6 @@ class Person
      */
     private $gender;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="race", type="string", length=45, nullable=true)
-     */
-    private $race;
 
     /**
      * @var integer
@@ -242,29 +236,6 @@ class Person
         return $this->gender;
     }
 
-    /**
-     * Set race
-     *
-     * @param string $race
-     *
-     * @return Person
-     */
-    public function setRace($race)
-    {
-        $this->race = $race;
-
-        return $this;
-    }
-
-    /**
-     * Get race
-     *
-     * @return string
-     */
-    public function getRace()
-    {
-        return $this->race;
-    }
 
     /**
      * Set firstshow

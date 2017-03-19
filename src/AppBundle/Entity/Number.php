@@ -907,8 +907,8 @@ class Number
     private $editors;
 
     /**
- * @ORM\Column(name="date_creation", type="datetime")
- */
+     * @ORM\Column(name="date_creation", type="datetime")
+     */
     private $date_creation;
 
     /**

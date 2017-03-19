@@ -120,10 +120,12 @@
             {% endfor %}
           {% endif %}
 
-          <table id="myNumber" class="striped">
+          <table id="myNumber" class="striped tablesorter">
+            <thead>
             <tr>
               <th>number</th>
               <th>film</th>
+              <th>last update</th>
               <th>title</th>
               <th>outlines</th>
               <th>structure</th>
@@ -140,10 +142,13 @@
               <th>edit</th>
               <th>finish</th>
             </tr>
+            </thead>
+            <tbody>
             {% for number in myNumbers  %}
               <tr>
                 <td>{{ number.title }}</td>
                 <td>{{ number.film }}</td>
+                <td>{{ number.lastUpdate|date() }}</td>
                 <td>{% if number.completeTitle == 1 %}<i class="material-icons tiny green-text">done</i>{% elseif number.completeTitle == 2 %}<span class="grey-text">?</span>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
                 <td>{% if number.completeTc == 1 %}<i class="material-icons tiny green-text">done</i>{% elseif number.completeTc == 2 %}<span class="grey-text">?</span>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
                 <td>{% if number.completeStructure == 1 %}<i class="material-icons tiny green-text">done</i>{% elseif number.completeStructure == 2 %}<span class="grey-text">?</span>{% else %}<i class="material-icons tiny red-text">not_interested</i>{% endif %}</td>
@@ -163,6 +168,7 @@
                 <td>soon</td>
               </tr>
             {% endfor %}
+            </tbody>
           </table>
         {% endif %}
 

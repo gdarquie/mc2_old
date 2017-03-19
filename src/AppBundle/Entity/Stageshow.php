@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Stageshow
 {
 
-
     /**
      * @var integer
      *
@@ -45,7 +44,17 @@ class Stageshow
     private $opening;
 
     /**
-     * @ORM\OneToMany(targetEntity="Film", mappedBy="stageshow")
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Film", inversedBy="stageshows")
+     * @ORM\JoinTable(name="stageshow_has_film",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
+     *   }
+     * )
      */
     private $films;
 
@@ -85,20 +94,14 @@ class Stageshow
     private $count;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="timestamp", type="datetime", nullable=false)
+     * @ORM\Column(name="date_creation", type="datetime")
      */
-    private $timestamp = 'CURRENT_TIMESTAMP';
+    private $date_creation;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="last_update", type="datetime", nullable=false)
+     * @ORM\Column(name="last_update", type="datetime")
      */
-    private $lastUpdate = 'CURRENT_TIMESTAMP';
-
-
+    private $last_update;
 
 
     /**
@@ -197,24 +200,23 @@ class Stageshow
      */
     private $comment;
 
-
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Stageshow
+     * @return int
      */
-    public function setTitle($title)
+    public function getStageshowId()
     {
-        $this->title = $title;
-
-        return $this;
+        return $this->stageshowId;
     }
 
     /**
-     * Get title
-     *
+     * @param int $stageshowId
+     */
+    public function setStageshowId($stageshowId)
+    {
+        $this->stageshowId = $stageshowId;
+    }
+
+    /**
      * @return string
      */
     public function getTitle()
@@ -223,22 +225,14 @@ class Stageshow
     }
 
     /**
-     * Set production
-     *
-     * @param string $production
-     *
-     * @return Stageshow
+     * @param string $title
      */
-    public function setProduction($production)
+    public function setTitle($title)
     {
-        $this->production = $production;
-
-        return $this;
+        $this->title = $title;
     }
 
     /**
-     * Get production
-     *
      * @return string
      */
     public function getProduction()
@@ -247,22 +241,14 @@ class Stageshow
     }
 
     /**
-     * Set opening
-     *
-     * @param \DateTime $opening
-     *
-     * @return Stageshow
+     * @param string $production
      */
-    public function setOpening($opening)
+    public function setProduction($production)
     {
-        $this->opening = $opening;
-
-        return $this;
+        $this->production = $production;
     }
 
     /**
-     * Get opening
-     *
      * @return \DateTime
      */
     public function getOpening()
@@ -271,186 +257,11 @@ class Stageshow
     }
 
     /**
-     * Set filmId
-     *
-     * @param integer $filmId
-     *
-     * @return Stageshow
+     * @param \DateTime $opening
      */
-    public function setFilmId($filmId)
+    public function setOpening($opening)
     {
-        $this->filmId = $filmId;
-
-        return $this;
-    }
-
-    /**
-     * Get filmId
-     *
-     * @return integer
-     */
-    public function getFilmId()
-    {
-        return $this->filmId;
-    }
-
-    /**
-     * Set ibdb
-     *
-     * @param integer $ibdb
-     *
-     * @return Stageshow
-     */
-    public function setIbdb($ibdb)
-    {
-        $this->ibdb = $ibdb;
-
-        return $this;
-    }
-
-    /**
-     * Get ibdb
-     *
-     * @return integer
-     */
-    public function getIbdb()
-    {
-        return $this->ibdb;
-    }
-
-    /**
-     * Set race
-     *
-     * @param string $race
-     *
-     * @return Stageshow
-     */
-    public function setRace($race)
-    {
-        $this->race = $race;
-
-        return $this;
-    }
-
-    /**
-     * Get race
-     *
-     * @return string
-     */
-    public function getRace()
-    {
-        return $this->race;
-    }
-
-    /**
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return Stageshow
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Set closing
-     *
-     * @param \DateTime $closing
-     *
-     * @return Stageshow
-     */
-    public function setClosing($closing)
-    {
-        $this->closing = $closing;
-
-        return $this;
-    }
-
-    /**
-     * Get closing
-     *
-     * @return \DateTime
-     */
-    public function getClosing()
-    {
-        return $this->closing;
-    }
-
-    /**
-     * Set count
-     *
-     * @param integer $count
-     *
-     * @return Stageshow
-     */
-    public function setCount($count)
-    {
-        $this->count = $count;
-
-        return $this;
-    }
-
-    /**
-     * Get count
-     *
-     * @return integer
-     */
-    public function getCount()
-    {
-        return $this->count;
-    }
-
-    /**
-     * Set timestamp
-     *
-     * @param \DateTime $timestamp
-     *
-     * @return Stageshow
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->timestamp = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Get timestamp
-     *
-     * @return \DateTime
-     */
-    public function getTimestamp()
-    {
-        return $this->timestamp;
-    }
-
-    /**
-     * Get stageshowId
-     *
-     * @return integer
-     */
-    public function getStageshowId()
-    {
-        return $this->stageshowId;
-    }
-
-    public function __toString()
-    {
-        return $this->getTitle();
+        $this->opening = $opening;
     }
 
     /**
@@ -470,19 +281,115 @@ class Stageshow
     }
 
     /**
+     * @return int
+     */
+    public function getIbdb()
+    {
+        return $this->ibdb;
+    }
+
+    /**
+     * @param int $ibdb
+     */
+    public function setIbdb($ibdb)
+    {
+        $this->ibdb = $ibdb;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRace()
+    {
+        return $this->race;
+    }
+
+    /**
+     * @param string $race
+     */
+    public function setRace($race)
+    {
+        $this->race = $race;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getClosing()
+    {
+        return $this->closing;
+    }
+
+    /**
+     * @param \DateTime $closing
+     */
+    public function setClosing($closing)
+    {
+        $this->closing = $closing;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCount()
+    {
+        return $this->count;
+    }
+
+    /**
+     * @param int $count
+     */
+    public function setCount($count)
+    {
+        $this->count = $count;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateCreation()
+    {
+        return $this->date_creation;
+    }
+
+    /**
+     * @param mixed $date_creation
+     */
+    public function setDateCreation($date_creation)
+    {
+        $this->date_creation = $date_creation;
+    }
+
+    /**
      * @return mixed
      */
     public function getLastUpdate()
     {
-        return $this->lastUpdate;
+        return $this->last_update;
     }
 
     /**
-     * @param mixed $lastUpdate
+     * @param mixed $last_update
      */
-    public function setLastUpdate($lastUpdate)
+    public function setLastUpdate($last_update)
     {
-        $this->lastUpdate = $lastUpdate;
+        $this->last_update = $last_update;
     }
 
     /**

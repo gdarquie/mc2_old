@@ -94,22 +94,6 @@ class Stagenumber
      */
     private $dancingstyle;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_musensembles")
-     * @ORM\JoinTable(name="stageNumber_has_musensemble",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="musensemble_id", referencedColumnName="thesaurus_id")
-     *   }
-     * )
-     */
-    private $musensemble;
-
-    //ensemble du thesaurus?
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -125,10 +109,6 @@ class Stagenumber
      * )
      */
     private $genre;
-
-    //person (quelles personnes? Les mêmes que pour stage number?)
-
-//    private $person;
 
 
     /**
@@ -200,6 +180,47 @@ class Stagenumber
      * )
      */
     private $dancemble;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber")
+     * @ORM\JoinTable(name="stagenumber_has_musensemble",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="musensemble_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $musensemble;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="choregrapherStagenumber")
+     * @ORM\JoinTable(name="stagenumber_has_choreographer",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
+     *   }
+     * )
+     */
+    private $choreographers;
+
+    /**
+     * @ORM\Column(name="date_creation", type="datetime")
+     */
+    private $date_creation;
+
+    /**
+     * @ORM\Column(name="last_update", type="datetime")
+     */
+    private $last_update;
+
 
     /**
      * Constructor
@@ -589,7 +610,69 @@ class Stagenumber
         $this->genre = $genre;
     }
 
+    /**
+     * @return string
+     */
+    public function getCharacters()
+    {
+        return $this->characters;
+    }
 
+    /**
+     * @param string $characters
+     */
+    public function setCharacters($characters)
+    {
+        $this->characters = $characters;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateCreation()
+    {
+        return $this->date_creation;
+    }
+
+    /**
+     * @param mixed $date_creation
+     */
+    public function setDateCreation($date_creation)
+    {
+        $this->date_creation = $date_creation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastUpdate()
+    {
+        return $this->last_update;
+    }
+
+    /**
+     * @param mixed $last_update
+     */
+    public function setLastUpdate($last_update)
+    {
+        $this->last_update = $last_update;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChoreographers()
+    {
+        return $this->choreographers;
+    }
+
+    /**
+     * @param mixed $choreographers
+     */
+    public function setChoreographers($choreographers)
+    {
+        $this->choreographers = $choreographers;
+    }
 
 
 }

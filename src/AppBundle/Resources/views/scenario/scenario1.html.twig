@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <section class="container">
+        <h1>Scénario 1 : Performers</h1>
+
+        <div class="card">
+            {% for item in numbers  %}
+                <span class="chip">{{ item.title }}</span>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

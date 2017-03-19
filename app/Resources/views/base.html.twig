@@ -56,6 +56,10 @@
             <li><a href="{{ path('admin') }}">my admin page</a></li>
             <li class="divider"></li>
             <li><a href="{{ path('editorNewFilm') }}">add Film</a></li>
+            <li class="divider"></li>
+            <li><a href="{{ path('stageshow_new') }}">add Stage Show</a></li>
+            <li class="divider"></li>
+            {#<li><a href="{{ path('stagesnumber_new') }}">add Stage number </a></li><!-- (à enlever et à ajouter à la page stage show) -->#}
         </ul>
 
     <div class="navbar-fixed">
@@ -179,6 +183,9 @@
     <!-- jqcloud -->
     <script type="text/javascript" src="{{asset('assets/vendor/jQCloud/jqcloud/jqcloud-1.0.3.min.js')}}"></script>
     <!-- END jqcloud -->
+
+    <!-- Table sorter -->
+    <script type="text/javascript" src="{{ asset('assets/vendor/tablesorter/jquery.tablesorter.js') }}"></script>
 
     <!-- Custom -->
     <script src="{{ asset('js/mc2.js') }}"></script>
