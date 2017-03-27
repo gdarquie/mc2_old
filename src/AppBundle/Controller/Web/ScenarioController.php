@@ -30,4 +30,30 @@ class ScenarioController extends Controller
             'numbers' => $numbers
         ));
     }
+
+    /**
+     * @Route("/scenario/2", name = "scenario2")
+     */
+    public function scenario2Action(){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $param1 = "solo(s)";
+        $param2 = "solo(s)";
+
+        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.performers p JOIN n.musensemble m JOIN n.dancemble d WHERE m.title = :musensemble AND d.title = :dancemble");
+        $query->setParameters(array('musensemble' => $param1 , 'dancemble' => $param2));
+        $numbers = $query->getResult();
+
+        $query = $em->createQuery("SELECT p.name as name, COUNT(p.name) as nb FROM AppBundle:Number n JOIN n.performers p JOIN n.musensemble m JOIN n.dancemble d WHERE m.title = :musensemble AND d.title = :dancemble GROUP BY p.name ORDER BY nb DESC");
+        $query->setParameters(array('musensemble' => $param1 , 'dancemble' => $param2));
+        $performers = $query->getResult();
+
+
+        return $this->render('AppBundle:scenario:scenario2.html.twig', array(
+            'numbers' => $numbers,
+            'performers' => $performers
+        ));
+
+    }
 }

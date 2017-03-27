@@ -130,3 +130,6 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
+    from_email:
+        address: gaetan.darquie@gmail.com
+        sender_name: You

@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <section class="container">
+        <h1>Scénario 2 : Count of solos</h1>
+
+        <div class="card">
+
+            <p>There are <span class="number">{{ numbers|length }}</span> numbers with solo musical or dancing ensemble.</p>
+
+            {% for item in numbers  %}
+                <span class="chip">{{ item.title }}</span>
+            {% endfor %}
+
+            <p>There are <span class="number">{{ performers|length }} performers</span></p>
+
+            {% for item in performers  %}
+                <span class="chip">{{ item.name }}({{ item.nb }})</span>
+            {% endfor %}
+
+        </div>
+    </section>
+{% endblock %}
