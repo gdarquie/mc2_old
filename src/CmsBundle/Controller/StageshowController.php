@@ -63,7 +63,7 @@ class StageshowController extends Controller
             $em->flush();
         }
 
-        return $this->render('editor/film/edit.html.twig', array(
+        return $this->render('CmsBundle:Editor:Stageshow/edit.html.twig', array(
             'stageshow' => $stageshow,
             'stageForm' => $form->createView()
         ));

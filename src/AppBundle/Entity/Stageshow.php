@@ -93,6 +93,12 @@ class Stageshow
      */
     private $count;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="Stagenumber", mappedBy="stageshow")
+     */
+    private $stagenumbers;
+
     /**
      * @ORM\Column(name="date_creation", type="datetime")
      */
@@ -502,6 +508,22 @@ class Stageshow
     public function setComment($comment)
     {
         $this->comment = $comment;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStagenumbers()
+    {
+        return $this->stagenumbers;
+    }
+
+    /**
+     * @param mixed $stagenumbers
+     */
+    public function setStagenumbers($stagenumbers)
+    {
+        $this->stagenumbers = $stagenumbers;
     }
 
 

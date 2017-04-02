@@ -58,6 +58,7 @@
             <li><a href="{{ path('editorNewFilm') }}">add Film</a></li>
             <li class="divider"></li>
             <li><a href="{{ path('stageshow_new') }}">add Stage Show</a></li>
+            <li><a href="{{ path('stageshows') }}">all Stage Shows</a></li>
             <li class="divider"></li>
             {#<li><a href="{{ path('stagesnumber_new') }}">add Stage number </a></li><!-- (à enlever et à ajouter à la page stage show) -->#}
         </ul>
@@ -97,7 +98,6 @@
 
     {% endblock %}
 
-    <div>
 
     {% for msg in app.session.flashBag.get('success') %}
         <div class="container">
@@ -137,7 +137,7 @@
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    2017 - Version 0.3.8
+                    2017 - Version 0.3.10
                     <a class="grey-text text-lighten-4 right" href="{{ path('about')}}">About</a>
                 </div>
             </div>

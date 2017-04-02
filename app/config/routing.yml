@@ -1,15 +1,17 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+api:
+    resource: "@ApiBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 cms:
     resource: "@CmsBundle/Controller/"
     type:     annotation
     prefix:   /
-
-app:
-    resource: "@AppBundle/Controller/Web"
-    type:     annotation
-
-app_api:
-    resource: "@AppBundle/Controller/Api"
-    type:     annotation
 
 app_test:
     resource: "@AppBundle/Controller/Test"

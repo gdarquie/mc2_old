@@ -12,6 +12,7 @@
 
         .film-select{
             color :#CC0000;
+            padding-left: 3px;
         }
 
         .is-checked{
@@ -27,7 +28,6 @@
             border-radius: 3px;
         }
 
-
     </style>
 
 {% endblock %}
@@ -42,7 +42,7 @@
 
                 <article class="col s4">
                     <h2>My films</h2>
-{#sort-by-button-group#}
+
                     <p class="sort-items pointer">Sort : <span class="chip" data-sort-value="title">alphabetical</span><span class="chip" data-sort-value="released">year</span></p>
 
                     <p class="help">Click on a film title below to filter the numbers on the right</p>
@@ -53,6 +53,7 @@
                         <span class="select{{ item.filmId }} film-select">
                             <span class="title">{{ item.title }}</span>
                             <span class="released">({{ item.released }})</span>
+                            {% if loop.last %}{% else %} ; {% endif %}
                         </span>
                         </div>
                     {% endfor %}
@@ -232,7 +233,7 @@
         {% for item in myFilms %}
         $('.film').on('click', '.select{{ item.filmId }}', function(){
             $numbers.isotope({ filter: '.film{{ item.filmId }}' });
-            console.log("hello world");
+            console.log("filter movie "+{{ item.filmId }});
         })
         {% endfor %}
 

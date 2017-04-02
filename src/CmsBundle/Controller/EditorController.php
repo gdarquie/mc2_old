@@ -53,7 +53,7 @@ class EditorController extends Controller
         //-----------------
 
         //My last Numbers (ajouter des options et ue pagination)
-        $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.editors e JOIN n.film f WHERE e.id = :user ORDER BY n.last_update ')->setMaxResults(10);
+        $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.editors e JOIN n.film f WHERE e.id = :user ORDER BY n.last_update ');
         $query->setParameter('user', $user );
         $myNumbers = $query->getResult();
 
