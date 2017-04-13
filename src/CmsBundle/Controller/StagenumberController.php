@@ -38,7 +38,7 @@ class StagenumberController extends Controller
             return $this->redirectToRoute('editor');
         }
 
-        return $this->render('CmsBundle:Editor:Stagenumber/new.html.twig', array(
+        return $this->render('CmsBundle:Stagenumber:new.html.twig', array(
             'stagenumberForm' => $form->createView()
         ));
     }
@@ -68,7 +68,7 @@ class StagenumberController extends Controller
             $em->flush();
         }
 
-        return $this->render('editor/stagenumber/edit.html.twig', array(
+        return $this->render('CmsBundle:Stagenumber:edit.html.twig', array(
             'stagenumber' => $stagenumber,
             'stagenumberForm' => $form->createView()
         ));

@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Stagenumber
  *
- * @ORM\Table(name="stageNumber")
+ * @ORM\Table(name="stagenumber")
  * @ORM\Entity
  */
 class Stagenumber
@@ -17,7 +17,7 @@ class Stagenumber
     /**
      * @var integer
      *
-     * @ORM\Column(name="stageNumber_id", type="integer")
+     * @ORM\Column(name="stagenumber_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -52,9 +52,9 @@ class Stagenumber
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_costumes")
-     * @ORM\JoinTable(name="stageNumber_has_costume",
+     * @ORM\JoinTable(name="stagenumber_has_costume",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="costume_id", referencedColumnName="thesaurus_id")
@@ -67,9 +67,9 @@ class Stagenumber
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_musicals")
-     * @ORM\JoinTable(name="stageNumber_has_musical",
+     * @ORM\JoinTable(name="stagenumber_has_musical",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="musical_id", referencedColumnName="thesaurus_id")
@@ -83,9 +83,9 @@ class Stagenumber
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_dancingstyles")
-     * @ORM\JoinTable(name="stageNumber_has_dancingstyle",
+     * @ORM\JoinTable(name="stagenumber_has_dancingstyle",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="dancingstyle_id", referencedColumnName="thesaurus_id")
@@ -99,9 +99,9 @@ class Stagenumber
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_genres")
-     * @ORM\JoinTable(name="stageNumber_has_genre",
+     * @ORM\JoinTable(name="stagenumber_has_genre",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="genre_id", referencedColumnName="thesaurus_id")
@@ -172,7 +172,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber")
      * @ORM\JoinTable(name="stagenumber_has_dancemble",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="dancemble_id", referencedColumnName="thesaurus_id")
@@ -187,7 +187,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber")
      * @ORM\JoinTable(name="stagenumber_has_musensemble",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="musensemble_id", referencedColumnName="thesaurus_id")
@@ -202,7 +202,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="choregrapherStagenumber")
      * @ORM\JoinTable(name="stagenumber_has_choreographer",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
@@ -210,6 +210,15 @@ class Stagenumber
      * )
      */
     private $choreographers;
+
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cast_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $cast;
 
     /**
      * @ORM\Column(name="date_creation", type="datetime")
@@ -672,6 +681,22 @@ class Stagenumber
     public function setChoreographers($choreographers)
     {
         $this->choreographers = $choreographers;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getCast()
+    {
+        return $this->cast;
+    }
+
+    /**
+     * @param Thesaurus $cast
+     */
+    public function setCast($cast)
+    {
+        $this->cast = $cast;
     }
 
 

@@ -38,7 +38,7 @@
             </div>
 
             <div class="row">
-                <p class="col s6"><span class="subtitle">Dates : </span> {{ song.date }}</p>
+                <p class="col s6"><span class="subtitle">Date : </span> {{ song.date }}</p>
                 <p class="col s6"><span class="subtitle">Song type :</span> {%  for item in song.songtype  %}{{ item.title }}{% if loop.last %} {% else %}; {% endif %}{% endfor %}</p>
             </div>
 

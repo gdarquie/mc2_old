@@ -44,7 +44,7 @@ class Costumes
      *     @ORM\JoinColumn(name="costumes_id", referencedColumnName="costumes_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   }
      * )
      */

@@ -48,7 +48,7 @@ class PersonController extends Controller
             return $this->redirectToRoute('editor');
         }
 
-        return $this->render('editor/person/new.html.twig', array(
+        return $this->render('CmsBundle:Person:new.html.twig', array(
             'personForm' => $form->createView()
         ));
     }
@@ -82,7 +82,7 @@ class PersonController extends Controller
             $em->flush();
         }
 
-        return $this->render('editor/person/edit.html.twig', array(
+        return $this->render('CmsBundle:Person:edit.html.twig', array(
             'person' => $person,
             'personForm' => $form->createView()
         ));

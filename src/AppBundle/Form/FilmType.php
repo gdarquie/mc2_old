@@ -118,6 +118,7 @@ class FilmType extends AbstractType
                     'A2' => "A2",
                     "A3" => "A3",
                     "B" => "B",
+                    "C" => "C",
                     "NA" => "NA"
                 )))
 //            ->add('isComplete')

@@ -32,12 +32,22 @@ class StageshowType extends AbstractType
         $builder
             ->add('title')
             ->add('production')
-            ->add('opening')
+            ->add('opening', DateType::class, [
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'attr' => ['class' => 'datepicker'], // Creates a dropdown of 15 years to control year
+                'html5' => false
+            ])
             ->add('films')
             ->add('ibdb')
             ->add('race')
             ->add('status')
-            ->add('closing')
+            ->add('closing', DateType::class, [
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'attr' => ['class' => 'datepicker'],
+                'html5' => false,
+            ])
             ->add('count')
             ->add('comment')
             ->add('composers')

@@ -35,7 +35,7 @@ class FilmController extends Controller
             return $this->redirectToRoute('editor');
         }
 
-        return $this->render('editor/film/new.html.twig', array(
+        return $this->render('CmsBundle:Film:new.html.twig', array(
             'filmForm' => $form->createView()
         ));
     }
@@ -60,7 +60,7 @@ class FilmController extends Controller
             $em->flush();
         }
 
-        return $this->render('editor/film/edit.html.twig', array(
+        return $this->render('CmsBundle:Film:edit.html.twig', array(
             'film' => $film,
             'filmForm' => $form->createView()
         ));

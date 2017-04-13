@@ -51,10 +51,16 @@ $(document).ready(function() {
     $(".tablesorter").tablesorter(); // tablesorter.js
     $('select').material_select();
 	$('textarea').trigger('autoresize');
-	$('.datepicker').pickadate({
-		//selectMonths: true, // Creates a dropdown to control month
-		selectYears: 15 // Creates a dropdown of 15 years to control year
-	});
+    $('.datepicker').pickadate({
+        // editable: true,
+        min: new Date(1920,1,1),
+        max: new Date(1975,12,31),
+        // defaultDate : new Date(1940,1,30),
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 80, // Creates a dropdown of 15 years to control year
+        format: 'yyyy-mm-dd',
+        today: ''
+    });
 
     $(".showall").click(function(){
 

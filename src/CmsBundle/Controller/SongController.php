@@ -46,7 +46,7 @@ class SongController extends Controller
             return $this->redirectToRoute('editor');
         }
 
-        return $this->render('editor/song/new.html.twig', array(
+        return $this->render('CmsBundle:Song:new.html.twig', array(
             'songForm' => $form->createView()
         ));
     }
@@ -78,12 +78,12 @@ class SongController extends Controller
             $em->persist($song);
             $em->flush();
 
-            $this->addFlash('success', 'Sauvegarde effecuté');
+            $this->addFlash('success', 'Edited');
 
-//            return $this->redirectToRoute('import'); //ramène à la fiche song de départ
+            return $this->redirectToRoute('song', array('songId' => $songId)); //ramène à la fiche song de départ
         }
 
-        return $this->render('editor/song/edit.html.twig', array(
+        return $this->render('CmsBundle:Song:edit.html.twig', array(
             'song' => $song,
             'songForm' => $form->createView()
         ));

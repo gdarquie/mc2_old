@@ -505,6 +505,17 @@ class NumberType extends AbstractType
             ])
 //            ->add('validationReference')
             ->add('lyrics')
+            ->add('cast', EntityType::class, array(
+                'placeholder' => '',
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("cast");
+                },
+                'empty_data' => null,
+            ))
+            ->add('stagenumbers')
+
 
 
         ;

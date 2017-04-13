@@ -171,6 +171,10 @@
 	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
 	</div>
 
+	{{ form_row(numberForm.cast, {
+		'label' : "Cast"
+	}) }}
+
 	{{ form_label(numberForm.commentPerformance, "Performance comment(s)") }}
 
 	{{ form_widget(numberForm.commentPerformance, {
@@ -365,6 +369,9 @@
 		'label' : "(from thesaurus) (mandatory) (1 choice)"
 	})}}
 
+    {{ form_row(numberForm.stagenumbers, {
+        'label' : "Original stage number (if relevant)"
+	})}}
 
 	{{ form_label(numberForm.commentReference, 'Details of the source (title of the stage show...)') }}
 	{{ form_widget(numberForm.commentReference, {

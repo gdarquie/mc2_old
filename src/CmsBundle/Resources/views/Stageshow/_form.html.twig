@@ -7,7 +7,9 @@
                 'label' : "Title"
             })}}
             {{ form_row(stageForm.production) }}
-            {{ form_row(stageForm.opening) }}
+            {{ form_row(stageForm.opening, {
+                'attr': {'class': 'datepicker'},
+            }) }}
             {{ form_row(stageForm.ibdb) }}
             {{ form_row(stageForm.status) }}
             {{ form_row(stageForm.closing) }}

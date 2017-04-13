@@ -44,7 +44,7 @@ class DefaultController extends Controller
 
         }
 
-        return $this->render('editor/myfilm.html.twig', array(
+        return $this->render('CmsBundle:Admin:myfilm.html.twig', array(
             'myNumbers' => $myNumbers,
             'myFilms' => $myFilms,
             'user' => $user
@@ -101,7 +101,7 @@ class DefaultController extends Controller
             return $this->redirectToRoute('film', array('filmId' => $filmId));
         }
 
-        return $this->render('editor/number/new.html.twig',array(
+        return $this->render('CmsBundle:Number:new.html.twig',array(
             'numberForm' => $form->createView(),
             'filmId' => $filmId,
             ));
@@ -150,54 +150,11 @@ class DefaultController extends Controller
             return $this->redirectToRoute('film', array('filmId' => $filmId));
         }
 
-        return $this->render('editor/number/edit.html.twig', array(
+        return $this->render('CmsBundle:Number:edit.html.twig', array(
             'number' => $number,
             'numberForm' => $form->createView()
             ));
     }
-
-
-//Structure of 1 number -- à supprimer???? Vérifier mais normalement oui
-
-    /**
-     * @Route("/editor/number/{number}/structure/new", name="numberStructureNew")
-     */
-    public function numberStructureNewAction(Request $request, $number){
-        $em = $this->getDoctrine()->getManager();
-
-        $number = $em->getRepository('AppBundle:Number')->findOneByNumberId($number);
-
-        $query = $em->createQuery('SELECT t.title FROM AppBundle:Thesaurus t WHERE t.type = :type');
-        $query->setParameter('type', "structure");
-        $structures = $query->getResult();
-       
-
-        $thesaurus = new Thesaurus();
-        $form = $this->createForm('AppBundle\Form\ThesaurusType', $thesaurus);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($thesaurus);
-            $em->flush();
-
-            return $this->redirectToRoute('numberStructureNew', array('id' => $thesaurus->getThesaurusId()));
-            // à reprendre
-        }
-
-        return $this->render('editor/structure/new.html.twig', array(
-            'thesaurus' => $thesaurus,
-            'structures' => $structures,
-            'number' => $number,
-            'form' => $form->createView(),
-        ));
-
-    }
-
-
-
-
-
 
 
 }

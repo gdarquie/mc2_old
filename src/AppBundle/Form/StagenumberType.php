@@ -24,6 +24,23 @@ class StagenumberType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
+            ->add('order')
+            ->add('type')
+            ->add('costumes')
+            ->add('musicals')
+            ->add('dancingstyle')
+            ->add('genre')
+            ->add('characters')
+            ->add('description')
+            ->add('ibdb')
+            ->add('setting')
+            ->add('stageshow')
+            ->add('number')
+            ->add('song')
+            ->add('dancemble')
+            ->add('musensemble')
+            ->add('choreographers')
+            ->add('cast')
         ;
     }
 
@@ -37,4 +54,3 @@ class StagenumberType extends AbstractType
         ));
     }
 }
-

@@ -39,7 +39,7 @@ class StageshowController extends Controller
             return $this->redirectToRoute('editor');
         }
 
-        return $this->render('CmsBundle:Editor:Stageshow/new.html.twig', array(
+        return $this->render('CmsBundle:Stageshow:new.html.twig', array(
             'stageForm' => $form->createView()
         ));
     }
@@ -63,7 +63,7 @@ class StageshowController extends Controller
             $em->flush();
         }
 
-        return $this->render('CmsBundle:Editor:Stageshow/edit.html.twig', array(
+        return $this->render('CmsBundle:Stageshow:edit.html.twig', array(
             'stageshow' => $stageshow,
             'stageForm' => $form->createView()
         ));

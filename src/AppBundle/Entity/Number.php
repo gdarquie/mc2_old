@@ -409,6 +409,15 @@ class Number
      */
     private $completenessThesaurus;
 
+    /** @var  \AppBundle\Entity\Thesaurus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cast_id", referencedColumnName="thesaurus_id")
+     * })
+     */
+    private $cast;
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
@@ -424,22 +433,20 @@ class Number
      */
     private $completOptions;
 
-
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Stagenumber", inversedBy="number")
-     * @ORM\JoinTable(name="stagenumber_has_number",
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Stagenumber", inversedBy="numbers")
+     * @ORM\JoinTable(name="number_has_stagenumber",
      *   joinColumns={
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   }
      * )
      */
-    private $stagenumber;
-
+    private $stagenumbers;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -929,7 +936,6 @@ class Number
         $this->quotation = new \Doctrine\Common\Collections\ArrayCollection();
         $this->song = new \Doctrine\Common\Collections\ArrayCollection();
         $this->place = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->stagenumber = new \Doctrine\Common\Collections\ArrayCollection();
         $this->exoticism = new \Doctrine\Common\Collections\ArrayCollection();
         $this->effects = new \Doctrine\Common\Collections\ArrayCollection();
         $this->performers = new \Doctrine\Common\Collections\ArrayCollection();
@@ -1711,41 +1717,6 @@ class Number
     public function getSong()
     {
         return $this->song;
-    }
-
-
-    /**
-     * Add stagenumber
-     *
-     * @param \AppBundle\Entity\Stagenumber $stagenumber
-     *
-     * @return Number
-     */
-    public function addStagenumber(\AppBundle\Entity\Stagenumber $stagenumber)
-    {
-        $this->stagenumber[] = $stagenumber;
-
-        return $this;
-    }
-
-    /**
-     * Remove stagenumber
-     *
-     * @param \AppBundle\Entity\Stagenumber $stagenumber
-     */
-    public function removeStagenumber(\AppBundle\Entity\Stagenumber $stagenumber)
-    {
-        $this->stagenumber->removeElement($stagenumber);
-    }
-
-    /**
-     * Get stagenumber
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getStagenumber()
-    {
-        return $this->stagenumber;
     }
 
 
@@ -2813,6 +2784,54 @@ class Number
     }
 
     /**
+     * @return ArrayCollection
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * @param ArrayCollection $place
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+    }
+
+    /**
+     * @return Thesaurus
+     */
+    public function getCast()
+    {
+        return $this->cast;
+    }
+
+    /**
+     * @param Thesaurus $cast
+     */
+    public function setCast($cast)
+    {
+        $this->cast = $cast;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStagenumbers()
+    {
+        return $this->stagenumbers;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $stagenumbers
+     */
+    public function setStagenumbers($stagenumbers)
+    {
+        $this->stagenumbers = $stagenumbers;
+    }
+
+    /**
      * @return mixed
      */
     public function getDateCreation()
@@ -2844,6 +2863,10 @@ class Number
         $this->last_update = $last_update;
     }
 
+    public function __toString()
+    {
+        return (string) $this->getTitle();
+    }
 
 
 

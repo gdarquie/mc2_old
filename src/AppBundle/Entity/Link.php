@@ -67,7 +67,7 @@ class Link
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Stagenumber")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *   @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      * })
      */
     private $stagenumber;

@@ -15,6 +15,7 @@ use AppBundle\Repository\SongRepository;
 use AppBundle\Entity\Thesaurus;
 
 use AppBundle\Repository\ThesaurusRepository;
+use AppBundle\Repository\PersonRepository;
 
 class SongType extends AbstractType
 {
@@ -27,8 +28,28 @@ class SongType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('date')
-            ->add('lyricist')
-            ->add('composer')
+            ->add('lyricist'
+                , EntityType::class, array(
+                    'class' => 'AppBundle:Person',
+                    'multiple' => true,
+//                'empty_data' => null,
+                    'choice_label' => 'name',
+                    'query_builder' => function(PersonRepository $repo) {
+                        return $repo->createAlphabeticalQueryBuilder();
+                    }
+                )
+            )
+            ->add('composer'
+                , EntityType::class, array(
+                    'class' => 'AppBundle:Person',
+                    'multiple' => true,
+//                'empty_data' => null,
+                    'choice_label' => 'name',
+                    'query_builder' => function(PersonRepository $repo) {
+                        return $repo->createAlphabeticalQueryBuilder();
+                    }
+                )
+            )
             ->add('songtype', EntityType::class, array(
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title',

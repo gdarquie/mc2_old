@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Stageshow
@@ -26,6 +27,7 @@ class Stageshow
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=500, nullable=true)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -526,5 +528,9 @@ class Stageshow
         $this->stagenumbers = $stagenumbers;
     }
 
+    public function __toString()
+    {
+        return (string) $this->getTitle();
+    }
 
 }

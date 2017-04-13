@@ -20,8 +20,8 @@
 
         <article class="card row">
             <div class="col s12">
-            <p>First name : {{ person.firstname }}</p>
-            <p>Last name : {{ person.lastname }}</p>
+            {#<p>First name : {{ person.firstname }}</p>#}
+            {#<p>Last name : {{ person.lastname }}</p>#}
             <p>Gender : {{ person.gender }}</p>
             </div>
         </article>
@@ -33,31 +33,31 @@
                 <h3>Choregrapher</h3>
 
                 {% for item in person.numbersChoregrapher %}
-                    <span class="chip">{{ item.title }} ({{ item.film }})</span>
+                    <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
                 {% endfor %}
 
                 <h3>Arranger</h3>
 
                 {% for item in person.numbersArranger %}
-                    <span class="chip">{{ item.title }} ({{ item.film }})</span>
+                    <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
                 {% endfor %}
 
                 <h3>Director</h3>
 
                 {% for item in person.numbersDirector %}
-                    <span class="chip">{{ item.title }} ({{ item.film }})</span>
+                    <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
                 {% endfor %}
 
                 <h3>Performer</h3>
 
                 {% for item in person.numbersPerformer %}
-                    <span class="chip">{{ item.title }} ({{ item.film }})</span>
+                    <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
                 {% endfor %}
 
                 <h3>Numbers where s.he doesn't participate</h3>
 
                 {% for item in person.numbersFigurant %}
-                    <span class="chip">{{ item.title }} ({{ item.film }})</span>
+                    <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
                 {% endfor %}
             </div>
         </article>

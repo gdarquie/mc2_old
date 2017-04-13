@@ -70,7 +70,7 @@ class Song
      *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   }
      * )
      */

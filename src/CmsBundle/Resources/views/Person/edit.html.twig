@@ -4,12 +4,12 @@
 
     <div class="container">
 
-        <h1>Add a person</h1>
+        <h1>Edit a person</h1>
 
         {{ form_start(personForm)}}
 
-        {{ include('editor/person/_form.html.twig')}}
-        <button class="btn black" type="submit" formnovalidate>New Person</button>
+        {{ include('CmsBundle:Person:_form.html.twig')}}
+        <button class="btn black" type="submit" formnovalidate>Edit Person</button>
         {{ form_end(personForm)}}
 
     </div>
