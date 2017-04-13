@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73570d6e-9db4-42de-8645-db93b49ffcf6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_673hrgel6rnp08bjcg87a9abl2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_c8ojejiaqroqkp0qpvt2snfaa2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_dfc8dnt1ndn6mfsru3v1ucsfe6" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_dgocnh2jt9iqa53gn5ti5mpcc2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_tkjk6713hdeecm3j3qbmrnb960" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_v1lmeb5qf5nfmp1tsidi3eslm1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/DoctrineMigrations/Version20170319225523.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/DoctrineMigrations/Version20170319230637.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/DoctrineMigrations/Version20170406093051.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/DoctrineMigrations/Version20170406094924.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/DoctrineMigrations/Version20170406114613.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_fhdhs5sgv72nikpg7hc4vd1a96" afterPath="$PROJECT_DIR$/var/sessions/dev/sess_fhdhs5sgv72nikpg7hc4vd1a96" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/index.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/song.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/song.html.twig" />
     </list>
     <ignored path="application.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,68 +48,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mc2.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/mc2.js">
+      <file leaf-file-name="ScenarioController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/ScenarioController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+              <folding>
+                <element signature="e#40#68#0#PHP" expanded="true" />
+                <marker date="1492115882000" expanded="true" signature="646:762" ph="SELECT n.num... AppBundle" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Number.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="390" column="43" lean-forward="false" selection-start-line="390" selection-start-column="39" selection-end-line="390" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Stageshow.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Stageshow.php">
+      <file leaf-file-name="NumberType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/NumberType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="40" column="7" lean-forward="false" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
-              <folding>
-                <element signature="e#36#68#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScenarioController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="924">
-              <caret line="97" column="33" lean-forward="false" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
-              <folding>
-                <marker date="1492096337000" expanded="true" signature="1220:1366" ph="SELECT n.tit... AppBundle" />
-                <marker date="1492096337000" expanded="true" signature="1886:2053" ph="SELECT n.tit... AppBundle" />
-                <marker date="1492096337000" expanded="true" signature="2591:2755" ph="SELECT n.tit... AppBundle" />
-                <marker date="1492096337000" expanded="true" signature="3284:3499" ph="SELECT s.tit... AppBundle" />
-                <marker date="1492096337000" expanded="true" signature="4660:4877" ph="SELECT n.tit... AppBundle" />
-                <marker date="1492096337000" expanded="true" signature="4660:4898" ph="SELECT n.num... AppBundle" />
-                <marker date="1492096337000" expanded="true" signature="5159:5375" ph="SELECT f.tit... AppBundle" />
-                <marker date="1492096337000" expanded="true" signature="6051:6197" ph="SELECT n FRO... AppBundle" />
-                <marker date="1492096337000" expanded="true" signature="6366:6579" ph="SELECT p.nam... AppBundle" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="579">
-              <caret line="84" column="145" lean-forward="false" selection-start-line="84" selection-start-column="145" selection-end-line="84" selection-end-column="145" />
-              <folding>
-                <element signature="e#1976#1996#0#Twig" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="song.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/song.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="90" lean-forward="false" selection-start-line="9" selection-start-column="90" selection-end-line="9" selection-end-column="90" />
-              <folding>
-                <element signature="e#260#266#0#Twig" expanded="true" />
-              </folding>
+            <state relative-caret-position="933">
+              <caret line="516" column="31" lean-forward="false" selection-start-line="516" selection-start-column="31" selection-end-line="516" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -122,8 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Scénario 1 : Performers</find>
-      <find>performers</find>
       <find>source</find>
       <find>performer</find>
       <find>user</find>
@@ -152,6 +113,8 @@
       <find>Compose</find>
       <find>legion</find>
       <find>graph</find>
+      <find>quot</find>
+      <find>song</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -207,10 +170,10 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Form/StageshowType.php" />
         <option value="$PROJECT_DIR$/web/js/mc2.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Stageshow.php" />
-        <option value="$PROJECT_DIR$/src/ApiBundle/Controller/ScenarioController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/song.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" />
+        <option value="$PROJECT_DIR$/src/ApiBundle/Controller/ScenarioController.php" />
       </list>
     </option>
   </component>
@@ -470,6 +433,50 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Entity" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -525,42 +532,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DoctrineMigrations" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -823,12 +794,12 @@
       <workItem from="1492028269283" duration="552000" />
       <workItem from="1492073515644" duration="1441000" />
       <workItem from="1492089146487" duration="2000" />
-      <workItem from="1492094441899" duration="1981000" />
+      <workItem from="1492094441899" duration="4256000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="685323000" />
+    <option name="totallyTimeSpent" value="687598000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="all">
@@ -902,27 +873,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CmsBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="138" column="0" lean-forward="false" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CmsBundle/Resources/views/Number/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="41" column="14" lean-forward="false" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CmsBundle/Resources/views/Person/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CmsBundle/Resources/views/Number/edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="369">
@@ -1098,13 +1048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43005">
-          <caret line="2869" column="0" lean-forward="false" selection-start-line="2869" selection-start-column="0" selection-end-line="2869" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Film.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3315">
@@ -1116,14 +1059,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1515">
           <caret line="120" column="31" lean-forward="false" selection-start-line="120" selection-start-column="31" selection-end-line="120" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/NumberType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7440">
-          <caret line="516" column="31" lean-forward="false" selection-start-line="516" selection-start-column="31" selection-end-line="516" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1183,14 +1118,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CmsBundle/Resources/views/Stageshow/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/js/mc2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
@@ -1199,7 +1126,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/ScenarioController.php" />
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1234,16 +1160,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Stageshow.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="40" column="7" lean-forward="false" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
-          <folding>
-            <element signature="e#36#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/song.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1264,10 +1180,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/PersonController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="97" column="33" lean-forward="false" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
+        <state relative-caret-position="45">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="16" selection-end-column="7" />
           <folding>
             <marker date="1492096337000" expanded="true" signature="1220:1366" ph="SELECT n.tit... AppBundle" />
             <marker date="1492096337000" expanded="true" signature="1886:2053" ph="SELECT n.tit... AppBundle" />
@@ -1278,6 +1202,75 @@
             <marker date="1492096337000" expanded="true" signature="5159:5375" ph="SELECT f.tit... AppBundle" />
             <marker date="1492096337000" expanded="true" signature="6051:6197" ph="SELECT n FRO... AppBundle" />
             <marker date="1492096337000" expanded="true" signature="6366:6579" ph="SELECT p.nam... AppBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Stageshow.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="40" column="7" lean-forward="false" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
+          <folding>
+            <element signature="e#36#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/FilmController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="45" />
+          <folding>
+            <marker date="1491054052000" expanded="true" signature="574:653" ph="SELECT f FRO... AppBundle" />
+            <marker date="1491054052000" expanded="true" signature="739:859" ph="SELECT f.tit... AppBundle" />
+            <marker date="1491054052000" expanded="true" signature="960:1043" ph="SELECT f.tit... AppBundle" />
+            <marker date="1491054052000" expanded="true" signature="1594:1813" ph="SELECT f.tit... AppBundle" />
+            <marker date="1491054052000" expanded="true" signature="1905:2137" ph="SELECT f.tit... AppBundle" />
+            <marker date="1491054052000" expanded="true" signature="2229:2452" ph="SELECT f.tit... AppBundle" />
+            <marker date="1491054052000" expanded="true" signature="2980:3240" ph="SELECT f.tit... AppBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/NumberController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CmsBundle/Resources/views/Stageshow/_form.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/NumberType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="933">
+          <caret line="516" column="31" lean-forward="false" selection-start-line="516" selection-start-column="31" selection-end-line="516" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="390" column="43" lean-forward="false" selection-start-line="390" selection-start-column="39" selection-end-line="390" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/ScenarioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+            <marker date="1492115882000" expanded="true" signature="646:762" ph="SELECT n.num... AppBundle" />
           </folding>
         </state>
       </provider>
