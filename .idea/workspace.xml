@@ -2,56 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73570d6e-9db4-42de-8645-db93b49ffcf6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/film/_form.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Editor/film/edit.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Editor/film/new.html.twig" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/film/edit.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Film/edit.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/film/new.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Film/new.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/myfilm.html.twig" afterPath="$PROJECT_DIR$/src/ApiBundle/Resources/views/myfilm.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/number/_form.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Number/_form.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/number/edit.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Number/edit.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/number/new.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Number/new.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/person/_form.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Person/_form.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/person/edit.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Person/edit.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/person/new.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Person/new.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/song/_form.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Song/_form.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/song/edit.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Song/edit.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/song/new.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Song/new.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/stagenumber/_form.html.twig" afterPath="$PROJECT_DIR$/src/ApiBundle/Resources/views/stagenumber/_form.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/stagenumber/edit.html.twig" afterPath="$PROJECT_DIR$/src/ApiBundle/Resources/views/stagenumber/edit.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Resources/views/editor/stagenumber/new.html.twig" afterPath="$PROJECT_DIR$/src/ApiBundle/Resources/views/stagenumber/new.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Editor/Stagenumber/_form.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Stagenumber/_form.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Editor/Stagenumber/edit.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Stagenumber/edit.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Editor/Stagenumber/new.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Stagenumber/new.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Editor/Stageshow/_form.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Stageshow/_form.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Editor/Stageshow/edit.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Stageshow/edit.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Editor/Stageshow/new.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Stageshow/new.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Editor/film/_form.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Film/_form.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_c8ojejiaqroqkp0qpvt2snfaa2" afterPath="$PROJECT_DIR$/var/sessions/dev/sess_c8ojejiaqroqkp0qpvt2snfaa2" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_673hrgel6rnp08bjcg87a9abl2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_c8ojejiaqroqkp0qpvt2snfaa2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_dfc8dnt1ndn6mfsru3v1ucsfe6" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_dgocnh2jt9iqa53gn5ti5mpcc2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_tkjk6713hdeecm3j3qbmrnb960" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_v1lmeb5qf5nfmp1tsidi3eslm1" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_fhdhs5sgv72nikpg7hc4vd1a96" afterPath="$PROJECT_DIR$/var/sessions/dev/sess_fhdhs5sgv72nikpg7hc4vd1a96" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/web/person/person.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/person/person.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/web/song/song.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/song/song.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Costumes.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Costumes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Link.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Link.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Number.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Number.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Song.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Song.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Stagenumber.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Stagenumber.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Stageshow.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Stageshow.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/FilmType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/FilmType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/NumberType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/NumberType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/SongType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/SongType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/StagenumberType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/StagenumberType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/StageshowType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/StageshowType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/index.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CmsBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/CmsBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CmsBundle/Controller/FilmController.php" afterPath="$PROJECT_DIR$/src/CmsBundle/Controller/FilmController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CmsBundle/Controller/PersonController.php" afterPath="$PROJECT_DIR$/src/CmsBundle/Controller/PersonController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CmsBundle/Controller/SongController.php" afterPath="$PROJECT_DIR$/src/CmsBundle/Controller/SongController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CmsBundle/Controller/StagenumberController.php" afterPath="$PROJECT_DIR$/src/CmsBundle/Controller/StagenumberController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CmsBundle/Controller/StageshowController.php" afterPath="$PROJECT_DIR$/src/CmsBundle/Controller/StageshowController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/mc2.js" afterPath="$PROJECT_DIR$/web/js/mc2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/song.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/song.html.twig" />
     </list>
     <ignored path="application.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -113,50 +74,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScenarioController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ScenarioController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2175">
-              <caret line="149" column="49" lean-forward="false" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="49" />
+            <state relative-caret-position="924">
+              <caret line="97" column="33" lean-forward="false" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
               <folding>
-                <marker date="1491054064000" expanded="true" signature="1220:1366" ph="SELECT n.tit... AppBundle" />
-                <marker date="1491054064000" expanded="true" signature="1886:2053" ph="SELECT n.tit... AppBundle" />
-                <marker date="1491054064000" expanded="true" signature="2591:2755" ph="SELECT n.tit... AppBundle" />
-                <marker date="1491054064000" expanded="true" signature="3284:3479" ph="SELECT s.tit... AppBundle" />
-                <marker date="1491054064000" expanded="true" signature="4640:4845" ph="SELECT n.tit... AppBundle" />
-                <marker date="1491054064000" expanded="true" signature="5492:5638" ph="SELECT n FRO... AppBundle" />
-                <marker date="1491054064000" expanded="true" signature="5807:6020" ph="SELECT p.nam... AppBundle" />
+                <marker date="1492096337000" expanded="true" signature="1220:1366" ph="SELECT n.tit... AppBundle" />
+                <marker date="1492096337000" expanded="true" signature="1886:2053" ph="SELECT n.tit... AppBundle" />
+                <marker date="1492096337000" expanded="true" signature="2591:2755" ph="SELECT n.tit... AppBundle" />
+                <marker date="1492096337000" expanded="true" signature="3284:3499" ph="SELECT s.tit... AppBundle" />
+                <marker date="1492096337000" expanded="true" signature="4660:4877" ph="SELECT n.tit... AppBundle" />
+                <marker date="1492096337000" expanded="true" signature="4660:4898" ph="SELECT n.num... AppBundle" />
+                <marker date="1492096337000" expanded="true" signature="5159:5375" ph="SELECT f.tit... AppBundle" />
+                <marker date="1492096337000" expanded="true" signature="6051:6197" ph="SELECT n FRO... AppBundle" />
+                <marker date="1492096337000" expanded="true" signature="6366:6579" ph="SELECT p.nam... AppBundle" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parameters.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parameters.yml.dist" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -164,9 +97,11 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-              <folding />
+            <state relative-caret-position="579">
+              <caret line="84" column="145" lean-forward="false" selection-start-line="84" selection-start-column="145" selection-end-line="84" selection-end-column="145" />
+              <folding>
+                <element signature="e#1976#1996#0#Twig" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -175,19 +110,9 @@
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/song.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DanceApiController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/DanceApiController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+              <caret line="9" column="90" lean-forward="false" selection-start-line="9" selection-start-column="90" selection-end-line="9" selection-end-column="90" />
               <folding>
-                <marker date="1491054254000" expanded="true" signature="679:763" ph="SELECT d FRO... AppBundle" />
+                <element signature="e#260#266#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -235,8 +160,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/css/style.css" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/SongController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/stageshow/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/stageshow/stageshow.html.twig" />
         <option value="$PROJECT_DIR$/src/CmsBundle/Resources/views/Editor/index.html.twig" />
@@ -284,8 +207,10 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Form/StageshowType.php" />
         <option value="$PROJECT_DIR$/web/js/mc2.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Stageshow.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/index.html.twig" />
         <option value="$PROJECT_DIR$/src/ApiBundle/Controller/ScenarioController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/song.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" />
       </list>
     </option>
   </component>
@@ -898,11 +823,12 @@
       <workItem from="1492028269283" duration="552000" />
       <workItem from="1492073515644" duration="1441000" />
       <workItem from="1492089146487" duration="2000" />
+      <workItem from="1492094441899" duration="1981000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="683342000" />
+    <option name="totallyTimeSpent" value="685323000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="all">
@@ -912,9 +838,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21959943" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21959943" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1273,59 +1199,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Stageshow.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="40" column="7" lean-forward="false" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
-          <folding>
-            <element signature="e#36#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/ScenarioController.php" />
-    <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/DanceApiController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-          <folding>
-            <marker date="1491054254000" expanded="true" signature="679:763" ph="SELECT d FRO... AppBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/song.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2175">
-          <caret line="149" column="49" lean-forward="false" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="49" />
-          <folding>
-            <marker date="1491054064000" expanded="true" signature="1220:1366" ph="SELECT n.tit... AppBundle" />
-            <marker date="1491054064000" expanded="true" signature="1886:2053" ph="SELECT n.tit... AppBundle" />
-            <marker date="1491054064000" expanded="true" signature="2591:2755" ph="SELECT n.tit... AppBundle" />
-            <marker date="1491054064000" expanded="true" signature="3284:3479" ph="SELECT s.tit... AppBundle" />
-            <marker date="1491054064000" expanded="true" signature="4640:4845" ph="SELECT n.tit... AppBundle" />
-            <marker date="1491054064000" expanded="true" signature="5492:5638" ph="SELECT n FRO... AppBundle" />
-            <marker date="1491054064000" expanded="true" signature="5807:6020" ph="SELECT p.nam... AppBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1344,9 +1218,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        <state relative-caret-position="330">
+          <caret line="22" column="33" lean-forward="false" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/DanceApiController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <folding>
+            <marker date="1491054254000" expanded="true" signature="679:763" ph="SELECT d FRO... AppBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Stageshow.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="40" column="7" lean-forward="false" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
+          <folding>
+            <element signature="e#36#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/song.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="90" lean-forward="false" selection-start-line="9" selection-start-column="90" selection-end-line="9" selection-end-column="90" />
+          <folding>
+            <element signature="e#260#266#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="84" column="145" lean-forward="false" selection-start-line="84" selection-start-column="145" selection-end-line="84" selection-end-column="145" />
+          <folding>
+            <element signature="e#1976#1996#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="924">
+          <caret line="97" column="33" lean-forward="false" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
+          <folding>
+            <marker date="1492096337000" expanded="true" signature="1220:1366" ph="SELECT n.tit... AppBundle" />
+            <marker date="1492096337000" expanded="true" signature="1886:2053" ph="SELECT n.tit... AppBundle" />
+            <marker date="1492096337000" expanded="true" signature="2591:2755" ph="SELECT n.tit... AppBundle" />
+            <marker date="1492096337000" expanded="true" signature="3284:3499" ph="SELECT s.tit... AppBundle" />
+            <marker date="1492096337000" expanded="true" signature="4660:4877" ph="SELECT n.tit... AppBundle" />
+            <marker date="1492096337000" expanded="true" signature="4660:4898" ph="SELECT n.num... AppBundle" />
+            <marker date="1492096337000" expanded="true" signature="5159:5375" ph="SELECT f.tit... AppBundle" />
+            <marker date="1492096337000" expanded="true" signature="6051:6197" ph="SELECT n FRO... AppBundle" />
+            <marker date="1492096337000" expanded="true" signature="6366:6579" ph="SELECT p.nam... AppBundle" />
+          </folding>
         </state>
       </provider>
     </entry>

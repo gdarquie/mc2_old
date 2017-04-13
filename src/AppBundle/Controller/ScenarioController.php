@@ -88,14 +88,14 @@ class ScenarioController extends Controller
 
             //performers
 
-            $sql3 = "SELECT n.title as title, c.name as name, COUNT(c.name) as nb FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.performers c WHERE t.title = :performance";
+            $sql3 = "SELECT n.title as title, p.name as name, COUNT(p.name) as nb FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.performers p WHERE t.title = :performance";
 
             for ($i=0;$i<$count;$i++)
             {
                 $sql3 .= " AND n.source = :source".$i;
             }
 
-            $sql3 .= " GROUP BY c.name ORDER BY nb DESC";
+            $sql3 .= " GROUP BY p.name ORDER BY nb DESC";
 
             $query = $em->createQuery($sql3);
             $query->setParameter('performance', $performance );
@@ -109,7 +109,7 @@ class ScenarioController extends Controller
 
             //songs
 
-            $sql4 = "SELECT s.title as title, COUNT(s.songId) as nb, n.performance as performance, n.source as source FROM AppBundle:Number n JOIN n.song s JOIN n.performance_thesaurus t  WHERE t.title = :performance";
+            $sql4 = "SELECT s.title as title, COUNT(s.songId) as nb, s.songId as songId, n.performance as performance, n.source as source FROM AppBundle:Number n JOIN n.song s JOIN n.performance_thesaurus t  WHERE t.title = :performance";
 
             for ($i=0;$i<$count;$i++)
             {
@@ -149,16 +149,24 @@ class ScenarioController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $query = "SELECT n.title as title, s.title as song, COUNT(s.songId) as nb FROM AppBundle:Number n JOIN n.song s JOIN n.performance_thesaurus t  WHERE t.title = :performance AND n.source = :source AND s.title = :song";
+        $query = "SELECT n.numberId as numberId, n.title as title, s.title as song, f.title as film FROM AppBundle:Number n JOIN n.song s JOIN n.film f JOIN n.performance_thesaurus t  WHERE t.title = :performance AND n.source = :source AND s.songId = :song";
         $query = $em->createQuery($query);
         $query->setParameter('performance', $performance );
         $query->setParameter('source', $source );
         $query->setParameter('song', $song );
         $numbers = $query->getResult();
 
+        $query = "SELECT f.title as title, f.idImdb as imdb FROM AppBundle:Number n JOIN n.song s JOIN n.film f JOIN n.performance_thesaurus t  WHERE t.title = :performance AND n.source = :source AND s.songId = :song GROUP BY f.filmId";
+        $query = $em->createQuery($query);
+        $query->setParameter('performance', $performance );
+        $query->setParameter('source', $source );
+        $query->setParameter('song', $song );
+        $films = $query->getResult();
+
 
         return $this->render('AppBundle:scenario:marion/song.html.twig', array(
-            'numbers' => $numbers
+            'numbers' => $numbers,
+            'films' => $films
         ));
     }
 

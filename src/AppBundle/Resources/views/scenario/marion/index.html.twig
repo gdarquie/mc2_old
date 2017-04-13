@@ -82,7 +82,7 @@
 
             <div>
                 {% for item in songs  %}
-                    <span class="chip truncate"><a href="{{ path('scenario_marion_song' , {'performance' : item.performance, 'song' : item.title, 'source' : item.source}) }}">{{ item.title }}({{ item.nb }})</a></span>
+                    <span class="chip truncate"><a href="{{ path('scenario_marion_song' , {'performance' : item.performance, 'song' : item.songId, 'source' : item.source}) }}">{{ item.title }}({{ item.nb }})</a></span>
                 {% endfor %}
             </div>
 
