@@ -723,7 +723,7 @@ class Stagenumber
         $this->code = $code;
     }
 
-    
+
 
     public function __toString()
     {

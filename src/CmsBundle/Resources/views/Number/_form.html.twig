@@ -369,9 +369,10 @@
 		'label' : "(from thesaurus) (mandatory) (1 choice)"
 	})}}
 
-    {{ form_row(numberForm.stagenumbers, {
-        'label' : "Original stage number (if relevant)"
-	})}}
+	{# Corriger bugs avec stagenumber puis remettre #}
+    {#{{ form_row(numberForm.stagenumbers, {#}
+        {#'label' : "Original stage number (if relevant)"#}
+	{#})}}#}
 
 	{{ form_label(numberForm.commentReference, 'Details of the source (title of the stage show...)') }}
 	{{ form_widget(numberForm.commentReference, {

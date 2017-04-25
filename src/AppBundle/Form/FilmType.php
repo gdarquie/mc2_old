@@ -70,7 +70,7 @@ class FilmType extends AbstractType
                 , EntityType::class, array(
                     'class' => 'AppBundle:Stageshow',
                     'multiple' => true,
-                    'choice_label' => 'title',
+                    'choice_label' => 'code',
                     'query_builder' => function(StageshowRepository $repo) {
                         return $repo->createAlphabeticalQueryBuilder();
                     }
