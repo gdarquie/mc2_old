@@ -222,6 +222,13 @@ class Stagenumber
     private $cast;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=500, nullable=true)
+     */
+    private $code;
+
+    /**
      * @ORM\Column(name="date_creation", type="datetime")
      */
     private $date_creation;
@@ -699,6 +706,24 @@ class Stagenumber
     {
         $this->cast = $cast;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param mixed $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    
 
     public function __toString()
     {
