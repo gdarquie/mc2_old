@@ -58,6 +58,12 @@ class FilmController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($film);
             $em->flush();
+
+            $this->addFlash('success', 'Film edited!');
+
+            return $this->redirectToRoute('film', array('filmId' => $filmId));
+
+
         }
 
         return $this->render('CmsBundle:Film:edit.html.twig', array(

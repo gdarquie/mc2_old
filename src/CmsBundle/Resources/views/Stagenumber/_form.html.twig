@@ -13,15 +13,20 @@
             {{ form_row(stagenumberForm.dancingstyle) }}
             {{ form_row(stagenumberForm.genre) }}
             {{ form_row(stagenumberForm.characters) }}
-            {{ form_row(stagenumberForm.description) }}
+            {{ form_row(stagenumberForm.description, {
+                'attr': {'class': 'materialize-textarea'},
+                'label' : "Setting"
+            }) }}
             {{ form_row(stagenumberForm.ibdb) }}
-            {{ form_row(stagenumberForm.setting) }}
-            {{ form_row(stagenumberForm.stageshow) }}
-            {{ form_row(stagenumberForm.number) }}
+            {{ form_row(stagenumberForm.setting, {
+                'attr': {'class': 'materialize-textarea'},
+                'label' : "Setting"
+            }) }}
+            {#{{ form_row(stagenumberForm.number) }}#}
             {{ form_row(stagenumberForm.song) }}
             {{ form_row(stagenumberForm.dancemble) }}
             {{ form_row(stagenumberForm.musensemble) }}
-            {{ form_row(stagenumberForm.choreographers) }}
+            {{ form_row(stagenumberForm.performers) }}
             {{ form_row(stagenumberForm.cast) }}
 
         </div>

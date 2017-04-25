@@ -36,7 +36,8 @@ class StageshowController extends Controller
             $em->persist($stageshow);
             $em->flush();
 
-            return $this->redirectToRoute('editor');
+            $this->addFlash('success', 'Stage Show created!');
+            return $this->redirectToRoute('admin');
         }
 
         return $this->render('CmsBundle:Stageshow:new.html.twig', array(
@@ -61,6 +62,10 @@ class StageshowController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($stageshow);
             $em->flush();
+
+            $this->addFlash('success', 'Stage Show edited!');
+            return $this->redirectToRoute('stageshow', array('stageshowId' => $stageshowId));
+
         }
 
         return $this->render('CmsBundle:Stageshow:edit.html.twig', array(

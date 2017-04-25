@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Censorship
  *
  * @ORM\Table(name="censorship")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CensorshipRepository")
  */
 class Censorship
 {

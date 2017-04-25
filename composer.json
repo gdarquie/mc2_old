@@ -29,8 +29,10 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "doctrine/doctrine-migrations-bundle": "^1.1",
-        "guzzlehttp/guzzle": "^6.2",
-        "beberlei/DoctrineExtensions": "^1.0"
+        "guzzlehttp/guzzle": "~6.0",
+        "beberlei/DoctrineExtensions": "^1.0",
+        "eightpoints/guzzle-bundle": "^4.5",
+        "fabpot/goutte": "^3.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

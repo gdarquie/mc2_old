@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <section class="container">
+        <h1>Stagenumbers</h1>
+
+        <table class="highlight tablesorter mini-table displaytable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in stagenumbers  %}
+                <tr>
+                    {#<td><a href="{{ path('stageshow' , { 'stageshowId' : item.stageshowId }) }}">{{ item.title }}</a></td> <!-- lien vers une notice de stageshow -->#}
+                    <td><span class="chip">{{ item.title }}</span></td>
+                    {#<td>{{ item.count }}</td>#}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </section>
+
+{% endblock %}
+

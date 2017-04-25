@@ -34,12 +34,11 @@ class StagenumberType extends AbstractType
             ->add('description')
             ->add('ibdb')
             ->add('setting')
-            ->add('stageshow')
-            ->add('number')
+//            ->add('number')
             ->add('song')
             ->add('dancemble')
             ->add('musensemble')
-            ->add('choreographers')
+            ->add('performers')
             ->add('cast')
         ;
     }

@@ -13,9 +13,9 @@ use AppBundle\Form\StagenumberType;
 class StagenumberController extends Controller
 {
     /**
-     * @Route("/editor/stagenumber/add/new", name="stagesnumber_new")
+     * @Route("/editor/stageshow/id/{stageshowId}/stagenumber/new", name="stagenumber_new")
      */
-    public function addAction(Request $request){
+    public function addAction(Request $request, $stageshowId){
 
         $stagenumber = new Stagenumber();
 
@@ -25,8 +25,11 @@ class StagenumberController extends Controller
         if($form->isSubmitted()&& $form->isValid()){
 
             $stagenumber = $form->getData();
-
             $em = $this->getDoctrine()->getManager();
+            $stageshow = $em->getRepository('AppBundle:Stageshow')->findOneByStageshowId($stageshowId);
+
+            //addstageshow & last user
+            $stagenumber->setStageshow($stageshow);
 
             $now = new \DateTime();
             $stagenumber->setDateCreation($now);
@@ -35,7 +38,9 @@ class StagenumberController extends Controller
             $em->persist($stagenumber);
             $em->flush();
 
-            return $this->redirectToRoute('editor');
+            $this->addFlash('success', 'Stage Number created!');
+
+            return $this->redirectToRoute('stageshow', array('stageshowId' => $stageshowId));
         }
 
         return $this->render('CmsBundle:Stagenumber:new.html.twig', array(
@@ -43,15 +48,18 @@ class StagenumberController extends Controller
         ));
     }
 
+
     /**
      * @Route("/editor/stagenumber/id/{stagenumberId}/edit" , name = "stagenumber_edit")
      */
     public function editAction(Request $request, $stagenumberId){
 
         $em = $this->getDoctrine()->getManager();
+
         $stagenumber = $em->getRepository('AppBundle:Stagenumber')->findOneByStagenumberId($stagenumberId);
 
-        $form = $this->createForm(stagenumberType::class, $stageshow);
+//        dump($stagenumber);die();
+        $form = $this->createForm(StagenumberType::class, $stagenumber);
 
         $form->handleRequest($request);
 
@@ -59,13 +67,18 @@ class StagenumberController extends Controller
 
             $stagenumber = $form->getData();
 
-            $em = $this->getDoctrine()->getManager();
-
             $now = new \DateTime();
+
+            $stageshow = $stagenumber->getStageshow();
+            $stageshowId = $stageshow->getStageshowId();
             $stagenumber->setLastUpdate($now);
 
             $em->persist($stagenumber);
             $em->flush();
+
+            $this->addFlash('success', 'Stage Number edited!');
+            return $this->redirectToRoute('stageshow', array('stageshowId' => $stageshowId));
+
         }
 
         return $this->render('CmsBundle:Stagenumber:edit.html.twig', array(

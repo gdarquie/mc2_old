@@ -26,14 +26,15 @@ class Stagenumber
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="order", type="integer", nullable=true)
+     * @ORM\Column(name="rank", type="integer", nullable=true)
      */
     private $order;
 
@@ -199,8 +200,8 @@ class Stagenumber
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="choregrapherStagenumber")
-     * @ORM\JoinTable(name="stagenumber_has_choreographer",
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="performersStagenumber")
+     * @ORM\JoinTable(name="stagenumber_has_performer",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
@@ -209,7 +210,7 @@ class Stagenumber
      *   }
      * )
      */
-    private $choreographers;
+    private $performers;
 
     /** @var  \AppBundle\Entity\Thesaurus
      *
@@ -668,19 +669,19 @@ class Stagenumber
     }
 
     /**
-     * @return mixed
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getChoreographers()
+    public function getPerformers()
     {
-        return $this->choreographers;
+        return $this->performers;
     }
 
     /**
-     * @param mixed $choreographers
+     * @param \Doctrine\Common\Collections\Collection $performers
      */
-    public function setChoreographers($choreographers)
+    public function setPerformers($performers)
     {
-        $this->choreographers = $choreographers;
+        $this->performers = $performers;
     }
 
     /**
@@ -699,5 +700,9 @@ class Stagenumber
         $this->cast = $cast;
     }
 
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 
 }

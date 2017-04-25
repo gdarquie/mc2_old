@@ -39,6 +39,13 @@ class Stageshow
     private $production;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=500, nullable=true)
+     */
+    private $code;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="opening", type="date", nullable=true)
@@ -526,6 +533,22 @@ class Stageshow
     public function setStagenumbers($stagenumbers)
     {
         $this->stagenumbers = $stagenumbers;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
     }
 
     public function __toString()

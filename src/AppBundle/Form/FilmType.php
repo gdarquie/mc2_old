@@ -17,6 +17,9 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use AppBundle\Repository\ThesaurusRepository;
 use AppBundle\Repository\PersonRepository;
 use AppBundle\Repository\StageshowRepository;
+use AppBundle\Repository\StudioRepository;
+use AppBundle\Repository\CensorshipRepository;
+use AppBundle\Repository\StateRepository;
 
 use AppBundle\Entity\Stageshow;
 use AppBundle\Entity\Thesaurus;
@@ -79,7 +82,17 @@ class FilmType extends AbstractType
             ->add('harrisson')
             ->add('bord')
             ->add('underscoring')
-            ->add('censorship')
+            ->add('censorship'
+                , EntityType::class, array(
+                    'class' => 'AppBundle:Censorship',
+                    'multiple' => true,
+//                'empty_data' => null,
+                    'choice_label' => 'title',
+                    'query_builder' => function(CensorshipRepository $repo) {
+                        return $repo->createAlphabeticalQueryBuilder();
+                    }
+                )
+            )
             ->add('producers'
                 , EntityType::class, array(
                     'class' => 'AppBundle:Person',
@@ -122,8 +135,29 @@ class FilmType extends AbstractType
                     "NA" => "NA"
                 )))
 //            ->add('isComplete')
-            ->add('studios')
-            ->add('state')
+//            ->add('studios')
+            ->add('studios'
+                , EntityType::class, array(
+                    'class' => 'AppBundle:Studio',
+                    'multiple' => true,
+//                'empty_data' => null,
+                    'choice_label' => 'title',
+                    'query_builder' => function(StudioRepository $repo) {
+                        return $repo->createAlphabeticalQueryBuilder();
+                    }
+                )
+            )
+            ->add('state'
+                , EntityType::class, array(
+                    'class' => 'AppBundle:State',
+                    'multiple' => true,
+//                'empty_data' => null,
+                    'choice_label' => 'title',
+                    'query_builder' => function(StateRepository $repo) {
+                        return $repo->createAlphabeticalQueryBuilder();
+                    }
+                )
+            )
 
         ;
     }
