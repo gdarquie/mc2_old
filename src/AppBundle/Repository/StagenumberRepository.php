@@ -25,7 +25,7 @@ class StagenumberRepository extends EntityRepository
             ->where('stagenumber.selected = :selected')
             ->setParameter('selected', true)
             ->orderBy('stagenumber.title', 'ASC')
-            ->setMaxResults(100);
+            ->setMaxResults(5000);
     }
 
 }

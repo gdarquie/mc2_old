@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73570d6e-9db4-42de-8645-db93b49ffcf6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/film.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/film.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Number.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Number.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Stagenumber.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Stagenumber.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/NumberType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/NumberType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/stageshow/index.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/stageshow/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CmsBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/CmsBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Number/_form.html.twig" afterPath="$PROJECT_DIR$/src/CmsBundle/Resources/views/Number/_form.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/StagenumberRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/StagenumberRepository.php" />
     </list>
     <ignored path="application.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,21 +44,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FilmType.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FilmType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/FilmType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="58" column="26" lean-forward="false" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="26" />
+            <state relative-caret-position="354">
+              <caret line="66" column="14" lean-forward="true" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StagenumberRepository.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StagenumberRepository.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/StagenumberRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="405">
+              <caret line="27" column="29" lean-forward="false" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -161,7 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>graph</find>
       <find>quot</find>
       <find>film</find>
       <find>stageshow</find>
@@ -191,6 +182,7 @@
       <find>stagesho</find>
       <find>stagenum</find>
       <find>editors</find>
+      <find>adaptat</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -244,12 +236,12 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Stagenumber.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/SongRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/NumberType.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Repository/StagenumberRepository.php" />
         <option value="$PROJECT_DIR$/src/CmsBundle/Resources/views/Number/_form.html.twig" />
         <option value="$PROJECT_DIR$/src/CmsBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Number.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/film.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/stageshow/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Repository/StagenumberRepository.php" />
       </list>
     </option>
   </component>
@@ -1005,12 +997,12 @@
       <workItem from="1492672363148" duration="14398000" />
       <workItem from="1492770045271" duration="4372000" />
       <workItem from="1493198229876" duration="42000" />
-      <workItem from="1493281472796" duration="6777000" />
+      <workItem from="1493281472796" duration="7062000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="715317000" />
+    <option name="totallyTimeSpent" value="715602000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="all">
@@ -1404,14 +1396,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/StagenumberRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CmsBundle/Resources/views/Number/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
@@ -1465,8 +1449,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/FilmType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="58" column="26" lean-forward="false" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="26" />
+        <state relative-caret-position="354">
+          <caret line="66" column="14" lean-forward="true" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/StagenumberRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="29" lean-forward="false" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
           <folding />
         </state>
       </provider>
