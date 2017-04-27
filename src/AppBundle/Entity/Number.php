@@ -2759,6 +2759,15 @@ class Number
         return $this->editors;
     }
 
+    public function addEditors(User $user)
+    {
+        if ($this->editors->contains($user)) {
+            return;
+        }
+
+        $this->editors[] = $user;
+    }
+
     /**
      * @param \Doctrine\Common\Collections\Collection $editors
      */

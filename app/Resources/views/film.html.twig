@@ -44,7 +44,7 @@
         </div>
 
         <div class="col s6">
-            <p><strong>Director :</strong> {% for director in film.directors  %}{{ director.title }}{%  if loop.last %}{% else %} ;{% endif %}{% endfor %}</p>
+            <p><strong>Director :</strong> {% for director in film.directors  %}{{ director.name }}{%  if loop.last %}{% else %} ;{% endif %}{% endfor %}</p>
             <p><strong>Released :</strong> {{ film.released }}</p>
         </div>
     </div>

@@ -2,6 +2,8 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Stagenumber;
+use AppBundle\Repository\StagenumberRepository;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -397,7 +399,6 @@ class NumberType extends AbstractType
 //            ->add('validationDance')
 
             //Music
-                //todo : mettre les songs par ordre alpha + enlever placehodler
             ->add('song', EntityType::class, array(
                 'class' => 'AppBundle:Song',
                 'multiple' => true,
@@ -514,8 +515,16 @@ class NumberType extends AbstractType
                 },
                 'empty_data' => null,
             ))
-//            ->add('stagenumbers')
-
+            ->add('stagenumbers', EntityType::class, array(
+                'class' => 'AppBundle:Stagenumber',
+                'multiple' => true,
+                'empty_data' => null,
+                'choice_label' => 'title',
+                'query_builder' => function(StagenumberRepository $repo) {
+                    return $repo->createAlphabeticalQueryBuilder();
+                    //return $repo->findAllOrderdByTitleWhereSelected();
+                },
+            ))
 
 
         ;

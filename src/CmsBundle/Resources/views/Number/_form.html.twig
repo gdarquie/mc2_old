@@ -2,6 +2,8 @@
 
 	<h3>Title</h3>
 
+    {{ form_errors(numberForm) }}
+
 	{{form_row(numberForm.title)}}
 
 	{#{{form_row(numberForm.film)}}#}
@@ -293,8 +295,9 @@
 	<h3>Dance</h3>
 
 	{{form_row(numberForm.choregraphers, {
-		'label' : "Choregraphers"
+		label : "Choreographers"
 	})}}
+    {#{{ dump(numberForm.choregraphers.vars) }}#}
 	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
 
 
@@ -369,10 +372,9 @@
 		'label' : "(from thesaurus) (mandatory) (1 choice)"
 	})}}
 
-	{# Corriger bugs avec stagenumber puis remettre #}
-    {#{{ form_row(numberForm.stagenumbers, {#}
-        {#'label' : "Original stage number (if relevant)"#}
-	{#})}}#}
+    {{ form_row(numberForm.stagenumbers, {
+        'label' : "Original stage number (if relevant)"
+	})}}
 
 	{{ form_label(numberForm.commentReference, 'Details of the source (title of the stage show...)') }}
 	{{ form_widget(numberForm.commentReference, {

@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Stagenumber
  *
  * @ORM\Table(name="stagenumber")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\StagenumberRepository")
  */
 class Stagenumber
 {
@@ -220,6 +220,13 @@ class Stagenumber
      * })
      */
     private $cast;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="selected", type="boolean", nullable=true)
+     */
+    private $selected;
 
     /**
      * @var string
@@ -723,6 +730,21 @@ class Stagenumber
         $this->code = $code;
     }
 
+    /**
+     * @return bool
+     */
+    public function isSelected()
+    {
+        return $this->selected;
+    }
+
+    /**
+     * @param bool $selected
+     */
+    public function setSelected($selected)
+    {
+        $this->selected = $selected;
+    }
 
 
     public function __toString()
