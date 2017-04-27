@@ -195,4 +195,108 @@ class ScenarioController extends Controller
         ));
 
     }
+
+    /**
+     * @Route("/scenario/person/{name}", name = "scenario_person")
+     */
+    public function mermanAction($name){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.performers p WHERE p.name = :person");
+        $query->setParameter('person', $name );
+        $numbers = $query->getResult();
+
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, p.title FROM AppBundle:Number n JOIN n.performance_thesaurus p GROUP BY p.title ");
+        $performances = $query->getResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.performers p WHERE p.name = :person GROUP BY t.title ");
+        $query->setParameter('person', $name );
+        $performance = $query->getResult();
+
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p GROUP BY t.title");
+        $structures = $query->getResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.name = :person GROUP BY t.title ");
+        $query->setParameter('person', $name );
+        $structure = $query->getResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
+        $genres = $query->getResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p WHERE p.name = :person GROUP BY t.title ORDER BY nb DESC");
+        $query->setParameter('person', $name );
+        $genre = $query->getResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
+        $sources = $query->getResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p WHERE p.name = :person GROUP BY t.title ORDER BY nb DESC");
+        $query->setParameter('person', $name );
+        $source = $query->getResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.dancingType t JOIN n.performers p WHERE p.name = :person GROUP BY t.title ORDER BY nb DESC");
+        $query->setParameter('person', $name );
+        $dancing = $query->getResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.musical_thesaurus t JOIN n.performers p WHERE p.name = :person GROUP BY t.title ORDER BY nb DESC");
+        $query->setParameter('person', $name );
+        $musical = $query->getResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.name = :person GROUP BY t.title ORDER BY nb DESC");
+        $query->setParameter('person', $name );
+        $completeness = $query->getResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.name = :person");
+        $query->setParameter('person', $name );
+        $completes = $query->getSingleResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.name = :person AND t.title = :complete");
+        $query->setParameter('person', $name );
+        $query->setParameter('complete', 'complete' );
+        $complete = $query->getSingleResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.completOptions t JOIN n.performers p WHERE p.name = :person AND t.title = :occurences");
+        $query->setParameter('person', $name );
+        $query->setParameter('occurences', 'multiple occurrences of a song or partial reprise' );
+        $occurences = $query->getSingleResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.completOptions t JOIN n.performers p WHERE p.name = :person");
+        $query->setParameter('person', $name );
+        $completOptions = $query->getSingleResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
+        $diegetics = $query->getResult();
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.name = :person GROUP BY t.title ORDER BY nb DESC");
+        $query->setParameter('person', $name );
+        $diegetic = $query->getResult();
+
+
+        return $this->render('AppBundle:scenario:merman/index.html.twig', array(
+            'numbers' => $numbers,
+            'performances' => $performances,
+            'performance' => $performance,
+            'name' => $name,
+            'structure' => $structure,
+            'structures' => $structures,
+            'genres' => $genres,
+            'genre' => $genre,
+            'source' => $source,
+            'sources' => $sources,
+            'dancing' => $dancing,
+            'musical' => $musical,
+            'completeness' => $completeness,
+            'completes' => $completes,
+            'complete' => $complete,
+            'occurences' => $occurences,
+            'completOptions' => $completOptions,
+            'diegetic' => $diegetic,
+            'diegetics' => $diegetics
+        ));
+
+    }
+
 }
