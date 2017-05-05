@@ -3,13 +3,14 @@
 {% block body %}
 
     <section class="container">
-        <h1>Scenario Merman</h1>
+        <h1>{{ name|upper }}</h1>
 
 
         <article class="card row">
             <div class="col s12">
                 <h2>Numbers</h2>
 
+                <p>La liste des numbers où {{ name }} apparait.</p>
                 <p><span class="number">{{ numbers|length }}</span> numbers</p>
 
                 {% for item in numbers  %}
@@ -22,27 +23,28 @@
         <article class="card row">
             <div class="col s12">
 
-                <h2>Liste des films</h2>
+                <h2>Temps de présence du performer dans les numbers </h2>
 
-                {% for item in filmsWithPerson  %}
-                    {{ item.filmId }}
-                {% endfor %}
 
-                <h2>Temps de présence du performer</h2>
+                <p>Nombre de films avec des numbers où est présent(e) {{ name|capitalize }}: <span class="number">{{ lengthTotal|length}}</span></p>
 
-                <h3>Nombre de films avec des numbers</h3>
-                {{ lengthTotal|length}}
+
+                <h3>Liste des films ordonnés chronologiquement par film.released avec le total en seconde de la durée de tous les numbers du film (même ceux où {{ name }} n'est pas présent(e))</h3>
+
+
                 {% for item in lengthTotal  %}
                 <p>{{ item.title }}, total = {{ item.total }}</p>
                 {% endfor %}
 
-                {{ lengthTotalForPerson|length}}
+                <h3>Liste des films ordonnés chronologiquement par film.released avec le total en seconde de la durée des numbers du film où {{ name }} est présent(e)</h3>
+
                 {% for item in lengthTotalForPerson  %}
                     <p>{{ item.title }} : {{ item.total }}</p>
                 {% endfor %}
 
-                <h2>Ratio de la durée d'un performer/ durée total des numbers pour chaque film</h2>
+                <h3>Ratio de la durée d'un performer / durée totale des numbers pour chaque film </h3>
 
+                <p>Temps de présence dans les numbers de chaque film de {{ name }} (= ratio de number où {{ name }} est présent(e)</p>
                 {% for item in ratio  %}
                 <p>{{ item.title }}({{ item.released }}) : {{ ((item.one / item.all)*100)|round()  }}%</p>
                 {% endfor %}
@@ -79,7 +81,11 @@
 
                 <div class="row">
                     <div class="col s6">
+
+                        <p>Nb structures :  {{ structures_total.total }}</p>
+
                         <h3>All</h3>
+
                         {% for item in structures  %}
                             {{ item.title }}({{ item.nb }})
                         {% endfor %}

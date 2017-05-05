@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73570d6e-9db4-42de-8645-db93b49ffcf6" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_2ji1cfl66ihn6ljm2kfl1bnlt5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_9gk1sacmpf9h0m6mhre3fjrv13" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_avii67ebnhpf3crkc5icsmv1k4" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_fhdhs5sgv72nikpg7hc4vd1a96" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_jjlq4neqmnm94n82d2anh817d0" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_n324bvq8hgih9octahrop5s897" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_o2mnic3gj587162e3kpvn90lg6" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_q01jbq8sup14etpqvhnr4tvmj5" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_u7jvqsto33viivd03q0l2ice46" afterPath="$PROJECT_DIR$/var/sessions/dev/sess_u7jvqsto33viivd03q0l2ice46" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/merman/index.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/merman/index.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CmsBundle/Controller/EditorController.php" afterPath="$PROJECT_DIR$/src/CmsBundle/Controller/EditorController.php" />
     </list>
     <ignored path="application.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,11 +43,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ScenarioController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ScenarioController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="298" column="151" lean-forward="false" selection-start-line="298" selection-start-column="151" selection-end-line="298" selection-end-column="151" />
+            <state relative-caret-position="220">
+              <caret line="222" column="25" lean-forward="false" selection-start-line="222" selection-start-column="9" selection-end-line="222" selection-end-column="25" />
               <folding>
                 <element signature="e#1382#1489#0#PHP" expanded="false" />
                 <element signature="e#1659#1788#0#PHP" expanded="false" />
@@ -50,51 +59,44 @@
                 <element signature="e#3809#3938#0#PHP" expanded="false" />
                 <element signature="e#6348#6581#0#PHP" expanded="false" />
                 <element signature="e#6795#6886#0#PHP" expanded="false" />
-                <marker date="1493994556000" expanded="false" signature="1220:1366" ph="SELECT n.tit... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="1886:2053" ph="SELECT n.tit... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="2591:2755" ph="SELECT n.tit... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="3284:3499" ph="SELECT s.tit... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="4660:4898" ph="SELECT n.num... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="5159:5375" ph="SELECT f.tit... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="6051:6197" ph="SELECT n FRO... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="6366:6579" ph="SELECT p.nam... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="7080:7183" ph="SELECT n FRO... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="7108:7183" ph="SELECT n FRO... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="7312:7414" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="7500:7645" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="7779:7889" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="7972:8105" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="8236:8359" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="8438:8584" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="8710:8844" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="8924:9081" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="9208:9360" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="9488:9646" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="9774:9936" ph="SELECT (SELE... " />
-                <marker date="1493994556000" expanded="true" signature="10069:10188" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="10324:10467" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="10657:10785" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="10657:10795" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="11030:11142" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="11283:11419" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="11501:11660" ph="SELECT COUNT... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="11790:11906" ph="SELECT DISTI... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="12191:12320" ph="SELECT SUM(n... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="12191:12366" ph="SELECT SUM((... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="12191:12390" ph="SELECT SUM((... AppBundle" />
-                <marker date="1493994556000" expanded="true" signature="12581:12789" ph="SELECT SUM((... AppBundle" />
-                <marker date="1493994556000" expanded="false" signature="13867:14026" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="false" signature="1220:1366" ph="SELECT n.tit... AppBundle" />
+                <marker date="1493999149000" expanded="false" signature="1886:2053" ph="SELECT n.tit... AppBundle" />
+                <marker date="1493999149000" expanded="false" signature="2591:2755" ph="SELECT n.tit... AppBundle" />
+                <marker date="1493999149000" expanded="false" signature="3284:3499" ph="SELECT s.tit... AppBundle" />
+                <marker date="1493999149000" expanded="false" signature="4660:4898" ph="SELECT n.num... AppBundle" />
+                <marker date="1493999149000" expanded="false" signature="5159:5375" ph="SELECT f.tit... AppBundle" />
+                <marker date="1493999149000" expanded="false" signature="6051:6197" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493999149000" expanded="false" signature="6366:6579" ph="SELECT p.nam... AppBundle" />
+                <marker date="1493999149000" expanded="false" signature="7080:7183" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493999149000" expanded="false" signature="7108:7183" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="7312:7414" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="7500:7645" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="7779:7889" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="7972:8078" ph="SELECT DISTI... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="8173:8306" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="8437:8560" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="8639:8785" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="8911:9045" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="9125:9282" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="9409:9561" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="9689:9847" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="9975:10137" ph="SELECT (SELE... " />
+                <marker date="1493999149000" expanded="true" signature="10270:10389" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="10525:10668" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="10858:10986" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="10858:10996" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="11231:11343" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="11484:11620" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="11702:11861" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="11991:12107" ph="SELECT DISTI... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="12392:12521" ph="SELECT SUM(n... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="12392:12567" ph="SELECT SUM((... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="12392:12591" ph="SELECT SUM((... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="12782:12990" ph="SELECT SUM((... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="13623:13688" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="true" signature="13623:13707" ph="SELECT COUNT... AppBundle" />
+                <marker date="1493999149000" expanded="false" signature="14265:14424" ph="SELECT COUNT... AppBundle" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NumberController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/NumberController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -102,32 +104,32 @@
       <file leaf-file-name="EditorController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CmsBundle/Controller/EditorController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-140">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="75">
+              <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding>
-                <marker date="1491147370000" expanded="true" signature="695:847" ph="SELECT f.fil... AppBundle" />
-                <marker date="1491147370000" expanded="true" signature="1169:1519" ph="SELECT n FRO... AppBundle" />
-                <marker date="1491147370000" expanded="true" signature="1629:1687" ph="SELECT n FRO... AppBundle" />
-                <marker date="1491147370000" expanded="true" signature="1800:1855" ph="SELECT n FRO... AppBundle" />
-                <marker date="1491147370000" expanded="true" signature="2076:2181" ph="SELECT n FRO... AppBundle" />
-                <marker date="1491147370000" expanded="true" signature="2329:2503" ph="SELECT f.fil... AppBundle" />
-                <marker date="1491147370000" expanded="true" signature="2809:2900" ph="SELECT n FRO... AppBundle" />
-                <marker date="1491147370000" expanded="true" signature="3145:3323" ph="SELECT f.fil... AppBundle" />
-                <marker date="1491147370000" expanded="true" signature="4410:4760" ph="SELECT n FRO... AppBundle" />
-                <marker date="1491147370000" expanded="true" signature="4870:4928" ph="SELECT n FRO... AppBundle" />
-                <marker date="1491147370000" expanded="true" signature="5041:5096" ph="SELECT n FRO... AppBundle" />
-                <marker date="1491147370000" expanded="true" signature="5317:5408" ph="SELECT n FRO... AppBundle" />
-                <marker date="1491147370000" expanded="true" signature="5575:5690" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="695:847" ph="SELECT f.fil... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="1169:1519" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="1629:1687" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="1800:1855" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="2076:2181" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="2329:2503" ph="SELECT f.fil... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="2809:2900" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="3145:3323" ph="SELECT f.fil... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="4411:4761" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="4871:4929" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="5042:5097" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="5318:5409" ph="SELECT n FRO... AppBundle" />
+                <marker date="1493998419000" expanded="true" signature="5576:5691" ph="SELECT n FRO... AppBundle" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/merman/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="46" column="102" lean-forward="false" selection-start-line="46" selection-start-column="102" selection-end-line="46" selection-end-column="102" />
+            <state relative-caret-position="180">
+              <caret line="88" column="46" lean-forward="false" selection-start-line="88" selection-start-column="39" selection-end-line="88" selection-end-column="46" />
               <folding>
                 <element signature="e#12#26#0#Twig" expanded="true" />
               </folding>
@@ -189,8 +191,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>stagesh</find>
-      <find>number</find>
       <find>cast</find>
       <find>code</find>
       <find>Stage</find>
@@ -214,11 +214,13 @@
       <find>datepicker</find>
       <find>format</find>
       <find>fils</find>
-      <find>beginTc</find>
       <find>, n.numberId&quot;</find>
       <find>z</find>
       <find>$query-&gt;setParameter('film', $filmsWithPerson );</find>
+      <find>beginTc</find>
       <find>x</find>
+      <find>structu</find>
+      <find>structures_total</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -227,7 +229,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Link.php" />
         <option value="$PROJECT_DIR$/src/CmsBundle/Resources/views/Song/_form.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/song/song.html.twig" />
         <option value="$PROJECT_DIR$/src/CmsBundle/Resources/views/Stageshow/new.html.twig" />
@@ -276,8 +277,9 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/List.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Cart.php" />
         <option value="$PROJECT_DIR$/src/CmsBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" />
+        <option value="$PROJECT_DIR$/src/CmsBundle/Controller/EditorController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/merman/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" />
       </list>
     </option>
   </component>
@@ -290,8 +292,8 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1680" />
-    <option name="height" value="1023" />
+    <option name="width" value="1440" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -457,118 +459,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scenario" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scenario" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="merman" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AppBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -1011,12 +901,12 @@
       <workItem from="1493378629543" duration="1894000" />
       <workItem from="1493628071350" duration="3000" />
       <workItem from="1493628078894" duration="213000" />
-      <workItem from="1493973771239" duration="13285000" />
+      <workItem from="1493973771239" duration="15610000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="737123000" />
+    <option name="totallyTimeSpent" value="739448000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="all">
@@ -1025,10 +915,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="1023" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21672772" sideWeight="0.49624062" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2539342" sideWeight="0.49624062" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867885" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1427,14 +1317,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="1003" column="22" lean-forward="false" selection-start-line="1003" selection-start-column="15" selection-end-line="1003" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CmsBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="61">
@@ -1446,25 +1328,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CmsBundle/Controller/EditorController.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-140">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1491147370000" expanded="true" signature="695:847" ph="SELECT f.fil... AppBundle" />
-            <marker date="1491147370000" expanded="true" signature="1169:1519" ph="SELECT n FRO... AppBundle" />
-            <marker date="1491147370000" expanded="true" signature="1629:1687" ph="SELECT n FRO... AppBundle" />
-            <marker date="1491147370000" expanded="true" signature="1800:1855" ph="SELECT n FRO... AppBundle" />
-            <marker date="1491147370000" expanded="true" signature="2076:2181" ph="SELECT n FRO... AppBundle" />
-            <marker date="1491147370000" expanded="true" signature="2329:2503" ph="SELECT f.fil... AppBundle" />
-            <marker date="1491147370000" expanded="true" signature="2809:2900" ph="SELECT n FRO... AppBundle" />
-            <marker date="1491147370000" expanded="true" signature="3145:3323" ph="SELECT f.fil... AppBundle" />
-            <marker date="1491147370000" expanded="true" signature="4410:4760" ph="SELECT n FRO... AppBundle" />
-            <marker date="1491147370000" expanded="true" signature="4870:4928" ph="SELECT n FRO... AppBundle" />
-            <marker date="1491147370000" expanded="true" signature="5041:5096" ph="SELECT n FRO... AppBundle" />
-            <marker date="1491147370000" expanded="true" signature="5317:5408" ph="SELECT n FRO... AppBundle" />
-            <marker date="1491147370000" expanded="true" signature="5575:5690" ph="SELECT n FRO... AppBundle" />
-          </folding>
+        <state relative-caret-position="404">
+          <caret line="1003" column="22" lean-forward="false" selection-start-line="1003" selection-start-column="15" selection-end-line="1003" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1476,10 +1344,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/CmsBundle/Controller/EditorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding>
+            <marker date="1493998419000" expanded="true" signature="695:847" ph="SELECT f.fil... AppBundle" />
+            <marker date="1493998419000" expanded="true" signature="1169:1519" ph="SELECT n FRO... AppBundle" />
+            <marker date="1493998419000" expanded="true" signature="1629:1687" ph="SELECT n FRO... AppBundle" />
+            <marker date="1493998419000" expanded="true" signature="1800:1855" ph="SELECT n FRO... AppBundle" />
+            <marker date="1493998419000" expanded="true" signature="2076:2181" ph="SELECT n FRO... AppBundle" />
+            <marker date="1493998419000" expanded="true" signature="2329:2503" ph="SELECT f.fil... AppBundle" />
+            <marker date="1493998419000" expanded="true" signature="2809:2900" ph="SELECT n FRO... AppBundle" />
+            <marker date="1493998419000" expanded="true" signature="3145:3323" ph="SELECT f.fil... AppBundle" />
+            <marker date="1493998419000" expanded="true" signature="4411:4761" ph="SELECT n FRO... AppBundle" />
+            <marker date="1493998419000" expanded="true" signature="4871:4929" ph="SELECT n FRO... AppBundle" />
+            <marker date="1493998419000" expanded="true" signature="5042:5097" ph="SELECT n FRO... AppBundle" />
+            <marker date="1493998419000" expanded="true" signature="5318:5409" ph="SELECT n FRO... AppBundle" />
+            <marker date="1493998419000" expanded="true" signature="5576:5691" ph="SELECT n FRO... AppBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/merman/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="88" column="46" lean-forward="false" selection-start-line="88" selection-start-column="39" selection-end-line="88" selection-end-column="46" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="298" column="151" lean-forward="false" selection-start-line="298" selection-start-column="151" selection-end-line="298" selection-end-column="151" />
+        <state relative-caret-position="220">
+          <caret line="222" column="25" lean-forward="false" selection-start-line="222" selection-start-column="9" selection-end-line="222" selection-end-column="25" />
           <folding>
             <element signature="e#1382#1489#0#PHP" expanded="false" />
             <element signature="e#1659#1788#0#PHP" expanded="false" />
@@ -1491,50 +1391,43 @@
             <element signature="e#3809#3938#0#PHP" expanded="false" />
             <element signature="e#6348#6581#0#PHP" expanded="false" />
             <element signature="e#6795#6886#0#PHP" expanded="false" />
-            <marker date="1493994556000" expanded="false" signature="1220:1366" ph="SELECT n.tit... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="1886:2053" ph="SELECT n.tit... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="2591:2755" ph="SELECT n.tit... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="3284:3499" ph="SELECT s.tit... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="4660:4898" ph="SELECT n.num... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="5159:5375" ph="SELECT f.tit... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="6051:6197" ph="SELECT n FRO... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="6366:6579" ph="SELECT p.nam... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="7080:7183" ph="SELECT n FRO... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="7108:7183" ph="SELECT n FRO... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="7312:7414" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="7500:7645" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="7779:7889" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="7972:8105" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="8236:8359" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="8438:8584" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="8710:8844" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="8924:9081" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="9208:9360" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="9488:9646" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="9774:9936" ph="SELECT (SELE... " />
-            <marker date="1493994556000" expanded="true" signature="10069:10188" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="10324:10467" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="10657:10785" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="10657:10795" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="11030:11142" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="11283:11419" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="11501:11660" ph="SELECT COUNT... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="11790:11906" ph="SELECT DISTI... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="12191:12320" ph="SELECT SUM(n... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="12191:12366" ph="SELECT SUM((... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="12191:12390" ph="SELECT SUM((... AppBundle" />
-            <marker date="1493994556000" expanded="true" signature="12581:12789" ph="SELECT SUM((... AppBundle" />
-            <marker date="1493994556000" expanded="false" signature="13867:14026" ph="SELECT COUNT... AppBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/merman/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="46" column="102" lean-forward="false" selection-start-line="46" selection-start-column="102" selection-end-line="46" selection-end-column="102" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
+            <marker date="1493999149000" expanded="false" signature="1220:1366" ph="SELECT n.tit... AppBundle" />
+            <marker date="1493999149000" expanded="false" signature="1886:2053" ph="SELECT n.tit... AppBundle" />
+            <marker date="1493999149000" expanded="false" signature="2591:2755" ph="SELECT n.tit... AppBundle" />
+            <marker date="1493999149000" expanded="false" signature="3284:3499" ph="SELECT s.tit... AppBundle" />
+            <marker date="1493999149000" expanded="false" signature="4660:4898" ph="SELECT n.num... AppBundle" />
+            <marker date="1493999149000" expanded="false" signature="5159:5375" ph="SELECT f.tit... AppBundle" />
+            <marker date="1493999149000" expanded="false" signature="6051:6197" ph="SELECT n FRO... AppBundle" />
+            <marker date="1493999149000" expanded="false" signature="6366:6579" ph="SELECT p.nam... AppBundle" />
+            <marker date="1493999149000" expanded="false" signature="7080:7183" ph="SELECT n FRO... AppBundle" />
+            <marker date="1493999149000" expanded="false" signature="7108:7183" ph="SELECT n FRO... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="7312:7414" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="7500:7645" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="7779:7889" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="7972:8078" ph="SELECT DISTI... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="8173:8306" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="8437:8560" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="8639:8785" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="8911:9045" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="9125:9282" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="9409:9561" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="9689:9847" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="9975:10137" ph="SELECT (SELE... " />
+            <marker date="1493999149000" expanded="true" signature="10270:10389" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="10525:10668" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="10858:10986" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="10858:10996" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="11231:11343" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="11484:11620" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="11702:11861" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="11991:12107" ph="SELECT DISTI... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="12392:12521" ph="SELECT SUM(n... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="12392:12567" ph="SELECT SUM((... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="12392:12591" ph="SELECT SUM((... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="12782:12990" ph="SELECT SUM((... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="13623:13688" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="true" signature="13623:13707" ph="SELECT COUNT... AppBundle" />
+            <marker date="1493999149000" expanded="false" signature="14265:14424" ph="SELECT COUNT... AppBundle" />
           </folding>
         </state>
       </provider>

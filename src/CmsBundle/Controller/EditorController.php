@@ -77,6 +77,7 @@ class EditorController extends Controller
         $query->setParameter('user', $user );
         $mylastFilms = $query->getResult();
 
+
         return $this->render('CmsBundle:Editor:index.html.twig', array(
             'films' => $films,
             'numbers' => $numbers,

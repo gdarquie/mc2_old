@@ -219,6 +219,9 @@ class ScenarioController extends Controller
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p GROUP BY t.title");
         $structures = $query->getResult();
 
+        $query = $em->createQuery("SELECT DISTINCT(COUNT(n.numberId)) as total FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p");
+        $structures_total = $query->getSingleResult();
+
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.name = :person GROUP BY t.title ");
         $query->setParameter('person', $name );
         $structure = $query->getResult();
@@ -300,7 +303,10 @@ class ScenarioController extends Controller
             }
         }
 
-
+//        $query = $em->createQuery('SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.performers p HAVING COUNT(n) >2');
+//        $count = $query->getResult();
+//
+//        dump($count);die();
         //sum of the presence time of the interpret on the scene
 
         //plusieurs ration:
@@ -339,7 +345,9 @@ class ScenarioController extends Controller
             'lengthTotal' => $lengthTotal,
             'filmsWithPerson' => $filmsWithPerson,
             'lengthTotalForPerson' =>$lengthTotalForPerson,
-            'ratio' => $ratio
+            'ratio' => $ratio,
+            'name' => $name,
+            'structures_total' => $structures_total
         ));
 
     }
