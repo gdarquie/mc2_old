@@ -15,6 +15,39 @@
                 {% for item in numbers  %}
                     {{ item.title }}
                 {% endfor %}
+
+
+            </div>
+        </article>
+
+        <article class="card row">
+            <div class="col s12">
+
+                <h2>Liste des films</h2>
+
+                {% for item in filmsWithPerson  %}
+                    {{ item.filmId }}
+                {% endfor %}
+
+                <h2>Temps de présence du performer</h2>
+
+                <h3>Nombre de films avec des numbers</h3>
+                {{ lengthTotal|length}}
+                {% for item in lengthTotal  %}
+                <p>{{ item.title }}, total = {{ item.total }}</p>
+                {% endfor %}
+
+                {{ lengthTotalForPerson|length}}
+                {% for item in lengthTotalForPerson  %}
+                    <p>{{ item.title }} : {{ item.total }}</p>
+                {% endfor %}
+
+                <h2>Ratio de la durée d'un performer/ durée total des numbers pour chaque film</h2>
+
+                {% for item in ratio  %}
+                <p>{{ item.title }} : {{ ((item.one / item.all)*100)|round(2, 'floor')  }}%</p>
+                {% endfor %}
+
             </div>
         </article>
 

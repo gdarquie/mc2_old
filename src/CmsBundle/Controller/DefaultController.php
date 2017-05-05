@@ -77,19 +77,9 @@ class DefaultController extends Controller
              //all films
              $film = $em->getRepository('AppBundle:Film')->findOneByFilmId($filmId);
 
-             //add user
-//             $collection = new \Doctrine\Common\Collections\ArrayCollection();
-
              $user = $this->getUser();
-//             $collection->add($user);
-             $number->addEditors($user);
-
-
-//             dump($collection);die;
-//             dump(new \DateTime());die;
-
              $number->setFilm($film);
-             $number->setEditors($collection);
+             $number->addEditors($user);
 
              $now = new \DateTime();
              $number->setDateCreation($now);
