@@ -16,7 +16,6 @@
                     {{ item.title }}
                 {% endfor %}
 
-
             </div>
         </article>
 
@@ -45,7 +44,7 @@
                 <h2>Ratio de la durée d'un performer/ durée total des numbers pour chaque film</h2>
 
                 {% for item in ratio  %}
-                <p>{{ item.title }} : {{ ((item.one / item.all)*100)|round(2, 'floor')  }}%</p>
+                <p>{{ item.title }}({{ item.released }}) : {{ ((item.one / item.all)*100)|round()  }}%</p>
                 {% endfor %}
 
             </div>

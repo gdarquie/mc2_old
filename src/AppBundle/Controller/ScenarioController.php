@@ -281,12 +281,12 @@ class ScenarioController extends Controller
 //        $filmsWithPerson = [4349,4606,4690,5030];
 
         //total des durées des numbers pour chaque film avec person (pourquoi HAVING marche pas)
-        $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.title as title FROM AppBundle:Film f JOIN f.numbers n WHERE f.filmId IN (:film) GROUP BY f.filmId ORDER BY f.title ASC");
+        $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.length as length, f.title as title, f.released FROM AppBundle:Film f JOIN f.numbers n WHERE f.filmId IN (:film) GROUP BY f.filmId ORDER BY f.released ASC");
 //        $query->setParameter('person', $name );
         $query->setParameter('film', $filmsWithPerson );
         $lengthTotal = $query->getResult();
 
-        $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.title as title FROM AppBundle:Number n JOIN n.performers p JOIN n.film f WHERE p.name = :person  AND f.filmId IN (:film) GROUP BY f.filmId ORDER BY f.title ASC");
+        $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.title as title FROM AppBundle:Number n JOIN n.performers p JOIN n.film f WHERE p.name = :person  AND f.filmId IN (:film) GROUP BY f.filmId ORDER BY f.released ASC");
         $query->setParameter('person', $name );
         $query->setParameter('film', $filmsWithPerson );
         $lengthTotalForPerson = $query->getResult();
@@ -296,7 +296,7 @@ class ScenarioController extends Controller
             $ratio = [];
             for ($i = 0; $i < count($lengthTotalForPerson); $i++) {
 
-                array_push($ratio, array("all" => $lengthTotal[$i]['total'], "title" => $lengthTotal[$i]['title'], "one" => $lengthTotalForPerson[$i]['total'] ));
+                array_push($ratio, array("all" => $lengthTotal[$i]['total'], "title" => $lengthTotal[$i]['title'], "length" => $lengthTotal[$i]['length'], "released" => $lengthTotal[$i]['released'], "one" => $lengthTotalForPerson[$i]['total'] ));
             }
         }
 
