@@ -216,10 +216,10 @@ class ScenarioController extends Controller
         $performance = $query->getResult();
 
 
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p GROUP BY t.title");
+        $query = $em->createQuery("SELECT COUNT(DISTINCT(n.numberId)) as nb, t.title FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p GROUP BY t.title");
         $structures = $query->getResult();
 
-        $query = $em->createQuery("SELECT DISTINCT(COUNT(n.numberId)) as total FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p");
+        $query = $em->createQuery("SELECT COUNT(DISTINCT(n.numberId)) as total FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p");
         $structures_total = $query->getSingleResult();
 
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.name = :person GROUP BY t.title ");
@@ -303,19 +303,14 @@ class ScenarioController extends Controller
             }
         }
 
-//        $query = $em->createQuery('SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.performers p HAVING COUNT(n) >2');
-//        $count = $query->getResult();
-//
-//        dump($count);die();
-        //sum of the presence time of the interpret on the scene
+        //durée moyenne pour d'un shot pour un number
+        $query = $em->createQuery("SELECT DISTINCT(n.numberId), AVG(n.shots) as average FROM AppBundle:Number n JOIN n.performers p WHERE p.name = :person");
+        $query->setParameter('person', $name );
+        $avgShotForPerson = $query->getResult();
+        //rapporter par rapport à la durée de plans
 
-        //plusieurs ration:
 
-        //faire un tableau avec toutes les données
-        //chiffres + ratio de numbers où elle est/ number du film
-        //chiffres + ratio de sum de la durée de tous les number d'une personne / sum de la durée des numbers du film
-        //classement ensuite des ratio
-        //moyenne globale de cette personne
+
 
         //une moyenne par films
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.name = :person GROUP BY t.title ORDER BY nb DESC");
@@ -347,7 +342,8 @@ class ScenarioController extends Controller
             'lengthTotalForPerson' =>$lengthTotalForPerson,
             'ratio' => $ratio,
             'name' => $name,
-            'structures_total' => $structures_total
+            'structures_total' => $structures_total,
+            'avgShotForPerson' => $avgShotForPerson
         ));
 
     }

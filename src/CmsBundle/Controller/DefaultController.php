@@ -77,7 +77,14 @@ class DefaultController extends Controller
              //all films
              $film = $em->getRepository('AppBundle:Film')->findOneByFilmId($filmId);
 
+             //calcule length
+             $begin = $number->getBeginTc();
+             $end = $number->getEndTc();
+             $length = $end-$begin;
+             $number->setLength($length);
+
              $user = $this->getUser();
+
              $number->setFilm($film);
              $number->addEditors($user);
 
@@ -117,21 +124,11 @@ class DefaultController extends Controller
         if ($form->isSubmitted() && $form->isValid()){
             // dump($form->getData());die;
 
-            $collection = new \Doctrine\Common\Collections\ArrayCollection();
-            $user = $this->getUser();
-
-//
-//            $query = $em->createQuery('SELECT n FROM AppBundle:Number n WHERE n.numberId = :numberId');
-//            $query->setParameter('numberId', $numberId );
-//             récupérer tous les user d'un number
-//
-//            $user = $query->getResult();
-
-//            $collection->add($user);
-
-            //récupérer les anciens user
-//            $number->setEditors($collection);
-
+            //calcule length
+            $begin = $number->getBeginTc();
+            $end = $number->getEndTc();
+            $length = $end-$begin;
+            $number->setLength($length);
 
             $user = $this->getUser();
             $number->addEditors($user);

@@ -149,10 +149,6 @@ class DefaultController extends Controller
         $query->setParameter('film', $film);
         $persons1Film = $query->getResult();
 
-        // //Length
-        // $query = $em->createQuery('SELECT l FROM AppBundle:Length l WHERE l.number = :number');
-        // $query->setParameter('number', $number);
-        // $length = $query->getResult();
 
         //All Persons
         $persons = $em->getRepository('AppBundle:Person')->findAll();

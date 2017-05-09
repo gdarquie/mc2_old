@@ -101,6 +101,16 @@
             </div>
         </article>
 
+
+        <article class="card row">
+            <div class="col s12">
+                <h2>Shots</h2>
+                {% for item in avgShotForPerson  %}
+                    {{ item.average }}
+                {% endfor %}
+            </div>
+        </article>
+
         <article class="card row">
             <div class="col s12">
                 <h2>Sources</h2>
