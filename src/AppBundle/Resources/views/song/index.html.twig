@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <section class="container">
+        <h1>Songs</h1>
+
+        <p>There are <span class="number">{{ songs|length }}</span> songs in the database.</p>
+
+        <table class="highlight tablesorter mini-table displaytable">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Nb of Numbers using this song</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in songs  %}
+                {% if item.title is not null %}
+                <tr>
+                    <td><a href="{{ path('song' , { 'songId' : item.songId }) }}">{{ item.title }}</a></td> <!-- lien vers une notice de stageshow -->
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.nb }}</td>
+                </tr>
+                {% else %}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </section>
+
+{% endblock %}
+

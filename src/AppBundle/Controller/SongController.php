@@ -13,10 +13,12 @@ class SongController extends Controller
     public function showAllAction(){
 
         $em = $this->getDoctrine()->getManager();
-        $songs = $em->getRepository('AppBundle:Song')->findAll();
 
+        $query = $em->createQuery("SELECT s.title as title, s.date as date, s.songId as songId, COUNT(n.numberId) as nb FROM AppBundle:Song s LEFT JOIN s.number n GROUP BY s.songId ORDER BY nb DESC");
+//        $query->setParameter('person', $name );
+        $songs = $query->getResult();
 
-        return $this->render('web/song/index.html.twig',array(
+        return $this->render('AppBundle:song:index.html.twig',array(
             'songs' => $songs
         ));
     }
