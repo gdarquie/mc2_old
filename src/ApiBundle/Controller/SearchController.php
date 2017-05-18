@@ -18,8 +18,8 @@ class SearchController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 //        $numbers = $em->getRepository('AppBundle:Number')->findAll();
-        $query = $em->createQuery("SELECT n FROM AppBundle:Number n");
-//        $query->setMaxResults(1000);
+        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.source_thesaurus t WHERE n.performance IS NOT NULL OR t.title IS NOT NULL");
+//        $query->setMaxResults(100);
         $numbers = $query->getResult();
 
         $query = $em->createQuery("SELECT DISTINCT(t.title) as title FROM AppBundle:Thesaurus t WHERE t.type = :source");
