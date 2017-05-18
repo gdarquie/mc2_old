@@ -106,39 +106,11 @@
 
           <h2>Lengths</h2>
 
-          <article class="card red accent-2 col s12 m6">
-            <div class="card-content white-text center-align">
-                <p class="center-align number">{{film.length}} sec</p>
-                <p class="center-align number-label">Movie Length</p>
-            </div>
-          </article>
-
-          <article class="card light-green col s12 m6">
-            <div class="card-content white-text center-align">
-                <p class="center-align number">{{((film.length)/60)|round}} min</p>
-                <p class="center-align number-label">Movie Length</p>
-            </div>
-          </article>
-
         <article class="card col cyan s12 m6">
             <div class="card-content white-text center-align">
                 <p class="center-align number">   {% for number in numberSumLength %}
-              {% if number.total > 0 %}
-              {{(number.total/60)|round}} min
-              {% else %}
-              <p>N/A</p>
-              {% endif %}
-
-            {% endfor %}</p>
-                <p class="center-align number-label">Sum of all numbers</p>
-            </div>
-        </article>
-
-        <article class="card cyan col s12 m6 deep-orange">
-            <div class="card-content white-text center-align">
-                <p class="center-align number">   {% for number in numberSumLength %}
                     {% if number.total > 0 %}
-                    {{(number.total)|round}} s
+                    {{(number.total/60)|round}} min
                     {% else %}
                 <p>N/A</p>
                 {% endif %}
@@ -148,29 +120,55 @@
             </div>
         </article>
 
-            <article class="card  deep-orange col s12 m12">
+            <article class="card light-green col s12 m6">
+                <div class="card-content white-text center-align">
+                    <p class="center-align number">{{((film.length)/60)|round}} min</p>
+                    <p class="center-align number-label">Movie Length</p>
+                </div>
+            </article>
+
+            <article class="card cyan col s12 m6 deep-orange">
+                <div class="card-content white-text center-align">
+                    <p class="center-align number">   {% for number in numberSumLength %}
+                        {% if number.total > 0 %}
+                        {{(number.total)|round}} s
+                        {% else %}
+                    <p>N/A</p>
+                    {% endif %}
+
+                    {% endfor %}</p>
+                    <p class="center-align number-label">Sum of all numbers</p>
+                </div>
+            </article>
+
+          <article class="card red accent-2 col s12 m6">
+            <div class="card-content white-text center-align">
+                <p class="center-align number">{{film.length}} sec</p>
+                <p class="center-align number-label">Movie Length</p>
+            </div>
+          </article>
+
+            <article class="card amber col s12 m12">
+                <div class="card-content white-text center-align">
+                    <p class="center-align number">{% for number in numberSumLength %}
+
+                        {% if number.total > 0 %}
+                        {{((number.total/number.length)*100)|round(2, 'floor') }}%
+                        {% else %}
+                    <p>N/A</p>
+                    {% endif %}
+
+                    {% endfor %}</p>
+                    <p class="center-align number-label">Ratio number/total length</p>
+                </div>
+            </article>
+
+            <article class="card  deep-orange col s12 m6">
                 <div class="card-content white-text center-align">
                     <p class="center-align number">{% for number in numberAverageLength %}{{number.average|round}} sec{% endfor %}</p>
                     <p class="center-align number-label">Average number length for {{film.title}}</p>
                 </div>
             </article>
-
-          <article class="card amber col s12 m6">
-            <div class="card-content white-text center-align">
-                <p class="center-align number">{% for number in numberSumLength %}
-
-              {% if number.total > 0 %}
-              {{((number.total/number.length)*100)|round(2, 'floor') }}%
-              {% else %}
-              <p>N/A</p>
-              {% endif %}
-
-            {% endfor %}</p>
-                <p class="center-align number-label">Ratio number/total length</p>
-            </div>
-          </article>
-
-
 
           <article class="card pink lighten-2 col s12 m6">
             <div class="card-content white-text center-align">
@@ -191,23 +189,11 @@
     </div>
 
     <hr>
-<article>
-  <h3>Pictures of numbers</h3>
-  <p>Soon...</p>
-</article>
 
-<article>
-  <h3>Persons linked</h3>
-  {% for person in persons1Film %}
-    {{person.personId}}
-  {% endfor %}
-
-</article>
-
-<article>
-  <h3>Graphe/ Timeline</h3>
-  <div id="visualization"></div>
-</article>
+    <article>
+      <h3>Graphe/ Timeline</h3>
+      <div id="visualization"></div>
+    </article>
 
 </div>
 

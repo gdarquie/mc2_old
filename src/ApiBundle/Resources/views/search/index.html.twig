@@ -1,0 +1,149 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+
+
+    <section class="container-fluid">
+
+        <div class="row">
+
+            <div class="col s5">
+
+                <form class="col s12">
+
+
+                    {% for item in sources %}
+                        <p>
+                            <input type="checkbox" id="{{ item.title|e('html') }}" />
+                            <label for="{{ item.title|e('html') }}">{{ item.title }}</label>
+                        </p>
+
+                    {% endfor %}
+
+
+                    <div class="input-field col s12">
+                        <select id="performance">
+                            <option value="" disabled selected>Select a performance</option>
+                            {% for item in performances %}
+                                <option value="{{ item.title|e('html') }}">{{ item.title|e('html') }}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Performances (1 choice)</label>
+                    </div>
+
+
+                    <!-- dropdown pour le reste -->
+
+                    {#<div class="input-field">#}
+                        {#<label for="numberId">Chercher un number par son id, par exemple 1123</label>#}
+                        {#<input id="numberId" type="text">#}
+                    {#</div>#}
+
+
+
+                    <a href="#" class="btn" id="filter">Cliquer</a>
+
+                </form>
+            </div>
+
+            <div class="col s7">
+                <div class="s12 card" id="resultat"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script>
+
+
+        var data = [
+            {% for number in numbers  %}
+            {
+                'id' : {{ number.numberId }},
+                'title' : '{{ number.title() }}',
+                'performance' : '{{ number.performanceThesaurus }}',
+                'sources' : [ {% for source in number.sourceThesaurus %}'{{source.title|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %} ],
+                'filmId' : '{{ number.film.filmId }}',
+                'film' : '{{ number.film.title }}',
+                'released' : {{ number.film.released }},
+                'choreographers' : [ {% for person in number.choregraphers %}'{{person.name|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %} ],
+                'performers' : [ {% for person in number.performers %}'{{person.name|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %} ],
+                'songs' : [ {% for item in number.song %}'{{item.title|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %} ]
+            }
+            {% if loop.last %}{% else %},{% endif %}
+            {% endfor %}
+
+        ];
+
+
+    //    $.grep( [{"name":"Lenovo Thinkpad 41A4298","website":"google"},{"name":"Lenovo Thinkpad 41A2222","website":"google"}], function( n, i ) {
+    //        return n.website==='google';
+    //    });
+
+        var _numberId = 980;
+
+        var _title = "Overture";
+
+//        var _performance = "song+dance";
+        var _performance = $('#performance').val();
+
+        var _source = "Adapted from a stage number of the same show";
+
+        console.log(data);
+
+        function filter(_numberId, _title, _performance){
+
+            var check = 0;
+
+            $.grep( data, function( n, i ) {
+                if (n.id === _numberId && n.title === _title && n.performance === _performance){
+//
+                //if n.source === _source && n.performance1 === _performance1 && n.performance2 === _performance2 && n.released > _begin && n.released > _end { _billet = "<div><h2>n.title</h2></div>";
+
+                    var billet = "<div><h2>"+n.title+"</h2>"+n.film+n.film.released+n.performance+"</div>" ;
+                    $("#resultat").html(billet);
+
+                }
+                return n.id===_numberId;
+            });
+
+        }
+
+        $("#filter").click(function(){
+            _performance = $('#performance').val();
+            filter(_numberId, _title, _performance);
+        });
+
+
+        $("#numberId").keyup(function(){
+            var input = $('#numberId').val();
+            console.log(parseInt(input));
+            filter(parseInt(input));
+        })
+
+        $("select").change(function(){
+            _performance = $('#performance').val();
+            alert(_performance);
+            filter(_numberId, _title, _performance);
+        })
+
+        $(document).ready(function() {
+            Materialize.updateTextFields();
+            $('select').material_select();
+
+        });
+
+    </script>
+
+{% endblock %}
+
+

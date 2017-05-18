@@ -2,8 +2,6 @@
 
 namespace ApiBundle\Controller;
 
-use AppBundle\Entity\Number;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
