@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73570d6e-9db4-42de-8645-db93b49ffcf6" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_67gdge33jmm7d2oqet2qfi5bp0" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_q44lh89oag8uel7cs3n5rla0p0" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_u7jvqsto33viivd03q0l2ice46" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_sog35haop2g47pof6vapj2vav5" afterPath="$PROJECT_DIR$/var/sessions/dev/sess_sog35haop2g47pof6vapj2vav5" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/film.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/film.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/web/number/number.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/number/number.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ApiBundle/Controller/ScenarioController.php" afterPath="$PROJECT_DIR$/src/ApiBundle/Controller/ScenarioController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_q44lh89oag8uel7cs3n5rla0p0" afterPath="$PROJECT_DIR$/var/sessions/dev/sess_q44lh89oag8uel7cs3n5rla0p0" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php" afterPath="$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ApiBundle/Resources/views/search/index.html.twig" afterPath="$PROJECT_DIR$/src/ApiBundle/Resources/views/search/index.html.twig" />
     </list>
     <ignored path="application.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,15 +41,15 @@
       <file leaf-file-name="SearchController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="44" lean-forward="false" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
+            <state relative-caret-position="315">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="38" />
               <folding>
                 <element signature="e#41#98#0#PHP" expanded="true" />
-                <element signature="e#1085#1119#0#PHP" expanded="true" />
-                <marker date="1495103107000" expanded="true" signature="498:530" ph="SELECT n FRO... AppBundle" />
-                <marker date="1495103107000" expanded="true" signature="645:646" ph="SELECT n.num... AppBundle" />
-                <marker date="1495103107000" expanded="true" signature="645:728" ph="SELECT DISTI... AppBundle" />
-                <marker date="1495103107000" expanded="true" signature="858:946" ph="SELECT DISTI... AppBundle" />
+                <element signature="e#1089#1123#0#PHP" expanded="true" />
+                <marker date="1495116643000" expanded="true" signature="498:530" ph="SELECT n FRO... AppBundle" />
+                <marker date="1495116643000" expanded="true" signature="649:650" ph="SELECT n.num... AppBundle" />
+                <marker date="1495116643000" expanded="true" signature="649:732" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495116643000" expanded="true" signature="862:950" ph="SELECT DISTI... AppBundle" />
               </folding>
             </state>
           </provider>
@@ -56,8 +58,8 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ApiBundle/Resources/views/search/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1554">
-              <caret line="113" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+            <state relative-caret-position="300">
+              <caret line="119" column="216" lean-forward="false" selection-start-line="119" selection-start-column="216" selection-end-line="119" selection-end-column="216" />
               <folding>
                 <element signature="e#12#26#0#Twig" expanded="true" />
               </folding>
@@ -79,7 +81,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>genre</find>
       <find>dancing</find>
       <find>musical</find>
       <find>completen</find>
@@ -107,8 +108,9 @@
       <find>source</find>
       <find>&quot;</find>
       <find>performance_</find>
-      <find>performer</find>
       <find>$n</find>
+      <find>numberId</find>
+      <find>performer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,8 +168,8 @@
         <option value="$PROJECT_DIR$/app/Resources/views/film.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/number/number.html.twig" />
         <option value="$PROJECT_DIR$/src/ApiBundle/Controller/ScenarioController.php" />
-        <option value="$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php" />
         <option value="$PROJECT_DIR$/src/ApiBundle/Resources/views/search/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php" />
       </list>
     </option>
   </component>
@@ -982,12 +984,12 @@
       <workItem from="1494926298851" duration="384000" />
       <workItem from="1494927384313" duration="592000" />
       <workItem from="1495025808587" duration="1730000" />
-      <workItem from="1495054983722" duration="15146000" />
+      <workItem from="1495054983722" duration="21664000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="766157000" />
+    <option name="totallyTimeSpent" value="772675000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="all">
@@ -1507,23 +1509,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="44" lean-forward="false" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
+        <state relative-caret-position="315">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="38" />
           <folding>
             <element signature="e#41#98#0#PHP" expanded="true" />
-            <element signature="e#1085#1119#0#PHP" expanded="true" />
-            <marker date="1495103107000" expanded="true" signature="498:530" ph="SELECT n FRO... AppBundle" />
-            <marker date="1495103107000" expanded="true" signature="645:646" ph="SELECT n.num... AppBundle" />
-            <marker date="1495103107000" expanded="true" signature="645:728" ph="SELECT DISTI... AppBundle" />
-            <marker date="1495103107000" expanded="true" signature="858:946" ph="SELECT DISTI... AppBundle" />
+            <element signature="e#1089#1123#0#PHP" expanded="true" />
+            <marker date="1495116643000" expanded="true" signature="498:530" ph="SELECT n FRO... AppBundle" />
+            <marker date="1495116643000" expanded="true" signature="649:650" ph="SELECT n.num... AppBundle" />
+            <marker date="1495116643000" expanded="true" signature="649:732" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495116643000" expanded="true" signature="862:950" ph="SELECT DISTI... AppBundle" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ApiBundle/Resources/views/search/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1554">
-          <caret line="113" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="119" column="216" lean-forward="false" selection-start-line="119" selection-start-column="216" selection-end-line="119" selection-end-column="216" />
           <folding>
             <element signature="e#12#26#0#Twig" expanded="true" />
           </folding>
