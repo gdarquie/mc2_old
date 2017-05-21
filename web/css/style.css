@@ -186,6 +186,10 @@ div .cut {
 	float : right;
 }
 
+/*Materialize black*/
+.mblack{
+	font-color: rgba(0, 0, 0, 0.87)!important;
+}
 /*#bar{*/
 	/*height:500px;*/
 	/*background :red;*/

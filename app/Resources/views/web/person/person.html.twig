@@ -2,10 +2,20 @@
 
 {% block stylesheets %}
     {{ parent() }}
+
+
+
+    <link rel="stylesheet" href="{{ asset('assets/vendor/jqcloud2/dist/jqcloud.min.css') }}">
     <style>
         .small-h1{
             font-size: 0.8em;
         }
+
+        .wordcloud{
+            height: 300px;
+        }
+
+
     </style>
 {% endblock %}
 
@@ -13,54 +23,116 @@
 
     <section class="container">
 
-        <article class="row">
+        <div class="card">
 
-            <h1>{{ person.name }} <span class="small-h1">{% if is_granted("ROLE_EDITOR") %} - <a href="{{ path('person_edit' , {"personId" : person.personId}) }}">edit</a>{% endif %}</span></h1>
-        </article>
+            <article>
 
-        <article class="card row">
-            <div class="col s12">
-            {#<p>First name : {{ person.firstname }}</p>#}
-            {#<p>Last name : {{ person.lastname }}</p>#}
-            <p>Gender : {{ person.gender }}</p>
+                <h1>{{ person.name }} <span class="small-h1">{% if is_granted("ROLE_EDITOR") %} - <a href="{{ path('person_edit' , {"personId" : person.personId}) }}">edit</a>{% endif %}</span></h1>
+
+                <div class="col s12">
+                    {#<p>First name : {{ person.firstname }}</p>#}
+                    {#<p>Last name : {{ person.lastname }}</p>#}
+                    <p>Gender : {{ person.gender }}</p>
+                    <p>Work as ...</p>
+                    <p>Work the more with ...</p>
+                </div>
+
+            </article>
+
+            <nav class="nav-extended">
+
+                <div class="nav-content">
+                    <ul class="tabs tabs-transparent">
+                        <li class="tab active"><a href="#tab1">Numbers</a></li>
+                        <li class="tab"><a href="#tab2">Films</a></li>
+                        <li class="tab"><a href="#tab3" id="lauchTopic">Topics and exoticisms</a></li>
+                        <li class="tab"><a href="#tab4">Presence</a></li>
+                        <li class="tab"><a href="#tab5">Others</a></li>
+                        {#<li class="tab"><a href="#tab6">Test 6</a></li>#}
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Tabs -->
+            <div id="tab1" class="col s12">
+
+                <!-- Numbers connected to the person -->
+                {% include ':web/person:_numbers.html.twig' %}
+
             </div>
-        </article>
 
-        <article class="card row">
-            <div class="col s12">
-                <h2>Numbers</h2>
+            <div id="tab2" class="col s12">
+                <!-- Films -->
 
-                <h3>Choregrapher</h3>
-
-                {% for item in person.numbersChoregrapher %}
-                    <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
-                {% endfor %}
-
-                <h3>Arranger</h3>
-
-                {% for item in person.numbersArranger %}
-                    <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
-                {% endfor %}
-
-                <h3>Director</h3>
-
-                {% for item in person.numbersDirector %}
-                    <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
-                {% endfor %}
-
-                <h3>Performer</h3>
-
-                {% for item in person.numbersPerformer %}
-                    <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
-                {% endfor %}
-
-                <h3>Numbers where s.he doesn't participate</h3>
-
-                {% for item in person.numbersFigurant %}
-                    <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
-                {% endfor %}
             </div>
-        </article>
+
+            <div id="tab3" class="col s12">
+                <!-- Topics & exoticisms -->
+                {% include ':web/person:_topics.html.twig' %}
+            </div>
+
+            <div id="tab4" class="col s12">
+                <!-- Calculations about time presence of the person -->
+                {% include ':web/person:_presence.html.twig' %}
+            </div>
+
+            <div id="tab5" class="col s12">
+                <!-- Others -->
+                {% include ':web/person:_others.html.twig' %}
+            </div>
+
+            {#<div id="tab6" class="col s12">#}
+
+            {#</div>#}
+
+        </div>
     </section>
 
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+
+        $( ".tab" ).tabs();
+        $('.tab').click(function(){
+
+            var words_genre = '';
+            var words_genres = '';
+            var words_mood = '';
+            var words_moods = '';
+            var words_exoticism = '';
+            var words_exoticisms = '';
+
+            words_genre = [{% for item in genres  %}{ text : "{{ item.title|raw }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+            $('#genres').jQCloud(words_genre);
+            $('#genres').jQCloud('update', words_genre);
+
+            words_genres = [{% for item in genre %}{ text : "{{ item.title|raw }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+            $('#genre').jQCloud(words_genres);
+            $('#genre').jQCloud('update', words_genres);
+
+            //moods
+            words_moods = [{% for item in moods  %}{ text : "{{ item.title }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+            $('#moods').jQCloud(words_moods);
+            $('#moods').jQCloud('update', words_moods);
+
+            words_mood = [{% for item in mood %}{ text : "{{ item.title }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+            $('#mood').jQCloud(words_mood);
+            $('#mood').jQCloud('update', words_mood);
+
+            //exoticism
+            words_exoticism = [{% for item in exoticisms  %}{ text : "{{ item.title|e('html') }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+            $('#exoticisms').jQCloud(words_exoticism);
+            $('#exoticisms').jQCloud('update', words_exoticism);
+
+            words_exoticism = [{% for item in exoticism %}{ text : "{{ item.title|e('html') }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+            $('#exoticism').jQCloud(words_exoticism);
+            $('#exoticism').jQCloud('update', words_exoticism);
+        });
+
+
+    </script>
 {% endblock %}

@@ -1,0 +1,184 @@
+<article class="card row">
+    <div class="col s12">
+        <h2>Ratio performance type</h2>
+        <div class="row">
+
+            <div class="col s6">
+                <h3>All</h3>
+                {% for item in performances  %}
+                    {{ item.title }}({{ item.nb }})<br>
+                {% endfor %}
+            </div>
+
+            <div class="col s6">
+                <h3>For {{ person.name }}</h3>
+                {% for item in performance  %}
+                    {{ item.title }}({{ item.nb }})<br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</article>
+
+<article class="card row">
+    <div class="col s12">
+        <h2>Structure</h2>
+
+        <div class="row">
+            <div class="col s6">
+
+                <p>Nb structures :  {{ structures_total.total }}</p>
+
+                <h3>All</h3>
+
+                {% for item in structures  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+
+            <div class="col s6">
+                <h3>For {{ person.name }}</h3>
+                {% for item in structure  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<article class="card row">
+    <div class="col s12">
+        <h2>Shots</h2>
+        {% for item in avgShotForPerson  %}
+            {{ item.average }}
+        {% endfor %}
+    </div>
+</article>
+
+<article class="card row">
+    <div class="col s12">
+        <h2>Sources</h2>
+
+        <div class="row">
+            <div class="col s6">
+                <h3>All</h3>
+                {% for item in sources  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+
+            <div class="col s6">
+                <h3>For {{ person.name }}</h3>
+                {% for item in source  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</article>
+
+<article class="card row">
+    <div class="col s12">
+        <h2>Diegetic</h2>
+
+        <div class="row">
+            <div class="col s6">
+                <h3>All</h3>
+                {% for item in diegetics  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+
+            <div class="col s6">
+                <h3>For {{ person.name  }}</h3>
+                {% for item in diegetic  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</article>
+
+<article class="card row">
+    <div class="col s12">
+        <h2>Dancing types</h2>
+
+        <div class="row">
+            <div class="col s12">
+                <h3>For {{ person.name  }}</h3>
+                {% for item in dancing  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</article>
+
+<article class="card row">
+    <div class="col s12">
+        <h2>Musical types</h2>
+
+        <div class="row">
+            <div class="col s12">
+                <h3>For {{ person.name  }}</h3>
+                {% for item in musical  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</article>
+
+<article class="card row">
+    <div class="col s12">
+        <h2>Completeness</h2>
+
+        <div class="row">
+            <div class="col s12">
+                <h3>For {{ person.name  }}</h3>
+                {% for item in completeness  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+
+            <div class="col s12">
+                <p>Ratio : {{ ((complete.nb * 100)/completes.nb) }}</p>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<article class="card row">
+    <div class="col s12">
+        <h2>Solos</h2>
+
+        <div class="row">
+            <div class="col s12">
+                <h3>Multiple occurences</h3>
+                <p>Ratio : {{ occurences.nb }} / {{ completOptions.nb }} = {{ ((occurences.nb * 100)/completOptions.nb) }}</p>
+            </div>
+
+        </div>
+    </div>
+</article>
+
+<article class="card row">
+    <div class="col s12">
+        <h2>Solos</h2>
+
+        <div class="row">
+            <div class="col s6">
+                <h3>All</h3>
+
+            </div>
+
+            <div class="col s6">
+                <h3>For {{ person.name  }}</h3>
+
+            </div>
+        </div>
+    </div>
+</article>
