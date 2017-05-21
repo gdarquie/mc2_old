@@ -19,7 +19,7 @@ class PersonController extends Controller
         $query = $em->createQuery("SELECT p FROM AppBundle:Person p");
         $persons = $query->getResult();
 
-        return $this->render('web/person/index.html.twig', array(
+        return $this->render('AppBundle:person:index.html.twig', array(
             "persons" => $persons
         ));
     }
@@ -38,7 +38,22 @@ class PersonController extends Controller
         //Get all numbers for the person
         $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId);
-        $numbers = $query->getResult();
+        $numbers_as_performers = $query->getResult();
+
+        //Get all numbers for the person
+        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.choregraphers p WHERE p.personId = :person");
+        $query->setParameter('person', $personId);
+        $numbers_as_choreographers = $query->getResult();
+
+        //Get all numberId for the person (as performers)
+        $query = $em->createQuery("SELECT n.numberId FROM AppBundle:Number n JOIN n.performers p WHERE p.personId = :person");
+        $query->setParameter('person', $personId);
+        $list_numberId = $query->getResult();
+
+        //AVG shot length
+        $query = $em->createQuery("SELECT (n.length)/10 FROM AppBundle:Number n JOIN n.performers p WHERE p.personId = :person");
+        $query->setParameter('person', $personId);
+        $shot_length = $query->getResult();
 
         //Get all Performances
         $query = $em->createQuery("SELECT COUNT(n) as nb, p.title FROM AppBundle:Number n JOIN n.performance_thesaurus p GROUP BY p.title ");
@@ -64,16 +79,20 @@ class PersonController extends Controller
 
 //        Topics part (genre, general_mood)
 
+        //All genres
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
         $genres = $query->getResult();
 
+        //Genre for the person
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $genre = $query->getResult();
 
+        //All moods
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.general_mood t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
         $moods = $query->getResult();
 
+        //Moods for the person
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.general_mood t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $mood = $query->getResult();
@@ -96,22 +115,27 @@ class PersonController extends Controller
         $query->setParameter('person', $personId );
         $source = $query->getResult();
 
+//      Dancing
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.dancingType t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $dancing = $query->getResult();
 
+//      Musical
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.musical_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $musical = $query->getResult();
 
+//      Completeness ???
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $completeness = $query->getResult();
 
+//      Completes ???
         $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId );
         $completes = $query->getSingleResult();
 
+//      Complete ???
         $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person AND t.title = :complete");
         $query->setParameter('person', $personId );
         $query->setParameter('complete', 'complete' );
@@ -138,7 +162,7 @@ class PersonController extends Controller
         $query = $em->createQuery("SELECT DISTINCT(f.filmId) as filmId FROM AppBundle:Number n JOIN n.film f JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId );
         $filmsWithPerson = $query->getResult();
-//        $filmsWithPerson = [4349,4606,4690,5030];
+////        $filmsWithPerson = [4349,4606,4690,5030];
 
         //total des durées des numbers pour chaque film avec person (pourquoi HAVING marche pas)
         $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.length as length, f.title as title, f.released FROM AppBundle:Film f JOIN f.numbers n WHERE f.filmId IN (:film) GROUP BY f.filmId ORDER BY f.released ASC");
@@ -172,9 +196,31 @@ class PersonController extends Controller
         $query->setParameter('person', $personId );
         $presence = $query->getResult();
 
-        return $this->render('web/person/person.html.twig', array(
+        //Average length a shot for a performer
+        $query = $em->createQuery("SELECT (SUM(n.length))/(SUM(n.shots)) as average FROM AppBundle:Number n JOIN n.performers p WHERE p.personId = :person");
+        $query->setParameter('person', $personId);
+        $avgLengthShot = $query->getSingleResult();
+
+        //Associated persons (à faire)
+
+        //choreographers
+        $query = $em->createQuery("SELECT p.name as name FROM AppBundle:Number n JOIN n.choregraphers p WHERE p.personId = :person GROUP BY p.name");
+        $query->setParameter('person', $personId);
+        $associated_choreographers = $query->getResult();
+
+        //composers
+        $query = $em->createQuery("SELECT n.title as number, s.title as song, c.name as name, c.personId as personId FROM AppBundle:Number n JOIN n.song s JOIN s.composer c JOIN n.performers p WHERE p.personId = :person");
+        $query->setParameter('person', $personId);
+        $associated_composers = $query->getResult();
+
+        //lyricists
+        $query = $em->createQuery("SELECT n.title as number, s.title as song, l.name as name, l.personId as personId FROM AppBundle:Number n JOIN n.song s JOIN s.lyricist l JOIN n.performers p WHERE p.personId = :person");
+        $query->setParameter('person', $personId);
+        $associated_lyricists = $query->getResult();
+
+        return $this->render('AppBundle:person:person.html.twig', array(
             'person' => $person,
-            'numbers' => $numbers,
+            'numbers_as_performers' => $numbers_as_performers,
             'performances' => $performances,
             'performance' => $performance,
             'structure' => $structure,
@@ -201,7 +247,13 @@ class PersonController extends Controller
             'moods' => $moods,
             'mood' => $mood,
             'exoticisms' => $exoticisms,
-            'exoticism' => $exoticism
+            'exoticism' => $exoticism,
+            '$list_numberId' => $list_numberId,
+            'shot_length' => $shot_length,
+            'avgLengthShot' => $avgLengthShot,
+            'associated_choreographers' => $associated_choreographers,
+            'associated_composers' => $associated_composers,
+            'associated_lyricists' => $associated_lyricists
         ));
     }
 

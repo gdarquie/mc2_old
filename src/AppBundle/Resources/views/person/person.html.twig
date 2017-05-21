@@ -12,9 +12,24 @@
         }
 
         .wordcloud{
-            height: 300px;
+            height: 500px;
         }
 
+        #mood, #moods{
+            height:200px;
+        }
+
+        #exoticism, #exoticisms{
+            height:300px;
+        }
+
+        #topics h2{
+            margin-top : 5px;
+        }
+
+        #topics h3{
+            margin-top : 2px;
+        }
 
     </style>
 {% endblock %}
@@ -34,7 +49,7 @@
                     {#<p>Last name : {{ person.lastname }}</p>#}
                     <p>Gender : {{ person.gender }}</p>
                     <p>Work as ...</p>
-                    <p>Work the more with ...</p>
+                    <p>Work the most with ...</p>
                 </div>
 
             </article>
@@ -47,8 +62,8 @@
                         <li class="tab"><a href="#tab2">Films</a></li>
                         <li class="tab"><a href="#tab3" id="lauchTopic">Topics and exoticisms</a></li>
                         <li class="tab"><a href="#tab4">Presence</a></li>
-                        <li class="tab"><a href="#tab5">Others</a></li>
-                        {#<li class="tab"><a href="#tab6">Test 6</a></li>#}
+                        <li class="tab"><a href="#tab5">Persons</a></li>
+                        <li class="tab"><a href="#tab6">Others</a></li>
                     </ul>
                 </div>
             </nav>
@@ -57,28 +72,33 @@
             <div id="tab1" class="col s12">
 
                 <!-- Numbers connected to the person -->
-                {% include ':web/person:_numbers.html.twig' %}
+                {% include 'AppBundle:person:_numbers.html.twig' %}
 
             </div>
 
             <div id="tab2" class="col s12">
                 <!-- Films -->
-
+                {% include 'AppBundle:person:_films.html.twig' %}
             </div>
 
             <div id="tab3" class="col s12">
                 <!-- Topics & exoticisms -->
-                {% include ':web/person:_topics.html.twig' %}
+                {% include 'AppBundle:person:_topics.html.twig' %}
             </div>
 
             <div id="tab4" class="col s12">
                 <!-- Calculations about time presence of the person -->
-                {% include ':web/person:_presence.html.twig' %}
+                {% include 'AppBundle:person:_presence.html.twig' %}
             </div>
 
             <div id="tab5" class="col s12">
                 <!-- Others -->
-                {% include ':web/person:_others.html.twig' %}
+                {% include 'AppBundle:person:_person.html.twig' %}
+            </div>
+
+            <div id="tab6" class="col s12">
+                <!-- Others -->
+                {% include 'AppBundle:person:_others.html.twig' %}
             </div>
 
             {#<div id="tab6" class="col s12">#}
@@ -97,6 +117,7 @@
     <script>
 
         $( ".tab" ).tabs();
+
         $('.tab').click(function(){
 
             var words_genre = '';
@@ -106,13 +127,25 @@
             var words_exoticism = '';
             var words_exoticisms = '';
 
-            words_genre = [{% for item in genres  %}{ text : "{{ item.title|raw }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
-            $('#genres').jQCloud(words_genre);
-            $('#genres').jQCloud('update', words_genre);
+            words_genres = [{% for item in genres  %}{ text : "{{ item.title|raw }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+            $('#genres').jQCloud(words_genres);
+            $('#genres').jQCloud('update', words_genres, {
+                fontSize: {
+                    colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                    from: 0.1,
+                    to: 0.05
+                }
+            });
 
-            words_genres = [{% for item in genre %}{ text : "{{ item.title|raw }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
-            $('#genre').jQCloud(words_genres);
-            $('#genre').jQCloud('update', words_genres);
+            words_genre = [{% for item in genre %}{ text : "{{ item.title|raw }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+            $('#genre').jQCloud(words_genre);
+            $('#genre').jQCloud('update', words_genre, {
+                fontSize: {
+                    colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                    from: 0.1,
+                    to: 0.05
+                }
+            });
 
             //moods
             words_moods = [{% for item in moods  %}{ text : "{{ item.title }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
@@ -124,14 +157,29 @@
             $('#mood').jQCloud('update', words_mood);
 
             //exoticism
-            words_exoticism = [{% for item in exoticisms  %}{ text : "{{ item.title|e('html') }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
-            $('#exoticisms').jQCloud(words_exoticism);
-            $('#exoticisms').jQCloud('update', words_exoticism);
+            words_exoticisms = [{% for item in exoticisms  %}{ text : "{{ item.title|e('html') }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+            $('#exoticisms').jQCloud(words_exoticisms, {
+                fontSize: {
+                    colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                    from: 0.1,
+                    to: 0.05
+                }
+            });
+            $('#exoticisms').jQCloud('update', words_exoticisms);
 
             words_exoticism = [{% for item in exoticism %}{ text : "{{ item.title|e('html') }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
-            $('#exoticism').jQCloud(words_exoticism);
+            $('#exoticism').jQCloud(words_exoticism, {
+                fontSize: {
+                    colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                    from: 0.1,
+                    to: 0.05
+                }
+            });
             $('#exoticism').jQCloud('update', words_exoticism);
+
         });
+
+
 
 
     </script>

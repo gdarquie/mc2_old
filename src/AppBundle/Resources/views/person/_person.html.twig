@@ -1,0 +1,61 @@
+<article class="card row">
+    <div class="col s12">
+        <h2>Persons associated to {{ person.name }}</h2>
+
+        <article>
+            <h3>Choreographers [not working]</h3>
+            {% for item in associated_choreographers  %}
+                {{ item.name }}
+            {% endfor %}
+
+        </article>
+
+        <article>
+            <h3>Composers</h3>
+
+            <table class="striped mini-table tablesorter">
+                <thead>
+                    <tr>
+                        <th>Associated composer</th>
+                        <th>Song</th>
+                        <th>Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in associated_composers  %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.song }}</td>
+                        <td>{{ item.number }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </article>
+
+        <article>
+            <h3>Lyricists</h3>
+
+            <table class="striped mini-table tablesorter">
+                <thead>
+                <tr>
+                    <th>Associated lyricists</th>
+                    <th>Song</th>
+                    <th>Number</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in associated_lyricists  %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.song }}</td>
+                        <td>{{ item.number }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </article>
+    </div>
+</article>

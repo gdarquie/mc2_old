@@ -3,53 +3,53 @@
   <component name="ChangeListManager">
     <list default="true" id="73570d6e-9db4-42de-8645-db93b49ffcf6" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/leanModal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_sog35haop2g47pof6vapj2vav5" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/merman/index.html.twig" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_tabs.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_tabs.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_dropdown.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_dropdown.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/CONTRIBUTING.md" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/CONTRIBUTING.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/scrollspy.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/scrollspy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/global.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/global.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/forms/_input-fields.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/forms/_input-fields.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/tooltip.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/tooltip.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/buttons.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/buttons.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/dropdown.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/dropdown.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/tabs.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/tabs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_modal.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_modal.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_buttons.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_buttons.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/forms.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/forms.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/forms/_select.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/forms/_select.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_chips.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_chips.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/bin/materialize.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/bin/materialize.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_sog35haop2g47pof6vapj2vav5" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/mc2.js" afterPath="$PROJECT_DIR$/web/js/mc2.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/forms/_radio-buttons.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/forms/_radio-buttons.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/css/materialize.min.css" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/css/materialize.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/web/person/person.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/web/person/person.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_navbar.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_navbar.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_sideNav.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_sideNav.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_buttons.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_buttons.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/sideNav.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/sideNav.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/global.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/global.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/js/materialize.min.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/js/materialize.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/CONTRIBUTING.md" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/CONTRIBUTING.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_tabs.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_tabs.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/css/materialize.css" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/css/materialize.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/.bower.json" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/.bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/extras/noUiSlider/nouislider.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/extras/noUiSlider/nouislider.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/css/materialize.min.css" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/css/materialize.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/sideNav.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/sideNav.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/css/materialize.css" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/css/materialize.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/js/materialize.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/js/materialize.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/PersonController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/PersonController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/mc2.js" afterPath="$PROJECT_DIR$/web/js/mc2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/package.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/package.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/bin/materialize.css" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/bin/materialize.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/extras/noUiSlider/nouislider.css" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/extras/noUiSlider/nouislider.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/chips.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/chips.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/parallax.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/parallax.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_cards.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_cards.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/toasts.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/toasts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_sideNav.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_sideNav.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_chips.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_chips.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/collapsible.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/collapsible.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/carousel.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/carousel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/js/materialize.min.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/js/materialize.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/forms.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/forms.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_dropdown.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_dropdown.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_waves.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_waves.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/CHANGELOG.md" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_global.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_global.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/toasts.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/toasts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/package.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/package.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/tooltip.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/tooltip.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_navbar.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_navbar.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/forms/_input-fields.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/forms/_input-fields.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/extras/noUiSlider/nouislider.css" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/extras/noUiSlider/nouislider.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/dropdown.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/dropdown.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/js/materialize.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/dist/js/materialize.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/bin/materialize.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/bin/materialize.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/scrollspy.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/scrollspy.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_variables.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_variables.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/PersonController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/PersonController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/forms/_select.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/forms/_select.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/tabs.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/tabs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/CHANGELOG.md" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_cards.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_cards.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/bin/materialize.css" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/bin/materialize.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/carousel.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/carousel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_modal.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_modal.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/parallax.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/parallax.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_global.scss" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/sass/components/_global.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/chips.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/chips.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/vendor/materialize/js/buttons.js" afterPath="$PROJECT_DIR$/web/assets/vendor/materialize/js/buttons.js" />
     </list>
     <ignored path="application.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,117 +82,91 @@
       <file leaf-file-name="PersonController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/PersonController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="82" column="97" lean-forward="false" selection-start-line="82" selection-start-column="97" selection-end-line="82" selection-end-column="97" />
+            <state relative-caret-position="253">
+              <caret line="216" column="95" lean-forward="false" selection-start-line="216" selection-start-column="95" selection-end-line="216" selection-end-column="95" />
               <folding>
                 <element signature="e#40#97#0#PHP" expanded="true" />
-                <marker date="1495387089000" expanded="true" signature="436:468" ph="SELECT p FRO... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="853:912" ph="SELECT p FRO... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="1089:1168" ph="SELECT n FRO... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="1330:1432" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="1546:1695" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="1861:1990" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="2115:2221" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="2335:2472" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="2652:2775" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="2854:3004" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="3134:3264" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="3342:3499" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="3647:3784" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="3867:4031" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="4183:4317" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="4397:4558" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="4689:4845" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="4977:5139" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="5271:5437" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="5574:5697" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="5837:5984" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="6178:6320" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="6559:6675" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="6820:6956" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="7049:7212" ph="SELECT COUNT... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="7356:7458" ph="SELECT DISTI... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="7356:7476" ph="SELECT DISTI... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="7765:7964" ph="SELECT SUM((... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="8155:8367" ph="SELECT SUM((... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="9056:9139" ph="SELECT DISTI... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="9056:9179" ph="SELECT DISTI... AppBundle" />
-                <marker date="1495387089000" expanded="true" signature="9405:9568" ph="SELECT COUNT... AppBundle" />
+                <element signature="e#542#576#0#PHP" expanded="true" />
+                <element signature="e#12058#12093#0#PHP" expanded="true" />
+                <marker date="1495407671000" expanded="true" signature="436:468" ph="SELECT p FRO... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="859:918" ph="SELECT p FRO... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="1095:1174" ph="SELECT n FRO... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="1360:1442" ph="SELECT n FRO... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="1649:1737" ph="SELECT n.num... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="1900:1991" ph="SELECT (n.le... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="2157:2259" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="2373:2522" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="2688:2817" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="2942:3048" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="3162:3299" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="3500:3623" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="3733:3883" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="4033:4163" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="4272:4429" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="4577:4714" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="4797:4961" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="5113:5247" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="5327:5488" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="5635:5791" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="5939:6101" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="6258:6424" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="6583:6706" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="6867:7014" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="7208:7350" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="7589:7705" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="7850:7986" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="8079:8242" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="8386:8488" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="8386:8506" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="8797:8996" ph="SELECT SUM((... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="9187:9399" ph="SELECT SUM((... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="10088:10171" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="10088:10211" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="10437:10600" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="10781:10900" ph="SELECT (SUM(... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="11108:11203" ph="SELECT p.nam... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="11108:11219" ph="SELECT p.nam... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="11388:11572" ph="SELECT n FRO... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="11736:11744" ph="SELECT n FRO... AppBundle" />
+                <marker date="1495407671000" expanded="true" signature="11736:11920" ph="SELECT n.tit... AppBundle" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="person.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/web/person/person.html.twig">
+      <file leaf-file-name="Song.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Song.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="126" column="91" lean-forward="false" selection-start-line="126" selection-start-column="87" selection-end-line="126" selection-end-column="91" />
+            <state relative-caret-position="234">
+              <caret line="142" column="87" lean-forward="false" selection-start-line="142" selection-start-column="80" selection-end-line="142" selection-end-column="87" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="person.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/person/person.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="610">
+              <caret line="73" column="28" lean-forward="false" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="28" />
               <folding>
-                <element signature="e#1835#1865#0#Twig" expanded="true" />
-                <element signature="e#2104#2133#0#Twig" expanded="true" />
-                <element signature="e#2302#2333#0#Twig" expanded="true" />
-                <element signature="e#2462#2491#0#Twig" expanded="true" />
+                <element signature="e#12#26#0#Twig" expanded="true" />
+                <element signature="e#2083#2118#0#Twig" expanded="true" />
+                <element signature="e#2247#2280#0#Twig" expanded="true" />
+                <element signature="e#2422#2456#0#Twig" expanded="true" />
+                <element signature="e#2625#2661#0#Twig" expanded="true" />
+                <element signature="e#2790#2824#0#Twig" expanded="true" />
+                <element signature="e#2953#2987#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_topics.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/web/person/_topics.html.twig">
+      <file leaf-file-name="_person.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/person/_person.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="136" column="56" lean-forward="false" selection-start-line="136" selection-start-column="47" selection-end-line="136" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_numbers.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/web/person/_numbers.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="25" lean-forward="false" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mc2.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/mc2.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_films.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/web/person/_films.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stats.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/stats.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Number.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="693" column="32" lean-forward="false" selection-start-line="693" selection-start-column="12" selection-end-line="693" selection-end-column="32" />
+            <state relative-caret-position="451">
+              <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -202,13 +176,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>structu</find>
-      <find>_total</find>
-      <find>begin</find>
-      <find>stageshows</find>
-      <find>$date</find>
-      <find>date_creat</find>
-      <find>date</find>
       <find>date_cr</find>
       <find>ratio</find>
       <find>source</find>
@@ -230,8 +197,15 @@
       <find>$genres_raw</find>
       <find>genres_raw</find>
       <find>genre</find>
-      <find>card</find>
+      <find>lengthTotal</find>
+      <find>'ratio' =&gt; $ratio,</find>
       <find>exo</find>
+      <find>card</find>
+      <find>chor</find>
+      <find>compose</find>
+      <find>song</find>
+      <find>filmsWithPerson</find>
+      <find>numbers</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -240,8 +214,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/DoctrineMigrations/Version20170420093533.php" />
-        <option value="$PROJECT_DIR$/app/DoctrineMigrations/Version20170420100200.php" />
         <option value="$PROJECT_DIR$/src/CmsBundle/Resources/views/Stageshow/edit.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/StudioRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Studio.php" />
@@ -284,13 +256,15 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/person/_numbers.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/web/person/_presence.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/person/_others.html.twig" />
         <option value="$PROJECT_DIR$/web/js/mc2.js" />
         <option value="$PROJECT_DIR$/web/css/style.css" />
+        <option value="$PROJECT_DIR$/app/Resources/views/web/person/_presence.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/person/_topics.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/PersonController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/web/person/person.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/person/person.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/PersonController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/person/_person.html.twig" />
       </list>
     </option>
   </component>
@@ -621,7 +595,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="scenario" />
+              <option name="myItemId" value="person" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -789,96 +763,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="person" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="number" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="FOSUserBundle" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -905,19 +789,19 @@
     <option name="SHOW_DIALOG" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/CmsBundle/Resources/views" />
-      <recent name="$PROJECT_DIR$/src/CmsBundle/Resources/views/Editor" />
-      <recent name="$PROJECT_DIR$/src/ApiBundle/Resources/views" />
-      <recent name="$PROJECT_DIR$/src/AppBundle/Controller" />
-      <recent name="$PROJECT_DIR$/src/ApiBundle/Controller" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/AppBundle/Resources/views" />
       <recent name="$PROJECT_DIR$/src/AppBundle/Resources/views/stagenumber" />
       <recent name="$PROJECT_DIR$/src/AppBundle/Repository" />
       <recent name="$PROJECT_DIR$/src/AppBundle/Controller" />
       <recent name="$PROJECT_DIR$/src/AppBundle/Resources/views/stageshow" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/CmsBundle/Resources/views" />
+      <recent name="$PROJECT_DIR$/src/CmsBundle/Resources/views/Editor" />
+      <recent name="$PROJECT_DIR$/src/ApiBundle/Resources/views" />
+      <recent name="$PROJECT_DIR$/src/AppBundle/Controller" />
+      <recent name="$PROJECT_DIR$/src/ApiBundle/Controller" />
     </key>
   </component>
   <component name="RunManager">
@@ -1156,12 +1040,13 @@
       <workItem from="1495054983722" duration="41352000" />
       <workItem from="1495179666078" duration="218000" />
       <workItem from="1495277118374" duration="11035000" />
-      <workItem from="1495358794381" duration="14573000" />
+      <workItem from="1495358794381" duration="18694000" />
+      <workItem from="1495401726931" duration="5421000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="818189000" />
+    <option name="totallyTimeSpent" value="827731000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="all">
@@ -1171,9 +1056,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30758226" sideWeight="0.49624062" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3118741" sideWeight="0.49624062" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867885" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1249,27 +1134,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CmsBundle/Controller/EditorController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/StageshowType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="39" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/films/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/FilmController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1325,13 +1189,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Song.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1798">
-          <caret line="29" column="17" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/stageshow/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1343,13 +1200,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SongController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1487,7 +1337,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4515">
           <caret line="291" column="19" lean-forward="false" selection-start-line="291" selection-start-column="19" selection-end-line="291" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1526,15 +1375,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1365">
           <caret line="91" column="34" lean-forward="false" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/person/_presence.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="10" lean-forward="false" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1573,26 +1413,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/person/_films.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="190" column="45" lean-forward="false" selection-start-line="190" selection-start-column="45" selection-end-line="190" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/mc2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1613,74 +1437,155 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
+    <entry file="file://$PROJECT_DIR$/web/js/mc2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="693" column="32" lean-forward="false" selection-start-line="693" selection-start-column="12" selection-end-line="693" selection-end-column="32" />
+        <state relative-caret-position="690">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/person/_films.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/web/person/_topics.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="136" column="56" lean-forward="false" selection-start-line="136" selection-start-column="47" selection-end-line="136" selection-end-column="56" />
+        <state relative-caret-position="0">
+          <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/person/_presence.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/person/person.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/person/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SongController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding>
+            <element signature="e#665#697#0#PHP" expanded="true" />
+            <marker date="1494430417000" expanded="true" signature="381:543" ph="SELECT s.tit... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Song.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="142" column="87" lean-forward="false" selection-start-line="142" selection-start-column="80" selection-end-line="142" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="399" column="17" lean-forward="false" selection-start-line="399" selection-start-column="13" selection-end-line="399" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/PersonController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="82" column="97" lean-forward="false" selection-start-line="82" selection-start-column="97" selection-end-line="82" selection-end-column="97" />
+        <state relative-caret-position="253">
+          <caret line="216" column="95" lean-forward="false" selection-start-line="216" selection-start-column="95" selection-end-line="216" selection-end-column="95" />
           <folding>
             <element signature="e#40#97#0#PHP" expanded="true" />
-            <marker date="1495387089000" expanded="true" signature="436:468" ph="SELECT p FRO... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="853:912" ph="SELECT p FRO... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="1089:1168" ph="SELECT n FRO... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="1330:1432" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="1546:1695" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="1861:1990" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="2115:2221" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="2335:2472" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="2652:2775" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="2854:3004" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="3134:3264" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="3342:3499" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="3647:3784" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="3867:4031" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="4183:4317" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="4397:4558" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="4689:4845" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="4977:5139" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="5271:5437" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="5574:5697" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="5837:5984" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="6178:6320" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="6559:6675" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="6820:6956" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="7049:7212" ph="SELECT COUNT... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="7356:7458" ph="SELECT DISTI... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="7356:7476" ph="SELECT DISTI... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="7765:7964" ph="SELECT SUM((... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="8155:8367" ph="SELECT SUM((... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="9056:9139" ph="SELECT DISTI... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="9056:9179" ph="SELECT DISTI... AppBundle" />
-            <marker date="1495387089000" expanded="true" signature="9405:9568" ph="SELECT COUNT... AppBundle" />
+            <element signature="e#542#576#0#PHP" expanded="true" />
+            <element signature="e#12058#12093#0#PHP" expanded="true" />
+            <marker date="1495407671000" expanded="true" signature="436:468" ph="SELECT p FRO... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="859:918" ph="SELECT p FRO... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="1095:1174" ph="SELECT n FRO... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="1360:1442" ph="SELECT n FRO... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="1649:1737" ph="SELECT n.num... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="1900:1991" ph="SELECT (n.le... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="2157:2259" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="2373:2522" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="2688:2817" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="2942:3048" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="3162:3299" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="3500:3623" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="3733:3883" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="4033:4163" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="4272:4429" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="4577:4714" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="4797:4961" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="5113:5247" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="5327:5488" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="5635:5791" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="5939:6101" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="6258:6424" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="6583:6706" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="6867:7014" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="7208:7350" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="7589:7705" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="7850:7986" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="8079:8242" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="8386:8488" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="8386:8506" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="8797:8996" ph="SELECT SUM((... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="9187:9399" ph="SELECT SUM((... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="10088:10171" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="10088:10211" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="10437:10600" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="10781:10900" ph="SELECT (SUM(... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="11108:11203" ph="SELECT p.nam... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="11108:11219" ph="SELECT p.nam... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="11388:11572" ph="SELECT n FRO... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="11736:11744" ph="SELECT n FRO... AppBundle" />
+            <marker date="1495407671000" expanded="true" signature="11736:11920" ph="SELECT n.tit... AppBundle" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/web/person/person.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/person/person.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="126" column="91" lean-forward="false" selection-start-line="126" selection-start-column="87" selection-end-line="126" selection-end-column="91" />
+        <state relative-caret-position="610">
+          <caret line="73" column="28" lean-forward="false" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="28" />
           <folding>
-            <element signature="e#1835#1865#0#Twig" expanded="true" />
-            <element signature="e#2104#2133#0#Twig" expanded="true" />
-            <element signature="e#2302#2333#0#Twig" expanded="true" />
-            <element signature="e#2462#2491#0#Twig" expanded="true" />
+            <element signature="e#12#26#0#Twig" expanded="true" />
+            <element signature="e#2083#2118#0#Twig" expanded="true" />
+            <element signature="e#2247#2280#0#Twig" expanded="true" />
+            <element signature="e#2422#2456#0#Twig" expanded="true" />
+            <element signature="e#2625#2661#0#Twig" expanded="true" />
+            <element signature="e#2790#2824#0#Twig" expanded="true" />
+            <element signature="e#2953#2987#0#Twig" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/person/_person.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
