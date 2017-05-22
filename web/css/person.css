@@ -1,0 +1,40 @@
+.small-h1{
+    font-size: 0.8em;
+}
+
+.wordcloud{
+    height: 500px;
+}
+
+#mood, #moods{
+    height:220px;
+}
+
+#exoticism, #exoticisms{
+    height:300px;
+}
+
+#source, #sources{
+    height:250px;
+}
+
+#topics h2{
+    margin-top : 5px;
+}
+
+#topics h3{
+    margin-top : 2px;
+}
+
+#sub_nav{
+    margin-top: 30px;
+    padding: 7px;
+    background: white!important;
+}
+
+#sub_nav a{
+    color : black!important;
+}
+#sub_nav .active{
+    color : #CC0000!important;
+}

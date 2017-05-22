@@ -93,7 +93,7 @@ class PersonController extends Controller
         $moods = $query->getResult();
 
         //Moods for the person
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.general_mood t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.general_mood t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $mood = $query->getResult();
 
@@ -102,7 +102,7 @@ class PersonController extends Controller
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.exoticism_thesaurus t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
         $exoticisms = $query->getResult();
 
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.exoticism_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.exoticism_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $exoticism = $query->getResult();
 
@@ -111,7 +111,7 @@ class PersonController extends Controller
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
         $sources = $query->getResult();
 
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $source = $query->getResult();
 
@@ -154,7 +154,7 @@ class PersonController extends Controller
         $diegetics = $query->getResult();
 
         //
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $diegetic = $query->getResult();
 
@@ -276,6 +276,18 @@ class PersonController extends Controller
         if($type == 'topic'){
             $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
 
+        }
+        elseif($type == 'mood'){
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.general_mood t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+        }
+        elseif($type == 'exoticism'){
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.exoticism_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+        }
+        elseif($type == 'source'){
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+        }
+        elseif($type == 'diegetic'){
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
         }
 
         $query->setParameter('person', $personId);

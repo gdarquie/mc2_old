@@ -3,110 +3,88 @@
 {% block stylesheets %}
     {{ parent() }}
 
-
-
     <link rel="stylesheet" href="{{ asset('assets/vendor/jqcloud2/dist/jqcloud.min.css') }}">
-    <style>
-        .small-h1{
-            font-size: 0.8em;
-        }
+    <!-- custom -->
+    <link rel="stylesheet" href="{{ asset('css/person.css')}}">
 
-        .wordcloud{
-            height: 500px;
-        }
-
-        #mood, #moods{
-            height:200px;
-        }
-
-        #exoticism, #exoticisms{
-            height:300px;
-        }
-
-        #topics h2{
-            margin-top : 5px;
-        }
-
-        #topics h3{
-            margin-top : 2px;
-        }
-
-    </style>
 {% endblock %}
 
 {% block body %}
 
-    <section class="container">
-
-        <div class="card">
+    <section class="container-fluid">
 
 
-                <h1>{{ person.name }} <span class="small-h1">{% if is_granted("ROLE_EDITOR") %} - <a href="{{ path('person_edit' , {"personId" : person.personId}) }}">edit</a>{% endif %}</span></h1>
+        <div class="row">
 
-                <div class="col s12">
-                    {#<p>First name : {{ person.firstname }}</p>#}
-                    {#<p>Last name : {{ person.lastname }}</p>#}
-                    <p>Gender : {{ person.gender }}</p>
+            <header class="row center">
+                <h1 class="col s4">{{ person.name }} <span class="small-h1">({{ person.gender }}) {% if is_granted("ROLE_EDITOR") %} - <a href="{{ path('person_edit' , {"personId" : person.personId}) }}">edit</a>{% endif %}</span></h1>
+
+                <nav id="sub_nav" class="nav-extended col s8">
+
+                    <div class="nav-content">
+                        <ul class="tabs tabs-transparent">
+                            <li class="tab"><a href="#tab1" class="active">Films</a></li>
+                            <li class="tab"><a href="#tab2">Numbers</a></li>
+                            <li class="tab"><a href="#tab3" >Topics & exoticisms</a></li>
+                            <li class="tab"><a href="#tab4">Presence</a></li>
+                            <li class="tab"><a href="#tab5">Persons</a></li>
+                            <li class="tab"><a href="#tab6">Sources & Diegetics</a></li>
+                            <li class="tab"><a href="#tab7">Others</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="col s12">
+
+                {#<div id="tableau">#}
+
+                {#</div>#}
+
+
+
+                <!-- Tabs -->
+                <div id="tab1" class="myTab col s12">
+                    <!-- Numbers connected to the person -->
+                    {% include 'AppBundle:person:_numbers.html.twig' %}
+
                 </div>
 
-            </article>
-
-            <nav class="nav-extended">
-
-                <div class="nav-content">
-                    <ul class="tabs tabs-transparent">
-                        <li class="tab" id="act_tab1"><a href="#tab1">Films</a></li>
-                        <li class="tab" id="act_tab2"><a href="#tab2">Numbers</a></li>
-                        <li class="tab" id="act_tab3"><a href="#tab3" id="lauchTopic">Topics & exoticisms</a></li>
-                        <li class="tab" id="act_tab4"><a href="#tab4">Presence</a></li>
-                        <li class="tab" id="act_tab5"><a href="#tab5">Persons</a></li>
-                        <li class="tab" id="act_tab6"><a href="#tab6">Sources & Diegetics</a></li>
-                        <li class="tab" id="act_tab7"><a href="#tab7">Others</a></li>
-                    </ul>
+                <div id="tab2" class="myTab col s12">
+                    <!-- Films -->
+                    {% include 'AppBundle:person:_films.html.twig' %}
                 </div>
-            </nav>
 
-            <!-- Tabs -->
-            <div id="tab1" class="myTab col s12">
-                <!-- Numbers connected to the person -->
-                {% include 'AppBundle:person:_numbers.html.twig' %}
+                <div id="tab3" class="myTab col s12">
+                    <!-- Topics & exoticisms -->
+                    {% include 'AppBundle:person:_topics.html.twig' %}
+                </div>
+
+                <div id="tab4" class="myTab col s12">
+                    <!-- Calculations about time presence of the person -->
+                    {% include 'AppBundle:person:_presence.html.twig' %}
+                </div>
+
+                <div id="tab5" class="myTab col s12">
+                    <!-- Others -->
+                    {% include 'AppBundle:person:_person.html.twig' %}
+                </div>
+
+                <div id="tab6" class="myTab col s12">
+                    <!-- Others -->
+                    {% include 'AppBundle:person:_sources.html.twig' %}
+                </div>
+
+                <div id="tab7" class="myTab col s12">
+                    <!-- Others -->
+                    {% include 'AppBundle:person:_others.html.twig' %}
+                </div>
+
+                {#<div id="tab6" class="col s12">#}
+
+                {#</div>#}
 
             </div>
-
-            <div id="tab2" class="myTab col s12">
-                <!-- Films -->
-                {% include 'AppBundle:person:_films.html.twig' %}
-            </div>
-
-            <div id="tab3" class="myTab col s12">
-                <!-- Topics & exoticisms -->
-                {% include 'AppBundle:person:_topics.html.twig' %}
-            </div>
-
-            <div id="tab4" class="myTab col s12">
-                <!-- Calculations about time presence of the person -->
-                {% include 'AppBundle:person:_presence.html.twig' %}
-            </div>
-
-            <div id="tab5" class="myTab col s12">
-                <!-- Others -->
-                {% include 'AppBundle:person:_person.html.twig' %}
-            </div>
-
-            <div id="tab6" class="myTab col s12">
-                <!-- Others -->
-                {% include 'AppBundle:person:_sources.html.twig' %}
-            </div>
-
-            <div id="tab7" class="myTab col s12">
-                <!-- Others -->
-                {% include 'AppBundle:person:_others.html.twig' %}
-            </div>
-
-            {#<div id="tab6" class="col s12">#}
-
-            {#</div>#}
-
         </div>
     </section>
 
@@ -122,53 +100,19 @@
 
         $(document).ready(function(){
             console.log('ready');
-//
-            $('#tab1, #tab2, #tab3, #tab4, #tab5, #tab6, #tab7').hide();
-
-            $("#act_tab1").click(function(){
-                $(".myTab").hide();
-                $("#tab1").show();
-            });
-            $("#act_tab2").click(function(){
-                $(".myTab").hide();
-                $("#tab2").show();
-
-            });
-            $("#act_tab3").click(function(){
-                $(".myTab").hide();
-                $("#tab3").show();
-                doCloud();
-            });
-            $("#act_tab4").click(function(){
-                $(".myTab").hide();
-                $("#tab4").show();
-            });
-            $("#act_tab5").click(function(){
-                $(".myTab").hide();
-                $("#tab5").show();
-            });
-            $("#act_tab6").click(function(){
-                $(".myTab").hide();
-                $("#tab6").show();
-                doCloud();
-            });
-            $("#act_tab7").click(function(){
-                $(".myTab").hide();
-                $("#tab7").show();
-            });
-
-            $('.tabs').tabs({
-                onShow: function() {doCloud();console.log("onShow")}
-            });
         });
-        var doCloud = function(){
-            console.log('doCloud');
+
+
+        var drawCloud = function(){
+
+            console.log('Function drawCloud lauched');
             var words_genre = '';
             var words_genres = '';
             var words_mood = '';
             var words_moods = '';
             var words_exoticism = '';
             var words_exoticisms = '';
+
 
             words_genres = [{% for item in genres  %}{ text : "{{ item.title|raw }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
             $('#genres').jQCloud(words_genres);
@@ -241,6 +185,21 @@
                 }
             });
 
+        }
+
+        $(".tabs").click(function(){
+
+            $("#genre_container").html("<div class='wordcloud' id='genre'></div>");
+            $("#genres_container").html("<div class='wordcloud' id='genres'></div>");
+
+            $("#mood_container").html("<div class='wordcloud' id='mood'></div>");
+            $("#moods_container").html("<div class='wordcloud' id='moods'></div>");
+
+            $("#exoticism_container").html("<div class='wordcloud' id='exoticism'></div>");
+            $("#exoticisms_container").html("<div class='wordcloud' id='exoticisms'></div>");
+
+            $("#source_container").html("<div class='wordcloud' id='source'></div>");
+            $("#sources_container").html("<div class='wordcloud' id='sources'></div>");
 
             //Melviz
             var url = '{{ path("api_person_melviz_diegetic", {'personId': person.personId}) }}';
@@ -248,7 +207,9 @@
                 viz_mediane("melviz_diegetic", data, 9);
             });
 
-        };
+            drawCloud();
+
+        })
 
 
 
