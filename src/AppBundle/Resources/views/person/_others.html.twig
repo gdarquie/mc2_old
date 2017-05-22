@@ -1,3 +1,20 @@
+<article  class="card row">
+    <h2>Average shot length for {{ person.name }}</h2>
+
+    <p>Sum of all the length's number where {{ person.name }} is a performer divided by the sum of all the shots of this numbers : <span class="number">{{ avgLengthShot.average|round(2) }}</span> seconds</p>
+</article>
+
+
+<article class="card row">
+    <div class="col s12">
+        <h2>Shots</h2>
+        {% for item in avgShotForPerson  %}
+            {{ item.average }}
+        {% endfor %}
+    </div>
+</article>
+
+
 <article class="card row">
     <div class="col s12">
         <h2>Ratio performance type</h2>
@@ -47,89 +64,35 @@
     </div>
 </article>
 
+{#<article class="card row">#}
+    {#<div class="col s12">#}
+        {#<h2>Dancing types</h2>#}
 
-<article class="card row">
-    <div class="col s12">
-        <h2>Shots</h2>
-        {% for item in avgShotForPerson  %}
-            {{ item.average }}
-        {% endfor %}
-    </div>
-</article>
+        {#<div class="row">#}
+            {#<div class="col s12">#}
+                {#<h3>For {{ person.name  }}</h3>#}
+                {#{% for item in dancing  %}#}
+                    {#{{ item.title }}({{ item.nb }})#}
+                {#{% endfor %}#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+{#</article>#}
 
-<article class="card row">
-    <div class="col s12">
-        <h2>Sources</h2>
+{#<article class="card row">#}
+    {#<div class="col s12">#}
+        {#<h2>Musical types</h2>#}
 
-        <div class="row">
-            <div class="col s6">
-                <h3>All</h3>
-                {% for item in sources  %}
-                    {{ item.title }}({{ item.nb }})
-                {% endfor %}
-            </div>
-
-            <div class="col s6">
-                <h3>For {{ person.name }}</h3>
-                {% for item in source  %}
-                    {{ item.title }}({{ item.nb }})
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</article>
-
-<article class="card row">
-    <div class="col s12">
-        <h2>Diegetic</h2>
-
-        <div class="row">
-            <div class="col s6">
-                <h3>All</h3>
-                {% for item in diegetics  %}
-                    {{ item.title }}({{ item.nb }})
-                {% endfor %}
-            </div>
-
-            <div class="col s6">
-                <h3>For {{ person.name  }}</h3>
-                {% for item in diegetic  %}
-                    {{ item.title }}({{ item.nb }})
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</article>
-
-<article class="card row">
-    <div class="col s12">
-        <h2>Dancing types</h2>
-
-        <div class="row">
-            <div class="col s12">
-                <h3>For {{ person.name  }}</h3>
-                {% for item in dancing  %}
-                    {{ item.title }}({{ item.nb }})
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</article>
-
-<article class="card row">
-    <div class="col s12">
-        <h2>Musical types</h2>
-
-        <div class="row">
-            <div class="col s12">
-                <h3>For {{ person.name  }}</h3>
-                {% for item in musical  %}
-                    {{ item.title }}({{ item.nb }})
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</article>
+        {#<div class="row">#}
+            {#<div class="col s12">#}
+                {#<h3>For {{ person.name  }}</h3>#}
+                {#{% for item in musical  %}#}
+                    {#{{ item.title }}({{ item.nb }})#}
+                {#{% endfor %}#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+{#</article>#}
 
 <article class="card row">
     <div class="col s12">
@@ -144,41 +107,41 @@
             </div>
 
             <div class="col s12">
-                <p>Ratio : {{ ((complete.nb * 100)/completes.nb) }}</p>
+                <p>Ratio : {{ (((complete.nb * 100)/completes.nb))|round(1) }}</p>
             </div>
         </div>
     </div>
 </article>
 
 
-<article class="card row">
-    <div class="col s12">
-        <h2>Solos</h2>
+{#<article class="card row">#}
+    {#<div class="col s12">#}
+        {#<h2>Solos</h2>#}
 
-        <div class="row">
-            <div class="col s12">
-                <h3>Multiple occurences</h3>
-                <p>Ratio : {{ occurences.nb }} / {{ completOptions.nb }} = {{ ((occurences.nb * 100)/completOptions.nb) }}</p>
-            </div>
+        {#<div class="row">#}
+            {#<div class="col s12">#}
+                {#<h3>Multiple occurences</h3>#}
+                {#<p>Ratio : {{ occurences.nb }} / {{ completOptions.nb }} = {{ ((occurences.nb * 100)/completOptions.nb) }}</p>#}
+            {#</div>#}
 
-        </div>
-    </div>
-</article>
+        {#</div>#}
+    {#</div>#}
+{#</article>#}
 
-<article class="card row">
-    <div class="col s12">
-        <h2>Solos</h2>
+{#<article class="card row">#}
+    {#<div class="col s12">#}
+        {#<h2>Solos</h2>#}
 
-        <div class="row">
-            <div class="col s6">
-                <h3>All</h3>
+        {#<div class="row">#}
+            {#<div class="col s6">#}
+                {#<h3>All</h3>#}
 
-            </div>
+            {#</div>#}
 
-            <div class="col s6">
-                <h3>For {{ person.name  }}</h3>
+            {#<div class="col s6">#}
+                {#<h3>For {{ person.name  }}</h3>#}
 
-            </div>
-        </div>
-    </div>
-</article>
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+{#</article>#}
