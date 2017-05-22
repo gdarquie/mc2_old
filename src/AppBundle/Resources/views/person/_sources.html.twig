@@ -1,47 +1,165 @@
+<!-- Sources -->
+<article class="row">
+    <div class="card col s12">
 
-<article class="card row">
-    <div class="col s12">
-        <h2>Sources</h2>
+        <h2 class="center">Sources</h2>
 
-        <div class="row">
-            <div class="col s6">
-                <h3>All</h3>
-                {% for item in sources  %}
-                    {{ item.title }}({{ item.nb }})
-                {% endfor %}
-            </div>
+        <!-- Genres Modal Structure -->
+        <div id="modal_mood" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h3>Sources</h3>
+                <div class="row s12">
 
-            <div class="col s6">
-                <h3>For {{ person.name }}</h3>
-                {% for item in source  %}
-                    {{ item.title }}({{ item.nb }})
-                {% endfor %}
+                    <article class="col s6">
+                        <h4>{{ person.name }}</h4>
+                        <table class="striped mini-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Numbers</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for item in source  %}
+                                <tr>
+                                    <td>{{ item.title }}</td>
+                                    <td>{{ item.nb }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </article>
+
+                    <article class="col s6">
+
+                        <h4>all numbers</h4>
+                        <table class="striped mini-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Numbers</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in sources  %}
+                                <tr>
+                                    <td>{{ item.title }}</td>
+                                    <td>{{ item.nb }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </article>
+
+
+                </div>
             </div>
         </div>
+
+        <!-- Visualisations -->
+        <div class="row">
+            <article class="col s6">
+                <h4 class="center">For {{ person.name }}</h4>
+                <div class="wordcloud" id="source"></div>
+            </article>
+
+            <article class="col s6">
+                <h4 class="center">For all numbers</h4>
+                <div class="wordcloud" id="sources"></div>
+            </article>
+        </div>
+
+        <!-- Genre Modal Trigger -->
+        <div class="row ">
+
+            <article class="col s12 ">
+                <p class="center">
+                    <a class="modal-trigger black-text " href="#modal_mood">
+                        More informations about sources
+                        <i class="material-icons">more</i>
+                    </a>
+                </p>
+            </article>
+        </div>
+
     </div>
+    <hr>
 </article>
 
 <article class="card row">
     <div class="col s12">
 
-        <h2>Diegetic</h2>
+        <h2>Diegetics</h2>
 
         <div id="melviz_diegetic" class="melviz"></div>
 
-        <div class="row">
-            <div class="col s6">
-                <h3>All</h3>
-                {% for item in diegetics  %}
-                    {{ item.title }}({{ item.nb }})
-                {% endfor %}
-            </div>
+        <div id="modal_mood" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h3>Diegetics</h3>
+                <div class="row s12">
 
-            <div class="col s6">
-                <h3>For {{ person.name  }}</h3>
-                {% for item in diegetic  %}
-                    {{ item.title }}({{ item.nb }})
-                {% endfor %}
+                    <article class="col s6">
+                        <h4>{{ person.name }}</h4>
+                        <table class="striped mini-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Numbers</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for item in diegetic  %}
+                                <tr>
+                                    <td>{{ item.title }}</td>
+                                    <td>{{ item.nb }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </article>
+
+                    <article class="col s6">
+
+                        <h4>all numbers</h4>
+                        <table class="striped mini-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Numbers</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in diegetics  %}
+                                <tr>
+                                    <td>{{ item.title }}</td>
+                                    <td>{{ item.nb }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </article>
+
+
+                </div>
             </div>
         </div>
+
+        <!-- Genre Modal Trigger -->
+        <div class="row ">
+
+            <article class="col s12 ">
+                <p class="center">
+                    <a class="modal-trigger black-text " href="#modal_mood">
+                        More informations about diegetics
+                        <i class="material-icons">more</i>
+                    </a>
+                </p>
+            </article>
+        </div>
+        
     </div>
 </article>

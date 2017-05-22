@@ -183,6 +183,28 @@
             });
             $('#exoticism').jQCloud('update', words_exoticism);
 
+            //sources
+            words_sources = [{% for item in sources  %}{ text : "{{ item.title|raw }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+            $('#sources').jQCloud(words_sources);
+            $('#sources').jQCloud('update', words_sources, {
+                fontSize: {
+                    colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                    from: 0.1,
+                    to: 0.05
+                }
+            });
+
+            words_source = [{% for item in source %}{ text : "{{ item.title|raw }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+            $('#source').jQCloud(words_source);
+            $('#source').jQCloud('update', words_source, {
+                fontSize: {
+                    colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                    from: 0.1,
+                    to: 0.05
+                }
+            });
+
+
             //Melviz
             var url = '{{ path("api_person_melviz_diegetic", {'personId': person.personId}) }}';
             d3.json(url , function(error, data) {
@@ -191,7 +213,7 @@
 
         });
 
-        
+
 
     </script>
 {% endblock %}
