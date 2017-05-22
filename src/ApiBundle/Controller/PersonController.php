@@ -52,14 +52,18 @@ class PersonController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        //total diegetics for each diegetics for all
-        $query = $em->createQuery("SELECT COUNT(t.title) as nb, t.title FROM AppBundle:Number n JOIN n.diegetic_thesaurus t GROUP BY t.title ORDER BY nb DESC");
-        $diegetics = $query->getResult();
-
         //total diegetics for each diegetics for one person
-        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title as title FROM AppBundle:Number n JOIN n.performers p LEFT JOIN n.diegetic_thesaurus t WHERE p.personId = :person GROUP BY t.title ORDER BY t.title ASC");
         $query->setParameter('person', $personId );
         $diegetic = $query->getResult();
+
+        $max = count($diegetic);
+
+        //total diegetics for each diegetics for all
+        $query = $em->createQuery("SELECT COUNT(t.title) as nb, t.title as title FROM AppBundle:Number n JOIN n.diegetic_thesaurus t GROUP BY t.title ORDER BY t.title ASC");
+        $query->setMaxResults($max);
+        $diegetics = $query->getResult();
+
 
         //total of numbers with a diegetic
         $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.diegetic_thesaurus t ");
@@ -70,25 +74,29 @@ class PersonController extends Controller
         $query->setParameter('person', $personId );
         $totalNumbersForPerson = $query->getSingleResult();
 
-
         $diegeticsArray = array();
         for ($i = 0; $i < count($diegetics); $i++) {
+            if (count($diegetic) == count($diegetics)){
 
-            //ajouter une condition si est nul
-            $requete = $diegetics[$i]['title'];
-            if(!ISSET($diegetic[$i]['nb'])){
-                $requete2 = 0;
+                //ajouter une condition si est nul
+                $requete = $diegetics[$i]['title'];
+                $requete4 = $diegetic[$i]['title'];
+
+                if(!ISSET($diegetic[$i]['nb'])){
+                    $requete2 = 0;
+                }
+                else{
+                    $requete2 = $diegetic[$i]['nb'];
+                }
+                $requete3 = $diegetics[$i]['nb'];
+
+                $key = $i;
+
+                $diegeticsArray[$key]['label'] = $requete;
+                $diegeticsArray[$key]['label'] = $requete4;
+                $diegeticsArray[$key]['one_item'] = round((intval($requete2) / intval($totalNumbersForPerson['nb'])) * 100, 1, PHP_ROUND_HALF_UP);
+                $diegeticsArray[$key]['all_items'] = round((intval($requete3) / intval($totalNumbers['nb'])) * 100, 1, PHP_ROUND_HALF_UP);
             }
-            else{
-                $requete2 = $diegetic[$i]['nb'];
-            }
-            $requete3 = $diegetics[$i]['nb'];
-
-            $key = $i;
-
-            $diegeticsArray[$key]['label'] = $requete;
-            $diegeticsArray[$key]['one_item'] = round((intval($requete2) / intval($totalNumbersForPerson['nb'])) * 100, 1, PHP_ROUND_HALF_UP);
-            $diegeticsArray[$key]['all_items'] = round((intval($requete3) / intval($totalNumbers['nb'])) * 100, 1, PHP_ROUND_HALF_UP);
 
         }
 

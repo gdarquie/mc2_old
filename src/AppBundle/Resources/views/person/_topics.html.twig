@@ -28,7 +28,7 @@
                                 <tbody>
                                 {% for item in genre  %}
                                     <tr>
-                                        <td>{{ item.title }}</td>
+                                        <td><a href="{{ path('person_search_by_thesaurus' , {'personId': person.personId, 'thesaurusId' : item.id, 'type' : 'topic' } ) }}" >{{ item.title }}</a></td>
                                         <td>{{ item.nb }}</td>
                                     </tr>
                                 {% endfor %}

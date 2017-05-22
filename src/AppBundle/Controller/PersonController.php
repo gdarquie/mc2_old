@@ -80,11 +80,11 @@ class PersonController extends Controller
 //        Topics part (genre, general_mood)
 
         //All genres
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title as title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
         $genres = $query->getResult();
 
         //Genre for the person
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $genre = $query->getResult();
 
@@ -254,6 +254,39 @@ class PersonController extends Controller
             'associated_choreographers' => $associated_choreographers,
             'associated_composers' => $associated_composers,
             'associated_lyricists' => $associated_lyricists
+        ));
+    }
+
+    /**
+     * @Route("/person/search/performerId={personId}/thesaurusId={thesaurusId}/type={type}", name = "person_search_by_thesaurus")
+     */
+    public function getNumberForPerformerByThesaurus($personId, $thesaurusId, $type){
+
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT p FROM AppBundle:Person p WHERE p.personId = :person ");
+        $query->setParameter('person', $personId);
+        $person = $query->getSingleResult();
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT t FROM AppBundle:Thesaurus t WHERE t.thesaurusId = :thesaurus");
+        $query->setParameter('thesaurus', $thesaurusId);
+        $thesaurus = $query->getSingleResult();
+
+        if($type == 'topic'){
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+
+        }
+
+        $query->setParameter('person', $personId);
+        $query->setParameter('thesaurus', $thesaurusId);
+        $numbers = $query->getResult();
+
+
+        return $this->render('AppBundle:person:personByItem.html.twig', array(
+            'person' => $person,
+            'thesaurus' => $thesaurus,
+            'numbers' => $numbers
         ));
     }
 

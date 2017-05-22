@@ -24,6 +24,7 @@
 
 {% block body %}
 
+
     <section class="container-fluid">
 
         <div class="row" id="recherche">
@@ -63,9 +64,9 @@
                     <h2>Some stats</h2>
 
                     <div class="songsSelection"></div>
-                    <div class="choreographersSelection"></div>
-                    <div class="performersSelection"></div>
                     <div class="filmsSelection"></div>
+                    <div class="performersSelection"></div>
+
 
                 </article>
             </div>
@@ -99,7 +100,11 @@
                 'film' : '{{ number.film.title }}',
                 'released' : {{ number.film.released }},
                 'choreographers' : [ {% for person in number.choregraphers %}'{{person.name|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %} ],
-                'performers' : [ {% for person in number.performers %}'{{person.name|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %} ],
+                'danceensemble': [{% for item in number.dancemble %}'{{item.title|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %}],
+                'dancetype' : [{% for item in number.dancingType %}'{{item.title|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %}],
+                'dancesubgenre' : [{% for item in number.danceSubgenre %}'{{item.title|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %}],
+                'dancecontent' : [{% for item in number.danceContent %}'{{item.title|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %}],
+                'performers' : [ {% for person in number.performers %}{ 'performerId' : {{person.personId}}, 'performerTitle' : '{{person.name}}' }{% if loop.last %}{% else %},{% endif %}{% endfor %} ],
                 'songs' : [{% for item in number.song %} { 'songId' : {{item.songId}}, 'songTitle' : '{{item.title}}' }{% if loop.last %}{% else %},{% endif %}{% endfor %}]
             }
             {% if loop.last %}{% else %},{% endif %}
@@ -107,16 +112,19 @@
 
         ];
 
-
         var _performance = '';
         var sources = '';
         var _source1 = '';
         var _source2 = '';
         var _compteur = '';
         var listSongs = [];
+        var listPerformers = [];
         var allSongs = [];
+        var allFilms = [];
+        var allPerformers = [];
         var song = {'id' : '', 'title'  : '', 'nb' : 0};
-        var titleSongs= '';
+        var film = {'id' : '', 'title'  : '', 'nb' : 0};
+        var performer = {'id' : '', 'title'  : '', 'nb' : 0};
 
         var _min = 1850;
         var _max = 2000;
@@ -140,8 +148,9 @@
             $("#resultat").html('');
             var billets = '';
             allSongs = [];
+            allFilms = [];
+            allPerformers = [];
             _compteur = 0;
-            listSongs = '';
 
             var source1Finale;
             var source2Finale;
@@ -189,32 +198,12 @@
                         source2Finale = "; " + n.sources[1];
                     }
 
-                    listSongs = '';
-
-                    for(i=0; i < n.songs.length; i++){
-
-                        listSongs+= "<a href='/song/id/"+n.songs[i].songId+"'>"+n.songs[i].songTitle+"</a>";
-
-
-                        song = {};
-
-                        song.id = n.songs[i].songId;
-                        song.title = n.songs[i].songTitle;
-                        song.nb = 1;
-
-                        allSongs.push(song);
-
-                        if(i == (n.songs.length)-1){
-                            listSongs += " ";
-                        }
-                        else{
-                            listSongs += " , ";
-                        }
-                    }
-
+                    getStats(n);
+                    listSongs = getListSongs(n);
+                    listPerformers = getListPerformers(n);
 
                     if(_compteur < 20){
-                    billets += "<div class='billet card'><div><a href='/number/"+n.id+"'><h2>"+n.title+"</h2></a><a href='/film/id/"+n.filmId+" '><h3>"+n.film+" ("+n.released+")"+"</h3></a><p> Performance type : "+n.performance+"</p><p>Sources : "+n.sources[0]+", "+n.sources[1]+"</p></div><div><p>Choreographers : "+n.choreographers+"</p></div><div><p>Performers : "+n.performers+"</p></div><div><p>Song(s) : "+listSongs+"</p></div></div>";
+                        billets += "<div class='billet card'><div><a href='/number/"+n.id+"'><h2>"+n.title+"</h2></a><a href='/film/id/"+n.filmId+" '><h3>"+n.film+" ("+n.released+")"+"</h3></a><p> Performance type : "+n.performance+"</p><p>Sources : "+n.sources[0]+", "+n.sources[1]+"</p></div><div><p>Choreographers : "+n.choreographers+"</p></div><div><p>Performers : "+listPerformers+"</p></div><div><p>Song(s) : "+listSongs+"</p></div></div>";
                     }
                     _compteur ++;
 
@@ -228,31 +217,182 @@
 
             });
 
-            //Display all songs
+            afficherStatsSongs(allSongs);
+            afficherStatsFilms(allFilms);
+            afficherStatsPerformers(allPerformers);
 
-            titleSongs = '';
-            textForSongs ='';
-
-
-            for(i = 0; i < allSongs.length; i++){
-
-
-                if (i != allSongs.length - 1) {
-                    titleSongs += "<a href='/song/id/"+allSongs[i].id+"'>"+allSongs[i].title+"</a>,";
-                } else {
-                    titleSongs += "<a href='/song/id/"+allSongs[i].id+"'>"+allSongs[i].title+"</a>.";
-                }
-            }
-
-            nbSongsInSelection = allSongs.length;
-            textForSongs = "<div><h3>"+nbSongsInSelection+" songs in the selection</h3><p>"+titleSongs+"</p></div>";
-            $(".songsSelection").html(textForSongs);
 
         }//end of filter()
 
         //////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////
+
+        function getStats(n) {
+
+            for(i=0; i < n.songs.length; i++){
+
+                var trouve = 0;
+
+                allSongs.forEach(function (element) {
+                    if (element.id == n.songs[i].songId) {
+                        element.nb++;
+                        trouve = 1;
+                    }
+                });
+
+                if (trouve == 0) {
+                    song = {};
+                    song.id = n.songs[i].songId;
+                    song.title = n.songs[i].songTitle;
+                    song.nb = 1;
+                    allSongs.push(song);
+                }
+            }
+
+            for(u=0; u < n.performers.length; u++){
+
+                allPerformers.forEach(function (element) {
+                    if (element.id == n.performers[u].performerId) {
+                        element.nb++;
+                        trouve = 1;
+                    }
+                });
+
+                if (trouve == 0) {
+                    performer = {};
+                    performer.id = n.performers[u].performerId;
+                    performer.title = n.performers[u].performerTitle;
+                    performer.nb = 1;
+                    allPerformers.push(performer);
+                }
+            }
+
+            allFilms.forEach(function (element) {
+                if (element.id == n.filmId) {
+                    element.nb++;
+                    trouve = 1;
+                }
+            });
+
+            if (trouve == 0) {
+                film = {};
+                film.id = n.filmId;
+                film.title = n.film;
+                film.nb = 1;
+                allFilms.push(film);
+            }
+        }
+
+        function getListSongs(n) {
+
+            var listSongs = "";
+
+            for(i=0; i < n.songs.length; i++){
+
+                listSongs+= "<a href='/song/id/"+n.songs[i].songId+"'>"+n.songs[i].songTitle+"</a>";
+
+                if(i == (n.songs.length)-1){
+                    listSongs += " ";
+                }
+                else{
+                    listSongs += " , ";
+                }
+            }
+            return listSongs;
+        }
+
+
+        function getListPerformers(n) {
+
+            var listPerformers = "";
+
+            for(i=0; i < n.performers.length; i++){
+
+                listPerformers+= "<a href='/person/id/"+n.performers[i].performerId+"'>"+n.performers[i].performerTitle+"</a>";
+
+                if(i == (n.performers.length)-1){
+                    listPerformers += " ";
+                }
+                else{
+                    listPerformers += " , ";
+                }
+            }
+            return listPerformers;
+        }
+
+
+        function afficherStatsSongs(allSongs) {
+
+            var titleSongs = '';
+            var textForSongs;
+
+            allSongs.sort(function(a, b) {
+                return b.nb - a.nb;
+            });
+
+            for(var i = 0; i < allSongs.length; i++){
+
+                if (i != allSongs.length - 1) {
+                    titleSongs += "<a href='/song/id/"+allSongs[i].id+"'>"+allSongs[i].title+" ("+allSongs[i].nb+")"+"</a>, ";
+                } else {
+                    titleSongs += "<a href='/song/id/"+allSongs[i].id+"'>"+allSongs[i].title+" ("+allSongs[i].nb+")"+"</a>";
+                }
+            }
+
+            nbSongsInSelection = allSongs.length;
+            textForSongs = "<div><h3>"+nbSongsInSelection+" songs in the selection</h3><p>"+titleSongs+"</p></div>";
+            $(".songsSelection").html(textForSongs);
+        }
+
+
+        function afficherStatsFilms(allFilms) {
+
+            var titleFilms = '';
+            var textForFilms;
+
+            allFilms.sort(function(a, b) {
+                return b.nb - a.nb;
+            });
+
+            for(var i = 0; i < allFilms.length; i++){
+
+                if (i != allFilms.length - 1) {
+                    titleFilms += "<a href='/film/id/"+allFilms[i].id+"'>"+allFilms[i].title+" ("+allFilms[i].nb+")"+"</a>, ";
+                } else {
+                    titleFilms += "<a href='/film/id/"+allFilms[i].id+"'>"+allFilms[i].title+" ("+allFilms[i].nb+")"+"</a>";
+                }
+            }
+
+            nbFilmsInSelection = allFilms.length;
+            textForFilms = "<div><h3>"+nbFilmsInSelection+" films in the selection</h3><p>"+titleFilms+"</p></div>";
+            $(".filmsSelection").html(textForFilms);
+        }
+
+        function afficherStatsPerformers(allPerformers){
+
+            var titlePerformers = '';
+            var textForPerformers;
+
+            allPerformers.sort(function(a, b) {
+                return b.nb - a.nb;
+            });
+
+            for(var i = 0; i < allPerformers.length; i++){
+
+                if (i != allPerformers.length - 1) {
+                    titlePerformers += "<a href='/person/id/"+allPerformers[i].id+"'>"+allPerformers[i].title+" ("+allPerformers[i].nb+")"+"</a>, ";
+                } else {
+                    titlePerformers += "<a href='/person/id/"+allPerformers[i].id+"'>"+allPerformers[i].title+" ("+allPerformers[i].nb+")"+"</a>";
+                }
+            }
+
+            nbPerformersInSelection = allPerformers.length;
+            textForPerformers = "<div><h3>"+nbPerformersInSelection+" performers in the selection</h3><p>"+titlePerformers+"</p></div>";
+            $(".performersSelection").html(textForPerformers);
+
+        }
+
 
         $("select").change(function(){
 
@@ -325,5 +465,3 @@
     </script>
 
 {% endblock %}
-
-

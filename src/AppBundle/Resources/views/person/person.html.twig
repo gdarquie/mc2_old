@@ -40,7 +40,6 @@
 
         <div class="card">
 
-            <article>
 
                 <h1>{{ person.name }} <span class="small-h1">{% if is_granted("ROLE_EDITOR") %} - <a href="{{ path('person_edit' , {"personId" : person.personId}) }}">edit</a>{% endif %}</span></h1>
 
@@ -56,51 +55,50 @@
 
                 <div class="nav-content">
                     <ul class="tabs tabs-transparent">
-                        <li class="tab"><a href="#tab2">Films</a></li>
-                        <li class="tab active"><a href="#tab1">Numbers</a></li>
-                        <li class="tab"><a href="#tab3" id="lauchTopic">Topics & exoticisms</a></li>
-                        <li class="tab"><a href="#tab4">Presence</a></li>
-                        <li class="tab"><a href="#tab5">Persons</a></li>
-                        <li class="tab"><a href="#tab6">Sources & Diegetics</a></li>
-                        <li class="tab"><a href="#tab7">Others</a></li>
+                        <li class="tab" id="act_tab1"><a href="#tab1">Films</a></li>
+                        <li class="tab" id="act_tab2"><a href="#tab2">Numbers</a></li>
+                        <li class="tab" id="act_tab3"><a href="#tab3" id="lauchTopic">Topics & exoticisms</a></li>
+                        <li class="tab" id="act_tab4"><a href="#tab4">Presence</a></li>
+                        <li class="tab" id="act_tab5"><a href="#tab5">Persons</a></li>
+                        <li class="tab" id="act_tab6"><a href="#tab6">Sources & Diegetics</a></li>
+                        <li class="tab" id="act_tab7"><a href="#tab7">Others</a></li>
                     </ul>
                 </div>
             </nav>
 
             <!-- Tabs -->
-            <div id="tab1" class="col s12">
-
+            <div id="tab1" class="myTab col s12">
                 <!-- Numbers connected to the person -->
                 {% include 'AppBundle:person:_numbers.html.twig' %}
 
             </div>
 
-            <div id="tab2" class="col s12">
+            <div id="tab2" class="myTab col s12">
                 <!-- Films -->
                 {% include 'AppBundle:person:_films.html.twig' %}
             </div>
 
-            <div id="tab3" class="col s12">
+            <div id="tab3" class="myTab col s12">
                 <!-- Topics & exoticisms -->
                 {% include 'AppBundle:person:_topics.html.twig' %}
             </div>
 
-            <div id="tab4" class="col s12">
+            <div id="tab4" class="myTab col s12">
                 <!-- Calculations about time presence of the person -->
                 {% include 'AppBundle:person:_presence.html.twig' %}
             </div>
 
-            <div id="tab5" class="col s12">
+            <div id="tab5" class="myTab col s12">
                 <!-- Others -->
                 {% include 'AppBundle:person:_person.html.twig' %}
             </div>
 
-            <div id="tab6" class="col s12">
+            <div id="tab6" class="myTab col s12">
                 <!-- Others -->
                 {% include 'AppBundle:person:_sources.html.twig' %}
             </div>
 
-            <div id="tab7" class="col s12">
+            <div id="tab7" class="myTab col s12">
                 <!-- Others -->
                 {% include 'AppBundle:person:_others.html.twig' %}
             </div>
@@ -122,10 +120,49 @@
 
     <script>
 
-        $( ".tab" ).tabs();
+        $(document).ready(function(){
+            console.log('ready');
+//
+            $('#tab1, #tab2, #tab3, #tab4, #tab5, #tab6, #tab7').hide();
 
-        $('.tab').click(function(){
+            $("#act_tab1").click(function(){
+                $(".myTab").hide();
+                $("#tab1").show();
+            });
+            $("#act_tab2").click(function(){
+                $(".myTab").hide();
+                $("#tab2").show();
 
+            });
+            $("#act_tab3").click(function(){
+                $(".myTab").hide();
+                $("#tab3").show();
+                doCloud();
+            });
+            $("#act_tab4").click(function(){
+                $(".myTab").hide();
+                $("#tab4").show();
+            });
+            $("#act_tab5").click(function(){
+                $(".myTab").hide();
+                $("#tab5").show();
+            });
+            $("#act_tab6").click(function(){
+                $(".myTab").hide();
+                $("#tab6").show();
+                doCloud();
+            });
+            $("#act_tab7").click(function(){
+                $(".myTab").hide();
+                $("#tab7").show();
+            });
+
+            $('.tabs').tabs({
+                onShow: function() {doCloud();console.log("onShow")}
+            });
+        });
+        var doCloud = function(){
+            console.log('doCloud');
             var words_genre = '';
             var words_genres = '';
             var words_mood = '';
@@ -211,7 +248,7 @@
                 viz_mediane("melviz_diegetic", data, 9);
             });
 
-        });
+        };
 
 
 

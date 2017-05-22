@@ -30,6 +30,16 @@ class SearchController extends Controller
         $query->setParameter('performance', 'performance');
         $performances = $query->getResult();
 
+//        $query = $em->createQuery("SELECT d.title as title FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.dancemble d WHERE n.performance IS NOT NULL OR t.title IS NOT NULL");
+//        $query->setParameter('performance', 'performance');
+//        $dancemble = $query->getResult();
+
+//        //Dancing ensemble, Dancing type, Dance subgenre, Dance content
+////        $dancingType $dancemble
+//
+//        $query = $em->createQuery();
+//        $query->setParameter('');
+
         return $this->render('ApiBundle:search:index.html.twig', array(
             'numbers' => $numbers,
             'sources' => $sources,
