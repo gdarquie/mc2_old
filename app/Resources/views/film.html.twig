@@ -53,30 +53,34 @@
 
         <article class='col s12 m12'>
 
-            <table class="table striped">
+            <table class="table striped mini-table tablesorter">
+                <thead>
                 <tr>
                     <th>Order</th>
-                    <th>title</th>
+                    <th>Title</th>
                     <th>Begin Timecode</th>
+                    <th>Ending Timecode</th>
                     <th>Structure</th>
                     <th>Performers</th>
-                    <th>Dance</th>
-                    <th>Musical Style</th>
+                    <th>Average shot length</th>
                     {% if is_granted("ROLE_EDITOR") %}
                         <th>Edit</th>
                     {% endif %}
+
                     <th>View</th>
                 </tr>
-
+                </thead>
+                <tbody>
                 {% for number in numbersOf1Film %}
                 <tr>
                     <td>{{loop.index}}</td>
                     <td>{{ number.title  }}</td>
                     <td>{{ number.beginTc }}</td>
-                    <td>Structure</td>
-                    <td>Performers</td>
-                    <td>Dance</td>
-                    <td>Musical Style</td>
+                    <td>{{ number.endTc }}</td>
+                    <td>{{ number.structure }}</td>
+                    <td>performers</td>
+                    <td>{{ number.average|round() }}</td>
+                    {#<td>{% for item in performers  %}{{ item.performer }}{% if loop.last %}{% else %}, {% endif %}{% endfor %}</td>#}
 
                     {% if is_granted("ROLE_EDITOR") %}
                     <td>
@@ -90,7 +94,7 @@
                     </td>
                 </tr>
                 {% endfor %}
-
+                </tbody>
             </table>
 
 
