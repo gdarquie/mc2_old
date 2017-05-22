@@ -1,0 +1,44 @@
+
+<article class="card row">
+    <div class="col s12">
+        <h2>Sources</h2>
+
+        <div class="row">
+            <div class="col s6">
+                <h3>All</h3>
+                {% for item in sources  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+
+            <div class="col s6">
+                <h3>For {{ person.name }}</h3>
+                {% for item in source  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</article>
+
+<article class="card row">
+    <div class="col s12">
+        <h2>Diegetic</h2>
+
+        <div class="row">
+            <div class="col s6">
+                <h3>All</h3>
+                {% for item in diegetics  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+
+            <div class="col s6">
+                <h3>For {{ person.name  }}</h3>
+                {% for item in diegetic  %}
+                    {{ item.title }}({{ item.nb }})
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</article>
