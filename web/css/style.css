@@ -194,3 +194,23 @@ div .cut {
 	/*height:500px;*/
 	/*background :red;*/
 /*}*/
+
+/*viz mediane*/
+
+.melviz{
+	display: inline-block;
+	height: 300px;
+	width: 95%;
+	text-align: center;
+}
+
+.d3-tip {
+	line-height: 1;
+	font-weight: bold;
+	padding: 12px;
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	border-radius: 2px;
+	margin-top: 60px;
+}
+

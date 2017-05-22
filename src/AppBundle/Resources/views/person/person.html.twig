@@ -117,6 +117,8 @@
 {% block javascripts %}
 
     {{ parent() }}
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script type="text/javascript" src="{{ asset('js/melviz.js') }}"></script>
 
     <script>
 
@@ -181,10 +183,15 @@
             });
             $('#exoticism').jQCloud('update', words_exoticism);
 
+            //Melviz
+            var url = '{{ path("api_person_melviz_diegetic", {'personId': person.personId}) }}';
+            d3.json(url , function(error, data) {
+                viz_mediane("melviz_diegetic", data, 9);
+            });
+
         });
 
-
-
+        
 
     </script>
 {% endblock %}

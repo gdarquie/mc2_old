@@ -150,7 +150,7 @@ class PersonController extends Controller
         $query->setParameter('person', $personId );
         $completOptions = $query->getSingleResult();
 
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(t.title) as nb, t.title FROM AppBundle:Number n JOIN n.diegetic_thesaurus t GROUP BY t.title ORDER BY nb DESC");
         $diegetics = $query->getResult();
 
         //
