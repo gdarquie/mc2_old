@@ -16,176 +16,190 @@
 
         <div class="row">
 
-            <h1>{{film.title}}</h1>
-            <img src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=400" alt="poster">
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} <!-- combiner les deux fonctionnalités admin dans un même champ ? -->
-                <div class="right">
+            <div class="col s3">
+                <h1>{{film.title}}</h1>
+                <img src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=400" alt="poster">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} <!-- combiner les deux fonctionnalités admin dans un même champ ? -->
+                    <div class="right">
 
-                    {% if is_granted("ROLE_USER") %}
-                        <a href="{{path('number_new', {filmId : film.filmId }) }}"><button class="btn teal">Add a number</button></a>
-                    {% endif %}
-
-                    {% if is_granted("ROLE_EDITOR") %}
-                        <a href="{{path('film_edit', { filmId : film.filmId })}}"><button class="btn teal">edit</button></a>
-                    {% endif %}
-
-                    {#<a href="#"><button class="btn red">Complete</button></a> <!-- définir une fonction pour bloquer les numbers -->#}
-                </div>
-            {% endif %}
-        </div>
-
-        <div class="row card">
-            <div class="col s12">
-                <h2>General information</h2>
-            </div>
-            <div class="col s6">
-                <p><strong>Studio :</strong> {% for item in film.studios  %}{{ item.title }}{%  if loop.last %}{% else %} ;{% endif %} {% endfor %}</p>
-                <p><strong>Distributor :</strong>{% for item in film.distributors %}{{ item.title }}{%  if loop.last %}{% else %} ;{% endif %} {% endfor %}</p>
-            </div>
-
-            <div class="col s6">
-                <p><strong>Director :</strong> {% for director in film.directors  %}{{ director.name }}{%  if loop.last %}{% else %} ;{% endif %}{% endfor %}</p>
-                <p><strong>Released :</strong> {{ film.released }}</p>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <article class='col s12 m12'>
-
-                <table class="table striped mini-table tablesorter">
-                    <thead>
-                    <tr>
-                        <th>Order</th>
-                        <th>Title</th>
-                        <th>Begin Timecode</th>
-                        <th>Ending Timecode</th>
-                        <th>Length</th>
-                        <th>Structure</th>
-                        {#<th>Performers</th>#}
-                        <th>Average shot length</th>
-                        {% if is_granted("ROLE_EDITOR") %}
-                            <th>Edit</th>
+                        {% if is_granted("ROLE_USER") %}
+                            <a href="{{path('number_new', {filmId : film.filmId }) }}"><button class="btn teal">Add a number</button></a>
                         {% endif %}
 
-                        <th>View</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for number in numbersOf1Film %}
-                        <tr>
-                            <td>{{loop.index}}</td>
-                            <td><a href="{{ path('number', {'numberId' : number.id}) }}">{{ number.title  }}</a></td>
-                            <td>{{ number.beginTc }}</td>
-                            <td>{{ number.endTc }}</td>
-                            <td>{{ number.length }}</td>
-                            <td>{{ number.structure }}</td>
-                            <td>{{ number.average|round() }}</td>
-                            {#<td>{% for item in number.performers  %}{{ item.performer }}{% if loop.last %}{% else %}, {% endif %}{% endfor %}</td>#}
+                        {% if is_granted("ROLE_EDITOR") %}
+                            <a href="{{path('film_edit', { filmId : film.filmId })}}"><button class="btn teal">edit</button></a>
+                        {% endif %}
 
-                            {% if is_granted("ROLE_EDITOR") %}
-                                <td>
-                                    <a href="{{path('number_edit', { numberId : number.id })}}">edit</a>
-                                </td>
-                            {% endif %}
+                        {#<a href="#"><button class="btn red">Complete</button></a> <!-- définir une fonction pour bloquer les numbers -->#}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="col s9">
+
+                <div class="row card">
+                    <div class="col s12">
+                        <h2>General information</h2>
+                    </div>
+                    <div class="col s6">
+                        <p><strong>Studio :</strong> {% for item in film.studios  %}{{ item.title }}{%  if loop.last %}{% else %} ;{% endif %} {% endfor %}</p>
+                        <p><strong>Distributor :</strong>{% for item in film.distributors %}{{ item.title }}{%  if loop.last %}{% else %} ;{% endif %} {% endfor %}</p>
+                    </div>
+
+                    <div class="col s6">
+                        <p><strong>Director :</strong> {% for director in film.directors  %}{{ director.name }}{%  if loop.last %}{% else %} ;{% endif %}{% endfor %}</p>
+                        <p><strong>Released :</strong> {{ film.released }}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <article class='col s12 m12'>
+
+                        <table class="table striped mini-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Order</th>
+                                <th>Title</th>
+                                <th>Begin Timecode</th>
+                                <th>Ending Timecode</th>
+                                <th>Length</th>
+                                <th>Structure</th>
+                                {#<th>Performers</th>#}
+                                <th>Average shot length</th>
+                                {% if is_granted("ROLE_EDITOR") %}
+                                    <th>Edit</th>
+                                {% endif %}
+
+                                <th>View</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for number in numbersOf1Film %}
+                                <tr>
+                                    <td>{{loop.index}}</td>
+                                    <td><a href="{{ path('number', {'numberId' : number.id}) }}">{{ number.title  }}</a></td>
+                                    <td>{{ number.beginTc }}</td>
+                                    <td>{{ number.endTc }}</td>
+                                    <td>{{ number.length }}</td>
+                                    <td>{{ number.structure }}</td>
+                                    <td>{{ number.average|round() }}</td>
+                                    {#<td>{% for item in number.performers  %}{{ item.performer }}{% if loop.last %}{% else %}, {% endif %}{% endfor %}</td>#}
+
+                                    {% if is_granted("ROLE_EDITOR") %}
+                                        <td>
+                                            <a href="{{path('number_edit', { numberId : number.id })}}">edit</a>
+                                        </td>
+                                    {% endif %}
 
 
-                            <td>
-                                <a href="{{path('number', { numberId : number.id })}}">view</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                                    <td>
+                                        <a href="{{path('number', { numberId : number.id })}}">view</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
 
-            </article>
-
+                    </article>
+                </div>
+            </div>
         </div>
 
         <hr>
         <div class="row">
 
-            <article class='col s12 m6'>
 
-                <h2>Lengths</h2>
-
-                <article class="card col cyan s12 m6">
-                    <div class="card-content white-text center-align">
-                        <p class="center-align number">   {% for number in numberSumLength %}
-                            {% if number.total > 0 %}
-                            {{(number.total/60)|round}} min
-                            {% else %}
-                        <p>N/A</p>
-                        {% endif %}
-
-                        {% endfor %}</p>
-                        <p class="center-align number-label">Sum of all numbers</p>
-                    </div>
-                </article>
-
-                <article class="card light-green col s12 m6">
-                    <div class="card-content white-text center-align">
-                        <p class="center-align number">{{((film.length)/60)|round}} min</p>
-                        <p class="center-align number-label">Movie Length</p>
-                    </div>
-                </article>
-
-                <article class="card cyan col s12 m6 deep-orange">
-                    <div class="card-content white-text center-align">
-                        <p class="center-align number">   {% for number in numberSumLength %}
-                            {% if number.total > 0 %}
-                            {{(number.total)|round}} s
-                            {% else %}
-                        <p>N/A</p>
-                        {% endif %}
-
-                        {% endfor %}</p>
-                        <p class="center-align number-label">Sum of all numbers</p>
-                    </div>
-                </article>
-
-                <article class="card red accent-2 col s12 m6">
-                    <div class="card-content white-text center-align">
-                        <p class="center-align number">{{film.length}} sec</p>
-                        <p class="center-align number-label">Movie Length</p>
-                    </div>
-                </article>
-
-                <article class="card amber col s12 m12">
-                    <div class="card-content white-text center-align">
-                        <p class="center-align number">{% for number in numberSumLength %}
-
-                            {% if number.total > 0 %}
-                            {{((number.total/number.length)*100)|round(2, 'floor') }}%
-                            {% else %}
-                        <p>N/A</p>
-                        {% endif %}
-
-                        {% endfor %}</p>
-                        <p class="center-align number-label">Ratio number/total length</p>
-                    </div>
-                </article>
-
-                <article class="card  deep-orange col s12 m6">
-                    <div class="card-content white-text center-align">
-                        <p class="center-align number">{% for number in numberAverageLength %}{{number.average|round}} sec{% endfor %}</p>
-                        <p class="center-align number-label">Average number length for {{film.title}}</p>
-                    </div>
-                </article>
-
-                <article class="card pink lighten-2 col s12 m6">
-                    <div class="card-content white-text center-align">
-                        <p class="center-align number">{% for number in numbersAverageLength %}{{number.average|round}} sec{% endfor %}</p>
-                        <p class="center-align number-label">Average number length for all the movies</p>
-                    </div>
-                </article>
-            </article>
 
             <article class="col s12 m6">
                 <h3>Number's distribution</h3>
 
                 <div id="donut">
                     <svg style="height:500px;"></svg>
+                </div>
+            </article>
+
+            <article class='col s12 m6'>
+
+                <h2>Lengths</h2>
+
+                <div class="row">
+                    <article class="card col cyan s12 m6">
+                        <div class="card-content white-text center-align">
+                            <p class="center-align number">   {% for number in numberSumLength %}
+                                {% if number.total > 0 %}
+                                {{(number.total/60)|round}} min
+                                {% else %}
+                            <p>N/A</p>
+                            {% endif %}
+
+                            {% endfor %}</p>
+                            <p class="center-align number-label">Sum of all numbers</p>
+                        </div>
+                    </article>
+
+                    <article class="card light-green col s12 m6">
+                        <div class="card-content white-text center-align">
+                            <p class="center-align number">{{((film.length)/60)|round}} min</p>
+                            <p class="center-align number-label">Movie Length</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="row">
+                    <article class="card cyan col s12 m6 deep-orange">
+                        <div class="card-content white-text center-align">
+                            <p class="center-align number">   {% for number in numberSumLength %}
+                                {% if number.total > 0 %}
+                                {{(number.total)|round}} s
+                                {% else %}
+                            <p>N/A</p>
+                            {% endif %}
+
+                            {% endfor %}</p>
+                            <p class="center-align number-label">Sum of all numbers</p>
+                        </div>
+                    </article>
+
+                    <article class="card red accent-2 col s12 m6">
+                        <div class="card-content white-text center-align">
+                            <p class="center-align number">{{film.length}} sec</p>
+                            <p class="center-align number-label">Movie Length</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="row">
+                    <article class="card amber col s12 m12">
+                        <div class="card-content white-text center-align">
+                            <p class="center-align number">{% for number in numberSumLength %}
+
+                                {% if number.total > 0 %}
+                                {{((number.total/number.length)*100)|round(2, 'floor') }}%
+                                {% else %}
+                            <p>N/A</p>
+                            {% endif %}
+
+                            {% endfor %}</p>
+                            <p class="center-align number-label">Ratio number/total length</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="row">
+                    <article class="card  deep-orange col s12 m6">
+                        <div class="card-content white-text center-align">
+                            <p class="center-align number">{% for number in numberAverageLength %}{{number.average|round}} sec{% endfor %}</p>
+                            <p class="center-align number-label">Average number length for {{film.title}}</p>
+                        </div>
+                    </article>
+
+                    <article class="card pink lighten-2 col s12 m6">
+                        <div class="card-content white-text center-align">
+                            <p class="center-align number">{% for number in numbersAverageLength %}{{number.average|round}} sec{% endfor %}</p>
+                            <p class="center-align number-label">Average number length for all the movies</p>
+                        </div>
+                    </article>
                 </div>
             </article>
 
@@ -214,7 +228,7 @@
         //title, begin-tc, ending-tc
         var items = new vis.DataSet([
             {% for number in numbersOf1Film %}
-            {id: {{loop.index}}, content: '{{number.title}}', start: {{number.beginTc}}, end: {{number.endTc}}},
+            {id: {{loop.index}}, content: '{{number.title}}', start: {{number.beginTc}}, end: {{number.endTc}}, shots: {{ number.shots }}, cast: {%  if number.cast != null %}'{{ number.cast }}'{% else %}0{% endif %} }{% if loop.last %}{% else %},{% endif %}
             {% endfor %}
         ]);
 

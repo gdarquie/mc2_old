@@ -35,6 +35,7 @@ function create_gant(data,lengthFilm){
             "startTimeInt": doTime2(start),
             "endTime": doTime(end),
             "endTimeInt": doTime2(end),
+            "seconds": end-start
         });
     };
     var timeFormat = d3.time.format("%M:%S");
@@ -137,8 +138,9 @@ function create_gant(data,lengthFilm){
                 }
             }
             tag ="Title: " + d3.select(this).data()[0].task + "<br/>" +
-                "<p> <span> Begin TC: </span>" + debut + " </p>" +
-                "<p> <span> Ending TC: </span> " + fin +"</p>" ;
+                "<p> <span> Length: </span>"+(d3.select(this).data()[0].seconds/60).toFixed(2)+" sec</p>"+
+                "<p> <span> Begin Tc: </span>" + debut + " </p>" +
+                "<p> <span> Ending Tc: </span> " + fin +" </p>" ;
             var output = document.getElementById("tag");
             var x = (this.x.animVal.value + this.width.animVal.value/2);
             var y = this.y.animVal.value + 25 + "px";
