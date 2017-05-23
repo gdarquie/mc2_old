@@ -199,6 +199,10 @@ class PersonController extends Controller
         //Average length a shot for a performer
         $query = $em->createQuery("SELECT (SUM(n.length))/(SUM(n.shots)) as average FROM AppBundle:Number n JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId);
+        $sumLengthShot = $query->getSingleResult();
+
+        $query = $em->createQuery("SELECT (AVG(n.length))/(AVG(n.shots)) as average FROM AppBundle:Number n JOIN n.performers p WHERE p.personId = :person");
+        $query->setParameter('person', $personId);
         $avgLengthShot = $query->getSingleResult();
 
         //Associated persons (à faire)
@@ -243,6 +247,7 @@ class PersonController extends Controller
             'lengthTotalForPerson' =>$lengthTotalForPerson,
             'ratio' => $ratio,
             'structures_total' => $structures_total,
+            'sumLengthShot' => $sumLengthShot,
             'avgShotForPerson' => $avgShotForPerson,
             'moods' => $moods,
             'mood' => $mood,

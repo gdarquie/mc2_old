@@ -1,17 +1,10 @@
 <article  class="card row">
     <h2>Average shot length for {{ person.name }}</h2>
 
-    <p>Sum of all the length's number where {{ person.name }} is a performer divided by the sum of all the shots of this numbers : <span class="number">{{ avgLengthShot.average|round(2) }}</span> seconds</p>
-</article>
+    {#<p>Sum of all the length's number where {{ person.name }} is a performer divided by the sum of all the shots of this numbers : <span class="number">{{ sumLengthShot.average|round(2) }}</span> seconds</p>#}
 
+    <p>Average of all the length's number where {{ person.name }} is a performer divided by the average of all the shots of this numbers : <span class="number">{{ avgLengthShot.average|round(2) }}</span> seconds</p>
 
-<article class="card row">
-    <div class="col s12">
-        <h2>Shots</h2>
-        {% for item in avgShotForPerson  %}
-            {{ item.average }}
-        {% endfor %}
-    </div>
 </article>
 
 

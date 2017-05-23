@@ -18,12 +18,16 @@
         #slider{
             margin-bottom: 50px;
         }
+
+        .container_donut svg {
+            width:100%;
+            height:200px;
+        }
     </style>
 
 {% endblock %}
 
 {% block body %}
-
 
     <section class="container-fluid">
 
@@ -69,6 +73,29 @@
 
 
                 </article>
+
+                <article class="s12 col card">
+                    <h2>Some donuts</h2>
+
+                    <div id="donutsDanceEnsemble" class="container_donut">
+                        <h3>Dance Ensemble : </h3>
+                        <svg></svg>
+                    </div>
+                    <div id="donutsDanceType"  class="container_donut">
+                        <h3>Dance Type : </h3>
+                        <svg></svg>
+                    </div>
+                    <div id="donutsDanceSubgenre"  class="container_donut">
+                        <h3>Dance Subgenre : </h3>
+                        <svg></svg>
+                    </div>
+                    <div id="donutsDanceContent"  class="container_donut">
+                        <h3>Dance Content : </h3>
+                        <svg></svg>
+                    </div>
+
+
+                </article>
             </div>
 
             <div class="col s7">
@@ -87,30 +114,56 @@
     {{ parent() }}
     <script src="{{ asset('assets/vendor/wnumb/wNumb.js') }}"></script>
     <script src="{{ asset('assets/vendor/nouislider/distribute/nouislider.js') }}"></script>
+    <script src="{{ asset('js/donut_simple.js') }}"></script>
+
     <script>
 
         var data = [
+
             {% for number in numbers  %}
+
             {
+
                 'id' : {{ number.numberId }},
+
                 'title' : '{{ number.title() }}',
+
                 'performance' : '{{ number.performanceThesaurus }}',
+
                 'sources' : [ {% for source in number.sourceThesaurus %}'{{source.title}}'{% if loop.last %}{% else %},{% endif %}{% endfor %} ],
+
                 'filmId' : '{{ number.film.filmId }}',
+
                 'film' : '{{ number.film.title }}',
+
                 'released' : {{ number.film.released }},
+
                 'choreographers' : [ {% for person in number.choregraphers %}'{{person.name|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %} ],
-                'danceensemble': [{% for item in number.dancemble %}'{{item.title|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %}],
-                'dancetype' : [{% for item in number.dancingType %}'{{item.title|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %}],
-                'dancesubgenre' : [{% for item in number.danceSubgenre %}'{{item.title|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %}],
-                'dancecontent' : [{% for item in number.danceContent %}'{{item.title|json_encode()}}'{% if loop.last %}{% else %},{% endif %}{% endfor %}],
+
+                'danceensemble': [{% for item in number.dancemble %}'{{item.title|e("html")}}'{% if loop.last %}{% else %},{% endif %}{% endfor %}],
+
+                'dancetype' : [{% for item in number.dancingType %}'{{item.title|e("html")}}'{% if loop.last %}{% else %},{% endif %}{% endfor %}],
+
+                'dancesubgenre' : [{% for item in number.danceSubgenre %}'{{item.title|e("html")}}'{% if loop.last %}{% else %},{% endif %}{% endfor %}],
+
+                'dancecontent' : [{% for item in number.danceContent %}'{{item.title|e("html")}}'{% if loop.last %}{% else %},{% endif %}{% endfor %}],
+
                 'performers' : [ {% for person in number.performers %}{ 'performerId' : {{person.personId}}, 'performerTitle' : '{{person.name}}' }{% if loop.last %}{% else %},{% endif %}{% endfor %} ],
+
                 'songs' : [{% for item in number.song %} { 'songId' : {{item.songId}}, 'songTitle' : '{{item.title}}' }{% if loop.last %}{% else %},{% endif %}{% endfor %}]
+
             }
+
             {% if loop.last %}{% else %},{% endif %}
+
             {% endfor %}
 
+
+
         ];
+
+
+
 
         var _performance = '';
         var sources = '';
@@ -122,9 +175,14 @@
         var allSongs = [];
         var allFilms = [];
         var allPerformers = [];
+        var allDanceEnsembles = [];
+        var allDanceTypes = [];
+        var allDanceSubgenres = [];
+        var allDanceContents = [];
         var song = {'id' : '', 'title'  : '', 'nb' : 0};
         var film = {'id' : '', 'title'  : '', 'nb' : 0};
         var performer = {'id' : '', 'title'  : '', 'nb' : 0};
+        var dance = {'label' : '', 'value' : 0};
 
         var _min = 1850;
         var _max = 2000;
@@ -150,6 +208,10 @@
             allSongs = [];
             allFilms = [];
             allPerformers = [];
+            allDanceEnsembles = [];
+            allDanceTypes = [];
+            allDanceSubgenres = [];
+            allDanceContents = [];
             _compteur = 0;
 
             var source1Finale;
@@ -232,8 +294,9 @@
 
             for(i=0; i < n.songs.length; i++){
 
-                var trouve = 0;
+                //Songs
 
+                var trouve = 0;
                 allSongs.forEach(function (element) {
                     if (element.id == n.songs[i].songId) {
                         element.nb++;
@@ -250,6 +313,8 @@
                 }
             }
 
+
+            // performers
             for(u=0; u < n.performers.length; u++){
 
                 allPerformers.forEach(function (element) {
@@ -268,6 +333,7 @@
                 }
             }
 
+            //films
             allFilms.forEach(function (element) {
                 if (element.id == n.filmId) {
                     element.nb++;
@@ -282,6 +348,83 @@
                 film.nb = 1;
                 allFilms.push(film);
             }
+
+            //dance ensmebles
+            for(p=0; p < n.danceensemble.length; p++){
+
+                allDanceEnsembles.forEach(function (element) {
+                    if (element.label == n.danceensemble[p]) {
+                        element.value++;
+                        trouve = 1;
+                    }
+                });
+
+                if (trouve == 0) {
+                    dance = {};
+                    console.log(n.danceensemble[p]);
+                    dance.label = n.danceensemble[p];
+                    dance.value = 1;
+                    allDanceEnsembles.push(dance);
+                }
+            }
+
+
+            //dance type
+            for(p=0; p < n.dancetype.length; p++){
+
+                allDanceTypes.forEach(function (element) {
+                    if (element.label == n.dancetype[p]) {
+                        element.value++;
+                        trouve = 1;
+                    }
+                });
+
+                if (trouve == 0) {
+                    dance = {};
+                    dance.label = n.dancetype[p];
+                    dance.value = 1;
+                    allDanceTypes.push(dance);
+                }
+            }
+
+
+            //dance subgenres
+            for(p=0; p < n.dancesubgenre.length; p++){
+
+                allDanceSubgenres.forEach(function (element) {
+                    if (element.label == n.dancesubgenre[p]) {
+                        element.value++;
+                        trouve = 1;
+                    }
+                });
+
+                if (trouve == 0) {
+                    dance = {};
+                    dance.label = n.dancesubgenre[p];
+                    dance.value = 1;
+                    allDanceSubgenres.push(dance);
+                }
+            }
+
+
+            //dance contents
+            for(p=0; p < n.dancecontent.length; p++){
+
+                allDanceContents.forEach(function (element) {
+                    if (element.label == n.dancecontent[p]) {
+                        element.value++;
+                        trouve = 1;
+                    }
+                });
+
+                if (trouve == 0) {
+                    dance = {};
+                    dance.label = n.dancecontent[p];
+                    dance.value = 1;
+                    allDanceContents.push(dance);
+                }
+            }
+
         }
 
         function getListSongs(n) {
@@ -369,6 +512,18 @@
             $(".filmsSelection").html(textForFilms);
         }
 
+
+        function afficherDonuts() {
+
+            console.log(allDanceEnsembles);
+
+            donut_simple_avec_legende("donutsDanceEnsemble svg", allDanceEnsembles);
+            donut_simple_avec_legende("donutsDanceType svg", allDanceTypes);
+            donut_simple_avec_legende("donutsDanceContent svg", allDanceContents);
+            donut_simple_avec_legende("donutsDanceSubgenre svg", allDanceSubgenres);
+
+        }
+
         function afficherStatsPerformers(allPerformers){
 
             var titlePerformers = '';
@@ -407,6 +562,7 @@
                 alert('You can only choose 2!');
             } else {
                 filter(_performance, _source1, _source2, _min, _max);
+                afficherDonuts();
             }
 
         })

@@ -11,13 +11,13 @@
 
 
         {% for item in lengthTotal  %}
-            <p>{{ item.title }}, total = {{ item.total }}</p>
+            <p>{{ item.title }}, total = {{ item.total }}s</p>
         {% endfor %}
 
         <h3>Liste des films ordonnés chronologiquement par film.released avec le total en seconde de la durée des numbers du film où {{ person.name }} est présent(e)</h3>
 
         {% for item in lengthTotalForPerson  %}
-            <p>{{ item.title }} : {{ item.total }}</p>
+            <p>{{ item.title }} : {{ item.total }}s</p>
         {% endfor %}
 
         <h3>Ratio de la durée d'un performer / durée totale des numbers pour chaque film </h3>
