@@ -205,20 +205,20 @@ class PersonController extends Controller
         $query->setParameter('person', $personId);
         $avgLengthShot = $query->getSingleResult();
 
-        //Associated persons (à faire)
+        //Associated persons (à finir)
 
         //choreographers
-        $query = $em->createQuery("SELECT p.name as name FROM AppBundle:Number n JOIN n.choregraphers p WHERE p.personId = :person GROUP BY p.name");
+        $query = $em->createQuery("SELECT c.name as name, n.title as title, n.numberId as numberId FROM AppBundle:Number n JOIN n.choregraphers c JOIN n.performers p WHERE p.personId = :person GROUP BY n.numberId");
         $query->setParameter('person', $personId);
         $associated_choreographers = $query->getResult();
 
         //composers
-        $query = $em->createQuery("SELECT n.title as number, s.title as song, c.name as name, c.personId as personId FROM AppBundle:Number n JOIN n.song s JOIN s.composer c JOIN n.performers p WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT n.title as number, s.title as song, c.name as name, c.personId as personId, n.numberId as numberId FROM AppBundle:Number n JOIN n.song s JOIN s.composer c JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId);
         $associated_composers = $query->getResult();
 
         //lyricists
-        $query = $em->createQuery("SELECT n.title as number, s.title as song, l.name as name, l.personId as personId FROM AppBundle:Number n JOIN n.song s JOIN s.lyricist l JOIN n.performers p WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT n.title as number, s.title as song, l.name as name, l.personId as personId, n.numberId as numberId FROM AppBundle:Number n JOIN n.song s JOIN s.lyricist l JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId);
         $associated_lyricists = $query->getResult();
 

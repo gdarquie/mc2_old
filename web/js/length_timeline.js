@@ -5,18 +5,22 @@ function create_gant(data,lengthFilm){
     var w = 2017;
     var h = 400;
     var svg = d3.selectAll(".svg")
-    //.selectAll("svg")
         .append("svg")
         .attr("width", w)
         .attr("height", h)
         .attr("class", "svg");
     var colArray =
         [
+            "#8d0000",
+            "#a90000",
             "#CC0000",
+            "#ff3838",
+            "#7F7F7F",
+            "#ff8d8d",
         ];
     var taskArray = [];
     data.forEach(function(element) {
-        addTask(element.start,element.end,element.content,element.id);
+        addTask(element.start,element.end,element.content,element.id,element.cast,element.shots);
     })
     function doTime(tme){
         var t = Math.floor(tme / 60)
@@ -26,16 +30,20 @@ function create_gant(data,lengthFilm){
         var t = Math.floor(tme / 60);
         return t;
     }
-    function addTask(start,end,taskn,id) {
+    function addTask(start,end,taskn,id,type,shots) {
+        if(shots==0){
+            shots = 1;
+        }
         taskArray.push({
             "id" :id,
             "task" : taskn,
-            "type" : "number",
+            "type" : type,
             "startTime": doTime(start),
             "startTimeInt": doTime2(start),
             "endTime": doTime(end),
             "endTimeInt": doTime2(end),
-            "seconds": end-start
+            "seconds": end-start,
+            "shots" : shots
         });
     };
     var timeFormat = d3.time.format("%M:%S");
@@ -49,14 +57,13 @@ function create_gant(data,lengthFilm){
         .range([0,w-100]);
     var categories = new Array();
     var pos = new Array();
-    console.log(doTime(lengthFilm));
     for (var i = 0; i < taskArray.length; i++){
         categories.push(taskArray[i].type);
     }
     for (var i = 0; i < taskArray.length; i++){
         pos.push(taskArray[i].task);
     }
-    var catsUnfiltered = categories; //for vert labels
+    var catsUnfiltered = categories;//for vert labels
     categories = checkUnique(categories);
     pos = checkUnique(pos);
     makeGant(taskArray,categories, w, h);
@@ -82,25 +89,37 @@ function create_gant(data,lengthFilm){
             .attr("rx", 3)
             .attr("ry", 3)
             .attr("x", function(d){
-                console.log(theGap);
                 return (w/(lengthFilm/60))*d.startTimeInt;
             })
-            .attr("y", function(d, i){
-                for (var j = 0; j < categories.length; j++){
-                    if (d.type == categories[j]){
-                        return j*(theGap) + theTopPad+24;
-                    }
-                }
-            })
+            .attr("y", 24)
             .attr("width", function(d){
+                if(((w/(lengthFilm/60))*(d.endTimeInt - d.startTimeInt))-0.5 <= 0 ){
+                    return 7;
+                }
                 return ((w/(lengthFilm/60))*(d.endTimeInt - d.startTimeInt))-0.5;
             })
-            .attr("height", theBarHeight)
+            .attr("height", function(d){
+                console.log((d.seconds/d.shots) , d.task , d.seconds , d.shots);
+                if(d.shots > 20){
+                    return 30 + 20;
+                }
+                return 30 + d.shots ;
+            })
             .attr("stroke", "none")
             .attr("fill", function(d){
                 for (var i = 0; i < pos.length; i++){
-                    if (d.task == pos[i]){
+                    if (d.type == 725){
                         return colArray[0];
+                    }else if(d.type == 743){
+                        return colArray[5];
+                    }else if(d.type == 744){
+                        return colArray[3];
+                    }else if(d.type == 745){
+                        return colArray[2];
+                    }else if(d.type == 746){
+                        return colArray[1];
+                    }else{
+                        return colArray[4];
                     }
                 }
             });
@@ -121,7 +140,6 @@ function create_gant(data,lengthFilm){
                     var debut = "0" + heures + ":" + (minutes-1);
                 }
             }
-
             minutes = 0;
             heures = 0;
             for (var i=1; i<d3.select(this).data()[0].endTimeInt+2; i++) {
@@ -138,9 +156,10 @@ function create_gant(data,lengthFilm){
                 }
             }
             tag ="Title: " + d3.select(this).data()[0].task + "<br/>" +
-                "<p> <span> Length: </span>"+(d3.select(this).data()[0].seconds/60).toFixed(2)+" sec</p>"+
+                "<p> <span> Length: </span>"+(d3.select(this).data()[0].seconds)+" sec</p>"+
                 "<p> <span> Begin Tc: </span>" + debut + " </p>" +
-                "<p> <span> Ending Tc: </span> " + fin +" </p>" ;
+                "<p> <span> Ending Tc: </span> " + fin +" </p>" +
+                "<p><span>Shots: </span>"+ (d3.select(this).data()[0].shots) +"</p>";
             var output = document.getElementById("tag");
             var x = (this.x.animVal.value + this.width.animVal.value/2);
             var y = this.y.animVal.value + 25 + "px";
@@ -168,7 +187,6 @@ function create_gant(data,lengthFilm){
             .attr("y", 80);
         var minutes = -1;
         var heures = 0;
-        console.log(lengthFilm/60);
         for (var i=1; i<((lengthFilm/60)/10)+1; i++) {
             if(i%7 == 0) {
                 heures++;
@@ -177,7 +195,6 @@ function create_gant(data,lengthFilm){
                 minutes++;
             }
             var timeActuel = "0"+heures+":"+minutes+"0";
-
             var decalage = w/((lengthFilm/60)/10);
             svg.append("text")
                 .html(timeActuel)

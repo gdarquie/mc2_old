@@ -18,16 +18,16 @@
 
             <div class="col s3">
                 <h1>{{film.title}}</h1>
-                <img src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=400" alt="poster">
+                <img src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=300" alt="poster">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} <!-- combiner les deux fonctionnalités admin dans un même champ ? -->
-                    <div class="right">
+                    <div class="center row films-btn">
 
                         {% if is_granted("ROLE_USER") %}
-                            <a href="{{path('number_new', {filmId : film.filmId }) }}"><button class="btn teal">Add a number</button></a>
+                            <a href="{{path('number_new', {filmId : film.filmId }) }}"><button class="btn white red-text">Add a number</button></a>
                         {% endif %}
 
                         {% if is_granted("ROLE_EDITOR") %}
-                            <a href="{{path('film_edit', { filmId : film.filmId })}}"><button class="btn teal">edit</button></a>
+                            <a href="{{path('film_edit', { filmId : film.filmId })}}"><button class="btn white red-text">edit</button></a>
                         {% endif %}
 
                         {#<a href="#"><button class="btn red">Complete</button></a> <!-- définir une fonction pour bloquer les numbers -->#}
@@ -207,12 +207,50 @@
 
         <hr>
 
-        <article id = "container">
-            <h3>Graphe/ Timeline</h3>
-            <div class = "svg"></div>
-            <div id = "tag"></div>
-        </article>
+        <div class="row">
 
+            <article id="tabTimelineContainer" class="col s3">
+                <h3> Cast </h3>
+                <div >
+                    <table class="highlight mini-table" id="table_cast">
+                        <tr>
+                            <th>Color</th>
+                            <th>Cast</th>
+                        </tr>
+                        <tr style="height: 15px;">
+                            <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#8d0000"></circle></svg></td>
+                            <td>All Black cast</td>
+                        </tr>
+                        <tr style="height: 15px;">
+                            <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#ff8d8d"></circle></svg></td>
+                            <td>All White cast</td>
+                        </tr>
+                        <tr style="height: 15px;">
+                            <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#ff3838"></circle></svg></td>
+                            <td>All Latin cast</td>
+                        </tr>
+                        <tr style="height: 15px;">
+                            <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#CC0000"></circle></svg></td>
+                            <td>Mixed Race cast</td>
+                        </tr>
+                        <tr style="height: 15px;">
+                            <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#a90000"></circle></svg></td>
+                            <td>Mixed Race Extras</td>
+                        </tr>
+                        <tr style="height: 15px;">
+                            <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#7F7F7F"></circle></svg></td>
+                            <td>NA</td>
+                        </tr>
+                    </table>
+                </div>
+            </article>
+
+            <article id = "container" class="col s9">
+                <h3>Graphe/ Timeline</h3>
+                <div class = "svg"></div>
+                <div id = "tag"></div>
+            </article>
+        </div>
 
     </section>
 
@@ -228,7 +266,7 @@
         //title, begin-tc, ending-tc
         var items = new vis.DataSet([
             {% for number in numbersOf1Film %}
-            {id: {{loop.index}}, content: '{{number.title}}', start: {{number.beginTc}}, end: {{number.endTc}}, shots: {{ number.shots }}, cast: {%  if number.cast != null %}'{{ number.cast }}'{% else %}0{% endif %} }{% if loop.last %}{% else %},{% endif %}
+            {id: {{loop.index}}, content: '{{number.title}}', start: {{number.beginTc}}, end: {{number.endTc}}, shots: {%  if number.shots != null %}'{{ number.shots }}'{% else %}0{% endif %}, cast: {%  if number.cast != null %}'{{ number.cast }}'{% else %}0{% endif %} }{% if loop.last %}{% else %},{% endif %}
             {% endfor %}
         ]);
 

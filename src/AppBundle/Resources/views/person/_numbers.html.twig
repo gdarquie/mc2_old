@@ -1,48 +1,67 @@
 <article class="card row">
     <div class="col s12">
-        <h2>Numbers</h2>
 
-        <div class="row">
-
-            {% if person.numbersChoregrapher|length > 0 %}
-                <article class="col s6 m4">
-                    <h3>Number(s) where he/she appears as choreographer</h3>
+        {% if person.numbersChoregrapher|length > 0 %}
+            <div class="row">
+                <article class="col s12">
+                    <h3>Number(s) where {{ person.name }} is choreographer</h3>
 
                     {% for item in person.numbersChoregrapher %}
-                        <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
+                        <a href="{{ path('number', {'numberId' : item.numberId}) }}">{{ item.title }} ({{ item.film }})</a>
                     {% endfor %}
                 </article>
-            {% endif %}
+            </div>
+        {% endif %}
 
-            <article class="col s6 m4">
-                <h3>Number(s) where he/she appears as arranger</h3>
+        {% if person.numbersArranger|length > 0 %}
+            <div class="row">
+                <article class="col s12">
+                    <h3>Number(s) where {{ person.name }} is arranger</h3>
 
-                {% for item in person.numbersArranger %}
-                    <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
+                    {% for item in person.numbersArranger %}
+                        <a href="{{ path('number', {'numberId' : item.numberId}) }}">{{ item.title }} ({{ item.film }})</a>
+                    {% endfor %}
+                </article>
+            </div>
+        {% endif %}
+
+
+        {% if person.numbersDirector|length > 0 %}
+            <div class="row">
+                <article class="col s12">
+                    <h3>Number(s) where {{ person.name }} is director</h3>
+
+                    {% for item in person.numbersDirector %}
+                        <a href="{{ path('number', {'numberId' : item.numberId}) }}">{{ item.title }} ({{ item.film }})</a>
+                    {% endfor %}
+                </article>
+            </div>
+        {% endif %}
+
+        {% if person.numbersPerformer|length > 0 %}
+            <div class="row">
+                <article class="col s12">
+                    <h3>Number(s) where {{ person.name }} is performer</h3>
+
+                    {% for item in person.numbersPerformer %}
+                        <a href="{{ path('number', {'numberId' : item.numberId}) }}">{{ item.title }} ({{ item.film }})</a>
+                    {% endfor %}
+                </article>
+            </div>
+        {% endif %}
+
+        {% if person.numbersPerformer|length > 0 %}
+            <div class="row">
+                <article class="col s12">
+                <h3>Numbers where {{ person.name }} doesn't participate</h3>
+
+                {% for item in person.numbersFigurant %}
+                    <a href="{{ path('number', {'numberId' : item.numberId}) }}">{{ item.title }} ({{ item.film }})</a>
                 {% endfor %}
-            </article>
+                </article>
+        {% endif %}
         </div>
 
     </div>
-    <article class="col s6 m4">
-        <h3>Director</h3>
 
-        {% for item in person.numbersDirector %}
-            <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
-        {% endfor %}
-    </article>
-
-
-    <h3>Performer</h3>
-
-    {% for item in person.numbersPerformer %}
-        <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
-    {% endfor %}
-
-    <h3>Numbers where s.he doesn't participate</h3>
-
-    {% for item in person.numbersFigurant %}
-        <a href="{{ path('number', {'numberId' : item.numberId}) }}"><span class="chip">{{ item.title }} ({{ item.film }})</span></a>
-    {% endfor %}
-    </div>
 </article>
