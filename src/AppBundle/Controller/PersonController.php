@@ -165,12 +165,12 @@ class PersonController extends Controller
 ////        $idFilmsWithPerson = [4349,4606,4690,5030];
 
         //total des durées des numbers pour chaque film avec person (pourquoi HAVING ne marche pas)
-        $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.length as length, f.title as title, f.released FROM AppBundle:Film f JOIN f.numbers n WHERE f.filmId IN (:film) GROUP BY f.filmId ORDER BY f.released ASC");
+        $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.length as length, f.title as title, f.released FROM AppBundle:Film f JOIN f.numbers n WHERE f.filmId IN (:film) GROUP BY f.filmId, f.title, f.filmId ORDER BY f.released ASC");
 //        $query->setParameter('person', $name );
         $query->setParameter('film', $idFilmsWithPerson );
         $lengthTotal = $query->getResult();
 
-        $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.title as title, f.released as released FROM AppBundle:Number n JOIN n.performers p JOIN n.film f WHERE p.personId = :person  AND f.filmId IN (:film) GROUP BY f.filmId ORDER BY f.released ASC");
+        $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.title as title, f.released as released FROM AppBundle:Number n JOIN n.performers p JOIN n.film f WHERE p.personId = :person  AND f.filmId IN (:film) GROUP BY f.filmId, f.title, f.title, f.filmId ORDER BY f.released ASC");
         $query->setParameter('person', $personId );
         $query->setParameter('film', $idFilmsWithPerson );
         $lengthTotalForPerson = $query->getResult();
