@@ -53,17 +53,47 @@ class PersonController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         //total diegetics for each diegetics for one person
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title as title FROM AppBundle:Number n JOIN n.performers p LEFT JOIN n.diegetic_thesaurus t WHERE p.personId = :person GROUP BY t.title ORDER BY t.title ASC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title as title FROM AppBundle:Number n LEFT JOIN n.diegetic_thesaurus t JOIN n.performers p  WHERE p.personId = :person GROUP BY t.title ORDER BY t.title ASC");
         $query->setParameter('person', $personId );
         $diegetic = $query->getResult();
 
         $max = count($diegetic);
+        $max = 9;
 
         //total diegetics for each diegetics for all
         $query = $em->createQuery("SELECT COUNT(t.title) as nb, t.title as title FROM AppBundle:Number n JOIN n.diegetic_thesaurus t GROUP BY t.title ORDER BY t.title ASC");
         $query->setMaxResults($max);
         $diegetics = $query->getResult();
 
+        $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.diegetic_thesaurus t GROUP BY t.title ORDER BY t.title ASC");
+        $diegetics_title = $query->getResult();
+
+        //new array for collecting all the value of diegetic even when 0
+        $diegetic_format = [];
+
+        $i = 0;
+        foreach ($diegetics_title as $item) {
+
+//            dump($item['title']);die;
+
+            $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n LEFT JOIN n.diegetic_thesaurus t JOIN n.performers p  WHERE p.personId = :person AND t.title = :title ORDER BY t.title ASC");
+            $query->setParameter('person', $personId );
+            $query->setParameter('title', $item['title']);
+            $selectDiegetic = $query->getResult();
+
+            $selectDiegetic['title'] = $item['title'];
+            $selectDiegetic['nb'] = $selectDiegetic[0]['nb'];
+            unset($selectDiegetic[0]); //for cleaning the array (juste two rows)
+
+//                        dump($selectDiegetic['title']);die;
+
+            $diegetic_format[$i]['title'] = $selectDiegetic['title'];
+            $diegetic_format[$i]['nb']= $selectDiegetic['nb'];
+            $i++;
+
+        }
+
+//        dump($diegetic_format);die;
 
         //total of numbers with a diegetic
         $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.diegetic_thesaurus t ");
@@ -75,18 +105,19 @@ class PersonController extends Controller
         $totalNumbersForPerson = $query->getSingleResult();
 
         $diegeticsArray = array();
-        for ($i = 0; $i < count($diegetics); $i++) {
-            if (count($diegetic) == count($diegetics)){
+        for ($i = 0; $i < count($diegetic_format); $i++) {
+
+            if (count($diegetic_format) == count($diegetics)){
 
                 //ajouter une condition si est nul
                 $requete = $diegetics[$i]['title'];
-                $requete4 = $diegetic[$i]['title'];
+                $requete4 = $diegetic_format[$i]['title'];
 
-                if(!ISSET($diegetic[$i]['nb'])){
+                if(!ISSET($diegetic_format[$i]['nb'])){
                     $requete2 = 0;
                 }
                 else{
-                    $requete2 = $diegetic[$i]['nb'];
+                    $requete2 = $diegetic_format[$i]['nb'];
                 }
                 $requete3 = $diegetics[$i]['nb'];
 
@@ -100,6 +131,7 @@ class PersonController extends Controller
 
         }
 
+//        dump($diegeticsArray);die;
         return new JsonResponse($diegeticsArray);
     }
 

@@ -150,21 +150,21 @@ class PersonController extends Controller
         $query->setParameter('person', $personId );
         $completOptions = $query->getSingleResult();
 
+        //diegetic
         $query = $em->createQuery("SELECT COUNT(t.title) as nb, t.title FROM AppBundle:Number n JOIN n.diegetic_thesaurus t GROUP BY t.title ORDER BY nb DESC");
         $diegetics = $query->getResult();
 
-        //
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $diegetic = $query->getResult();
 
-        //
+        //Calculate presence
         $query = $em->createQuery("SELECT DISTINCT(f.filmId) as filmId FROM AppBundle:Number n JOIN n.film f JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId );
         $filmsWithPerson = $query->getResult();
 ////        $filmsWithPerson = [4349,4606,4690,5030];
 
-        //total des durées des numbers pour chaque film avec person (pourquoi HAVING marche pas)
+        //total des durées des numbers pour chaque film avec person (pourquoi HAVING ne marche pas)
         $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.length as length, f.title as title, f.released FROM AppBundle:Film f JOIN f.numbers n WHERE f.filmId IN (:film) GROUP BY f.filmId ORDER BY f.released ASC");
 //        $query->setParameter('person', $name );
         $query->setParameter('film', $filmsWithPerson );
