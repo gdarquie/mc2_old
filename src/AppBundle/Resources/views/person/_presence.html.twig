@@ -8,31 +8,30 @@
             <p>List of films chronologically sorted by release date with the duration in seconds of all numbers (even the numbers where {{ person.name }} is not present) : <span class="number">{{ lengthTotal|length}}</span></p>
 
 
-            <h3>List of films chronologically sorted by release date with the duration in seconds of all numbers (even the numbers where {{ person.name }} is not present)</h3>
+                <h3 class="title-mini">List of films chronologically sorted by release date with the duration in seconds of all numbers (even the numbers where {{ person.name }} is not present)</h3>
 
-            <table class="striped tablesorter mini-table">
-                <thead>
+                <table class="striped tablesorter mini-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Released</th>
+                            <th>Total (in sec)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                {% for item in lengthTotal  %}
                     <tr>
-                        <th>Title</th>
-                        <th>Released</th>
-                        <th>Total (in sec)</th>
-                    </tr>
-                </thead>
-                <tbody>
-            {% for item in lengthTotal  %}
-                <tr>
-                    <td>{{ item.title }}</td>
-                    <td>{{ item.released }}</td>
-                    <td>{{ item.total }}</td></tr>
-            {% endfor %}
-                </tbody>
-            </table>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.released }}</td>
+                        <td>{{ item.total }}</td></tr>
+                {% endfor %}
+                    </tbody>
+                </table>
 
         </article>
 
-
         <article class="s6 col">
-        <h3>List of films chronologically sorted by release date with the duration in seconds of all numbers (even the numbers where {{ person.name }} is present)</h3>
+        <h3 class="title-mini">List of films chronologically sorted by release date with the duration in seconds of all numbers (even the numbers where {{ person.name }} is present)</h3>
 
         <table class="striped tablesorter mini-table">
             <thead>
@@ -53,13 +52,28 @@
         </table>
 
 
-        <h3>Ratio performer’s presence duration / total duration of numbers for each film</h3>
+        <h3 class="title-mini">Ratio performer’s presence duration / total duration of numbers for each film</h3>
 
         <p>Presence time of {{ person.name }} in films</p>
 
-        {% for item in ratio  %}
-            <p>{{ item.title }}({{ item.released }}) : {{ ((item.one / item.all)*100)|round()  }}%</p>
-        {% endfor %}
+            <table class="striped tablesorter mini-table">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Released</th>
+                    <th>Total (in sec)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in ratio  %}
+                    <tr>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.released }}</td>
+                        <td>{{ ((item.one / item.all)*100)|round()  }}%</td></tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
         </article>
 
     </div>

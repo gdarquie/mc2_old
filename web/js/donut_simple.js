@@ -74,8 +74,10 @@ function donut_simple_avec_legende(container, data, donut,myColors) {
             .datum(data)
             .transition().duration(350)
             .call(chart);
+        if(data.length > 0){
+            document.getElementsByClassName('nv-legendWrap')[0].setAttribute('transform', 'translate(-100, -30)');
+        }
 
-        document.getElementsByClassName('nv-legendWrap')[0].setAttribute('transform', 'translate(-100, -30)');
 
         return chart;
     });
