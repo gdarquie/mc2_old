@@ -1,0 +1,11 @@
+<article id="films" class="card row">
+
+    <h2>All films associated to {{ person.name }}</h2>
+
+    {% for item in filmsPerson  %}
+        {{ item.title }}
+        <img src="http://img.omdbapi.com/?i={{ item.imdb }}&apikey=1733f6a&h=300" alt="poster" class="poster">
+    {% endfor %}
+
+</article>
+

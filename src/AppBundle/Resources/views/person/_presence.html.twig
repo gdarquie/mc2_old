@@ -1,31 +1,68 @@
 <article class="card row">
     <div class="col s12">
 
-        <h2>Temps de présence du performer dans les numbers </h2>
+        <h2>Presence time of {{ person.name }} in numbers</h2>
+
+        <article class="s6 col">
+
+            <p>List of films chronologically sorted by release date with the duration in seconds of all numbers (even the numbers where {{ person.name }} is not present) : <span class="number">{{ lengthTotal|length}}</span></p>
 
 
-        <p>Nombre de films avec des numbers où est présent(e) {{ person.name|capitalize }}: <span class="number">{{ lengthTotal|length}}</span></p>
+            <h3>List of films chronologically sorted by release date with the duration in seconds of all numbers (even the numbers where {{ person.name }} is not present)</h3>
+
+            <table class="striped tablesorter mini-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Released</th>
+                        <th>Total (in sec)</th>
+                    </tr>
+                </thead>
+                <tbody>
+            {% for item in lengthTotal  %}
+                <tr>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.released }}</td>
+                    <td>{{ item.total }}</td></tr>
+            {% endfor %}
+                </tbody>
+            </table>
+
+        </article>
 
 
-        <h3>Liste des films ordonnés chronologiquement par film.released avec le total en seconde de la durée de tous les numbers du film (même ceux où {{ person.name }} n'est pas présent(e))</h3>
+        <article class="s6 col">
+        <h3>List of films chronologically sorted by release date with the duration in seconds of all numbers (even the numbers where {{ person.name }} is present)</h3>
+
+        <table class="striped tablesorter mini-table">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Released</th>
+                <th>Total (in sec)</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for item in lengthTotalForPerson  %}
+                    <tr>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.released }}</td>
+                        <td>{{ item.total }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
 
-        {% for item in lengthTotal  %}
-            <p>{{ item.title }}, total = {{ item.total }}s</p>
-        {% endfor %}
+        <h3>Ratio performer’s presence duration / total duration of numbers for each film</h3>
 
-        <h3>Liste des films ordonnés chronologiquement par film.released avec le total en seconde de la durée des numbers du film où {{ person.name }} est présent(e)</h3>
+        <p>Presence time of {{ person.name }} in films</p>
 
-        {% for item in lengthTotalForPerson  %}
-            <p>{{ item.title }} : {{ item.total }}s</p>
-        {% endfor %}
-
-        <h3>Ratio de la durée d'un performer / durée totale des numbers pour chaque film </h3>
-
-        <p>Temps de présence dans les numbers de chaque film de {{ person.name }} (= ratio de number où {{ person.name }} est présent(e)</p>
         {% for item in ratio  %}
             <p>{{ item.title }}({{ item.released }}) : {{ ((item.one / item.all)*100)|round()  }}%</p>
         {% endfor %}
+        </article>
 
     </div>
 </article>
+
+

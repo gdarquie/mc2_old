@@ -161,18 +161,18 @@ class PersonController extends Controller
         //Calculate presence
         $query = $em->createQuery("SELECT DISTINCT(f.filmId) as filmId FROM AppBundle:Number n JOIN n.film f JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId );
-        $filmsWithPerson = $query->getResult();
-////        $filmsWithPerson = [4349,4606,4690,5030];
+        $idFilmsWithPerson = $query->getResult();
+////        $idFilmsWithPerson = [4349,4606,4690,5030];
 
         //total des durées des numbers pour chaque film avec person (pourquoi HAVING ne marche pas)
         $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.length as length, f.title as title, f.released FROM AppBundle:Film f JOIN f.numbers n WHERE f.filmId IN (:film) GROUP BY f.filmId ORDER BY f.released ASC");
 //        $query->setParameter('person', $name );
-        $query->setParameter('film', $filmsWithPerson );
+        $query->setParameter('film', $idFilmsWithPerson );
         $lengthTotal = $query->getResult();
 
-        $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.title as title FROM AppBundle:Number n JOIN n.performers p JOIN n.film f WHERE p.personId = :person  AND f.filmId IN (:film) GROUP BY f.filmId ORDER BY f.released ASC");
+        $query = $em->createQuery("SELECT SUM((n.endTc - n.beginTc)) as total, f.title as title, f.released as released FROM AppBundle:Number n JOIN n.performers p JOIN n.film f WHERE p.personId = :person  AND f.filmId IN (:film) GROUP BY f.filmId ORDER BY f.released ASC");
         $query->setParameter('person', $personId );
-        $query->setParameter('film', $filmsWithPerson );
+        $query->setParameter('film', $idFilmsWithPerson );
         $lengthTotalForPerson = $query->getResult();
 
         if(count($lengthTotalForPerson) == count($lengthTotal)) {
@@ -222,6 +222,11 @@ class PersonController extends Controller
         $query->setParameter('person', $personId);
         $associated_lyricists = $query->getResult();
 
+        //films of a person
+        $query = $em->createQuery("SELECT f.filmId as filmId, f.title as title, f.idImdb as imdb, f.released as released FROM AppBundle:Number n JOIN n.film f JOIN n.performers p WHERE p.personId = :person GROUP BY f.filmId");
+        $query->setParameter('person', $personId );
+        $filmsPerson = $query->getResult();
+
         return $this->render('AppBundle:person:person.html.twig', array(
             'person' => $person,
             'numbers_as_performers' => $numbers_as_performers,
@@ -243,7 +248,7 @@ class PersonController extends Controller
             'diegetic' => $diegetic,
             'diegetics' => $diegetics,
             'lengthTotal' => $lengthTotal,
-            'filmsWithPerson' => $filmsWithPerson,
+            'filmsWithPerson' => $idFilmsWithPerson,
             'lengthTotalForPerson' =>$lengthTotalForPerson,
             'ratio' => $ratio,
             'structures_total' => $structures_total,
@@ -258,7 +263,8 @@ class PersonController extends Controller
             'avgLengthShot' => $avgLengthShot,
             'associated_choreographers' => $associated_choreographers,
             'associated_composers' => $associated_composers,
-            'associated_lyricists' => $associated_lyricists
+            'associated_lyricists' => $associated_lyricists,
+            'filmsPerson' => $filmsPerson
         ));
     }
 
