@@ -13,7 +13,7 @@
                 <th>Title</th>
                 <th>Date</th>
                 <th>Nb of Numbers using this song</th>
-
+                <th>Nb of Films using this song</th>
             </tr>
             </thead>
             <tbody>
@@ -23,6 +23,7 @@
                     <td><a href="{{ path('song' , { 'songId' : item.songId }) }}">{{ item.title }}</a></td> <!-- lien vers une notice de stageshow -->
                     <td>{{ item.date }}</td>
                     <td>{{ item.nb }}</td>
+                    <td>{{ item.nbFilms }}</td>
                 </tr>
                 {% else %}
                 {% endif %}

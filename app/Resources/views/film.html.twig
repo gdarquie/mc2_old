@@ -60,8 +60,9 @@
                     <th>Title</th>
                     <th>Begin Timecode</th>
                     <th>Ending Timecode</th>
+                    <th>Length</th>
                     <th>Structure</th>
-                    <th>Performers</th>
+                    {#<th>Performers</th>#}
                     <th>Average shot length</th>
                     {% if is_granted("ROLE_EDITOR") %}
                         <th>Edit</th>
@@ -74,13 +75,13 @@
                 {% for number in numbersOf1Film %}
                 <tr>
                     <td>{{loop.index}}</td>
-                    <td>{{ number.title  }}</td>
+                    <td><a href="{{ path('number', {'numberId' : number.id}) }}">{{ number.title  }}</a></td>
                     <td>{{ number.beginTc }}</td>
                     <td>{{ number.endTc }}</td>
+                    <td>{{ number.length }}</td>
                     <td>{{ number.structure }}</td>
-                    <td>performers</td>
                     <td>{{ number.average|round() }}</td>
-                    {#<td>{% for item in performers  %}{{ item.performer }}{% if loop.last %}{% else %}, {% endif %}{% endfor %}</td>#}
+                    {#<td>{% for item in number.performers  %}{{ item.performer }}{% if loop.last %}{% else %}, {% endif %}{% endfor %}</td>#}
 
                     {% if is_granted("ROLE_EDITOR") %}
                     <td>
@@ -96,8 +97,6 @@
                 {% endfor %}
                 </tbody>
             </table>
-
-
 
         </article>
 

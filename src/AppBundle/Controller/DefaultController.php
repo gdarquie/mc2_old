@@ -117,7 +117,7 @@ class DefaultController extends Controller
 
         //tous les numbers du film
         $query = $em->createQuery(
-            'SELECT  (n.numberId) as id, (n.title) as title, (n.film) as film, (n.beginTc) as beginTc, (n.endTc) as endTc, (n.length) as length, (t.title) as structure, (n.length)/(n.shots) as average FROM AppBundle:Number n LEFT JOIN n.structure as t WHERE n.film = :film ORDER BY n.beginTc'
+            'SELECT  (n.numberId) as id, (n.title) as title, (n.film) as film, (n.beginTc) as beginTc, (n.endTc) as endTc, (n.length) as length, (t.title) as structure, (n.length)/(n.shots) as average FROM AppBundle:Number n LEFT JOIN n.structure as t  WHERE n.film = :film ORDER BY n.beginTc'
             ); 
         $query->setParameter('film', $film);
         $numbersOf1Film = $query->getResult(); 
