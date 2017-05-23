@@ -135,4 +135,186 @@ class PersonController extends Controller
         return new JsonResponse($diegeticsArray);
     }
 
+
+    /**
+     * @Route("/melviz/performance/{personId}", name="api_person_melviz_performance")
+     */
+    public function getMelvizPerformance($personId)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        //total performances for each performances for one person
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title as title FROM AppBundle:Number n LEFT JOIN n.performance_thesaurus t JOIN n.performers p  WHERE p.personId = :person GROUP BY t.title ORDER BY t.title ASC");
+        $query->setParameter('person', $personId );
+        $performance = $query->getResult();
+
+        $max = count($performance);
+        $max = 9;
+
+        //total performances for each performances for all
+        $query = $em->createQuery("SELECT COUNT(t.title) as nb, t.title as title FROM AppBundle:Number n JOIN n.performance_thesaurus t GROUP BY t.title ORDER BY t.title ASC");
+        $query->setMaxResults($max);
+        $performances = $query->getResult();
+
+        $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.performance_thesaurus t GROUP BY t.title ORDER BY t.title ASC");
+        $performances_title = $query->getResult();
+
+        //new array for collecting all the value of diegetic even when 0
+        $performance_format = [];
+
+        $i = 0;
+        foreach ($performances_title as $item) {
+
+//            dump($item['title']);die;
+
+            $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n LEFT JOIN n.performance_thesaurus t JOIN n.performers p  WHERE p.personId = :person AND t.title = :title ORDER BY t.title ASC");
+            $query->setParameter('person', $personId );
+            $query->setParameter('title', $item['title']);
+            $selectPerformance = $query->getResult();
+
+            $selectPerformance['title'] = $item['title'];
+            $selectPerformance['nb'] = $selectPerformance[0]['nb'];
+            unset($selectPerformance[0]); //for cleaning the array (juste two rows)
+
+//                        dump($selectPerformance['title']);die;
+
+            $performance_format[$i]['title'] = $selectPerformance['title'];
+            $performance_format[$i]['nb']= $selectPerformance['nb'];
+            $i++;
+
+        }
+
+//        dump($performance_format);die;
+
+        //total of numbers with a performance
+        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.performance_thesaurus t ");
+        $totalNumbers = $query->getSingleResult();
+//
+        //total of numbers with a performance for the person
+        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.performers p WHERE p.personId = :person");
+        $query->setParameter('person', $personId );
+        $totalNumbersForPerson = $query->getSingleResult();
+
+        $performancesArray = array();
+        for ($i = 0; $i < count($performance_format); $i++) {
+
+            if (count($performance_format) == count($performances)){
+
+                //ajouter une condition si est nul
+                $requete = $performances[$i]['title'];
+                $requete4 = $performance_format[$i]['title'];
+
+                if(!ISSET($performance_format[$i]['nb'])){
+                    $requete2 = 0;
+                }
+                else{
+                    $requete2 = $performance_format[$i]['nb'];
+                }
+                $requete3 = $performances[$i]['nb'];
+
+                $key = $i;
+
+                $performancesArray[$key]['label'] = $requete;
+                $performancesArray[$key]['label'] = $requete4;
+                $performancesArray[$key]['one_item'] = round((intval($requete2) / intval($totalNumbersForPerson['nb'])) * 100, 1, PHP_ROUND_HALF_UP);
+                $performancesArray[$key]['all_items'] = round((intval($requete3) / intval($totalNumbers['nb'])) * 100, 1, PHP_ROUND_HALF_UP);
+            }
+
+        }
+
+//        dump($performancesArray);die;
+        return new JsonResponse($performancesArray);
+    }
+
+    /**
+     * @Route("/melviz/structure/{personId}", name="api_person_melviz_structure")
+     */
+    public function getMelvizStructure($personId)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        //total performances for each performances for one person
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title as title FROM AppBundle:Number n LEFT JOIN n.source_thesaurus t JOIN n.performers p  WHERE p.personId = :person GROUP BY t.title ORDER BY t.title ASC");
+        $query->setParameter('person', $personId );
+        $structure = $query->getResult();
+
+        $max = count($structure);
+        $max = 9;
+
+        //total performances for each performances for all
+        $query = $em->createQuery("SELECT COUNT(t.title) as nb, t.title as title FROM AppBundle:Number n JOIN n.source_thesaurus t GROUP BY t.title ORDER BY t.title ASC");
+        $query->setMaxResults($max);
+        $structures = $query->getResult();
+
+        $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.source_thesaurus t GROUP BY t.title ORDER BY t.title ASC");
+        $structures_title = $query->getResult();
+
+        //new array for collecting all the value of diegetic even when 0
+        $structure_format = [];
+
+        $i = 0;
+        foreach ($structures_title as $item) {
+
+//            dump($item['title']);die;
+
+            $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n LEFT JOIN n.source_thesaurus t JOIN n.performers p  WHERE p.personId = :person AND t.title = :title ORDER BY t.title ASC");
+            $query->setParameter('person', $personId );
+            $query->setParameter('title', $item['title']);
+            $selectStructure = $query->getResult();
+
+            $selectStructure['title'] = $item['title'];
+            $selectStructure['nb'] = $selectStructure[0]['nb'];
+            unset($selectStructure[0]); //for cleaning the array (juste two rows)
+
+//                        dump($selectPerformance['title']);die;
+
+            $structure_format[$i]['title'] = $selectStructure['title'];
+            $structure_format[$i]['nb']= $selectStructure['nb'];
+            $i++;
+
+        }
+
+//        dump($performance_format);die;
+
+        //total of numbers with a performance
+        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.source_thesaurus t ");
+        $totalNumbers = $query->getSingleResult();
+//
+        //total of numbers with a performance for the person
+        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p WHERE p.personId = :person");
+        $query->setParameter('person', $personId );
+        $totalNumbersForPerson = $query->getSingleResult();
+
+        $structuresArray = array();
+        for ($i = 0; $i < count($structure_format); $i++) {
+
+            if (count($structure_format) == count($structures)){
+
+                //ajouter une condition si est nul
+                $requete = $structures[$i]['title'];
+                $requete4 = $structure_format[$i]['title'];
+
+                if(!ISSET($structure_format[$i]['nb'])){
+                    $requete2 = 0;
+                }
+                else{
+                    $requete2 = $structure_format[$i]['nb'];
+                }
+                $requete3 = $structures[$i]['nb'];
+
+                $key = $i;
+
+                $structuresArray[$key]['label'] = $requete;
+                $structuresArray[$key]['label'] = $requete4;
+                $structuresArray[$key]['one_item'] = round((intval($requete2) / intval($totalNumbersForPerson['nb'])) * 100, 1, PHP_ROUND_HALF_UP);
+                $structuresArray[$key]['all_items'] = round((intval($requete3) / intval($totalNumbers['nb'])) * 100, 1, PHP_ROUND_HALF_UP);
+            }
+
+        }
+
+//        dump($performancesArray);die;
+        return new JsonResponse($structuresArray);
+    }
+
+
 }

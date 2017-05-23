@@ -217,3 +217,13 @@ div .cut {
 .title-mini{
 	font-size: 1.3em;
 }
+
+.poster{
+	max-height:300px;
+}
+
+
+.film{
+	height : 400px;
+	padding :10px;
+}
