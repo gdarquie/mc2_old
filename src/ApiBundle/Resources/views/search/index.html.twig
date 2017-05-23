@@ -572,36 +572,36 @@
         //Slider
         //////////////////////////////////////////////////////////////////////////////
 
-        var slider = document.getElementById('slider');
-
-        noUiSlider.create(slider, {
-            start: [1880, 1980],
-            connect: true,
-            range: {
-                'min': _min,
-                'max': _max
-            },
-            format: wNumb({
-                decimals: 0
-            }),
-            tooltips: true,
-            step: 1
-
-        });
-
-        slider_values = [];
-        var min_slider ='';
-        var max_slider ='';
-
-        console.log(max_slider);
-
-        slider.noUiSlider.on('end', function(){
-            slider_values = slider.noUiSlider.get();
-            min_slider = slider_values[0];
-            max_slider = slider_values[1];
-            console.log(max_slider);
-            filter(_performance, _source1, _source2, min_slider, max_slider);
-        });
+//        var slider = document.getElementById('slider');
+//
+//        noUiSlider.create(slider, {
+//            start: [1880, 1980],
+//            connect: true,
+//            range: {
+//                'min': _min,
+//                'max': _max
+//            },
+//            format: wNumb({
+//                decimals: 0
+//            }),
+//            tooltips: true,
+//            step: 1
+//
+//        });
+//
+//        slider_values = [];
+//        var min_slider ='';
+//        var max_slider ='';
+//
+//        console.log(max_slider);
+//
+//        slider.noUiSlider.on('end', function(){
+//            slider_values = slider.noUiSlider.get();
+//            min_slider = slider_values[0];
+//            max_slider = slider_values[1];
+//            console.log(max_slider);
+//            filter(_performance, _source1, _source2, min_slider, max_slider);
+//        });
 
         //////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////
