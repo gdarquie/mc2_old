@@ -61,7 +61,7 @@ class ScenarioController extends Controller
         $one = $query->getResult();
 
         //number of numbers per dancing type for all
-        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.dancingType t GROUP BY t.thesaurusId");
+        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.dancingType t GROUP BY t.thesaurusId ORDER BY t.title");
         $all = $query->getResult();
 
         $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.dancingType t GROUP BY t.thesaurusId ORDER BY t.title ASC");
@@ -173,7 +173,7 @@ class ScenarioController extends Controller
         $one = $query->getResult();
 
         //number of numbers per dancing type for all
-        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t GROUP BY t.thesaurusId");
+        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t GROUP BY t.thesaurusId ORDER BY t.title");
         $all = $query->getResult();
 
         $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.danceSubgenre t GROUP BY t.thesaurusId ORDER BY t.title ASC");
@@ -284,7 +284,7 @@ class ScenarioController extends Controller
         $one = $query->getResult();
 
         //number of numbers per dancing type for all
-        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.danceContent t GROUP BY t.thesaurusId");
+        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.danceContent t GROUP BY t.thesaurusId ORDER BY t.title");
         $all = $query->getResult();
 
         $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.danceContent t GROUP BY t.thesaurusId ORDER BY t.title ASC");
