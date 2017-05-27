@@ -1,0 +1,62 @@
+{% extends "base.html.twig"   %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{asset('css/scenario/marion.css')}}">
+{% endblock %}
+
+{% block body %}
+
+    <section class="container">
+
+        <h1>Results</h1>
+
+
+        <!-- dance type -->
+        <h2>Dancing type</h2>
+        <div id="melviz_dancingtype" class="melviz"></div>
+
+        <!-- dance subgenre -->
+        <h2>Dance subgenre</h2>
+        <div id="melviz_dancesubgenre" class="melviz"></div>
+
+        <!-- dance content -->
+        <h2>Dance content</h2>
+        <div id="melviz_dancecontent" class="melviz"></div>
+
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script type="text/javascript" src="{{ asset('js/melviz.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/donut_simple.js') }}"></script>
+
+<script>
+
+    //Melviz dancetype
+    var url = '{{ path("api_person_melviz_dancetype") }}';
+    d3.json(url , function(error, data) {
+        viz_mediane("melviz_dancingtype", data, 17);
+//                versionBarres("melviz_completeness", data, 2);
+    });
+
+    //Melviz dancesubgenre
+    var url = '{{ path("api_person_melviz_dancesubgenre") }}';
+    d3.json(url , function(error, data) {
+        viz_mediane("melviz_dancesubgenre", data, 11);
+//                versionBarres("melviz_completeness", data, 2);
+    });
+
+    //Melviz dancecontent
+    var url = '{{ path("api_person_melviz_dancecontent") }}';
+    d3.json(url , function(error, data) {
+        viz_mediane("melviz_dancecontent", data, 8);
+//                versionBarres("melviz_completeness", data, 2);
+    });
+
+</script>
+
+{% endblock %}

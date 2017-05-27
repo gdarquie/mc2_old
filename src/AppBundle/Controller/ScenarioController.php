@@ -11,188 +11,137 @@ use AppBundle\Form\SearchType;
 class ScenarioController extends Controller
 {
 
-    //Scénarion de Marion
+    //For Marion Presentation in MAMI 2017
     /**
-     * @Route("scenario/marion", name="scenario_marion")
+     * @Route("scenario/marion/intro", name = "marion_intro")
      */
-    public function marionAction(Request $request)
-    {
-        $numbers = "";
-        $choreographers ="";
-        $performers ="";
-        $songs= "";
-        $title = "";
-
-        $form = $this->createForm(SearchType::class);
-
-//        $number = $form->getData();
-//        $number = $number->setTitle($title);
-
-        $form->handleRequest($request);
+    public function musicAction(){
 
         $em = $this->getDoctrine()->getManager();
 
-        if ($form->isSubmitted()) {
-
-            $number = $form->getData();
-            $source = $number->getSourceThesaurus();
-            $performance = $number->getPerformanceThesaurus();
-
-            if ($performance != null){
-                $performance = $number->getPerformanceThesaurus()->getTitle();
-            }
-
-            //compter le nombre de sources
-            $count = count($source);
-
-            $sql = "SELECT n.title as title, c.name as name FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.choregraphers c WHERE t.title = :performance";
-
-            for ($i=0;$i<$count;$i++)
-            {
-                $sql .= " AND n.source = :source".$i;
-            }
-
-            $sql .= " ORDER BY n.title ASC";
-
-            $query = $em->createQuery($sql);
-            $query->setParameter('performance', $performance );
-
-            for ($i=0;$i<$count;$i++)
-            {
-                $query->setParameter('source'.$i, $source[0]->getTitle() );
-            }
-
-            $numbers = $query->getResult();
+        //All songs
+        $query = $em->createQuery("SELECT s.title as title, s.date as date, s.songId as songId, COUNT(n.numberId) as nb,COUNT(DIStiNCT(f.filmId)) as nbFilms FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId ORDER BY nb DESC");
+//        $query->setParameter('person', $name );
+        $songs = $query->getResult();
 
 
-            //choregraphers
+        $query = $em->createQuery("SELECT COUNT(DISTINCT(n.numberId)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:number n JOIN n.film as f");
+//        $query->setParameter('person', $name );
+        $global = $query->getSingleResult();
 
-            $sql2 = "SELECT n.title as title, c.name as name, COUNT(c.name) as nb FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.choregraphers c WHERE t.title = :performance";
+        $query = $em->createQuery("SELECT s.title as title, s.date as date, s.songId as songId, COUNT(n.numberId) as nb,COUNT(DIStiNCT(f.filmId)) as nbFilms FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId ORDER BY nb DESC");
+//        $query->setParameter('person', $name );
+        $songs = $query->getResult();
 
-            for ($i=0;$i<$count;$i++)
-            {
-                $sql2 .= " AND n.source = :source".$i;
-            }
+        $min = 2;
 
-            $sql2 .= " GROUP BY c.name ORDER BY nb DESC";
+//        List of songId used by at least $max_number numbers
+        $query = $em->createQuery("SELECT s.songId as songId FROM AppBundle:Song s JOIN s.number n GROUP BY s.songId HAVING COUNT(n.numberId)  >= :min ");
+        $query->setParameter('min', $min );
+        $songWithMultipleNumbers = $query->getResult();
 
-            $query = $em->createQuery($sql2);
-            $query->setParameter('performance', $performance );
+//        List of songId used by at least $min distinct films
+        $query = $em->createQuery("SELECT s.songId as songId FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId HAVING COUNT(DISTINCT(f.filmId))  >= :min ");
+        $query->setParameter('min', $min );
+        $songIdWithMultipleFilms = $query->getResult();
 
-            for ($i=0;$i<$count;$i++)
-            {
-                $query->setParameter('source'.$i, $source[0]->getTitle() );
-            }
+        $query = $em->createQuery("SELECT s.songId as songId, s.title as title, f.title as film, n.title as number, COUNT(DISTINCT(f.filmId)) as nbFilm, COUNT(DISTINCT(n.numberId)) as nbNumber FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId HAVING COUNT(DISTINCT(f.filmId))  >= :min ");
+        $query->setParameter('min', $min );
+        $songWithMultipleFilms = $query->getResult();
 
-            $choreographers = $query->getResult();
+        //List of all films with the songs used in two different films [not used by Marion]
+        $query = $em->createQuery("SELECT DISTINCT(f.filmId) FROM AppBundle:Number n JOIN n.film f JOIN n.song s WHERE s.songId IN(:songs)");
+        $query->setParameter('songs', $songIdWithMultipleFilms );
+        $listFilmsWith2Songs = $query->getResult();
 
-            //performers
+        //Titles of all films with the songs used in two different films [not used by Marion, check with her]
+        $query = $em->createQuery("SELECT f.title as title, f.filmId as filmId FROM AppBundle:Number n JOIN n.film f JOIN n.song s WHERE s.songId IN(:songs) GROUP BY f.filmId");
+        $query->setParameter('songs', $songIdWithMultipleFilms );
+        $titlesFilmsWith2Songs = $query->getResult();
 
-            $sql3 = "SELECT n.title as title, p.name as name, COUNT(p.name) as nb FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.performers p WHERE t.title = :performance";
+        //Films with popular songs with performance_thesaurus = "intrumental+dance" OR 186
+        $query = $em->createQuery("SELECT f.filmId as filmId, f.title as title, COUNT(DISTINCT(n.numberId)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY f.filmId");
+        $query->setParameter('songs', $songIdWithMultipleFilms );
+        $query->setParameter('perf1', 183 );
+        $query->setParameter('perf2', 186 );
+        $listeFilmsWith2SongsAndDance = $query->getResult();
 
-            for ($i=0;$i<$count;$i++)
-            {
-                $sql3 .= " AND n.source = :source".$i;
-            }
+        //Dance films
+        $query = $em->createQuery("SELECT DISTINCT(f.filmId) as filmId FROM AppBundle:Number n JOIN n.film f JOIN n.song s WHERE n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2");
+        $query->setParameter('perf1', 183 );
+        $query->setParameter('perf2', 186 );
+        $danceFilms = $query->getResult();
 
-            $sql3 .= " GROUP BY p.name ORDER BY nb DESC";
+        //Dance number
+        $query = $em->createQuery("SELECT DISTINCT(n.numberId) as numberId FROM AppBundle:Number n WHERE n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2");
+        $query->setParameter('perf1', 183 );
+        $query->setParameter('perf2', 186 );
+        $danceNumbers = $query->getResult();
 
-            $query = $em->createQuery($sql3);
-            $query->setParameter('performance', $performance );
+        //List of songs of Films with songs connected to 2 or more films with performance_thesaurus = "intrumental+dance" OR 186
+        $query = $em->createQuery("SELECT s.songId as songId, s.title as title, COUNT(DISTINCT(n.numberId)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY s.songId");
+        $query->setParameter('songs', $songIdWithMultipleFilms );
+        $query->setParameter('perf1', 183 );
+        $query->setParameter('perf2', 186 );
+        $listeSongsWithFilms2SongsAndDance = $query->getResult();
 
-            for ($i=0;$i<$count;$i++)
-            {
-                $query->setParameter('source'.$i, $source[0]->getTitle() );
-            }
+        //Numbers of Films with songs connected to 2 or more film with performance_thesaurus = "intrumental+dance" OR 186 (not used here)
+        $query = $em->createQuery("SELECT n.numberId as numberId FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.numberId");
+        $query->setParameter('songs', $songIdWithMultipleFilms );
+        $query->setParameter('perf1', 183 );
+        $query->setParameter('perf2', 186 );
+        $listeNumbersWith2SongsAndDance = $query->getResult();
 
-            $performers = $query->getResult();
 
-            //songs
+        //Visualisations
+        //Tous les numbers contenant dance et avec une song in at least 2 films
 
-            $sql4 = "SELECT s.title as title, COUNT(s.songId) as nb, s.songId as songId, n.performance as performance, n.source as source FROM AppBundle:Number n JOIN n.song s JOIN n.performance_thesaurus t  WHERE t.title = :performance";
+        //Liste de tous les films qui contiennent qui ne contiennent pas de danse (à l'échelle des numbers) par rapport à l'ensemble des dancing type
 
-            for ($i=0;$i<$count;$i++)
-            {
-                $sql4 .= " AND n.source = :source".$i;
-            }
-
-            $sql4 .= " GROUP BY s.songId ORDER BY nb DESC";
-
-            $query = $em->createQuery($sql4);
-            $query->setParameter('performance', $performance );
-
-            for ($i=0;$i<$count;$i++)
-            {
-                $query->setParameter('source'.$i, $source[0]->getTitle() );
-            }
-            $songs = $query->getResult();
-
-        }
-
-        //version export JSON
-
-        return $this->render('AppBundle:scenario:marion/index.html.twig', array(
-            'form' => $form->createView(),
-            'choreographers' => $choreographers,
-            'performers' => $performers,
-            'numbers' => $numbers,
-            'songs' => $songs
+        return $this->render('AppBundle:scenario:marion/intro.html.twig', array(
+            'songs' => $songs,
+            'global' => $global,
+            'songWithMultipleNumbers' => $songWithMultipleNumbers,
+            'songWithMultipleFilms' => $songWithMultipleFilms,
+            'titlesFilmsWith2Songs' => $titlesFilmsWith2Songs,
+            'listFilmsWith2Songs' => $listFilmsWith2Songs,
+            'titlesFilmsWith2Songs' => $titlesFilmsWith2Songs,
+            'listeFilmsWith2SongsAndDance' => $listeFilmsWith2SongsAndDance,
+            'songIdWithMultipleFilms' => $songIdWithMultipleFilms,
+            'danceFilms' => $danceFilms,
+            'danceNumbers' => $danceNumbers,
+            'listeSongsWithFilms2SongsAndDance' => $listeSongsWithFilms2SongsAndDance,
+            'min' => $min
         ));
     }
 
-
-    //Liste of numbers for a song with source and performance filters
+    //For Marion Presentation in MAMI 2017
     /**
-     * @Route("scenario/dance/performance={performance}&source={source}&song={song}", name="scenario_marion_song")
+     * @Route("/scenario/marion/results", name = "marion_results")
      */
-    public function dancesongAction($performance,$source, $song){
+    public function musicResultAction(){
 
         $em = $this->getDoctrine()->getManager();
 
-        $query = "SELECT n.numberId as numberId, n.title as title, s.title as song, f.title as film FROM AppBundle:Number n JOIN n.song s JOIN n.film f JOIN n.performance_thesaurus t  WHERE t.title = :performance AND n.source = :source AND s.songId = :song";
-        $query = $em->createQuery($query);
-        $query->setParameter('performance', $performance );
-        $query->setParameter('source', $source );
-        $query->setParameter('song', $song );
-        $numbers = $query->getResult();
+        $min = 2;
 
-        $query = "SELECT f.title as title, f.idImdb as imdb FROM AppBundle:Number n JOIN n.song s JOIN n.film f JOIN n.performance_thesaurus t  WHERE t.title = :performance AND n.source = :source AND s.songId = :song GROUP BY f.filmId";
-        $query = $em->createQuery($query);
-        $query->setParameter('performance', $performance );
-        $query->setParameter('source', $source );
-        $query->setParameter('song', $song );
-        $films = $query->getResult();
+//        List of songId used by at least $min distinct films
+        $query = $em->createQuery("SELECT s.songId as songId FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId HAVING COUNT(DISTINCT(f.filmId))  >= :min ");
+        $query->setParameter('min', $min );
+        $songIdWithMultipleFilms = $query->getResult();
 
 
-        return $this->render('AppBundle:scenario:marion/song.html.twig', array(
-            'numbers' => $numbers,
-            'films' => $films
-        ));
-    }
-
-    /**
-     * @Route("/scenario/marguerite", name = "scenario_marguerite")
-     */
-    public function margueriteAction(){
-
-        $em = $this->getDoctrine()->getManager();
-
-        $param1 = "solo(s)";
-        $param2 = "solo(s)";
-
-        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.performers p JOIN n.musensemble m JOIN n.dancemble d WHERE m.title = :musensemble AND d.title = :dancemble");
-        $query->setParameters(array('musensemble' => $param1 , 'dancemble' => $param2));
-        $numbers = $query->getResult();
-
-        $query = $em->createQuery("SELECT p.name as name, COUNT(p.name) as nb FROM AppBundle:Number n JOIN n.performers p JOIN n.musensemble m JOIN n.dancemble d WHERE m.title = :musensemble AND d.title = :dancemble GROUP BY p.name ORDER BY nb DESC");
-        $query->setParameters(array('musensemble' => $param1 , 'dancemble' => $param2));
-        $performers = $query->getResult();
+        $query = $em->createQuery("SELECT n.numberId as numberId FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.numberId");
+        $query->setParameter('songs', $songIdWithMultipleFilms );
+        $query->setParameter('perf1', 183 );
+        $query->setParameter('perf2', 186 );
+        $listeFilmsWith2SongsAndDance = $query->getResult();
 
 
-        return $this->render('AppBundle:scenario:marguerite/index.html.twig', array(
-            'numbers' => $numbers,
-            'performers' => $performers
+        return $this->render('AppBundle:scenario:marion/results.html.twig', array(
+            'listeFilmsWith2SongsAndDance' => $listeFilmsWith2SongsAndDance,
         ));
 
     }
+
 }
