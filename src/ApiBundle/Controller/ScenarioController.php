@@ -114,12 +114,10 @@ class ScenarioController extends Controller
 
             if (count($formating) == count($all)) {
 
-                if($all[$i]['title'] != "NA"){
-
                 //ajouter une condition si est nul
                 $requete = $all[$i]['title'];
                 $requete4 = $formating[$i]['title'];
-                }
+
 
                 if (!ISSET($formating[$i]['nb'])) {
                     $requete2 = 0;
@@ -127,18 +125,23 @@ class ScenarioController extends Controller
                     $requete2 = $formating[$i]['nb'];
                 }
                 $requete3 = $all[$i]['nb'];
-
+                }
                 $key = $i;
 
                 $final[$key]['label'] = $requete;
                 $final[$key]['label'] = $requete4;
                 $final[$key]['one_item'] = round((intval($requete2) / intval($totalNumbersForSelection['nb'])) * 100, 1, PHP_ROUND_HALF_UP);
                 $final[$key]['all_items'] = round((intval($requete3) / intval($totalNumbers['nb'])) * 100, 1, PHP_ROUND_HALF_UP);
+
+
+            if($final[$key]['label'] == "NA"){
+                unset($final[$key]);
             }
 
         }
 
 
+        $final = array_values($final);
 //        dump($final);die;
 
 
