@@ -70,7 +70,6 @@ class ScenarioController extends Controller
         $max = count($all);
         $formating = [];
 
-
         $i = 0;
         foreach ($titles as $item) {
 
@@ -110,18 +109,21 @@ class ScenarioController extends Controller
 //        dump($totalNumbersForSelection);die();
 
         $final = array();
+
         for ($i = 0; $i < count($formating); $i++) {
 
-            if (count($formating) == count($all)){
+            if (count($formating) == count($all)) {
+
+                if($all[$i]['title'] != "NA"){
 
                 //ajouter une condition si est nul
                 $requete = $all[$i]['title'];
                 $requete4 = $formating[$i]['title'];
-
-                if(!ISSET($formating[$i]['nb'])){
-                    $requete2 = 0;
                 }
-                else{
+
+                if (!ISSET($formating[$i]['nb'])) {
+                    $requete2 = 0;
+                } else {
                     $requete2 = $formating[$i]['nb'];
                 }
                 $requete3 = $all[$i]['nb'];
@@ -135,6 +137,7 @@ class ScenarioController extends Controller
             }
 
         }
+
 
 //        dump($final);die;
 
