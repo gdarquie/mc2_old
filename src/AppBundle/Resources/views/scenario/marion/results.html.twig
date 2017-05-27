@@ -3,30 +3,38 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{asset('css/scenario/marion.css')}}">
+
+    <style>
+        #melviz_dancingtype p{
+            font-size: 0.7em;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
 
     <section class="container">
 
-        <h1>Results</h1>
-
-
         <!-- dance type -->
-        <h2>Dancing type</h2>
-        <div id="melviz_dancingtype" class="melviz"></div>
-        <p class="center more">more informations</p>
+            <div class="card">
+            <h2>Dancing type</h2>
+            <div id="melviz_dancingtype" class="melviz"></div>
+            <p class="center more">more informations</p>
+        </div>
 
-        <!-- dance subgenre -->
-        <h2>Dance subgenre</h2>
-        <div id="melviz_dancesubgenre" class="melviz"></div>
-        <p class="center more">more informations</p>
+        <div class="card">
+            <!-- dance subgenre -->
+            <h2>Dance subgenre</h2>
+            <div id="melviz_dancesubgenre" class="melviz"></div>
+            <p class="center more">more informations</p>
+        </div>
 
-        <!-- dance content -->
-        <h2>Dance content</h2>
-        <div id="melviz_dancecontent" class="melviz"></div>
-        <p class="center more">more informations</p>
-
+        <div class="card">
+            <!-- dance content -->
+            <h2>Dance content</h2>
+            <div id="melviz_dancecontent" class="melviz"></div>
+            <p class="center more">more informations</p>
+        </div>
     </section>
 {% endblock %}
 
