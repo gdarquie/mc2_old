@@ -18,7 +18,7 @@ class SearchController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 //        $numbers = $em->getRepository('AppBundle:Number')->findAll();
-        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.source_thesaurus t WHERE n.performance IS NOT NULL OR t.title IS NOT NULL");
+        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.source_thesaurus t WHERE n.performance_thesaurus IS NOT NULL OR t.title IS NOT NULL");
 //        $query->setMaxResults(100);
         $numbers = $query->getResult();
 
@@ -26,15 +26,53 @@ class SearchController extends Controller
         $query->setParameter('source', 'source');
         $sources = $query->getResult();
 
-        $query = $em->createQuery("SELECT DISTINCT(t.title) as title FROM AppBundle:Thesaurus t WHERE t.type = :performance");
-        $query->setParameter('performance', 'performance');
-        $performances = $query->getResult();
+        $query = $em->createQuery("SELECT DISTINCT(t.title) as title FROM AppBundle:Thesaurus t WHERE t.type = :performance_thesaurus");
+        $query->setParameter('performance_thesaurus', 'performance_thesaurus');
+        $performance_thesaurus = $query->getResult();
 
 
         return $this->render('ApiBundle:search:index.html.twig', array(
             'numbers' => $numbers,
             'sources' => $sources,
-            'performances' => $performances
+            'performances' => $performance_thesaurus
+        ));
+
+    }
+
+    /**
+     * @Route("api/search/dance")
+     */
+    public function searchDanceAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $min = 2;
+
+        //List of songId used by at least $min distinct films
+        $query = $em->createQuery("SELECT s.songId as songId FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId HAVING COUNT(DISTINCT(f.filmId))  >= :min ");
+        $query->setParameter('min', $min );
+        $songIdWithMultipleFilms = $query->getResult();
+
+        //Numbers of Films with songs connected to 2 or more film with performance_thesaurus = "intrumental+dance" OR "song+dance"
+        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.numberId");
+        $query->setParameter('songs', $songIdWithMultipleFilms );
+        $query->setParameter('perf1', "intrumental+dance" );
+        $query->setParameter('perf2', "song+dance" );
+        $numbers = $query->getResult();
+
+        $query = $em->createQuery("SELECT DISTINCT(t.title) as title FROM AppBundle:Thesaurus t WHERE t.type = :source");
+        $query->setParameter('source', 'source');
+        $sources = $query->getResult();
+
+        $query = $em->createQuery("SELECT DISTINCT(t.title) as title FROM AppBundle:Thesaurus t WHERE t.type = :performance_thesaurus");
+        $query->setParameter('performance_thesaurus', 'performance');
+        $performance_thesaurus = $query->getResult();
+
+
+        return $this->render('ApiBundle:search:index.html.twig', array(
+            'numbers' => $numbers,
+            'sources' => $sources,
+            'performances' => $performance_thesaurus
         ));
 
     }

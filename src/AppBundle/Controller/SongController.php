@@ -41,11 +41,11 @@ class SongController extends Controller
         $query->setParameter('songs', $songWithMultipleFilms );
         $titlesFilmsWith2Songs = $query->getResult();
 
-        //Films with popular songs with performance = "intrumental+dance" OR "song+dance"
-        $query = $em->createQuery("SELECT DISTINCT(f.filmId) as filmId FROM AppBundle:Number n JOIN n.film f JOIN n.song s WHERE s.songId IN(:songs) AND (n.performance = :perf1 OR n.performance = :perf2)");
+        //Films with popular songs with performance_thesaurus = "intrumental+dance" OR 186
+        $query = $em->createQuery("SELECT DISTINCT(f.filmId) as filmId FROM AppBundle:Number n JOIN n.film f JOIN n.song s WHERE s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)");
         $query->setParameter('songs', $songWithMultipleFilms );
         $query->setParameter('perf1', "intrumental+dance" );
-        $query->setParameter('perf2', "song+dance" );
+        $query->setParameter('perf2', 186 );
         $titlesFilmsWith2Songs = $query->getResult();
 
         return $this->render('AppBundle:song:index.html.twig',array(
@@ -73,6 +73,14 @@ class SongController extends Controller
         $songs = $query->getResult();
 
 
+        $query = $em->createQuery("SELECT COUNT(DISTINCT(n.numberId)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:number n JOIN n.film as f");
+//        $query->setParameter('person', $name );
+        $global = $query->getSingleResult();
+
+        $query = $em->createQuery("SELECT s.title as title, s.date as date, s.songId as songId, COUNT(n.numberId) as nb,COUNT(DIStiNCT(f.filmId)) as nbFilms FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId ORDER BY nb DESC");
+//        $query->setParameter('person', $name );
+        $songs = $query->getResult();
+
         $min = 2;
 
 //        List of songId used by at least $max_number numbers
@@ -99,40 +107,48 @@ class SongController extends Controller
         $query->setParameter('songs', $songIdWithMultipleFilms );
         $titlesFilmsWith2Songs = $query->getResult();
 
-        //Films with popular songs with performance = "intrumental+dance" OR "song+dance"
-        $query = $em->createQuery("SELECT f.filmId as filmId, f.title as title, COUNT(DISTINCT(n.numberId)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance = :perf1 OR n.performance = :perf2)) GROUP BY f.filmId");
+        //Films with popular songs with performance_thesaurus = "intrumental+dance" OR 186
+        $query = $em->createQuery("SELECT f.filmId as filmId, f.title as title, COUNT(DISTINCT(n.numberId)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY f.filmId");
         $query->setParameter('songs', $songIdWithMultipleFilms );
-        $query->setParameter('perf1', "intrumental+dance" );
-        $query->setParameter('perf2', "song+dance" );
+        $query->setParameter('perf1', 183 );
+        $query->setParameter('perf2', 186 );
         $listeFilmsWith2SongsAndDance = $query->getResult();
 
         //Dance films
-        $query = $em->createQuery("SELECT DISTINCT(f.filmId) as filmId FROM AppBundle:Number n JOIN n.film f JOIN n.song s WHERE n.performance = :perf1 OR n.performance = :perf2");
-        $query->setParameter('perf1', "intrumental+dance" );
-        $query->setParameter('perf2', "song+dance" );
+        $query = $em->createQuery("SELECT DISTINCT(f.filmId) as filmId FROM AppBundle:Number n JOIN n.film f JOIN n.song s WHERE n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2");
+        $query->setParameter('perf1', 183 );
+        $query->setParameter('perf2', 186 );
         $danceFilms = $query->getResult();
 
         //Dance number
-        $query = $em->createQuery("SELECT DISTINCT(n.numberId) as numberId FROM AppBundle:Number n JOIN n.film f JOIN n.song s WHERE n.performance = :perf1 OR n.performance = :perf2");
-        $query->setParameter('perf1', "intrumental+dance" );
-        $query->setParameter('perf2', "song+dance" );
+        $query = $em->createQuery("SELECT DISTINCT(n.numberId) as numberId FROM AppBundle:Number n WHERE n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2");
+        $query->setParameter('perf1', 183 );
+        $query->setParameter('perf2', 186 );
         $danceNumbers = $query->getResult();
 
-        //Films with popular songs with performance = "intrumental+dance" OR "song+dance"
-        $query = $em->createQuery("SELECT s.songId as songId, s.title as title, COUNT(DISTINCT(n.numberId)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance = :perf1 OR n.performance = :perf2)) GROUP BY s.songId");
+        //List of songs of Films with songs connected to 2 or more films with performance_thesaurus = "intrumental+dance" OR 186
+        $query = $em->createQuery("SELECT s.songId as songId, s.title as title, COUNT(DISTINCT(n.numberId)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY s.songId");
         $query->setParameter('songs', $songIdWithMultipleFilms );
-        $query->setParameter('perf1', "intrumental+dance" );
-        $query->setParameter('perf2', "song+dance" );
+        $query->setParameter('perf1', 183 );
+        $query->setParameter('perf2', 186 );
         $listeSongsWithFilms2SongsAndDance = $query->getResult();
 
+        //Numbers of Films with songs connected to 2 or more film with performance_thesaurus = "intrumental+dance" OR 186 (not used here)
+        $query = $em->createQuery("SELECT n.numberId as numberId FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.numberId");
+        $query->setParameter('songs', $songIdWithMultipleFilms );
+        $query->setParameter('perf1', 183 );
+        $query->setParameter('perf2', 186 );
+        $listeNumbersWith2SongsAndDance = $query->getResult();
 
 
-        //Je cherche une liste de films : cette liste sera dans listFilmsWith2SongAndDance mais je ne veux que les films liés à des songs qui sont utilisés
+        //Visualisations
+        //Tous les numbers contenant dance et avec une song in at least 2 films
 
-        //Liste de tous les films qui contiennent qui ne contiennent pas de danse
+        //Liste de tous les films qui contiennent qui ne contiennent pas de danse (à l'échelle des numbers) par rapport à l'ensemble des dancing type
 
         return $this->render('AppBundle:song:music.html.twig',array(
             'songs' => $songs,
+            'global' => $global,
             'songWithMultipleNumbers' => $songWithMultipleNumbers,
             'songWithMultipleFilms' => $songWithMultipleFilms,
             'titlesFilmsWith2Songs' => $titlesFilmsWith2Songs,

@@ -32,6 +32,10 @@
             font-size: 0.9em;
         }
 
+        .strong{
+            color : blue;
+        }
+
     </style>
 {% endblock %}
 
@@ -45,7 +49,7 @@
 
             <!-- 1) Number of songs -->
 
-            <article class="col s10">
+            <article class="col s12">
 
                 <!-- Genres Modal Structure -->
                 <div id="modal_all_songs" class="modal modal-fixed-footer">
@@ -86,15 +90,26 @@
                 </div>
 
                 <!-- Visualisations -->
-                <article class="card col m12 s12 valign-wrapper">
+                <div class="card">
+                <article class="col m12 s12 valign-wrapper">
                     <div>
                         <div class="big-card">
-                            <p class="center"><span class="huge">{{ songs|length }}</span> tunes saved in database</p>
+                            <p class="center"><span class="huge">{{ songs|length }}</span> tunes saved in <span class="strong">{{ global.nbNumber }}</span> numbers in <span class="strong">{{ global.nbFilm }}</span> films</p>
                         </div>
                     </div>
 
                 </article>
 
+
+                <article class="col m12 s12 valign-wrapper">
+                    <div>
+                        <div class="big-card">
+                            <p class="center"><span class="huge">{{ danceNumbers|length }}</span> danced numbers in <span class="strong">{{ danceFilms|length }}</span> films</p>
+
+                        </div>
+                    </div>
+                </article>
+                </div>
 
                 <!-- Genre Modal Trigger -->
                 <div class="row">
@@ -109,18 +124,19 @@
 
             </article>
 
+
             <!---------------------------->
             <!-- 2) Songs with two films -->
             <!---------------------------->
 
-            <article class="col offset-s2 s10">
+            <article class="col s12">
 
                 <!-- Genres Modal Structure -->
                 <div id="modal_songs" class="modal modal-fixed-footer">
                     <div class="modal-content">
                         <div class="row s12">
 
-                            <h3>Tunes in at least 2 films</h3>
+                            <h3>Tunes appearing in at least 2 films</h3>
 
                             <article class="col s12">
 
@@ -153,16 +169,16 @@
                 </div>
 
                 <!-- Visualisations -->
-                <article class="card col m12 s12 valign-wrapper">
+                <div class="card">
+                <article class="col m12 s12 valign-wrapper">
                     <div>
                         <div class="big-card">
-                            <p class="center"><span class="huge">{{ songWithMultipleFilms|length }}</span> tunes in at least 2 films</p>
+                            <p class="center"><span class="huge">{{ songWithMultipleFilms|length }}</span> tunes appearing in at least 2 films <br>in a corpus of <span class="huge">{{ listFilmsWith2Songs|length }}</span> films</p>
 
                         </div>
                     </div>
 
                 </article>
-
 
                 <!-- Genre Modal Trigger -->
 
@@ -174,252 +190,32 @@
                             {#<i class="material-icons">more</i>#}
                         </a>
                     </article>
-                </div>
 
-            </article>
+                    <article class="card col m12 s12 valign-wrapper">
+                        <div>
+                            <div class="big-card">
 
+                                <p class="center"><span class="huge">{{ listeSongsWithFilms2SongsAndDance|length }}</span> tunes danced in at least 2 films in a corpus of<br><span class="huge">{{ listeFilmsWith2SongsAndDance|length }}</span> films</p>
 
-            <!---------------------------->
-            <!-- 3) list of films with a song used in at least 2 films -->
-            <!---------------------------->
-
-            <article class="col s10">
-
-                <!-- Genres Modal Structure -->
-                <div id="modal_films_with_2_songs" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <div class="row s12">
-
-                            <h3>{{ titlesFilmsWith2Songs|length }} films with a song used in at least 2 films</h3>
-
-                            <article class="col s12">
-
-                                <table class="highlight tablesorter mini-table">
-                                    <thead>
-                                    <tr>
-                                        <th>Title of the film</th>
-
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for item in titlesFilmsWith2Songs  %}
-                                        {% if item.title is not null %}
-                                            <tr>
-                                                <td><a href="{{ path('film' , { 'filmId' : item.filmId }) }}">{{ item.title }}</a></td>
-                                            </tr>
-                                        {% else %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </article>
-
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Visualisations -->
-                <article class="card col m12 s12 valign-wrapper">
-                    <div>
-                        <div class="big-card">
-                            <p class="center"><span class="huge">{{ listFilmsWith2Songs|length }}</span> films with a song used in at least 2 films</p>
-
-                        </div>
-                    </div>
-
-                </article>
-
-
-                <!-- Genre Modal Trigger -->
-
-                <div class="row">
-
-                    <article class="col s12 center more">
-                        <a class="modal-trigger black-text" href="#modal_films_with_2_songs">
-                            + More informations
-                            {#<i class="material-icons">more</i>#}
-                        </a>
                     </article>
                 </div>
 
             </article>
 
 
-            <!---------------------------->
-            <!-- 4) Number of films using dance conneted to a song used  by two different movies -->
-            <!---------------------------->
+            {#<article class="col offset-s2 s10">#}
 
-            <article class="col offset-s2 s10">
+                {#<!-- Genres Modal Structure -->#}
+                {#<div id="modal_films" class="modal modal-fixed-footer">#}
+                    {#<div class="modal-content">#}
+                        {#<div class="row s12">#}
 
-                <!-- Genres Modal Structure -->
-                <div id="modal_films" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <div class="row s12">
+                            {#<h3>Films using dance in at least these 2 (or more) films</h3>#}
 
-                            <h3>Films using dance in at least these 2 (or more) films</h3>
-
-                            <article class="col s12">
-
-                                <table class="highlight tablesorter mini-table">
-                                    <thead>
-                                    <tr>
-                                        <th>Title of the film</th>
-                                        {#<th>Nb of films using this tune</th>#}
-                                        {#<th>Nb of numbers using this tune</th>#}
-
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for item in listeFilmsWith2SongsAndDance  %}
-                                        {% if item.title is not null %}
-                                            <tr>
-                                                <td><a href="{{ path('film' , { 'filmId' : item.filmId }) }}">{{ item.title }}</a></td>
-                                                {#<td>{{ item.nbFilm }}</td>#}
-                                                {#<td>{{ item.nbNumber }}</td>#}
-                                                <!-- lien vers une notice de stageshow -->
-                                                {#<td>{{ item.date }}</td>#}
-                                            </tr>
-                                        {% else %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </article>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Visualisations -->
-                <article class="card col m12 s12 valign-wrapper">
-                    <div>
-                        <div class="big-card">
-                            <p class="center"><span class="huge">{{ listeFilmsWith2SongsAndDance|length }}</span> films using dance in this films</p>
-
-                        </div>
-                    </div>
-
-                </article>
-
-
-                <!-- Genre Modal Trigger -->
-
-                <div class="row">
-
-                    <article class="col s12 center more">
-                        <a class="modal-trigger black-text" href="#modal_films">
-                            + More informations
-                            {#<i class="material-icons">more</i>#}
-                        </a>
-                    </article>
-                </div>
-
-            </article>
-
-            <!---------------------------->
-            <!-- 5) List dance films -->
-            <!---------------------------->
-
-            <article class="col s10">
-
-                <!-- Visualisations -->
-                <article class="card col m12 s12 valign-wrapper">
-                    <div>
-                        <div class="big-card">
-                            <p class="center"><span class="huge">{{ danceNumbers|length }}</span> numbers  with dance in <span class="huge">{{ danceFilms|length }}</span> films.</p>
-
-                        </div>
-                    </div>
-
-                </article>
-
-
-            </article>
-
-            <!---------------------------->
-            <!-- 6) List of songs used by all dance films using songs used by two different films -->
-            <!---------------------------->
-
-            <article class="col offset-s2 s10">
-
-                <!-- Genres Modal -->
-                <div id="modal_songs_in_dance_film_two_songs" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <div class="row s12">
-
-                            <h3>List of songs used by all dance films using songs used by two different films</h3>
-
-                            <article class="col s12">
-
-                                <table class="highlight tablesorter mini-table">
-                                    <thead>
-                                    <tr>
-                                        <th>Title of the tune</th>
-                                        <th>Nb of films using this tune</th>
-                                        <th>Nb of numbers using this tune</th>
-
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for item in listeSongsWithFilms2SongsAndDance  %}
-                                        {% if item.title is not null %}
-                                            <tr>
-                                                <td><a href="{{ path('song' , { 'songId' : item.songId }) }}">{{ item.title }}</a></td>
-                                                <td>{{ item.nbFilm }}</td>
-                                                <td>{{ item.nbNumber }}</td>
-                                            </tr>
-                                        {% else %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </article>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Visualisations -->
-                <article class="card col m12 s12 valign-wrapper">
-                    <div>
-                        <div class="big-card">
-                            <p class="center"><span class="huge">{{ listeSongsWithFilms2SongsAndDance|length }}</span> songs used by all films with dance using songs used by two different films</p>
-
-                        </div>
-                    </div>
-
-                </article>
-
-
-                <!-- Genre Modal Trigger -->
-
-                <div class="row">
-
-                    <article class="col s12 center more">
-                        <a class="modal-trigger black-text" href="#modal_songs_in_dance_film_two_songs">
-                            + More informations
-                            {#<i class="material-icons">more</i>#}
-                        </a>
-                    </article>
-                </div>
-
-            </article>
-
-
-            <!---------------------------->
-            <!-- 7) number of tunes used in at least 2 films with dance and where all the films are danced films  -->
-            <!---------------------------->
-
-            <article class="col s10">
-
-                <!-- Genres Modal Structure -->
-                <div id="modal_films_final" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <div class="row s12">
-
-                            <h3>Number of tunes used in at least 2 films with dance and where all the films are danced films</h3>
-
-                            <article class="col s12">
+                            {#<article class="col s12">#}
 
                                 {#<table class="highlight tablesorter mini-table">#}
                                     {#<thead>#}
@@ -443,39 +239,40 @@
                                         {#{% else %}#}
                                         {#{% endif %}#}
                                     {#{% endfor %}#}
-                                    {#</tbody>#}
+                                    {#</tbody>@#}
                                 {#</table>#}
-                            </article>
+                            {#</article>#}
 
-                        </div>
-                    </div>
-                </div>
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
 
-                <!-- Visualisations -->
-                <article class="card col m12 s12 valign-wrapper">
-                    <div>
-                        <div class="big-card">
-                            <p class="center"><span class="huge"></span> films with dance numbers and song used in at least two movies and where </p>
+                {#<!-- Visualisations -->#}
+                {#<article class="card col m12 s12 valign-wrapper">#}
+                    {#<div>#}
+                        {#<div class="big-card">#}
 
-                        </div>
-                    </div>
+                            {#<p class="center"><span class="huge">{{ listeSongsWithFilms2SongsAndDance|length }}</span> tunes danced in at least 2 films in a corpus of<br><span class="huge">{{ listeFilmsWith2SongsAndDance|length }}</span> films</p>#}
 
-                </article>
+                       {#</div>#}
+                   {#</div>#}
+
+               {#</article>#}
 
 
-                <!-- Genre Modal Trigger -->
+               {#<!-- Genre Modal Trigger -->#}
 
-                <div class="row">
+               {#<div class="row">#}
 
-                    <article class="col s12 center more">
-                        <a class="modal-trigger black-text" href="#modal_films_final">
-                            + More informations
-                            {#<i class="material-icons">more</i>#}
-                        </a>
-                    </article>
-                </div>
+                   {#<article class="col s12 center more">#}
+                       {#<a class="modal-trigger black-text" href="#modal_films">#}
+                           {#+ More informations#}
+                           {#<i class="material-icons">more</i>#}
+                        {#</a>#}
+                    {#</article>#}
+                {#</div>#}
 
-            </article>
+            {#</article>#}
 
         </div>
     </section>

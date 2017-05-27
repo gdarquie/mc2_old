@@ -29,34 +29,60 @@
       <file leaf-file-name="SongController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SongController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="129" column="155" lean-forward="false" selection-start-line="129" selection-start-column="155" selection-end-line="129" selection-end-column="155" />
+            <state relative-caret-position="152">
+              <caret line="114" column="37" lean-forward="false" selection-start-line="114" selection-start-column="8" selection-end-line="114" selection-end-column="37" />
               <folding>
-                <marker date="1495891455000" expanded="true" signature="401:614" ph="SELECT s.tit... " />
-                <marker date="1495891455000" expanded="true" signature="823:935" ph="SELECT s.son... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="823:938" ph="SELECT s.son... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="1141:1236" ph="SELECT s.son... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="1141:1237" ph="SELECT s.son... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="1141:1275" ph="SELECT s.son... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="1141:1278" ph="SELECT s.son... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="1509:1547" ph="SELECT s.son... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="1509:1602" ph="SELECT f.fil... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="1868:1960" ph="SELECT f.tit... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="2208:2342" ph="SELECT f.tit... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="2208:2376" ph="SELECT DISTI... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="2208:2378" ph="SELECT f.tit... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="3265:3473" ph="SELECT s.tit... " />
-                <marker date="1495891455000" expanded="true" signature="3683:3798" ph="SELECT s.son... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="4001:4138" ph="SELECT s.son... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="4279:4548" ph="SELECT s.son... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="4779:4882" ph="SELECT DISTI... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="5150:5271" ph="SELECT f.tit... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="5150:5289" ph="SELECT f.tit... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="5539:5814" ph="SELECT f.fil... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="6118:6260" ph="SELECT DISTI... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="6481:6627" ph="SELECT DISTI... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="6917:7192" ph="SELECT s.son... AppBundle" />
-                <marker date="1495891455000" expanded="true" signature="8735:8888" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="401:614" ph="SELECT s.tit... " />
+                <marker date="1495899444000" expanded="true" signature="823:935" ph="SELECT s.son... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="823:938" ph="SELECT s.son... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="1141:1236" ph="SELECT s.son... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="1141:1237" ph="SELECT s.son... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="1141:1275" ph="SELECT s.son... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="1141:1278" ph="SELECT s.son... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="1509:1547" ph="SELECT s.son... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="1509:1602" ph="SELECT f.fil... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="1868:1960" ph="SELECT f.tit... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="2209:2353" ph="SELECT f.tit... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="2209:2397" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="2209:2399" ph="SELECT f.tit... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="3277:3485" ph="SELECT s.tit... " />
+                <marker date="1495899444000" expanded="true" signature="3614:3621" ph="SELECT s.tit... " />
+                <marker date="1495899444000" expanded="true" signature="3614:3738" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="3873:4081" ph="SELECT s.tit... " />
+                <marker date="1495899444000" expanded="true" signature="4290:4405" ph="SELECT s.son... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="4608:4745" ph="SELECT s.son... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="4886:5155" ph="SELECT s.son... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="5386:5489" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="5757:5878" ph="SELECT f.tit... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="5757:5896" ph="SELECT f.tit... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="6147:6442" ph="SELECT f.fil... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="6721:6883" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="7079:7217" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="7521:7816" ph="SELECT s.son... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="8216:8421" ph="SELECT n.num... AppBundle" />
+                <marker date="1495899444000" expanded="true" signature="9985:10138" ph="SELECT DISTI... AppBundle" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1020">
+              <caret line="68" column="53" lean-forward="false" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
+              <folding>
+                <marker date="1495900889000" expanded="true" signature="498:621" ph="SELECT n FRO... AppBundle" />
+                <marker date="1495900889000" expanded="true" signature="739:822" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495900889000" expanded="true" signature="952:1050" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495900889000" expanded="true" signature="1668:1805" ph="SELECT s.son... AppBundle" />
+                <marker date="1495900889000" expanded="true" signature="2077:2261" ph="SELECT n FRO... AppBundle" />
+                <marker date="1495900889000" expanded="true" signature="2522:2605" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495900889000" expanded="true" signature="2735:2833" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495900889000" expanded="true" signature="4060:4204" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495900889000" expanded="true" signature="4318:4464" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495900889000" expanded="true" signature="4577:4722" ph="SELECT COUNT... AppBundle" />
+                <marker date="1495900889000" expanded="true" signature="4827:4969" ph="SELECT COUNT... AppBundle" />
               </folding>
             </state>
           </provider>
@@ -65,8 +91,8 @@
       <file leaf-file-name="music.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/song/music.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1264">
-              <caret line="457" column="145" lean-forward="false" selection-start-line="457" selection-start-column="145" selection-end-line="457" selection-end-column="145" />
+            <state relative-caret-position="610">
+              <caret line="51" column="35" lean-forward="false" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -75,8 +101,8 @@
       <file leaf-file-name="Number.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="145" column="24" lean-forward="false" selection-start-line="145" selection-start-column="12" selection-end-line="145" selection-end-column="24" />
+            <state relative-caret-position="279">
+              <caret line="651" column="34" lean-forward="false" selection-start-line="651" selection-start-column="12" selection-end-line="651" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -86,13 +112,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>structure</find>
-      <find>s</find>
-      <find>source_thesaurus</find>
-      <find>performances</find>
-      <find>donut_simple</find>
       <find>completess</find>
-      <find>performance</find>
       <find>person</find>
       <find>completen</find>
       <find>person_se</find>
@@ -112,9 +132,16 @@
       <find>associated_choreographers</find>
       <find>tab</find>
       <find>m</find>
-      <find>perform</find>
       <find>$titlesFilmsWith2Songs</find>
+      <find>perform</find>
+      <find>$performance_thesauruss</find>
+      <find>$songIdWithMultipleFilms</find>
+      <find>&quot;instrumental+dance&quot;</find>
       <find>at least</find>
+      <find>songs used by all films with dance using songs used by two different films</find>
+      <find>&quot;song+dance&quot;</find>
+      <find>performance</find>
+      <find>tunes danced in at least 2 films</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -139,6 +166,7 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/song/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/SongController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/song/music.html.twig" />
+        <option value="$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php" />
       </list>
     </option>
   </component>
@@ -351,6 +379,38 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="css">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="vendor">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="vendor">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="composer">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -682,6 +742,28 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ApiBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Controller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="app">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
@@ -793,12 +875,12 @@
       <updated>1495649886084</updated>
       <workItem from="1495649887240" duration="94000" />
       <workItem from="1495650100266" duration="72000" />
-      <workItem from="1495650175072" duration="34322000" />
+      <workItem from="1495650175072" duration="39288000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34488000" />
+    <option name="totallyTimeSpent" value="39454000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1166,52 +1248,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/composer/installed.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="3007" column="22" lean-forward="true" selection-start-line="3007" selection-start-column="22" selection-end-line="3007" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="145" column="24" lean-forward="false" selection-start-line="145" selection-start-column="12" selection-end-line="145" selection-end-column="24" />
+        <state relative-caret-position="279">
+          <caret line="651" column="34" lean-forward="false" selection-start-line="651" selection-start-column="12" selection-end-line="651" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/song/music.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1264">
-          <caret line="457" column="145" lean-forward="false" selection-start-line="457" selection-start-column="145" selection-end-line="457" selection-end-column="145" />
+        <state relative-caret-position="610">
+          <caret line="51" column="35" lean-forward="false" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="68" column="53" lean-forward="false" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
+          <folding>
+            <marker date="1495900889000" expanded="true" signature="498:621" ph="SELECT n FRO... AppBundle" />
+            <marker date="1495900889000" expanded="true" signature="739:822" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495900889000" expanded="true" signature="952:1050" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495900889000" expanded="true" signature="1668:1805" ph="SELECT s.son... AppBundle" />
+            <marker date="1495900889000" expanded="true" signature="2077:2261" ph="SELECT n FRO... AppBundle" />
+            <marker date="1495900889000" expanded="true" signature="2522:2605" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495900889000" expanded="true" signature="2735:2833" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495900889000" expanded="true" signature="4060:4204" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495900889000" expanded="true" signature="4318:4464" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495900889000" expanded="true" signature="4577:4722" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495900889000" expanded="true" signature="4827:4969" ph="SELECT COUNT... AppBundle" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SongController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="129" column="155" lean-forward="false" selection-start-line="129" selection-start-column="155" selection-end-line="129" selection-end-column="155" />
+        <state relative-caret-position="152">
+          <caret line="114" column="37" lean-forward="false" selection-start-line="114" selection-start-column="8" selection-end-line="114" selection-end-column="37" />
           <folding>
-            <marker date="1495891455000" expanded="true" signature="401:614" ph="SELECT s.tit... " />
-            <marker date="1495891455000" expanded="true" signature="823:935" ph="SELECT s.son... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="823:938" ph="SELECT s.son... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="1141:1236" ph="SELECT s.son... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="1141:1237" ph="SELECT s.son... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="1141:1275" ph="SELECT s.son... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="1141:1278" ph="SELECT s.son... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="1509:1547" ph="SELECT s.son... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="1509:1602" ph="SELECT f.fil... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="1868:1960" ph="SELECT f.tit... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="2208:2342" ph="SELECT f.tit... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="2208:2376" ph="SELECT DISTI... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="2208:2378" ph="SELECT f.tit... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="3265:3473" ph="SELECT s.tit... " />
-            <marker date="1495891455000" expanded="true" signature="3683:3798" ph="SELECT s.son... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="4001:4138" ph="SELECT s.son... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="4279:4548" ph="SELECT s.son... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="4779:4882" ph="SELECT DISTI... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="5150:5271" ph="SELECT f.tit... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="5150:5289" ph="SELECT f.tit... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="5539:5814" ph="SELECT f.fil... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="6118:6260" ph="SELECT DISTI... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="6481:6627" ph="SELECT DISTI... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="6917:7192" ph="SELECT s.son... AppBundle" />
-            <marker date="1495891455000" expanded="true" signature="8735:8888" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="401:614" ph="SELECT s.tit... " />
+            <marker date="1495899444000" expanded="true" signature="823:935" ph="SELECT s.son... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="823:938" ph="SELECT s.son... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="1141:1236" ph="SELECT s.son... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="1141:1237" ph="SELECT s.son... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="1141:1275" ph="SELECT s.son... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="1141:1278" ph="SELECT s.son... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="1509:1547" ph="SELECT s.son... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="1509:1602" ph="SELECT f.fil... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="1868:1960" ph="SELECT f.tit... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="2209:2353" ph="SELECT f.tit... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="2209:2397" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="2209:2399" ph="SELECT f.tit... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="3277:3485" ph="SELECT s.tit... " />
+            <marker date="1495899444000" expanded="true" signature="3614:3621" ph="SELECT s.tit... " />
+            <marker date="1495899444000" expanded="true" signature="3614:3738" ph="SELECT COUNT... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="3873:4081" ph="SELECT s.tit... " />
+            <marker date="1495899444000" expanded="true" signature="4290:4405" ph="SELECT s.son... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="4608:4745" ph="SELECT s.son... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="4886:5155" ph="SELECT s.son... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="5386:5489" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="5757:5878" ph="SELECT f.tit... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="5757:5896" ph="SELECT f.tit... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="6147:6442" ph="SELECT f.fil... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="6721:6883" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="7079:7217" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="7521:7816" ph="SELECT s.son... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="8216:8421" ph="SELECT n.num... AppBundle" />
+            <marker date="1495899444000" expanded="true" signature="9985:10138" ph="SELECT DISTI... AppBundle" />
           </folding>
         </state>
       </provider>
