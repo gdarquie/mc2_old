@@ -234,7 +234,7 @@ class PersonController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         //total performances for each performances for one person
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title as title FROM AppBundle:Number n LEFT JOIN n.source_thesaurus t JOIN n.performers p  WHERE p.personId = :person GROUP BY t.title ORDER BY t.title ASC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title as title FROM AppBundle:Number n LEFT JOIN n.structure t JOIN n.performers p  WHERE p.personId = :person GROUP BY t.title ORDER BY t.title ASC");
         $query->setParameter('person', $personId );
         $structure = $query->getResult();
 
@@ -242,11 +242,11 @@ class PersonController extends Controller
         $max = 9;
 
         //total performances for each performances for all
-        $query = $em->createQuery("SELECT COUNT(t.title) as nb, t.title as title FROM AppBundle:Number n JOIN n.source_thesaurus t GROUP BY t.title ORDER BY t.title ASC");
+        $query = $em->createQuery("SELECT COUNT(t.title) as nb, t.title as title FROM AppBundle:Number n JOIN n.structure t GROUP BY t.title ORDER BY t.title ASC");
         $query->setMaxResults($max);
         $structures = $query->getResult();
 
-        $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.source_thesaurus t GROUP BY t.title ORDER BY t.title ASC");
+        $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.structure t GROUP BY t.title ORDER BY t.title ASC");
         $structures_title = $query->getResult();
 
         //new array for collecting all the value of diegetic even when 0
@@ -257,7 +257,7 @@ class PersonController extends Controller
 
 //            dump($item['title']);die;
 
-            $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n LEFT JOIN n.source_thesaurus t JOIN n.performers p  WHERE p.personId = :person AND t.title = :title ORDER BY t.title ASC");
+            $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n LEFT JOIN n.structure t JOIN n.performers p  WHERE p.personId = :person AND t.title = :title ORDER BY t.title ASC");
             $query->setParameter('person', $personId );
             $query->setParameter('title', $item['title']);
             $selectStructure = $query->getResult();
@@ -277,11 +277,11 @@ class PersonController extends Controller
 //        dump($performance_format);die;
 
         //total of numbers with a performance
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.source_thesaurus t ");
+        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.structure t ");
         $totalNumbers = $query->getSingleResult();
 //
         //total of numbers with a performance for the person
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId );
         $totalNumbersForPerson = $query->getSingleResult();
 
@@ -316,5 +316,97 @@ class PersonController extends Controller
         return new JsonResponse($structuresArray);
     }
 
+
+//  Completeness
+
+    /**
+     * @Route("/melviz/completeness/{personId}", name="api_person_melviz_completeness")
+     */
+    public function getMelvizCompleteness($personId)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        //total performances for each performances for one person
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title as title FROM AppBundle:Number n LEFT JOIN n.completenessThesaurus t JOIN n.performers p  WHERE p.personId = :person GROUP BY t.title ORDER BY t.title ASC");
+        $query->setParameter('person', $personId );
+        $structure = $query->getResult();
+
+        $max = count($structure);
+        $max = 9;
+
+        //total performances for each performances for all
+        $query = $em->createQuery("SELECT COUNT(t.title) as nb, t.title as title FROM AppBundle:Number n JOIN n.completenessThesaurus t GROUP BY t.title ORDER BY t.title ASC");
+        $query->setMaxResults($max);
+        $structures = $query->getResult();
+
+        $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.completenessThesaurus t GROUP BY t.title ORDER BY t.title ASC");
+        $structures_title = $query->getResult();
+
+        //new array for collecting all the value of diegetic even when 0
+        $structure_format = [];
+
+        $i = 0;
+        foreach ($structures_title as $item) {
+
+//            dump($item['title']);die;
+
+            $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n LEFT JOIN n.completenessThesaurus t JOIN n.performers p  WHERE p.personId = :person AND t.title = :title ORDER BY t.title ASC");
+            $query->setParameter('person', $personId );
+            $query->setParameter('title', $item['title']);
+            $selectStructure = $query->getResult();
+
+            $selectStructure['title'] = $item['title'];
+            $selectStructure['nb'] = $selectStructure[0]['nb'];
+            unset($selectStructure[0]); //for cleaning the array (juste two rows)
+
+//                        dump($selectPerformance['title']);die;
+
+            $structure_format[$i]['title'] = $selectStructure['title'];
+            $structure_format[$i]['nb']= $selectStructure['nb'];
+            $i++;
+
+        }
+
+//        dump($performance_format);die;
+
+        //total of numbers with a performance
+        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t ");
+        $totalNumbers = $query->getSingleResult();
+//
+        //total of numbers with a performance for the person
+        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person");
+        $query->setParameter('person', $personId );
+        $totalNumbersForPerson = $query->getSingleResult();
+
+        $structuresArray = array();
+        for ($i = 0; $i < count($structure_format); $i++) {
+
+            if (count($structure_format) == count($structures)){
+
+                //ajouter une condition si est nul
+                $requete = $structures[$i]['title'];
+                $requete4 = $structure_format[$i]['title'];
+
+                if(!ISSET($structure_format[$i]['nb'])){
+                    $requete2 = 0;
+                }
+                else{
+                    $requete2 = $structure_format[$i]['nb'];
+                }
+                $requete3 = $structures[$i]['nb'];
+
+                $key = $i;
+
+                $structuresArray[$key]['label'] = $requete;
+                $structuresArray[$key]['label'] = $requete4;
+                $structuresArray[$key]['one_item'] = round((intval($requete2) / intval($totalNumbersForPerson['nb'])) * 100, 1, PHP_ROUND_HALF_UP);
+                $structuresArray[$key]['all_items'] = round((intval($requete3) / intval($totalNumbers['nb'])) * 100, 1, PHP_ROUND_HALF_UP);
+            }
+
+        }
+
+//        dump($performancesArray);die;
+        return new JsonResponse($structuresArray);
+    }
 
 }

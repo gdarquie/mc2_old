@@ -56,11 +56,11 @@ class PersonController extends Controller
         $shot_length = $query->getResult();
 
         //Get all Performances
-        $query = $em->createQuery("SELECT COUNT(n) as nb, p.title FROM AppBundle:Number n JOIN n.performance_thesaurus p GROUP BY p.title ");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.performance_thesaurus t GROUP BY t.title ");
         $performances = $query->getResult();
 
         //Get a Performance
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ");
         $query->setParameter('person', $personId );
         $performance = $query->getResult();
 
@@ -73,7 +73,7 @@ class PersonController extends Controller
         $structures_total = $query->getSingleResult();
 
         //Get ????
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ");
         $query->setParameter('person', $personId );
         $structure = $query->getResult();
 
@@ -125,8 +125,12 @@ class PersonController extends Controller
         $query->setParameter('person', $personId );
         $musical = $query->getResult();
 
-//      Completeness ???
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+//      Completenesses
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.completenessThesaurus t GROUP BY t.title ORDER BY nb DESC");
+        $completenesses = $query->getResult();
+
+//      Completeness
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $completeness = $query->getResult();
 
@@ -208,22 +212,22 @@ class PersonController extends Controller
         //Associated persons (à finir)
 
         //choreographers
-        $query = $em->createQuery("SELECT c.name as name, n.title as title, n.numberId as numberId FROM AppBundle:Number n JOIN n.choregraphers c JOIN n.performers p WHERE p.personId = :person GROUP BY n.numberId");
+        $query = $em->createQuery("SELECT c.name as name, n.title as title, n.numberId as numberId, f.title as film, f.filmId as filmId FROM AppBundle:Number n JOIN n.choregraphers c JOIN n.performers p JOIN n.film f WHERE p.personId = :person GROUP BY n.numberId");
         $query->setParameter('person', $personId);
         $associated_choreographers = $query->getResult();
 
         //composers
-        $query = $em->createQuery("SELECT n.title as number, s.title as song, c.name as name, c.personId as personId, n.numberId as numberId FROM AppBundle:Number n JOIN n.song s JOIN s.composer c JOIN n.performers p WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT n.title as number, s.title as song, c.name as name, c.personId as personId, n.numberId as numberId, f.title as film, f.filmId as filmId FROM AppBundle:Number n JOIN n.song s JOIN s.composer c JOIN n.performers p JOIN n.film f WHERE p.personId = :person");
         $query->setParameter('person', $personId);
         $associated_composers = $query->getResult();
 
         //lyricists
-        $query = $em->createQuery("SELECT n.title as number, s.title as song, l.name as name, l.personId as personId, n.numberId as numberId FROM AppBundle:Number n JOIN n.song s JOIN s.lyricist l JOIN n.performers p WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT n.title as number, s.title as song, l.name as name, l.personId as personId, n.numberId as numberId, f.title as film, f.filmId as filmId FROM AppBundle:Number n JOIN n.song s JOIN s.lyricist l JOIN n.performers p JOIN n.film f WHERE p.personId = :person");
         $query->setParameter('person', $personId);
         $associated_lyricists = $query->getResult();
 
         //films of a person
-        $query = $em->createQuery("SELECT f.filmId as filmId, f.title as title, f.idImdb as imdb, f.released as released FROM AppBundle:Number n JOIN n.film f JOIN n.performers p WHERE p.personId = :person GROUP BY f.filmId");
+        $query = $em->createQuery("SELECT f.filmId as filmId, f.title as title, f.idImdb as imdb, f.released as released FROM AppBundle:Number n JOIN n.film f JOIN n.performers p WHERE p.personId = :person GROUP BY f.filmId ORDER BY f.released ASC");
         $query->setParameter('person', $personId );
         $filmsPerson = $query->getResult();
 
@@ -241,6 +245,7 @@ class PersonController extends Controller
             'dancing' => $dancing,
             'musical' => $musical,
             'completeness' => $completeness,
+            'completenesses' => $completenesses,
             'completes' => $completes,
             'complete' => $complete,
             'occurences' => $occurences,
@@ -300,6 +305,18 @@ class PersonController extends Controller
         elseif($type == 'diegetic'){
             $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
         }
+        //
+        elseif($type == 'completeness'){
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+        }
+        elseif($type == 'structure'){
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+        }
+        elseif($type == 'diegetic'){
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+        }
+
+
 
         $query->setParameter('person', $personId);
         $query->setParameter('thesaurus', $thesaurusId);

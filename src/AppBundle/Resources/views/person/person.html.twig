@@ -3,7 +3,6 @@
 {% block stylesheets %}
     {{ parent() }}
 
-    <link rel="stylesheet" href="{{ asset('assets/vendor/jqcloud2/dist/jqcloud.min.css') }}">
     <!-- custom -->
     <link rel="stylesheet" href="{{ asset('css/person.css')}}">
 
@@ -12,7 +11,6 @@
 {% block body %}
 
     <section class="container-fluid">
-
 
         <div class="row">
 
@@ -25,11 +23,11 @@
                         <ul class="tabs tabs-transparent">
                             <li class="tab"><a href="#tab1" class="active">Films</a></li>
                             <li class="tab"><a href="#tab2">Numbers</a></li>
-                            <li class="tab"><a href="#tab3" >Topics & exoticisms</a></li>
-                            <li class="tab"><a href="#tab4">Presence</a></li>
                             <li class="tab"><a href="#tab5">Persons</a></li>
-                            <li class="tab"><a href="#tab6">Sources & Diegetics</a></li>
-                            <li class="tab"><a href="#tab7">Others</a></li>
+                            <li class="tab"><a href="#tab4">Presence</a></li>
+                            <li class="tab"><a href="#tab7">Number types</a></li>
+                            <li class="tab"><a href="#tab6">Sources & backstage</a></li>
+                            <li class="tab"><a href="#tab3" >Themes</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -95,6 +93,7 @@
     {{ parent() }}
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
     <script type="text/javascript" src="{{ asset('js/melviz.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/donut_simple.js') }}"></script>
 
     <script>
 
@@ -201,10 +200,29 @@
             $("#source_container").html("<div class='wordcloud' id='source'></div>");
             $("#sources_container").html("<div class='wordcloud' id='sources'></div>");
 
-            //Melviz
+            //Melviz diegetic
             var url = '{{ path("api_person_melviz_diegetic", {'personId': person.personId}) }}';
             d3.json(url , function(error, data) {
                 viz_mediane("melviz_diegetic", data, 9);
+            });
+
+            //Melviz performance
+            var url = '{{ path("api_person_melviz_performance", {'personId': person.personId}) }}';
+            d3.json(url , function(error, data) {
+                viz_mediane("melviz_performance", data, 5);
+            });
+
+            //Melviz structure
+            var url = '{{ path("api_person_melviz_structure", {'personId': person.personId}) }}';
+            d3.json(url , function(error, data) {
+                viz_mediane("melviz_structure", data, 7);
+            });
+
+            //Melviz structure
+            var url = '{{ path("api_person_melviz_completeness", {'personId': person.personId}) }}';
+            d3.json(url , function(error, data) {
+                viz_mediane("melviz_completeness", data, 1);
+//                versionBarres("melviz_completeness", data, 2);
             });
 
             drawCloud();
@@ -215,3 +233,5 @@
 
     </script>
 {% endblock %}
+
+

@@ -14,9 +14,25 @@
     "type": "git",
     "url": "git://github.com/almende/vis.git"
   },
+  "keywords": [
+    "vis",
+    "visualization",
+    "web based",
+    "browser based",
+    "javascript",
+    "chart",
+    "linechart",
+    "timeline",
+    "graph",
+    "network",
+    "browser"
+  ],
   "ignore": [
+    "gulpfile.js",
+    "index*.js",
     "misc",
     "node_modules",
+    "package.json",
     "test",
     "tools",
     "lib",
@@ -26,15 +42,14 @@
   ],
   "dependencies": {},
   "devDependencies": {},
-  "version": "4.16.1",
-  "_release": "4.16.1",
+  "version": "4.20.0",
+  "_release": "4.20.0",
   "_resolution": {
     "type": "version",
-    "tag": "v4.16.1",
-    "commit": "6de24a283c0ef549c616470f53aaaf0cb1488f82"
+    "tag": "v4.20.0",
+    "commit": "5bcd625cb43211e9f8615d5012a220318412a8cc"
   },
   "_source": "https://github.com/almende/vis.git",
   "_target": "^4.16.1",
-  "_originalSource": "vis",
-  "_direct": true
+  "_originalSource": "vis"
 }

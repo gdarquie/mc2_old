@@ -3,7 +3,7 @@
     <article class="card row">
     <div class="col s12">
 
-        <h2>Presence time of {{ person.name }} in numbers</h2>
+        <h2>Presence of {{ person.name }} in numbers</h2>
 
         <article class="s6 col">
 
@@ -15,7 +15,7 @@
                 <table class="striped tablesorter mini-table">
                     <thead>
                         <tr>
-                            <th>Title</th>
+                            <th>Length of all numbers</th>
                             <th>Released</th>
                             <th>Total (in sec)</th>
                         </tr>
@@ -38,9 +38,9 @@
         <table class="striped tablesorter mini-table">
             <thead>
             <tr>
-                <th>Title</th>
-                <th>Released</th>
-                <th>Total (in sec)</th>
+                <th>Length of numbers where {{ person.name }} is present</th>
+                <th>Date</th>
+                <th>Total (sec)</th>
             </tr>
             </thead>
             <tbody>
@@ -56,14 +56,13 @@
 
         <h3 class="title-mini">Ratio performer’s presence duration / total duration of numbers for each film</h3>
 
-        <p>Presence time of {{ person.name }} in films</p>
 
             <table class="striped tablesorter mini-table">
                 <thead>
                 <tr>
                     <th>Title</th>
-                    <th>Released</th>
-                    <th>Total (in sec)</th>
+                    <th>Date</th>
+                    <th>Presence</th>
                 </tr>
                 </thead>
                 <tbody>

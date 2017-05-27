@@ -5,72 +5,81 @@ function viz_mediane(container, data, nbCsp) {
     var width = document.getElementById(container).getBoundingClientRect().width;
     console.log(width);
     var height = document.getElementById(container).getBoundingClientRect().height-20;
-    console.log(height);
+    //console.log(height);
+
 
 
     creerButton(container);
 
     var div = d3.select("#"+container).append("div")
-        .attr("id", "zone_viz")
+        .attr("id", "zone_viz"+container)
         .style("width", width+"px")
         .style("height", height+"px");
 
+    versionMelviz("zone_viz"+container, data, nbCsp);
+    console.log("#bouton_melviz"+container+' input');
 
+    $('#bouton_melviz'+container+' input').on('change', function() {
 
-    versionMelviz("zone_viz", data, nbCsp);
+        //jusque là marche
 
-    $('#bouton_melviz input').on('change', function() {
-        if ($('input[name=radioName]:checked', '#bouton_melviz').val() == "0") {
-            versionMelviz("zone_viz", data, nbCsp);
+    // $('#bouton_melviz input').on('change', function() {
+
+        // if ($('input[name=radioName]:checked', '#bouton_melviz').val() == "0") {
+        if ($('input[name=radioName'+container+']:checked', '#bouton_melviz'+container).val() == "0") {
+            // console.log("chargment fonction par le bouton");
+            versionMelviz("zone_viz"+container, data, nbCsp);
         } else {
-            versionBarres("zone_viz", data, nbCsp);
+            versionBarres("zone_viz"+container, data, nbCsp);
         }
     });
 }
 
 function creerButton(div) {
 
+
     $("#"+div).html('');
 
     bouton = d3.select("#"+div).append("form")
-        .attr("id", "bouton_melviz")
+         // .attr("class", "bouton_melviz")
+        .attr("id", "bouton_melviz"+div)
         .style("text-align", "right");
 
     bouton.append("input")
-        .attr("name", "radioName")
+        .attr("name", "radioName"+div)
         .attr("type", "radio")
-        .attr("id", "radioButton1")
+        .attr("id", "radioButton1"+div)
         .attr("value", "0");
 
     bouton.append("label")
-        .attr("for", "radioButton1")
+        .attr("for", "radioButton1"+div)
         .html("Melviz")
         .style("margin-right", "25px");
 
     bouton.append("input")
-        .attr("name", "radioName")
+        .attr("name", "radioName"+div)
         .attr("type", "radio")
-        .attr("id", "radioButton2")
+        .attr("id", "radioButton2"+div)
         .attr("value", "1");
 
     bouton.append("label")
-        .attr("for", "radioButton2")
+        .attr("for", "radioButton2"+div)
         .html("Barres");
 
-    document.getElementById("radioButton1").checked = true;
+    document.getElementById("radioButton1"+div).checked = true;
 
 }
 
 
 function versionMelviz(container, data, nbCsp) {
 
-    var width = document.getElementById(container).getBoundingClientRect().width/nbCsp;
 
+
+    var width = document.getElementById(container).getBoundingClientRect().width/nbCsp;
     var height = document.getElementById(container).getBoundingClientRect().height;
 
     $("#"+container).html('');
     d3.select("#"+container).style("opacity", "0");
-
 
     for (var i = 0; i < nbCsp; i++) {
 
@@ -89,10 +98,14 @@ function versionMelviz(container, data, nbCsp) {
             );
 
 
+
+
         var div = d3.select("#"+container).append("div")
             .style("width", width+"px")
             .attr("height", height+"px")
             .style("display", "inline-block");
+
+        console.log(div);
 
 
 
@@ -109,14 +122,14 @@ function versionMelviz(container, data, nbCsp) {
             svg.append("rect")
                 .attr("width", width)
                 .attr("height", 0.3)
-                .attr("y", ((height) - (u*((height))/11)));
+                .attr("y", ((height+12.5) - (u*((height))/10)));
         }
 
         if (i == 0) {
             for (var m=0; m<11; m++ ) {
                 svg.append("text")
                     .html(m*10)
-                    .attr("y", ((height) - (m*((height))/11)) + 5)
+                    .attr("y", ((height+12.5) - (m*((height))/10)) + 5)
             }
         }
 
@@ -130,7 +143,8 @@ function versionMelviz(container, data, nbCsp) {
             .attr("width", width/2)
             .attr("height", 5)
             .attr("x", width/4)
-            .attr("y", height - (parseInt(height)/100)*data[i].all_items)
+            .attr("y", height +10 - ((height)/100)*data[i].all_items)
+            //.attr("y", height)
             .on('mouseover', tip1.show)
             .on('mouseout', tip1.hide);
 
@@ -147,7 +161,7 @@ function versionMelviz(container, data, nbCsp) {
 
         var circle = svg.append("circle")
             .attr("r", rayon)
-            .attr("transform", "translate(" + parseInt(width)/2 + ", " + (height - (parseInt(height)/100)*data[i].one_item) + ")")
+            .attr("transform", "translate(" + parseInt(width)/2 + ", " + (height +12.5 - (parseInt(height)/100)*data[i].one_item) + ")")
             .style("fill", circleColor)
             .on('mouseover', tip2.show)
             .on('mouseout', tip2.hide);
@@ -165,12 +179,14 @@ function versionMelviz(container, data, nbCsp) {
 
 function versionBarres(container, data, nbCsp) {
 
-    var width = document.getElementById(container).getBoundingClientRect().width/nbCsp;
+    // console.log('lancement de versionBarres, le container est '+container);
+
+    var width = document.getElementById(container).getBoundingClientRect().width / nbCsp;
 
     var height = document.getElementById(container).getBoundingClientRect().height;
 
-    $("#"+container).html('');
-    d3.select("#"+container).style("opacity", "0");
+    $("#" + container).html('');
+    d3.select("#" + container).style("opacity", "0");
 
     for (var i = 0; i < nbCsp; i++) {
 
@@ -189,35 +205,34 @@ function versionBarres(container, data, nbCsp) {
             );
 
 
-        var div = d3.select("#"+container).append("div")
-            .style("width", width+"px")
-            .attr("height", height+"px")
+        var div = d3.select("#" + container).append("div")
+            .style("width", width + "px")
+            .attr("height", height + "px")
             .style("display", "inline-block");
 
 
-
         var p = div.append("p")
-            .style("width", width+"px")
+            .style("width", width + "px")
             .text(data[i].label);
 
 
         var svg = div.append("svg")
             .attr("width", width)
-            .attr("height", height+25);
+            .attr("height", height + 25);
 
 
-        for (var u=0; u<11; u++ ) {
+        for (var u = 0; u < 11; u++) {
             svg.append("rect")
                 .attr("width", width)
                 .attr("height", 0.3)
-                .attr("y", ((height) - (u*((height))/11)));
+                .attr("y", ((height + 12.5) - (u * ((height)) / 11)));
         }
 
         if (i == 0) {
-            for (var m=0; m<11; m++ ) {
+            for (var m = 0; m < 11; m++) {
                 svg.append("text")
-                    .html(m*10)
-                    .attr("y", ((height) - (m*((height))/11)) + 5)
+                    .html(m * 10)
+                    .attr("y", ((height + 12.5) - (m * ((height)) / 11)) + 5)
             }
         }
 
@@ -226,38 +241,38 @@ function versionBarres(container, data, nbCsp) {
         svg.call(tip4);
 
 
-        var hauteur_barre_1 = (parseInt(height)/100)*data[i].all_items;
+        var hauteur_barre_1 = (parseInt(height - 25) / 100) * data[i].all_items;
 
         var barre1 = svg.append("rect")
-            .attr("width", width/4)
+            .attr("width", width / 4)
             .attr("height", hauteur_barre_1)
-            .attr("x", width/2 - width/4)
-            .attr("y", height - hauteur_barre_1)
+            .attr("x", width / 2 - width / 4)
+            .attr("y", height + 12.5 - hauteur_barre_1)
             .on('mouseover', tip3.show)
             .on('mouseout', tip3.hide)
             .style("fill", "red");
 
-        var hauteur_barre_2 = (parseInt(height)/100)*data[i].one_item;
+        var hauteur_barre_2 = (parseInt(height - 25) / 100) * data[i].one_item;
 
         var barre2 = svg.append("rect")
-            .attr("width", width/4)
+            .attr("width", width / 4)
             .attr("height", hauteur_barre_2)
-            .attr("x", width/2)
-            .attr("y", height - hauteur_barre_2)
+            .attr("x", width / 2)
+            .attr("y", height + 12.5 - hauteur_barre_2)
             .on('mouseover', tip4.show)
             .on('mouseout', tip4.hide)
             .style("fill", "orange");
 
-        var diff = (data[i].one_item-data[i].all_items)*5;
+        var diff = (data[i].one_item - data[i].all_items) * 5;
         var circleColor;
-        if(diff > 0) {
-            circleColor="#00cc00";
+        if (diff > 0) {
+            circleColor = "#00cc00";
         } else {
-            circleColor="#ff0000";
+            circleColor = "#ff0000";
         }
         var rayon = 5;
 
-        d3.select("#"+container)
+        d3.select("#" + container)
             .transition()
             .duration(1000)
             .style("opacity", "1"); // then transition to red
@@ -271,5 +286,4 @@ function versionBarres(container, data, nbCsp) {
         //     .on('mouseover', tip2.show)
         //     .on('mouseout', tip2.hide);
     }
-
 }

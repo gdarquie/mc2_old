@@ -121,16 +121,11 @@ gulp.task( 'version', function() {
   gutil.log( 'ticking version to ' + chalk.green( version ) );
 
   gulp.src('js/isotope.js')
-    .pipe( replace( /Packery v\d\.\d+\.\d+/, 'Isotope v' + version ) )
+    .pipe( replace( /Isotope v\d\.\d+\.\d+/, 'Isotope v' + version ) )
     .pipe( gulp.dest('js') );
 
   gulp.src( [ 'package.json' ] )
     .pipe( replace( /"version": "\d\.\d+\.\d+"/, '"version": "' + version + '"' ) )
-    .pipe( gulp.dest('.') );
-  // replace CDN links in README
-  var minorVersion = version.match( /^\d\.\d+/ )[0];
-  gulp.src('README.md')
-    .pipe( replace( /isotope-layout@\d\.\d+/g, 'isotope-layout@' + minorVersion ))
     .pipe( gulp.dest('.') );
 });
 

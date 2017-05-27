@@ -98,13 +98,7 @@ function create_gant(data,lengthFilm){
                 }
                 return ((w/(lengthFilm/60))*(d.endTimeInt - d.startTimeInt))-0.5;
             })
-            .attr("height", function(d){
-                console.log((d.seconds/d.shots) , d.task , d.seconds , d.shots);
-                if(d.shots > 20){
-                    return 30 + 20;
-                }
-                return 30 + d.shots ;
-            })
+            .attr("height", 50)
             .attr("stroke", "none")
             .attr("fill", function(d){
                 for (var i = 0; i < pos.length; i++){

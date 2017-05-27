@@ -16,8 +16,8 @@
 
       {% block stylesheets %}
 
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import Google Icon Font (imported in local in style.css)-->
+      {#<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">#}
       
       <!--Import materialize.css-->
       <link rel="stylesheet" href="{{ asset('assets/vendor/materialize/dist/css/materialize.css')}}">
@@ -186,6 +186,9 @@
 
     <!-- Table sorter -->
     <script type="text/javascript" src="{{ asset('assets/vendor/tablesorter/jquery.tablesorter.js') }}"></script>
+
+    <!-- Tool tip -->
+    <script src="{{ asset('assets/vendor/d3-tip/index.js') }}"></script>
 
     <!-- Custom -->
     <script src="{{ asset('js/mc2.js') }}"></script>

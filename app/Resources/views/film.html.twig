@@ -64,13 +64,12 @@
                                 <th>Begin Timecode</th>
                                 <th>Ending Timecode</th>
                                 <th>Length</th>
-                                <th>Structure</th>
                                 {#<th>Performers</th>#}
                                 <th>Average shot length</th>
+                                <th>Structure</th>
                                 {% if is_granted("ROLE_EDITOR") %}
                                     <th>Edit</th>
                                 {% endif %}
-
                                 <th>View</th>
                             </tr>
                             </thead>
@@ -82,8 +81,8 @@
                                     <td>{{ number.beginTc }}</td>
                                     <td>{{ number.endTc }}</td>
                                     <td>{{ number.length }}</td>
-                                    <td>{{ number.structure }}</td>
                                     <td>{{ number.average|round() }}</td>
+                                    <td>{{ number.structure }}</td>
                                     {#<td>{% for item in number.performers  %}{{ item.performer }}{% if loop.last %}{% else %}, {% endif %}{% endfor %}</td>#}
 
                                     {% if is_granted("ROLE_EDITOR") %}

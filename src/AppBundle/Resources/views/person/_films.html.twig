@@ -5,7 +5,7 @@
     {% for item in filmsPerson  %}
         <div class="col s2 card film">
             <a href="{{ path('film', {'filmId' : item.filmId}) }}">
-                <h4 class="center">{{ item.title }}</h4>
+                <h4 class="center">{{ item.title }} ({{ item.released }})</h4>
                 <img class="poster col s12" src="http://img.omdbapi.com/?i={{ item.imdb }}&apikey=1733f6a&h=300" alt="poster" class="poster">
             </a>
         </div>
