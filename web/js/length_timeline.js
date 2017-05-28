@@ -10,14 +10,23 @@ function create_gant(data,lengthFilm){
         .attr("height", h)
         .attr("class", "svg");
     var colArray =
-        [
-            "#8d0000",
-            "#a90000",
-            "#CC0000",
-            "#ff3838",
-            "#7F7F7F",
-            "#ff8d8d",
-        ];
+        //for todd, remove after
+        // [
+        //     "#8d0000",
+        //     "#a90000",
+        //     "#CC0000",
+        //     "#ff3838",
+        //     "#7F7F7F",
+        //     "#ff8d8d",
+        // ];
+    [
+        "#7F7F7F",
+        "#7F7F7F",
+        "#7F7F7F",
+        "#7F7F7F",
+        "#7F7F7F",
+        "#7F7F7F",
+    ];
     var taskArray = [];
     data.forEach(function(element) {
         addTask(element.start,element.end,element.content,element.id,element.cast,element.shots);
