@@ -15,7 +15,7 @@ h1{
 }
 
 .big-card p{
-    font-size: 6em;
+    font-size: 3em;
     padding: 0px 10px;
 }
 
@@ -27,6 +27,15 @@ h1{
 }
 
 .strong{
-    color : blue;
+    color : black;
+    font-weight: bold;
 }
 
+.major{
+    font-size: 2em;
+}
+
+.billet article{
+    margin-top:-15px;
+    margin-bottom: -15px;
+}

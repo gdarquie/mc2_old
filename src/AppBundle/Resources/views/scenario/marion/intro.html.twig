@@ -12,7 +12,6 @@
 
         <div class="row">
 
-
             <!-- 1) Number of songs -->
 
             <article class="col s12">
@@ -56,11 +55,11 @@
                 </div>
 
                 <!-- Visualisations -->
-                <div class="card">
+                <div class="card billet">
                 <article class="col m12 s12 valign-wrapper">
                     <div>
                         <div class="big-card">
-                            <p class="center"><span class="huge">{{ songs|length }}</span> tunes appear in <span class="strong">{{ global.nbNumber }}</span> numbers in <span class="strong">{{ global.nbFilm }}</span> films</p>
+                            <p class="center"><span class="major"><span class="huge">{{ songs|length }}</span> tunes</span> appear in <span class="strong">{{ global.nbNumber }}</span> numbers in <span class="strong">{{ global.nbFilm }}</span> films</p>
                         </div>
                     </div>
 
@@ -70,7 +69,7 @@
                 <article class="col m12 s12 valign-wrapper">
                     <div>
                         <div class="big-card">
-                            <p class="center"><span class="huge">{{ danceNumbers|length }}</span> total dance numbers in <span class="strong">{{ danceFilms|length }}</span> films</p>
+                            <p class="center"><span class="major"><span class="huge">{{ danceNumbers|length }}</span> total dance numbers</span> in <span class="strong">{{ danceFilms|length }}</span> films</p>
 
                         </div>
                     </div>
@@ -135,17 +134,30 @@
                 </div>
 
                 <!-- Visualisations -->
-                <div class="card">
-                <article class="col m12 s12 valign-wrapper">
-                    <div>
-                        <div class="big-card">
+                <div class="card billet">
 
-                            <p class="center"><span class="huge">{{ songWithMultipleFilms|length }}</span> tunes appear in at least 2 films <br>in a corpus of <span class="huge">{{ listFilmsWith2Songs|length }}</span> films</p>
+                    <article class="col m12 s12 valign-wrapper">
+                        <div>
+                            <div class="big-card">
 
+                                <p class="center"><span class="major"><span class="huge">{{ songWithMultipleFilms|length }}</span> tunes</span> appear in at least 2 films <br>in a corpus of <span class="major"><span class="huge">{{ listFilmsWith2Songs|length }}</span> films</span></p>
+
+                            </div>
                         </div>
-                    </div>
 
-                </article>
+                    </article>
+
+                    <article class="col m12 s12 valign-wrapper">
+                        <div>
+                            <div class="big-card">
+
+                                <p class="center"><span class="major"><span class="huge">{{ listeSongsWithFilms2SongsAndDance|length }}</span> tunes</span> danced in at least 2 films in a corpus of<br><span class="major"><span class="huge">{{ listeFilmsWith2SongsAndDance|length }}</span> films</span></p>
+
+                            </div>
+                        </div>
+
+                    </article>
+                </div>
 
                 <!-- Genre Modal Trigger -->
 
@@ -158,16 +170,7 @@
                         </a>
                     </article>
 
-                    <article class="card col m12 s12 valign-wrapper">
-                        <div>
-                            <div class="big-card">
 
-                                <p class="center"><span class="huge">{{ listeSongsWithFilms2SongsAndDance|length }}</span> tunes danced in at least 2 films in a corpus of<br><span class="huge">{{ listeFilmsWith2SongsAndDance|length }}</span> films</p>
-
-                            </div>
-                        </div>
-
-                    </article>
                 </div>
 
             </article>
