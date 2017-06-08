@@ -126,7 +126,7 @@ class SearchController extends Controller
     /**
      * @Route("api/search/exoticism={exoticisms}/studio={studio}/period={begin}-{end}")
      */
-    public function searchExoticismlAction($exoticisms, $studio, $begin, $end)
+    public function searchExoticismAction($exoticisms, $studio, $begin, $end)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -161,9 +161,6 @@ class SearchController extends Controller
 
     /**
      * @Route("api/search/all/period={begin}-{end}")
-     */
-    /**
-     * @Route("api/search/exotiscim={exoticisms}/studio={studio}/period={begin}-{end}")
      */
     public function searchAllAction($exoticisms, $studio, $begin, $end)
     {
