@@ -122,4 +122,72 @@ class SearchController extends Controller
         return $response;
 
     }
+
+    /**
+     * @Route("api/search/exoticism={exoticisms}/studio={studio}/period={begin}-{end}")
+     */
+    public function searchExoticismlAction($exoticisms, $studio, $begin, $end)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        if($exoticisms == 'all'){
+            $exoticisms = '%';
+        }
+        if($studio == 'all'){
+            $studio = '%';
+
+        }
+        if($begin == 0){
+            //select first date
+            $begin = 1900;
+        }
+        if($end == 0){
+            //select last date
+            $end = 2000;
+        }
+
+        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.exoticism_thesaurus e JOIN n.film f JOIN f.studios s WHERE e.thesaurusId LIKE :exoticisms AND s.studioId LIKE :studio");
+        $query->setParameter('exoticisms', $exoticisms);
+        $query->setParameter('studio', $studio);
+//        $query->setParameter('begin', $begin);
+//        $query->setParameter('end', $end);
+        $numbers = $query->getResult();
+
+        return $this->render('ApiBundle:search:exoticism.html.twig', array(
+            'numbers' => $numbers
+        ));
+
+    }
+
+    /**
+     * @Route("api/search/all/period={begin}-{end}")
+     */
+    /**
+     * @Route("api/search/exotiscim={exoticisms}/studio={studio}/period={begin}-{end}")
+     */
+    public function searchAllAction($exoticisms, $studio, $begin, $end)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        if($begin == 0){
+            //select first date
+            $begin = 1900;
+        }
+        if($end == 0){
+            //select last date
+            $end = 2000;
+        }
+
+        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n");
+//        $query->setParameter('begin', $begin);
+//        $query->setParameter('end', $end);
+        $numbers = $query->getResult();
+
+
+        return $this->render('ApiBundle:search:all.html.twig', array(
+            'numbers' => $numbers
+        ));
+
+    }
+
 }

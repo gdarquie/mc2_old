@@ -1,0 +1,12 @@
+[
+{% for item in numbers  %}
+    {
+        "title" : "{{ item.title|e('js')|raw }}" ,
+        "exoticism" : {
+        {% for exoticism in item.exoticismThesaurus  %}
+                "{{ loop.index }}" : "{{ exoticism.title|e('js')|raw }}"{% if loop.last %}{% else %},{% endif %}
+        {% endfor %}
+    }
+    }{% if loop.last %}{% else %},{% endif %}
+{% endfor %}
+]
