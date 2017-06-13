@@ -12,6 +12,12 @@
 	url(../material-design-icons-3.0.1/iconfont/MaterialIcons-Regular.ttf) format('truetype');
 }
 
+@media only screen and (min-width: 993px) {
+	.container.large {
+		width: 90%;
+	}
+}
+
 .material-icons {
 	font-family: 'Material Icons';
 	font-weight: normal;

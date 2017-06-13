@@ -1,45 +1,45 @@
 [
 {% for item in numbers  %}
     {
-        "title" : "{{ item.title|e('js')|raw }}" ,
+        "numberId" : {{ item.numberId }},
+        "title" : "{{ item.title|e('html')|raw }}" ,
         "exoticism" : {
         {% for exoticism in item.exoticismThesaurus  %}
-                "{{ loop.index }}" : "{{ exoticism.title|e('js')|raw }}"{% if loop.last %}{% else %},{% endif %}
+                "{{ loop.index }}" : "{{ exoticism.title|e('html')|raw }}"{% if loop.last %}{% else %},{% endif %}
         {% endfor %}
         },
         "film" : {
             "id" : "{{ item.film.filmId }}" ,
-            "title" : "{{ item.film.title|e('js')|raw }}"
+            "title" : "{{ item.film.title|e('html')|raw }}",
             "studios" : {
                 {% for studio in item.film.studios  %}
-                    "{{ loop.index }}" : "{{ studio.title|e('js')|raw }}"{% if loop.last %}{% else %},{% endif %}
+                    "{{ loop.index }}" : "{{ studio.title|e('html')|raw }}"{% if loop.last %}{% else %},{% endif %}
                 {% endfor %}
-                }{% if loop.last %}{% else %},{% endif %}
+                }
         },
         "choreographer" : {
         {% for person in item.choregraphers  %}
-                "{{ loop.index }}" : "{{ person.name|e('js')|raw }}"{% if loop.last %}{% else %},{% endif %}
+                "{{ loop.index }}" : "{{ person.name|e('html')|raw }}"{% if loop.last %}{% else %},{% endif %}
         {% endfor %}
         },
         "performers" : {
         {% for person in item.performers  %}
-            "{{ loop.index }}" : "{{ person.name|e('js')|raw }}"{% if loop.last %}{% else %},{% endif %}
-        {% endfor %}}
+            "{{ loop.index }}" : "{{ person.name|e('html')|raw }}"{% if loop.last %}{% else %},{% endif %}
+        {% endfor %}
         },
         {#"song" : {};#}
         {#"composer" : {},#}
         {#"lyricist" : {},#}
          "tone" : {
         {% for mood in item.generalMood  %}
-            "{{ loop.index }}" : "{{ mood.title|e('js')|raw }}"{% if loop.last %}{% else %},{% endif %}
+            "{{ loop.index }}" : "{{ mood.title|e('html')|raw }}"{% if loop.last %}{% else %},{% endif %}
         {% endfor %}
         },
         "topic" : {
         {% for mood in item.genre  %}
-            "{{ loop.index }}" : "{{ mood.title|e('js')|raw }}"{% if loop.last %}{% else %},{% endif %}
+            "{{ loop.index }}" : "{{ mood.title|e('html')|raw }}"{% if loop.last %}{% else %},{% endif %}
         {% endfor %}
-        },
-    }
+        }
     }{% if loop.last %}{% else %},{% endif %}
 {% endfor %}
 ]

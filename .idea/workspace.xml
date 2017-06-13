@@ -29,36 +29,158 @@
       <file leaf-file-name="SearchController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-111">
-              <caret line="129" column="5" lean-forward="false" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
+            <state relative-caret-position="-156">
+              <caret line="148" column="233" lean-forward="false" selection-start-line="148" selection-start-column="233" selection-end-line="148" selection-end-column="233" />
               <folding>
-                <marker date="1496936483000" expanded="true" signature="498:621" ph="SELECT n FRO... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="739:822" ph="SELECT DISTI... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="952:1050" ph="SELECT DISTI... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="1668:1805" ph="SELECT s.son... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="2077:2261" ph="SELECT n FRO... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="2522:2605" ph="SELECT DISTI... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="2735:2833" ph="SELECT DISTI... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="4060:4204" ph="SELECT COUNT... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="4318:4464" ph="SELECT COUNT... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="4577:4722" ph="SELECT COUNT... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="4827:4969" ph="SELECT COUNT... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="5847:5879" ph="SELECT n FRO... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="5847:5960" ph="SELECT n FRO... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="5847:6004" ph="SELECT n FRO... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="5847:6006" ph="SELECT n FRO... AppBundle" />
-                <marker date="1496936483000" expanded="true" signature="6796:6841" ph="SELECT COUNT... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="498:621" ph="SELECT n FRO... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="739:822" ph="SELECT DISTI... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="952:1050" ph="SELECT DISTI... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="1668:1805" ph="SELECT s.son... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="2077:2261" ph="SELECT n FRO... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="2522:2605" ph="SELECT DISTI... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="2735:2833" ph="SELECT DISTI... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="4060:4204" ph="SELECT COUNT... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="4318:4464" ph="SELECT COUNT... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="4577:4722" ph="SELECT COUNT... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="4827:4969" ph="SELECT COUNT... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="5872:5904" ph="SELECT n FRO... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="5872:5985" ph="SELECT n FRO... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="5872:6029" ph="SELECT n FRO... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="5872:6075" ph="SELECT n FRO... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="5872:6077" ph="SELECT n FRO... AppBundle" />
+                <marker date="1497348173000" expanded="true" signature="6893:6938" ph="SELECT COUNT... AppBundle" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exoticism.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="exoticism.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ApiBundle/Resources/views/search/exoticism.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="16" column="57" lean-forward="false" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+            <state relative-caret-position="180">
+              <caret line="12" column="60" lean-forward="false" selection-start-line="12" selection-start-column="60" selection-end-line="12" selection-end-column="60" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/exoticism/search.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1215">
+              <caret line="137" column="42" lean-forward="false" selection-start-line="137" selection-start-column="42" selection-end-line="137" selection-end-column="42" />
+              <folding>
+                <element signature="e#12#26#0#Twig" expanded="true" />
+                <element signature="e#3705#3721#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExoticismController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ExoticismController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="52" lean-forward="false" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+              <folding>
+                <element signature="e#40#99#0#PHP" expanded="true" />
+                <marker date="1497347279000" expanded="true" signature="388:496" ph="SELECT DISTI... AppBundle" />
+                <marker date="1497347279000" expanded="true" signature="572:647" ph="SELECT DISTI... AppBundle" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DanceController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DanceController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="59" />
+              <folding>
+                <marker date="1491054043000" expanded="true" signature="455:538" ph="SELECT d FRO... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="749:832" ph="SELECT d FRO... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="1047:1130" ph="SELECT d FRO... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="1340:1548" ph="SELECT t.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="1765:1975" ph="SELECT t.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="2195:2404" ph="SELECT t.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="2634:2779" ph="SELECT COUNT... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="3060:3224" ph="SELECT COUNT... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="3535:3644" ph="SELECT COUNT... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="3901:4056" ph="SELECT AVG((... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="5298:5458" ph="SELECT DISTI... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="5608:5730" ph="SELECT DISTI... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="5880:6069" ph="SELECT g.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="6225:6384" ph="SELECT f.rel... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="6540:6660" ph="SELECT n FRO... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="6807:7016" ph="SELECT s.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="7167:7386" ph="SELECT s.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="8105:8266" ph="SELECT DISTI... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="8416:8539" ph="SELECT DISTI... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="8689:8879" ph="SELECT g.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="9033:9193" ph="SELECT f.rel... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="9350:9471" ph="SELECT n FRO... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="9618:9828" ph="SELECT s.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="9979:10199" ph="SELECT s.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="10924:11134" ph="SELECT DISTI... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="11284:11438" ph="SELECT DISTI... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="11588:11779" ph="SELECT g.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="11933:12094" ph="SELECT f.rel... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="12253:12467" ph="SELECT s.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="12614:12827" ph="SELECT s.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="12975:13186" ph="SELECT s.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="13335:13545" ph="SELECT s.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="13694:13915" ph="SELECT s.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="14073:14228" ph="SELECT n.tit... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="15148:15286" ph="SELECT n FRO... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="15490:15629" ph="SELECT n FRO... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="15834:15970" ph="SELECT n FRO... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="16174:16309" ph="SELECT n FRO... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="16515:16661" ph="SELECT n FRO... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="16884:16953" ph="SELECT t FRO... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="17112:17177" ph="SELECT t FRO... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="17379:17624" ph="SELECT f.rel... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="17828:18074" ph="SELECT f.rel... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="18279:18522" ph="SELECT f.rel... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="18726:18968" ph="SELECT f.rel... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="19174:19427" ph="SELECT f.rel... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="19692:19937" ph="SELECT p.nam... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="20141:20387" ph="SELECT p.nam... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="20592:20835" ph="SELECT p.nam... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="21039:21281" ph="SELECT p.nam... AppBundle" />
+                <marker date="1491054043000" expanded="true" signature="21487:21740" ph="SELECT p.nam... AppBundle" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SearchController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1491054069000" expanded="true" signature="1068:1235" ph="SELECT n.tit... AppBundle" />
+                <marker date="1491054069000" expanded="true" signature="1799:1999" ph="SELECT n.tit... AppBundle" />
+                <marker date="1491054069000" expanded="true" signature="2403:2600" ph="SELECT n.tit... AppBundle" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SongController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SongController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1495903091000" expanded="true" signature="401:614" ph="SELECT s.tit... " />
+                <marker date="1495903091000" expanded="true" signature="823:938" ph="SELECT s.son... AppBundle" />
+                <marker date="1495903091000" expanded="true" signature="1141:1278" ph="SELECT s.son... AppBundle" />
+                <marker date="1495903091000" expanded="true" signature="1509:1602" ph="SELECT f.fil... AppBundle" />
+                <marker date="1495903091000" expanded="true" signature="1868:1960" ph="SELECT f.tit... AppBundle" />
+                <marker date="1495903091000" expanded="true" signature="2209:2397" ph="SELECT DISTI... AppBundle" />
+                <marker date="1495903091000" expanded="true" signature="3295:3448" ph="SELECT DISTI... AppBundle" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,17 +189,7 @@
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="234">
-              <caret line="360" column="35" lean-forward="false" selection-start-line="360" selection-start-column="31" selection-end-line="360" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="number.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/web/number/number.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="156" column="55" lean-forward="false" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="55" />
+              <caret line="601" column="44" lean-forward="false" selection-start-line="601" selection-start-column="41" selection-end-line="601" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -86,11 +198,9 @@
       <file leaf-file-name="Film.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Film.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1230">
-              <caret line="83" column="18" lean-forward="false" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
-              <folding>
-                <element signature="e#36#68#0#PHP" expanded="false" />
-              </folding>
+            <state relative-caret-position="5085">
+              <caret line="340" column="57" lean-forward="false" selection-start-line="340" selection-start-column="54" selection-end-line="340" selection-end-column="57" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,10 +209,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>m</find>
-      <find>$titlesFilmsWith2Songs</find>
-      <find>perform</find>
-      <find>$performance_thesauruss</find>
       <find>$songIdWithMultipleFilms</find>
       <find>&quot;instrumental+dance&quot;</find>
       <find>at least</find>
@@ -129,6 +235,10 @@
       <find>tone</find>
       <find>Tone</find>
       <find>film</find>
+      <find>getTitle</find>
+      <find>stu</find>
+      <find>filter(_performance, _source1, _source2, min_slider, max_slider);</find>
+      <find>source1</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -160,8 +270,11 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/intro.html.twig" />
         <option value="$PROJECT_DIR$/web/js/length_timeline.js" />
         <option value="$PROJECT_DIR$/app/Resources/views/film.html.twig" />
-        <option value="$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php" />
         <option value="$PROJECT_DIR$/src/ApiBundle/Resources/views/search/exoticism.html.twig" />
+        <option value="$PROJECT_DIR$/web/css/style.css" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ExoticismController.php" />
+        <option value="$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/exoticism/search.html.twig" />
       </list>
     </option>
   </component>
@@ -192,7 +305,238 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="css">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="var">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="var">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="cache">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="dev">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="AppBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="AppBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Resources">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="AppBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Resources">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="exoticism">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="AppBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Controller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ApiBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ApiBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Controller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -317,414 +661,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="js">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="css">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="css">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="scenario">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CmsBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="CmsBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Controller">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="AppBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="AppBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Entity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ApiBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ApiBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="views">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ApiBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="views">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="search">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ApiBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ApiBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Controller">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="views">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="views">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="views">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="number">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="application">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -751,10 +688,6 @@
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
-      <BehatRunner />
       <method />
     </configuration>
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
@@ -784,6 +717,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="0e389c8b-1af1-4ed8-9fa4-dae2d4cc8f31" name="Default" comment="" />
@@ -799,12 +735,12 @@
       <workItem from="1496215056382" duration="656000" />
       <workItem from="1496595417157" duration="522000" />
       <workItem from="1496928134226" duration="7667000" />
-      <workItem from="1496937151728" duration="1062000" />
+      <workItem from="1496937151728" duration="3374000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62714000" />
+    <option name="totallyTimeSpent" value="65026000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -817,23 +753,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27825466" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28540772" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -862,55 +798,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/ScenarioController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ScenarioController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="116" column="0" lean-forward="true" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/scenario/marion/intro.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="35" lean-forward="false" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9735">
-          <caret line="651" column="34" lean-forward="false" selection-start-line="651" selection-start-column="12" selection-end-line="651" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/person/person.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/person/person.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/person/personByItem.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/js/donut_simple.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-719">
@@ -922,13 +809,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="55" column="136" lean-forward="false" selection-start-line="55" selection-start-column="115" selection-end-line="55" selection-end-column="136" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SearchController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="22" column="12" lean-forward="false" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -999,13 +879,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="3007" column="22" lean-forward="true" selection-start-line="3007" selection-start-column="22" selection-end-line="3007" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SongController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1136,13 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2070">
-          <caret line="138" column="1" lean-forward="false" selection-start-line="138" selection-start-column="1" selection-end-line="138" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CmsBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
@@ -1185,81 +1051,217 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
           <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-          <folding>
-            <element signature="e#1965#1971#0#Twig" expanded="true" />
-            <element signature="e#2143#2158#0#Twig" expanded="true" />
-            <element signature="e#2219#2232#0#Twig" expanded="true" />
-            <element signature="e#2360#2365#0#Twig" expanded="true" />
-            <element signature="e#2467#2480#0#Twig" expanded="true" />
-            <element signature="e#2577#2590#0#Twig" expanded="true" />
-            <element signature="e#2655#2665#0#Twig" expanded="true" />
-            <element signature="e#3882#3891#0#Twig" expanded="true" />
-            <element signature="e#4053#4059#0#Twig" expanded="true" />
-            <element signature="e#4173#4197#0#Twig" expanded="true" />
-            <element signature="e#4297#4320#0#Twig" expanded="true" />
-            <element signature="e#5644#5649#0#Twig" expanded="true" />
-            <element signature="e#5754#5758#0#Twig" expanded="true" />
-            <element signature="e#6079#6084#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Film.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="83" column="18" lean-forward="false" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
-          <folding>
-            <element signature="e#36#68#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-111">
-          <caret line="129" column="5" lean-forward="false" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
-          <folding>
-            <marker date="1496936483000" expanded="true" signature="498:621" ph="SELECT n FRO... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="739:822" ph="SELECT DISTI... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="952:1050" ph="SELECT DISTI... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="1668:1805" ph="SELECT s.son... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="2077:2261" ph="SELECT n FRO... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="2522:2605" ph="SELECT DISTI... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="2735:2833" ph="SELECT DISTI... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="4060:4204" ph="SELECT COUNT... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="4318:4464" ph="SELECT COUNT... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="4577:4722" ph="SELECT COUNT... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="4827:4969" ph="SELECT COUNT... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="5847:5879" ph="SELECT n FRO... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="5847:5960" ph="SELECT n FRO... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="5847:6004" ph="SELECT n FRO... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="5847:6006" ph="SELECT n FRO... AppBundle" />
-            <marker date="1496936483000" expanded="true" signature="6796:6841" ph="SELECT COUNT... AppBundle" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/web/number/number.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
+        <state relative-caret-position="2340">
           <caret line="156" column="55" lean-forward="false" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="55" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Stagenumber.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/StageshowRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="5" lean-forward="false" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/FilmType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#34#66#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Stageshow.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="540" column="27" lean-forward="false" selection-start-line="540" selection-start-column="23" selection-end-line="540" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SongController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1495903091000" expanded="true" signature="401:614" ph="SELECT s.tit... " />
+            <marker date="1495903091000" expanded="true" signature="823:938" ph="SELECT s.son... AppBundle" />
+            <marker date="1495903091000" expanded="true" signature="1141:1278" ph="SELECT s.son... AppBundle" />
+            <marker date="1495903091000" expanded="true" signature="1509:1602" ph="SELECT f.fil... AppBundle" />
+            <marker date="1495903091000" expanded="true" signature="1868:1960" ph="SELECT f.tit... AppBundle" />
+            <marker date="1495903091000" expanded="true" signature="2209:2397" ph="SELECT DISTI... AppBundle" />
+            <marker date="1495903091000" expanded="true" signature="3295:3448" ph="SELECT DISTI... AppBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SearchController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491054069000" expanded="true" signature="1068:1235" ph="SELECT n.tit... AppBundle" />
+            <marker date="1491054069000" expanded="true" signature="1799:1999" ph="SELECT n.tit... AppBundle" />
+            <marker date="1491054069000" expanded="true" signature="2403:2600" ph="SELECT n.tit... AppBundle" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Number.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
-          <caret line="360" column="35" lean-forward="false" selection-start-line="360" selection-start-column="31" selection-end-line="360" selection-end-column="35" />
+          <caret line="601" column="44" lean-forward="false" selection-start-line="601" selection-start-column="41" selection-end-line="601" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Film.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5085">
+          <caret line="340" column="57" lean-forward="false" selection-start-line="340" selection-start-column="54" selection-end-line="340" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DanceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="59" />
+          <folding>
+            <marker date="1491054043000" expanded="true" signature="455:538" ph="SELECT d FRO... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="749:832" ph="SELECT d FRO... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="1047:1130" ph="SELECT d FRO... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="1340:1548" ph="SELECT t.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="1765:1975" ph="SELECT t.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="2195:2404" ph="SELECT t.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="2634:2779" ph="SELECT COUNT... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="3060:3224" ph="SELECT COUNT... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="3535:3644" ph="SELECT COUNT... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="3901:4056" ph="SELECT AVG((... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="5298:5458" ph="SELECT DISTI... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="5608:5730" ph="SELECT DISTI... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="5880:6069" ph="SELECT g.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="6225:6384" ph="SELECT f.rel... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="6540:6660" ph="SELECT n FRO... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="6807:7016" ph="SELECT s.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="7167:7386" ph="SELECT s.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="8105:8266" ph="SELECT DISTI... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="8416:8539" ph="SELECT DISTI... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="8689:8879" ph="SELECT g.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="9033:9193" ph="SELECT f.rel... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="9350:9471" ph="SELECT n FRO... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="9618:9828" ph="SELECT s.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="9979:10199" ph="SELECT s.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="10924:11134" ph="SELECT DISTI... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="11284:11438" ph="SELECT DISTI... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="11588:11779" ph="SELECT g.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="11933:12094" ph="SELECT f.rel... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="12253:12467" ph="SELECT s.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="12614:12827" ph="SELECT s.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="12975:13186" ph="SELECT s.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="13335:13545" ph="SELECT s.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="13694:13915" ph="SELECT s.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="14073:14228" ph="SELECT n.tit... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="15148:15286" ph="SELECT n FRO... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="15490:15629" ph="SELECT n FRO... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="15834:15970" ph="SELECT n FRO... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="16174:16309" ph="SELECT n FRO... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="16515:16661" ph="SELECT n FRO... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="16884:16953" ph="SELECT t FRO... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="17112:17177" ph="SELECT t FRO... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="17379:17624" ph="SELECT f.rel... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="17828:18074" ph="SELECT f.rel... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="18279:18522" ph="SELECT f.rel... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="18726:18968" ph="SELECT f.rel... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="19174:19427" ph="SELECT f.rel... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="19692:19937" ph="SELECT p.nam... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="20141:20387" ph="SELECT p.nam... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="20592:20835" ph="SELECT p.nam... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="21039:21281" ph="SELECT p.nam... AppBundle" />
+            <marker date="1491054043000" expanded="true" signature="21487:21740" ph="SELECT p.nam... AppBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ExoticismController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="52" lean-forward="false" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+          <folding>
+            <element signature="e#40#99#0#PHP" expanded="true" />
+            <marker date="1497347279000" expanded="true" signature="388:496" ph="SELECT DISTI... AppBundle" />
+            <marker date="1497347279000" expanded="true" signature="572:647" ph="SELECT DISTI... AppBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ApiBundle/Controller/SearchController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-156">
+          <caret line="148" column="233" lean-forward="false" selection-start-line="148" selection-start-column="233" selection-end-line="148" selection-end-column="233" />
+          <folding>
+            <marker date="1497348173000" expanded="true" signature="498:621" ph="SELECT n FRO... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="739:822" ph="SELECT DISTI... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="952:1050" ph="SELECT DISTI... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="1668:1805" ph="SELECT s.son... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="2077:2261" ph="SELECT n FRO... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="2522:2605" ph="SELECT DISTI... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="2735:2833" ph="SELECT DISTI... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="4060:4204" ph="SELECT COUNT... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="4318:4464" ph="SELECT COUNT... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="4577:4722" ph="SELECT COUNT... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="4827:4969" ph="SELECT COUNT... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="5872:5904" ph="SELECT n FRO... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="5872:5985" ph="SELECT n FRO... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="5872:6029" ph="SELECT n FRO... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="5872:6075" ph="SELECT n FRO... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="5872:6077" ph="SELECT n FRO... AppBundle" />
+            <marker date="1497348173000" expanded="true" signature="6893:6938" ph="SELECT COUNT... AppBundle" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ApiBundle/Resources/views/search/exoticism.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="16" column="57" lean-forward="false" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+        <state relative-caret-position="180">
+          <caret line="12" column="60" lean-forward="false" selection-start-line="12" selection-start-column="60" selection-end-line="12" selection-end-column="60" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/exoticism/search.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1215">
+          <caret line="137" column="42" lean-forward="false" selection-start-line="137" selection-start-column="42" selection-end-line="137" selection-end-column="42" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+            <element signature="e#3705#3721#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
