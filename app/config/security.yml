@@ -38,6 +38,5 @@ security:
         - { path: ^/mood, role: ROLE_USER }
         - { path: ^/exoticism, role: ROLE_USER }
         - { path: ^/dance, role: ROLE_USER }
-
-
+        - { path: ^/person, role: ROLE_USER }
 
