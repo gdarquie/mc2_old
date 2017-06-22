@@ -78,13 +78,19 @@
                     <div  id="slider"></div>
                 </div>
 
-                <article class="s12 col card">
-                    <h2>Some stats</h2>
+                {#<article class="s12 col card">#}
+                    {#<h2>Some stats</h2>#}
 
-                    <div class="songsSelection"></div>
-                    <div class="filmsSelection"></div>
-                    <div class="performersSelection"></div>
+                    {#<div class="songsSelection"></div>#}
+                    {#<div class="filmsSelection"></div>#}
+                    {#<div class="performersSelection"></div>#}
 
+                {#</article>#}
+
+                <article class="s12 col">
+                    <div class="center">
+                        <span class="btn white red-text generate-viz">Générer une visualisation</span>
+                    </div>
                 </article>
 
             </div>
@@ -114,6 +120,9 @@
 
     <script>
 
+        $('.generate-viz').click(function(){
+            alert('hello');
+        });
 
         function changementFiltre(){
 
@@ -168,6 +177,8 @@
             $("#resultat").html(infos+billets);
 
         }
+
+
 
     </script>
 

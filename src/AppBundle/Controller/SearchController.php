@@ -117,4 +117,17 @@ class SearchController extends Controller
         return $this->render('web/search/index.html.twig');
 
     }
+
+    /**
+     * @Route("/visualiser", name="search_viz")
+     */
+    public function visualisationAction(){
+
+        if ($form->isSubmitted()){
+
+        }
+
+        return $this->render('web/search/visualiser.html.twig');
+
+    }
 }
