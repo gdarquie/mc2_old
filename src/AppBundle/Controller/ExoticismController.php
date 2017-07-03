@@ -2,15 +2,19 @@
 
 namespace AppBundle\Controller;
 
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Selection;
+use AppBundle\Form\SelectionType;
 
 class ExoticismController extends Controller
 {
     /**
-     * @Route("/search/exoticism")
+     * @Route("/search/exoticism", name="search_exotic")
      */
-    public function searchExoticism()
+    public function searchExoticism(Request $request)
     {
 
         $em = $this->getDoctrine()->getManager();
@@ -21,10 +25,33 @@ class ExoticismController extends Controller
         $query = $em->createQuery("SELECT DISTINCT(t.title) as title, t.studioId as id FROM AppBundle:Studio t");
         $studio = $query->getResult();
 
+        $selection = new Selection();
+        $form = $this->createForm(SelectionType::class, $selection);
+        $form->handleRequest($request);
+
+//        dump($selection);die;
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $this->addFlash('success', 'Redirection vers la page de viz'.$selection);
+            return $this->redirectToRoute('view_exoticism', array('selection' => $selection));
+        }
+
 
         return $this->render('AppBundle:exoticism:search.html.twig', array(
             'exo' => $exo,
-            'studio' => $studio));
+            'studio' => $studio,
+            'selectionForm' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/view/exoticism", name="view_exoticism")
+     */
+    public function vizExoticism($selection = 0){
+
+
+        return $this->render('AppBundle:exoticism:viz.html.twig');
+
     }
 }
 

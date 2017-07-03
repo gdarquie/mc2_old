@@ -42,15 +42,17 @@
 
     <section class="container" id="number">
 
-        <div class="row ">
-            <h1 class="center">{{ number.title }} <i>[{{ number.film }}]</i>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<small> - <a href="{{ path('number_edit', {'numberId' : number.numberId}) }}">edit</a></small>{% endif %} </h1>
+        <div class="row">
+            <h1 class="center">{{ number.title }}{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<small> - <a href="{{ path('number_edit', {'numberId' : number.numberId}) }}">edit</a></small>{% endif %} </h1>
+            <h1 class="center">[{{ number.film }}]</i>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<small> {% endif %} </h1>
         </div>
 
         <div class="row">
 
             <div class="col s12">
 
-                <h2>Outlines</h2>
+                <h2>Description</h2>
+
 
                 <table class="striped middle-table">
                     <tr>
@@ -58,9 +60,12 @@
                         <th>End timecode</th>
                         <th>Begin</th>
                         <th>Ending</th>
-                        <th>Comments</th>
+                        {#<th>Comments</th>#}
                         <th>Completeness</th>
                         <th>Completeness Options</th>
+                        <th>Structure</th>
+                        <th>Shots</th>
+                        <th>Average shot length</th>
                     </tr>
 
                     <tr>
@@ -68,46 +73,51 @@
                         <td>{{ ((number.EndTc)/(60*60))|round(0, 'floor') }}h{{ ((number.EndTc)/(60)) |round(0, 'floor')-(60*((number.EndTc)/(60*60)) |round(0, 'floor'))  }}m{{ (number.EndTc) |round(0, 'floor')-(60*((number.EndTc)/(60)) |round(0, 'floor')) }}s</td>
                         <td>{{ number.beginThesaurus  }}</td>
                         <td>{{ number.endingThesaurus  }}</td>
-                        <td>{{ number.commentTc }}</td>
+                        {#<td>{{ number.commentTc }}</td>#}
                         <td>{{ number.completenessThesaurus }}</td>
                         <td>{% for completoption in number.completoptions %}{{ completoption }}{% endfor %}</td>
+                        <td>{{ number.structure }}</td>
+                        <td>{{ number.shots }}</td>
+                        {#calculer avg shots length#}
+                        <td></td>
+
                     </tr>
                 </table>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col s6">
-                <h2>Structure</h2>
-                <table class="striped middle-table">
-                    <tr>
-                        <th>Structure</th>
-                    </tr>
-                    <tr>
-                        <td>{{ number.structure }}</td>
-                    </tr>
-                </table>
-            </div>
+        {#<div class="row">#}
+            {#<div class="col s6">#}
+                {#<h2>Structure</h2>#}
+                {#<table class="striped middle-table">#}
+                    {#<tr>#}
+                        {#<th>Structure</th>#}
+                    {#</tr>#}
+                    {#<tr>#}
+                        {#<td>{{ number.structure }}</td>#}
+                    {#</tr>#}
+                {#</table>#}
+            {#</div>#}
 
-            <div class="col s6">
-                <h2>Shots</h2>
+            {#<div class="col s6">#}
+                {#<h2>Shots</h2>#}
 
-                <table class="striped middle-table">
-                    <tr>
-                        <th>Shots</th>
-                        <th>Average shot length</th>
-                    </tr>
-                    <tr>
-                        <td>{{ number.shots }}</td>
-                    </tr>
-                </table>
-            </div>
+                {#<table class="striped middle-table">#}
+                    {#<tr>#}
+                        {#<th>Shots</th>#}
+                        {#<th>Average shot length</th>#}
+                    {#</tr>#}
+                    {#<tr>#}
+                        {#<td>{{ number.shots }}</td>#}
+                    {#</tr>#}
+                {#</table>#}
+            {#</div>#}
 
         </div>
 
         <div class="row">
             <div class="col s12">
-                <h2>Performers</h2>
+                {#<h2>Performers</h2>#}
                 <table class="striped middle-table">
                     <tr>
                         <th>Performance</th>
@@ -266,33 +276,34 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col s12">
-                <h2>Complement</h2>
+        {#faire apparaitre ces parties si user#}
+        {#<div class="row">#}
+            {#<div class="col s12">#}
+                {#<h2>Complement</h2>#}
 
-                <table class="striped middle-table">
-                    <tr>
-                        <th>Director</th>
-                        <th>Cost</th>
-                        <th>Cost comments</th>
-                    </tr>
-                    <tr>
-                        <td>{% for person in number.director %}{{ person }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>
-                        <td>{%  if number.cost == 0 %}{% else %}{{ number.cost }}{%  endif %}</td>
-                        <td>{{ number.costComment }}</td>
+                {#<table class="striped middle-table">#}
+                    {#<tr>#}
+                        {#<th>Director</th>#}
+                        {#<th>Cost</th>#}
+                        {#<th>Cost comments</th>#}
+                    {#</tr>#}
+                    {#<tr>#}
+                        {#<td>{% for person in number.director %}{{ person }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>#}
+                        {#<td>{%  if number.cost == 0 %}{% else %}{{ number.cost }}{%  endif %}</td>#}
+                        {#<td>{{ number.costComment }}</td>#}
 
-                    </tr>
-                </table>
+                    {#</tr>#}
+                {#</table>#}
 
-            </div>
-        </div>
+            {#</div>#}
+        {#</div>#}
 
-        <div class="row">
-            <div class="col s12">
-                <h2>Lyrics</h2>
-                <p>{{ number.lyrics }}</p>
-            </div>
-        </div>
+        {#<div class="row">#}
+            {#<div class="col s12">#}
+                {#<h2>Lyrics</h2>#}
+                {#<p>{{ number.lyrics }}</p>#}
+            {#</div>#}
+        {#</div>#}
 
 
         </section>

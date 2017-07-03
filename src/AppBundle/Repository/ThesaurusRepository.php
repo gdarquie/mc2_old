@@ -37,6 +37,15 @@ class ThesaurusRepository extends EntityRepository
             ->orderBy('thesaurus.title', 'ASC')
             ->setParameters(array( 'type' => $type, 'category' => $category));
     }
+
+    public function findNumbersForOneThesaurusId($thesaurusId){
+        return $this->getEntityManager('SELECT t FOM AppBundle:Thesaurus t JOIN WHERE t.thesaurusId = :thesaurusId')->createQuery("")
+            ->setParameter('thesaurusId', $thesaurusId)
+            ->getResult();
+    }
+
+
+
 }
 
 

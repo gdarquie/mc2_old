@@ -20,7 +20,7 @@ class NumberController extends Controller
     /**
      * @Route("/")
      */
-    public function filmsByAction(){
+    public function numbersAction(){
 
         //retourner les titres de tous les films par ordre alphabétique
 
@@ -36,6 +36,21 @@ class NumberController extends Controller
         return $response;
     }
 
+    /**
+     * @Route("/place")
+     */
+    public function numbersPlacesAction(){
+
+        //retourner les titres de tous les films par ordre alphabétique
+
+        $em = $this->getDoctrine()->getManager();
+        $numbers = $em->getRepository('AppBundle:Number')->findAll();
+
+        return $this->render('ApiBundle:number:places.html.twig', array(
+            'numbers' => $numbers
+        ));
+    }
+
     private function serializeNumber(Number $number)
     {
         return array(
@@ -47,3 +62,5 @@ class NumberController extends Controller
     }
 
 }
+
+

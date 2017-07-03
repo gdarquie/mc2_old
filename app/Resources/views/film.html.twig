@@ -36,8 +36,10 @@
             </div>
 
             <div class="col s9">
+                <br><br>
 
                 <div class="row card">
+
                     <div class="col s12">
                         <h2>General information</h2>
                     </div>
@@ -50,57 +52,57 @@
                         <p><strong>Director :</strong> {% for director in film.directors  %}{{ director.name }}{%  if loop.last %}{% else %} ;{% endif %}{% endfor %}</p>
                         <p><strong>Released :</strong> {{ film.released }}</p>
                     </div>
-                </div>
 
-                <div class="row">
+                    <div class="row">
 
-                    <article class='col s12 m12'>
+                        <article class='col s12 m12'>
 
-                        <table class="table striped mini-table tablesorter">
-                            <thead>
-                            <tr>
-                                <th>Order</th>
-                                <th>Title</th>
-                                <th>Begin Timecode</th>
-                                <th>Ending Timecode</th>
-                                <th>Length</th>
-                                {#<th>Performers</th>#}
-                                <th>Average shot length</th>
-                                <th>Structure</th>
-                                {% if is_granted("ROLE_EDITOR") %}
-                                    <th>Edit</th>
-                                {% endif %}
-                                <th>View</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for number in numbersOf1Film %}
+                            <table class="table striped middle-table tablesorter">
+                                <thead>
                                 <tr>
-                                    <td>{{loop.index}}</td>
-                                    <td><a href="{{ path('number', {'numberId' : number.id}) }}">{{ number.title  }}</a></td>
-                                    <td>{{ number.beginTc }}</td>
-                                    <td>{{ number.endTc }}</td>
-                                    <td>{{ number.length }}</td>
-                                    <td>{{ number.average|round() }}</td>
-                                    <td>{{ number.structure }}</td>
-                                    {#<td>{% for item in number.performers  %}{{ item.performer }}{% if loop.last %}{% else %}, {% endif %}{% endfor %}</td>#}
-
+                                    <th>Order</th>
+                                    <th>Title</th>
+                                    <th>Begin Timecode</th>
+                                    <th>Ending Timecode</th>
+                                    <th>Length</th>
+                                    {#<th>Performers</th>#}
+                                    <th>Average shot length</th>
+                                    <th>Structure</th>
                                     {% if is_granted("ROLE_EDITOR") %}
-                                        <td>
-                                            <a href="{{path('number_edit', { numberId : number.id })}}">edit</a>
-                                        </td>
+                                        <th>Edit</th>
                                     {% endif %}
-
-
-                                    <td>
-                                        <a href="{{path('number', { numberId : number.id })}}">view</a>
-                                    </td>
+                                    <th>View</th>
                                 </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                {% for number in numbersOf1Film %}
+                                    <tr>
+                                        <td>{{loop.index}}</td>
+                                        <td><a href="{{ path('number', {'numberId' : number.id}) }}">{{ number.title  }}</a></td>
+                                        <td>{{ number.beginTc }}</td>
+                                        <td>{{ number.endTc }}</td>
+                                        <td>{{ number.length }}</td>
+                                        <td>{{ number.average|round() }}</td>
+                                        <td>{{ number.structure }}</td>
+                                        {#<td>{% for item in number.performers  %}{{ item.performer }}{% if loop.last %}{% else %}, {% endif %}{% endfor %}</td>#}
 
-                    </article>
+                                        {% if is_granted("ROLE_EDITOR") %}
+                                            <td>
+                                                <a href="{{path('number_edit', { numberId : number.id })}}">edit</a>
+                                            </td>
+                                        {% endif %}
+
+
+                                        <td>
+                                            <a href="{{path('number', { numberId : number.id })}}">view</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </article>
+                    </div>
                 </div>
             </div>
         </div>

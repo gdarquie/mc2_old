@@ -10,17 +10,21 @@
 
 {% block body %}
 
-    <section class="container-fluid">
+    <section class="container-large">
 
         <div class="row">
 
-            <header class="row center">
+            <header class="col s12 row center">
+
                 <h1 class="col s4">{{ person.name }} <span class="small-h1">({{ person.gender }}) {% if is_granted("ROLE_EDITOR") %} - <a href="{{ path('person_edit' , {"personId" : person.personId}) }}">edit</a>{% endif %}</span></h1>
+
 
                 <nav id="sub_nav" class="nav-extended col s8">
 
                     <div class="nav-content">
-                        <ul class="tabs tabs-transparent">
+
+                        <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a><ul class="tabs tabs-transparent">
+
                             <li class="tab"><a href="#tab1" class="active">Films</a></li>
                             <li class="tab"><a href="#tab2">Numbers</a></li>
                             <li class="tab"><a href="#tab5">Persons</a></li>

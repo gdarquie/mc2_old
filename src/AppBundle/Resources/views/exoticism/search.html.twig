@@ -89,9 +89,13 @@
 
                 <article class="s12 col">
                     <div class="center">
-                        <span class="btn white red-text generate-viz">Générer une visualisation</span>
+                        {{ form_start(selectionForm)}}
+                        <button class="btn white red-text generate-viz" type="submit" formnovalidate>Générer une visualisation</button>
+                        {{ form_end(selectionForm)}}
                     </div>
                 </article>
+
+
 
             </div>
 

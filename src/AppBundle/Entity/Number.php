@@ -2877,6 +2877,13 @@ class Number
         return (string) $this->getTitle();
     }
 
+    public function  allThesaurus(){
+
+        $allThesaurus =  $this->musical_thesaurus;
+
+        return $allThesaurus;
+    }
+
 
 
 }
