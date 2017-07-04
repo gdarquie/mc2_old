@@ -54,7 +54,7 @@ class SearchController extends Controller
         $songIdWithMultipleFilms = $query->getResult();
 
         //Numbers of Films with songs connected to 2 or more film with performance_thesaurus = "intrumental+dance" OR "song+dance"
-        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.numberId");
+        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.id");
         $query->setParameter('songs', $songIdWithMultipleFilms );
         $query->setParameter('perf1', "intrumental+dance" );
         $query->setParameter('perf2', "song+dance" );
@@ -100,17 +100,17 @@ class SearchController extends Controller
 
         if ($type == "Dance"){
             if($category == 'Dancing type'){
-                $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.dancingType t WHERE t.type = :type AND t.title = :title AND t.category = :category");
+                $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.dancingType t WHERE t.type = :type AND t.title = :title AND t.category = :category");
             }
             else if($category == 'Dance sub-genre'){
-                $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t WHERE t.type = :type AND t.title = :title AND t.category = :category");
+                $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t WHERE t.type = :type AND t.title = :title AND t.category = :category");
             }
             else if($category == 'Dance content') {
-                $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.danceContent t WHERE t.type = :type AND t.title = :title AND t.category = :category");
+                $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.danceContent t WHERE t.type = :type AND t.title = :title AND t.category = :category");
             }
         }
         else if($type == 'dancEmble')
-            $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.dancemble t WHERE t.type = :type AND t.title = :title AND t.category = :category");
+            $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.dancemble t WHERE t.type = :type AND t.title = :title AND t.category = :category");
 
         $query->setParameter('type', $type);
         $query->setParameter('title', $title);

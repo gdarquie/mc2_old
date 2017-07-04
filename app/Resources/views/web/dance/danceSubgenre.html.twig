@@ -118,7 +118,7 @@
         <table class="striped">
         {% for item in numbers %}
             <tr>
-                <td><a href="{{ path('number', { 'numberId' : item.numberId }) }}">{{ item.number }}</a></td>
+                <td><a href="{{ path('number', { 'id' : item.id }) }}">{{ item.number }}</a></td>
                 <td>{{ item.film }}</td>
             </tr>
         {% endfor %}

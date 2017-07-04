@@ -23,12 +23,12 @@ class StagenumberController extends Controller
 //    }
 //
 //    /**
-//     * @Route("stagenumber/id/{stagenumberId}", name="stagenumber")
+//     * @Route("stagenumber/id/{stageid}", name="stagenumber")
 //     */
-//    public function showAction($stagenumberId){
+//    public function showAction($stageid){
 //
 //        $em = $this->getDoctrine()->getManager();
-//        $stagenumber = $em->getRepository('AppBundle:Stagenumber')->findOneByStagenumberId($stagenumberId);
+//        $stagenumber = $em->getRepository('AppBundle:Stagenumber')->findOneByStageid($stageid);
 //
 //        return $this->render('AppBundle:stagenumber:stagenumber.html.twig',array(
 //            'stagenumber' => $stagenumber

@@ -78,7 +78,7 @@
                                 {% for number in numbersOf1Film %}
                                     <tr>
                                         <td>{{loop.index}}</td>
-                                        <td><a href="{{ path('number', {'numberId' : number.id}) }}">{{ number.title  }}</a></td>
+                                        <td><a href="{{ path('number', {'id' : number.id}) }}">{{ number.title  }}</a></td>
                                         <td>{{ number.beginTc }}</td>
                                         <td>{{ number.endTc }}</td>
                                         <td>{{ number.length }}</td>
@@ -88,13 +88,13 @@
 
                                         {% if is_granted("ROLE_EDITOR") %}
                                             <td>
-                                                <a href="{{path('number_edit', { numberId : number.id })}}">edit</a>
+                                                <a href="{{path('number_edit', { id : number.id })}}">edit</a>
                                             </td>
                                         {% endif %}
 
 
                                         <td>
-                                            <a href="{{path('number', { numberId : number.id })}}">view</a>
+                                            <a href="{{path('number', { id : number.id })}}">view</a>
                                         </td>
                                     </tr>
                                 {% endfor %}

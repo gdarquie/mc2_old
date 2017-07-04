@@ -67,7 +67,7 @@ class DanceController extends Controller
         $nbfilmsWithDancedNumber = $query->getSingleResult();
 
         //number of danced numbers (other technic to count)
-        $query = $em -> createQuery('SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n WHERE n.performance = :instru OR n.performance = :song ');
+        $query = $em -> createQuery('SELECT COUNT(n.id) as nb FROM AppBundle:Number n WHERE n.performance = :instru OR n.performance = :song ');
         $query->setParameter('instru', 'instrumental+dance');
         $query->setParameter('song', 'song+dance');
         $numberDancedNumber2 = $query->getSingleResult();
@@ -260,7 +260,7 @@ class DanceController extends Controller
         $exoticisms = $query->getResult();
 
         //films and numbers
-        $query = $em->createQuery('SELECT n.title as number, n.numberId as numberId, f.title as film FROM AppBundle:Number n JOIN n.film f JOIN n.danceSubgenre d WHERE d.thesaurusId = :dance');
+        $query = $em->createQuery('SELECT n.title as number, n.id as id, f.title as film FROM AppBundle:Number n JOIN n.film f JOIN n.danceSubgenre d WHERE d.thesaurusId = :dance');
         $query->setParameter('dance', $dance);
         $numbers = $query->getResult();
 

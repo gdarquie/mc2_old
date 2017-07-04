@@ -15,14 +15,14 @@ class SongController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         //All songs
-        $query = $em->createQuery("SELECT s.title as title, s.date as date, s.songId as songId, COUNT(n.numberId) as nb,COUNT(DIStiNCT(f.filmId)) as nbFilms FROM AppBundle:Song s LEFT JOIN s.number n JOIN n.film f GROUP BY s.songId ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT s.title as title, s.date as date, s.songId as songId, COUNT(n.id) as nb,COUNT(DIStiNCT(f.filmId)) as nbFilms FROM AppBundle:Song s LEFT JOIN s.number n JOIN n.film f GROUP BY s.songId ORDER BY nb DESC");
 //        $query->setParameter('person', $name );
         $songs = $query->getResult();
 
         $min = 2;
 
 //        List of songId used by at least $max_number numbers
-        $query = $em->createQuery("SELECT s.songId as songId FROM AppBundle:Song s JOIN s.number n GROUP BY s.songId HAVING COUNT(n.numberId)  >= :min ");
+        $query = $em->createQuery("SELECT s.songId as songId FROM AppBundle:Song s JOIN s.number n GROUP BY s.songId HAVING COUNT(n.id)  >= :min ");
         $query->setParameter('min', $min );
         $songWithMultipleNumbers = $query->getResult();
 

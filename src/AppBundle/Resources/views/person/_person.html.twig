@@ -18,7 +18,7 @@
                 {% for item in associated_choreographers  %}
                     <tr>
                         <td>{{ item.name }}</td>
-                        <td><a href="{{ path('number' ,{'numberId' : item.numberId}) }}">{{ item.title }}</a></td>
+                        <td><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.title }}</a></td>
                         <td><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
                     </tr>
                 {% endfor %}
@@ -45,7 +45,7 @@
                     <tr>
                         <td>{{ item.name }}</td>
                         <td>{{ item.song }}</td>
-                        <td><a href="{{ path('number' ,{'numberId' : item.numberId}) }}">{{ item.number }}</a></td>
+                        <td><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.number }}</a></td>
                         <td><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
                     </tr>
                 {% endfor %}
@@ -71,7 +71,7 @@
                     <tr>
                         <td>{{ item.name }}</td>
                         <td>{{ item.song }}</td>
-                        <td><a href="{{ path('number' ,{'numberId' : item.numberId}) }}">{{ item.number }}</a></td>
+                        <td><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.number }}</a></td>
                         <td><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
                     </tr>
                 {% endfor %}

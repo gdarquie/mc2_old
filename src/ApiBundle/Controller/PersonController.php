@@ -96,11 +96,11 @@ class PersonController extends Controller
 //        dump($diegetic_format);die;
 
         //total of numbers with a diegetic
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.diegetic_thesaurus t ");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.diegetic_thesaurus t ");
         $totalNumbers = $query->getSingleResult();
 //
         //total of numbers with a diegetic for the person
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId );
         $totalNumbersForPerson = $query->getSingleResult();
 
@@ -187,11 +187,11 @@ class PersonController extends Controller
 //        dump($performance_format);die;
 
         //total of numbers with a performance
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.performance_thesaurus t ");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.performance_thesaurus t ");
         $totalNumbers = $query->getSingleResult();
 //
         //total of numbers with a performance for the person
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.performers p WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId );
         $totalNumbersForPerson = $query->getSingleResult();
 
@@ -277,11 +277,11 @@ class PersonController extends Controller
 //        dump($performance_format);die;
 
         //total of numbers with a performance
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.structure t ");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.structure t ");
         $totalNumbers = $query->getSingleResult();
 //
         //total of numbers with a performance for the person
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId );
         $totalNumbersForPerson = $query->getSingleResult();
 
@@ -370,11 +370,11 @@ class PersonController extends Controller
 //        dump($performance_format);die;
 
         //total of numbers with a performance
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t ");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t ");
         $totalNumbers = $query->getSingleResult();
 //
         //total of numbers with a performance for the person
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId );
         $totalNumbersForPerson = $query->getSingleResult();
 

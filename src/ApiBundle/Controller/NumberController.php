@@ -54,7 +54,7 @@ class NumberController extends Controller
     private function serializeNumber(Number $number)
     {
         return array(
-            'numberId' => $number->getNumberId(),
+            'id' => $number->getId(),
             'title' => $number->getTitle(),
             'film' => $number->getFilm()->getTitle(),
             'released' =>$number->getFilm()->getReleased(),

@@ -22,7 +22,7 @@ class ScenarioController extends Controller
     public function marionquotationAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('SELECT n.numberId as numberId, n.title as title FROM AppBundle:Number n JOIN n.quotation q WHERE q.title IS NOT NULL');
+        $query = $em->createQuery('SELECT n.id as id, n.title as title FROM AppBundle:Number n JOIN n.quotation q WHERE q.title IS NOT NULL');
         $numbers = $query->getResult();
 
         $response = new JsonResponse($numbers, 200);
@@ -47,7 +47,7 @@ class ScenarioController extends Controller
         $songIdWithMultipleFilms = $query->getResult();
 
 //      Our selection of numbers
-        $query = $em->createQuery("SELECT n.numberId as numberId FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.numberId");
+        $query = $em->createQuery("SELECT n.id as id FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.id");
         $query->setParameter('songs', $songIdWithMultipleFilms );
         $query->setParameter('perf1', 183 );
         $query->setParameter('perf2', 186 );
@@ -56,7 +56,7 @@ class ScenarioController extends Controller
 //        dump($numbers);die();
 
         //number of numbers per dancing type for the selection
-        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.dancingType t  WHERE n.numberId IN(:numbers)GROUP BY t.thesaurusId  ");
+        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.dancingType t  WHERE n.id IN(:numbers)GROUP BY t.thesaurusId  ");
         $query->setParameter('numbers', $numbers );
         $one = $query->getResult();
 
@@ -75,7 +75,7 @@ class ScenarioController extends Controller
 
 //            dump($item['title']);die;
 
-            $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n LEFT JOIN n.dancingType t WHERE t.title = :title AND n.numberId IN(:numbers) ORDER BY t.title ASC");
+            $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n LEFT JOIN n.dancingType t WHERE t.title = :title AND n.id IN(:numbers) ORDER BY t.title ASC");
             $query->setParameter('numbers', $numbers);
             $query->setParameter('title', $item['title']);
             $temp = $query->getResult();
@@ -96,13 +96,13 @@ class ScenarioController extends Controller
 
 
         //total of numbers for all
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.dancingType t ");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.dancingType t ");
         $totalNumbers = $query->getSingleResult();
 
 //        dump($totalNumbers);die();
 
         //total of numbers for selection
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.dancingType t  WHERE n.numberId IN(:numbers)");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.dancingType t  WHERE n.id IN(:numbers)");
         $query->setParameter('numbers', $numbers);
         $totalNumbersForSelection = $query->getSingleResult();
 
@@ -167,14 +167,14 @@ class ScenarioController extends Controller
         $songIdWithMultipleFilms = $query->getResult();
 
 //      Our selection of numbers
-        $query = $em->createQuery("SELECT n.numberId as numberId FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.numberId");
+        $query = $em->createQuery("SELECT n.id as id FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.id");
         $query->setParameter('songs', $songIdWithMultipleFilms );
         $query->setParameter('perf1', 183 );
         $query->setParameter('perf2', 186 );
         $numbers = $query->getResult();
 
         //number of numbers per dancing type for the selection
-        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t  WHERE n.numberId IN(:numbers)GROUP BY t.thesaurusId  ");
+        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t  WHERE n.id IN(:numbers)GROUP BY t.thesaurusId  ");
         $query->setParameter('numbers', $numbers );
         $one = $query->getResult();
 
@@ -194,7 +194,7 @@ class ScenarioController extends Controller
 
 //            dump($item['title']);die;
 
-            $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n LEFT JOIN n.danceSubgenre t WHERE t.title = :title AND n.numberId IN(:numbers) ORDER BY t.title ASC");
+            $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n LEFT JOIN n.danceSubgenre t WHERE t.title = :title AND n.id IN(:numbers) ORDER BY t.title ASC");
             $query->setParameter('numbers', $numbers);
             $query->setParameter('title', $item['title']);
             $temp = $query->getResult();
@@ -215,13 +215,13 @@ class ScenarioController extends Controller
 
 
         //total of numbers for all
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t ");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t ");
         $totalNumbers = $query->getSingleResult();
 
 //        dump($totalNumbers);die();
 
         //total of numbers for selection
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t  WHERE n.numberId IN(:numbers)");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t  WHERE n.id IN(:numbers)");
         $query->setParameter('numbers', $numbers);
         $totalNumbersForSelection = $query->getSingleResult();
 
@@ -278,14 +278,14 @@ class ScenarioController extends Controller
         $songIdWithMultipleFilms = $query->getResult();
 
 //      Our selection of numbers
-        $query = $em->createQuery("SELECT n.numberId as numberId FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.numberId");
+        $query = $em->createQuery("SELECT n.id as id FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.id");
         $query->setParameter('songs', $songIdWithMultipleFilms );
         $query->setParameter('perf1', 183 );
         $query->setParameter('perf2', 186 );
         $numbers = $query->getResult();
 
         //number of numbers per dancing type for the selection
-        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.danceContent t  WHERE n.numberId IN(:numbers)GROUP BY t.thesaurusId  ");
+        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.danceContent t  WHERE n.id IN(:numbers)GROUP BY t.thesaurusId  ");
         $query->setParameter('numbers', $numbers );
         $one = $query->getResult();
 
@@ -305,7 +305,7 @@ class ScenarioController extends Controller
 
 //            dump($item['title']);die;
 
-            $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n LEFT JOIN n.danceContent t WHERE t.title = :title AND n.numberId IN(:numbers) ORDER BY t.title ASC");
+            $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n LEFT JOIN n.danceContent t WHERE t.title = :title AND n.id IN(:numbers) ORDER BY t.title ASC");
             $query->setParameter('numbers', $numbers);
             $query->setParameter('title', $item['title']);
             $temp = $query->getResult();
@@ -326,13 +326,13 @@ class ScenarioController extends Controller
 
 
         //total of numbers for all
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.danceContent t ");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.danceContent t ");
         $totalNumbers = $query->getSingleResult();
 
 //        dump($totalNumbers);die();
 
         //total of numbers for selection
-        $query = $em->createQuery("SELECT COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.danceContent t  WHERE n.numberId IN(:numbers)");
+        $query = $em->createQuery("SELECT COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.danceContent t  WHERE n.id IN(:numbers)");
         $query->setParameter('numbers', $numbers);
         $totalNumbersForSelection = $query->getSingleResult();
 

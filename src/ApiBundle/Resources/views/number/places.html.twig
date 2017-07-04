@@ -4,7 +4,7 @@ number : {
 
 {# Infos générales du number #}
 
-id : {{ item.numberId }},
+id : {{ item.id }},
 {% if item.title|length > 0 %}title : "{{ item.title }}",{% endif %}
 {% if item.beginTc|length > 0 %}beginTc : "{{ item.beginTc }}",{% endif %}
 {% if item.endTc|length > 0 %}endingTc : "{{ item.endTc }}",{% endif %}
@@ -88,13 +88,13 @@ performers : [{% for item in item.performers  %}
     ]
 {% endif %}
 
-{% if item.imaginary|length > 0 %}
-    imaginary : [
-    {% for place  in item.imaginary  %}
-        { title : "{{ place.title }}" {% if place.category > 0 %}, category: "{{ place.category }}"{% endif %} }{% if loop.last %}{% else %},{% endif %}
-    {% endfor %}
-    ]
-{% endif %}
+{#{% if item.imaginary|length > 0 %}#}
+    {#imaginary : [#}
+    {#{% for place  in item.imaginary  %}#}
+        {#{ title : "{{ place.title }}" {% if place.category > 0 %}, category: "{{ place.category }}"{% endif %} }{% if loop.last %}{% else %},{% endif %}#}
+    {#{% endfor %}#}
+    {#]#}
+{#{% endif %}#}
 
 
 }{% if loop.last %}{% else %},{% endif %}

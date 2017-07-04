@@ -45,7 +45,7 @@
                     </tr>
                     {% for number in numbers  %}
                     <tr>
-                        <td><a href="{{ path('number', {'numberId' : number.numberId}) }}">{{ number.title }}</a></td>
+                        <td><a href="{{ path('number', {'id' : number.id}) }}">{{ number.title }}</a></td>
                         <td>{{ number.released }}</td>
                         <td>{{ number.filmTitle }}</td>
 

@@ -194,7 +194,7 @@ class CensorshipController extends Controller
         $query->setParameter('legion', $legion);
         $myLegion = $query->getSingleResult();
 
-        $query = $em->createQuery('SELECT COUNT(DISTINCT(n.numberId)) as nb FROM AppBundle:Film f JOIN f.numbers n WHERE f.legion = :legion');
+        $query = $em->createQuery('SELECT COUNT(DISTINCT(n.id)) as nb FROM AppBundle:Film f JOIN f.numbers n WHERE f.legion = :legion');
         $query->setParameter('legion', $legion);
         $numberForLegion = $query->getSingleResult();
 

@@ -107,12 +107,12 @@ class DefaultController extends Controller
     }
 
     /**
-    * @Route("/editor/number/id/{numberId}/edit" , name = "number_edit")
+    * @Route("/editor/number/id/{id}/edit" , name = "number_edit")
     */
-    public function numberEditAction(Request $request, $numberId){
+    public function numberEditAction(Request $request, $id){
 
         $em = $this->getDoctrine()->getManager();
-        $number = $em->getRepository('AppBundle:Number')->findOneByNumberId($numberId);
+        $number = $em->getRepository('AppBundle:Number')->findOneById($id);
         $film = $number->getFilm();
         $filmId = $film->getFilmId();
 

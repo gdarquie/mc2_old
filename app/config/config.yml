@@ -136,3 +136,81 @@ fos_user:
     from_email:
         address: gaetan.darquie@gmail.com
         sender_name: You
+
+# Elastica
+fos_elastica:
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        mc2:
+            types:
+                number:
+                    mappings:
+                        title: ~
+                        beginTc: ~
+                        endTc: ~
+                        length: ~
+                        film.studios: ~
+                        film.released: ~
+                        film.directors: ~
+                        film.censorship: ~
+                        song: ~
+                        cast: ~
+                        integration_thesaurus: ~
+                        integoptions: ~
+                        dancingType: ~
+                        danceSubgenre: ~
+                        danceContent: ~
+                        effects: ~
+                        beginThesaurus: ~
+                        endingThesaurus: ~
+                        structure: ~
+                        musensemble: ~
+                        costumes: ~
+                        stereotype: ~
+                        source_thesaurus: ~
+                        performance_thesaurus: ~
+                        spectators_thesaurus: ~
+                        diegetic_thesaurus: ~
+                        musician_thesaurus: ~
+                        exoticismThesaurus: ~
+                        dancemble: ~
+                        imaginary: ~
+                        diegetic_place_thesaurus: ~
+                        general_localisation: ~
+                        tempo_thesaurus: ~
+                        quotation_thesaurus: ~
+                        general_mood: ~
+                        musical_thesaurus: ~
+                        genre: ~
+                        choregraphers: ~
+                        arrangers: ~
+                        director: ~
+                        performers: ~
+                        figurants: ~
+                        editors: ~
+                        completeTitle: ~
+                        completeTc: ~
+                        completeStructure: ~
+                        completeShots: ~
+                        completePerformance: ~
+                        completeBackstage: ~
+                        completeTheme: ~
+                        completeMood: ~
+                        completeDance: ~
+                        completeMusic: ~
+                        completeDirector: ~
+                        completeCost: ~
+                        completeReference: ~
+                        completenessThesaurus: ~
+
+
+
+                    persistence:
+                        # the driver can be orm, mongodb, phpcr or propel
+                        # listener and finder are not supported by
+                        # propel and should be removed
+                        driver: orm
+                        model: AppBundle\Entity\Number
+                        provider: ~
+                        finder: ~

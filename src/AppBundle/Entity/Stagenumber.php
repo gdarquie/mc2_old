@@ -21,7 +21,7 @@ class Stagenumber
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $stagenumberId;
+    private $stageid;
 
     /**
      * @var string
@@ -402,13 +402,13 @@ class Stagenumber
     }
 
     /**
-     * Get stagenumberId
+     * Get stageid
      *
      * @return integer
      */
-    public function getStagenumberId()
+    public function getStageid()
     {
-        return $this->stagenumberId;
+        return $this->stageid;
     }
 
     /**

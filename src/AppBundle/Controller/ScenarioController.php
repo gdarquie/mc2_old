@@ -20,23 +20,23 @@ class ScenarioController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         //All songs
-        $query = $em->createQuery("SELECT s.title as title, s.date as date, s.songId as songId, COUNT(n.numberId) as nb,COUNT(DIStiNCT(f.filmId)) as nbFilms FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT s.title as title, s.date as date, s.songId as songId, COUNT(n.id) as nb,COUNT(DIStiNCT(f.filmId)) as nbFilms FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId ORDER BY nb DESC");
 //        $query->setParameter('person', $name );
         $songs = $query->getResult();
 
 
-        $query = $em->createQuery("SELECT COUNT(DISTINCT(n.numberId)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:number n JOIN n.film as f");
+        $query = $em->createQuery("SELECT COUNT(DISTINCT(n.id)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:number n JOIN n.film as f");
 //        $query->setParameter('person', $name );
         $global = $query->getSingleResult();
 
-        $query = $em->createQuery("SELECT s.title as title, s.date as date, s.songId as songId, COUNT(n.numberId) as nb,COUNT(DIStiNCT(f.filmId)) as nbFilms FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT s.title as title, s.date as date, s.songId as songId, COUNT(n.id) as nb,COUNT(DIStiNCT(f.filmId)) as nbFilms FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId ORDER BY nb DESC");
 //        $query->setParameter('person', $name );
         $songs = $query->getResult();
 
         $min = 2;
 
 //        List of songId used by at least $max_number numbers
-        $query = $em->createQuery("SELECT s.songId as songId FROM AppBundle:Song s JOIN s.number n GROUP BY s.songId HAVING COUNT(n.numberId)  >= :min ");
+        $query = $em->createQuery("SELECT s.songId as songId FROM AppBundle:Song s JOIN s.number n GROUP BY s.songId HAVING COUNT(n.id)  >= :min ");
         $query->setParameter('min', $min );
         $songWithMultipleNumbers = $query->getResult();
 
@@ -45,7 +45,7 @@ class ScenarioController extends Controller
         $query->setParameter('min', $min );
         $songIdWithMultipleFilms = $query->getResult();
 
-        $query = $em->createQuery("SELECT s.songId as songId, s.title as title, f.title as film, n.title as number, COUNT(DISTINCT(f.filmId)) as nbFilm, COUNT(DISTINCT(n.numberId)) as nbNumber FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId HAVING COUNT(DISTINCT(f.filmId))  >= :min ");
+        $query = $em->createQuery("SELECT s.songId as songId, s.title as title, f.title as film, n.title as number, COUNT(DISTINCT(f.filmId)) as nbFilm, COUNT(DISTINCT(n.id)) as nbNumber FROM AppBundle:Song s JOIN s.number n JOIN n.film f GROUP BY s.songId HAVING COUNT(DISTINCT(f.filmId))  >= :min ");
         $query->setParameter('min', $min );
         $songWithMultipleFilms = $query->getResult();
 
@@ -60,7 +60,7 @@ class ScenarioController extends Controller
         $titlesFilmsWith2Songs = $query->getResult();
 
         //Films with popular songs with performance_thesaurus = "intrumental+dance" OR 186
-        $query = $em->createQuery("SELECT f.filmId as filmId, f.title as title, COUNT(DISTINCT(n.numberId)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY f.filmId");
+        $query = $em->createQuery("SELECT f.filmId as filmId, f.title as title, COUNT(DISTINCT(n.id)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY f.filmId");
         $query->setParameter('songs', $songIdWithMultipleFilms );
         $query->setParameter('perf1', 183 );
         $query->setParameter('perf2', 186 );
@@ -73,20 +73,20 @@ class ScenarioController extends Controller
         $danceFilms = $query->getResult();
 
         //Dance number
-        $query = $em->createQuery("SELECT DISTINCT(n.numberId) as numberId FROM AppBundle:Number n WHERE n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2");
+        $query = $em->createQuery("SELECT DISTINCT(n.id) as id FROM AppBundle:Number n WHERE n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2");
         $query->setParameter('perf1', 183 );
         $query->setParameter('perf2', 186 );
         $danceNumbers = $query->getResult();
 
         //List of songs of Films with songs connected to 2 or more films with performance_thesaurus = "intrumental+dance" OR 186
-        $query = $em->createQuery("SELECT s.songId as songId, s.title as title, COUNT(DISTINCT(n.numberId)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY s.songId");
+        $query = $em->createQuery("SELECT s.songId as songId, s.title as title, COUNT(DISTINCT(n.id)) as nbNumber, COUNT(DISTINCT(f.filmId)) as nbFilm FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY s.songId");
         $query->setParameter('songs', $songIdWithMultipleFilms );
         $query->setParameter('perf1', 183 );
         $query->setParameter('perf2', 186 );
         $listeSongsWithFilms2SongsAndDance = $query->getResult();
 
         //Numbers of Films with songs connected to 2 or more film with performance_thesaurus = "intrumental+dance" OR 186 (not used here)
-        $query = $em->createQuery("SELECT n.numberId as numberId FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.numberId");
+        $query = $em->createQuery("SELECT n.id as id FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.id");
         $query->setParameter('songs', $songIdWithMultipleFilms );
         $query->setParameter('perf1', 183 );
         $query->setParameter('perf2', 186 );
@@ -131,7 +131,7 @@ class ScenarioController extends Controller
         $songIdWithMultipleFilms = $query->getResult();
 
 
-        $query = $em->createQuery("SELECT n.numberId as numberId FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.numberId");
+        $query = $em->createQuery("SELECT n.id as id FROM AppBundle:Number n JOIN n.film f JOIN n.song s  WHERE (s.songId IN(:songs) AND (n.performance_thesaurus = :perf1 OR n.performance_thesaurus = :perf2)) GROUP BY n.id");
         $query->setParameter('songs', $songIdWithMultipleFilms );
         $query->setParameter('perf1', 183 );
         $query->setParameter('perf2', 186 );

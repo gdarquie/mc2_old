@@ -63,7 +63,7 @@
             <h2>Stage numbers</h2>
 
             {% for item in stageshow.stagenumbers  %}
-                <a class="chip" href="{{ path('stagenumber_edit', { 'stagenumberId' : item.stagenumberId}) }}">{{ item.title }}</a>
+                <a class="chip" href="{{ path('stagenumber_edit', { 'stageid' : item.stageid}) }}">{{ item.title }}</a>
             {% endfor %}
         </div>
         {% endif %}

@@ -53,7 +53,7 @@ class ThesaurusApiController extends Controller
     public function completenessAction(){
 
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('SELECT t.title as title, COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t GROUP BY t.thesaurusId');
+        $query = $em->createQuery('SELECT t.title as title, COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t GROUP BY t.thesaurusId');
         $thesaurus = $query->getResult();
         dump($thesaurus);die;
 
@@ -67,7 +67,7 @@ class ThesaurusApiController extends Controller
     public function completenessForPersonAction($personId){
 
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('SELECT t.title as title, COUNT(n.numberId) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :personId GROUP BY t.thesaurusId');
+        $query = $em->createQuery('SELECT t.title as title, COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :personId GROUP BY t.thesaurusId');
         $query->setParameter('personId', $personId);
         $thesaurus = $query->getResult();
         dump($thesaurus);die;

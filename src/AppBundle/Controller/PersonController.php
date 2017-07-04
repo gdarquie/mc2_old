@@ -45,10 +45,10 @@ class PersonController extends Controller
         $query->setParameter('person', $personId);
         $numbers_as_choreographers = $query->getResult();
 
-        //Get all numberId for the person (as performers)
-        $query = $em->createQuery("SELECT n.numberId FROM AppBundle:Number n JOIN n.performers p WHERE p.personId = :person");
+        //Get all id for the person (as performers)
+        $query = $em->createQuery("SELECT n.id FROM AppBundle:Number n JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId);
-        $list_numberId = $query->getResult();
+        $list_id = $query->getResult();
 
         //AVG shot length
         $query = $em->createQuery("SELECT (n.length)/10 FROM AppBundle:Number n JOIN n.performers p WHERE p.personId = :person");
@@ -65,11 +65,11 @@ class PersonController extends Controller
         $performance = $query->getResult();
 
         //Get all structures
-        $query = $em->createQuery("SELECT COUNT(DISTINCT(n.numberId)) as nb, t.title FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p GROUP BY t.title");
+        $query = $em->createQuery("SELECT COUNT(DISTINCT(n.id)) as nb, t.title FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p GROUP BY t.title");
         $structures = $query->getResult();
 
         //Get total of numbers [vérifier]
-        $query = $em->createQuery("SELECT COUNT(DISTINCT(n.numberId)) as total FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p");
+        $query = $em->createQuery("SELECT COUNT(DISTINCT(n.id)) as total FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p");
         $structures_total = $query->getSingleResult();
 
         //Get ????
@@ -189,7 +189,7 @@ class PersonController extends Controller
         }
 
         //durée moyenne pour d'un shot pour un number
-        $query = $em->createQuery("SELECT DISTINCT(n.numberId), AVG(n.shots) as average FROM AppBundle:Number n JOIN n.performers p WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT DISTINCT(n.id), AVG(n.shots) as average FROM AppBundle:Number n JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId );
         $avgShotForPerson = $query->getResult();
         //rapporter par rapport à la durée de plans
@@ -212,17 +212,17 @@ class PersonController extends Controller
         //Associated persons (à finir)
 
         //choreographers
-        $query = $em->createQuery("SELECT c.name as name, n.title as title, n.numberId as numberId, f.title as film, f.filmId as filmId FROM AppBundle:Number n JOIN n.choregraphers c JOIN n.performers p JOIN n.film f WHERE p.personId = :person GROUP BY n.numberId");
+        $query = $em->createQuery("SELECT c.name as name, n.title as title, n.id as id, f.title as film, f.filmId as filmId FROM AppBundle:Number n JOIN n.choregraphers c JOIN n.performers p JOIN n.film f WHERE p.personId = :person GROUP BY n.id");
         $query->setParameter('person', $personId);
         $associated_choreographers = $query->getResult();
 
         //composers
-        $query = $em->createQuery("SELECT n.title as number, s.title as song, c.name as name, c.personId as personId, n.numberId as numberId, f.title as film, f.filmId as filmId FROM AppBundle:Number n JOIN n.song s JOIN s.composer c JOIN n.performers p JOIN n.film f WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT n.title as number, s.title as song, c.name as name, c.personId as personId, n.id as id, f.title as film, f.filmId as filmId FROM AppBundle:Number n JOIN n.song s JOIN s.composer c JOIN n.performers p JOIN n.film f WHERE p.personId = :person");
         $query->setParameter('person', $personId);
         $associated_composers = $query->getResult();
 
         //lyricists
-        $query = $em->createQuery("SELECT n.title as number, s.title as song, l.name as name, l.personId as personId, n.numberId as numberId, f.title as film, f.filmId as filmId FROM AppBundle:Number n JOIN n.song s JOIN s.lyricist l JOIN n.performers p JOIN n.film f WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT n.title as number, s.title as song, l.name as name, l.personId as personId, n.id as id, f.title as film, f.filmId as filmId FROM AppBundle:Number n JOIN n.song s JOIN s.lyricist l JOIN n.performers p JOIN n.film f WHERE p.personId = :person");
         $query->setParameter('person', $personId);
         $associated_lyricists = $query->getResult();
 
@@ -263,7 +263,7 @@ class PersonController extends Controller
             'mood' => $mood,
             'exoticisms' => $exoticisms,
             'exoticism' => $exoticism,
-            '$list_numberId' => $list_numberId,
+            '$list_id' => $list_id,
             'shot_length' => $shot_length,
             'avgLengthShot' => $avgLengthShot,
             'associated_choreographers' => $associated_choreographers,

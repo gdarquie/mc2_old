@@ -24,11 +24,11 @@ class NumberController extends Controller
     }
 
     /**
-     * @Route("/number/{numberId}", name = "number")
+     * @Route("/number/{id}", name = "number")
      */
-    public function showAction($numberId){
+    public function showAction($id){
         $em = $this->getDoctrine()->getManager();
-        $number = $em->getRepository('AppBundle:Number')->findOneByNumberId($numberId);
+        $number = $em->getRepository('AppBundle:Number')->findOneById($id);
 
         return $this->render('web/number/number.html.twig',array(
             'number' => $number

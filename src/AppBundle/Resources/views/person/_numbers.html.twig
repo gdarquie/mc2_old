@@ -7,7 +7,7 @@
                     <h3>Number(s) where {{ person.name }} is choreographer</h3>
 
                     {% for item in person.numbersChoregrapher %}
-                        <a href="{{ path('number', {'numberId' : item.numberId}) }}">{{ item.title }} ({{ item.film }})</a>
+                        <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }} ({{ item.film }})</a>
                     {% endfor %}
                 </article>
             </div>
@@ -19,7 +19,7 @@
                     <h3>Number(s) where {{ person.name }} is arranger</h3>
 
                     {% for item in person.numbersArranger %}
-                        <a href="{{ path('number', {'numberId' : item.numberId}) }}">{{ item.title }} ({{ item.film }})</a>
+                        <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }} ({{ item.film }})</a>
                     {% endfor %}
                 </article>
             </div>
@@ -32,7 +32,7 @@
                     <h3>Number(s) where {{ person.name }} is director</h3>
 
                     {% for item in person.numbersDirector %}
-                        <a href="{{ path('number', {'numberId' : item.numberId}) }}">{{ item.title }} ({{ item.film }})</a>
+                        <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }} ({{ item.film }})</a>
                     {% endfor %}
                 </article>
             </div>
@@ -44,7 +44,7 @@
                     <h3>Number(s) where {{ person.name }} is performer</h3>
 
                     {% for item in person.numbersPerformer %}
-                        <a href="{{ path('number', {'numberId' : item.numberId}) }}">{{ item.title }} ({{ item.film }})</a>
+                        <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }} ({{ item.film }})</a>
                     {% endfor %}
                 </article>
             </div>
@@ -56,7 +56,7 @@
                 <h3>Numbers where {{ person.name }} doesn't participate</h3>
 
                 {% for item in person.numbersFigurant %}
-                    <a href="{{ path('number', {'numberId' : item.numberId}) }}">{{ item.title }} ({{ item.film }})</a>
+                    <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }} ({{ item.film }})</a>
                 {% endfor %}
                 </article>
         {% endif %}

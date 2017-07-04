@@ -514,7 +514,7 @@
 
             $("#resultsNumber").html("<div class='col s12'><h2>Result(s)</h2></div>");
             for(var i = 0; i < selection.length ; i++){
-              txt = "<a href='number/"+selection[i]['numberId']+"'><span class='btn myBtn'>"+selection[i]['title']+" - "+selection[i]['film']+" ("+selection[i]['released']+")</span></a>";
+              txt = "<a href='number/"+selection[i]['id']+"'><span class='btn myBtn'>"+selection[i]['title']+" - "+selection[i]['film']+" ("+selection[i]['released']+")</span></a>";
               $("#resultsNumber").append(txt);
             }
           }

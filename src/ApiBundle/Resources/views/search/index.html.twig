@@ -181,7 +181,7 @@
 
             {
 
-                'id' : {{ number.numberId }},
+                'id' : {{ number.id }},
                 'title' : '{{ number.title() }}',
                 'performance' : '{{ number.performanceThesaurus }}',
                 'sources' : [ {% for source in number.sourceThesaurus %}'{{source.title}}'{% if loop.last %}{% else %},{% endif %}{% endfor %} ],

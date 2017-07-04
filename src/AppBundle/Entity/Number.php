@@ -14,6 +14,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Number
 {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="number_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
     /**
      * @Assert\NotBlank()
      *
@@ -343,15 +353,6 @@ class Number
      * @ORM\Column(type="text", nullable=true)
      */
     private $commentReference;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="number_id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $numberId;
 
     /**
      * @var \AppBundle\Entity\Film
@@ -1618,13 +1619,23 @@ class Number
     }
 
     /**
-     * Get numberId
+     * Get id
      *
      * @return integer
      */
     public function getNumberId()
     {
-        return $this->numberId;
+        return $this->id;
+    }
+
+    /**
+     * Get Id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**

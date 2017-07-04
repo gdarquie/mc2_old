@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <section class="container">
+        <h1>Test avec Elastic Search</h1>
+
+        {% for item in results  %}
+            {{ item.title }}{{ item.source }}({{ item.film.title }} - {{ item.film.released }})
+            {% for person in item.performers  %}
+                {{ person.name }}
+            {% endfor %}
+
+            {% for item in item.exoticismThesaurus  %}
+                exoticism = {{ item.title }}
+            {% endfor %}
+
+            {#{% for item in item.songs %}#}
+                {#song = {{ item.title }}#}
+            {#{% endfor %}#}
+
+        {% endfor %}
+    </section>
+{% endblock %}
