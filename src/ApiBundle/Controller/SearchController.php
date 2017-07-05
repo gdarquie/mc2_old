@@ -135,8 +135,8 @@ class SearchController extends Controller
         }
         if($studio == 'all'){
             $studio = '%';
-
         }
+
         if($begin == 0){
             //select first date
             $begin = 1900;
