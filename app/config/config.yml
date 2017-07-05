@@ -146,12 +146,13 @@ fos_elastica:
             types:
                 number:
                     mappings:
-                        title: ~
-                        beginTc: ~
-                        endTc: ~
-                        length: ~
+                        title: { type: string }
+                        beginTc: { type: integer }
+                        endTc: { type: integer }
+                        length: { type: integer }
+                        shots: { type: integer }
                         film.studios: ~
-                        film.released: ~
+                        film.released: { type: date, format: "yyyy" }
                         film.directors: ~
                         film.censorship: ~
                         song: ~
@@ -203,8 +204,6 @@ fos_elastica:
                         completeCost: ~
                         completeReference: ~
                         completenessThesaurus: ~
-
-
 
                     persistence:
                         # the driver can be orm, mongodb, phpcr or propel
