@@ -146,64 +146,64 @@ fos_elastica:
             types:
                 number:
                     mappings:
-                        title: { type: string }
+                        title: { type: keyword }
                         beginTc: { type: integer }
                         endTc: { type: integer }
                         length: { type: integer }
                         shots: { type: integer }
-                        film.studios: ~
+                        film.studios: { type: keyword }
                         film.released: { type: date, format: "yyyy" }
-                        film.directors: ~
-                        film.censorship: ~
-                        song: ~
-                        cast: ~
-                        integration_thesaurus: ~
-                        integoptions: ~
-                        dancingType: ~
-                        danceSubgenre: ~
-                        danceContent: ~
-                        effects: ~
-                        beginThesaurus: ~
-                        endingThesaurus: ~
-                        structure: ~
-                        musensemble: ~
-                        costumes: ~
-                        stereotype: ~
-                        source_thesaurus: ~
-                        performance_thesaurus: ~
-                        spectators_thesaurus: ~
-                        diegetic_thesaurus: ~
-                        musician_thesaurus: ~
-                        exoticismThesaurus: ~
-                        dancemble: ~
-                        imaginary: ~
-                        diegetic_place_thesaurus: ~
-                        general_localisation: ~
-                        tempo_thesaurus: ~
-                        quotation_thesaurus: ~
-                        general_mood: ~
-                        musical_thesaurus: ~
-                        genre: ~
-                        choregraphers: ~
-                        arrangers: ~
-                        director: ~
-                        performers: ~
-                        figurants: ~
-                        editors: ~
-                        completeTitle: ~
-                        completeTc: ~
-                        completeStructure: ~
-                        completeShots: ~
-                        completePerformance: ~
-                        completeBackstage: ~
-                        completeTheme: ~
-                        completeMood: ~
-                        completeDance: ~
-                        completeMusic: ~
-                        completeDirector: ~
-                        completeCost: ~
-                        completeReference: ~
-                        completenessThesaurus: ~
+                        film.directors: { type: keyword }
+                        film.censorship: { type: keyword }
+                        song: { type: keyword }
+                        cast: { type: keyword }
+                        integration_thesaurus: { type: keyword }
+                        integoptions: { type: keyword }
+                        dancingType: { type: keyword }
+                        danceSubgenre: { type: keyword }
+                        danceContent: { type: keyword }
+                        effects: { type: keyword }
+                        beginThesaurus: { type: keyword }
+                        endingThesaurus: { type: keyword }
+                        structure: { type: keyword }
+                        musensemble: { type: keyword }
+                        costumes: { type: keyword }
+                        stereotype: { type: keyword }
+                        source_thesaurus: { type: keyword }
+                        performance_thesaurus: { type: keyword }
+                        spectators_thesaurus: { type: keyword }
+                        diegetic_thesaurus: { type: keyword }
+                        musician_thesaurus: { type: keyword }
+                        exoticismThesaurus: { type: keyword }
+                        dancemble: { type: keyword }
+                        imaginary: { type: keyword }
+                        diegetic_place_thesaurus: { type: keyword }
+                        general_localisation: { type: keyword }
+                        tempo_thesaurus: { type: keyword }
+                        quotation_thesaurus: { type: keyword }
+                        general_mood: { type: keyword }
+                        musical_thesaurus: { type: keyword }
+                        genre: { type: keyword }
+                        choregraphers: { type: keyword }
+                        arrangers: { type: keyword }
+                        director: { type: keyword }
+                        performers: { type: keyword }
+                        figurants: { type: keyword }
+                        editors: { type: keyword }
+                        completeTitle: { type: keyword }
+                        completeTc: { type: keyword }
+                        completeStructure: { type: keyword }
+                        completeShots: { type: keyword }
+                        completePerformance: { type: keyword }
+                        completeBackstage: { type: keyword }
+                        completeTheme: { type: keyword }
+                        completeMood: { type: keyword }
+                        completeDance: { type: keyword }
+                        completeMusic: { type: keyword }
+                        completeDirector: { type: keyword }
+                        completeCost: { type: keyword }
+                        completeReference: { type: keyword }
+                        completenessThesaurus: { type: keyword }
 
                     persistence:
                         # the driver can be orm, mongodb, phpcr or propel
