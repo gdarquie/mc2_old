@@ -356,6 +356,13 @@ class Film
     private $numbers;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="sample", type="boolean")
+     */
+    private $sample;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -1262,8 +1269,21 @@ class Film
         $this->stageshows = $stageshows;
     }
 
+    /**
+     * @return string
+     */
+    public function getSample()
+    {
+        return $this->sample;
+    }
 
-
+    /**
+     * @param string $sample
+     */
+    public function setSample($sample)
+    {
+        $this->sample = $sample;
+    }
 
 
 }

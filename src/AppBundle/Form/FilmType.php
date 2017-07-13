@@ -55,6 +55,7 @@ class FilmType extends AbstractType
             ->add('totalBoxoffice')
             ->add('sourceEco')
             ->add('archives')
+            ->add('sample')
 //            ->add('deleted')
             ->add('adaptation', EntityType::class, array(
                 'placeholder' => '',

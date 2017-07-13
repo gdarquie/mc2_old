@@ -1,6 +1,13 @@
 
 <div class="row">
 
+
+    <div class="cartouche">
+        {{ form_widget(filmForm.sample) }}
+        {{ form_label(filmForm.sample) }}
+        {{ form_errors(filmForm.sample) }}
+    </div>
+
     <div class="col s6">
         <div class="cartouche mini-form ">
             {{form_row(filmForm.title, {
@@ -101,6 +108,8 @@
         }) }}
 
     </div>
+
+
 
 </div>
 {#{{ form_row(filmForm.deleted) }}#} {# à laisser caché #}

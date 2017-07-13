@@ -151,14 +151,23 @@ fos_elastica:
                         endTc: { type: integer }
                         length: { type: integer }
                         shots: { type: integer }
+                        film.filmId: {type: integer}
+                        film.title: { type: keyword }
                         film.studios: { type: keyword }
                         film.released: { type: date, format: "yyyy" }
                         film.directors: { type: keyword }
                         film.censorship: { type: keyword }
+                        film.verdict: { type: keyword }
+                        film.state: { type: keyword }
+                        film.legion: { type: keyword }
+                        film.protestant: { type: keyword }
+                        film.harrisson: { type: keyword }
+                        film.bord: { type: keyword }
+                        film.length: { type: keyword }
+                        film.adaptation: { type:keyword }
+                        film.stageshows: {type:keyword}
                         song: { type: keyword }
                         cast: { type: keyword }
-                        integration_thesaurus: { type: keyword }
-                        integoptions: { type: keyword }
                         dancingType: { type: keyword }
                         danceSubgenre: { type: keyword }
                         danceContent: { type: keyword }
@@ -204,6 +213,7 @@ fos_elastica:
                         completeCost: { type: keyword }
                         completeReference: { type: keyword }
                         completenessThesaurus: { type: keyword }
+                        film.sample: { type: keyword }
 
                     persistence:
                         # the driver can be orm, mongodb, phpcr or propel
