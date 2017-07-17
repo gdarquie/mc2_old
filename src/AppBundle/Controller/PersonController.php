@@ -216,10 +216,42 @@ class PersonController extends Controller
         $query->setParameter('person', $personId);
         $associated_choreographers = $query->getResult();
 
+
+        $associated_choreographers_final = [];
+        for ($i = 0; $i < count($associated_choreographers); $i++) {
+            $trouve=0;
+            for ($u = 0; $u < count($associated_choreographers_final); $u++) {
+                if ($associated_choreographers_final[$u]['name'] == $associated_choreographers[$i]['name'] && $associated_choreographers_final[$u]['film'] == $associated_choreographers[$i]['film'] && $trouve==0) {
+                    $trouve = 1;
+                    array_push($associated_choreographers_final[$u]["number"], array("title" => $associated_choreographers[$i]['title'], "id" => $associated_choreographers[$i]['id']));
+                }
+            }
+            if ($trouve == 0) {
+                array_push($associated_choreographers_final, array("name" => $associated_choreographers[$i]['name'], "number" => [], "film" => $associated_choreographers[$i]['film'], "filmId" => $associated_choreographers[$i]['filmId'] ));
+                array_push($associated_choreographers_final[count($associated_choreographers_final)-1]["number"], array("title" => $associated_choreographers[$i]['title'], "id" => $associated_choreographers[$i]['id']));
+            }
+        }
+
+
         //composers
         $query = $em->createQuery("SELECT n.title as number, s.title as song, c.name as name, c.personId as personId, n.id as id, f.title as film, f.filmId as filmId FROM AppBundle:Number n JOIN n.song s JOIN s.composer c JOIN n.performers p JOIN n.film f WHERE p.personId = :person");
         $query->setParameter('person', $personId);
         $associated_composers = $query->getResult();
+
+//        $associated_composers_final = [];
+//        for ($i = 0; $i < count($associated_composers); $i++) {
+//            $trouve=0;
+//            for ($u = 0; $u < count($associated_composers_final); $u++) {
+//                if ($associated_composers_final[$u]['name'] == $associated_composers[$i]['name'] && $associated_composers_final[$u]['film'] == $associated_composers[$i]['film'] && $trouve==0) {
+//                    $trouve = 1;
+//                    array_push($associated_composers_final[$u]["number"], array("title" => $associated_composers[$i]['title'], "id" => $associated_composers[$i]['id']));
+//                }
+//            }
+//            if ($trouve == 0) {
+//                array_push($associated_composers_final, array("name" => $associated_composers[$i]['name'], "number" => [], "film" => $associated_composers[$i]['film'], "filmId" => $associated_composers[$i]['filmId'] ));
+//                array_push($associated_composers_final[count($associated_composers_final)-1]["number"], array("title" => $associated_composers[$i]['title'], "id" => $associated_composers[$i]['id']));
+//            }
+//        }
 
         //lyricists
         $query = $em->createQuery("SELECT n.title as number, s.title as song, l.name as name, l.personId as personId, n.id as id, f.title as film, f.filmId as filmId FROM AppBundle:Number n JOIN n.song s JOIN s.lyricist l JOIN n.performers p JOIN n.film f WHERE p.personId = :person");
@@ -267,7 +299,9 @@ class PersonController extends Controller
             'shot_length' => $shot_length,
             'avgLengthShot' => $avgLengthShot,
             'associated_choreographers' => $associated_choreographers,
+            'associated_choreographers_final' => $associated_choreographers_final,
             'associated_composers' => $associated_composers,
+//            'associated_composers_final' => $associated_composers_final,
             'associated_lyricists' => $associated_lyricists,
             'filmsPerson' => $filmsPerson
         ));
@@ -332,3 +366,5 @@ class PersonController extends Controller
 
 
 }
+
+

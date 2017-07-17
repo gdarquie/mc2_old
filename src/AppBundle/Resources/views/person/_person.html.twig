@@ -6,32 +6,49 @@
         <article>
             <h3>Choreographers</h3>
 
-            <table class="striped mini-table tablesorter">
-                <thead>
-                <tr>
-                    <th>Associated choreographers</th>
-                    <th>Number</th>
-                    <th>Film</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for item in associated_choreographers  %}
-                    <tr>
-                        <td>{{ item.name }}</td>
-                        <td><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.title }}</a></td>
-                        <td><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
+            <div id="choreo_list">
 
-            </table>
+                <input class="search" placeholder="Search" />
+
+                <table class="striped mini-table tablesorter">
+                    <thead>
+                    <tr>
+                        <th>Associated choreographers</th>
+                        <th>Number</th>
+                        <th>Film</th>
+                    </tr>
+                    </thead>
+                    <tbody class="list">
+                    {% set cpt = 0 %}
+                    {% for item in associated_choreographers_final  %}
+
+                        <tr data-id="{{ cpt }}">
+                            <td class="choreo_name">{{ item.name }}</td>
+                            <td class="choreo_number">
+                                {% for number in item.number  %}
+                                <a href="{{ path('number' ,{'id' : number.id}) }}">{{ number.title }}, </a>
+                                {% endfor %}
+                            </td>
+                            <td class="choreo_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
+                        </tr>
+                        {% set cpt = cpt+1 %}
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
 
         </article>
 
         <article>
             <h3>Composers</h3>
 
-            <table class="striped mini-table tablesorter">
+            <div id="composers_list">
+
+                <input class="search" placeholder="Search" />
+
+
+                <table class="striped mini-table tablesorter">
                 <thead>
                     <tr>
                         <th>Associated composer</th>
@@ -40,45 +57,78 @@
                         <th>Film</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="list">
                 {% for item in associated_composers  %}
                     <tr>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.song }}</td>
-                        <td><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.number }}</a></td>
-                        <td><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
+                        <td class="composer_name">{{ item.name }}</td>
+                        <td class="composer_song">{{ item.song }}</td>
+                        <td class="composer_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.number }}</a></td>
+                        <td class="composer_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
 
             </table>
+            </div>
         </article>
 
         <article>
             <h3>Lyricists</h3>
 
-            <table class="striped mini-table tablesorter">
-                <thead>
-                <tr>
-                    <th>Associated lyricist</th>
-                    <th>Song</th>
-                    <th>Number</th>
-                    <th>Film</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for item in associated_lyricists  %}
-                    <tr>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.song }}</td>
-                        <td><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.number }}</a></td>
-                        <td><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
+            <div id="lyric_list">
 
-            </table>
+                <input class="search" placeholder="Search" />
+
+                <table class="striped mini-table tablesorter">
+                    <thead>
+                    <tr>
+                        <th>Associated lyricist</th>
+                        <th>Song</th>
+                        <th>Number</th>
+                        <th>Film</th>
+                    </tr>
+                    </thead>
+                    <tbody class="list">
+                    {% for item in associated_lyricists  %}
+                        <tr>
+                            <td class="lyric_name">{{ item.name }}</td>
+                            <td class="lyric_song">{{ item.song }}</td>
+                            <td class="lyric_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.number }}</a></td>
+                            <td class="lyric_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
         </article>
     </div>
 </article>
 </div>
+
+{% block javascripts %}
+
+    <script src="//listjs.com/assets/javascripts/list.min.js"></script>
+    <script>
+
+        var options = {
+            valueNames: [ { data: ['id'] }, 'choreo_name', 'choreo_number', 'choreo_film' ]
+        };
+
+        var choreoList = new List('choreo_list', options);
+
+        var options2 = {
+            valueNames: [ 'composer_name', 'composer_song', 'composer_number', 'composer_film' ]
+        };
+
+        var composersList = new List('composers_list', options2);
+
+
+        var options3 = {
+            valueNames: [ 'lyric_name', 'lyric_song', 'lyric_number', 'lyric_film' ]
+        };
+
+        var lyricList = new List('lyric_list', options3);
+
+    </script>
+{% endblock %}
