@@ -6,9 +6,32 @@
                 <article class="col s12">
                     <h3>Number(s) where {{ person.name }} is choreographer</h3>
 
-                    {% for item in person.numbersChoregrapher %}
-                        <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }} ({{ item.film }})</a>
-                    {% endfor %}
+                    <div id="number_choreo_list">
+
+                        <input class="search" placeholder="Search" />
+
+                        <table class="striped mini-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Film</th>
+                                <th>Released</th>
+                            </tr>
+                            </thead>
+                            <tbody class="list">
+
+                            {% for item in person.numbersChoregrapher %}
+                                <tr>
+                                    <td class="number_choreo_title"> <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }}</a></td>
+                                    <td class="number_choreo_film"><a href="{{ path('film' ,{'filmId' : item.film.filmId}) }}">{{ item.film }}</a></td>
+                                    <td class="number_choreo_released">{{ item.film.released }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+
                 </article>
             </div>
         {% endif %}
@@ -18,9 +41,32 @@
                 <article class="col s12">
                     <h3>Number(s) where {{ person.name }} is arranger</h3>
 
-                    {% for item in person.numbersArranger %}
-                        <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }} ({{ item.film }})</a>
-                    {% endfor %}
+                    <div id="number_arranger_list">
+
+                        <input class="search" placeholder="Search" />
+
+                        <table class="striped mini-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Film</th>
+                                <th>Released</th>
+                            </tr>
+                            </thead>
+                            <tbody class="list">
+
+                            {% for item in person.numbersArranger %}
+                                <tr>
+                                    <td class="number_arranger_title"> <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }}</a></td>
+                                    <td class="number_arranger_film"><a href="{{ path('film' ,{'filmId' : item.film.filmId}) }}">{{ item.film }}</a></td>
+                                    <td class="number_arranger_released">{{ item.film.released }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+
                 </article>
             </div>
         {% endif %}
@@ -31,9 +77,31 @@
                 <article class="col s12">
                     <h3>Number(s) where {{ person.name }} is director</h3>
 
-                    {% for item in person.numbersDirector %}
-                        <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }} ({{ item.film }})</a>
-                    {% endfor %}
+                    <div id="number_director_list">
+
+                        <input class="search" placeholder="Search" />
+
+                        <table class="striped mini-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Film</th>
+                                <th>Released</th>
+                            </tr>
+                            </thead>
+                            <tbody class="list">
+
+                            {% for item in person.numbersDirector %}
+                                <tr>
+                                    <td class="number_director_title"> <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }}</a></td>
+                                    <td class="number_director_film"><a href="{{ path('film' ,{'filmId' : item.film.filmId}) }}">{{ item.film }}</a></td>
+                                    <td class="number_director_released">{{ item.film.released }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
                 </article>
             </div>
         {% endif %}
@@ -43,21 +111,65 @@
                 <article class="col s12">
                     <h3>Number(s) where {{ person.name }} is performer</h3>
 
-                    {% for item in person.numbersPerformer %}
-                        <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }} ({{ item.film }})</a>
-                    {% endfor %}
+                    <div id="number_performer_list">
+
+                        <input class="search" placeholder="Search" />
+
+                        <table class="striped mini-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Film</th>
+                                <th>Released</th>
+                            </tr>
+                            </thead>
+                            <tbody class="list">
+
+                            {% for item in person.numbersPerformer %}
+                                <tr>
+                                    <td class="number_performer_title"> <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }}</a></td>
+                                    <td class="number_performer_film"><a href="{{ path('film' ,{'filmId' : item.film.filmId}) }}">{{ item.film }}</a></td>
+                                    <td class="number_performer_released">{{ item.film.released }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <ul class="pagination"></ul>
+                    </div>
                 </article>
             </div>
         {% endif %}
 
-        {% if person.numbersPerformer|length > 0 %}
+        {% if person.numbersFigurant|length > 0 %}
             <div class="row">
                 <article class="col s12">
                 <h3>Numbers where {{ person.name }} doesn't participate</h3>
 
-                {% for item in person.numbersFigurant %}
-                    <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }} ({{ item.film }})</a>
-                {% endfor %}
+                    <div id="number_not_list">
+
+                        <input class="search" placeholder="Search" />
+
+                        <table class="striped mini-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Film</th>
+                                <th>Released</th>
+                            </tr>
+                            </thead>
+                            <tbody class="list">
+
+                            {% for item in person.numbersFigurant %}
+                                <tr>
+                                    <td class="number_not_title"> <a href="{{ path('number', {'id' : item.id}) }}">{{ item.title }}</a></td>
+                                    <td class="number_not_film"><a href="{{ path('film' ,{'filmId' : item.film.filmId}) }}">{{ item.film }}</a></td>
+                                    <td class="number_not_released">{{ item.film.released }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
                 </article>
         {% endif %}
         </div>
@@ -65,3 +177,50 @@
     </div>
 
 </article>
+
+{% block javascript %}
+
+    {#<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>#}
+    <script src="{{ asset('assets/vendor/list.js/docs/assets/javascripts/list.min.js') }}"></script>
+
+    <script>
+
+        var options = {
+            valueNames: ['number_choreo_title', 'number_choreo_film', 'number_choreo_released' ]
+        };
+
+        var numberChoreoList = new List('number_choreo_list', options);
+
+
+        var options2 = {
+            valueNames: ['number_arranger_title', 'number_arranger_film', 'number_arranger_released' ]
+        };
+
+        var numberArrangerList = new List('number_arranger_list', options2);
+
+
+        var options3 = {
+            valueNames: ['number_director_title', 'number_director_film', 'number_director_released' ]
+        };
+
+        var numberDirectorList = new List('number_director_list', options3);
+
+
+        var options4 = {
+            valueNames: ['number_performer_title', 'number_performer_film', 'number_performer_released' ],
+            page: 25,
+            pagination: true
+        };
+
+        var numberPerformerList = new List('number_performer_list', options4);
+
+
+        var options5 = {
+            valueNames: ['number_not_title', 'number_not_film', 'number_not_released' ]
+        };
+
+        var numberNotList = new List('number_not_list', options5);
+
+
+    </script>
+{% endblock %}

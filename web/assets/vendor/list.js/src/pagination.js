@@ -3,8 +3,17 @@ var classes = require('./utils/classes'),
   List = require('./index');
 
 module.exports = function(list) {
+  var isHidden = false;
 
   var refresh = function(pagingList, options) {
+    if (list.page < 1) {
+      list.listContainer.style.display = 'none';
+      isHidden = true;
+      return;
+    } else if (isHidden){
+      list.listContainer.style.display = 'block';
+    }
+
     var item,
       l = list.matchingItems.length,
       index = list.i,
@@ -16,7 +25,6 @@ module.exports = function(list) {
       right = options.right || options.outerWindow || 0;
 
     right = pages - right;
-
     pagingList.clear();
     for (var i = 1; i <= pages; i++) {
       var className = (currentPage === i) ? "active" : "";
@@ -31,7 +39,8 @@ module.exports = function(list) {
         if (className) {
           classes(item.elm).add(className);
         }
-        addEvent(item.elm, i, page);
+        item.elm.firstChild.setAttribute('data-i', i);
+        item.elm.firstChild.setAttribute('data-page', page);
       } else if (is.dotted(pagingList, i, left, right, currentPage, innerWindow, pagingList.size())) {
         item = pagingList.add({
           page: "...",
@@ -70,19 +79,22 @@ module.exports = function(list) {
     }
   };
 
-  var addEvent = function(elm, i, page) {
-     events.bind(elm, 'click', function() {
-       list.show((i-1)*page + 1, page);
-     });
-  };
-
   return function(options) {
     var pagingList = new List(list.listContainer.id, {
       listClass: options.paginationClass || 'pagination',
-      item: "<li><a class='page' href='javascript:function Z(){Z=\"\"}Z()'></a></li>",
+      item: "<li><a class='page' href='#'></a></li>",
       valueNames: ['page', 'dotted'],
       searchClass: 'pagination-search-that-is-not-supposed-to-exist',
       sortClass: 'pagination-sort-that-is-not-supposed-to-exist'
+    });
+
+    events.bind(pagingList.listContainer, 'click', function(e) {
+      var target = e.target || e.srcElement
+        , page = list.utils.getAttribute(target, 'data-page')
+        , i = list.utils.getAttribute(target, 'data-i');
+      if(i){      
+        list.show((i-1)*page + 1, page);
+      }
     });
 
     list.on('updated', function() {

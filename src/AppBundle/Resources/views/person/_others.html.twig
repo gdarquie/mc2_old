@@ -1,13 +1,4 @@
 <div class="container">
-<article  class="card row">
-    <h2>Average shot length for {{ person.name }}</h2>
-
-    {#<p>Sum of all the length's number where {{ person.name }} is a performer divided by the sum of all the shots of this numbers : <span class="number">{{ sumLengthShot.average|round(2) }}</span> seconds</p>#}
-
-    <p>Average of all the length's number where {{ person.name }} is a performer divided by the average of all the shots of this numbers : <span class="number">{{ avgLengthShot.average|round(2) }}</span> seconds</p>
-
-</article>
-
 
     <!-- Performance -->
 
@@ -232,6 +223,7 @@
 
 <article class="row">
     <div class="card col s12">
+
 
         <h2 class="center">Completeness : {{ (((complete.nb * 100)/completes.nb))|round(1) }}</span>%</h2>
 

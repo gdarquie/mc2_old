@@ -5,6 +5,7 @@
 
     <!-- custom -->
     <link rel="stylesheet" href="{{ asset('css/person.css')}}">
+    {#<link rel="stylesheet" href="{{ asset('assets/vendor/responsive-nav.js/responsive-nav.css') }}">#}
 
 {% endblock %}
 
@@ -23,15 +24,18 @@
 
                     <div class="nav-content">
 
-                        <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a><ul class="tabs tabs-transparent">
+                        {#<a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>#}
+                        <ul class="tabs tabs-transparent mobile">
 
                             <li class="tab"><a href="#tab1" class="active">Films</a></li>
                             <li class="tab"><a href="#tab2">Numbers</a></li>
+                            {% if person.numbersPerformer|length > 0 %}
                             <li class="tab"><a href="#tab5">Persons</a></li>
                             <li class="tab"><a href="#tab4">Presence</a></li>
                             <li class="tab"><a href="#tab7">Number types</a></li>
                             <li class="tab"><a href="#tab6">Sources & backstage</a></li>
                             <li class="tab"><a href="#tab3" >Themes</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </nav>
@@ -56,6 +60,9 @@
                     <!-- Films -->
                     {% include 'AppBundle:person:_numbers.html.twig' %}
                 </div>
+
+                {% if person.numbersPerformer|length > 0 %}
+
 
                 <div id="tab3" class="myTab col s12">
                     <!-- Topics & exoticisms -->
@@ -82,6 +89,8 @@
                     {% include 'AppBundle:person:_others.html.twig' %}
                 </div>
 
+                {% endif %}
+
                 {#<div id="tab6" class="col s12">#}
 
                 {#</div>#}
@@ -98,12 +107,16 @@
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
     <script type="text/javascript" src="{{ asset('js/melviz.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/donut_simple.js') }}"></script>
+    {#<script type="text/javascript" src="{{ asset('assets/vendor/responsive-nav.js/responsive-nav.js') }}"></script>#}
+
 
     <script>
 
         $(document).ready(function(){
-            console.log('ready');
+//            var nav = responsiveNav(".nav-collapse");
         });
+
+
 
 
         var drawCloud = function(){

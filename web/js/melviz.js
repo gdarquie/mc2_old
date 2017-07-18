@@ -3,7 +3,6 @@
 function viz_mediane(container, data, nbCsp) {
 
     var width = document.getElementById(container).getBoundingClientRect().width;
-    console.log(width);
     var height = document.getElementById(container).getBoundingClientRect().height-20;
     //console.log(height);
 
@@ -17,7 +16,6 @@ function viz_mediane(container, data, nbCsp) {
         .style("height", height+"px");
 
     versionMelviz("zone_viz"+container, data, nbCsp);
-    console.log("#bouton_melviz"+container+' input');
 
     $('#bouton_melviz'+container+' input').on('change', function() {
 
@@ -105,7 +103,6 @@ function versionMelviz(container, data, nbCsp) {
             .attr("height", height+"px")
             .style("display", "inline-block");
 
-        console.log(div);
 
 
 
