@@ -317,10 +317,16 @@ class PersonController extends Controller
 
         
 
+//        //films of a person
+//        $query = $em->createQuery("SELECT f.filmId as filmId, f.title as title, f.idImdb as imdb, f.released as released FROM AppBundle:Number n JOIN n.film f JOIN n.performers p JOIN n.director d WHERE p.personId = :person OR d.personId = :person GROUP BY f.filmId ORDER BY f.released ASC");
+//        $query->setParameter('person', $personId );
+//        $filmsPerson = $query->getResult();
+
         //films of a person
-        $query = $em->createQuery("SELECT f.filmId as filmId, f.title as title, f.idImdb as imdb, f.released as released FROM AppBundle:Number n JOIN n.film f JOIN n.performers p WHERE p.personId = :person GROUP BY f.filmId ORDER BY f.released ASC");
+        $query = $em->createQuery("SELECT f.filmId as filmId, f.title as title, f.idImdb as imdb, f.released as released FROM AppBundle:Song s JOIN s.composer co JOIN s.lyricist l JOIN s.number n JOIN n.film f WHERE co.personId = :person OR l.personId = :person GROUP BY f.filmId ORDER BY f.released ASC");
         $query->setParameter('person', $personId );
         $filmsPerson = $query->getResult();
+
 
         return $this->render('AppBundle:person:person.html.twig', array(
             'person' => $person,

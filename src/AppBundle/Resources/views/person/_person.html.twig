@@ -8,11 +8,12 @@
 
             <div id="choreo_top_list">
 
-                <table class="striped mini-table tablesorter">
+                <table class="striped medium-table tablesorter">
                     <thead>
                     <tr>
                         <th>Associated choreographer</th>
                         <th>Amount of numbers related with {{ person.name }}</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody class="list">
@@ -20,6 +21,7 @@
                         <tr>
                             <td class="choreo_name_top">{{ item.name }}</td>
                             <td class="choreo_total_top">{{ item.total }}</td>
+                            <td><a class="waves-effect waves-light choreo_btn_top" href="#modal1" data-name="{{ item.name }}">Show More</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -27,30 +29,41 @@
                 </table>
             </div>
 
-            <div id="choreo_list">
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <div id="choreo_list">
 
-                <input class="search" placeholder="Search" />
+                        <input class="search" placeholder="Search" />
 
-                <table class="striped mini-table tablesorter">
-                    <thead>
-                    <tr>
-                        <th>Associated choreographers</th>
-                        <th>Number</th>
-                        <th>Film</th>
-                    </tr>
-                    </thead>
-                    <tbody class="list">
-                    {% for item in associated_choreographers  %}
-                        <tr>
-                            <td class="choreo_name">{{ item.name }}</td>
-                            <td class="choreo_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.title }}</a></td>
-                            <td class="choreo_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
+                        <table class="striped medium-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Associated choreographers</th>
+                                <th>Number</th>
+                                <th>Film</th>
+                            </tr>
+                            </thead>
+                            <tbody class="list">
+                            {% for item in associated_choreographers  %}
+                                <tr>
+                                    <td class="choreo_name">{{ item.name }}</td>
+                                    <td class="choreo_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.title }}</a></td>
+                                    <td class="choreo_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
 
-                </table>
+                        </table>
+                        <ul class="pagination"></ul>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+                </div>
             </div>
+
+
 
         </article>
 
@@ -59,11 +72,12 @@
 
             <div id="composers_top_list">
 
-                <table class="striped mini-table tablesorter">
+                <table class="striped medium-table tablesorter">
                     <thead>
                     <tr>
                         <th>Associated composer</th>
                         <th>Amount of numbers related with {{ person.name }}</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody class="list">
@@ -71,6 +85,7 @@
                         <tr>
                             <td class="composer_name_top">{{ item.name }}</td>
                             <td class="composer_total_top">{{ item.total }}</td>
+                            <td><a class="waves-effect waves-light composer_btn_top" href="#modal2" data-name="{{ item.name }}">Show More</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -78,34 +93,43 @@
                 </table>
             </div>
 
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <div id="composers_list">
 
-            <div id="composers_list">
-
-                <input class="search" placeholder="Search" />
+                        <input class="search" placeholder="Search" />
 
 
-                <table class="striped mini-table tablesorter">
-                <thead>
-                    <tr>
-                        <th>Associated composer</th>
-                        <th>Song</th>
-                        <th>Number</th>
-                        <th>Film</th>
-                    </tr>
-                </thead>
-                <tbody class="list">
-                {% for item in associated_composers  %}
-                    <tr>
-                        <td class="composer_name">{{ item.name }}</td>
-                        <td class="composer_song">{{ item.song }}</td>
-                        <td class="composer_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.number }}</a></td>
-                        <td class="composer_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
+                        <table class="striped medium-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Associated composer</th>
+                                <th>Song</th>
+                                <th>Number</th>
+                                <th>Film</th>
+                            </tr>
+                            </thead>
+                            <tbody class="list">
+                            {% for item in associated_composers  %}
+                                <tr>
+                                    <td class="composer_name">{{ item.name }}</td>
+                                    <td class="composer_song">{{ item.song }}</td>
+                                    <td class="composer_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.number }}</a></td>
+                                    <td class="composer_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
 
-            </table>
+                        </table>
+                        <ul class="pagination"></ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
             </div>
+
+
         </article>
 
         <article>
@@ -113,11 +137,12 @@
 
             <div id="lyric_top_list">
 
-                <table class="striped mini-table tablesorter">
+                <table class="striped medium-table tablesorter">
                     <thead>
                     <tr>
                         <th>Associated lyricist</th>
                         <th>Amount of numbers related with {{ person.name }}</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody class="list">
@@ -125,6 +150,7 @@
                         <tr>
                             <td class="lyric_name_top">{{ item.name }}</td>
                             <td class="lyric_total_top">{{ item.total }}</td>
+                            <td><a class="waves-effect waves-light lyric_btn_top" href="#modal3" data-name="{{ item.name }}">Show More</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -132,32 +158,41 @@
                 </table>
             </div>
 
-            <div id="lyric_list">
+            <div id="modal3" class="modal">
+                <div class="modal-content">
+                    <div id="lyric_list">
 
-                <input class="search" placeholder="Search" />
+                        <input class="search" placeholder="Search" />
 
-                <table class="striped mini-table tablesorter">
-                    <thead>
-                    <tr>
-                        <th>Associated lyricist</th>
-                        <th>Song</th>
-                        <th>Number</th>
-                        <th>Film</th>
-                    </tr>
-                    </thead>
-                    <tbody class="list">
-                    {% for item in associated_lyricists  %}
-                        <tr>
-                            <td class="lyric_name">{{ item.name }}</td>
-                            <td class="lyric_song">{{ item.song }}</td>
-                            <td class="lyric_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.number }}</a></td>
-                            <td class="lyric_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
+                        <table class="striped medium-table tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Associated lyricist</th>
+                                <th>Song</th>
+                                <th>Number</th>
+                                <th>Film</th>
+                            </tr>
+                            </thead>
+                            <tbody class="list">
+                            {% for item in associated_lyricists  %}
+                                <tr>
+                                    <td class="lyric_name">{{ item.name }}</td>
+                                    <td class="lyric_song">{{ item.song }}</td>
+                                    <td class="lyric_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.number }}</a></td>
+                                    <td class="lyric_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
 
-                </table>
+                        </table>
+                        <ul class="pagination"></ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
             </div>
+
         </article>
     </div>
 </article>
@@ -165,7 +200,7 @@
 
 {% block javascript %}
 
-    <script src="//listjs.com/assets/javascripts/list.min.js"></script>
+    <script src="{{ asset('assets/vendor/list.js/docs/assets/javascripts/list.min.js') }}"></script>
     <script>
 
 //        $(function(){
@@ -173,64 +208,63 @@
 //        });
 
         var options = {
-            valueNames: [ { data: ['id'] }, 'choreo_name', 'choreo_number', 'choreo_film' ]
+            valueNames: [ { data: ['id'] }, 'choreo_name', 'choreo_number', 'choreo_film' ],
+            page: 10,
+            pagination: true
         };
 
         var choreoList = new List('choreo_list', options);
 
         var options2 = {
-            valueNames: [ 'composer_name', 'composer_song', 'composer_number', 'composer_film' ]
+            valueNames: [ 'composer_name', 'composer_song', 'composer_number', 'composer_film' ],
+            page: 10,
+            pagination: true
         };
 
         var composersList = new List('composers_list', options2);
 
         var options3 = {
-            valueNames: [ 'lyric_name', 'lyric_song', 'lyric_number', 'lyric_film' ]
+            valueNames: [ 'lyric_name', 'lyric_song', 'lyric_number', 'lyric_film' ],
+            page: 10,
+            pagination: true
         };
 
         var lyricList = new List('lyric_list', options3);
-
-        choreoList.search("zzzzzzzzzzzzzzzzzzzzzzzzz");
-        composersList.search("zzzzzzzzzzzzzzzzzzzzzzzzz");
-        lyricList.search("zzzzzzzzzzzzzzzzzzzzzzzzz");
 
 
     </script>
 
 
     <script>
-        var composer_name = document.getElementsByClassName("composer_name_top");
-        console.log(composer_name[2].innerText);
+        var composer_name = document.getElementsByClassName("composer_btn_top");
         for (var i = 0; i < composer_name.length; i++) {
             composer_name[i].addEventListener('click', function () {
-                if(this.innerText == "Total") {
+                if(this.dataset.name == "Total") {
                     composersList.search("");
                 } else {
-                    composersList.search(this.innerText);
+                    composersList.search(this.dataset.name);
                 }
             });
         }
 
-        var choreo_name = document.getElementsByClassName("choreo_name_top");
-        console.log(choreo_name[2].innerText);
+        var choreo_name = document.getElementsByClassName("choreo_btn_top");
         for (var i = 0; i < choreo_name.length; i++) {
             choreo_name[i].addEventListener('click', function () {
-                if(this.innerText == "Total") {
+                if(this.dataset.name == "Total") {
                     choreoList.search("");
                 } else {
-                    choreoList.search(this.innerText);
+                    choreoList.search(this.dataset.name);
                 }
             });
         }
 
-        var lyric_name = document.getElementsByClassName("lyric_name_top");
-        console.log(lyric_name[2].innerText);
+        var lyric_name = document.getElementsByClassName("lyric_btn_top");
         for (var i = 0; i < lyric_name.length; i++) {
             lyric_name[i].addEventListener('click', function () {
-                if(this.innerText == "Total") {
+                if(this.dataset.name == "Total") {
                     lyricList.search("");
                 } else {
-                    lyricList.search(this.innerText);
+                    lyricList.search(this.dataset.name);
                 }
             });
         }

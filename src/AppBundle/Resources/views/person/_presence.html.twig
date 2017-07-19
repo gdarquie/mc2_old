@@ -25,7 +25,7 @@
 
                 <input class="search" placeholder="Search" />
 
-                <table class="striped tablesorter mini-table">
+                <table class="striped tablesorter medium-table">
                     <thead>
                         <tr>
                             <th>Film</th>
@@ -46,6 +46,7 @@
                 {% endfor %}
                     </tbody>
                 </table>
+                <ul class="pagination"></ul>
             </div>
 
         </article>
@@ -100,12 +101,27 @@
 
 {% block javascript %}
 
-    <script src="//listjs.com/assets/javascripts/list.min.js"></script>
+    <script src="{{ asset('assets/vendor/list.js/docs/assets/javascripts/list.min.js') }}"></script>
     <script>
+
+        {% if lengthTotal|length < 16 %}
 
         var options = {
             valueNames: ['presence_film', 'presence_released', 'presence_total_duration', 'presence_person_duration', 'presence_ratio' ]
         };
+
+        {% endif %}
+
+
+        {% if lengthTotal|length > 15 %}
+
+        var options = {
+            valueNames: ['presence_film', 'presence_released', 'presence_total_duration', 'presence_person_duration', 'presence_ratio' ],
+            page: 15,
+            pagination: true
+        };
+
+        {% endif %}
 
         var presenceList = new List('presence_list', options);
 

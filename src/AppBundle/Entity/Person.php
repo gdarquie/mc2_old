@@ -107,6 +107,17 @@ class Person
     private $numbersFigurant;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Song", mappedBy="lyricist")
+     */
+    private $songLyricist;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Song", mappedBy="composer")
+     */
+    private $songComposer;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", inversedBy="person")
@@ -465,4 +476,216 @@ class Person
 
 
 
+
+    /**
+     * Add numbersChoregrapher
+     *
+     * @param \AppBundle\Entity\Number $numbersChoregrapher
+     *
+     * @return Person
+     */
+    public function addNumbersChoregrapher(\AppBundle\Entity\Number $numbersChoregrapher)
+    {
+        $this->numbersChoregrapher[] = $numbersChoregrapher;
+
+        return $this;
+    }
+
+    /**
+     * Remove numbersChoregrapher
+     *
+     * @param \AppBundle\Entity\Number $numbersChoregrapher
+     */
+    public function removeNumbersChoregrapher(\AppBundle\Entity\Number $numbersChoregrapher)
+    {
+        $this->numbersChoregrapher->removeElement($numbersChoregrapher);
+    }
+
+    /**
+     * Add numbersArranger
+     *
+     * @param \AppBundle\Entity\Number $numbersArranger
+     *
+     * @return Person
+     */
+    public function addNumbersArranger(\AppBundle\Entity\Number $numbersArranger)
+    {
+        $this->numbersArranger[] = $numbersArranger;
+
+        return $this;
+    }
+
+    /**
+     * Remove numbersArranger
+     *
+     * @param \AppBundle\Entity\Number $numbersArranger
+     */
+    public function removeNumbersArranger(\AppBundle\Entity\Number $numbersArranger)
+    {
+        $this->numbersArranger->removeElement($numbersArranger);
+    }
+
+    /**
+     * Add numbersDirector
+     *
+     * @param \AppBundle\Entity\Number $numbersDirector
+     *
+     * @return Person
+     */
+    public function addNumbersDirector(\AppBundle\Entity\Number $numbersDirector)
+    {
+        $this->numbersDirector[] = $numbersDirector;
+
+        return $this;
+    }
+
+    /**
+     * Remove numbersDirector
+     *
+     * @param \AppBundle\Entity\Number $numbersDirector
+     */
+    public function removeNumbersDirector(\AppBundle\Entity\Number $numbersDirector)
+    {
+        $this->numbersDirector->removeElement($numbersDirector);
+    }
+
+    /**
+     * Add numbersPerformer
+     *
+     * @param \AppBundle\Entity\Number $numbersPerformer
+     *
+     * @return Person
+     */
+    public function addNumbersPerformer(\AppBundle\Entity\Number $numbersPerformer)
+    {
+        $this->numbersPerformer[] = $numbersPerformer;
+
+        return $this;
+    }
+
+    /**
+     * Remove numbersPerformer
+     *
+     * @param \AppBundle\Entity\Number $numbersPerformer
+     */
+    public function removeNumbersPerformer(\AppBundle\Entity\Number $numbersPerformer)
+    {
+        $this->numbersPerformer->removeElement($numbersPerformer);
+    }
+
+    /**
+     * Add numbersFigurant
+     *
+     * @param \AppBundle\Entity\Number $numbersFigurant
+     *
+     * @return Person
+     */
+    public function addNumbersFigurant(\AppBundle\Entity\Number $numbersFigurant)
+    {
+        $this->numbersFigurant[] = $numbersFigurant;
+
+        return $this;
+    }
+
+    /**
+     * Remove numbersFigurant
+     *
+     * @param \AppBundle\Entity\Number $numbersFigurant
+     */
+    public function removeNumbersFigurant(\AppBundle\Entity\Number $numbersFigurant)
+    {
+        $this->numbersFigurant->removeElement($numbersFigurant);
+    }
+
+    /**
+     * Add songLyricist
+     *
+     * @param \AppBundle\Entity\Song $songLyricist
+     *
+     * @return Person
+     */
+    public function addSongLyricist(\AppBundle\Entity\Song $songLyricist)
+    {
+        $this->songLyricist[] = $songLyricist;
+
+        return $this;
+    }
+
+    /**
+     * Remove songLyricist
+     *
+     * @param \AppBundle\Entity\Song $songLyricist
+     */
+    public function removeSongLyricist(\AppBundle\Entity\Song $songLyricist)
+    {
+        $this->songLyricist->removeElement($songLyricist);
+    }
+
+    /**
+     * Get songLyricist
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSongLyricist()
+    {
+        return $this->songLyricist;
+    }
+
+    /**
+     * Add editor
+     *
+     * @param \AppBundle\Entity\User $editor
+     *
+     * @return Person
+     */
+    public function addEditor(\AppBundle\Entity\User $editor)
+    {
+        $this->editors[] = $editor;
+
+        return $this;
+    }
+
+    /**
+     * Remove editor
+     *
+     * @param \AppBundle\Entity\User $editor
+     */
+    public function removeEditor(\AppBundle\Entity\User $editor)
+    {
+        $this->editors->removeElement($editor);
+    }
+
+    /**
+     * Add songComposer
+     *
+     * @param \AppBundle\Entity\Song $songComposer
+     *
+     * @return Person
+     */
+    public function addSongComposer(\AppBundle\Entity\Song $songComposer)
+    {
+        $this->songComposer[] = $songComposer;
+
+        return $this;
+    }
+
+    /**
+     * Remove songComposer
+     *
+     * @param \AppBundle\Entity\Song $songComposer
+     */
+    public function removeSongComposer(\AppBundle\Entity\Song $songComposer)
+    {
+        $this->songComposer->removeElement($songComposer);
+    }
+
+    /**
+     * Get songComposer
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSongComposer()
+    {
+        return $this->songComposer;
+    }
 }

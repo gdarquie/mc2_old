@@ -238,7 +238,7 @@
             //Melviz structure
             var url = '{{ path("api_person_melviz_completeness", {'personId': person.personId}) }}';
             d3.json(url , function(error, data) {
-                viz_mediane("melviz_completeness", data, 1);
+                viz_mediane("melviz_completeness", data, 4);
 //                versionBarres("melviz_completeness", data, 2);
             });
 

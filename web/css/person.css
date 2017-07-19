@@ -40,4 +40,37 @@
     color : #CC0000!important;
 }
 
+.btn {
+    background-color: #CC0000;
+}
+
+.btn:hover {
+    background-color: #a21318;
+}
+
+.pagination{
+    text-align: center;
+}
+
+.pagination li a  {
+    height:20px;
+    width: 20px;
+    font-size: 10px;
+    transform: translate(-3px, -5px);
+
+
+}
+
+.pagination li  {
+    height:20px;
+    width: 20px;
+}
+
+
+.medium-table tbody tr td {
+    padding: 5px;
+}
+
+
+
 
