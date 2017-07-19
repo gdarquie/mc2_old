@@ -117,6 +117,7 @@ class FilmType extends AbstractType
                 )
             )
             ->add('verdict', ChoiceType::class, array(
+            'placeholder' => 'Choose an option',
             'choices'  => array(
                 'acceptable' => "acceptable",
                 'basically acceptable with minor changes' => "basically acceptable with minor changes",
