@@ -113,7 +113,12 @@ class DefaultController extends Controller
     public function filmAction($filmId){
 
         $em = $this->getDoctrine()->getManager();
-        $film = $em->getRepository('AppBundle:Film')->findOneByFilmId($filmId);
+//        $film = $em->getRepository('AppBundle:Film')->findOneByFilmId($filmId);
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT f FROM AppBundle:Film f WHERE f.filmId = :film");
+        $query->setParameter('film', $filmId);
+        $film = $query->getSingleResult();
 
         //tous les numbers du film
         $query = $em->createQuery(

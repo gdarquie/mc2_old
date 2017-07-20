@@ -3,10 +3,13 @@
 {% block fos_user_content %}{% endblock %}
 {% block stylesheets %}
 
+    <link rel="stylesheet" href="{{ asset("assets/vendor/swiper/dist/css/swiper.css") }}">
+
+
 {{parent()}}
 <style>
   .parallax-container{
-    min-height: 350px;
+    min-height: 370px;
     height: auto;
     margin-top:0px;
     margin-bottom: 0px;
@@ -21,7 +24,7 @@
   }
 
   .poster{
-    max-height:300px;
+    max-height:100vh;
   }
 
   .myCard{
@@ -52,17 +55,19 @@
   .box{
     background-color: rgba(255, 255, 255, 0.3);
     padding: 20px;
+    margin-top: 110px;
   }
 
   #persons, #numbers, #songs{
-    min-height:450px;
+    /*min-height:450px;*/
+    max-height:100vh;
   }
 
   #songs{
-    border :20px solid black;
+    /*border :20px solid black;*/
     /*border-right :50px solid black;*/
     /*border-left :50px solid black;*/
-    box-shadow: 10px 10px 5px #888888;
+    /*box-shadow: 10px 10px 5px #888888;*/
     /*background:#f7f7f7;*/
     background: #00ff00 url("{{ asset('img/intro.gif') }}");
     background-size:100%;
@@ -78,6 +83,96 @@
     margin-top : 35px;
   }
 
+
+
+
+a {
+  text-decoration: none;
+}
+
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  /*margin: 50px auto 0;*/
+}
+
+
+
+.swiper-container-horizontal > .swiper-pagination {
+  top: 0;
+  bottom: auto;
+}
+.swiper-container-horizontal > .swiper-pagination .swiper-pagination-bullet {
+  margin: 0;
+}
+
+.active-mark {
+  background-color: #CC0000;
+  width: 20%;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  top: 52px;
+  -webkit-transition: left 0.2s ease-out;
+  transition: left 0.2s ease-out;
+}
+
+.swiper-pagination-bullet {
+  border-radius: 0;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: normal;
+  opacity: 0.5;
+  height: 56px;
+  min-width: 20vw;
+  padding-top: 10px;
+  text-align: center;
+  -webkit-transition: font-weight 0.22s ease;
+  transition: font-weight 0.22s ease;
+}
+
+.swiper-pagination-bullet:nth-of-type(1).swiper-pagination-bullet-active ~ .active-mark {
+  left: 0%;
+}
+.swiper-pagination-bullet:nth-of-type(2).swiper-pagination-bullet-active ~ .active-mark {
+  left: 20%;
+}
+.swiper-pagination-bullet:nth-of-type(3).swiper-pagination-bullet-active ~ .active-mark {
+  left: 40%;
+}
+.swiper-pagination-bullet:nth-of-type(4).swiper-pagination-bullet-active ~ .active-mark {
+  left: 60%;
+}
+.swiper-pagination-bullet:nth-of-type(5).swiper-pagination-bullet-active ~ .active-mark {
+  left: 80%;
+}
+.swiper-pagination-bullet:first-of-type.swiper-pagination-bullet-active ~ .active-mark {
+  left: 0;
+}
+
+.swiper-pagination-bullet-active {
+  font-weight: bold;
+  background-color: black;
+  opacity: 0.5;
+  max-width: 20vw;
+
+
+}
+
+.swiper-pagination {
+display: inline;
+width: 100vw;
+}
+
+.swiper-wrapper {
+  transform: translate(0px, 25px);
+}
+
+
+
 </style>
 
 {% endblock %}
@@ -85,25 +180,101 @@
 
 {% block body %}
 
+  <div class="swiper-container">
+    <!-- Add Pagination -->
+    <div class="swiper-pagination">
+    </div>
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="parallax-container" id="film">
+          <div class="parallax"><img class="img_search" src="{{ asset('img/star.png') }}"></div>
+          <section class="container box">
+            <div class="col s12">
+             <div class="row">
+              <h2>Search a movie</h2>
+             </div>
+              <input type="text" id="searchMovie" placeholder ="Write the title of a film (3 characters min)">
+            </div>
+          </section>
+        </div>
 
-  <!-- Search film-->
-  <div class="parallax-container">
-    <br><br>
-    <div class="parallax"><img src="{{ asset('img/star.png') }}"></div>
-      <section class="container">
-      <div class="col s12">
-        <h2>Search a movie</h2>
-        <input type="text" id="searchMovie" placeholder ="Write the title of a film (3 characters min)">
+        <!-- Results search -->
+        <section class="container">
+          <article id="results" class="row card myCard"></article>
+        </section>
       </div>
-    </section>
+
+
+      <div class="swiper-slide">
+
+        <div class="parallax-container" id="numbers">
+          <div class="parallax"><img class="img_search" src="{{ asset('img/couple.jpeg') }}"></div>
+          <section class="container box">
+            <div class="col s12">
+              <div class="row">
+                <h2>Search a number</h2>
+              </div>
+              <input type="text" id="searchNumber" placeholder ="Write the title of a number (3 characters min)">
+            </div>
+          </section>
+        </div>
+                <section class="container">
+        <article id="resultsNumber" class="row card myCard"></article>
+        </section>
+      </div>
+
+
+      <div class="swiper-slide">
+
+        <div class="parallax-container" id="songs">
+            {#<div class="parallax"><img src="{{ asset('img/gold-diggers-1933.jpg') }}"></div>#}
+          <section class="container box">
+            <div class="col s12">
+              <div class="row">
+                <h2 class="col">Search a song</h2>
+                <span class="col valign"><a href="{{ path('songs') }}">all songs</a></span>
+              </div>
+              <input type="text" id="searchSong" class="black-text" placeholder ="Write the name of a song (3 characters min)">
+            </div>
+          </section>
+        </div>
+        <article id="resultsSong" class="row myCard"></article>
+      </div>
+
+
+      <div class="swiper-slide">
+
+        <div class="parallax-container" id="persons">
+          <div class="parallax"><img class="img_search" src="{{ asset('img/oz.jpg') }}"></div>
+          <section class="container box">
+            <div class="col s12">
+              <div class="row">
+                <h2 class="col">Search a person</h2>
+                <span class="col valign"><a href="{{ path('persons') }}">all persons</a></span>
+              </div>
+              <input type="text" id="searchPerson" placeholder ="Write the name of a person (3 characters min)">
+            </div>
+          </section>
+        </div>
+        <article id="resultsPerson" class="row myCard"></article>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="parallax-container" id="shows">
+        <div class="parallax"><img src="{{ asset('img/19586.jpg') }}"></div>
+        <section class="container box">
+          <div class="col s12">
+            <div class="row">
+              <h2 class="col">Search a Stage Show</h2>
+              <span class="col valign"><a href="{{ path('stageshows') }}">all stage shows</a></span>
+            </div>
+            <input type="text" id="searchShow" placeholder ="Write the name of a Stage Show (3 characters min)">
+          </div>
+        </section>
+      </div>
+      <article id="resultsShow" class="row myCard"></article>
+    </div>
   </div>
-
-  <!-- Results search -->
-  <section class="container">
-
-    <article id="results" class="row card myCard"></article>
-  </section>
-
 
   <!-- Stats -->
   <section class="container">
@@ -161,71 +332,7 @@
   </section>
   </div>
 
-  <!-- Search a number -->
-  <div class="parallax-container" id="numbers">
-    <br><br>
-    <div class="parallax"><img src="{{ asset('img/couple.jpeg') }}"></div>
-    <section class="container box">
-      <div class="col s12">
-        <h2>Search a number</h2>
-        <input type="text" id="searchNumber" placeholder ="Write the title of a number (3 characters min)">
-      </div>
-      <article id="resultsNumber" class="row myCard"></article>
-    </section>
-  </div>
 
-    <br>
-    <br>
-
-    <!-- Search a song -->
-    <div class="parallax-container" id="songs">
-        <br><br>
-        {#<div class="parallax"><img src="{{ asset('img/gold-diggers-1933.jpg') }}"></div>#}
-        <section class="container box">
-            <div class="col s12">
-                <div class="row">
-                    <h2 class="col">Search a song</h2>
-                    <span class="col valign"><a href="{{ path('songs') }}">all songs</a></span>
-                </div>
-                <input type="text" id="searchSong" class="black-text" placeholder ="Write the name of a song (3 characters min)">
-            </div>
-            <article id="resultsSong" class="row myCard"></article>
-        </section>
-    </div>
-
-    <!-- Search a person -->
-    <div class="parallax-container" id="persons">
-        <br><br>
-        <div class="parallax"><img src="{{ asset('img/oz.jpg') }}"></div>
-        <section class="container box">
-            <div class="col s12">
-                <div class="row">
-                    <h2 class="col">Search a person</h2>
-                    <span class="col valign"><a href="{{ path('persons') }}">all persons</a></span>
-                </div>
-                <input type="text" id="searchPerson" placeholder ="Write the name of a person (3 characters min)">
-            </div>
-            <article id="resultsPerson" class="row myCard"></article>
-        </section>
-    </div>
-
-    <br><br>
-  <!-- Search a Stageshow-->
-
-    <div class="parallax-container" id="shows">
-        <br><br>
-        <div class="parallax"><img src="{{ asset('img/19586.jpg') }}"></div>
-        <section class="container box">
-            <div class="col s12">
-                <div class="row">
-                    <h2 class="col">Search a Stage Show</h2>
-                    <span class="col valign"><a href="{{ path('stageshows') }}">all stage shows</a></span>
-                </div>
-                <input type="text" id="searchShow" placeholder ="Write the name of a Stage Show (3 characters min)">
-            </div>
-            <article id="resultsShow" class="row myCard"></article>
-        </section>
-    </div>
 
   <!-- Themes -->
 
@@ -348,9 +455,22 @@
   <script src="{{ asset("assets/vendor/react/react.js") }}"></script>
   <script src="{{ asset("assets/vendor/react/react-dom.js") }}"></script>
   <script src="{{ asset("assets/vendor/babel/browser.min.js") }}"></script>
+  <script type="text/javascript" src="  https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.1.2/js/swiper.min.js"></script>
+
+
+  {#<script src="{{ asset("assets/vendor/swiper/dist/js/swiper.js") }}"></script>#}
+  {#<script src="{{ asset("assets/vendor/swiper/dist/js/swiper.jquery.js") }}"></script>#}
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <script>
+
+//
+
+//    $(document).ready(function(){
+//        $('ul.tabs').tabs();
+//        $('#search_tab').tabs({ 'swipeable': true });
+//    });
+
     google.charts.load('current', {packages: ['corechart', 'line']});
     google.charts.setOnLoadCallback(drawBasic);
 
@@ -516,6 +636,7 @@
             for(var i = 0; i < selection.length ; i++){
               txt = "<a href='number/"+selection[i]['id']+"'><span class='btn myBtn'>"+selection[i]['title']+" - "+selection[i]['film']+" ("+selection[i]['released']+")</span></a>";
               $("#resultsNumber").append(txt);
+              $("#resultsNumber").css('padding-bottom','20px');
             }
           }
         });
@@ -625,5 +746,25 @@
             }
     )
   </script>
+
+
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+			pagination: '.swiper-pagination',
+			slidesPerView: 1,
+			paginationClickable: true,
+			loop: true,
+       		paginationBulletRender: function (index, className) {
+				var tabsName = ['Movie', 'Number', 'Song', 'Person', 'Stageshow'];
+				if ( index === (tabsName.length - 1) ) {
+          				return	'<span class="' + className + '">'
+          						+ tabsName[index] + '</span>'
+          						+ '<div class="active-mark "></div>';
+				}
+				return '<span class="' + className + '">' + tabsName[index] + '</span>';
+        		}
+		});
+  </script>
+
 
 {% endblock %}

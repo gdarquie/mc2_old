@@ -42,10 +42,12 @@ class Film
     private $idImdb;
 
 
+
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Distributor")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Distributor", inversedBy="films")
      * @ORM\JoinTable(name="film_has_distributor",
      *   joinColumns={
      *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
@@ -348,6 +350,7 @@ class Film
      *   }
      * )
      */
+
     private $studios;
 
     /**

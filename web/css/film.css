@@ -71,6 +71,34 @@
     font-size: 0.8em;
 }
 
+.class_length .row {
+    margin-bottom: 12px; !important;
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+
+.class_length .row .card {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+
+#sub_nav{
+    margin-top: 30px;
+    padding: 7px;
+    background: white!important;
+    overflow: auto;
+    transform: translate(0px, -12px);
+}
+
+#sub_nav a{
+    color : black!important;
+}
+#sub_nav .active{
+    color : #CC0000!important;
+}
 
 
 
