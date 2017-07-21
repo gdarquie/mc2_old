@@ -5,9 +5,10 @@
 
 
         {% if person.numbersChoregrapher|length == 0 and person.numbersArranger|length == 0 and person.numbersDirector|length == 0 and person.numbersPerformer|length == 0 and person.numbersFigurant|length == 0 and person.songLyricist|length == 0 and person.songComposer|length == 0 %}
-
-            <p> {{ person.name }} is not involved in any film yet !</p>
-
+            <div class="no_info center">
+                <h3>No result</h3>
+                <p> {{ person.name }} is not involved in any film yet </p>
+            </div>
         {% else %}
 
             <h2>All films linked to {{ person.name }}</h2>
