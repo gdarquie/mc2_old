@@ -103,7 +103,6 @@
                                             {% if is_granted("ROLE_EDITOR") %}
                                                 <th>Edit</th>
                                             {% endif %}
-                                            <th>View</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -130,10 +129,6 @@
                                                     </td>
                                                 {% endif %}
 
-
-                                                <td>
-                                                    <a href="{{path('number', { id : number.id })}}">view</a>
-                                                </td>
                                             </tr>
                                         {% endfor %}
                                         </tbody>

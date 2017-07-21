@@ -84,6 +84,7 @@
                     {% endif %}
 
                     <li><a href="{{ path('thesaurus', {'type' : "all"}) }}">thesaurus</a></li>
+                    <li><a href="{{ path('about') }}">about</a></li>
 
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <li><a href="{{ path('editor') }}" class="inline">connected as {{ app.user.username }}</a></li>
