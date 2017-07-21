@@ -39,5 +39,5 @@ security:
         - { path: ^/exoticism, role: ROLE_USER }
         - { path: ^/dance, role: ROLE_USER }
         - { path: ^/person, role: ROLE_USER }
-        - { path: ^/api, role: ROLE_USER }
+
 
