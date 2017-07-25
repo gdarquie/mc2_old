@@ -3,7 +3,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
-        #chart_div{
+        #div_studios{
             height: 400px;
         }
 
@@ -17,8 +17,9 @@
             line-height: 0.2em;
         }
 
-        #chart_div2{
-            height: 400px;
+
+        .card{
+            padding : 30px;
         }
 
     </style>
@@ -29,42 +30,77 @@
 
         <h1>Censored content : {{ myContent.title }}</h1>
 
+
+        <article class="card row">
         <h2>Studios</h2>
+            <div class="row col s12">
+                <h3>Films by studios for censored content "{{ myContent.title }}"</h3>
+                <div id="div_studios" class="donut"></div>
+            </div>
+        </article>
 
-        <p>[camembert comme pour verdict]</p>
-        <p>[tableau]</p>
+        <article class="card">
+                <h2>List of films with censored content "{{  myContent.title  }}"</h2>
 
-        <table>
-            <tr></tr>
-            <tr></tr>
-        </table>
+                <div id="table_one_censored" class="row">
+                    <input class="search" placeholder="Search" />
+                    <table class="striped medium-table tablesorter">
+                        <thead>
+                        <tr>
+                            <th>Film</th>
+                            <th>Release Date</th>
+                            <th>Studio</th>
+                        </tr>
+                        </thead>
+                        <tbody class="list">
+                        {% for film in films  %}
+                            <tr>
+                                <td class="list_film"><a href="{{ path('film', {'filmId' : film.filmId}) }}">{{ film.title }}</a></td>
+                                <td class="list_release_date">{{ film.released }}</td>
+                                <td class="list_studio">
+                                    {% for studio in film.studios %}
+                                        {{ studio.title }}{% if not loop.last %}, {% endif %}
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <ul class="pagination"></ul>
+                </div>
+            </div>
+        </article>
 
-        <h2>Number genres</h2>
+        <div id="espacde_kibana">
 
-        <p>[tester nuage de mots clés]</p>
+        </div>
+
+        {#<h2>Number genres</h2>#}
+
+        {#<p>[tester nuage de mots clés]</p>#}
 
         {#{% for genre in genres %}#}
             {#<p>{{ genre.title }} ({{ genre.nb }})</p>#}
         {#{% endfor %}#}
-        <div id="chart_div"></div>
+        {#<div id="chart_div"></div>#}
 
-        <h2>Dance contents</h2>
+        {#<h2>Dance contents</h2>#}
 
-        <p>[tester nuage de mots clés]</p>
+        {#<p>[tester nuage de mots clés]</p>#}
 
-        <div id="chart_div2"></div>
+        {#<div id="chart_div2"></div>#}
 
-        <h2>Films</h2>
+        {#<h2>Films</h2>#}
 
 
-        <div class="row">
-        {% for film in filmsByContent %}
-            <div class="col s3">
-                <h4>{{ film.title }}</h4>
-                <img src="" alt="">
-            </div>
-        {% endfor %}
-        </div>
+        {#<div class="row">#}
+        {#{% for film in filmsByContent %}#}
+            {#<div class="col s3">#}
+                {#<h4>{{ film.title }}</h4>#}
+                {#<img src="" alt="">#}
+            {#</div>#}
+        {#{% endfor %}#}
+        {#</div>#}
 
         {#<h1>PCA verdict {% for item in verdict  %}{{ item.title }}{% endfor %}</h1>#}
 
@@ -113,47 +149,57 @@
 
 {% block javascripts %}
 
+    {{ parent() }}
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{{ asset('assets/vendor/list.js/docs/assets/javascripts/list.min.js') }}"></script>
     <script type="text/javascript">
+
         google.charts.load("current", {packages:["corechart"]});
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Name', 'Occurences'],
-                {% for genre in genres %}
-                ['{{ genre.title }}', {{ genre.nb }}],
+                {% for studio in studiosByContent %}
+                ['{{ studio.title }}', {{ studio.nb }}],
                 {% endfor %}
             ]);
 
 
             var options = {
-                title: 'Ratio',
-                pieHole: 0.4,
+                title: '',
+                pieHole: 0.4
             };
 
-
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            var chart = new google.visualization.PieChart(document.getElementById('div_studios'));
             chart.draw(data, options);
-
-            var data2 = google.visualization.arrayToDataTable([
-                ['Name', 'Occurences'],
-                {% for item in danceContents %}
-                ['{{ item.title }}', {{ item.nb }}],
-                {% endfor %}
-            ]);
-
-
-            var options = {
-                title: 'Ratio',
-                pieHole: 0.4,
-            };
-
-
-            var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
-            chart2.draw(data2, options);
-
-
         }
+    </script>
+
+
+    <script>
+
+        {% if films|length < 16 %}
+
+        var options = {
+            valueNames: ['list_film', 'list_release_date', 'list_studio']
+        };
+
+        {% endif %}
+
+
+        {% if films|length > 15 %}
+
+        var options = {
+            valueNames: ['list_film', 'list_release_date', 'list_studio'],
+            page: 15,
+            pagination: true
+        };
+
+        {% endif %}
+
+        var FilmList = new List('table_one_censored', options);
+
     </script>
 
 {% endblock %}

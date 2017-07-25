@@ -150,6 +150,14 @@ class CensorshipController extends Controller
         $query->setParameter('content', $content);
         $filmsByContent = $query->getResult();
 
+        $query = $em -> createQuery('SELECT f FROM AppBundle:Film f JOIN f.censorship c WHERE c.title = :content');
+        $query->setParameter('content', $content);
+        $films = $query->getResult();
+
+        $query = $em -> createQuery('SELECT s.title as title, COUNT(f.filmId) as nb FROM AppBundle:Film f JOIN f.censorship c JOIN f.studios s WHERE c.title = :content GROUP BY s.studioId ORDER BY nb DESC');
+        $query->setParameter('content', $content);
+        $studiosByContent = $query->getResult();
+
         $query = $em->createQuery('SELECT DISTINCT(c.title) as title FROM AppBundle:Film f JOIN f.censorship c WHERE c.title = :content');
         $query->setParameter('content', $content);
         $myContent = $query->getSingleResult();
@@ -166,6 +174,8 @@ class CensorshipController extends Controller
 
         return $this->render('web/censorship/content.html.twig', array(
             'filmsByContent' => $filmsByContent,
+            'films' => $films,
+            'studiosByContent' => $studiosByContent,
             'myContent' => $myContent,
             'genres' => $genres,
             'danceContents' => $danceContents
@@ -185,6 +195,10 @@ class CensorshipController extends Controller
         $query = $em -> createQuery('SELECT DISTINCT(f.title) as title, f.idImdb as idImdb FROM AppBundle:Film f WHERE f.legion = :legion');
         $query->setParameter('legion', $legion);
         $filmsByLegion = $query->getResult();
+
+        $query = $em -> createQuery('SELECT f FROM AppBundle:Film f WHERE f.legion = :legion');
+        $query->setParameter('legion', $legion);
+        $films = $query->getResult();
 
         $query = $em -> createQuery('SELECT DISTINCT(f.title) as title, f.released as released, COUNT(DISTINCT(f.filmId)) as nb, f.idImdb as idImdb, f.legion as legion FROM AppBundle:Film f WHERE f.legion = :legion GROUP BY f.released');
         $query->setParameter('legion', $legion);
@@ -225,6 +239,7 @@ class CensorshipController extends Controller
 
         return $this->render('web/censorship/legion.html.twig', array(
             'filmsByLegion' => $filmsByLegion,
+            'films' => $films,
             'myLegion' => $myLegion,
             'genres' => $genres,
             'costumes' =>$costumes,

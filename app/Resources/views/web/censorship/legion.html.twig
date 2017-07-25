@@ -37,66 +37,90 @@
 
 
         <article class="card row">
-            <p>Total of disctincts films with this verdict : <span class="number">{{ myLegion.nb }}</span>, total of numbers concerned : <span class="number">{{ numberForLegion.nb }}</span></p>
-            <h3>Number of films with {{ myLegion.title }} grade by years</h3>
-            <div id="diagram"></div>
+            <p>Number of films : <span class="number">{{ myLegion.nb }}</span></p>
 
-            {% for item in filmsByYear  %}
-                <a href="{{ path('censorship_legion_year' , {'legion' : item.legion , 'year' : item.released}) }}"><span class="chip">{{ item.released }} ({{ item.nb }})</span></a>
-            {% endfor %}
+            <h3>List of films with {{ myLegion.title }} grade</h3>
+
+            <div id="table_one_legion" class="row">
+                <input class="search" placeholder="Search" />
+                <table class="striped medium-table tablesorter">
+                    <thead>
+                    <tr>
+                        <th>Film</th>
+                        <th>Release Date</th>
+                        <th>Studio</th>
+                    </tr>
+                    </thead>
+                    <tbody class="list">
+                    {% for film in films  %}
+                        <tr>
+                            <td class="list_film"><a href="{{ path('film', {'filmId' : film.filmId}) }}">{{ film.title }}</a></td>
+                            <td class="list_release_date">{{ film.released }}</td>
+                            <td class="list_studio">
+                                {% for studio in film.studios %}
+                                    {{ studio.title }}{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <ul class="pagination"></ul>
+            </div>
+
 
         </article>
 
 
-        <article class="card row">
-            <h2>Films  with {{ myLegion.title }} grade by Studios</h2>
+        {#<article class="card row">#}
+            {#<h2>Films  with {{ myLegion.title }} grade by Studios</h2>#}
 
-        <p>A film can have more than one studio.</p>
+        {#<p>A film can have more than one studio.</p>#}
 
-        <div id="chart_studio" class="donut"></div>
-        </article>
+        {#<div id="chart_studio" class="donut"></div>#}
+        {#</article>#}
 
-        <article class="card row">
-            <h2>Dance contents</h2>
+        {#<article class="card row">#}
+            {#<h2>Dance contents</h2>#}
 
-            <div id="chart_div2" class="donut"></div>
+            {#<div id="chart_div2" class="donut"></div>#}
 
-            {% for item in danceContents %}
-                <a href="{{ path('censorship_legion_thesaurus', {'legion' : item.legion , 'type' : 'dance','id' : item.id}) }}"><span class="chip">{{ item.title }} ({{ item.nb }})</span></a>
-            {% endfor %}
-        </article>
+            {#{% for item in danceContents %}#}
+                {#<a href="{{ path('censorship_legion_thesaurus', {'legion' : item.legion , 'type' : 'dance','id' : item.id}) }}"><span class="chip">{{ item.title }} ({{ item.nb }})</span></a>#}
+            {#{% endfor %}#}
+        {#</article>#}
 
-        <article class="card row">
-        <h2>Number topics</h2>
+        {#<article class="card row">#}
+        {#<h2>Number topics</h2>#}
 
             {#{% for genre in genres %}#}
             {#<p>{{ genre.title }} ({{ genre.nb }})</p>#}
             {#{% endfor %}#}
-            <div id="chart_div" class="donut"></div>
-        </article>
+            {#<div id="chart_div" class="donut"></div>#}
+        {#</article>#}
 
-        <article class="card">
-            <h2>Costumes</h2>
-            <div id="chart_costumes" class="donut"></div>
-        </article>
+        {#<article class="card">#}
+            {#<h2>Costumes</h2>#}
+            {#<div id="chart_costumes" class="donut"></div>#}
+        {#</article>#}
 
-        <article class="card">
-            <h2>Ethnics stereotypes</h2>
-            <div id="chart_stereotypes" class="donut"></div>
-        </article>
+        {#<article class="card">#}
+            {#<h2>Ethnics stereotypes</h2>#}
+            {#<div id="chart_stereotypes" class="donut"></div>#}
+        {#</article>#}
 
-        <article class="card row">
-            <h2>Films</h2>
+        {#<article class="card row">#}
+            {#<h2>Films</h2>#}
 
-            <div class="row">
-                {% for film in filmsByLegion %}
-                    <div class="col s3 film">
-                        <h4>{{ film.title }}</h4>
-                        <img class="poster" src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=300" alt="poster">
-                    </div>
-                {% endfor %}
-            </div>
-        </article>
+            {#<div class="row">#}
+                {#{% for film in filmsByLegion %}#}
+                    {#<div class="col s3 film">#}
+                        {#<h4>{{ film.title }}</h4>#}
+                        {#<img class="poster" src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=300" alt="poster">#}
+                    {#</div>#}
+                {#{% endfor %}#}
+            {#</div>#}
+        {#</article>#}
 
 
         {#<h1>PCA verdict {% for item in verdict  %}{{ item.title }}{% endfor %}</h1>#}
@@ -146,7 +170,10 @@
 
 {% block javascripts %}
 
+    {{ parent() }}
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{{ asset('assets/vendor/list.js/docs/assets/javascripts/list.min.js') }}"></script>
     <script type="text/javascript">
         google.charts.setOnLoadCallback(drawBasic);
         function drawBasic() {
@@ -269,6 +296,31 @@
 
 
         }
+    </script>
+
+    <script>
+
+        {% if films|length < 16 %}
+
+        var options = {
+            valueNames: ['list_film', 'list_release_date', 'list_studio']
+        };
+
+        {% endif %}
+
+
+        {% if films|length > 15 %}
+
+        var options = {
+            valueNames: ['list_film', 'list_release_date', 'list_studio'],
+            page: 15,
+            pagination: true
+        };
+
+        {% endif %}
+
+        var FilmList = new List('table_one_legion', options);
+
     </script>
 
 {% endblock %}

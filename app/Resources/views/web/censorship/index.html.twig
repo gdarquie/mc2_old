@@ -78,13 +78,35 @@
 
             <div class="row ">
 
-                <div id="chart_div2" class="donut s7 col"></div>
-                <div class="col s5">
+                <div id="chart_div2" class="donut s6 col"></div>
+                {#<div class="s6 col">#}
+                    {#<table class="striped medium-table tablesorter">#}
+                        {#<thead>#}
+                        {#<tr>#}
+                            {#<th>Name</th>#}
+                            {#<th>Definition</th>#}
+                        {#</tr>#}
+                        {#</thead>#}
+                        {#<tbody class="list">#}
+                        {#{% for number in numbers  %}#}
+                            {#<tr>#}
+                                {#<td class="list_number"><a href="{{ path('number', {'id' : number.id}) }}">{{ number.title }}</a></td>#}
+                                {#<td class="list_film"><a href="{{ path('film', {'filmId' : number.film.filmId}) }}">{{ number.film.title }}</a></td>#}
+                            {#</tr>#}
+                        {#{% endfor %}#}
+                        {#</tbody>#}
+                    {#</table>#}
+                {#</div>#}
+
+
+            </div>
+
+            <div class="raw">
                 {% for item in censorship  %}
                     <p class="chip"><a href="{{ path('censorship_content', {'content' : item.title}) }}">{{ item.title }} ({{ item.nb }})</a></p>
                 {% endfor %}
-                </div>
             </div>
+
         </article>
 
 
@@ -92,9 +114,11 @@
 
             <h2>Legion of Decency</h2>
 
-            <p>Total : <span class="number">{{ nbFilmsWithLegion.nb }}</span> films</p>
+            <p>Legion of Decency notations</p>
 
-            <div id="diagram_legion"></div>
+            <p><i>Avis de la ligue de Décence catholique</i></p>
+
+            <p>Number of films with information : <span class="number">{{ nbFilmsWithLegion.nb }}</span> films</p>
 
             <div class="row ">
 
@@ -162,14 +186,14 @@
             var data2 = google.visualization.arrayToDataTable([
                 ['Name', 'Occurences'],
                 {% for item in censorship  %}
-                ['{{ item.title }}', {{ item.nb }}],
+                ['{{ item.title|raw }}', {{ item.nb }}],
                 {% endfor %}
             ]);
 
 
             var options = {
                 title: 'Censored content',
-                pieHole: 0.4,
+                pieHole: 0.4
             };
 
             var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
@@ -192,40 +216,6 @@
             var chart3 = new google.visualization.PieChart(document.getElementById('chart_div3'));
             chart3.draw(data3, options);
 
-        }
-
-        google.charts.setOnLoadCallback(drawBasic);
-
-        function drawBasic() {
-
-
-
-
-        //diagram legion
-        var data6 = new google.visualization.DataTable();
-        data6.addColumn('number', 'Year');
-        data6.addColumn('number', 'Number of Films with verdict from the legion of decency');
-
-
-        data6.addRows([
-            {% for item in nbLegion  %}
-            [{{ item.released }}, {{ item.nb }}],
-            {% endfor %}
-
-        ]);
-
-        var options6 = {
-            hAxis: {
-                title: 'Years'
-            },
-            vAxis: {
-                title: 'Films'
-            },
-        };
-
-        var chart6 = new google.visualization.LineChart(document.getElementById('diagram_legion'));
-
-        chart6.draw(data6, options6);
         }
 
     </script>

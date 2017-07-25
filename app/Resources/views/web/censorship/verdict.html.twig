@@ -55,16 +55,43 @@
         <article class="card">
             <h2>List of films with "{% for item in verdict  %}{{ item.title }}{% endfor %}" verdict</h2>
 
-            <div class="row">
-            {% for film in filmsByVerdict  %}
-                <a href="{{ path('film', {'filmId' : film.filmId}) }}">
-                    <div class="col s3 film">
-                        <h4 class="center">{{ film.title }} ({{ film.released }})</h4>
-                        <img class="poster" src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=300" alt="poster">
-                    </div>
-                </a>
-            {% endfor %}
+            <div id="table_one_verdict" class="row">
+                <input class="search" placeholder="Search" />
+                <table class="striped medium-table tablesorter">
+                    <thead>
+                    <tr>
+                        <th>Film</th>
+                        <th>Release Date</th>
+                        <th>Studio</th>
+                    </tr>
+                    </thead>
+                    <tbody class="list">
+                    {% for film in filmsByVerdict  %}
+                        <tr>
+                            <td class="list_film"><a href="{{ path('film', {'filmId' : film.filmId}) }}">{{ film.title }}</a></td>
+                            <td class="list_release_date">{{ film.released }}</td>
+                            <td class="list_studio">
+                                {% for studio in film.studios %}
+                                    {{ studio.title }}{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <ul class="pagination"></ul>
             </div>
+
+            {#<div class="row">#}
+            {#{% for film in filmsByVerdict  %}#}
+                {#<a href="{{ path('film', {'filmId' : film.filmId}) }}">#}
+                    {#<div class="col s3 film">#}
+                        {#<h4 class="center">{{ film.title }} ({{ film.released }})</h4>#}
+                        {#<img class="poster" src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=300" alt="poster">#}
+                    {#</div>#}
+                {#</a>#}
+            {#{% endfor %}#}
+            {#</div>#}
         </article>
 
 
@@ -75,6 +102,7 @@
 {% block javascripts %}
 
     {{ parent() }}
+    <script src="{{ asset('assets/vendor/list.js/docs/assets/javascripts/list.min.js') }}"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
 
@@ -172,6 +200,32 @@
             {#chart.draw(data, options);#}
 
         {#}#}
+    </script>
+
+
+    <script>
+
+        {% if filmsByVerdict|length < 16 %}
+
+        var options = {
+            valueNames: ['list_film', 'list_release_date', 'list_studio']
+        };
+
+        {% endif %}
+
+
+        {% if filmsByVerdict|length > 15 %}
+
+        var options = {
+            valueNames: ['list_film', 'list_release_date', 'list_studio'],
+            page: 15,
+            pagination: true
+        };
+
+        {% endif %}
+
+        var FilmList = new List('table_one_verdict', options);
+
     </script>
 
 {% endblock %}
