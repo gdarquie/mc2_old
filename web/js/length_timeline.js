@@ -2,7 +2,10 @@
  * Created by Ale PDERY on 22/05/2017.
  */
 function create_gant(data,lengthFilm){
-    var w = 2017;
+
+    var w = document.getElementById("svg_timeline").getBoundingClientRect().width;
+
+    // var w = 800;
     var h = 400;
     var svg = d3.selectAll(".svg")
         .append("svg")
@@ -25,7 +28,7 @@ function create_gant(data,lengthFilm){
         "#7F7F7F",
         "#7F7F7F",
         "#7F7F7F",
-        "#7F7F7F",
+        "#7F7F7F"
     ];
     var taskArray = [];
     data.forEach(function(element) {

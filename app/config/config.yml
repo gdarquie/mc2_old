@@ -146,7 +146,8 @@ fos_elastica:
             types:
                 number:
                     mappings:
-                        title: { type: keyword }
+                        title:
+                         type: keyword
                         beginTc: { type: integer }
                         endTc: { type: integer }
                         length: { type: integer }
@@ -166,7 +167,20 @@ fos_elastica:
                         film.length: { type: keyword }
                         film.adaptation: { type:keyword }
                         film.stageshows: {type:keyword}
-                        song: { type: keyword }
+                        song:
+                          type: nested
+                          properties:
+                            songId:
+                              type: integer
+                            title:
+                              type: keyword
+                            lyricist:
+                              type: nested
+                              properties:
+                                personId:
+                                  type: integer
+                                name:
+                                  type: keyword
                         cast: { type: keyword }
                         dancingType: { type: keyword }
                         danceSubgenre: { type: keyword }

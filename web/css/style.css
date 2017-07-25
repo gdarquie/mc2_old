@@ -271,3 +271,32 @@ div .cut {
 	padding :10px;
 }
 
+
+.img_hover span {
+	display : none;
+}
+
+.img_hover:hover span {
+
+	display: inline;
+	position: absolute;
+	white-space: nowrap;
+	background: white;
+	padding: 3px;
+	border: 1px solid black;
+	transform: translate(10px,0px);
+
+}
+
+.img_hover span img {
+	max-height: 150px;
+}
+
+.pagination{
+	text-align: center;
+}
+
+
+.pagination .active  {
+	background:#CC0000!important;
+}

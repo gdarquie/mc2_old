@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -284,7 +285,7 @@ class ThesaurusController extends Controller
         $total = $query->getSingleResult();
 
         //total of number with exoticism
-        $query = $em -> createQuery('SELECT COUNT(DISTINCT(n.title)) as nb FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category');
+        $query = $em -> createQuery('SELECT COUNT(DISTINCT(n.id)) as nb FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category');
         $query->setParameter('type', 'mood');
         $query->setParameter('category', 'general');
         $totalNumber = $query->getSingleResult();
@@ -310,13 +311,14 @@ class ThesaurusController extends Controller
         $mostPopularGenre = $query->getSingleResult();
 
         //total of cited exoticism
-        $query = $em -> createQuery('SELECT COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category ');
+        $query = $em -> createQuery('SELECT COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.genre t WHERE t.type = :type AND t.category = :category ');
         $query->setParameter('type', 'mood');
         $query->setParameter('category', 'genre');
         $totalGenre = $query->getSingleResult();
 
         //total of number with exoticism
-        $query = $em -> createQuery('SELECT COUNT(DISTINCT(n.title)) as nb FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category');
+        $query = $em -> createQuery('SELECT COUNT(DISTINCT(n.id)) as nb FROM AppBundle:Number n JOIN n.genre t WHERE t.type = :type AND t.category = :category');
+
         $query->setParameter('type', 'mood');
         $query->setParameter('category', 'genre');
         $totalNumberGenre = $query->getSingleResult();
@@ -353,10 +355,10 @@ class ThesaurusController extends Controller
 
         //list of numbers for 1 mood
         if (strtoupper($category) == strtoupper("General")) {
-            $query = $em->createQuery('SELECT n.title as title, f.title as filmTitle, n.id as id, f.released as released FROM AppBundle:Number n JOIN n.general_mood g JOIN n.film f WHERE g.type = :type AND g.thesaurusId = :item ORDER by f.filmId');
+            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.general_mood g JOIN n.film f WHERE g.type = :type AND g.thesaurusId = :item ORDER by f.filmId');
         }
         else if(strtoupper($category) == strtoupper("genre")){
-            $query = $em->createQuery('SELECT n.title as title, f.title as filmTitle, n.id as id, f.released as released FROM AppBundle:Number n JOIN n.genre g JOIN n.film f WHERE g.type = :type AND g.thesaurusId = :item ORDER by f.filmId');
+            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.genre g JOIN n.film f WHERE g.type = :type AND g.thesaurusId = :item ORDER by f.filmId');
         }
         $query->setParameter('type', 'mood');
         $query->setParameter('item', $itemId);
@@ -372,6 +374,33 @@ class ThesaurusController extends Controller
         $query->setParameter('type', 'mood');
         $query->setParameter('item', $itemId);
         $films = $query->getResult();
+
+
+        if (strtoupper($category) == strtoupper("general")){
+            $query = $em -> createQuery('SELECT n.source as label, count(n.id) as value FROM AppBundle:Number n JOIN n.general_mood e WHERE e.type = :type AND e.thesaurusId = :item GROUP BY label ORDER BY value desc');
+        }
+        else if(strtoupper($category) == strtoupper("genre")){
+            $query = $em -> createQuery('SELECT n.source as label, count(n.id) as value FROM AppBundle:Number n JOIN n.genre e WHERE e.type = :type AND e.thesaurusId = :item GROUP BY label ORDER BY value desc');
+        }
+        $query->setParameter('type', 'mood');
+        $query->setParameter('item', $itemId);
+        $sources = $query->getResult();
+        $valNull = 0;
+        for ($i=0; $i<count($sources); $i++){
+            if ($sources[$i]["label"] === "") {
+                $valNull = $sources[$i]["value"];
+                array_splice($sources, $i, 1);
+            }
+        }
+        for ($i=0; $i<count($sources); $i++){
+            if ($sources[$i]["label"] == NULL) {
+                $sources[$i]["value"] += $valNull;
+                $sources[$i]["label"] = "NA";
+            }
+        }
+        $sources = new JsonResponse($sources);
+
+
 //
 //
 //        //number of exoticism by year
@@ -385,6 +414,7 @@ class ThesaurusController extends Controller
             'mood' => $mood,
             'numbers' => $numbers,
             'films' => $films,
+            'sources' => $sources
 //            'exoticismByYear' => $exoticismByYear
         ));
 

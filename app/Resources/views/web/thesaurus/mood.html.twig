@@ -5,31 +5,35 @@
     <section class="container">
 
         <header>
-            <h1 class="center">Mood</h1>
+            <h1 class="center">Topics and spectacular archetypes</h1>
+            <h1 class="center"><i>Scènes de genre et tonalité</i></h1>
+
+            <p>The project aims at identifying spectacular archetypes and recurring topics in the numbers. Each number can have one or several topics and a “general mood” indicating the tone employed.</p>
+            <p class="center">***</p>
+            <p><i>Une partie du projet vise à repérer dans les numéros des archétypes spectaculaires récurrents et des scènes de genre. Chaque numéro peut comporter un ou plusieurs de ces motifs, de même qu’une indication sur la tonalité générale et le traitement.</i></p>
         </header>
 
         <div>
-            <h2>General Mood</h2>
-            <article class="intro">
-
-                {% for item in popularmood %}
-                    <a href="{{ path('getOneMood', {'category' : item.category , 'itemId' : item.itemId }) }}" class="chip">{{ item.title }} ({{ item.nb }})</a>
-                {% endfor %}
-
-            </article>
+            <h2>Topics</h2>
 
             <article class="card row">
-                <div class=" col s12">
-                    <p><span class="number">{{ mood|length }}</span> different moods exist, <span class="number">{{ mostPopular.title }}</span> is the most used, <span class="number">{{ total.nb }}</span> moods have been saved for <span class="number">{{ totalNumber.nb }}</span> different numbers.</p>
+                <div class=" col s12 row">
+                    <p class="col m4 center">Existing topics : <span class="number">{{ moodGenre|length }}</span></p>
+                    <p class="col m4 center">Production numbers in the database : <span class="number">{{ totalNumberGenre.nb }}</span></p>
+                    <p class="col m4 center">Used topics : <span class="number">{{ totalGenre.nb }}</span></p>
+                    {#<p><span class="number"></span> different tones exist, <span class="number">{{ mostPopularGenre.title }}</span> is the most used, <span class="number"></span> moods have been saved for <span class="number"></span> different numbers.</p>#}
                 </div>
-            </article>
 
+                <div class='wordcloud col s12 row' id='wordcloud_topics' style="height: 500px"></div>
 
-            <article class="row">
+                {#<div class="col s12">#}
+                    {#{% for item in popularmoodGenre %}#}
+                        {#Prendre l'id?#}
+                        {#<a href="{{ path('getOneMood', {'category' : item.category , 'itemId' : item.itemId }) }}" class="chip">{{ item.title }} ({{ item.nb }})</a>#}
+                    {#{% endfor %}#}
+                {#</div>#}
 
-                <div id="chart_div" class="col s6" style=" height: 400px;"></div>
-
-                <div id="chart_div2" class="col s6" style="height: 400px;"></div>
+                <div id="chart_div3" class="col s12" style=" height: 400px; margin-bottom: 15px;"></div>
 
             </article>
 
@@ -40,44 +44,40 @@
         </div>
 
         <div>
-            <h2>Genre</h2>
-
-            <p>Camembert des genre par studio</p>
-
-            <article class="intro">
-
-                {% for item in popularmoodGenre %}
-                    {#Prendre l'id?#}
-                    <a href="{{ path('getOneMood', {'category' : item.category , 'itemId' : item.itemId }) }}" class="chip">{{ item.title }} ({{ item.nb }})</a>
-                {% endfor %}
-
-            </article>
-
+            <h2>General Mood</h2>
             <article class="card row">
-                <div class=" col s12">
-                    <p><span class="number">{{ moodGenre|length }}</span> different tones exist, <span class="number">{{ mostPopularGenre.title }}</span> is the most used, <span class="number">{{ totalGenre.nb }}</span> moods have been saved for <span class="number">{{ totalNumberGenre.nb }}</span> different numbers.</p>
+                <div class=" col s12 row">
+                    <p class="col m6 center">Existing moods : <span class="number">{{ mood|length }}</span></p>
+                    <p class="col m6 center">Used moods : <span class="number">{{ total.nb }}</span></p>
+                    {#<p><span class="number"></span> different moods exist, <span class="number">{{ mostPopular.title }}</span> is the most used, <span class="number">{{ total.nb }}</span> moods have been saved for <span class="number">{{ totalNumber.nb }}</span> different numbers.</p>#}
                 </div>
+
+                <div class='wordcloud col s12 row' id='wordcloud_general' style="height: 250px"></div>
+
+                {#<div class="col s12">#}
+                    {#{% for item in popularmood %}#}
+                        {#<a href="{{ path('getOneMood', {'category' : item.category , 'itemId' : item.itemId }) }}" class="chip">{{ item.title }} ({{ item.nb }})</a>#}
+                    {#{% endfor %}#}
+                {#</div>#}
+
+                <div id="chart_div" class="col s12" style=" height: 400px;"></div>
+
             </article>
 
-
-            <article class="row">
-
-                <div id="chart_div3" class="col s6" style=" height: 400px;"></div>
-
-                <div id="chart_div4" class="col s6" style="height: 400px;"></div>
-
-            </article>
 
             {#<article>#}
 
             {#by decade?#}
             {#</article>#}
         </div>
+
     </section>
 
 {% endblock %}
 
 {% block javascripts %}
+
+    {{ parent() }}
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -92,8 +92,8 @@
             ]);
 
             var options = {
-                title: 'Number of general mood',
-                legend: { position: 'none' },
+                title: 'Production Numbers per General Mood',
+                legend: { position: 'none' }
             };
             var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
             chart.draw(data, options);
@@ -104,14 +104,10 @@
                 pieHole: 0.4,
             };
 
-
-            var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
-            chart2.draw(data, options);
-
             var data3 = google.visualization.arrayToDataTable([
                 ['Name', 'Occurences'],
-                {% for item in popularmoodGenre %}
-                ['{{ item.title }}' , {{ item.nb }}],
+                {% for i in 0..20 %}
+                ['{{ popularmoodGenre[i].title }}' , {{ popularmoodGenre[i].nb }}],
                 {% endfor %}
             ]);
 
@@ -122,15 +118,32 @@
             var chart3 = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
             chart3.draw(data3, options);
 
-
-            var options = {
-                title: 'Ratio',
-                pieHole: 0.4,
-            };
-
-            var chart4 = new google.visualization.PieChart(document.getElementById('chart_div4'));
-            chart4.draw(data3, options);
         }
+    </script>
+
+
+
+    <script>
+        words_topics = [{% for item in popularmoodGenre  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneMood', {'category' : item.category , 'itemId' : item.itemId }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        $('#wordcloud_topics').jQCloud(words_topics);
+        $('#wordcloud_topics').jQCloud('update', words_topics, {
+            fontSize: {
+                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                from: 0.1,
+                to: 0.05
+            }
+        });
+
+
+        words_general = [{% for item in popularmood  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneMood', {'category' : item.category , 'itemId' : item.itemId }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        $('#wordcloud_general').jQCloud(words_general);
+        $('#wordcloud_general').jQCloud('update', words_general, {
+            fontSize: {
+                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                from: 0.1,
+                to: 0.05
+            }
+        });
     </script>
 
 {% endblock %}

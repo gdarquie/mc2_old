@@ -63,29 +63,37 @@
 
                     <div class="col s9">
 
-                        <div class="row card">
+                        <div class="row card_perso">
 
-                            <div class="col s12">
-                                <h2>General information</h2>
-                            </div>
-                            <div class="col s6">
-                                {% if film.studios[0] is defined %}
-                                    <p><strong>Studio :</strong> {% for item in film.studios  %}{{ item.title }}{%  if loop.last %}{% else %} ;{% endif %} {% endfor %}</p>
-                                {% endif %}
+                            <div id="general_info">
+                                <div class="col s12">
+                                    <h2>General information</h2>
+                                </div>
 
-                                {% if film.distributors[0] is defined %}
-                                    <p><strong>Distributor :</strong>{% for item in film.distributors %}{{ item.title }}{%  if loop.last %}{% else %} ;{% endif %} {% endfor %}</p>
-                                {% endif %}
+
+                                <div class="col s6">
+
+                                    <p><strong>Sample :</strong> {% if film.sample %} Yes {% else %} No {% endif %}</p>
+
+                                    {% if film.studios[0] is defined %}
+                                        <p><strong>Studio :</strong> {% for item in film.studios  %}{{ item.title }}{%  if loop.last %}{% else %} ;{% endif %} {% endfor %}</p>
+                                    {% endif %}
+
+                                    {#{% if film.distributors[0] is defined %}#}
+                                        {#<p><strong>Distributor :</strong>{% for item in film.distributors %}{{ item.title }}{%  if loop.last %}{% else %} ;{% endif %} {% endfor %}</p>#}
+                                    {#{% endif %}#}
+                                </div>
+
+                                <div class="col s6">
+                                    {% if film.directors[0] is defined %}
+                                        <p><strong>Director :</strong> {% for director in film.directors  %}{{ director.name }}{%  if loop.last %}{% else %}, {% endif %}{% endfor %}</p>
+                                    {% endif %}
+                                    {% if film.released is defined %}
+                                        <p><strong>Release date (New York) :</strong> {{ film.released }}</p>
+                                    {% endif %}
+                                </div>
                             </div>
 
-                            <div class="col s6">
-                                {% if film.directors[0] is defined %}
-                                    <p><strong>Director :</strong> {% for director in film.directors  %}{{ director.name }}{%  if loop.last %}{% else %} ;{% endif %}{% endfor %}</p>
-                                {% endif %}
-                                {% if film.released is defined %}
-                                    <p><strong>Released :</strong> {{ film.released }}</p>
-                                {% endif %}
-                            </div>
 
                             <div class="row">
 
@@ -109,7 +117,8 @@
                                         {% for number in film.numbers %}
                                             <tr>
                                                 <td>{{loop.index}}</td>
-                                                <td><a href="{{ path('number', {'id' : number.id}) }}">{{ number.title  }}</a></td>
+                                                <td><a class="img_hover" href="{{ path('number', {'id' : number.id}) }}">{{ number.title  }} <span><img
+                                                                    src="{{ asset("img/default_poster.jpg") }}" alt="image du number"></span></a></td>
                                                 <td>{{ ((number.beginTc)/(60*60))|round(0, 'floor') }}h{{ ((number.beginTc)/(60)) |round(0, 'floor')-(60*((number.beginTc)/(60*60)) |round(0, 'floor'))  }}m{{ (number.beginTc) |round(0, 'floor')-(60*((number.beginTc)/(60)) |round(0, 'floor')) }}s</td>
                                                 <td>{{ ((number.EndTc)/(60*60))|round(0, 'floor') }}h{{ ((number.EndTc)/(60)) |round(0, 'floor')-(60*((number.EndTc)/(60*60)) |round(0, 'floor'))  }}m{{ (number.EndTc) |round(0, 'floor')-(60*((number.EndTc)/(60)) |round(0, 'floor')) }}s</td>
                                                 <td>{{ ((number.length)/(60)) |round(0, 'floor')-(60*((number.length)/(60*60)) |round(0, 'floor'))  }}m{{ (number.length) |round(0, 'floor')-(60*((number.length)/(60)) |round(0, 'floor')) }}s</td>
@@ -243,7 +252,7 @@
 
                 <div class="row">
 
-                    <article id="tabTimelineContainer" class="col s3">
+                    <article id="tabTimelineContainer">
                         <h3> Cast </h3>
                         <div >
                             <table class="highlight mini-table" id="table_cast">
@@ -278,18 +287,145 @@
                             </table>
                         </div>
                     </article>
+                </div>
 
-                    <article id = "container" class="col s9">
+                <div class="row">
+
+                    <article id = "container">
                         <h3>Graphe/ Timeline</h3>
-                        <div class = "svg"></div>
+                        <div class = "svg" id="svg_timeline"></div>
                         <div id = "tag"></div>
                     </article>
                 </div>
 
             </div>
 
+
+{#--------------------------------------------------------------------------------------------------------------------------------------------#}
+{#-------------------------------------------------------  DEUXIEME ONGLET  ------------------------------------------------------------------#}
+{#--------------------------------------------------------------------------------------------------------------------------------------------#}
+
+
             <div id="tab2" class="myTab col s12">
-                <!-- Details -->
+
+                <section id="film_detail">
+                    <div class="row">
+
+                        <div class="col s12">
+
+                            <h2 class="titre_details">Recycling</h2>
+
+                            <table class="striped middle-table">
+                                <tr>
+                                    <th>Adaptation</th>
+                                    <th>Stageshows</th>
+                                    <th>Remake</th>
+                                    <th>Underscoring</th>
+                                </tr>
+
+                                <tr>
+                                    <td>{{ film.adaptation }}</td>
+                                    <td>
+                                        {% for stageshow in film.stageshows %}
+                                        {{ stageshow.title }}{% if not loop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {% if film.remake %}
+                                            Yes
+                                        {% endif %}
+
+                                        {% if film.remake is null %}
+
+                                        {% else %}
+                                            No
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% for underscoring in film.underscoring %}
+                                            {{ underscoring }}{% if not loop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </td>
+
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col s12" style="margin-bottom: 30px;">
+
+                            <h2 class="titre_details">Censorship</h2>
+
+                            <table class="striped middle-table">
+                                <tr>
+                                    <th>First opinion on the submitted script</th>
+                                    <th>Censored content</th>
+                                    <th>States where the film was censored</th>
+                                    <th>PCA text</th>
+                                </tr>
+
+                                <tr>
+                                    <td>{{ film.verdict }}</td>
+                                    <td>
+                                        {% for censorship in film.censorship %}
+                                            {{ censorship.title }}{% if not loop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {% for state in film.state %}
+                                            {{ state.title }}{% if not loop.last %}, {% endif %}
+                                        {% endfor %}
+
+                                    </td>
+                                    <td>
+                                        {{ film.pcaTexte }}
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+
+                        <div class="col s12">
+
+                            <table class="striped middle-table">
+                                <tr>
+                                    <th>Legion of Decency</th>
+                                    <th>Protestant Motion Picture Council</th>
+                                    <th>Harrison's Report</th>
+                                    <th>Film Estimate Board of National Organizations</th>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        {{ film.legion }}
+                                    </td>
+
+                                    <td>
+                                        {{ film.protestant }}
+                                    </td>
+
+                                    <td>
+                                        {{ film.harrisson }}
+                                    </td>
+                                    <td>
+                                        {{ film.bord }}
+                                    </td>
+
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
             </div>
 
         </div>
@@ -343,11 +479,17 @@
         function numberLengthData() {
             return  [
                 {% for number in numbersOf1Film %}
-                {"label" : "{{number.title}}",
+                {"label" : decodeHtml("{{number.title}}"),
                     "value" : "{{number.length}}"},
                 {% endfor %}
             ];
 
+        }
+
+        function decodeHtml(text) {
+            return text
+                .replace(/&amp;/g, "&")
+                .replace(/&#039;/g, "\'");
         }
 
         //Timeline Ale
