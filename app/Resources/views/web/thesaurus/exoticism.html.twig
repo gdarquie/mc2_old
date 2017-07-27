@@ -6,34 +6,46 @@
 
     <header>
         <h1 class="center">Exoticism</h1>
+        <h1 class="center"><i>Exotisme</i></h1>
+
+        <p>This page aims at establishing a classification of the exotic stereotypes in musical numbers. A single number may combine several types of exoticism (through the use of specific musical or dancing styles, costumes, lyrics, settings...). </p>
+        <p class="center">***</p>
+        <p><i>cette page propose un repérage des stéréotypes exotiques des numéros musicaux. Un numéro peut renvoyer à plusieurs formes d'exotisme (styles de danse ou de musique spécifiques, paroles de chanson, costumes, décors...).</i></p>
     </header>
 
-    <article class="intro">
 
-    {% for item in popularexoticism %}
-        <a href="{{ path('getOneExoticism', { 'item' : item.title }) }}" class="chip">{{ item.title }} ({{ item.nb }})</a>
-    {% endfor %}
+    <article class="card row" style="overflow: hidden">
 
-    </article>
-
-    <article class="card row">
-        <div class=" col s12">
-            <p><span class="number">{{ exoticism|length }}</span> different exoticisms exist, <span class="number">{{ mostPopular.title }}</span> is the most used, <span class="number">{{ total.nb }}</span> exoticisms have been saved for <span class="number">{{ totalNumber.nb }}</span> different numbers.</p>
+        <div class=" col s12 row">
+            <p class="col m4 center">Existing Types: <span class="number">{{ exoticism|length - 1 }}</span></p>
+            <p class="col m4 center">Used Types : <span class="number">{{ total.nb }}</span></p>
+            <p class="col m4 center">Total Numbers : <span class="number">{{ totalNumber.nb }}</span></p>
         </div>
+
+        <article class="intro">
+
+            {% for item in popularexoticism %}
+                <a href="{{ path('getOneExoticism', { 'item' : item.title }) }}" class="chip">{{ item.title }} ({{ item.nb }})</a>
+            {% endfor %}
+
+        </article>
+
+
+        <article class="row">
+
+            <div id="chart_div" class="col s6" style=" height: 500px;"></div>
+            <div id="div_donut" class="col s6" style="height: 500px">
+                <svg style="height: 500px;"></svg>
+            </div>
+        </article>
+
+        <article>
+            <p>Note : Most useful categories in the database for a specific research on the exoticism in musical numbers : Cast, Ethnic Stereotype, Diegetic Place, Imaginary Place, Costumes, Dancing Type, Dance Subgenre, Dance Content, Musical Style.</p>
+        </article>
+
     </article>
 
 
-    <article class="row">
-
-        <div id="chart_div" class="col s6" style=" height: 400px;"></div>
-
-        <div id="chart_div2" class="col s6" style="height: 400px;"></div>
-
-    </article>
-
-    <article>
-        <p>Ajouter les costumes, les imaginary et diegetic place, dance et musiques qui sont "exotic".</p>
-    </article>
 
     {#<article>#}
 
@@ -46,7 +58,10 @@
 
 {% block javascripts %}
 
+    {{ parent() }}
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{{ asset('js/donut_simple.js') }}"></script>
     <script type="text/javascript">
         google.charts.load("current", {packages:["corechart"]});
         google.charts.setOnLoadCallback(drawChart);
@@ -59,22 +74,38 @@
                 ]);
 
             var options = {
-                title: 'Number of exoticism',
-                legend: { position: 'none' },
+                title: 'Production Numbers per Exoticism',
+                legend: { position: 'none' }
             };
             var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
             chart.draw(data, options);
 
 
-            var options = {
-                title: 'Ratio',
-                pieHole: 0.4,
-            };
-
-
-            var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
-            chart2.draw(data, options);
+//            var options = {
+//                title: 'Share of Exoticisms',
+//                pieHole: 0.4
+//            };
+//
+//
+//            var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+//            chart2.draw(data, options);
         }
+    </script>
+
+
+    <script>
+
+        donut_simple_avec_legende("div_donut svg", {{ popularexoticismJson.content|raw }});
+
+
+
+        {#window.onload=function()   {  donut_simple_avec_legende("div_donut svg", {{ popularexoticismJson.content|raw }});#}
+
+        {#};#}
+        {#$( window ).on("load", function() {#}
+
+                {#document.getElementsByClassName("nv-series")[0].click();#}
+            {#});#}
     </script>
 
 {% endblock %}

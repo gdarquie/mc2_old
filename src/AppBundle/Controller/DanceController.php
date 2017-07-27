@@ -35,7 +35,7 @@ class DanceController extends Controller
         $content = $query->getResult();
 
         //top dancing
-        $query = $em -> createQuery('SELECT t.title as title, t.thesaurusId as thesaurusId, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.dancingType t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC');
+        $query = $em -> createQuery('SELECT t.title as title, t.thesaurusId as thesaurusId, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.dancingType t WHERE t.type = :type AND t.category = :category AND t.title != \'NA\' GROUP BY t.thesaurusId ORDER BY nb DESC');
         $query->setParameter('type', 'dance');
         $query->setParameter('category', 'Dancing type');
         $populardancing = $query->getResult();
@@ -76,6 +76,28 @@ class DanceController extends Controller
         $query = $em -> createQuery('SELECT AVG((n.length)/n.shots) as nb, f.released as released FROM AppBundle:Number n JOIN n.film f WHERE n.shots > 0 AND f.released > 0 GROUP BY f.released');
         $avgNbShots = $query->getResult();
 
+
+        $query = $em->createQuery("SELECT c.name as name, c.personId, n.title as title, n.id as id, f.title as film, f.filmId as filmId FROM AppBundle:Number n JOIN n.choregraphers c JOIN n.film f GROUP BY n.id");
+        $associated_choreographers = $query->getResult();
+
+        $top_associated_choreographers = [];
+
+        for ($i = 0; $i < count($associated_choreographers); $i++) {
+            $trouve=0;
+            for ($u = 0; $u < count($top_associated_choreographers); $u++) {
+                if ($associated_choreographers[$i]['personId'] == $top_associated_choreographers[$u]['personId'] && $trouve==0) {
+                    $trouve = 1;
+                    $top_associated_choreographers[$u]['total']++;
+                }
+            }
+            if ($trouve == 0) {
+                array_push($top_associated_choreographers, array("personId" => $associated_choreographers[$i]['personId'] , "name" => $associated_choreographers[$i]['name'], "total" => 1));
+            }
+        }
+
+        array_push($top_associated_choreographers, array("personId" => -1 , "name" => "Total", "total" => count($associated_choreographers)));
+
+
 //        //average number of shots by year for danced number
 //        $query = $em -> createQuery('SELECT AVG(n.shots) as nb, f.released as released FROM AppBundle:Number n JOIN f.film f GROUP BY f.released ');
 ////        $query->setParameter('instru', 'instrumental+dance');
@@ -92,7 +114,9 @@ class DanceController extends Controller
             'numberDancedNumber' => $numberDancedNumber,
             'nbfilmsWithDancedNumber' => $nbfilmsWithDancedNumber,
             'numberDancedNumber2' => $numberDancedNumber2,
-            'avgNbShots' => $avgNbShots
+            'avgNbShots' => $avgNbShots,
+            'associated_choreographers' => $associated_choreographers,
+            'top_associated_choreographers' => $top_associated_choreographers
         ));
 
     }
@@ -110,7 +134,7 @@ class DanceController extends Controller
         $filmsByDance = $query->getResult();
 
         //myDance
-        $query = $em->createQuery('SELECT DISTINCT(d.title) as title FROM AppBundle:Film f JOIN f.numbers n JOIN n.dancingType d WHERE d.thesaurusId = :dance');
+        $query = $em->createQuery('SELECT DISTINCT(d.title) as title, d.definition FROM AppBundle:Film f JOIN f.numbers n JOIN n.dancingType d WHERE d.thesaurusId = :dance');
         $query->setParameter('dance', $dance);
         $myDance = $query->getSingleResult();
 
@@ -166,7 +190,7 @@ class DanceController extends Controller
         $filmsByDance = $query->getResult();
 
         //myDance
-        $query = $em->createQuery('SELECT DISTINCT(d.title) as title FROM AppBundle:Film f JOIN f.numbers n JOIN n.danceContent d WHERE d.thesaurusId = :dance');
+        $query = $em->createQuery('SELECT DISTINCT(d.title) as title, d.definition FROM AppBundle:Film f JOIN f.numbers n JOIN n.danceContent d WHERE d.thesaurusId = :dance');
         $query->setParameter('dance', $dance);
         $myDance = $query->getSingleResult();
 
@@ -220,7 +244,7 @@ class DanceController extends Controller
         $filmsByDance = $query->getResult();
 
         //myDance
-        $query = $em->createQuery('SELECT DISTINCT(d.title) as title, d.thesaurusId as thesaurusId FROM AppBundle:Film f JOIN f.numbers n JOIN n.danceSubgenre d WHERE d.thesaurusId = :dance');
+        $query = $em->createQuery('SELECT DISTINCT(d.title) as title, d.definition, d.thesaurusId as thesaurusId FROM AppBundle:Film f JOIN f.numbers n JOIN n.danceSubgenre d WHERE d.thesaurusId = :dance');
         $query->setParameter('dance', $dance);
         $myDance = $query->getSingleResult();
 
@@ -264,6 +288,10 @@ class DanceController extends Controller
         $query->setParameter('dance', $dance);
         $numbers = $query->getResult();
 
+        $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.danceSubgenre d JOIN n.film f WHERE d.thesaurusId = :dance ORDER BY f.released ASC');
+        $query->setParameter('dance', $dance);
+        $numbersFinal = $query->getResult();
+
 
         return $this->render('web/dance/danceSubgenre.html.twig', array(
             'filmsByDance' => $filmsByDance,
@@ -275,7 +303,8 @@ class DanceController extends Controller
             'dancembles' => $dancembles,
             'costumes' => $costumes,
             'exoticisms' => $exoticisms,
-            "numbers" => $numbers
+            'numbers' => $numbers,
+            'numbersFinal' => $numbersFinal
 
         ));
 

@@ -79,6 +79,15 @@ function donut_simple_avec_legende(container, data, donut,myColors) {
         }
 
 
+        var clickEvent = new MouseEvent("click", {
+            "view": window,
+            "bubbles": true,
+            "cancelable": false
+        });
+
+        document.getElementsByClassName("nv-series")[0].dispatchEvent(clickEvent);
+        document.getElementsByClassName("nv-series")[0].dispatchEvent(clickEvent);
+
         return chart;
     });
 }

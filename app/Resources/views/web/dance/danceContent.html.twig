@@ -17,14 +17,17 @@
 
     <section class="container">
         <h1>Dance : {{ myDance.title }}</h1>
+        <p><i>{{ myDance.definition }}</i></p>
 
-        <article>
-            <h2>"{{ myDance.title }}" by year</h2>
-           <div id="diagram"></div>
+
+        <article class="card row">
+            <h2>Production Numbers per Year</h2>
+           <div id="diagram" style="height: 300px;"></div>
         </article>
 
         <article class="card row">
             <h2>Dancing ensemble</h2>
+            <h2><i>Formation</i></h2>
 
             <div class="col s7 donut" id="donut_ensemble"><svg></svg></div>
 
@@ -35,53 +38,94 @@
             </div>
         </article>
 
-
         <article class="card row">
-            <h2>Exoticism</h2>
-
-            <div class="col s7 donut" id="donut_exoticisms"><svg></svg></div>
-
-            <div class="col s5">
-                {% for item in exoticisms  %}
-                    <span class="chip">{{ item.title }} ({{ item.nb }})</span>
-                {% endfor %}
-            </div>
-        </article>
-
-
-        <article>
-            <h2>List of movies with {{ myDance.title }} dance</h2>
-
-            <div class="liste row">
-                {% for film in filmsByDance  %}
-                    <div class="card horizontal col s4 ">
-                        {% if film.imdb %}
-                            <img src="http://img.omdbapi.com/?i={{ film.imdb }}&apikey=1733f6a&h=100" alt="poster">
-                        {% endif %}
-                        <a href="{{ path('film', {'filmId' : film.filmId}) }}"><h3>{{ film.title }}</h3></a>
-                    </div>
-                {% endfor %}
-            </div>
-        </article>
-
-        <article class="card">
 
             <h2>List of numbers</h2>
 
-            <table class="striped">
-                <tr>
-                    <th>Number</th>
-                    <th>Film</th>
-                </tr>
-                {% for item in numbers %}
+            <div id="table_one_dancecontent" class="row">
+                <input class="search" placeholder="Search" />
+                <table class="striped medium-table tablesorter">
+                    <thead>
                     <tr>
-                        <td>{{ item.title }}</td>
-                        <td>{{ item.film }}</td>
+                        <th>Number</th>
+                        <th>Film</th>
+                        <th>Release Date</th>
+                        <th>Studio</th>
+                        <th>Musical Style</th>
                     </tr>
-                {% endfor %}
-            </table>
+                    </thead>
+                    <tbody class="list">
 
+                    {% for number in numbers  %}
+
+                    <tr>
+                        <td class="list_number"><a href="{{ path('number', {'id' : number.id}) }}">{{ number.title }}</a></td>
+                        <td class="list_film"><a href="{{ path('film', {'filmId' : number.film.filmId}) }}">{{ number.film.title }}</a></td>
+                        <td class="list_release_date">{{ number.film.released }}</td>
+                        <td class="list_studio">
+                            {% for studio in number.film.studios %}
+                                {{ studio.title }}{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td class="list_style">
+                            {% for style in number.musicalThesaurus %}
+                                {{ style.title }}{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <ul class="pagination"></ul>
+            </div>
         </article>
+
+        {#<article class="card row">#}
+            {#<h2>Exoticism</h2>#}
+
+            {#<div class="col s7 donut" id="donut_exoticisms"><svg></svg></div>#}
+
+            {#<div class="col s5">#}
+                {#{% for item in exoticisms  %}#}
+                    {#<span class="chip">{{ item.title }} ({{ item.nb }})</span>#}
+                {#{% endfor %}#}
+            {#</div>#}
+        {#</article>#}
+
+
+        {#<article>#}
+            {#<h2>List of movies with {{ myDance.title }} dance</h2>#}
+
+            {#<div class="liste row">#}
+                {#{% for film in filmsByDance  %}#}
+                    {#<div class="card horizontal col s4 ">#}
+                        {#{% if film.imdb %}#}
+                            {#<img src="http://img.omdbapi.com/?i={{ film.imdb }}&apikey=1733f6a&h=100" alt="poster">#}
+                        {#{% endif %}#}
+                        {#<a href="{{ path('film', {'filmId' : film.filmId}) }}"><h3>{{ film.title }}</h3></a>#}
+                    {#</div>#}
+                {#{% endfor %}#}
+            {#</div>#}
+        {#</article>#}
+
+        {#<article class="card">#}
+
+            {#<h2>List of numbers</h2>#}
+
+            {#<table class="striped">#}
+                {#<tr>#}
+                    {#<th>Number</th>#}
+                    {#<th>Film</th>#}
+                {#</tr>#}
+                {#{% for item in numbers %}#}
+                    {#<tr>#}
+                        {#<td>{{ item.title }}</td>#}
+                        {#<td>{{ item.film }}</td>#}
+                    {#</tr>#}
+                {#{% endfor %}#}
+            {#</table>#}
+
+        {#</article>#}
 
 
         {#<article>#}
@@ -121,28 +165,28 @@
     {{ parent() }}
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{{ asset('assets/vendor/list.js/docs/assets/javascripts/list.min.js') }}"></script>
+
     <script type="text/javascript">
         google.charts.load('current', {packages: ['corechart', 'line']});
         google.charts.setOnLoadCallback(drawBasic);
         function drawBasic() {
             //diagram
             var data = new google.visualization.DataTable();
-            data.addColumn('number', 'Year');
-            data.addColumn('number', 'Occurence');
+            data.addColumn('date', 'Year');
+            data.addColumn('number', 'Numbers');
 
             data.addRows([
                 {% for item in danceContentByYear %}
-                [{{ item.released }}, {{ item.nb }}],
+                [new Date({{ item.released }}, 0, 1), {{ item.nb }}],
                 {% endfor %}
             ]);
 
+            var formatter = new google.visualization.DateFormat({pattern: 'yyyy'});
+            formatter.format(data, 0);
+
             var options = {
-                hAxis: {
-                    title: 'Years'
-                },
-                vAxis: {
-                    title: 'Occurences'
-                },
+
             };
 
 
@@ -212,6 +256,31 @@
                 {% endfor %}
             ];
         }
+    </script>
+
+    <script>
+
+        {% if numbers|length < 16 %}
+
+        var options = {
+            valueNames: ['list_number', 'list_film', 'list_release_date', 'list_studio', 'list_style']
+        };
+
+        {% endif %}
+
+
+        {% if numbers|length > 15 %}
+
+        var options = {
+            valueNames: ['list_number', 'list_film', 'list_release_date', 'list_studio', 'list_style'],
+            page: 15,
+            pagination: true
+        };
+
+        {% endif %}
+
+        var numberList = new List('table_one_dancecontent', options);
+
     </script>
 
 {% endblock %}

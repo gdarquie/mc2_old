@@ -177,9 +177,16 @@ class ThesaurusController extends Controller
         $exoticism = $query->getResult();
 
         //all most popular exoticism in numbers
-        $query = $em -> createQuery('SELECT t.title as title, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type GROUP BY t.thesaurusId ORDER BY nb DESC');
+        $query = $em -> createQuery('SELECT t.title as title, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type AND t.thesaurusId != 436 GROUP BY t.thesaurusId ORDER BY nb DESC');
         $query->setParameter('type', 'exoticism');
         $popularexoticism = $query->getResult();
+
+        $query = $em -> createQuery('SELECT t.title as label, COUNT(t.title) as value FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type GROUP BY t.thesaurusId ORDER BY value DESC');
+        $query->setParameter('type', 'exoticism');
+        $popularexoticismJson = $query->getResult();
+        $popularexoticismJson = new JsonResponse($popularexoticismJson);
+
+
 
         //the most popular
         $query = $em -> createQuery('SELECT t.title as title,  COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type GROUP BY t.thesaurusId ORDER BY nb DESC')->setMaxResults(1);
@@ -187,12 +194,12 @@ class ThesaurusController extends Controller
         $mostPopular = $query->getSingleResult();
 
         //total of cited exoticism
-        $query = $em -> createQuery('SELECT COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type ');
+        $query = $em -> createQuery('SELECT COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type AND t.thesaurusId != 436');
         $query->setParameter('type', 'exoticism');
         $total = $query->getSingleResult();
 
         //total of number with exoticism
-        $query = $em -> createQuery('SELECT COUNT(DISTINCT(n.title)) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type ');
+        $query = $em -> createQuery('SELECT COUNT(DISTINCT(n.id)) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type AND t.thesaurusId != 436 ');
         $query->setParameter('type', 'exoticism');
         $totalNumber = $query->getSingleResult();
 
@@ -201,6 +208,7 @@ class ThesaurusController extends Controller
         return $this->render('web/thesaurus/exoticism.html.twig' , array(
             'exoticism' => $exoticism,
             'popularexoticism' => $popularexoticism,
+            'popularexoticismJson' => $popularexoticismJson,
             'mostPopular' => $mostPopular,
             'total' => $total,
             'totalNumber' => $totalNumber
@@ -227,6 +235,13 @@ class ThesaurusController extends Controller
         $query->setParameter('item', $item);
         $numbers = $query->getResult();
 
+        $query = $em -> createQuery('SELECT n FROM AppBundle:Number n JOIN n.exoticism_thesaurus e WHERE e.type = :type AND e.title = :item ORDER by n.id');
+        $query->setParameter('type', 'exoticism');
+        $query->setParameter('item', $item);
+        $numbersTotal = $query->getResult();
+
+
+
         //list of films for 1 exoticism
         $query = $em -> createQuery('SELECT f.title as filmTitle, f.filmId as filmId, f.idImdb as imdb, COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus e JOIN n.film f  WHERE e.type = :type AND e.title = :item GROUP BY f.filmId');
         $query->setParameter('type', 'exoticism');
@@ -240,12 +255,19 @@ class ThesaurusController extends Controller
         $query->setParameter('item', $item);
         $exoticismByYear = $query->getResult();
 
+        $query = $em -> createQuery('SELECT s.title as title, COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus e JOIN n.film f JOIN f.studios s WHERE e.type = :type AND e.title = :item GROUP BY s.studioId ORDER BY nb DESC');
+        $query->setParameter('type', 'exoticism');
+        $query->setParameter('item', $item);
+        $studios = $query->getResult();
+
 
         return $this->render('web/thesaurus/oneexoticism.html.twig' , array(
             'exoticism' => $exoticism,
             'numbers' => $numbers,
+            'numbersTotal' => $numbersTotal,
             'films' => $films,
-            'exoticismByYear' => $exoticismByYear
+            'exoticismByYear' => $exoticismByYear,
+            'studios' => $studios
         ));
 
     }

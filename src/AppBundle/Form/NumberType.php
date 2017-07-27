@@ -398,7 +398,7 @@ class NumberType extends AbstractType
             ])
 //            ->add('validationDance')
 
-            //Music
+            //music
             ->add('song', EntityType::class, array(
                 'class' => 'AppBundle:Song',
                 'multiple' => true,

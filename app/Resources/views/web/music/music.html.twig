@@ -1,0 +1,190 @@
+{% extends 'base.html.twig' %}
+
+
+{%  block stylesheets %}
+    {{ parent() }}
+    <style>
+        .card{
+            padding : 30px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+
+<section class="container" id="exoticism">
+
+    <header>
+        <h1 class="center">Music</h1>
+        <h1 class="center"><i>Musique</i></h1>
+    </header>
+
+
+    <article class="card row" style="overflow: hidden">
+
+        <h2>Songs in Musical Numbers</h2>
+        
+        <h3><a href="{{ path('songs') }}">List of all songs</a></h3>
+
+    </article>
+
+    <article class="card row" style="overflow: hidden">
+
+        <h2>List of Composers</h2>
+
+        <div id="table_composers" class="row">
+            <input class="search" placeholder="Search" />
+            <table class="striped medium-table tablesorter">
+                <thead>
+                <tr>
+                    <th>Composer</th>
+                    <th>Songs</th>
+                </tr>
+                </thead>
+                <tbody class="list">
+
+                {% for composer in listComposers  %}
+
+                <tr>
+                    <td class="list_composer_name"><a href="{{ path('person', {'personId' : composer.id}) }}">{{ composer.name }}</a></td>
+                    <td class="list_composer_songs">{{ composer.nbSongs }}</td>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <ul class="pagination"></ul>
+        </div>
+
+    </article>
+
+    <article class="card row" style="overflow: hidden">
+
+        <h2>List of Lyricists</h2>
+
+        <div id="table_lyricists" class="row">
+            <input class="search" placeholder="Search" />
+            <table class="striped medium-table tablesorter">
+                <thead>
+                <tr>
+                    <th>Lyricist</th>
+                    <th>Songs</th>
+                </tr>
+                </thead>
+                <tbody class="list">
+
+                {% for lyricist in listLyricists  %}
+
+                <tr>
+                    <td class="list_lyricist_name"><a href="{{ path('person', {'personId' : lyricist.id}) }}">{{ lyricist.name }}</a></td>
+                    <td class="list_lyricist_songs">{{ lyricist.nbSongs }}</td>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <ul class="pagination"></ul>
+        </div>
+
+
+    </article>
+
+    <article class="card row" style="overflow: hidden">
+
+        <h2>List of Arrangers</h2>
+
+        <div id="table_arrangers" class="row">
+            <input class="search" placeholder="Search" />
+            <table class="striped medium-table tablesorter">
+                <thead>
+                <tr>
+                    <th>Arranger</th>
+                    <th>Numbers</th>
+                </tr>
+                </thead>
+                <tbody class="list">
+
+                {% for arranger in listArrangers  %}
+
+                <tr>
+                    <td class="list_arranger_name"><a href="{{ path('person', {'personId' : arranger.id}) }}">{{ arranger.name }}</a></td>
+                    <td class="list_arranger_songs">{{ arranger.nbSongs }}</td>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <ul class="pagination"></ul>
+        </div>
+
+
+    </article>
+
+
+    <article class="card row">
+        <h2>Production Numbers per Musical Style</h2>
+
+        <div id="div_viz" class="col s12" style=" height: 500px;"></div>
+    </article>
+
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{{ asset('assets/vendor/list.js/docs/assets/javascripts/list.min.js') }}"></script>
+
+    <script>
+
+        var optionsComposer = {
+            valueNames: ['list_composer_name', 'list_composer_songs'],
+            page: 15,
+            pagination: true
+        };
+
+        var ComposerList = new List('table_composers', optionsComposer);
+
+
+
+        var optionsLyricist = {
+            valueNames: ['list_lyricist_name', 'list_lyricist_songs'],
+            page: 15,
+            pagination: true
+        };
+
+        var LyricistList = new List('table_lyricists', optionsLyricist);
+
+
+        var optionsArranger = {
+            valueNames: ['list_arranger', 'list_arranger_songs'],
+            page: 15,
+            pagination: true
+        };
+
+        var ArrangerList = new List('table_arrangers', optionsArranger);
+
+
+    </script>
+
+
+    <script>
+
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Name', 'Occurences'],
+                {% for item in musicalStyle %}
+                ['{{ item.title }}', {{ item.nb }}],
+                {% endfor %}
+            ]);
+
+            var options = {
+                legend: {position: 'none'}
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('div_viz'));
+            chart.draw(data, options);
+        }
+
+    </script>
+
+{% endblock %}
