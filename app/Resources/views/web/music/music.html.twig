@@ -40,6 +40,7 @@
                 <tr>
                     <th>Composer</th>
                     <th>Songs</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody class="list">
@@ -49,10 +50,50 @@
                 <tr>
                     <td class="list_composer_name"><a href="{{ path('person', {'personId' : composer.id}) }}">{{ composer.name }}</a></td>
                     <td class="list_composer_songs">{{ composer.nbSongs }}</td>
+                    <td><a class="waves-effect waves-light composer_btn_top" href="#modal1" data-name="{{ composer.name }}">Show More</a></td>
+                </tr>
                     {% endfor %}
                 </tbody>
             </table>
             <ul class="pagination"></ul>
+        </div>
+
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <div id="composer_number_table">
+
+                    <input class="search" placeholder="Search" />
+
+                    <table class="striped medium-table tablesorter">
+                        <thead>
+                        <tr>
+                            <th>Associated composer</th>
+                            <th>Number</th>
+                            <th>Film</th>
+                            <th>Number of songs</th>
+                        </tr>
+                        </thead>
+                        <tbody class="list">
+                        {% for item in listNumberComposers  %}
+                        {% for number in item.number  %}
+                            <tr>
+                                <td class="composer_name">{% for composer in item.composer  %}{{ composer.name }}{% if not loop.last %}, {% endif %} {% endfor %}</td>
+                                <td class="composer_number"><a href="{{ path('number' ,{'id' : number.id}) }}">{{ number.title }}</a></td>
+                                <td class="composer_film"><a href="{{ path('film' ,{'filmId' : number.film.filmId}) }}">{{ number.film }}</a></td>
+                                <td class="composer_song">{% for song in number.song  %}<a href="{{ path('song' ,{'songId' : song.songId}) }}">{{ song }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</td>
+                            </tr>
+                        {% endfor %}
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                    <ul class="pagination"></ul>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
         </div>
 
     </article>
@@ -67,7 +108,8 @@
                 <thead>
                 <tr>
                     <th>Lyricist</th>
-                    <th>Songs</th>
+                    <th>Number of songs</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody class="list">
@@ -77,10 +119,50 @@
                 <tr>
                     <td class="list_lyricist_name"><a href="{{ path('person', {'personId' : lyricist.id}) }}">{{ lyricist.name }}</a></td>
                     <td class="list_lyricist_songs">{{ lyricist.nbSongs }}</td>
+                    <td><a class="waves-effect waves-light lyricist_btn_top" href="#modal2" data-name="{{ lyricist.name }}">Show More</a></td>
+                </tr>
                     {% endfor %}
                 </tbody>
             </table>
             <ul class="pagination"></ul>
+        </div>
+
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <div id="lyricist_number_table">
+
+                    <input class="search" placeholder="Search" />
+
+                    <table class="striped medium-table tablesorter">
+                        <thead>
+                        <tr>
+                            <th>Associated lyricist</th>
+                            <th>Number</th>
+                            <th>Film</th>
+                            <th>Song</th>
+                        </tr>
+                        </thead>
+                        <tbody class="list">
+                        {% for item in listNumberLyricists  %}
+                            {% for number in item.number  %}
+                                <tr>
+                                    <td class="lyricist_name">{% for lyricist in item.lyricist  %}{{ lyricist.name }}{% if not loop.last %}, {% endif %} {% endfor %}</td>
+                                    <td class="lyricist_number"><a href="{{ path('number' ,{'id' : number.id}) }}">{{ number.title }}</a></td>
+                                    <td class="lyricist_film"><a href="{{ path('film' ,{'filmId' : number.film.filmId}) }}">{{ number.film }}</a></td>
+                                    <td class="lyricist_song">{% for song in number.song  %}<a href="{{ path('song' ,{'songId' : song.songId}) }}">{{ song }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                    <ul class="pagination"></ul>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
         </div>
 
 
@@ -97,19 +179,58 @@
                 <tr>
                     <th>Arranger</th>
                     <th>Numbers</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody class="list">
 
                 {% for arranger in listArrangers  %}
-
                 <tr>
                     <td class="list_arranger_name"><a href="{{ path('person', {'personId' : arranger.id}) }}">{{ arranger.name }}</a></td>
                     <td class="list_arranger_songs">{{ arranger.nbSongs }}</td>
-                    {% endfor %}
+                    <td><a class="waves-effect waves-light arranger_btn_top" href="#modal3" data-name="{{ arranger.name }}">Show More</a></td>
+                </tr>
+                {% endfor %}
                 </tbody>
             </table>
             <ul class="pagination"></ul>
+        </div>
+
+
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+                <div id="arranger_number_table">
+
+                    <input class="search" placeholder="Search" />
+
+                    <table class="striped medium-table tablesorter">
+                        <thead>
+                        <tr>
+                            <th>Associated arranger</th>
+                            <th>Number</th>
+                            <th>Film</th>
+                            <th>Song</th>
+                        </tr>
+                        </thead>
+                        <tbody class="list">
+                        {% for item in listNumberArrangers  %}
+                                <tr>
+                                    <td class="arranger_name">{% for arranger in item.arrangers  %}{{ arranger.name }}{% if not loop.last %}, {% endif %} {% endfor %}</td>
+                                    <td class="arranger_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.title }}</a></td>
+                                    <td class="arranger_film"><a href="{{ path('film' ,{'filmId' : item.film.filmId}) }}">{{ item.film }}</a></td>
+                                    <td class="arranger_song">{% for song in item.song  %}<a href="{{ path('song' ,{'songId' : song.songId}) }}">{{ song }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</td>
+                                </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                    <ul class="pagination"></ul>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
         </div>
 
 
@@ -118,6 +239,12 @@
 
     <article class="card row">
         <h2>Production Numbers per Musical Style</h2>
+
+        <article>
+            {% for item in musicalStyle  %}
+                <a href="{{ path('getOneMusicalStyle', {'musicalStyle' : item.id}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
+            {% endfor %}
+        </article>
 
         <div id="div_viz" class="col s12" style=" height: 500px;"></div>
     </article>
@@ -136,31 +263,49 @@
     <script>
 
         var optionsComposer = {
-            valueNames: ['list_composer_name', 'list_composer_songs'],
-            page: 15,
-            pagination: true
+            valueNames: ['list_composer_name', 'list_composer_songs']
         };
 
         var ComposerList = new List('table_composers', optionsComposer);
 
 
-
-        var optionsLyricist = {
-            valueNames: ['list_lyricist_name', 'list_lyricist_songs'],
+        var optionsNumberComposer = {
+            valueNames: ['composer_name', 'composer_number', 'composer_film', 'composer_song'],
             page: 15,
             pagination: true
+        };
+
+        var ComposerNumberList = new List('composer_number_table', optionsNumberComposer);
+
+
+
+        var optionsLyricist = {
         };
 
         var LyricistList = new List('table_lyricists', optionsLyricist);
 
-
-        var optionsArranger = {
-            valueNames: ['list_arranger', 'list_arranger_songs'],
+        var optionsNumberLyricist = {
+            valueNames: ['lyricist_name', 'lyricist_number', 'lyricist_film', 'lyricist_song'],
             page: 15,
             pagination: true
         };
 
+        var LyricistNumberList = new List('lyricist_number_table', optionsNumberLyricist);
+
+
+        var optionsArranger = {
+
+        };
+
         var ArrangerList = new List('table_arrangers', optionsArranger);
+
+        var optionsNumberArranger = {
+            valueNames: ['arranger_name', 'arranger_number', 'arranger_film', 'arranger_song'],
+            page: 15,
+            pagination: true
+        };
+
+        var ArrangerNumberList = new List('arranger_number_table', optionsNumberArranger);
 
 
     </script>
@@ -186,5 +331,75 @@
         }
 
     </script>
+
+    <script>
+
+        var composer_name = document.getElementsByClassName("composer_btn_top");
+        for (var i = 0; i < composer_name.length; i++) {
+            composer_name[i].addEventListener('click', function () {
+                if(this.dataset.name == "Total") {
+                    ComposerNumberList.search("");
+                } else {
+                    ComposerNumberList.search(this.dataset.name);
+                }
+            });
+        }
+
+        var optionsComposer = {
+            valueNames: ['list_composer_name', 'list_composer_songs'],
+            page: 15,
+            pagination: true
+        };
+
+        var ComposerList = new List('table_composers', optionsComposer);
+
+
+
+
+        var lyricist_name = document.getElementsByClassName("lyricist_btn_top");
+        for (var i = 0; i < lyricist_name.length; i++) {
+            lyricist_name[i].addEventListener('click', function () {
+                if(this.dataset.name == "Total") {
+                    LyricistNumberList.search("");
+                } else {
+                    LyricistNumberList.search(this.dataset.name);
+                }
+            });
+        }
+
+        var optionsLyricist = {
+            valueNames: ['list_lyricist_name', 'list_lyricist_songs'],
+            page: 15,
+            pagination: true
+        };
+
+        var LyricistList = new List('table_lyricists', optionsLyricist);
+
+
+
+
+        var arranger_name = document.getElementsByClassName("arranger_btn_top");
+        for (var i = 0; i < arranger_name.length; i++) {
+            arranger_name[i].addEventListener('click', function () {
+                if(this.dataset.name == "Total") {
+                    ArrangerNumberList.search("");
+                } else {
+                    ArrangerNumberList.search(this.dataset.name);
+                }
+            });
+        }
+
+        var optionsArranger = {
+            valueNames: ['list_arranger_name', 'list_arranger_songs'],
+            page: 15,
+            pagination: true
+        };
+
+        var ArrangerList = new List('table_arrangers', optionsArranger);
+
+
+
+    </script>
+
 
 {% endblock %}
