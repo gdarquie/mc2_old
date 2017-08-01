@@ -10,6 +10,11 @@
         .donut{
             height: 400px;
         }
+
+        .list_film, .list_number {
+            color: #039be5;
+            cursor: pointer; cursor: hand;
+        }
     </style>
 {% endblock %}
 
@@ -39,11 +44,13 @@
                 <svg></svg>
             </div>
 
-            <div class="col s5">
-            {% for item in dancings  %}
-                <a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'dancing' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }} ({{ item.nb }})</span></a>
-            {% endfor %}
-            </div>
+            <div class='wordcloud col s5 row' id='wordcloud_type' style="height: 300px"></div>
+
+            {#<div class="col s5">#}
+            {#{% for item in dancings  %}#}
+                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'dancing' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }} ({{ item.nb }})</span></a>#}
+            {#{% endfor %}#}
+            {#</div>#}
         </article>
 
         <article class="card row">
@@ -53,11 +60,13 @@
                 <svg></svg>
             </div>
 
-            <div class="col s5">
-            {% for item in contents %}
-                <a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'content' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
-            {% endfor %}
-            </div>
+            <div class='wordcloud col s5 row' id='wordcloud_content' style="height: 300px"></div>
+
+            {#<div class="col s5">#}
+            {#{% for item in contents %}#}
+                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'content' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>#}
+            {#{% endfor %}#}
+            {#</div>#}
         </article>
 
         <article class="card row">
@@ -68,11 +77,13 @@
                 <svg></svg>
             </div>
 
-            <div class="col s5">
-            {% for item in dancembles %}
-                <a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'ensemble' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>
-            {% endfor %}
-            </div>
+            <div class='wordcloud col s5 row' id='wordcloud_dancemble' style="height: 300px"></div>
+
+            {#<div class="col s5">#}
+            {#{% for item in dancembles %}#}
+                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'ensemble' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>#}
+            {#{% endfor %}#}
+            {#</div>#}
         </article>
 
         <article class="card row">
@@ -82,11 +93,13 @@
                 <svg></svg>
             </div>
 
-            <div class="col s5">
-            {% for item in costumes %}
-                <a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'costume' , 'itemId' :item.thesaurusId }) }}"><span class="chip truncate">{{ item.title }}({{ item.nb }})</span></a>
-            {% endfor %}
-            </div>
+            <div class='wordcloud col s5 row' id='wordcloud_costume' style="height: 300px"></div>
+
+            {#<div class="col s5">#}
+            {#{% for item in costumes %}#}
+                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'costume' , 'itemId' :item.thesaurusId }) }}"><span class="chip truncate">{{ item.title }}({{ item.nb }})</span></a>#}
+            {#{% endfor %}#}
+            {#</div>#}
         </article>
 
 
@@ -96,14 +109,14 @@
 
             <div id="table_one_dancesubgenre" class="row">
                 <input class="search" placeholder="Search" />
-                <table class="striped medium-table tablesorter">
+                <table class="striped medium-table">
                     <thead>
                     <tr>
-                        <th>Number</th>
-                        <th>Film</th>
-                        <th>Release Date</th>
-                        <th>Studio</th>
-                        <th>Musical Style</th>
+                        <th onclick="sortPerso(this, 'list_number')" data-cpt="0">Number</th>
+                        <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film</th>
+                        <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date</th>
+                        <th onclick="sortPerso(this, 'list_studio')" data-cpt="0">Studio</th>
+                        <th onclick="sortPerso(this, 'list_style')" data-cpt="0">Musical Style</th>
                     </tr>
                     </thead>
                     <tbody class="list">
@@ -111,8 +124,8 @@
                     {% for number in numbersFinal  %}
 
                     <tr>
-                        <td class="list_number"><a href="{{ path('number', {'id' : number.id}) }}">{{ number.title }}</a></td>
-                        <td class="list_film"><a href="{{ path('film', {'filmId' : number.film.filmId}) }}">{{ number.film.title }}</a></td>
+                        <td onclick="window.location.href='{{ path('number', {'id' : number.id}) }}';" class="list_number">{{ number.title }}</td>
+                        <td onclick="window.location.href='{{ path('film', {'filmId' : number.film.filmId}) }}';" class="list_film">{{ number.film.title }}</td>
                         <td class="list_release_date">{{ number.film.released }}</td>
                         <td class="list_studio">
                             {% for studio in number.film.studios %}
@@ -424,6 +437,67 @@
 
         var numberList = new List('table_one_dancesubgenre', options);
 
+    </script>
+
+    <script>
+
+        words_type = [{% for item in dancings  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'dancing' , 'itemId' :item.thesaurusId }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        $('#wordcloud_type').jQCloud(words_type);
+        $('#wordcloud_type').jQCloud('update', words_type, {
+            fontSize: {
+                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                from: 0.1,
+                to: 0.05
+            }
+        });
+
+        words_content = [{% for item in contents  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'content' , 'itemId' :item.thesaurusId }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        $('#wordcloud_content').jQCloud(words_content);
+        $('#wordcloud_content').jQCloud('update', words_content, {
+            fontSize: {
+                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                from: 0.1,
+                to: 0.05
+            }
+        });
+
+
+        words_dancemble = [{% for item in dancembles  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'ensemble' , 'itemId' :item.thesaurusId }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        $('#wordcloud_dancemble').jQCloud(words_dancemble);
+        $('#wordcloud_dancemble').jQCloud('update', words_dancemble, {
+            fontSize: {
+                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                from: 0.1,
+                to: 0.05
+            }
+        });
+
+
+
+        words_costume = [{% for item in costumes  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'costume' , 'itemId' :item.thesaurusId }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        $('#wordcloud_costume').jQCloud(words_costume);
+        $('#wordcloud_costume').jQCloud('update', words_costume, {
+            fontSize: {
+                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                from: 0.1,
+                to: 0.05
+            }
+        });
+
+
+    </script>
+
+    <script>
+        function sortPerso(element, col) {
+
+            if (element.dataset.cpt%2 == 0) {
+                numberList.sort(col, {order : "asc"});
+                element.dataset.cpt++;
+            } else {
+                numberList.sort(col, {order : "desc"});
+                element.dataset.cpt++;
+            }
+        }
     </script>
 
     {#<script>#}

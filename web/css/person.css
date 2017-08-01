@@ -67,6 +67,10 @@
     height: 300px;
 }
 
+.link_perso {
+    color: #039be5;
+    cursor: pointer; cursor: hand;
+}
 
 
 

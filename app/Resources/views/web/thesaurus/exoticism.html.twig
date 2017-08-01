@@ -22,11 +22,13 @@
             <p class="col m4 center">Total Numbers : <span class="number">{{ totalNumber.nb }}</span></p>
         </div>
 
-        <article class="intro">
+        <article>
 
-            {% for item in popularexoticism %}
-                <a href="{{ path('getOneExoticism', { 'item' : item.title }) }}" class="chip">{{ item.title }} ({{ item.nb }})</a>
-            {% endfor %}
+            <div class='wordcloud col s12 row' id='wordcloud_exotism' style="height: 300px"></div>
+
+            {#{% for item in popularexoticism %}#}
+                {#<a href="{{ path('getOneExoticism', { 'item' : item.title }) }}" class="chip">{{ item.title }} ({{ item.nb }})</a>#}
+            {#{% endfor %}#}
 
         </article>
 
@@ -106,6 +108,38 @@
 
                 {#document.getElementsByClassName("nv-series")[0].click();#}
             {#});#}
+    </script>
+
+    <script>
+
+        function decodeHtml(text) {
+            console.log(text);
+            return text
+                .replace(/&amp;/g, "&")
+                .replace(/&quot;/g, "\"")
+                .replace(/&#039;/g, "\'")
+                .replace(/%20/g, " ")
+                .replace(/%22/g, "\"");
+        }
+
+    </script>
+
+    <script>
+
+        words_exotism = [{% for item in popularexoticism  %}{ text : decodeHtml("{{ item.title }}"), weight : {{ item.nb }}, link : decodeHtml("{{ path('getOneExoticism', { 'item' : item.title }) }}")  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        $('#wordcloud_exotism').jQCloud(words_exotism);
+        $('#wordcloud_exotism').jQCloud('update', words_exotism, {
+            fontSize: {
+                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                from: 0.1,
+                to: 0.05
+            }
+        });
+
+        {#{% for item in popularexoticism %}#}
+        {#<a href="{{ path('getOneExoticism', { 'item' : item.title }) }}" class="chip">{{ item.title }} ({{ item.nb }})</a>#}
+        {#{% endfor %}#}
+
     </script>
 
 {% endblock %}

@@ -71,6 +71,9 @@ class CensorshipController extends Controller
         $query = $em -> createQuery('SELECT c.title as title, f.released as released, COUNT(f.filmId) as nb FROM AppBundle:Film f JOIN f.censorship c GROUP BY c.censorshipId ORDER BY nb DESC');
         $censorship = $query->getResult();
 
+        $query = $em -> createQuery('SELECT c.title as title, COUNT(f.filmId) as nb FROM AppBundle:Film f JOIN f.censorship c GROUP BY c.censorshipId ORDER BY nb DESC');
+        $defCensorship = $query->getResult();
+
         //Nb verdict par année // à reprendre pour récupérer toutes les années
         $query = $em -> createQuery('SELECT f.title, f.released, COUNT(c.title) as nb FROM AppBundle:Film f JOIN f.censorship c WHERE f.released > 0 GROUP BY f.released');
         $nbCensorship = $query->getResult();
@@ -93,6 +96,7 @@ class CensorshipController extends Controller
             'nbFilmsWithVerdict' => $nbFilmsWithVerdict,
             'nbFilmsWithVerdictByStudio' => $nbFilmsWithVerdictByStudio,
             'censorship' => $censorship,
+            'defCensorship' => $defCensorship,
             'nbCensorship' => $nbCensorship,
             'nbFilmsWithCensorship' =>$nbFilmsWithCensorship
         ));

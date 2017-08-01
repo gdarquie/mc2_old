@@ -27,6 +27,11 @@
         .film{
             height:350px;
         }
+
+        .list_film {
+            color: #039be5;
+            cursor: pointer; cursor: hand;
+        }
     </style>
 {% endblock %}
 
@@ -43,18 +48,18 @@
 
             <div id="table_one_legion" class="row">
                 <input class="search" placeholder="Search" />
-                <table class="striped medium-table tablesorter">
+                <table class="striped medium-table">
                     <thead>
                     <tr>
-                        <th>Film</th>
-                        <th>Release Date</th>
-                        <th>Studio</th>
+                        <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film</th>
+                        <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date</th>
+                        <th onclick="sortPerso(this, 'list_studio')" data-cpt="0">Studio</th>
                     </tr>
                     </thead>
                     <tbody class="list">
                     {% for film in films  %}
                         <tr>
-                            <td class="list_film"><a href="{{ path('film', {'filmId' : film.filmId}) }}">{{ film.title }}</a></td>
+                            <td onclick="window.location.href='{{ path('film', {'filmId' : film.filmId}) }}';" class="list_film">{{ film.title }}</td>
                             <td class="list_release_date">{{ film.released }}</td>
                             <td class="list_studio">
                                 {% for studio in film.studios %}
@@ -321,6 +326,19 @@
 
         var FilmList = new List('table_one_legion', options);
 
+    </script>
+
+    <script>
+        function sortPerso(element, col) {
+
+            if (element.dataset.cpt%2 == 0) {
+                FilmList.sort(col, {order : "asc"});
+                element.dataset.cpt++;
+            } else {
+                FilmList.sort(col, {order : "desc"});
+                element.dataset.cpt++;
+            }
+        }
     </script>
 
 {% endblock %}

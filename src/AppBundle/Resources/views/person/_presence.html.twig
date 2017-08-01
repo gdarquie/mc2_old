@@ -25,20 +25,20 @@
 
                 <input class="search" placeholder="Search" />
 
-                <table class="striped tablesorter medium-table">
+                <table class="striped medium-table">
                     <thead>
                         <tr>
-                            <th>Film</th>
-                            <th>Released</th>
-                            <th>Total number duration (in sec)</th>
-                            <th>Total number duration where {{ person.name }} is involved (in sec)</th>
-                            <th>Percentage of numbers where {{ person.name }} is involved </th>
+                            <th onclick="sortPersoPresence(this, 'presence_film')" data-cpt="0">Film</th>
+                            <th onclick="sortPersoPresence(this, 'presence_released')" data-cpt="0">Released</th>
+                            <th onclick="sortPersoPresence(this, 'presence_total_duration')" data-cpt="0">Total number duration (in sec)</th>
+                            <th onclick="sortPersoPresence(this, 'presence_person_duration')" data-cpt="0">Total number duration where {{ person.name }} is involved (in sec)</th>
+                            <th onclick="sortPersoPresence(this, 'presence_ratio')" data-cpt="0">Percentage of numbers where {{ person.name }} is involved </th>
                         </tr>
                     </thead>
                     <tbody class="list">
                 {% for item in lengthTotal  %}
                     <tr>
-                        <td class="presence_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.title }}</a></td>
+                        <td onclick="window.location.href='{{ path('film' ,{'filmId' : item.filmId}) }}';" class="presence_film link_perso">{{ item.title }}</td>
                         <td class="presence_released">{{ item.released }}</td>
                         <td class="presence_total_duration">{{ item.total }}</td>
                         <td class="presence_person_duration">{{ lengthTotalForPerson[loop.index0].total }}</td>
@@ -125,5 +125,19 @@
 
         var presenceList = new List('presence_list', options);
 
+    </script>
+
+    <script>
+
+        function sortPersoPresence(element, col) {
+
+            if (element.dataset.cpt%2 == 0) {
+                presenceList.sort(col, {order : "asc"});
+                element.dataset.cpt++;
+            } else {
+                presenceList.sort(col, {order : "desc"});
+                element.dataset.cpt++;
+            }
+        }
     </script>
 {% endblock %}

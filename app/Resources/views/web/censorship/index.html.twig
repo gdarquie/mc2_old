@@ -23,6 +23,10 @@
             height: 340px;
         }
 
+        #table_def_censored {
+            margin-top: 80px
+        }
+
     </style>
 {% endblock %}
 
@@ -56,11 +60,15 @@
             <div class="row ">
 
                 <div id="chart_div" class="donut s7 col"></div>
-                <div class="col s5">
-                    <h3>List of items</h3>
-                    {% for item in verdict  %}
-                    <span class="chip"><a href="{{ path('censorship_verdict', {'verdict' : item.verdict}) }}">{{ item.verdict }}({{ item.nb }})</a></span>
-                {% endfor %}</div>
+
+                <div class='wordcloud col s5 row' id='wordcloud_pca' style="height: 300px"></div>
+
+
+                {#<div class="col s5">#}
+                    {#<h3>List of items</h3>#}
+                    {#{% for item in verdict  %}#}
+                    {#<span class="chip"><a href="{{ path('censorship_verdict', {'verdict' : item.verdict}) }}">{{ item.verdict }}({{ item.nb }})</a></span>#}
+                {#{% endfor %}</div>#}
             </div>
 
         </article>
@@ -79,32 +87,36 @@
             <div class="row ">
 
                 <div id="chart_div2" class="donut s6 col"></div>
-                {#<div class="s6 col">#}
-                    {#<table class="striped medium-table tablesorter">#}
-                        {#<thead>#}
-                        {#<tr>#}
-                            {#<th>Name</th>#}
-                            {#<th>Definition</th>#}
-                        {#</tr>#}
-                        {#</thead>#}
-                        {#<tbody class="list">#}
-                        {#{% for number in numbers  %}#}
-                            {#<tr>#}
-                                {#<td class="list_number"><a href="{{ path('number', {'id' : number.id}) }}">{{ number.title }}</a></td>#}
-                                {#<td class="list_film"><a href="{{ path('film', {'filmId' : number.film.filmId}) }}">{{ number.film.title }}</a></td>#}
-                            {#</tr>#}
-                        {#{% endfor %}#}
-                        {#</tbody>#}
-                    {#</table>#}
-                {#</div>#}
+
+                <div id="table_def_censored" class="s6 col">
+                    <table class="striped mini-table tablesorter">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Definition</th>
+                        </tr>
+                        </thead>
+                        <tbody class="list">
+                        {% for censorship in defCensorship %}
+                            <tr>
+                                <td class="list_name_censorship">{{ censorship.title }}</td>
+                                <td class="list_def_censorship">Test</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
 
             </div>
 
-            <div class="raw">
-                {% for item in censorship  %}
-                    <p class="chip"><a href="{{ path('censorship_content', {'content' : item.title}) }}">{{ item.title }} ({{ item.nb }})</a></p>
-                {% endfor %}
+            <div id="wordcloud_content" class="raw">
+
+                <div class='wordcloud col s12 row' id='wordcloud_content' style="height: 200px"></div>
+
+                {#{% for item in censorship  %}#}
+                    {#<p class="chip"><a href="{{ path('censorship_content', {'content' : item.title}) }}">{{ item.title }} ({{ item.nb }})</a></p>#}
+                {#{% endfor %}#}
             </div>
 
         </article>
@@ -124,11 +136,14 @@
 
                 <div id="chart_div3" class="donut s7 col"></div>
 
-                <div class="col s5">
-                {% for item in legion  %}
-                    <p class="chip"><a href="{{ path('censorship_legion' , {'legion' : item.legion}) }}">{{ item.legion }}({{ item.nb }})</a></p>
-                {% endfor %}
-            </div>
+                <div class='wordcloud col s5 row' id='wordcloud_legion' style="height: 300px"></div>
+
+
+                {#<div class="col s5">#}
+                {#{% for item in legion  %}#}
+                    {#<p class="chip"><a href="{{ path('censorship_legion' , {'legion' : item.legion}) }}">{{ item.legion }}({{ item.nb }})</a></p>#}
+                {#{% endfor %}#}
+                {#</div>#}
         </article>
 
 
@@ -218,6 +233,62 @@
 
         }
 
+    </script>
+
+
+    <script>
+
+        function decodeHtml(text) {
+            console.log(text);
+            return text
+                .replace(/&amp;/g, "&")
+                .replace(/&quot;/g, "\"")
+                .replace(/&#039;/g, "\'")
+                .replace(/%20/g, " ")
+                .replace(/%22/g, "\"");
+        }
+
+    </script>
+
+    <script>
+
+        words_pca = [{% for item in verdict  %}{ text : decodeHtml("{{ item.verdict }}"), weight : {{ item.nb }}, link : decodeHtml("{{ path('censorship_verdict', {'verdict' : item.verdict}) }}")  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+
+        $('#wordcloud_pca').jQCloud(words_pca);
+        $('#wordcloud_pca').jQCloud('update', words_pca, {
+            fontSize: {
+                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                from: 0.1,
+                to: 0.05
+            }
+        });
+
+
+        words_content = [{% for item in censorship  %}{ text : decodeHtml("{{ item.title }}"), weight : {{ item.nb }}, link : decodeHtml("{{ path('censorship_content', {'content' : item.title}) }}")  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        $('#wordcloud_content').jQCloud(words_content);
+        $('#wordcloud_content').jQCloud('update', words_content, {
+            fontSize: {
+                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                from: 0.1,
+                to: 0.05
+            }
+        });
+
+
+        words_legion = [{% for item in legion  %}{ text : decodeHtml("{{ item.legion }}"), weight : {{ item.nb }}, link : decodeHtml("{{ path('censorship_legion', {'legion' : item.legion}) }}")  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        $('#wordcloud_legion').jQCloud(words_legion);
+        $('#wordcloud_legion').jQCloud('update', words_legion, {
+            fontSize: {
+                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                from: 0.1,
+                to: 0.05
+            }
+        });
+
+
+        {#{% for item in legion  %}#}
+        {#<p class="chip"><a href="{{ path('censorship_legion' , {'legion' : item.legion}) }}">{{ item.legion }}({{ item.nb }})</a></p>#}
+        {#{% endfor %}#}
     </script>
 
 

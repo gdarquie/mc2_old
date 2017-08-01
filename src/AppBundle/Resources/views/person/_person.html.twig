@@ -35,20 +35,20 @@
 
                         <input class="search" placeholder="Search" />
 
-                        <table class="striped medium-table tablesorter">
+                        <table class="striped medium-table">
                             <thead>
                             <tr>
-                                <th>Associated choreographers</th>
-                                <th>Number</th>
-                                <th>Film</th>
+                                <th onclick="sortPersoChoreoList(this, 'choreo_name')" data-cpt="0">Associated choreographers</th>
+                                <th onclick="sortPersoChoreoList(this, 'choreo_number')" data-cpt="0">Number</th>
+                                <th onclick="sortPersoChoreoList(this, 'choreo_film')" data-cpt="0">Film</th>
                             </tr>
                             </thead>
                             <tbody class="list">
                             {% for item in associated_choreographers  %}
                                 <tr>
                                     <td class="choreo_name">{{ item.name }}</td>
-                                    <td class="choreo_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.title }}</a></td>
-                                    <td class="choreo_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
+                                    <td onclick="window.location.href='{{ path('number', {'id' : item.id}) }}';" class="choreo_number link_perso">{{ item.title }}</td>
+                                    <td onclick="window.location.href='{{ path('film' ,{'filmId' : item.filmId}) }}';" class="choreo_film link_perso">{{ item.film }}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -100,13 +100,13 @@
                         <input class="search" placeholder="Search" />
 
 
-                        <table class="striped medium-table tablesorter">
+                        <table class="striped medium-table">
                             <thead>
                             <tr>
-                                <th>Associated composer</th>
-                                <th>Song</th>
-                                <th>Number</th>
-                                <th>Film</th>
+                                <th onclick="sortPersoComposerList(this, 'composer_name')" data-cpt="0">Associated composer</th>
+                                <th onclick="sortPersoComposerList(this, 'composer_song')" data-cpt="0">Song</th>
+                                <th onclick="sortPersoComposerList(this, 'composer_number')" data-cpt="0">Number</th>
+                                <th onclick="sortPersoComposerList(this, 'composer_film')" data-cpt="0">Film</th>
                             </tr>
                             </thead>
                             <tbody class="list">
@@ -114,8 +114,8 @@
                                 <tr>
                                     <td class="composer_name">{{ item.name }}</td>
                                     <td class="composer_song">{{ item.song }}</td>
-                                    <td class="composer_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.number }}</a></td>
-                                    <td class="composer_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
+                                    <td onclick="window.location.href='{{ path('number', {'id' : item.id}) }}';" class="composer_number link_perso">{{ item.number }}</td>
+                                    <td onclick="window.location.href='{{ path('film' ,{'filmId' : item.filmId}) }}';" class="composer_film link_perso">{{ item.film }}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -164,13 +164,13 @@
 
                         <input class="search" placeholder="Search" />
 
-                        <table class="striped medium-table tablesorter">
+                        <table class="striped medium-table">
                             <thead>
                             <tr>
-                                <th>Associated lyricist</th>
-                                <th>Song</th>
-                                <th>Number</th>
-                                <th>Film</th>
+                                <th onclick="sortPersoLyricistList(this, 'lyric_name')" data-cpt="0">Associated lyricist</th>
+                                <th onclick="sortPersoLyricistList(this, 'lyric_song')" data-cpt="0">Song</th>
+                                <th onclick="sortPersoLyricistList(this, 'lyric_number')" data-cpt="0">Number</th>
+                                <th onclick="sortPersoLyricistList(this, 'lyric_film')" data-cpt="0">Film</th>
                             </tr>
                             </thead>
                             <tbody class="list">
@@ -178,8 +178,8 @@
                                 <tr>
                                     <td class="lyric_name">{{ item.name }}</td>
                                     <td class="lyric_song">{{ item.song }}</td>
-                                    <td class="lyric_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.number }}</a></td>
-                                    <td class="lyric_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
+                                    <td onclick="window.location.href='{{ path('number', {'id' : item.id}) }}';" class="lyric_number link_perso">{{ item.number }}</td>
+                                    <td onclick="window.location.href='{{ path('film' ,{'filmId' : item.filmId}) }}';" class="lyric_film link_perso">{{ item.film }}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -269,5 +269,40 @@
             });
         }
         
+    </script>
+
+    <script>
+        function sortPersoChoreoList(element, col) {
+
+            if (element.dataset.cpt%2 == 0) {
+                choreoList.sort(col, {order : "asc"});
+                element.dataset.cpt++;
+            } else {
+                choreoList.sort(col, {order : "desc"});
+                element.dataset.cpt++;
+            }
+        }
+
+        function sortPersoComposerList(element, col) {
+
+            if (element.dataset.cpt%2 == 0) {
+                composersList.sort(col, {order : "asc"});
+                element.dataset.cpt++;
+            } else {
+                composersList.sort(col, {order : "desc"});
+                element.dataset.cpt++;
+            }
+        }
+
+        function sortPersoLyricistList(element, col) {
+
+            if (element.dataset.cpt%2 == 0) {
+                lyricList.sort(col, {order : "asc"});
+                element.dataset.cpt++;
+            } else {
+                lyricList.sort(col, {order : "desc"});
+                element.dataset.cpt++;
+            }
+        }
     </script>
 {% endblock %}
