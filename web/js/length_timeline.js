@@ -14,28 +14,38 @@ function create_gant(data,lengthFilm){
         .attr("class", "svg");
     var colArray =
         //for todd, remove after
-        // [
+        [
+            "#003399",
+            "#cc0099",
+            "#ff0000",
+            "#ffff00",
+            "#595959",
+            "#339933"
+
+        ];
+    //
+    // [
         //     "#8d0000",
         //     "#a90000",
         //     "#CC0000",
         //     "#ff3838",
         //     "#7F7F7F",
-        //     "#ff8d8d",
+        //     "#ff8d8d"
         // ];
-    [
-        "#7F7F7F",
-        "#7F7F7F",
-        "#7F7F7F",
-        "#7F7F7F",
-        "#7F7F7F",
-        "#7F7F7F"
-    ];
+    // [
+    //     "#7F7F7F",
+    //     "#7F7F7F",
+    //     "#7F7F7F",
+    //     "#7F7F7F",
+    //     "#7F7F7F",
+    //     "#7F7F7F"
+    // ];
     var taskArray = [];
     data.forEach(function(element) {
         addTask(element.start,element.end,element.content,element.id,element.cast,element.shots);
-    })
+    });
     function doTime(tme){
-        var t = Math.floor(tme / 60)
+        var t = Math.floor(tme / 60);
         return t+":00";
     }
     function doTime2(tme){

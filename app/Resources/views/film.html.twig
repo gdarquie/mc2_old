@@ -261,27 +261,27 @@
                                     <th>Cast</th>
                                 </tr>
                                 <tr style="height: 15px;">
-                                    <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#8d0000"></circle></svg></td>
+                                    <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#003399"></circle></svg></td>
                                     <td>All Black cast</td>
                                 </tr>
                                 <tr style="height: 15px;">
-                                    <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#ff8d8d"></circle></svg></td>
+                                    <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#339933"></circle></svg></td>
                                     <td>All White cast</td>
                                 </tr>
                                 <tr style="height: 15px;">
-                                    <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#ff3838"></circle></svg></td>
+                                    <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#ffff00"></circle></svg></td>
                                     <td>All Latin cast</td>
                                 </tr>
                                 <tr style="height: 15px;">
-                                    <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#CC0000"></circle></svg></td>
+                                    <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#ff0000"></circle></svg></td>
                                     <td>Mixed Race cast</td>
                                 </tr>
                                 <tr style="height: 15px;">
-                                    <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#a90000"></circle></svg></td>
+                                    <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#cc0099"></circle></svg></td>
                                     <td>Mixed Race Extras</td>
                                 </tr>
                                 <tr style="height: 15px;">
-                                    <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#7F7F7F"></circle></svg></td>
+                                    <td><svg style="width: 50px; height: 15px"><circle cx="25" cy="7.5" r="6" fill="#595959"></circle></svg></td>
                                     <td>NA</td>
                                 </tr>
                             </table>
@@ -320,14 +320,14 @@
                                     <th>Adaptation</th>
                                     <th>Stageshows</th>
                                     <th>Remake</th>
-                                    <th>Underscoring</th>
+                                    {#<th>Underscoring</th>#}
                                 </tr>
 
                                 <tr>
                                     <td>{{ film.adaptation }}</td>
                                     <td>
                                         {% for stageshow in film.stageshows %}
-                                        {{ stageshow.title }}{% if not loop.last %}, {% endif %}
+                                        {{ stageshow.title }} ({{ stageshow.opening|date('d/m/Y') }}){% if not loop.last %}, {% endif %}
                                         {% endfor %}
                                     </td>
                                     <td>
@@ -341,11 +341,11 @@
                                             No
                                         {% endif %}
                                     </td>
-                                    <td>
-                                        {% for underscoring in film.underscoring %}
-                                            {{ underscoring }}{% if not loop.last %}, {% endif %}
-                                        {% endfor %}
-                                    </td>
+                                    {#<td>#}
+                                        {#{% for underscoring in film.underscoring %}#}
+                                            {#{{ underscoring }}{% if not loop.last %}, {% endif %}#}
+                                        {#{% endfor %}#}
+                                    {#</td>#}
 
                                 </tr>
                             </table>
@@ -362,10 +362,9 @@
 
                             <table class="striped middle-table">
                                 <tr>
-                                    <th>First opinion on the submitted script</th>
+                                    <th>PCA verdict on the first submitted script</th>
                                     <th>Censored content</th>
                                     <th>States where the film was censored</th>
-                                    <th>PCA text</th>
                                 </tr>
 
                                 <tr>
@@ -380,9 +379,6 @@
                                             {{ state.title }}{% if not loop.last %}, {% endif %}
                                         {% endfor %}
 
-                                    </td>
-                                    <td>
-                                        {{ film.pcaTexte }}
                                     </td>
                                 </tr>
                             </table>

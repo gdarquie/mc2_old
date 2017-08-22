@@ -15,6 +15,11 @@
             height: 340px;
             margin-bottom: 2em;
         }
+
+        .stats {
+            font-size: 25px;
+            margin: 5px;
+        }
     </style>
 {% endblock %}
 
@@ -39,13 +44,10 @@
 
         </div>
 
-        <article class="card">
+        <article class="card card_thematique">
             <div class=" col s12 row">
-                <p class="col m4 center">Dance Numbers : <span class="number">{{ numberDancedNumber.nb }}</span></p>
-                <p class="col m4 center">Films with at least one dance number : <span class="number">{{ nbfilmsWithDancedNumber.nb }}</span></p>
-                <p class="col m4 center">Dancing types : <span class="number">{{ dancing|length }}</span></p>
-                <p class="col m6 center">Dance sub-genres : <span class="number">{{ subgenre|length }}</span></p>
-                <p class="col m6 center">Dancing contents : <span class="number">{{ content|length }}</span></p>
+                <p class="col m6 center">Dance Numbers : <span class="number">{{ numberDancedNumber.nb }}</span></p>
+                <p class="col m6 center">Films with at least one dance number : <span class="number">{{ nbfilmsWithDancedNumber.nb }}</span></p>
                 {#<p><span class="number"></span> different tones exist, <span class="number">{{ mostPopularGenre.title }}</span> is the most used, <span class="number"></span> moods have been saved for <span class="number"></span> different numbers.</p>#}
             </div>
         </article>
@@ -80,13 +82,16 @@
 
         </div>
 
-        <article class="card">
+        <article class="card card_thematique">
 
-            <div class='wordcloud col s12 row' id='wordcloud_type' style="height: 300px"></div>
+            <p class="stats"><span>{{ dancing|length }}</span> dancing types :</p>
 
-            {#{% for item in populardancing  %}#}
-                {#<a href="{{ path('getOneDancingType', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>#}
-            {#{% endfor %}#}
+
+            {#<div class='wordcloud col s12 row' id='wordcloud_type' style="height: 300px"></div>#}
+
+            {% for item in populardancing  %}
+                <a href="{{ path('getOneDancingType', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
+            {% endfor %}
 
             <div id="chart_div" style="height: 400px; margin-top: 20px;"></div>
         </article>
@@ -110,13 +115,15 @@
             <p><i>Figures dansées issues de traditions spectaculaires ou populaires, participant à préciser le contenu des "dancing types"</i></p>
         </div>
 
-        <article class="card">
+        <article class="card card_thematique">
 
-            <div class='wordcloud col s12 row' id='wordcloud_subgenre' style="height: 300px"></div>
+            <p class="stats"><span>{{ subgenre|length }}</span> dance sub-genres : </p>
 
-            {#{% for item in popularsubgenre  %}#}
-               {#<a href="{{ path('getOneDanceSubgenre', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>#}
-            {#{% endfor %}#}
+            {#<div class='wordcloud col s12 row' id='wordcloud_subgenre' style="height: 300px"></div>#}
+
+            {% for item in popularsubgenre  %}
+               <a href="{{ path('getOneDanceSubgenre', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
+            {% endfor %}
 
             <div id="chart_div2" style="height: 400px; margin-top: 20px;"></div>
         </article>
@@ -140,78 +147,85 @@
             <p><i>Motifs gestuels ou nuances de style récurrents</i></p>
         </div>
 
-        <article class="card">
+        <article class="card card_thematique">
 
-            <div class='wordcloud col s12 row' id='wordcloud_content' style="height: 300px"></div>
+            <p class="stats"><span>{{ content|length }}</span> dance contents : </p>
 
-            {#{% for item in popularcontent  %}#}
-               {#<a href="{{ path('getOneDanceContent', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>#}
-            {#{% endfor %}#}
+            {#<div class='wordcloud col s12 row' id='wordcloud_content' style="height: 300px"></div>#}
+
+            {% for item in popularcontent  %}
+               <a href="{{ path('getOneDanceContent', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
+            {% endfor %}
 
             <div id="chart_div3" style="height: 400px; margin-top: 20px;"></div>
 
 
         </article>
 
-        <div id="choreo_top_list">
+        <article class="card card_thematique">
 
-            <input class="search" placeholder="Search" />
-            <table class="striped medium-table">
-                <thead>
-                <tr>
-                    <th onclick="sortPerso(this, 'choreo_name_top')" data-cpt="0">choreographer</th>
-                    <th onclick="sortPerso(this, 'choreo_total_top')" data-cpt="0">Amount of numbers</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody class="list">
-                {% for item in top_associated_choreographers  %}
+            <h2>Choreographers</h2>
+
+            <div id="choreo_top_list">
+
+                <input class="search" placeholder="Search" />
+                <table class="striped medium-table">
+                    <thead>
                     <tr>
-                        <td class="choreo_name_top">{{ item.name }}</td>
-                        <td class="choreo_total_top">{{ item.total }}</td>
-                        <td><a class="waves-effect waves-light choreo_btn_top" href="#modal1" data-name="{{ item.name }}">Show More</a></td>
+                        <th onclick="sortPerso(this, 'choreo_name_top')" data-cpt="0">choreographer<i class="material-icons icone_perso">arrow_drop_down</i> </th>
+                        <th onclick="sortPerso(this, 'choreo_total_top')" data-cpt="0">Production numbers<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th></th>
                     </tr>
-                {% endfor %}
-                </tbody>
-
-            </table>
-            <ul class="pagination"></ul>
-
-        </div>
-
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <div id="choreo_list">
-
-                    <input class="search" placeholder="Search" />
-
-                    <table class="striped medium-table tablesorter">
-                        <thead>
+                    </thead>
+                    <tbody class="list">
+                    {% for item in top_associated_choreographers  %}
                         <tr>
-                            <th>Associated choreographers</th>
-                            <th>Number</th>
-                            <th>Film</th>
+                            <td class="choreo_name_top">{{ item.name }}</td>
+                            <td class="choreo_total_top">{{ item.total }}</td>
+                            <td><a class="waves-effect waves-light choreo_btn_top" href="#modal1" data-name="{{ item.name }}">Show More</a></td>
                         </tr>
-                        </thead>
-                        <tbody class="list">
-                        {% for item in associated_choreographers  %}
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+                <ul class="pagination"></ul>
+
+            </div>
+
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <div id="choreo_list">
+
+                        <input class="search" placeholder="Search" />
+
+                        <table class="striped medium-table tablesorter">
+                            <thead>
                             <tr>
-                                <td class="choreo_name">{{ item.name }}</td>
-                                <td class="choreo_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.title }}</a></td>
-                                <td class="choreo_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
+                                <th>Associated choreographers</th>
+                                <th>Number</th>
+                                <th>Film</th>
                             </tr>
-                        {% endfor %}
-                        </tbody>
+                            </thead>
+                            <tbody class="list">
+                            {% for item in associated_choreographers  %}
+                                <tr>
+                                    <td class="choreo_name">{{ item.name }}</td>
+                                    <td class="choreo_number"><a href="{{ path('number' ,{'id' : item.id}) }}">{{ item.title }}</a></td>
+                                    <td class="choreo_film"><a href="{{ path('film' ,{'filmId' : item.filmId}) }}">{{ item.film }}</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
 
-                    </table>
-                    <ul class="pagination"></ul>
+                        </table>
+                        <ul class="pagination"></ul>
 
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
                 </div>
             </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-        </div>
+        </article>
     </section>
 {% endblock %}
 
@@ -233,7 +247,7 @@
             ]);
 
             var options = {
-                title: 'Sum of Production Numbers per Dancing Type',
+                title: 'Production numbers per dancing type',
                 legend: { position: 'none' },
             };
             var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
@@ -247,7 +261,7 @@
             ]);
 
             var options = {
-                title: 'Share of Dance Sub-Genres',
+                title: 'Production numbers per dance sub-genre',
                 legend: { position: 'none' }
             };
             var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
@@ -261,7 +275,7 @@
             ]);
 
             var options = {
-                title: 'Sum of Production Numbers per Dance Content',
+                title: 'Production numbers per dance content',
                 legend: { position: 'none' }
             };
             var chart3 = new google.visualization.ColumnChart(document.getElementById('chart_div3'));

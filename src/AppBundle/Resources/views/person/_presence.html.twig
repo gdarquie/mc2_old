@@ -5,7 +5,7 @@
 
         {#<p>Sum of all the length's number where {{ person.name }} is a performer divided by the sum of all the shots of this numbers : <span class="number">{{ sumLengthShot.average|round(2) }}</span> seconds</p>#}
 
-        <p>Average of all the length's number where {{ person.name }} is a performer divided by the average of all the shots of this numbers : <span class="number">{{ avgLengthShot.average|round(2) }}</span> seconds</p>
+        <p>Average length of {{ person.name }}'s numbers divided by her/his average number of shots for one number : <span class="number">{{ avgLengthShot.average|round(2) }}</span> seconds</p>
 
     </article>
 
@@ -16,7 +16,7 @@
 
         <article>
 
-            <p> Number of films where Fred Astaire is involved : <span class="number">{{ lengthTotal|length}}</span></p>
+            <p> Number of films : <span class="number">{{ lengthTotal|length}}</span></p>
 
 
                 {#<h3 class="title-mini">List of films chronologically sorted by release date with the duration in seconds of all numbers (even the numbers where {{ person.name }} is not present)</h3>#}
@@ -28,11 +28,11 @@
                 <table class="striped medium-table">
                     <thead>
                         <tr>
-                            <th onclick="sortPersoPresence(this, 'presence_film')" data-cpt="0">Film</th>
-                            <th onclick="sortPersoPresence(this, 'presence_released')" data-cpt="0">Released</th>
-                            <th onclick="sortPersoPresence(this, 'presence_total_duration')" data-cpt="0">Total number duration (in sec)</th>
-                            <th onclick="sortPersoPresence(this, 'presence_person_duration')" data-cpt="0">Total number duration where {{ person.name }} is involved (in sec)</th>
-                            <th onclick="sortPersoPresence(this, 'presence_ratio')" data-cpt="0">Percentage of numbers where {{ person.name }} is involved </th>
+                            <th onclick="sortPersoPresence(this, 'presence_film')" data-cpt="0">Film<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                            <th onclick="sortPersoPresence(this, 'presence_released')" data-cpt="0">Release date<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                            <th onclick="sortPersoPresence(this, 'presence_total_duration')" data-cpt="0">Total length of the numbers in the film (in sec)<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                            <th onclick="sortPersoPresence(this, 'presence_person_duration')" data-cpt="0">Total length of the numbers where {{ person.name }} performs<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                            <th onclick="sortPersoPresence(this, 'presence_ratio')" data-cpt="0">Presence in the numbers<i class="material-icons icone_perso">arrow_drop_down</i></th>
                         </tr>
                     </thead>
                     <tbody class="list">

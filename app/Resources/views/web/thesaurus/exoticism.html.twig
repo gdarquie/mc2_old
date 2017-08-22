@@ -14,21 +14,21 @@
     </header>
 
 
-    <article class="card row" style="overflow: hidden">
+    <article class="card card_thematique row" style="overflow: hidden">
 
         <div class=" col s12 row">
-            <p class="col m4 center">Existing Types: <span class="number">{{ exoticism|length - 1 }}</span></p>
+            <p class="col m4 center">Exoticism Types: <span class="number">{{ exoticism|length - 1 }}</span></p>
             <p class="col m4 center">Used Types : <span class="number">{{ total.nb }}</span></p>
-            <p class="col m4 center">Total Numbers : <span class="number">{{ totalNumber.nb }}</span></p>
+            <p class="col m4 center">Production Numbers : <span class="number">{{ totalNumber.nb }}</span></p>
         </div>
 
         <article>
 
-            <div class='wordcloud col s12 row' id='wordcloud_exotism' style="height: 300px"></div>
+            {#<div class='wordcloud col s12 row' id='wordcloud_exotism' style="height: 300px"></div>#}
 
-            {#{% for item in popularexoticism %}#}
-                {#<a href="{{ path('getOneExoticism', { 'item' : item.title }) }}" class="chip">{{ item.title }} ({{ item.nb }})</a>#}
-            {#{% endfor %}#}
+            {% for item in popularexoticismCartouche %}
+                <a href="{{ path('getOneExoticism', { 'item' : item.title }) }}" class="chip">{{ item.title }} ({{ item.nb }})</a>
+            {% endfor %}
 
         </article>
 
@@ -36,8 +36,9 @@
         <article class="row">
 
             <div id="chart_div" class="col s6" style=" height: 500px;"></div>
-            <div id="div_donut" class="col s6" style="height: 500px">
-                <svg style="height: 500px;"></svg>
+            <div style="transform: translate(0px,40px);" id="div_donut" class="col s6" style="height: 400px">
+                <p style="font-weight: bold; padding-left: 100px;">Share of exoticism</p>
+                <svg style="height: 450px;"></svg>
             </div>
         </article>
 

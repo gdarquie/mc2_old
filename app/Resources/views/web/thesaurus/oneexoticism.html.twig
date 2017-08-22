@@ -21,25 +21,25 @@
         <h1>Exoticism: {% for item in exoticism %}{{ item.title }}{% endfor %}</h1>
         <p style="font-size: 18px;"><i>{% for item in exoticism %}{{ item.definition }}{% endfor %}</i></p>
 
-        <article class="card row">
+        <article class="card card_thematique row">
             <h2>Studios</h2>
             <div id="chart_div" style="height: 400px"></div>
         </article>
 
-        <article class="card">
-            <h2>List of numbers with exoticism : "{% for item in exoticism %}{{ item.title }}{% endfor %}"</h2>
+        <article class="card card_thematique">
+            <h2>Production numbers</h2>
 
             <div id="table_one_exo" class="row">
                 <input class="search" placeholder="Search" />
                 <table class="striped medium-table">
                     <thead>
                     <tr>
-                        <th onclick="sortPerso(this, 'list_number')" data-cpt="0">Number</th>
-                        <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film</th>
-                        <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date</th>
-                        <th onclick="sortPerso(this, 'list_studio')" data-cpt="0">Studio</th>
-                        <th onclick="sortPerso(this, 'list_cast')" data-cpt="0">Cast</th>
-                        <th onclick="sortPerso(this, 'list_stereotype')" data-cpt="0">Ethnic Stereotype</th>
+                        <th onclick="sortPerso(this, 'list_number')" data-cpt="0">Number<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_studio')" data-cpt="0">Studio<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_cast')" data-cpt="0">Cast<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_stereotype')" data-cpt="0">Ethnic Stereotype<i class="material-icons icone_perso">arrow_drop_down</i></th>
                     </tr>
                     </thead>
                     <tbody class="list">
@@ -138,7 +138,6 @@
 
 
             var options = {
-                title: 'Share per Studio',
                 pieHole: 0.4
             };
 

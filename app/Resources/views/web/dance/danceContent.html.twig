@@ -25,18 +25,18 @@
         <p><i>{{ myDance.definition }}</i></p>
 
 
-        <article class="card row">
+        <article class="card card_thematique row">
             <h2>Production Numbers per Year</h2>
            <div id="diagram" style="height: 300px;"></div>
         </article>
 
-        <article class="card row">
+        <article class="card card_thematique row">
             <h2>Dancing ensemble</h2>
             <h2><i>Formation</i></h2>
 
-            <div class="col s7 donut" id="donut_ensemble"><svg></svg></div>
+            {#<div class="col s7 donut" id="donut_ensemble"><svg></svg></div>#}
 
-            <div class='wordcloud col s5 row' id='wordcloud_dancemble' style="height: 300px"></div>
+            <div class='wordcloud col s12 row' id='wordcloud_dancemble' style="height: 300px"></div>
 
             {#<div class="col s5">#}
                 {#{% for item in dancembles  %}#}
@@ -45,7 +45,7 @@
             {#</div>#}
         </article>
 
-        <article class="card row">
+        <article class="card card_thematique row">
 
             <h2>List of numbers</h2>
 
@@ -54,11 +54,11 @@
                 <table class="striped medium-table">
                     <thead>
                     <tr>
-                        <th onclick="sortPerso(this, 'list_number')" data-cpt="0">Number</th>
-                        <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film</th>
-                        <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date</th>
-                        <th onclick="sortPerso(this, 'list_studio')" data-cpt="0">Studio</th>
-                        <th onclick="sortPerso(this, 'list_style')" data-cpt="0">Musical Style</th>
+                        <th onclick="sortPerso(this, 'list_number')" data-cpt="0">Number <i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_studio')" data-cpt="0">Studio<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_style')" data-cpt="0">Musical Style<i class="material-icons icone_perso">arrow_drop_down</i></th>
                     </tr>
                     </thead>
                     <tbody class="list">
@@ -203,35 +203,35 @@
 
         }
         //Donut ensemble
-        nv.addGraph(function() {
-            var chart = nv.models.pieChart()
-                            .x(function(d) { return d.label })
-                            .y(function(d) { return d.value })
-                            .showLabels(true)     //Display pie labels
-                            .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
-                            .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
-                            .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
-                            .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
-                    ;
+        {#nv.addGraph(function() {#}
+            {#var chart = nv.models.pieChart()#}
+                            {#.x(function(d) { return d.label })#}
+                            {#.y(function(d) { return d.value })#}
+                            {#.showLabels(true)     //Display pie labels#}
+                            {#.labelThreshold(.05)  //Configure the minimum slice size for labels to show up#}
+                            {#.labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"#}
+                            {#.donut(true)          //Turn on Donut mode. Makes pie chart look tasty!#}
+                            {#.donutRatio(0.35)     //Configure how big you want the donut hole size to be.#}
+                    {#;#}
 
-            d3.select("#donut_ensemble svg")
-                    .datum(exampleData3())
-                    .transition().duration(350)
-                    .call(chart);
+            {#d3.select("#donut_ensemble svg")#}
+                    {#.datum(exampleData3())#}
+                    {#.transition().duration(350)#}
+                    {#.call(chart);#}
 
-            return chart;
-        });
+            {#return chart;#}
+        {#});#}
 
-        //Pie chart example data. Note how there is only a single array of key-value pairs.
-        function exampleData3() {
-            return  [
-                {% for item in dancembles %}
-                {
-                    "label" : "{{ item.title }}",
-                    "value" : {{ item.nb }} },
-                {% endfor %}
-            ];
-        }
+        {#//Pie chart example data. Note how there is only a single array of key-value pairs.#}
+        {#function exampleData3() {#}
+            {#return  [#}
+                {#{% for item in dancembles %}#}
+                {#{#}
+                    {#"label" : "{{ item.title }}",#}
+                    {#"value" : {{ item.nb }} },#}
+                {#{% endfor %}#}
+            {#];#}
+        {#}#}
 
         //Donut exoticisms
         nv.addGraph(function() {
