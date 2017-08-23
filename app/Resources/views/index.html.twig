@@ -279,7 +279,7 @@ width: 100vw;
   <!-- Stats -->
   <section class="container">
     <article>
-      <h2>Number of films by Year</h2>
+      <h2>Films & numbers per year</h2>
       <div id="chart_div"></div>
       <p>MC2 database contains <strong>{{films|length}}</strong> films, <strong>{{ filmsWithNumber|length }}</strong> films with numbers and <strong>{{numbers|length}}</strong> <a href="{{ path('numbers') }}">numbers</a>.</p>
       <p class="center"><a class="btn myBtn" href="{{ path('stats') }}">See more stats</a></p>
@@ -385,13 +385,13 @@ width: 100vw;
           <img class="activator posterImage" src="{{ asset('img/affiche.jpg') }}">
         </div>
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Mood<i class="material-icons right">more_vert</i></span>
+          <span class="card-title activator grey-text text-darken-4">Topics<i class="material-icons right">more_vert</i></span>
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
           <p>Here is some more information about this product that is only revealed once clicked on.</p>
         </div>
-        <div class="card-action"><a href="{{ path("getMood") }}">Go to mood pages</a></div>
+        <div class="card-action"><a href="{{ path("getMood") }}">Go to topics pages</a></div>
       </div>
 
       <!-- Exoticisms -->
@@ -494,25 +494,24 @@ width: 100vw;
     function drawBasic() {
 
       var data = new google.visualization.DataTable();
-      data.addColumn('number', 'Year');
-      data.addColumn('number', 'Number of Numbers');
-      data.addColumn('number', 'Number of Films');
+      data.addColumn('date', 'Year');
+      data.addColumn('number', 'Numbers');
+      data.addColumn('number', 'Films');
+
 
 
       data.addRows([
         {% for item in nbNumbersByYear %}
-        [{{ item.released }}, {{ item.nb }}, {{ item.nbFilms }}],
+        [new Date({{ item.released }}, 0, 1), {{ item.nb }}, {{ item.nbFilms }}],
         {% endfor %}
 
       ]);
 
+      var formatter = new google.visualization.DateFormat({pattern: 'yyyy'});
+            formatter.format(data, 0);
+
       var options = {
-        hAxis: {
-          title: 'Years'
-        },
-        vAxis: {
-          title: 'Films & Numbers'
-        },
+
       };
 
 

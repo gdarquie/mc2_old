@@ -43,14 +43,14 @@
 
     <section class="container">
 
-        <article class="card">
+        <article class="card card_thematique">
             <h2>PCA verdict</h2>
 
                     <p>Production Code Administration verdict on the first version of the script submitted by the producer.
-                        These data come out of the PCA collection at the <a href="http://digitalcollections.oscars.org/cdm/landingpage/collection/p15759coll30">Margaret Herrick Library</a>.</p>
+                        These data come out of the PCA collection at the Margaret Herrick Library (physical and <a href="http://digitalcollections.oscars.org/cdm/landingpage/collection/p15759coll30"> digital</a>).</p>
                     <p class="center">***</p>
                     <p><i>Avis de l'administration du Code de production (PCA) sur la première soumission du scénario par le producteur.
-                          Ces données ont été reportées après consultation des dossiers de censure des films conservés à la <a href="http://digitalcollections.oscars.org/cdm/landingpage/collection/p15759coll30">Margaret Herrick Library</a></i>.</p>
+                          Ces données ont été reportées après consultation des dossiers de censure des films conservés à la Margaret Herrick Library (archives physiques et <a href="http://digitalcollections.oscars.org/cdm/landingpage/collection/p15759coll30">digitales</a>).</i></p>
 
             <p>Number of films with information : <span class="number">{{ nbFilmsWithVerdict.nb }}</span> films</p>
 
@@ -61,19 +61,19 @@
 
                 <div id="chart_div" class="donut s7 col"></div>
 
-                <div class='wordcloud col s5 row' id='wordcloud_pca' style="height: 300px"></div>
+                {#<div class='wordcloud col s5 row' id='wordcloud_pca' style="height: 300px"></div>#}
 
 
-                {#<div class="col s5">#}
-                    {#<h3>List of items</h3>#}
-                    {#{% for item in verdict  %}#}
-                    {#<span class="chip"><a href="{{ path('censorship_verdict', {'verdict' : item.verdict}) }}">{{ item.verdict }}({{ item.nb }})</a></span>#}
-                {#{% endfor %}</div>#}
+                <div class="col s5">
+                    <h3>List of items</h3>
+                    {% for item in verdict  %}
+                    <span class="chip"><a href="{{ path('censorship_verdict', {'verdict' : item.verdict}) }}">{{ item.verdict }}({{ item.nb }})</a></span>
+                {% endfor %}</div>
             </div>
 
         </article>
 
-        <article class="card">
+        <article class="card card_thematique">
             <h2>Censored contents</h2>
 
             <p>Film contents identified as problematic by the PCA (Several contents sometimes for one film and same films as above).</p>
@@ -112,17 +112,17 @@
 
             <div id="wordcloud_content" class="raw">
 
-                <div class='wordcloud col s12 row' id='wordcloud_content' style="height: 200px"></div>
+                {#<div class='wordcloud col s12 row' id='wordcloud_content' style="height: 200px"></div>#}
 
-                {#{% for item in censorship  %}#}
-                    {#<p class="chip"><a href="{{ path('censorship_content', {'content' : item.title}) }}">{{ item.title }} ({{ item.nb }})</a></p>#}
-                {#{% endfor %}#}
+                {% for item in censorship  %}
+                    <p class="chip"><a href="{{ path('censorship_content', {'content' : item.title}) }}">{{ item.title }} ({{ item.nb }})</a></p>
+                {% endfor %}
             </div>
 
         </article>
 
 
-        <article class="card">
+        <article class="card card_thematique">
 
             <h2>Legion of Decency</h2>
 
@@ -134,16 +134,21 @@
 
             <div class="row ">
 
-                <div id="chart_div3" class="donut s7 col"></div>
 
-                <div class='wordcloud col s5 row' id='wordcloud_legion' style="height: 300px"></div>
+                <div id="div_donut" class="col s7" style="height: 500px">
+                    <svg style="height: 500px;"></svg>
+                </div>
+
+                {#<div id="chart_div3" class="donut s7 col"></div>#}
+
+                {#<div class='wordcloud col s5 row' id='wordcloud_legion' style="height: 300px"></div>#}
 
 
-                {#<div class="col s5">#}
-                {#{% for item in legion  %}#}
-                    {#<p class="chip"><a href="{{ path('censorship_legion' , {'legion' : item.legion}) }}">{{ item.legion }}({{ item.nb }})</a></p>#}
-                {#{% endfor %}#}
-                {#</div>#}
+                <div class="col s5">
+                {% for item in legion  %}
+                    <p class="chip"><a href="{{ path('censorship_legion' , {'legion' : item.legion}) }}">{{ item.legion }}({{ item.nb }})</a></p>
+                {% endfor %}
+                </div>
         </article>
 
 
@@ -173,6 +178,7 @@
     {{ parent() }}
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{{ asset('js/donut_simple.js') }}"></script>
     <script type="text/javascript">
 
         google.charts.load("current", {packages:["corechart"]});
@@ -214,24 +220,26 @@
             var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
             chart2.draw(data2, options);
 
-            //Donuts censorship
-            var data3 = google.visualization.arrayToDataTable([
-                ['Name', 'Occurences'],
-                {% for item in legion  %}
-                ['{{ item.legion }}', {{ item.nb }}],
-                {% endfor %}
-            ]);
+            {#//Donuts censorship#}
+            {#var data3 = google.visualization.arrayToDataTable([#}
+                {#['Name', 'Occurences'],#}
+                {#{% for item in legion  %}#}
+                {#['{{ item.legion }}', {{ item.nb }}],#}
+                {#{% endfor %}#}
+            {#]);#}
 
 
-            var options = {
-                title: 'Legion of Decency',
-                pieHole: 0.4,
-            };
+            {#var options = {#}
+                {#pieHole: 0.4#}
+            {#};#}
 
-            var chart3 = new google.visualization.PieChart(document.getElementById('chart_div3'));
-            chart3.draw(data3, options);
+            {#var chart3 = new google.visualization.PieChart(document.getElementById('chart_div3'));#}
+            {#chart3.draw(data3, options);#}
 
         }
+
+        donut_simple_avec_legende("div_donut svg", {{ legionJSON.content|raw }});
+
 
     </script>
 
@@ -252,38 +260,38 @@
 
     <script>
 
-        words_pca = [{% for item in verdict  %}{ text : decodeHtml("{{ item.verdict }}"), weight : {{ item.nb }}, link : decodeHtml("{{ path('censorship_verdict', {'verdict' : item.verdict}) }}")  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        {#words_pca = [{% for item in verdict  %}{ text : decodeHtml("{{ item.verdict }}"), weight : {{ item.nb }}, link : decodeHtml("{{ path('censorship_verdict', {'verdict' : item.verdict}) }}")  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];#}
 
-        $('#wordcloud_pca').jQCloud(words_pca);
-        $('#wordcloud_pca').jQCloud('update', words_pca, {
-            fontSize: {
-                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
-                from: 0.1,
-                to: 0.05
-            }
-        });
-
-
-        words_content = [{% for item in censorship  %}{ text : decodeHtml("{{ item.title }}"), weight : {{ item.nb }}, link : decodeHtml("{{ path('censorship_content', {'content' : item.title}) }}")  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
-        $('#wordcloud_content').jQCloud(words_content);
-        $('#wordcloud_content').jQCloud('update', words_content, {
-            fontSize: {
-                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
-                from: 0.1,
-                to: 0.05
-            }
-        });
+        {#$('#wordcloud_pca').jQCloud(words_pca);#}
+        {#$('#wordcloud_pca').jQCloud('update', words_pca, {#}
+            {#fontSize: {#}
+                {#colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],#}
+                {#from: 0.1,#}
+                {#to: 0.05#}
+            {#}#}
+        {#});#}
 
 
-        words_legion = [{% for item in legion  %}{ text : decodeHtml("{{ item.legion }}"), weight : {{ item.nb }}, link : decodeHtml("{{ path('censorship_legion', {'legion' : item.legion}) }}")  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
-        $('#wordcloud_legion').jQCloud(words_legion);
-        $('#wordcloud_legion').jQCloud('update', words_legion, {
-            fontSize: {
-                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
-                from: 0.1,
-                to: 0.05
-            }
-        });
+        {#words_content = [{% for item in censorship  %}{ text : decodeHtml("{{ item.title }}"), weight : {{ item.nb }}, link : decodeHtml("{{ path('censorship_content', {'content' : item.title}) }}")  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];#}
+        {#$('#wordcloud_content').jQCloud(words_content);#}
+        {#$('#wordcloud_content').jQCloud('update', words_content, {#}
+            {#fontSize: {#}
+                {#colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],#}
+                {#from: 0.1,#}
+                {#to: 0.05#}
+            {#}#}
+        {#});#}
+
+
+        {#words_legion = [{% for item in legion  %}{ text : decodeHtml("{{ item.legion }}"), weight : {{ item.nb }}, link : decodeHtml("{{ path('censorship_legion', {'legion' : item.legion}) }}")  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];#}
+        {#$('#wordcloud_legion').jQCloud(words_legion);#}
+        {#$('#wordcloud_legion').jQCloud('update', words_legion, {#}
+            {#fontSize: {#}
+                {#colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],#}
+                {#from: 0.1,#}
+                {#to: 0.05#}
+            {#}#}
+        {#});#}
 
 
         {#{% for item in legion  %}#}

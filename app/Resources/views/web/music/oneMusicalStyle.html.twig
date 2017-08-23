@@ -36,7 +36,10 @@
         <h2>Musical Ensemble</h2>
         <h2><i>Formation</i></h2>
 
-        <div class="col s12 donut" id="donut_ensemble"><svg></svg></div>
+        <div class='wordcloud col s12 row' id='wordcloud_style' style="height: 300px"></div>
+
+
+        {#<div class="col s12 donut" id="donut_ensemble"><svg></svg></div>#}
 
     </article>
 
@@ -57,10 +60,10 @@
             <table class="striped medium-table">
                 <thead>
                 <tr>
-                    <th onclick="sortPerso(this, 'list_number')" data-cpt="0">Number</th>
-                    <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film</th>
-                    <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date</th>
-                    <th onclick="sortPerso(this, 'studio')" data-cpt="0">Studio</th>
+                    <th onclick="sortPerso(this, 'list_number')" data-cpt="0">Number<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                    <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                    <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                    <th onclick="sortPerso(this, 'studio')" data-cpt="0">Studio<i class="material-icons icone_perso">arrow_drop_down</i></th>
                 </tr>
                 </thead>
                 <tbody class="list">
@@ -158,6 +161,21 @@
                 {% endfor %}
             ];
         }
+    </script>
+
+    <script>
+
+
+        words_style = [{% for item in musicalEnsemble  %}{ text : "{{ item.title }}", weight : {{ item.nb }} } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        $('#wordcloud_style').jQCloud(words_style);
+        $('#wordcloud_style').jQCloud('update', words_style, {
+            fontSize: {
+                colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"],
+                from: 0.1,
+                to: 0.05
+            }
+        });
+
     </script>
 
 

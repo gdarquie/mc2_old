@@ -14,7 +14,7 @@
         {% if person.numbersChoregrapher|length > 0 %}
             <div class="row">
                 <article class="col s12">
-                    <h3>Number(s) where {{ person.name }} is choreographer</h3>
+                    <h3>Number(s) where {{ person.name }} is a choreographer</h3>
 
                     <div id="number_choreo_list">
 
@@ -23,9 +23,9 @@
                         <table class="striped medium-table">
                             <thead>
                             <tr>
-                                <th onclick="sortPersoNumberChoreoList(this, 'number_choreo_title')" data-cpt="0">Number</th>
-                                <th onclick="sortPersoNumberChoreoList(this, 'number_choreo_film')" data-cpt="0">Film</th>
-                                <th onclick="sortPersoNumberChoreoList(this, 'number_choreo_released')" data-cpt="0">Released</th>
+                                <th onclick="sortPersoNumberChoreoList(this, 'number_choreo_title')" data-cpt="0">Number<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                                <th onclick="sortPersoNumberChoreoList(this, 'number_choreo_film')" data-cpt="0">Film<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                                <th onclick="sortPersoNumberChoreoList(this, 'number_choreo_released')" data-cpt="0">Released<i class="material-icons icone_perso">arrow_drop_down</i></th>
                             </tr>
                             </thead>
                             <tbody class="list">
@@ -51,7 +51,7 @@
         {% if person.numbersArranger|length > 0 %}
             <div class="row">
                 <article class="col s12">
-                    <h3>Number(s) where {{ person.name }} is arranger</h3>
+                    <h3>Number(s) where {{ person.name }} is an arranger</h3>
 
                     <div id="number_arranger_list">
 
@@ -60,9 +60,9 @@
                         <table class="striped medium-table">
                             <thead>
                             <tr>
-                                <th onclick="sortPersoNumberArrangerList(this, 'number_arranger_title')" data-cpt="0">Number</th>
-                                <th onclick="sortPersoNumberArrangerList(this, 'number_arranger_film')" data-cpt="0">Film</th>
-                                <th onclick="sortPersoNumberArrangerList(this, 'number_arranger_released')" data-cpt="0">Released</th>
+                                <th onclick="sortPersoNumberArrangerList(this, 'number_arranger_title')" data-cpt="0">Number<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                                <th onclick="sortPersoNumberArrangerList(this, 'number_arranger_film')" data-cpt="0">Film<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                                <th onclick="sortPersoNumberArrangerList(this, 'number_arranger_released')" data-cpt="0">Released<i class="material-icons icone_perso">arrow_drop_down</i></th>
                             </tr>
                             </thead>
                             <tbody class="list">
@@ -89,7 +89,7 @@
         {% if person.numbersDirector|length > 0 %}
             <div class="row">
                 <article class="col s12">
-                    <h3>Number(s) where {{ person.name }} is director</h3>
+                    <h3>Number(s) where {{ person.name }} is a director</h3>
 
                     <div id="number_director_list">
 
@@ -98,9 +98,9 @@
                         <table class="striped medium-table">
                             <thead>
                             <tr>
-                                <th onclick="sortPersoNumberDirectorList(this, 'number_director_title')" data-cpt="0">Number</th>
-                                <th onclick="sortPersoNumberDirectorList(this, 'number_director_film')" data-cpt="0">Film</th>
-                                <th onclick="sortPersoNumberDirectorList(this, 'number_director_released')" data-cpt="0">Released</th>
+                                <th onclick="sortPersoNumberDirectorList(this, 'number_director_title')" data-cpt="0">Number<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                                <th onclick="sortPersoNumberDirectorList(this, 'number_director_film')" data-cpt="0">Film<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                                <th onclick="sortPersoNumberDirectorList(this, 'number_director_released')" data-cpt="0">Released<i class="material-icons icone_perso">arrow_drop_down</i></th>
                             </tr>
                             </thead>
                             <tbody class="list">
@@ -125,7 +125,7 @@
         {% if person.numbersPerformer|length > 0 %}
             <div class="row">
                 <article class="col s12">
-                    <h3>Number(s) where {{ person.name }} is performer</h3>
+                    <h3>Number(s) where {{ person.name }} is a performer</h3>
 
                     <div id="number_performer_list">
 
@@ -134,9 +134,9 @@
                         <table class="striped medium-table">
                             <thead>
                             <tr>
-                                <th onclick="sortPersoNumberPerformerList(this, 'number_performer_title')" data-cpt="0">Number</th>
-                                <th onclick="sortPersoNumberPerformerList(this, 'number_performer_film')" data-cpt="0">Film</th>
-                                <th onclick="sortPersoNumberPerformerList(this, 'number_performer_released')" data-cpt="0">Released</th>
+                                <th onclick="sortPersoNumberPerformerList(this, 'number_performer_title')" data-cpt="0">Number<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                                <th onclick="sortPersoNumberPerformerList(this, 'number_performer_film')" data-cpt="0">Film<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                                <th onclick="sortPersoNumberPerformerList(this, 'number_performer_released')" data-cpt="0">Released<i class="material-icons icone_perso">arrow_drop_down</i></th>
                             </tr>
                             </thead>
                             <tbody class="list">
@@ -160,6 +160,7 @@
             <div class="row">
                 <article class="col s12">
                 <h3>Numbers where {{ person.name }} doesn't participate</h3>
+                    <p>{{ person.name }} is present but does not participate</p>
 
                     <div id="number_not_list">
 
@@ -168,9 +169,9 @@
                         <table class="striped medium-table">
                             <thead>
                             <tr>
-                                <th onclick="sortPersoNumberNotList(this, 'number_not_title')" data-cpt="0">Number</th>
-                                <th onclick="sortPersoNumberNotList(this, 'number_not_film')" data-cpt="0">Film</th>
-                                <th onclick="sortPersoNumberNotList(this, 'number_not_released')" data-cpt="0">Released</th>
+                                <th onclick="sortPersoNumberNotList(this, 'number_not_title')" data-cpt="0">Number<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                                <th onclick="sortPersoNumberNotList(this, 'number_not_film')" data-cpt="0">Film<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                                <th onclick="sortPersoNumberNotList(this, 'number_not_released')" data-cpt="0">Released<i class="material-icons icone_perso">arrow_drop_down</i></th>
                             </tr>
                             </thead>
                             <tbody class="list">

@@ -181,6 +181,11 @@ class ThesaurusController extends Controller
         $query->setParameter('type', 'exoticism');
         $popularexoticism = $query->getResult();
 
+        //all most popular exoticism in numbers
+        $query = $em -> createQuery('SELECT t.title as title, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type AND t.thesaurusId != 436 GROUP BY t.thesaurusId ORDER BY title');
+        $query->setParameter('type', 'exoticism');
+        $popularexoticismCartouche = $query->getResult();
+
         $query = $em -> createQuery('SELECT t.title as label, COUNT(t.title) as value FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type GROUP BY t.thesaurusId ORDER BY value DESC');
         $query->setParameter('type', 'exoticism');
         $popularexoticismJson = $query->getResult();
@@ -208,6 +213,7 @@ class ThesaurusController extends Controller
         return $this->render('web/thesaurus/exoticism.html.twig' , array(
             'exoticism' => $exoticism,
             'popularexoticism' => $popularexoticism,
+            'popularexoticismCartouche' => $popularexoticismCartouche,
             'popularexoticismJson' => $popularexoticismJson,
             'mostPopular' => $mostPopular,
             'total' => $total,
@@ -294,6 +300,11 @@ class ThesaurusController extends Controller
         $query->setParameter('category', 'general');
         $popularmood = $query->getResult();
 
+        $query = $em -> createQuery('SELECT t.thesaurusId as itemId, t.title as title, COUNT(t.title) as nb, t.category as category FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY title');
+        $query->setParameter('type', 'mood');
+        $query->setParameter('category', 'general');
+        $popularmoodCartouche = $query->getResult();
+
         //the most popular
         $query = $em -> createQuery('SELECT t.title as title,  COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC')->setMaxResults(1);
         $query->setParameter('type', 'mood');
@@ -326,6 +337,13 @@ class ThesaurusController extends Controller
         $query->setParameter('category', 'genre');
         $popularmoodGenre = $query->getResult();
 
+
+        //all most popular exoticism in numbers
+        $query = $em -> createQuery('SELECT t.thesaurusId as itemId, t.title as title, COUNT(t.title) as nb, t.category as category FROM AppBundle:Number n JOIN n.genre t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY title');
+        $query->setParameter('type', 'mood');
+        $query->setParameter('category', 'genre');
+        $popularmoodGenreCartouche = $query->getResult();
+
         //the most popular
         $query = $em -> createQuery('SELECT t.title as title,  COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC')->setMaxResults(1);
         $query->setParameter('type', 'mood');
@@ -349,11 +367,13 @@ class ThesaurusController extends Controller
         return $this->render('web/thesaurus/mood.html.twig' , array(
             'mood' => $mood,
             'popularmood' => $popularmood,
+            'popularmoodCartouche' => $popularmoodCartouche,
             'mostPopular' => $mostPopular,
             'total' => $total,
             'totalNumber' => $totalNumber,
             'moodGenre' => $moodGenre,
             'popularmoodGenre' => $popularmoodGenre,
+            'popularmoodGenreCartouche' => $popularmoodGenreCartouche,
             'mostPopularGenre' => $mostPopularGenre,
             'totalGenre' => $totalGenre,
             'totalNumberGenre' => $totalNumberGenre

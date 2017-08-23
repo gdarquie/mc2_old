@@ -8,7 +8,7 @@ function viz_mediane(container, data, nbCsp) {
 
 
 
-    creerButton(container);
+    // creerButton(container);
 
     var div = d3.select("#"+container).append("div")
         .attr("id", "zone_viz"+container)
@@ -73,7 +73,7 @@ function versionMelviz(container, data, nbCsp) {
 
 
 
-    var width = document.getElementById(container).getBoundingClientRect().width/nbCsp;
+    var width = (document.getElementById(container).getBoundingClientRect().width/nbCsp)-2;
     var height = document.getElementById(container).getBoundingClientRect().height;
 
     $("#"+container).html('');

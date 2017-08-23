@@ -193,27 +193,27 @@
     {% endif %}
 
 
-    {% if person.numbersFigurant|length > 0 %}
+    {#{% if person.numbersFigurant|length > 0 %}#}
 
-        <div class="row">
-            <article class="col s12">
-                <h2>Film(s) where {{ person.name }} doesn't participate in at least one number</h2>
+        {#<div class="row">#}
+            {#<article class="col s12">#}
+                {#<h2>Film(s) where {{ person.name }} doesn't participate in at least one number</h2>#}
 
-                {% set tabFigurant = [] %}
-                {% for item in person.numbersFigurant  %}
-                    {% if item.film.filmId not in tabFigurant %}
-                        {% set tabFigurant = tabFigurant|merge([item.film.filmId]) %}
-                        <div class="col s2 card film">
-                            <a href="{{ path('film', {'filmId' : item.film.filmId}) }}">
-                                <h4 class="center">{{ item.film }} ({{ item.film.released }})</h4>
-                                <img class="poster col s12" src="http://img.omdbapi.com/?i={{ item.film.idImdb }}&apikey=1733f6a&h=300" alt="poster" class="poster" onError="this.onerror=null;this.src='{{ asset('img/default_poster.jpg') }}';">
-                            </a>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </article>
-        </div>
-    {% endif %}
+                {#{% set tabFigurant = [] %}#}
+                {#{% for item in person.numbersFigurant  %}#}
+                    {#{% if item.film.filmId not in tabFigurant %}#}
+                        {#{% set tabFigurant = tabFigurant|merge([item.film.filmId]) %}#}
+                        {#<div class="col s2 card film">#}
+                            {#<a href="{{ path('film', {'filmId' : item.film.filmId}) }}">#}
+                                {#<h4 class="center">{{ item.film }} ({{ item.film.released }})</h4>#}
+                                {#<img class="poster col s12" src="http://img.omdbapi.com/?i={{ item.film.idImdb }}&apikey=1733f6a&h=300" alt="poster" class="poster" onError="this.onerror=null;this.src='{{ asset('img/default_poster.jpg') }}';">#}
+                            {#</a>#}
+                        {#</div>#}
+                    {#{% endif %}#}
+                {#{% endfor %}#}
+            {#</article>#}
+        {#</div>#}
+    {#{% endif %}#}
 
 
     {% if person.songLyricist|length > 0 %}

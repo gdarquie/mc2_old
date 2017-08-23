@@ -41,7 +41,7 @@
         <h1>Legion of Decency Grade : {{ myLegion.title }}</h1>
 
 
-        <article class="card row">
+        <article class="card card_thematique row">
             <p>Number of films : <span class="number">{{ myLegion.nb }}</span></p>
 
             <h3>List of films with {{ myLegion.title }} grade</h3>
@@ -51,9 +51,9 @@
                 <table class="striped medium-table">
                     <thead>
                     <tr>
-                        <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film</th>
-                        <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date</th>
-                        <th onclick="sortPerso(this, 'list_studio')" data-cpt="0">Studio</th>
+                        <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_studio')" data-cpt="0">Studio<i class="material-icons icone_perso">arrow_drop_down</i></th>
                     </tr>
                     </thead>
                     <tbody class="list">

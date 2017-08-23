@@ -36,15 +36,14 @@
         <h1>Censored content : {{ myContent.title }}</h1>
 
 
-        <article class="card row">
+        <article class="card card_thematique row">
         <h2>Studios</h2>
             <div class="row col s12">
-                <h3>Films by studios for censored content "{{ myContent.title }}"</h3>
                 <div id="div_studios" class="donut"></div>
             </div>
         </article>
 
-        <article class="card">
+        <article class="card card_thematique">
                 <h2>List of films with censored content "{{  myContent.title  }}"</h2>
 
                 <div id="table_one_censored" class="row">
@@ -52,9 +51,9 @@
                     <table class="striped medium-table">
                         <thead>
                         <tr>
-                            <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film</th>
-                            <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date</th>
-                            <th onclick="sortPerso(this, 'list_studio')" data-cpt="0">Studio</th>
+                            <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                            <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                            <th onclick="sortPerso(this, 'list_studio')" data-cpt="0">Studio<i class="material-icons icone_perso">arrow_drop_down</i></th>
                         </tr>
                         </thead>
                         <tbody class="list">

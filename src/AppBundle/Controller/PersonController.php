@@ -16,7 +16,7 @@ class PersonController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery("SELECT p FROM AppBundle:Person p");
+        $query = $em->createQuery("SELECT p FROM AppBundle:Person p WHERE p.name != '' ORDER BY p.name");
         $persons = $query->getResult();
 
         return $this->render('AppBundle:person:index.html.twig', array(

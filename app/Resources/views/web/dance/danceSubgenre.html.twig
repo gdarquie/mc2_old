@@ -25,7 +25,7 @@
         <p><i>{{ myDance.definition }}</i></p>
 
 
-        <article class="card">
+        <article class="card card_thematique">
 
             <h2>Production Numbers per Year</h2>
 
@@ -37,47 +37,47 @@
 
         </article>
 
-        <article class="card row">
-            <h2>Dancing type</h2>
+        {#<article class="card row">#}
+            {#<h2>Dancing type</h2>#}
 
-            <div class="col s7 donut" id="donut_type">
-                <svg></svg>
-            </div>
+            {#<div class="col s7 donut" id="donut_type">#}
+                {#<svg></svg>#}
+            {#</div>#}
 
-            <div class='wordcloud col s5 row' id='wordcloud_type' style="height: 300px"></div>
+            {#<div class='wordcloud col s5 row' id='wordcloud_type' style="height: 300px"></div>#}
 
             {#<div class="col s5">#}
             {#{% for item in dancings  %}#}
                 {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'dancing' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }} ({{ item.nb }})</span></a>#}
             {#{% endfor %}#}
             {#</div>#}
-        </article>
+        {#</article>#}
 
-        <article class="card row">
-            <h2>Dance content</h2>
+        {#<article class="card row">#}
+            {#<h2>Dance content</h2>#}
 
-            <div class="col s7 donut" id="donut_content">
-                <svg></svg>
-            </div>
+            {#<div class="col s7 donut" id="donut_content">#}
+                {#<svg></svg>#}
+            {#</div>#}
 
-            <div class='wordcloud col s5 row' id='wordcloud_content' style="height: 300px"></div>
+            {#<div class='wordcloud col s5 row' id='wordcloud_content' style="height: 300px"></div>#}
 
             {#<div class="col s5">#}
             {#{% for item in contents %}#}
                 {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'content' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>#}
             {#{% endfor %}#}
             {#</div>#}
-        </article>
+        {#</article>#}
 
-        <article class="card row">
+        <article class="card card_thematique row">
             <h2>Dancing ensemble</h2>
             <h2><i>Formation</i></h2>
 
-            <div class="col s7 donut" id="donut_ensemble">
-                <svg></svg>
-            </div>
+            {#<div class="col s7 donut" id="donut_ensemble">#}
+                {#<svg></svg>#}
+            {#</div>#}
 
-            <div class='wordcloud col s5 row' id='wordcloud_dancemble' style="height: 300px"></div>
+            <div class='wordcloud col s12 row' id='wordcloud_dancemble' style="height: 150px"></div>
 
             {#<div class="col s5">#}
             {#{% for item in dancembles %}#}
@@ -86,24 +86,24 @@
             {#</div>#}
         </article>
 
-        <article class="card row">
-            <h2>Costumes</h2>
+        {#<article class="card row">#}
+            {#<h2>Costumes</h2>#}
 
-            <div class="col s7 donut" id="donut_costumes">
-                <svg></svg>
-            </div>
+            {#<div class="col s7 donut" id="donut_costumes">#}
+                {#<svg></svg>#}
+            {#</div>#}
 
-            <div class='wordcloud col s5 row' id='wordcloud_costume' style="height: 300px"></div>
+            {#<div class='wordcloud col s5 row' id='wordcloud_costume' style="height: 300px"></div>#}
 
             {#<div class="col s5">#}
             {#{% for item in costumes %}#}
                 {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'costume' , 'itemId' :item.thesaurusId }) }}"><span class="chip truncate">{{ item.title }}({{ item.nb }})</span></a>#}
             {#{% endfor %}#}
             {#</div>#}
-        </article>
+        {#</article>#}
 
 
-        <article class="card row">
+        <article class="card card_thematique row">
 
             <h2>List of numbers</h2>
 
@@ -112,11 +112,11 @@
                 <table class="striped medium-table">
                     <thead>
                     <tr>
-                        <th onclick="sortPerso(this, 'list_number')" data-cpt="0">Number</th>
-                        <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film</th>
-                        <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date</th>
-                        <th onclick="sortPerso(this, 'list_studio')" data-cpt="0">Studio</th>
-                        <th onclick="sortPerso(this, 'list_style')" data-cpt="0">Musical Style</th>
+                        <th onclick="sortPerso(this, 'list_number')" data-cpt="0">Number<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_film')" data-cpt="0">Film<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_release_date')" data-cpt="0">Release Date<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_studio')" data-cpt="0">Studio<i class="material-icons icone_perso">arrow_drop_down</i></th>
+                        <th onclick="sortPerso(this, 'list_style')" data-cpt="0">Musical Style<i class="material-icons icone_perso">arrow_drop_down</i></th>
                     </tr>
                     </thead>
                     <tbody class="list">

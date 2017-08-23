@@ -35,19 +35,19 @@ class DanceController extends Controller
         $content = $query->getResult();
 
         //top dancing
-        $query = $em -> createQuery('SELECT t.title as title, t.thesaurusId as thesaurusId, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.dancingType t WHERE t.type = :type AND t.category = :category AND t.title != \'NA\' GROUP BY t.thesaurusId ORDER BY nb DESC');
+        $query = $em -> createQuery('SELECT t.title as title, t.thesaurusId as thesaurusId, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.dancingType t WHERE t.type = :type AND t.category = :category AND t.title != \'NA\' GROUP BY t.thesaurusId ORDER BY title');
         $query->setParameter('type', 'dance');
         $query->setParameter('category', 'Dancing type');
         $populardancing = $query->getResult();
 
         //top subgenre
-        $query = $em -> createQuery('SELECT t.title as title, t.thesaurusId as thesaurusId, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC');
+        $query = $em -> createQuery('SELECT t.title as title, t.thesaurusId as thesaurusId, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY title');
         $query->setParameter('type', 'dance');
         $query->setParameter('category', 'Dance sub-genre');
         $popularsubgenre = $query->getResult();
 
         //top content
-        $query = $em -> createQuery('SELECT t.title as title, t.thesaurusId as thesaurusId, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.danceContent t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC');
+        $query = $em -> createQuery('SELECT t.title as title, t.thesaurusId as thesaurusId, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.danceContent t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY title');
         $query->setParameter('type', 'dance');
         $query->setParameter('category', 'Dance content');
         $popularcontent = $query->getResult();

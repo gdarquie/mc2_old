@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class CensorshipController extends Controller
@@ -17,6 +18,10 @@ class CensorshipController extends Controller
         //Films by Legion
         $query = $em -> createQuery('SELECT f.title as title, f.legion as legion, f.released as released, COUNT(f.filmId) as nb FROM AppBundle:Film f WHERE f.legion IS NOT NULL GROUP BY f.legion');
         $legion = $query->getResult();
+
+        $query = $em -> createQuery('SELECT f.legion as label, COUNT(f.filmId) as value FROM AppBundle:Film f WHERE f.legion IS NOT NULL GROUP BY f.legion');
+        $legionJSON = $query->getResult();
+        $legionJSON = new JsonResponse($legionJSON);
 
         //Nb legion par année
         $query = $em -> createQuery('SELECT f.title, f.released, COUNT(f.legion) as nb FROM AppBundle:Film as f WHERE f.released > 0 AND f.legion != :null GROUP BY f.released');
@@ -44,7 +49,7 @@ class CensorshipController extends Controller
         $board = $query->getResult();
 
         //Films by Verdict
-        $query = $em -> createQuery('SELECT f.title as title, f.verdict as verdict, f.released as released, COUNT(f.filmId) as nb FROM AppBundle:Film f WHERE f.verdict != :value GROUP BY f.verdict');
+        $query = $em -> createQuery('SELECT f.title as title, f.verdict as verdict, f.released as released, COUNT(f.filmId) as nb FROM AppBundle:Film f WHERE f.verdict != :value GROUP BY f.verdict ORDER BY verdict');
         $query->setParameter('value', '');
         $verdict = $query->getResult();
 
@@ -68,7 +73,7 @@ class CensorshipController extends Controller
         $nbFilmsWithVerdictByStudio = $query->getResult();
 
         //number of censored contents (censorships)
-        $query = $em -> createQuery('SELECT c.title as title, f.released as released, COUNT(f.filmId) as nb FROM AppBundle:Film f JOIN f.censorship c GROUP BY c.censorshipId ORDER BY nb DESC');
+        $query = $em -> createQuery('SELECT c.title as title, f.released as released, COUNT(f.filmId) as nb FROM AppBundle:Film f JOIN f.censorship c GROUP BY c.censorshipId ORDER BY title');
         $censorship = $query->getResult();
 
         $query = $em -> createQuery('SELECT c.title as title, COUNT(f.filmId) as nb FROM AppBundle:Film f JOIN f.censorship c GROUP BY c.censorshipId ORDER BY nb DESC');
@@ -85,6 +90,7 @@ class CensorshipController extends Controller
 
         return $this->render('web/censorship/index.html.twig', array(
             'legion' => $legion,
+            'legionJSON' => $legionJSON,
             'nbLegion' => $nbLegion,
             'nbFilmsWithLegion' => $nbFilmsWithLegion,
             'harrison' => $harrison,
