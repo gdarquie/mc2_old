@@ -1,6 +1,3 @@
-/**
- * Created by Ale PDERY on 22/05/2017.
- */
 function create_gant(data,lengthFilm){
 
     var w = document.getElementById("svg_timeline").getBoundingClientRect().width;
@@ -25,13 +22,13 @@ function create_gant(data,lengthFilm){
         ];
     //
     // [
-        //     "#8d0000",
-        //     "#a90000",
-        //     "#CC0000",
-        //     "#ff3838",
-        //     "#7F7F7F",
-        //     "#ff8d8d"
-        // ];
+    //     "#8d0000",
+    //     "#a90000",
+    //     "#CC0000",
+    //     "#ff3838",
+    //     "#7F7F7F",
+    //     "#ff8d8d"
+    // ];
     // [
     //     "#7F7F7F",
     //     "#7F7F7F",
