@@ -42,8 +42,6 @@ class Film
     private $idImdb;
 
 
-
-
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
