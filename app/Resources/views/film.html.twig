@@ -114,7 +114,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for number in film.numbers %}
+                                        {% for number in numbersOf1Film %}
                                             <tr>
                                                 <td>{{loop.index}}</td>
                                                 <td><a class="img_hover" href="{{ path('number', {'id' : number.id}) }}">{{ number.title  }} <span><img
