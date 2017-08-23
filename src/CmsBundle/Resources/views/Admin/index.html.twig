@@ -21,105 +21,301 @@
 
 {% block body %}
 
-    <section class='container'>
+    <section class='container-fluid row'>
+
         <h1>Admin Page</h1>
 
-        <article>
-            <iframe src="http://54.93.50.108:5601/app/kibana#/dashboard/f8b20cd0-67d6-11e7-8385-0bb2de6337bd?embed=true&_g=()&_a=(description:'',filters:!(),options:(darkTheme:!f),panels:!((col:1,id:e4ccd1a0-67d6-11e7-8385-0bb2de6337bd,panelIndex:1,row:1,size_x:6,size_y:3,type:visualization),(col:7,id:abff6a60-67d4-11e7-8385-0bb2de6337bd,panelIndex:2,row:1,size_x:6,size_y:3,type:visualization)),query:(query_string:(analyze_wildcard:!t,query:'*')),timeRestore:!f,title:monitoring-test,uiState:(P-1:(vis:(params:(sort:(columnIndex:!n,direction:!n)))),P-2:(vis:(params:(sort:(columnIndex:3,direction:desc))))),viewMode:view)" height="600" width="800"></iframe>
-        </article>
-        <article>
-            <h2>Count of new numbers by day</h2>
+        <nav class="col s2">
+            <h2>Menu</h2>
 
-            <div id="chart_div">
+            <p>Voir</p>
+        </nav>
 
-            </div>
+        <div class="col s10">
+            <article>
+                <h2>Numbers</h2>
 
-            {#<table class="striped">#}
-            {#<tr>#}
-            {#<td>Count</td>#}
-            {#<td>Date</td>#}
-            {#</tr>#}
-            {#{% for number in numberByMonth %}#}
-            {#<tr>#}
-            {#<td>{{ number.nb }}</td>#}
-            {#<td>{{ number.day }} - {{ number.month }} - {{ number.year }}</td>#}
-            {#</tr>#}
-            {#{% endfor %}#}
-            {#</table>#}
-        </article>
-
-
-        {#<svg width="960" height="500"></svg>#}
-
-        <article>
-            <h2>All users</h2>
-            <table class="striped tablesorter">
-                <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>email</th>
-                    <th>enabled</th>
-                    <th>role</th>
-                    <th>last login</th>
-                    <th>promote</th>
-                </tr>
-                </thead>
-                <tbody>
-                {%  for user in users %}
+                <table class="responsive-table mini-table striped">
                     <tr>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.enabled }}</td>
+                        <th>Title</th>
+                        <th>Film</th>
+                        <th>Last Update</th>
+                        <th>Editor(s)</th>
+                        <th>Show</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                {% for item in lastnumbers  %}
+                    <tr>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.film }}</td>
+                        <td>{{ item.lastUpdate | date() }}</td>
                         <td>
-                            {% for role in user.roles %}
-                                {{ role }}{% if loop|last %}{% else %},{% endif %}
+                            {% for editor in item.editors  %}
+                                {{ editor.username }} {% if loop.last %}{% else %} ;{% endif %}
                             {% endfor %}
                         </td>
-                        <td>
-                            {{ user.lastLogin|date() }}
-                        </td>
-                        <td><a href="">promote</a> (soon)</td>
+                        <td><i class="material-icons tiny">zoom_in</i></td>
+                        <td><i class="material-icons tiny">mode_edit</i></td>
+                        <td><a href=""><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
                     </tr>
                 {% endfor %}
-                </tbody>
-            </table>
-        </article>
+                </table>
 
-        <article>
-            <h2>Numbers by editor</h2>
 
-            <table class="striped">
-                <tr>
-                    <th>Username</th>
-                    <th>Count</th>
-                </tr>
-                {%  for number in numbersByEditor %}
+                <p class="center"><a href="{{ path('numbers') }}">All numbers</a></p>
+
+            </article>
+
+            <article>
+                <h2>Films</h2>
+
+                <table class="responsive-table mini-table striped">
                     <tr>
-                        <td>{{  number.name }}</td>
-                        <td>{{ number.nb }}</td>
+                        <th>Title</th>
+                        <th>Released</th>
+                        <th>Show</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
-                {% endfor %}
-            </table>
-        </article>
+                    {% for item in lastfilms  %}
+                        <tr>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.released }}</td>
+                            <td><i class="material-icons tiny">zoom_in</i></td>
+                            <td><i class="material-icons tiny">mode_edit</i></td>
+                            <td><a href=""><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
 
-        <article>
-            <h2>Last numbers</h2>
-            <table class="striped">
-                {% for number in lastNumbers %}
+                        </tr>
+                    {% endfor %}
+                </table>
+
+                <p><a href="{{ path('films') }}">All films</a></p>
+
+            </article>
+
+            <article>
+                <h2>Songs</h2>
+
+                <table class="responsive-table mini-table striped">
                     <tr>
-                        <td>{{ number.title }}</td>
-                        <td>{{ number.lastUpdate | date() }}</td>
-                        {#<td>{{ number.editors.username }}</td>#}
+                        <th>Title</th>
+                        <th>Last Update</th>
+                        <th>User</th>
+                        <th>Show</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
-                {% endfor %}
-            </table>
-        </article>
+                    {% for item in lastsongs  %}
+                        <tr>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.lastUpdate | date() }}</td>
+                            <td>
+                                {% for editor in item.editors  %}
+                                    {{ editor.username }} {% if loop.last %}{% else %} ;{% endif %}
+                                {% endfor %}
+                            </td>
+                            <td><i class="material-icons tiny">zoom_in</i></td>
+                            <td><i class="material-icons tiny">mode_edit</i></td>
+                            <td><a href=""><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
 
-        <article>
-            <h2>Numbers waiting for validation</h2>
-            <p>[in progress]</p>
-        </article>
+                <p class="center">All songs</p>
 
+            </article>
+
+            <article>
+                <h2>Stageshows</h2>
+
+                <table class="responsive-table mini-table striped">
+                    <tr>
+                        <th>Title</th>
+                        <th>Last Update</th>
+                        <th>Show</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for item in laststageshows  %}
+                        <tr>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.lastUpdate | date() }}</td>
+                            <td><i class="material-icons tiny">zoom_in</i></td>
+                            <td><i class="material-icons tiny">mode_edit</i></td>
+                            <td><a href=""><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+            </article>
+
+            <article>
+                <h2>Stagenumbers</h2>
+
+                <table class="responsive-table mini-table striped">
+                    <tr>
+                        <th>Title</th>
+                        <th>Last Update</th>
+                        <th>Show</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for item in laststagenumbers  %}
+                        <tr>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.lastUpdate | date() }}</td>
+                            <td><i class="material-icons tiny">zoom_in</i></td>
+                            <td><i class="material-icons tiny">mode_edit</i></td>
+                            <td><a href=""><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </article>
+
+            <article>
+                <h2>Censorship</h2>
+
+                <table class="responsive-table mini-table striped">
+                    <tr>
+                        <th>Title</th>
+                        <th>Last Update</th>
+                        <th>Show</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for item in lastcensorhsip  %}
+                        <tr>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.lastUpdate | date() }}</td>
+                            <td><i class="material-icons tiny">zoom_in</i></td>
+                            <td><i class="material-icons tiny">mode_edit</i></td>
+                            <td><a href=""><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </article>
+
+            <article>
+                <h2>Thésaurus</h2>
+
+                <table class="responsive-table mini-table striped">
+                    <tr>
+                        <th>Title</th>
+                        <th>Last Update</th>
+                        <th>Show</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for item in lastthesaurus  %}
+                        <tr>
+                            <td>{{ item.title }}</td>
+                            <td><i class="material-icons tiny">zoom_in</i></td>
+                            <td><i class="material-icons tiny">mode_edit</i></td>
+                            <td><a href=""><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+            </article>
+
+
+            <article>
+                <iframe src="http://54.93.50.108:5601/app/kibana#/dashboard/f8b20cd0-67d6-11e7-8385-0bb2de6337bd?embed=true&_g=()&_a=(description:'',filters:!(),options:(darkTheme:!f),panels:!((col:1,id:e4ccd1a0-67d6-11e7-8385-0bb2de6337bd,panelIndex:1,row:1,size_x:6,size_y:3,type:visualization),(col:7,id:abff6a60-67d4-11e7-8385-0bb2de6337bd,panelIndex:2,row:1,size_x:6,size_y:3,type:visualization)),query:(query_string:(analyze_wildcard:!t,query:'*')),timeRestore:!f,title:monitoring-test,uiState:(P-1:(vis:(params:(sort:(columnIndex:!n,direction:!n)))),P-2:(vis:(params:(sort:(columnIndex:3,direction:desc))))),viewMode:view)" height="600" width="800"></iframe>
+            </article>
+            <article>
+                <h2>Count of new numbers by day</h2>
+
+                <div id="chart_div">
+
+                </div>
+
+                {#<table class="striped">#}
+                {#<tr>#}
+                {#<td>Count</td>#}
+                {#<td>Date</td>#}
+                {#</tr>#}
+                {#{% for number in numberByMonth %}#}
+                {#<tr>#}
+                {#<td>{{ number.nb }}</td>#}
+                {#<td>{{ number.day }} - {{ number.month }} - {{ number.year }}</td>#}
+                {#</tr>#}
+                {#{% endfor %}#}
+                {#</table>#}
+            </article>
+
+
+            {#<svg width="960" height="500"></svg>#}
+
+            <article>
+                <h2>All users</h2>
+                <table class="striped tablesorter">
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>email</th>
+                        <th>enabled</th>
+                        <th>role</th>
+                        <th>last login</th>
+                        <th>promote</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%  for user in users %}
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.enabled }}</td>
+                            <td>
+                                {% for role in user.roles %}
+                                    {{ role }}{% if loop|last %}{% else %},{% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {{ user.lastLogin|date() }}
+                            </td>
+                            <td><a href="">promote</a> (soon)</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </article>
+
+            <article>
+                <h2>Numbers by editor</h2>
+
+                <table class="striped">
+                    <tr>
+                        <th>Username</th>
+                        <th>Count</th>
+                    </tr>
+                    {%  for number in numbersByEditor %}
+                        <tr>
+                            <td>{{  number.name }}</td>
+                            <td>{{ number.nb }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </article>
+
+            <article>
+                <h2>Last numbers</h2>
+                <table class="striped">
+                    {% for number in lastnumbers %}
+                        <tr>
+                            <td>{{ number.title }}</td>
+                            <td>{{ number.lastUpdate | date() }}</td>
+                            {#<td>{{ number.editors.username }}</td>#}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </article>
+
+            <article>
+                <h2>Numbers waiting for validation</h2>
+                <p>[in progress]</p>
+            </article>
+        </div>
 
     </section>
 

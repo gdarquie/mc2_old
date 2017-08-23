@@ -16,11 +16,12 @@ class AdminController extends Controller
 {
 
     /**
-     * @Route("", name="admin")
+     * @Route("/", name="admin")
      */
     public function adminAction()
     {
 
+        $max = 10;
         $em = $this->getDoctrine()->getManager();
 
         //all les users
@@ -28,7 +29,6 @@ class AdminController extends Controller
             'SELECT u FROM AppBundle:User u ORDER BY u.lastLogin DESC'
         );
         $users = $query->getResult();
-
 
         //all films
         $films = $em->getRepository('AppBundle:Film')->findAll();
@@ -39,12 +39,54 @@ class AdminController extends Controller
         );
         $numbersByEditor = $query->getResult();
 
-        //last numbers
+        //Numbers
         $query = $em->createQuery(
             'SELECT n FROM AppBundle:Number n WHERE n.date_creation is NOT null ORDER by n.last_update DESC '
         );
-        $query->setMaxResults(20);
+        $query->setMaxResults($max);
         $lastNumbers = $query->getResult();
+
+        //Films
+        $query = $em->createQuery(
+            'SELECT f FROM AppBundle:Film f ORDER by f.title DESC '
+        );
+        $query->setMaxResults($max);
+        $lastFilms = $query->getResult();
+
+        //Songs
+        $query = $em->createQuery(
+            'SELECT s FROM AppBundle:Song s ORDER by s.last_update DESC '
+        );
+        $query->setMaxResults($max);
+        $lastSongs = $query->getResult();
+
+        //StageS Shows
+        $query = $em->createQuery(
+            'SELECT s FROM AppBundle:Stageshow s ORDER by s.last_update DESC '
+        );
+        $query->setMaxResults($max);
+        $lastStageshows = $query->getResult();
+
+        //Stage numbers
+        $query = $em->createQuery(
+            'SELECT s FROM AppBundle:Stagenumber s ORDER by s.last_update DESC '
+        );
+        $query->setMaxResults($max);
+        $lastStagenumbers = $query->getResult();
+
+        //Censorship
+        $query = $em->createQuery(
+            'SELECT c FROM AppBundle:Censorship c ORDER by c.last_update DESC '
+        );
+        $query->setMaxResults($max);
+        $lastCensorhsip = $query->getResult();
+
+        //Thésaurus (voir si pas spécial)
+        $query = $em->createQuery(
+            'SELECT t FROM AppBundle:Thesaurus t ORDER by t.title DESC '
+        );
+        $query->setMaxResults($max);
+        $lastThesaurus = $query->getResult();
 
         //number by month
         $query = $em->createQuery(
@@ -56,9 +98,15 @@ class AdminController extends Controller
         return $this->render('CmsBundle:Admin:index.html.twig', array(
             'users' => $users,
             'numbersByEditor' => $numbersByEditor,
-            'lastNumbers' => $lastNumbers,
+            'lastnumbers' => $lastNumbers,
             'numberByMonth' => $numberByMonth,
-            'films' => $films
+            'films' => $films,
+            'lastfilms' => $lastFilms,
+            'lastsongs' => $lastSongs,
+            'laststageshows' => $lastStageshows,
+            'laststagenumbers' => $lastStagenumbers,
+            'lastcensorhsip' => $lastCensorhsip,
+            'lastthesaurus' => $lastThesaurus,
         ));
     }
 
