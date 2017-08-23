@@ -125,7 +125,7 @@ class DefaultController extends Controller
         //            'SELECT  (n.id) as id, (n.title) as title, (n.film) as film, (n.beginTc) as beginTc, (n.endTc) as endTc, (n.length) as length, (t.title) as structure, (n.length)/(n.shots) as average, (n.cast) as cast, (n.shots) as shots FROM AppBundle:Number n LEFT JOIN n.structure as t  WHERE n.film = :film ORDER BY n.beginTc'
 
         $query = $em->createQuery(
-            'SELECT  n FROM AppBundle:Number n WHERE n.film = :film ORDER BY n.beginTc'
+            'SELECT  n FROM AppBundle:Number n  WHERE n.film = :film ORDER BY n.beginTc'
             ); 
         $query->setParameter('film', $film);
         $numbersOf1Film = $query->getResult(); 

@@ -56,7 +56,7 @@ class PersonController extends Controller
         $shot_length = $query->getResult();
 
         //Get all Performances
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.performance_thesaurus t GROUP BY t.title ");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id, t.definition FROM AppBundle:Number n JOIN n.performance_thesaurus t GROUP BY t.title ");
         $performances = $query->getResult();
 
         //Get a Performance
@@ -65,7 +65,7 @@ class PersonController extends Controller
         $performance = $query->getResult();
 
         //Get all structures
-        $query = $em->createQuery("SELECT COUNT(DISTINCT(n.id)) as nb, t.title FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p GROUP BY t.title");
+        $query = $em->createQuery("SELECT COUNT(DISTINCT(n.id)) as nb, t.title, t.definition FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p GROUP BY t.title");
         $structures = $query->getResult();
 
         //Get total of numbers [vérifier]
@@ -126,7 +126,7 @@ class PersonController extends Controller
         $musical = $query->getResult();
 
 //      Completenesses
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.completenessThesaurus t GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id, t.definition FROM AppBundle:Number n JOIN n.completenessThesaurus t GROUP BY t.title ORDER BY nb DESC");
         $completenesses = $query->getResult();
 
 //      Completeness
@@ -315,7 +315,7 @@ class PersonController extends Controller
 
         array_push($top_associated_lyricists, array("personId" => -1 , "name" => "Total", "total" => count($associated_lyricists)));
 
-        
+
 
 //        //films of a person
 //        $query = $em->createQuery("SELECT f.filmId as filmId, f.title as title, f.idImdb as imdb, f.released as released FROM AppBundle:Number n JOIN n.film f JOIN n.performers p JOIN n.director d WHERE p.personId = :person OR d.personId = :person GROUP BY f.filmId ORDER BY f.released ASC");
