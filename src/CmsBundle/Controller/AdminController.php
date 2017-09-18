@@ -21,7 +21,7 @@ class AdminController extends Controller
     public function adminAction()
     {
 
-        $max = 10;
+        $max = 15;
         $em = $this->getDoctrine()->getManager();
 
         //all les users
@@ -48,7 +48,7 @@ class AdminController extends Controller
 
         //Films
         $query = $em->createQuery(
-            'SELECT f FROM AppBundle:Film f ORDER by f.title DESC '
+            'SELECT f FROM AppBundle:Film f ORDER by f.last_update ASC '
         );
         $query->setMaxResults($max);
         $lastFilms = $query->getResult();
@@ -83,7 +83,7 @@ class AdminController extends Controller
 
         //Thésaurus (voir si pas spécial)
         $query = $em->createQuery(
-            'SELECT t FROM AppBundle:Thesaurus t ORDER by t.title DESC '
+            'SELECT t FROM AppBundle:Thesaurus t ORDER by t.title ASC '
         );
         $query->setMaxResults($max);
         $lastThesaurus = $query->getResult();
@@ -94,6 +94,9 @@ class AdminController extends Controller
 
         );
         $numberByMonth = $query->getResult();
+
+        //all numbers with a part needs help to be completed (une fonction éditeur)
+        $lastcheked = "";
 
         return $this->render('CmsBundle:Admin:index.html.twig', array(
             'users' => $users,
@@ -106,7 +109,7 @@ class AdminController extends Controller
             'laststageshows' => $lastStageshows,
             'laststagenumbers' => $lastStagenumbers,
             'lastcensorhsip' => $lastCensorhsip,
-            'lastthesaurus' => $lastThesaurus,
+            'lastthesaurus' => $lastThesaurus
         ));
     }
 

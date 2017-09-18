@@ -50,13 +50,13 @@ class StagenumberController extends Controller
 
 
     /**
-     * @Route("/editor/stagenumber/id/{stageid}/edit" , name = "stagenumber_edit")
+     * @Route("/editor/stagenumber/id/{stagenumberId}/edit" , name = "stagenumber_edit")
      */
-    public function editAction(Request $request, $stageid){
+    public function editAction(Request $request, $stagenumberId){
 
         $em = $this->getDoctrine()->getManager();
 
-        $stagenumber = $em->getRepository('AppBundle:Stagenumber')->findOneByStageid($stageid);
+        $stagenumber = $em->getRepository('AppBundle:Stagenumber')->findOneByStagenumberId($stagenumberId);
 
 //        dump($stagenumber);die();
         $form = $this->createForm(StagenumberType::class, $stagenumber);

@@ -13,6 +13,17 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Film
 {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="film_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $filmId;
+
+
     /**
      * @var string
      *
@@ -246,30 +257,6 @@ class Film
     private $bord;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="film_id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $filmId;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Underscoring", inversedBy="film")
-     * @ORM\JoinTable(name="film_has_underscoring",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="underscoring_id", referencedColumnName="underscoring_id")
-     *   }
-     * )
-     */
-    private $underscoring;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\State", inversedBy="film")
@@ -364,15 +351,42 @@ class Film
     private $sample;
 
     /**
+     * @ORM\Column(name="date_creation", type="datetime")
+     */
+    private $date_creation;
+
+    /**
+     * @ORM\Column(name="last_update", type="datetime")
+     */
+    private $last_update;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinTable(name="film_has_editor",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="editors", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $editors;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->underscoring = new \Doctrine\Common\Collections\ArrayCollection();
         $this->state = new \Doctrine\Common\Collections\ArrayCollection();
         $this->censorship = new \Doctrine\Common\Collections\ArrayCollection();
         $this->numbers = new ArrayCollection();
         $this->distributors = new ArrayCollection();
+        $this->editors = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->date_creation = new \DateTime();
+        $this->last_update = new \DateTime();
     }
 
 
@@ -1052,40 +1066,6 @@ class Film
     }
 
     /**
-     * Add underscoring
-     *
-     * @param \AppBundle\Entity\Underscoring $underscoring
-     *
-     * @return Film
-     */
-    public function addUnderscoring(\AppBundle\Entity\Underscoring $underscoring)
-    {
-        $this->underscoring[] = $underscoring;
-
-        return $this;
-    }
-
-    /**
-     * Remove underscoring
-     *
-     * @param \AppBundle\Entity\Underscoring $underscoring
-     */
-    public function removeUnderscoring(\AppBundle\Entity\Underscoring $underscoring)
-    {
-        $this->underscoring->removeElement($underscoring);
-    }
-
-    /**
-     * Get underscoring
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUnderscoring()
-    {
-        return $this->underscoring;
-    }
-
-    /**
      * Add state
      *
      * @param \AppBundle\Entity\State $state
@@ -1233,11 +1213,6 @@ class Film
         $this->studios = $studios;
     }
 
-    public function __toString()
-    {
-        return $this->getTitle();
-    }
-
     /**
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -1284,6 +1259,72 @@ class Film
     public function setSample($sample)
     {
         $this->sample = $sample;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateCreation()
+    {
+        return $this->date_creation;
+    }
+
+    /**
+     * @param mixed $date_creation
+     */
+    public function setDateCreation($date_creation)
+    {
+        $this->date_creation = $date_creation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastUpdate()
+    {
+        return $this->last_update;
+    }
+
+    /**
+     * @param mixed $last_update
+     */
+    public function setLastUpdate($last_update)
+    {
+        $this->last_update = $last_update;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEditors()
+    {
+        return $this->editors;
+    }
+
+    public function addEditors(User $user)
+    {
+        if ($this->editors->contains($user)) {
+            return;
+        }
+
+        $this->editors[] = $user;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $editors
+     */
+    public function setEditors($editors)
+    {
+        $this->editors = $editors;
+    }
+
+
+    public function __toString()
+    {
+        $toString = $this->getTitle()." (".$this->getReleased().")";
+
+//        return (string) $this->getTitle();
+        return (string) $toString;
     }
 
 

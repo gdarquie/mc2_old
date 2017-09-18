@@ -39,21 +39,6 @@ class NumberType extends AbstractType
             ->add('title', TextType::class, array(
                     // 'data' => "Test",
                 ))
-//            ->add('film', EntityType::class, array(
-//                'class' => 'AppBundle:Film',
-////                'placeholder' => "Choose a film", //choisir automatiquement le film associé
-//                'choice_label' => 'title', //order by alpha + ajouter released
-////                'choice_label' => function(){ return title}
-//                'query_builder' => function(FilmRepository $repo) {
-////                    return $repo->createAlphabeticalQueryBuilder();
-//                    return $repo->findFilmNumber(3839);
-//
-//                },
-//                'disabled' => true,
-//                'empty_data'  => null
-//
-//                //'disabled' => true, //mais false si admin?
-//            ))
             ->add('commentTitle')
             ->add('completeTitle', ChoiceType::class, [
                 'choices' =>[
@@ -226,23 +211,7 @@ class NumberType extends AbstractType
                     return $repo->findAllThesaurusByType("musician");
                 }
             ))
-            //->add('integration')
-//            ->add('integration_thesaurus', EntityType::class, array(
-//                'placeholder' => '',
-//                'class' => 'AppBundle:Thesaurus',
-//                'choice_label' => 'title', //order by alpha
-//                'query_builder' => function(ThesaurusRepository $repo) {
-//                    return $repo->findAllThesaurusByType("integration");
-//                }
-//            ))
-//            ->add('integoptions', EntityType::class, array(
-//                'class' => 'AppBundle:Thesaurus',
-//                'multiple' => true,
-//                'choice_label' => 'title', //order by alpha
-//                'query_builder' => function(ThesaurusRepository $repo) {
-//                    return $repo->findAllThesaurusByType("integoptions");
-//                }
-//            ))
+
             ->add('commentBackstage')
             ->add('completeBackstage', ChoiceType::class, [
                 'choices' =>[

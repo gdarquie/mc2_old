@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class CensorshipController extends Controller
 {
@@ -310,4 +311,48 @@ class CensorshipController extends Controller
         ));
 
     }
+
+    /**
+     * Voir un item
+     *
+     * @Route("editor/censorship/id/{id}", name="censorship_show")
+     * @Method({"GET"})
+     */
+    public function showAction($id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $censorship = $em->getRepository('AppBundle:Censorship')->find($id);
+
+        return $this->render('AppBundle:censorship:item.html.twig', array(
+            'censorship' => $censorship
+        ));
+        
+    }
+
+    /**
+     * Effacer un item
+     *
+     * @Route("editor/censorship/id/{id}/delete", name="censorship_delete")
+     * @Method({"DELETE","GET"})
+     */
+    public function deleteAction(Censorhsip $item)
+    {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+        if (!$item) {
+            throw $this->createNotFoundException('No item found');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        $em->remove($item);
+        $em->flush();
+
+        $this->addFlash('success', 'Deleted Successfully!');
+        return $this->redirectToRoute('admin');
+    }
+
+
 }

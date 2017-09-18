@@ -67,21 +67,6 @@ class Person
     private $personId;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Quotation", inversedBy="person")
-     * @ORM\JoinTable(name="person_has_quotation",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="quotation_id", referencedColumnName="quotation_id")
-     *   }
-     * )
-     */
-    private $quotation;
-
-    /**
      * @ORM\ManyToMany(targetEntity="Number", mappedBy="choregraphers")
      */
     private $numbersChoregrapher;
@@ -306,44 +291,6 @@ class Person
         return $this->personId;
     }
 
-    /**
-     * Add quotation
-     *
-     * @param \AppBundle\Entity\Quotation $quotation
-     *
-     * @return Person
-     */
-    public function addQuotation(\AppBundle\Entity\Quotation $quotation)
-    {
-        $this->quotation[] = $quotation;
-
-        return $this;
-    }
-
-    /**
-     * Remove quotation
-     *
-     * @param \AppBundle\Entity\Quotation $quotation
-     */
-    public function removeQuotation(\AppBundle\Entity\Quotation $quotation)
-    {
-        $this->quotation->removeElement($quotation);
-    }
-
-    /**
-     * Get quotation
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getQuotation()
-    {
-        return $this->quotation;
-    }
-
-    public function __toString()
-    {
-        return $this->getName();
-    }
 
     /**
      * @return \Doctrine\Common\Collections\Collection
@@ -687,5 +634,10 @@ class Person
     public function getSongComposer()
     {
         return $this->songComposer;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

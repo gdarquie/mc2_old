@@ -67,7 +67,7 @@ class DanceController extends Controller
         $nbfilmsWithDancedNumber = $query->getSingleResult();
 
         //number of danced numbers (other technic to count)
-        $query = $em -> createQuery('SELECT COUNT(n.id) as nb FROM AppBundle:Number n WHERE n.performance = :instru OR n.performance = :song ');
+        $query = $em -> createQuery('SELECT COUNT(n.id) as nb FROM AppBundle:Number n WHERE n.performance_thesaurus = :instru OR n.performance_thesaurus = :song ');
         $query->setParameter('instru', 'instrumental+dance');
         $query->setParameter('song', 'song+dance');
         $numberDancedNumber2 = $query->getSingleResult();

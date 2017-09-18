@@ -70,26 +70,11 @@ class Song
      *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
      *   }
      * )
      */
-    private $stagenumber;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Quotation", inversedBy="song")
-     * @ORM\JoinTable(name="song_has_quotation",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="quotation_id", referencedColumnName="quotation_id")
-     *   }
-     * )
-     */
-    private $quotation;
+    private $stagenumbers;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -105,22 +90,6 @@ class Song
      * )
      */
     private $disc;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="song")
-     * @ORM\JoinTable(name="song_has_songtype",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="songtype_id", referencedColumnName="thesaurus_id")
-     *   }
-     * )
-     */
-    private $songtype;
-
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -217,10 +186,8 @@ class Song
     public function __construct()
     {
         $this->radio = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->stagenumber = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->quotation = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->stagenumbers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->disc = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->songtype = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tv = new \Doctrine\Common\Collections\ArrayCollection();
         $this->number = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -377,40 +344,6 @@ class Song
     }
 
     /**
-     * Add quotation
-     *
-     * @param \AppBundle\Entity\Quotation $quotation
-     *
-     * @return Song
-     */
-    public function addQuotation(\AppBundle\Entity\Quotation $quotation)
-    {
-        $this->quotation[] = $quotation;
-
-        return $this;
-    }
-
-    /**
-     * Remove quotation
-     *
-     * @param \AppBundle\Entity\Quotation $quotation
-     */
-    public function removeQuotation(\AppBundle\Entity\Quotation $quotation)
-    {
-        $this->quotation->removeElement($quotation);
-    }
-
-    /**
-     * Get quotation
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getQuotation()
-    {
-        return $this->quotation;
-    }
-
-    /**
      * Add disc
      *
      * @param \AppBundle\Entity\Disc $disc
@@ -442,22 +375,6 @@ class Song
     public function getDisc()
     {
         return $this->disc;
-    }
-
-    /**
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSongtype()
-    {
-        return $this->songtype;
-    }
-
-    /**
-     * @param \Doctrine\Common\Collections\Collection $songtype
-     */
-    public function setSongtype($songtype)
-    {
-        $this->songtype = $songtype;
     }
 
 

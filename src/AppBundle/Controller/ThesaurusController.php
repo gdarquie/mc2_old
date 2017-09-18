@@ -14,6 +14,21 @@ class ThesaurusController extends Controller
 {
 
     /**
+     * @Route("/thesaurus/id/{id}", name="thesaurus_item")
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $thesaurus = $em->getRepository('AppBundle:Thesaurus')->find($id);
+
+        return $this->render('AppBundle:thesaurus:item.html.twig', array(
+            'thesaurus' => $thesaurus
+        ));
+    }
+
+
+
+    /**
      * @Route("/thesaurus/{type}", name="thesaurus")
      */
     public function thesaurusEditorAction($type){
@@ -45,89 +60,25 @@ class ThesaurusController extends Controller
     }
 
 
-    /**
-     * @Route("/thesaurus/item/{thesaurusId}", name="getOneThesaurus")
-     */
-    public function getOneThesaurus($thesaurusId){
-        $em = $this->getDoctrine()->getManager();
-
-        $query = $em -> createQuery('SELECT t FROM AppBundle:Thesaurus t WHERE t.thesaurusId = :thesaurusId');
-        $query->setParameter('thesaurusId', $thesaurusId);
-        $thesaurus = $query->getSingleResult();
-
-
-        return $this->render('web/thesaurus/item.html.twig', array(
-            'thesaurus' => $thesaurus,
-        ));
-
-
-    }
-
-    //Update Thesaurus
-
-    /**
-     * @Route("/thesaurus/edit/{thesaurusId}", name="updateThesaurus")
-     */
-    public function updateAction(Request $request, $thesaurusId)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $thesaurus = $em->getRepository('AppBundle:Thesaurus')->find($thesaurusId);
+//    /**
+//     * @Route("/thesaurus/item/{thesaurusId}", name="getOneThesaurus")
+//     */
+//    public function getOneThesaurus($thesaurusId){
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $query = $em -> createQuery('SELECT t FROM AppBundle:Thesaurus t WHERE t.thesaurusId = :thesaurusId');
+//        $query->setParameter('thesaurusId', $thesaurusId);
+//        $thesaurus = $query->getSingleResult();
+//
+//
+//        return $this->render('web/thesaurus/item.html.twig', array(
+//            'thesaurus' => $thesaurus,
+//        ));
+//
+//
+//    }
 
 
-        if (!$thesaurus) {
-            throw $this->createNotFoundException(
-                'No item found for id '
-            );
-        }
-
-
-        $form = $this->createForm(ThesaurusType::class, $thesaurus);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted()){
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($thesaurus);
-            $em->flush();
-
-            return $this->redirectToRoute('thesaurus', array('type' => $thesaurus->getType() ));
-        }
-
-        return $this->render('web/thesaurus/thesaurusNew.html.twig', array(
-            'form' => $form->createView(),
-        ));
-    }
-
-
-    //Nouveau item pour thesaurus
-
-    /**
-     * @Route("/thesaurus/add/new", name="newThesaurus")
-     */
-    public function addThesaurusEditorAction(Request $request){
-
-        $thesaurus = new Thesaurus();
-
-        $form = $this->createForm(ThesaurusType::class, $thesaurus);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted()){
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($thesaurus);
-            $em->flush();
-
-            return $this->redirectToRoute('thesaurus', array('type' => 'all' ));
-        }
-
-
-        return $this->render('web/thesaurus/thesaurusNew.html.twig', array(
-            'form' => $form->createView(),
-        ));
-
-    }
 
     /**
      * @Route("/thesaurus/type/{type}/item/{item}", name="getItemTypeThesaurus")
@@ -142,14 +93,6 @@ class ThesaurusController extends Controller
         else if($type == 'exoticism'){
             $query = $em->createQuery('SELECT n.title FROM AppBundle:Number n INNER JOIN n.exoticism_thesaurus c WHERE c.type = :type AND c.title = :item');
         }
-
-        //ajouter une catégorie facultative
-//        else if($type == 'mood'){
-//            $query = $em->createQuery('SELECT n.title FROM AppBundle:Number n INNER JOIN n.general_mood c WHERE c.type = :type AND c.title = :item');
-//        }
-//        else if($type =='mood'){
-//                $query = $em->createQuery('SELECT n.title FROM AppBundle:Number n INNER JOIN n.genre c WHERE c.type = :type AND c.title = :item');
-//        }
 
         //continuer avec les autres types
 

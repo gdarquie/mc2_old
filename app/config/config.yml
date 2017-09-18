@@ -185,7 +185,6 @@ fos_elastica:
                         dancingType: { type: keyword }
                         danceSubgenre: { type: keyword }
                         danceContent: { type: keyword }
-                        effects: { type: keyword }
                         beginThesaurus: { type: keyword }
                         endingThesaurus: { type: keyword }
                         structure: { type: keyword }

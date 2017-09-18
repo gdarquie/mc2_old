@@ -12,6 +12,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Thesaurus
 {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="thesaurus_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $thesaurusId;
+
     /**
      * @var string
      *
@@ -69,13 +79,39 @@ class Thesaurus
     private $category;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="thesaurus_id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="date_creation", type="datetime")
      */
-    private $thesaurusId;
+    private $date_creation;
+
+    /**
+     * @ORM\Column(name="last_update", type="datetime")
+     */
+    private $last_update;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinTable(name="thesaurus_has_editor",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="thesaurus_id", referencedColumnName="thesaurus_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="editors", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $editors;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->editors = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->date_creation = new \DateTime();
+        $this->last_update = new \DateTime();
+    }
 
 
 

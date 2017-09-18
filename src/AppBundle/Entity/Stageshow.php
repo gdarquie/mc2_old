@@ -102,9 +102,9 @@ class Stageshow
      */
     private $count;
 
-
     /**
-     * @ORM\OneToMany(targetEntity="Stagenumber", mappedBy="stageshow")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Stagenumber", mappedBy="stageshow")
+     *
      */
     private $stagenumbers;
 
@@ -214,6 +214,21 @@ class Stageshow
      * @ORM\Column(type="text", nullable=true)
      */
     private $comment;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinTable(name="stageShow_has_editor",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="editors", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $editors;
 
     /**
      * @return int
@@ -549,6 +564,31 @@ class Stageshow
     public function setCode($code)
     {
         $this->code = $code;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEditors()
+    {
+        return $this->editors;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $editors
+     */
+    public function setEditors($editors)
+    {
+        $this->editors = $editors;
+    }
+
+    public function addEditors(User $user)
+    {
+        if ($this->editors->contains($user)) {
+            return;
+        }
+
+        $this->editors[] = $user;
     }
 
     public function __toString()

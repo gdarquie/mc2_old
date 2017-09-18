@@ -25,7 +25,12 @@
 	{{ form_label(numberForm.completeTitle, "Completed? (check when you're done with the whole section)") }}
 	{{ form_errors(numberForm.completeTitle) }}
 
-	{#{{form_row(numberForm.validationTitle)}}#}
+    {#{% if is_granted('ROLE_ADMIN') %}#}
+		{#{{ form_widget(numberForm.validationTitle) }}#}
+		{#{{ form_label(numberForm.validationTitle, "Validate") }}#}
+		{#{{ form_errors(numberForm.validationTitle) }}#}
+	{#{% endif %}#}
+
 </div>
 
 
@@ -206,13 +211,6 @@
 	{{form_row(numberForm.musician_thesaurus, {
 		'label' : "Are there diegetic musicians? (from thesaurus) (1 choice) (mandatory)"
 	})}}
-	{#{{form_row(numberForm.integration)}}#}
-	{#{{form_row(numberForm.integration_thesaurus, {#}
-		{#'label' : "Integration (from thesaurus) (1 choice) (mandatory)"#}
-	{#})}}#}
-	{#{{form_row(numberForm.integoptions, {#}
-		{#'label' : "Integration : specific effects (from thesaurus) (multi) (optional)"#}
-	{#})}}#}
 
 	{{ form_label(numberForm.commentBackstage, "Backstage comment(s)") }}
 	{{ form_widget(numberForm.commentBackstage, {
@@ -249,7 +247,7 @@
 	{{form_row(numberForm.imaginary, {
 		'label' : "Imaginary place (from thesaurus) (multi) (optional)"
 	})}}
-	{#{{form_row(numberForm.exoticism)}}#}
+
 	{{form_row(numberForm.exoticism_thesaurus, {
 		"label" : "General exoticism (linked to dancing styles, settings, ...) (from thesaurus) (multi) (optional)"
 	})}}

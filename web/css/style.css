@@ -97,12 +97,8 @@ h4{
 	margin: auto;
 }
 
-.cursor{
+.cursor, .pointer{
 	cursor:pointer;
-}
-
-.pointer{
-	cursor: pointer;
 }
 
 .inline{
@@ -264,13 +260,6 @@ div .cut {
 .poster{
 	max-height:300px;
 }
-
-
-.film{
-	height : 400px;
-	padding :10px;
-}
-
 
 .img_hover span {
 	display : none;

@@ -2,10 +2,12 @@
 <div class="row">
 
 
-    <div class="cartouche">
+    <div class="col s12">
+        <div class="cartouche">
         {{ form_widget(filmForm.sample) }}
         {{ form_label(filmForm.sample) }}
         {{ form_errors(filmForm.sample) }}
+        </div>
     </div>
 
     <div class="col s6">
@@ -42,8 +44,6 @@
         {{ form_widget(filmForm.remake) }}
         {{ form_label(filmForm.remake) }}
         {{ form_errors(filmForm.remake) }}
-        <br><br>
-        {{ form_row(filmForm.underscoring) }}
     </div>
 
 </div>

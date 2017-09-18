@@ -17,11 +17,11 @@ class Stagenumber
     /**
      * @var integer
      *
-     * @ORM\Column(name="stagenumber_id", type="integer")
+     * @ORM\Column(name="stageNumber_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $stageid;
+    private $stagenumberId;
 
     /**
      * @var string
@@ -48,29 +48,13 @@ class Stagenumber
      */
     private $type;
 
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_costumes")
-     * @ORM\JoinTable(name="stagenumber_has_costume",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="costume_id", referencedColumnName="thesaurus_id")
-     *   }
-     * )
-     */
-    private $costumes;
-
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_musicals")
      * @ORM\JoinTable(name="stagenumber_has_musical",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="musical_id", referencedColumnName="thesaurus_id")
@@ -86,7 +70,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_dancingstyles")
      * @ORM\JoinTable(name="stagenumber_has_dancingstyle",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="dancingstyle_id", referencedColumnName="thesaurus_id")
@@ -102,7 +86,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_genres")
      * @ORM\JoinTable(name="stagenumber_has_genre",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="genre_id", referencedColumnName="thesaurus_id")
@@ -144,18 +128,33 @@ class Stagenumber
     /**
      * @var \AppBundle\Entity\Stageshow
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Stageshow")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Stageshow", inversedBy="stagenumbers")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *   @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id", nullable=false)
      * })
      */
     private $stageshow;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinTable(name="stagenumber_has_costume",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="costume_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $costumes;
 
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Number", mappedBy="stagenumber")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Number", mappedBy="stagenumbers")
      */
     private $number;
 
@@ -163,7 +162,7 @@ class Stagenumber
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Song", mappedBy="stagenumber")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Song", mappedBy="stagenumbers")
      */
     private $song;
 
@@ -173,7 +172,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber")
      * @ORM\JoinTable(name="stagenumber_has_dancemble",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="dancemble_id", referencedColumnName="thesaurus_id")
@@ -188,7 +187,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber")
      * @ORM\JoinTable(name="stagenumber_has_musensemble",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="musensemble_id", referencedColumnName="thesaurus_id")
@@ -203,7 +202,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="performersStagenumber")
      * @ORM\JoinTable(name="stagenumber_has_performer",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
@@ -245,6 +244,20 @@ class Stagenumber
      */
     private $last_update;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinTable(name="stagenumber_has_editor",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="editors", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $editors;
 
     /**
      * Constructor
@@ -252,34 +265,29 @@ class Stagenumber
     public function __construct()
     {
         $this->number = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->costumes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->song = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-
-    /**
-     * Set groupId
-     *
-     * @param integer $groupId
-     *
-     * @return Stagenumber
-     */
-    public function setGroupId($groupId)
-    {
-        $this->groupId = $groupId;
-
-        return $this;
+        $this->editors = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->date_creation = new \DateTime();
+        $this->last_update = new \DateTime();
     }
 
     /**
-     * Get groupId
-     *
-     * @return integer
+     * @return int
      */
-    public function getGroupId()
+    public function getStagenumberId()
     {
-        return $this->groupId;
+        return $this->stagenumberId;
     }
+
+    /**
+     * @param int $stagenumberId
+     */
+    public function setStagenumberId($stagenumberId)
+    {
+        $this->stagenumberId = $stagenumberId;
+    }
+
+
 
     /**
      * Set title
@@ -401,15 +409,6 @@ class Stagenumber
         return $this->ibdb;
     }
 
-    /**
-     * Get stageid
-     *
-     * @return integer
-     */
-    public function getStageid()
-    {
-        return $this->stageid;
-    }
 
     /**
      * @return string
@@ -484,40 +483,6 @@ class Stagenumber
     public function getNumber()
     {
         return $this->number;
-    }
-
-    /**
-     * Add costume
-     *
-     * @param \AppBundle\Entity\Costumes $costume
-     *
-     * @return Stagenumber
-     */
-    public function addCostume(\AppBundle\Entity\Costumes $costume)
-    {
-        $this->costumes[] = $costume;
-
-        return $this;
-    }
-
-    /**
-     * Remove costume
-     *
-     * @param \AppBundle\Entity\Costumes $costume
-     */
-    public function removeCostume(\AppBundle\Entity\Costumes $costume)
-    {
-        $this->costumes->removeElement($costume);
-    }
-
-    /**
-     * Get costumes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCostumes()
-    {
-        return $this->costumes;
     }
 
     /**
@@ -744,6 +709,38 @@ class Stagenumber
     public function setSelected($selected)
     {
         $this->selected = $selected;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCostumes()
+    {
+        return $this->costumes;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $costumes
+     */
+    public function setCostumes($costumes)
+    {
+        $this->costumes = $costumes;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEditors()
+    {
+        return $this->editors;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $editors
+     */
+    public function setEditors($editors)
+    {
+        $this->editors = $editors;
     }
 
 

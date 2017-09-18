@@ -11,6 +11,7 @@ namespace CmsBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 use AppBundle\Entity\Song;
 use AppBundle\Form\SongType;
@@ -89,6 +90,29 @@ class SongController extends Controller
         ));
     }
 
+    /**
+     * Effacer un item
+     *
+     * @Route("editor/song/id/{id}/delete", name="song_delete")
+     * @Method({"DELETE","GET"})
+     */
+    public function deleteAction(Song $item)
+    {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+        if (!$item) {
+            throw $this->createNotFoundException('No item found');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        $em->remove($item);
+        $em->flush();
+
+        $this->addFlash('success', 'Deleted Successfully!');
+        return $this->redirectToRoute('admin');
+    }
 
 }
 

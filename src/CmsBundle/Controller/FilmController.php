@@ -11,6 +11,7 @@ namespace CmsBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 use AppBundle\Entity\Film;
 use AppBundle\Form\FilmType;
@@ -28,7 +29,12 @@ class FilmController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted()){
+
             $em = $this->getDoctrine()->getManager();
+
+            $user = $this->getUser();
+            $film->addEditors($user);
+
             $em->persist($film);
             $em->flush();
 
@@ -56,6 +62,8 @@ class FilmController extends Controller
         if ($form->isSubmitted() && $form->isValid()){
 
             $em = $this->getDoctrine()->getManager();
+            $user = $this->getUser();
+            $film->addEditors($user);
             $em->persist($film);
             $em->flush();
 
@@ -70,6 +78,43 @@ class FilmController extends Controller
             'film' => $film,
             'filmForm' => $form->createView()
         ));
+    }
+
+    /**
+     * Effacer un item
+     *
+     * @Route("editor/film/id/{id}/delete", name="film_delete")
+     * @Method({"DELETE","GET"})
+     */
+    public function deleteAction(Film $item)
+    {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+        if (!$item) {
+            throw $this->createNotFoundException('No item found');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+
+        //select tous les numbers du film
+
+        $query = $em->createQuery(
+            'SELECT n FROM AppBundle:Number n JOIN n.film f WHERE f.filmId = :id '
+        );
+        $query->setParameter('id' , $item->getFilmId());
+        $numbers = $query->getResult();
+
+        foreach($numbers as $number){
+            $em->remove($number);
+        }
+
+        $em->remove($item);
+        $em->flush();
+
+        $this->addFlash('success', 'Deleted Successfully!');
+        return $this->redirectToRoute('admin');
     }
 
 

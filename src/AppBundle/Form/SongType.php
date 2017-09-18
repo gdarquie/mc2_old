@@ -50,14 +50,6 @@ class SongType extends AbstractType
                     }
                 )
             )
-            ->add('songtype', EntityType::class, array(
-                'class' => 'AppBundle:Thesaurus',
-                'choice_label' => 'title',
-                'multiple' => true,
-                'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("songtype");
-                }
-            ))
         ;
     }
 

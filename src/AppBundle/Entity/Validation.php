@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: gaetan
- * Date: 13/09/2016
- * Time: 15:40
- */
 
 namespace AppBundle\Entity;
-
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Validation
 {
+
     /**
      * @var integer
      *
@@ -34,20 +28,26 @@ class Validation
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      * })
      */
-    private $user; //user id
+    private $user;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(name="date_creation", type="datetime")
      */
-    private $date;
+    private $date_creation;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(name="last_update", type="datetime")
      */
-    private $category;
+    private $last_update;
+
+    public function __construct()
+    {
+        $this->date_creation = new \DateTime();
+        $this->last_update = new \DateTime();
+    }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getValidationId()
     {
@@ -55,7 +55,7 @@ class Validation
     }
 
     /**
-     * @param mixed $validationId
+     * @param int $validationId
      */
     public function setValidationId($validationId)
     {
@@ -63,7 +63,7 @@ class Validation
     }
 
     /**
-     * @return mixed
+     * @return User
      */
     public function getUser()
     {
@@ -71,7 +71,7 @@ class Validation
     }
 
     /**
-     * @param mixed $user
+     * @param User $user
      */
     public function setUser($user)
     {
@@ -81,33 +81,35 @@ class Validation
     /**
      * @return mixed
      */
-    public function getDate()
+    public function getDateCreation()
     {
-        return $this->date;
+        return $this->date_creation;
     }
 
     /**
-     * @param mixed $date
+     * @param mixed $date_creation
      */
-    public function setDate($date)
+    public function setDateCreation($date_creation)
     {
-        $this->date = $date;
+        $this->date_creation = $date_creation;
     }
 
     /**
      * @return mixed
      */
-    public function getCategory()
+    public function getLastUpdate()
     {
-        return $this->category;
+        return $this->last_update;
     }
 
     /**
-     * @param mixed $category
+     * @param mixed $last_update
      */
-    public function setCategory($category)
+    public function setLastUpdate($last_update)
     {
-        $this->category = $category;
-    } //validation category id
+        $this->last_update = $last_update;
+    }
+
+
 
 }

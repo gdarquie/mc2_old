@@ -37,7 +37,8 @@ class EditorController extends Controller
         // ------------
 
         //List of films where help is need -- 2 is for help
-        $query = $em->createQuery('SELECT n FROM AppBundle:Number n WHERE n.completeTitle = 2 OR n.completeTc = 2 OR n.completeStructure = 2 OR n.completeShots = 2 OR n.completeBackstage = 2 OR n.completePerformance = 2 OR n.completeTheme = 2 OR n.completeMood = 2 OR n.completeDance = 2 OR n.completeMusic = 2 OR n.completeDirector = 2 OR n.completeCost = 2 OR n.completeReference = 2');
+        $query = $em->createQuery('SELECT n FROM AppBundle:Number n WHERE n.completeTitle = 2 OR n.completeTc = 2 OR n.completeStructure = 2 OR n.completeShots = 2 OR n.completeBackstage = 2 OR n.completePerformance = 2 OR n.completeTheme = 2 OR n.completeMood = 2 OR n.completeDance = 2 OR n.completeMusic = 2 OR n.completeDirector = 2 OR n.completeCost = 2 ');
+        //OR n.completeReference = 2
         $help = $query->getResult();
 
         //List of help for title

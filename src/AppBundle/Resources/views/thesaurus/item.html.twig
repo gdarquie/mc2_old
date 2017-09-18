@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="card">
+            <h1 class="center">{{ thesaurus.title }}</h1>
+            <p>Type : {{ thesaurus.type }}</p>
+            <p>Category : {% if thesaurus.category == "" %}undefined{% else %}{{ thesaurus.category }}{% endif %}</p>
+        </div>
+
+    </div>
+
+
+{% endblock %}

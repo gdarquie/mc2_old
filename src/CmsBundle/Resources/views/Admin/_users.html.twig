@@ -1,0 +1,31 @@
+<div class="col s10 tab" id="users">
+
+
+    <table class="striped">
+
+        <tr>
+            <th>Name</th>
+            <th>Mail</th>
+            <th>Role(s)</th>
+            <th>Promote admin</th>
+        </tr>
+        {% for user in users  %}
+        {#<tr>#}
+            {#<td>{{ user.username }}</td>#}
+            {#<td>{{ user.email }}</td>#}
+            {#<td>#}
+                {#{% for role in user.roles %}#}
+                    {#{{ role }}{% if loop|last %}{% else %},{% endif %}#}
+                {#{% endfor %}#}
+            {#</td>#}
+            {#<td>#}
+                {#{% if user. %}#}
+
+                {#{% endif %}#}
+            {#</td>#}
+        {#</tr>#}
+        {% endfor %}
+    </table>
+
+</div>
+

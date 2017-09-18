@@ -46,11 +46,29 @@ class Censorship
     private $last_update;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinTable(name="censorship_has_editor",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="censorship_id", referencedColumnName="censorship_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="editors", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $editors;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->film = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->editors = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->date_creation = new \DateTime();
+        $this->last_update = new \DateTime();
     }
 
     /**
@@ -151,6 +169,22 @@ class Censorship
     public function setLastUpdate($last_update)
     {
         $this->last_update = $last_update;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEditors()
+    {
+        return $this->editors;
+    }
+
+    /**
+     * @param mixed $editors
+     */
+    public function setEditors($editors)
+    {
+        $this->editors = $editors;
     }
 
     public function __toString()

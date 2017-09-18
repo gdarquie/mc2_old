@@ -82,7 +82,6 @@ class FilmType extends AbstractType
             ->add('protestant')
             ->add('harrisson')
             ->add('bord')
-            ->add('underscoring')
             ->add('censorship'
                 , EntityType::class, array(
                     'class' => 'AppBundle:Censorship',

@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 use AppBundle\Entity\Stageshow;
 use AppBundle\Form\StageshowType;
@@ -32,6 +33,9 @@ class StageshowController extends Controller
             $now = new \DateTime();
             $stageshow->setDateCreation($now);
             $stageshow->setLastUpdate($now);
+
+            $user = $this->getUser();
+            $stageshow->addEditors($user);
 
             $em->persist($stageshow);
             $em->flush();
@@ -60,6 +64,8 @@ class StageshowController extends Controller
         if ($form->isSubmitted() && $form->isValid()){
 
             $em = $this->getDoctrine()->getManager();
+            $user = $this->getUser();
+            $stageshow->addEditors($user);
             $em->persist($stageshow);
             $em->flush();
 
@@ -72,6 +78,44 @@ class StageshowController extends Controller
             'stageshow' => $stageshow,
             'stageForm' => $form->createView()
         ));
+    }
+
+    /**
+     * Effacer un item
+     *
+     * @Route("editor/stageshow/id/{id}/delete", name="stageshow_delete")
+     * @Method({"DELETE","GET"})
+     */
+    public function deleteAction(Stageshow $item)
+    {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+        if (!$item) {
+            throw $this->createNotFoundException('No item found');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        //select all stagenumbers of the stageshow
+
+        $query = $em->createQuery(
+            'SELECT n FROM AppBundle:Stagenumber n JOIN n.stageshow s WHERE s.stageshowId = :id '
+        );
+        $query->setParameter('id' , $item->getStageshowId());
+        $stagenumbers = $query->getResult();
+//        dump($stagenumbers);die;
+
+        //delete all stagenumbers
+        foreach($stagenumbers as $stagenumber){
+            $em->remove($stagenumber);
+        }
+
+        $em->remove($item);
+        $em->flush();
+
+        $this->addFlash('success', 'Deleted Successfully!');
+        return $this->redirectToRoute('admin');
     }
 
 }
