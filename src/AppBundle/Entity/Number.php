@@ -156,7 +156,7 @@ class Number
      *   @ORM\JoinColumn(name="begin_thesaurus", referencedColumnName="thesaurus_id")
      * })
      */
-    private $beginThesaurus;
+    private $begin_thesaurus;
 
     /**
      * @var \AppBundle\Entity\Thesaurus
@@ -166,7 +166,7 @@ class Number
      *   @ORM\JoinColumn(name="ending_thesaurus", referencedColumnName="thesaurus_id")
      * })
      */
-    private $endingThesaurus;
+    private $ending_thesaurus;
 
     /** @var  \AppBundle\Entity\Thesaurus
      *
@@ -175,7 +175,7 @@ class Number
      *   @ORM\JoinColumn(name="completeness_id", referencedColumnName="thesaurus_id")
      * })
      */
-    private $completenessThesaurus;
+    private $completeness_thesaurus;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -190,7 +190,7 @@ class Number
      *   }
      * )
      */
-    private $completOptions;
+    private $complet_options;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -214,7 +214,7 @@ class Number
 
     /** @var  \AppBundle\Entity\Thesaurus
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="numbers_with_structure")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="structure_id", referencedColumnName="thesaurus_id")
      * })
@@ -390,7 +390,7 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="numbers_with_costume")
      * @ORM\JoinTable(name="number_has_costume",
      *   joinColumns={
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
@@ -593,7 +593,7 @@ class Number
      *   }
      * )
      */
-    private $dancingType;
+    private $dancing_type;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -608,7 +608,7 @@ class Number
      *   }
      * )
      */
-    private $danceSubgenre;
+    private $dance_subgenre;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -623,7 +623,7 @@ class Number
      *   }
      * )
      */
-    private $danceContent;
+    private $dance_content;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -1501,53 +1501,36 @@ class Number
         return $this->song;
     }
 
-
     /**
-     * Gets the value of BeginThesaurus.
-     *
-     * @return \AppBundle\Entity\Thesaurus
+     * @return Thesaurus
      */
     public function getBeginThesaurus()
     {
-        return $this->beginThesaurus;
+        return $this->begin_thesaurus;
     }
 
     /**
-     * Sets the value of BeginThesaurus.
-     *
-     * @param \AppBundle\Entity\Thesaurus $beginThesaurus
-     *
-     * @return self
+     * @param Thesaurus $begin_thesaurus
      */
-    public function setBeginThesaurus(\AppBundle\Entity\Thesaurus $beginThesaurus)
+    public function setBeginThesaurus($begin_thesaurus)
     {
-        $this->beginThesaurus = $beginThesaurus;
-
-        return $this;
+        $this->begin_thesaurus = $begin_thesaurus;
     }
 
     /**
-     * Gets the value of EndingThesaurus.
-     *
-     * @return \AppBundle\Entity\Thesaurus
+     * @return Thesaurus
      */
     public function getEndingThesaurus()
     {
-        return $this->endingThesaurus;
+        return $this->ending_thesaurus;
     }
 
     /**
-     * Sets the value of EndingThesaurus.
-     *
-     * @param \AppBundle\Entity\Thesaurus $endingThesaurus
-     *
-     * @return self
+     * @param Thesaurus $ending_thesaurus
      */
-    public function setEndingThesaurus(\AppBundle\Entity\Thesaurus $endingThesaurus)
+    public function setEndingThesaurus($ending_thesaurus)
     {
-        $this->endingThesaurus = $endingThesaurus;
-
-        return $this;
+        $this->ending_thesaurus = $ending_thesaurus;
     }
 
     /**
@@ -1582,37 +1565,6 @@ class Number
         $this->musensemble = $musensemble;
     }
 
-    /**
-     * @return Thesaurus
-     */
-    public function getIntegoptions()
-    {
-        return $this->integoptions;
-    }
-
-    /**
-     * @param Thesaurus $integoptions
-     */
-    public function setIntegoptions($integoptions)
-    {
-        $this->integoptions = $integoptions;
-    }
-
-    /**
-     * @return Thesaurus
-     */
-    public function getIntegrationThesaurus()
-    {
-        return $this->integration_thesaurus;
-    }
-
-    /**
-     * @param Thesaurus $integration_thesaurus
-     */
-    public function setIntegrationThesaurus($integration_thesaurus)
-    {
-        $this->integration_thesaurus = $integration_thesaurus;
-    }
 
     /**
      * @return Thesaurus
@@ -1662,38 +1614,38 @@ class Number
         $this->source_thesaurus = $source_thesaurus;
     }
 
-
     /**
-     * @return mixed
+     * @return Thesaurus
      */
     public function getCompletenessThesaurus()
     {
-        return $this->completenessThesaurus;
+        return $this->completeness_thesaurus;
     }
 
     /**
-     * @param mixed $completenessThesaurus
+     * @param Thesaurus $completeness_thesaurus
      */
-    public function setCompletenessThesaurus($completenessThesaurus)
+    public function setCompletenessThesaurus($completeness_thesaurus)
     {
-        $this->completenessThesaurus = $completenessThesaurus;
+        $this->completeness_thesaurus = $completeness_thesaurus;
     }
 
     /**
-     * @return mixed
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCompletOptions()
     {
-        return $this->completOptions;
+        return $this->complet_options;
     }
 
     /**
-     * @param mixed $completOptions
+     * @param \Doctrine\Common\Collections\Collection $complet_options
      */
-    public function setCompletOptions($completOptions)
+    public function setCompletOptions($complet_options)
     {
-        $this->completOptions = $completOptions;
+        $this->complet_options = $complet_options;
     }
+
 
     /**
      * @return Thesaurus
@@ -1887,53 +1839,52 @@ class Number
         $this->director = $director;
     }
 
-
     /**
-     * @return Thesaurus
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDancingType()
     {
-        return $this->dancingType;
+        return $this->dancing_type;
     }
 
     /**
-     * @param Thesaurus $dancingType
+     * @param \Doctrine\Common\Collections\Collection $dancing_type
      */
-    public function setDancingType($dancingType)
+    public function setDancingType($dancing_type)
     {
-        $this->dancingType = $dancingType;
+        $this->dancing_type = $dancing_type;
     }
 
     /**
-     * @return Thesaurus
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDanceSubgenre()
     {
-        return $this->danceSubgenre;
+        return $this->dance_subgenre;
     }
 
     /**
-     * @param Thesaurus $danceSubgenre
+     * @param \Doctrine\Common\Collections\Collection $dance_subgenre
      */
-    public function setDanceSubgenre($danceSubgenre)
+    public function setDanceSubgenre($dance_subgenre)
     {
-        $this->danceSubgenre = $danceSubgenre;
+        $this->dance_subgenre = $dance_subgenre;
     }
 
     /**
-     * @return Thesaurus
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDanceContent()
     {
-        return $this->danceContent;
+        return $this->dance_content;
     }
 
     /**
-     * @param Thesaurus $danceContent
+     * @param \Doctrine\Common\Collections\Collection $dance_content
      */
-    public function setDanceContent($danceContent)
+    public function setDanceContent($dance_content)
     {
-        $this->danceContent = $danceContent;
+        $this->dance_content = $dance_content;
     }
 
     /**

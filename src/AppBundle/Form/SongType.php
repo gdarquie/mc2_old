@@ -39,11 +39,19 @@ class SongType extends AbstractType
                     }
                 )
             )
+            ->add('songtype', EntityType::class, array(
+                'placeholder' => '',
+                'class' => 'AppBundle:Thesaurus',
+                'multiple' => true,
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByType("songtype");
+                }
+            ))
             ->add('composer'
                 , EntityType::class, array(
                     'class' => 'AppBundle:Person',
                     'multiple' => true,
-//                'empty_data' => null,
                     'choice_label' => 'name',
                     'query_builder' => function(PersonRepository $repo) {
                         return $repo->createAlphabeticalQueryBuilder();

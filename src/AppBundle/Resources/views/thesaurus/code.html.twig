@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+        <h2>{{ code.title }}</h2>
+
+        <section class="card">
+            {% for item in thesaurus  %}
+                <a href="{{ path('thesaurus_element', {'id' : item.thesaurusId }) }}">{{ item.title }}</a>
+            {% endfor %}
+        </section>
+    </div>
+
+{% endblock %}

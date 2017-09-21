@@ -81,7 +81,6 @@ class ThesaurusController extends Controller
     }
 
 
-
     /**
      *
      * Effacer un item
@@ -99,6 +98,52 @@ class ThesaurusController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
+
+        $id = $thesaurus->getThesaurusId();
+
+        //Select type de l'id lié
+        $query = $em->createQuery('SELECT c.content FROM AppBundle:Thesaurus t JOIN t.code c WHERE t.thesaurusId = :id');
+        $query->setParameter('id', $id);
+        $code = $query->getSingleResult();
+        $code = $code['content'];
+
+        //construction automatique du getter (attention les majuscules ne sont pas prises en compte, peut-être faudra-t-il les gérer sur linux)
+        $myGet = "get".ucfirst($code);
+        $myGet = preg_replace('#_#','', $myGet);
+
+
+        //pb quand ce sont des many to one je crois
+
+
+        if($code == "adaptation"){
+
+            //Select tous les numbers avec ce type
+            $query = $em->createQuery('SELECT f FROM AppBundle:Film f JOIN f.'.$code.' t WHERE t.thesaurusId = :id');
+            $query->setParameter('id', $id);
+            $films = $query->getResult();
+
+            foreach ($films as $film){
+                dump($film->$myGet());die;
+                $film->$myGet()->removeElement($thesaurus);
+            }
+        }
+
+        else{
+
+            //Select tous les numbers avec ce type
+            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.'.$code.' t WHERE t.thesaurusId = :id');
+            $query->setParameter('id', $id);
+            $numbers = $query->getResult();
+
+            foreach ($numbers as $number){
+                $number->$myGet()->removeElement($thesaurus);
+            }
+        }
+
+
+        //il peut s'agir des films ou des stagenumbers, etc.
+
+
         $em->remove($thesaurus);
         $em->flush();
 

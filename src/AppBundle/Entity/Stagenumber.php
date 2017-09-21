@@ -39,51 +39,71 @@ class Stagenumber
     private $order;
 
 
-    /** @var  \AppBundle\Entity\Thesaurus
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="type_id", referencedColumnName="thesaurus_id")
-     * })
-     */
-    private $type;
-
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_musicals")
-     * @ORM\JoinTable(name="stagenumber_has_musical",
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinTable(name="stagenumber_has_musicalthesaurus",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stageNumber_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="musical_id", referencedColumnName="thesaurus_id")
+     *     @ORM\JoinColumn(name="musical_thesaurus_id", referencedColumnName="thesaurus_id")
      *   }
      * )
      */
-    private $musicals;
+    private $musical_thesaurus;
 
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_dancingstyles")
-     * @ORM\JoinTable(name="stagenumber_has_dancingstyle",
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\JoinTable(name="stagenumber_has_dancingtype",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stageNumber_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="dancingstyle_id", referencedColumnName="thesaurus_id")
+     *     @ORM\JoinColumn(name="dancingtype_id", referencedColumnName="thesaurus_id")
      *   }
      * )
      */
-    private $dancingstyle;
-
+    private $dancing_type;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber_genres")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinTable(name="stagenumber_has_dancesubgenre",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="dancesubgenre_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $dance_subgenre;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinTable(name="stagenumber_has_dancecontent",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="dancecontent_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $dance_content;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinTable(name="stagenumber_has_genre",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
@@ -95,6 +115,20 @@ class Stagenumber
      */
     private $genre;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinTable(name="stagenumber_has_generalmood",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stageNumber_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="general_mood_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
+     */
+    private $general_mood;
 
     /**
      * @var string
@@ -338,30 +372,6 @@ class Stagenumber
     }
 
     /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Stagenumber
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
@@ -554,33 +564,65 @@ class Stagenumber
     /**
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getMusicals()
+    public function getMusicalThesaurus()
     {
-        return $this->musicals;
+        return $this->musical_thesaurus;
     }
 
     /**
-     * @param \Doctrine\Common\Collections\Collection $musicals
+     * @param \Doctrine\Common\Collections\Collection $musical_thesaurus
      */
-    public function setMusicals($musicals)
+    public function setMusicalThesaurus($musical_thesaurus)
     {
-        $this->musicals = $musicals;
+        $this->musical_thesaurus = $musical_thesaurus;
     }
 
     /**
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDancingstyle()
+    public function getDancingType()
     {
-        return $this->dancingstyle;
+        return $this->dancing_type;
     }
 
     /**
-     * @param \Doctrine\Common\Collections\Collection $dancingstyle
+     * @param \Doctrine\Common\Collections\Collection $dancing_type
      */
-    public function setDancingstyle($dancingstyle)
+    public function setDancingType($dancing_type)
     {
-        $this->dancingstyle = $dancingstyle;
+        $this->dancing_type = $dancing_type;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDanceSubgenre()
+    {
+        return $this->dance_subgenre;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $dance_subgenre
+     */
+    public function setDanceSubgenre($dance_subgenre)
+    {
+        $this->dance_subgenre = $dance_subgenre;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDanceContent()
+    {
+        return $this->dance_content;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $dance_content
+     */
+    public function setDanceContent($dance_content)
+    {
+        $this->dance_content = $dance_content;
     }
 
     /**
@@ -744,9 +786,28 @@ class Stagenumber
     }
 
 
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGeneralMood()
+    {
+        return $this->general_mood;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $general_mood
+     */
+    public function setGeneralMood($general_mood)
+    {
+        $this->general_mood = $general_mood;
+    }
+
+
     public function __toString()
     {
         return $this->getTitle();
     }
+
+
 
 }

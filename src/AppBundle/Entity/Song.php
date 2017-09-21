@@ -13,6 +13,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Song
 {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="song_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $songId;
+
     /**
      * @Assert\NotBlank()
      *
@@ -29,22 +39,22 @@ class Song
      */
     private $date;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=45, nullable=true)
-     */
-    private $type;
-
 
     /**
-     * @var integer
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\Column(name="song_id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
+     * @ORM\JoinTable(name="number_has_songtype",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="songtype_id", referencedColumnName="thesaurus_id")
+     *   }
+     * )
      */
-    private $songId;
+    private $songtype;
+
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -239,30 +249,6 @@ class Song
     public function getDate()
     {
         return $this->date;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Song
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**
@@ -562,6 +548,39 @@ class Song
     {
         $this->comment = $comment;
     }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSongtype()
+    {
+        return $this->songtype;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $songtype
+     */
+    public function setSongtype($songtype)
+    {
+        $this->songtype = $songtype;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStagenumbers()
+    {
+        return $this->stagenumbers;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $stagenumbers
+     */
+    public function setStagenumbers($stagenumbers)
+    {
+        $this->stagenumbers = $stagenumbers;
+    }
+
 
 
 }

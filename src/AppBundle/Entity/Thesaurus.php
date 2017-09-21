@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Thesaurus
@@ -30,9 +31,12 @@ class Thesaurus
     private $title;
 
     /**
-     * @var string
+     * @var \AppBundle\Entity\Code
      *
-     * @ORM\Column(name="code", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Code")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="code_id", referencedColumnName="code_id", nullable=false)
+     * })
      */
     private $code;
 
@@ -104,15 +108,27 @@ class Thesaurus
     private $editors;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Number", mappedBy="costumes")
+     */
+    private $numbers_with_costume;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Number", mappedBy="structure")
+     */
+    private $numbers_with_structure;
+
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->editors = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->editors = new ArrayCollection();
+        $this->numbers_with_structure = new ArrayCollection();
+        $this->numbers_with_costume = new ArrayCollection();
         $this->date_creation = new \DateTime();
         $this->last_update = new \DateTime();
     }
-
 
 
     /**
@@ -313,6 +329,88 @@ class Thesaurus
     {
         $this->code = $code;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDateCreation()
+    {
+        return $this->date_creation;
+    }
+
+    /**
+     * @param mixed $date_creation
+     */
+    public function setDateCreation($date_creation)
+    {
+        $this->date_creation = $date_creation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastUpdate()
+    {
+        return $this->last_update;
+    }
+
+    /**
+     * @param mixed $last_update
+     */
+    public function setLastUpdate($last_update)
+    {
+        $this->last_update = $last_update;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEditors()
+    {
+        return $this->editors;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $editors
+     */
+    public function setEditors($editors)
+    {
+        $this->editors = $editors;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumbersWithStructure()
+    {
+        return $this->numbers_with_structure;
+    }
+
+    /**
+     * @param mixed $numbers_with_structure
+     */
+    public function setNumbersWithStructure($numbers_with_structure)
+    {
+        $this->numbers_with_structure = $numbers_with_structure;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumbersWithCostume()
+    {
+        return $this->numbers_with_costume;
+    }
+
+    /**
+     * @param mixed $numbers_with_costume
+     */
+    public function setNumbersWithCostume($numbers_with_costume)
+    {
+        $this->numbers_with_costume = $numbers_with_costume;
+    }
+
+
 
 
 
