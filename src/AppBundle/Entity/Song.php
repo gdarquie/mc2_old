@@ -44,7 +44,7 @@ class Song
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
-     * @ORM\JoinTable(name="number_has_songtype",
+     * @ORM\JoinTable(name="song_has_songtype",
      *   joinColumns={
      *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
      *   },
