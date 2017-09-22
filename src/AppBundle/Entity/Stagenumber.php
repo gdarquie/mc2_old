@@ -17,7 +17,7 @@ class Stagenumber
     /**
      * @var integer
      *
-     * @ORM\Column(name="stageNumber_id", type="integer")
+     * @ORM\Column(name="stagenumber_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -45,7 +45,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinTable(name="stagenumber_has_musicalthesaurus",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="musical_thesaurus_id", referencedColumnName="thesaurus_id")
@@ -61,7 +61,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
      * @ORM\JoinTable(name="stagenumber_has_dancingtype",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="dancingtype_id", referencedColumnName="thesaurus_id")
@@ -76,7 +76,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinTable(name="stagenumber_has_dancesubgenre",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="dancesubgenre_id", referencedColumnName="thesaurus_id")
@@ -91,7 +91,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinTable(name="stagenumber_has_dancecontent",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="dancecontent_id", referencedColumnName="thesaurus_id")
@@ -106,7 +106,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinTable(name="stagenumber_has_genre",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="genre_id", referencedColumnName="thesaurus_id")
@@ -121,7 +121,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinTable(name="stagenumber_has_generalmood",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="general_mood_id", referencedColumnName="thesaurus_id")
@@ -164,7 +164,7 @@ class Stagenumber
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Stageshow", inversedBy="stagenumbers")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id", nullable=false)
+     *   @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id", nullable=false)
      * })
      */
     private $stageshow;
@@ -175,7 +175,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinTable(name="stagenumber_has_costume",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="costume_id", referencedColumnName="thesaurus_id")
@@ -206,7 +206,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber")
      * @ORM\JoinTable(name="stagenumber_has_dancemble",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="dancemble_id", referencedColumnName="thesaurus_id")
@@ -221,7 +221,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber")
      * @ORM\JoinTable(name="stagenumber_has_musensemble",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="musensemble_id", referencedColumnName="thesaurus_id")
@@ -236,7 +236,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="performersStagenumber")
      * @ORM\JoinTable(name="stagenumber_has_performer",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
@@ -284,7 +284,7 @@ class Stagenumber
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinTable(name="stagenumber_has_editor",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="editors", referencedColumnName="id")

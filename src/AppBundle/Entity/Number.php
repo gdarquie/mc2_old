@@ -774,7 +774,7 @@ class Number
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="stageNumber_id", referencedColumnName="stageNumber_id")
+     *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
      *   }
      * )
      */

@@ -17,7 +17,7 @@ class Stageshow
     /**
      * @var integer
      *
-     * @ORM\Column(name="stageShow_id", type="integer")
+     * @ORM\Column(name="stageshow_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -58,7 +58,7 @@ class Stageshow
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Film", inversedBy="stageshows")
      * @ORM\JoinTable(name="stageshow_has_film",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
@@ -125,7 +125,7 @@ class Stageshow
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowComposer")
      * @ORM\JoinTable(name="stageshow_has_composer",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
@@ -140,7 +140,7 @@ class Stageshow
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowBook")
      * @ORM\JoinTable(name="stageshow_has_book",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
@@ -155,7 +155,7 @@ class Stageshow
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowLyricist")
      * @ORM\JoinTable(name="stageshow_has_lyricist",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
@@ -170,7 +170,7 @@ class Stageshow
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowChoreographer")
      * @ORM\JoinTable(name="stageshow_has_choreographer",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
@@ -186,7 +186,7 @@ class Stageshow
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowDirector")
      * @ORM\JoinTable(name="stageshow_has_director",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
@@ -201,7 +201,7 @@ class Stageshow
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowDesign")
      * @ORM\JoinTable(name="stageshow_has_design",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="person_id", referencedColumnName="person_id")
@@ -221,7 +221,7 @@ class Stageshow
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinTable(name="stageShow_has_editor",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="editors", referencedColumnName="id")

@@ -78,7 +78,7 @@ class Film
      *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="stageShow_id", referencedColumnName="stageShow_id")
+     *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
      *   }
      * )
      */
