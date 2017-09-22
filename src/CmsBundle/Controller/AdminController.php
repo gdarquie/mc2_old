@@ -60,7 +60,7 @@ class AdminController extends Controller
         $query->setMaxResults($max);
         $lastSongs = $query->getResult();
 
-        //StageS Shows
+        //Stage Shows
         $query = $em->createQuery(
             'SELECT s FROM AppBundle:Stageshow s ORDER by s.last_update DESC '
         );
