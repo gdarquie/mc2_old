@@ -219,7 +219,7 @@ class Stageshow
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
-     * @ORM\JoinTable(name="stageShow_has_editor",
+     * @ORM\JoinTable(name="stageshow_has_editor",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
      *   },
