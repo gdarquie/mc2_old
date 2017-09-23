@@ -151,11 +151,28 @@
             //diagram
             var data = new google.visualization.DataTable();
             data.addColumn('date', 'Year');
+            data.addColumn('number', 'All dance numbers');
             data.addColumn('number', 'Numbers');
 
+
+
             data.addRows([
-                {% for item in dancingTypeByYear %}
-                [new Date({{ item.released }}, 0, 1), {{ item.nb }}],
+                {% for item in dancingTypeByYearAll %}
+
+                {% set bool = 0 %}
+
+                    [new Date({{ item.released }}, 0, 1), {{ item.nb }},
+                        {% for item2 in dancingTypeByYear %}
+                            {% if item2.released == item.released %}
+                                {{ item2.nb }}
+                                {% set bool = 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if bool == 0 %}
+                        0
+                        {% endif %}
+                    ],
+
                 {% endfor %}
             ]);
 
@@ -163,6 +180,7 @@
             formatter.format(data, 0);
 
             var options = {
+                colors: [ '#adc2eb' , '#3366cc']
             };
 
 

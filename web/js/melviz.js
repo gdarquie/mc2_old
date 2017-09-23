@@ -4,6 +4,15 @@ function viz_mediane(container, data, nbCsp) {
 
     var width = document.getElementById(container).getBoundingClientRect().width;
     var height = document.getElementById(container).getBoundingClientRect().height-20;
+
+    if (width == 0) {
+        width = 1000;
+    }
+
+    if (height == -20) {
+        height = 400;
+    }
+
     //console.log(height);
 
 

@@ -146,9 +146,15 @@ class DanceController extends Controller
 
         //DancingTypeByYear
 
-        $query = $em->createQuery('SELECT f.released as released, COUNT(d.title) as nb FROM AppBundle:Number n JOIN n.dancingType d JOIN n.film f WHERE d.thesaurusId = :dance GROUP BY f.released ');
+        $query = $em->createQuery('SELECT f.released as released, COUNT(DISTINCT (n)) as nb FROM AppBundle:Number n JOIN n.dancingType d JOIN n.film f WHERE d.thesaurusId = :dance GROUP BY f.released ');
         $query->setParameter('dance', $dance);
         $dancingTypeByYear = $query->getResult();
+
+
+        //DancingTypeByYearAll
+
+        $query = $em->createQuery('SELECT f.released as released, COUNT(DISTINCT (n)) as nb FROM AppBundle:Number n JOIN n.dancingType d JOIN n.film f GROUP BY f.released ');
+        $dancingTypeByYearAll = $query->getResult();
 
         //numbers
         $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.dancingType d JOIN n.film f WHERE d.thesaurusId = :dance ORDER BY f.released ASC');
@@ -170,6 +176,7 @@ class DanceController extends Controller
             'myDance' => $myDance,
             'genres' => $genres,
             'dancingTypeByYear' => $dancingTypeByYear,
+            'dancingTypeByYearAll' => $dancingTypeByYearAll,
             'numbers' => $numbers,
             'dancembles' => $dancembles,
             'exoticisms' => $exoticisms
@@ -200,9 +207,13 @@ class DanceController extends Controller
         $genres = $query->getResult();
 
         //DancingTypeByYear
-        $query = $em->createQuery('SELECT f.released as released, COUNT(d.title) as nb FROM AppBundle:Number n JOIN n.danceContent d JOIN n.film f WHERE d.thesaurusId = :dance GROUP BY f.released ');
+        $query = $em->createQuery('SELECT f.released as released, COUNT(DISTINCT (n)) as nb FROM AppBundle:Number n JOIN n.danceContent d JOIN n.film f WHERE d.thesaurusId = :dance GROUP BY f.released ');
         $query->setParameter('dance', $dance);
         $danceContentByYear = $query->getResult();
+
+        //DancingTypeByYear
+        $query = $em->createQuery('SELECT f.released as released, COUNT(DISTINCT (n)) as nb FROM AppBundle:Number n JOIN n.danceContent d JOIN n.film f GROUP BY f.released ');
+        $danceContentByYearAll = $query->getResult();
 
         //numbers
         $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.danceContent d JOIN n.film f WHERE d.thesaurusId = :dance ORDER BY f.released ASC');
@@ -224,6 +235,7 @@ class DanceController extends Controller
             'myDance' => $myDance,
             'genres' => $genres,
             'danceContentByYear' => $danceContentByYear,
+            'danceContentByYearAll' => $danceContentByYearAll,
             'numbers' => $numbers,
             'dancembles' => $dancembles,
             'exoticisms' => $exoticisms
@@ -254,9 +266,13 @@ class DanceController extends Controller
         $genres = $query->getResult();
 
         //DancingTypeByYear
-        $query = $em->createQuery('SELECT f.released as released, COUNT(d.title) as nb FROM AppBundle:Number n JOIN n.danceSubgenre d JOIN n.film f WHERE d.thesaurusId = :dance GROUP BY f.released ');
+        $query = $em->createQuery('SELECT f.released as released, COUNT(DISTINCT (n)) as nb FROM AppBundle:Number n JOIN n.danceSubgenre d JOIN n.film f WHERE d.thesaurusId = :dance GROUP BY f.released ');
         $query->setParameter('dance', $dance);
         $danceSubgenreByYear = $query->getResult();
+
+        //DancingTypeByYear
+        $query = $em->createQuery('SELECT f.released as released, COUNT(DISTINCT (n)) as nb FROM AppBundle:Number n JOIN n.danceSubgenre d JOIN n.film f GROUP BY f.released ');
+        $danceSubgenreByYearAll = $query->getResult();
 
         //contents
         $query = $em->createQuery('SELECT s.title as title, s.thesaurusId as thesaurusId, COUNT(d.thesaurusId) as nb  FROM AppBundle:Number n JOIN n.danceContent s JOIN n.danceSubgenre d WHERE d.thesaurusId = :dance GROUP BY s.title ORDER BY nb DESC');
@@ -298,6 +314,7 @@ class DanceController extends Controller
             'myDance' => $myDance,
             'genres' => $genres,
             'danceSubgenreByYear' => $danceSubgenreByYear,
+            'danceSubgenreByYearAll' => $danceSubgenreByYearAll,
             'contents' => $contents,
             'dancings' => $dancings,
             'dancembles' => $dancembles,

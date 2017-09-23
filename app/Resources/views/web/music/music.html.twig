@@ -250,7 +250,7 @@
 
         <article>
 
-           <p>Musical styles : {{ musicalStyle|length }} - <a href="http://localhost:8000/thesaurus/Musical%20styles">Thesaurus</a> </p>
+           <p>Musical styles : {{ musicalStyle|length }} - <a href="{{ path('thesaurus', { 'type' : "Musical styles" }) }}">Thesaurus</a> </p>
            <p>Production numbers per musical styles : </p>
 
             <div class='wordcloud col s12 row' id='wordcloud_style' style="height: 300px"></div>
