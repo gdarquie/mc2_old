@@ -22,6 +22,7 @@
             <p class="col m4 center">Production Numbers : <span class="number">{{ totalNumber.nb }}</span></p>
         </div>
 
+
         <article>
 
             {#<div class='wordcloud col s12 row' id='wordcloud_exotism' style="height: 300px"></div>#}
@@ -42,10 +43,11 @@
             </div>
         </article>
 
-        <article>
-            <p>Note : Most useful categories in the database for a specific research on the exoticism in musical numbers : Cast, Ethnic Stereotype, Diegetic Place, Imaginary Place, Costumes, Dancing Type, Dance Subgenre, Dance Content, Musical Style.</p>
-        </article>
 
+    </article>
+
+    <article>
+        <p>Note : Most useful categories in the database for a specific research on the exoticism in musical numbers : <a href="{{ path('thesaurus', { 'type' : "cast" }) }}">Cast</a>, <a href="{{ path('thesaurus', { 'type' : "Ethnic stereotypes" }) }}">Ethnic Stereotype</a>, <a href="{{ path('thesaurus', { 'type' : "diegetic place" }) }}">Diegetic Place</a>, <a href="{{ path('thesaurus', { 'type' : "imaginary place" }) }}">Imaginary Place</a>, <a href="{{ path('thesaurus', { 'type' : "costumes" }) }}">Costumes</a>, <a href="{{ path('thesaurus', { 'type' : "Dance" }) }}">Dancing Type</a>, <a href="{{ path('thesaurus', { 'type' : "Dance" }) }}">Dance Subgenre</a>, <a href="{{ path('thesaurus', { 'type' : "Dance" }) }}">Dance Content</a>, <a href="{{ path('thesaurus', { 'type' : "Musical styles" }) }}">Musical Style</a>.</p>
     </article>
 
 

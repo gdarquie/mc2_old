@@ -67,22 +67,24 @@
 <!-- Dancing type-->
     <div class="parallax-container">
         <br><br>
-        <h1 class="center">Dancing Type</h1>
-        <h1 class="center"><i>Type de danse</i></h1>
+        <h1 class="center">Dancing Type, Sub-genre, and Content</h1>
+        <h1 class="center"><i>Type de danse, Sous-genres, Contenu spécifique</i></h1>
         <div class="parallax"><img src="{{ asset('img/my gal sal.jpg') }}"></div>
     </div>
 
     <section class="container">
 
-        <div class="center">
-
-            <p>Choreographic branchs including defined figures, coming from theatrical or popular traditions</p>
-            <p class="center">***</p>
-            <p><i>Tendances chorégraphiques contenant des figures-type, issues de traditions spectaculaires ou populaires</i></p>
-
-        </div>
-
         <article class="card card_thematique">
+
+            <h2>Dancing type</h2>
+
+            <div class="center">
+
+                <p>Choreographic branchs including defined figures, coming from theatrical or popular traditions</p>
+                <p class="center">***</p>
+                <p><i>Tendances chorégraphiques contenant des figures-type, issues de traditions spectaculaires ou populaires</i></p>
+
+            </div>
 
             <p class="stats"><span>{{ dancing|length }}</span> dancing types :</p>
 
@@ -96,65 +98,47 @@
             <div id="chart_div" style="height: 400px; margin-top: 20px;"></div>
         </article>
 
-    </section>
-
-<!-- Dancing subgenre-->
-    <div class="parallax-container">
-        <br><br>
-        <h1 class="center">Dance Sub-genre</h1>
-        <h1 class="center"><i>Sous-genres</i></h1>
-
-            <div class="parallax"><img src="{{ asset('img/my fair lady.jpg') }}"></div>
-    </div>
-
-    <section class="container">
-
-        <div class="center">
-            <p>Danced figures coming from theatrical or popular traditions and specifying the "dancing types"</p>
-            <p class="center">***</p>
-            <p><i>Figures dansées issues de traditions spectaculaires ou populaires, participant à préciser le contenu des "dancing types"</i></p>
-        </div>
-
         <article class="card card_thematique">
+
+            <h2>Sub-Genre</h2>
+
+            <div class="center">
+                <p>Danced figures coming from theatrical or popular traditions and specifying the "dancing types"</p>
+                <p class="center">***</p>
+                <p><i>Figures dansées issues de traditions spectaculaires ou populaires, participant à préciser le contenu des "dancing types"</i></p>
+            </div>
 
             <p class="stats"><span>{{ subgenre|length }}</span> dance sub-genres : </p>
 
             {#<div class='wordcloud col s12 row' id='wordcloud_subgenre' style="height: 300px"></div>#}
 
             {% for item in popularsubgenre  %}
+
                <a href="{{ path('getOneDanceSubgenre', {'dance' : item.id}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
+
             {% endfor %}
 
             <div id="chart_div2" style="height: 400px; margin-top: 20px;"></div>
         </article>
 
-     </section>
-
-    <!-- Dancing content-->
-    <div class="parallax-container">
-        <br><br>
-        <h1 class="center">Dance Content</h1>
-        <h1 class="center"><i>Contenu spécifique</i></h1>
-
-        <div class="parallax"><img src="{{ asset('img/gold-diggers-1933.jpg') }}"></div>
-    </div>
-
-    <section class="container">
-
-        <div class="center">
-            <p>Gestural patterns or style nuances regularly used</p>
-            <p class="center">***</p>
-            <p><i>Motifs gestuels ou nuances de style récurrents</i></p>
-        </div>
-
         <article class="card card_thematique">
+
+            <h2>Dance Content</h2>
+
+            <div class="center">
+                <p>Gestural patterns or style nuances regularly used</p>
+                <p class="center">***</p>
+                <p><i>Motifs gestuels ou nuances de style récurrents</i></p>
+            </div>
 
             <p class="stats"><span>{{ content|length }}</span> dance contents : </p>
 
             {#<div class='wordcloud col s12 row' id='wordcloud_content' style="height: 300px"></div>#}
 
             {% for item in popularcontent  %}
+
                <a href="{{ path('getOneDanceContent', {'dance' : item.id}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
+
             {% endfor %}
 
             <div id="chart_div3" style="height: 400px; margin-top: 20px;"></div>
@@ -162,9 +146,41 @@
 
         </article>
 
+
+    </section>
+
+{#<!-- Dancing subgenre-->#}
+    {#<div class="parallax-container">#}
+        {#<br><br>#}
+        {#<h1 class="center">Dance Sub-genre</h1>#}
+        {#<h1 class="center"><i>Sous-genres</i></h1>#}
+
+            {#<div class="parallax"><img src="{{ asset('img/my fair lady.jpg') }}"></div>#}
+    {#</div>#}
+
+    {#<section class="container">#}
+
+
+
+     {#</section>#}
+
+    <!-- Choreographers-->
+    <div class="parallax-container">
+        <br><br>
+        <h1 class="center">Choreographers</h1>
+        <h1 class="center"><i>Chorégraphes</i></h1>
+
+        <div class="parallax"><img src="{{ asset('img/gold-diggers-1933.jpg') }}"></div>
+    </div>
+
+    <section class="container">
+
+
+
+
+
         <article class="card card_thematique">
 
-            <h2>Choreographers</h2>
 
             <div id="choreo_top_list">
 

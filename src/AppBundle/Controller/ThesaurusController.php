@@ -178,7 +178,7 @@ class ThesaurusController extends Controller
         $query->setParameter('type', 'exoticism');
         $popularexoticismCartouche = $query->getResult();
 
-        $query = $em -> createQuery('SELECT t.title as label, COUNT(t.title) as value FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type GROUP BY t.id ORDER BY value DESC');
+        $query = $em -> createQuery('SELECT t.title as label, COUNT(t.title) as value FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type GROUP BY t.thesaurusId ORDER BY value DESC')->setMaxResults(12);
         $query->setParameter('type', 'exoticism');
         $popularexoticismJson = $query->getResult();
         $popularexoticismJson = new JsonResponse($popularexoticismJson);
