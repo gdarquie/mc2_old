@@ -19,7 +19,7 @@ class ExoticismController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->createQuery("SELECT DISTINCT(t.title) as title, t.thesaurusId as id FROM AppBundle:Thesaurus t WHERE t.type = 'exoticism'");
+        $query = $em->createQuery("SELECT DISTINCT(t.title) as title, t.id as id FROM AppBundle:Thesaurus t WHERE t.type = 'exoticism'");
         $exo = $query->getResult();
 
         $query = $em->createQuery("SELECT DISTINCT(t.title) as title, t.studioId as id FROM AppBundle:Studio t");

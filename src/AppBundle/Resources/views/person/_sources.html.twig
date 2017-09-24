@@ -23,7 +23,7 @@
                             <tbody>
                             {% for item in source  %}
                                 <tr>
-                                    <td><a href="{{ path('person_search_by_thesaurus' , {'personId': person.personId, 'thesaurusId' : item.id, 'type' : 'source' } ) }}" >{{ item.title }}</a></td>
+                                    <td><a href="{{ path('person_search_by_thesaurus' , {'personId': person.personId, 'id' : item.id, 'type' : 'source' } ) }}" >{{ item.title }}</a></td>
                                     <td>{{ item.nb }}</td>
                                 </tr>
                             {% endfor %}
@@ -113,7 +113,7 @@
                             <tbody>
                             {% for item in diegetic  %}
                                 <tr>
-                                    <td><a href="{{ path('person_search_by_thesaurus' , {'personId': person.personId, 'thesaurusId' : item.id, 'type' : 'diegetic' } ) }}" >{{ item.title }}</a></td>
+                                    <td><a href="{{ path('person_search_by_thesaurus' , {'personId': person.personId, 'id' : item.id, 'type' : 'diegetic' } ) }}" >{{ item.title }}</a></td>
                                     <td>{{ item.nb }}</td>
                                 </tr>
                             {% endfor %}

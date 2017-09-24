@@ -67,7 +67,7 @@ performers : [{% for item in item.performers  %}
 {# Moods & Genre #}
 {#{% if item.generalMood|length > 0 %}#}
     {#moods : [{% for item in item.generalMood  %}#}
-    {#mood : { id: {{ item.thesaurusId }} , title : "{{item.title}}" }{% if loop.last %}{% else %},{% endif %}#}
+    {#mood : { id: {{ item.id }} , title : "{{item.title}}" }{% if loop.last %}{% else %},{% endif %}#}
 {#{% endfor %}],#}
 {#{% endif %}#}
 

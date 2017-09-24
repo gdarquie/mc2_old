@@ -48,7 +48,7 @@
 
             {#<div class="col s5">#}
             {#{% for item in dancings  %}#}
-                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'dancing' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }} ({{ item.nb }})</span></a>#}
+                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.id, 'type' : 'dancing' , 'itemId' :item.id }) }}"><span class="chip">{{ item.title }} ({{ item.nb }})</span></a>#}
             {#{% endfor %}#}
             {#</div>#}
         {#</article>#}
@@ -64,7 +64,7 @@
 
             {#<div class="col s5">#}
             {#{% for item in contents %}#}
-                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'content' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>#}
+                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.id, 'type' : 'content' , 'itemId' :item.id }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>#}
             {#{% endfor %}#}
             {#</div>#}
         {#</article>#}
@@ -81,7 +81,7 @@
 
             {#<div class="col s5">#}
             {#{% for item in dancembles %}#}
-                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'ensemble' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>#}
+                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.id, 'type' : 'ensemble' , 'itemId' :item.id }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>#}
             {#{% endfor %}#}
             {#</div>#}
         </article>
@@ -97,7 +97,7 @@
 
             {#<div class="col s5">#}
             {#{% for item in costumes %}#}
-                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'costume' , 'itemId' :item.thesaurusId }) }}"><span class="chip truncate">{{ item.title }}({{ item.nb }})</span></a>#}
+                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.id, 'type' : 'costume' , 'itemId' :item.id }) }}"><span class="chip truncate">{{ item.title }}({{ item.nb }})</span></a>#}
             {#{% endfor %}#}
             {#</div>#}
         {#</article>#}
@@ -154,7 +154,7 @@
 
             {#<div class="col s5">#}
             {#{% for item in exoticisms %}#}
-                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'exoticism' , 'itemId' :item.thesaurusId }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>#}
+                {#<a href="{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.id, 'type' : 'exoticism' , 'itemId' :item.id }) }}"><span class="chip">{{ item.title }}({{ item.nb }})</span></a>#}
             {#{% endfor %}#}
             {#</div>#}
         {#</article>#}
@@ -441,7 +441,7 @@
 
     <script>
 
-        words_type = [{% for item in dancings  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'dancing' , 'itemId' :item.thesaurusId }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        words_type = [{% for item in dancings  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.id, 'type' : 'dancing' , 'itemId' :item.id }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
         $('#wordcloud_type').jQCloud(words_type);
         $('#wordcloud_type').jQCloud('update', words_type, {
             fontSize: {
@@ -451,7 +451,7 @@
             }
         });
 
-        words_content = [{% for item in contents  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'content' , 'itemId' :item.thesaurusId }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        words_content = [{% for item in contents  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.id, 'type' : 'content' , 'itemId' :item.id }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
         $('#wordcloud_content').jQCloud(words_content);
         $('#wordcloud_content').jQCloud('update', words_content, {
             fontSize: {
@@ -462,7 +462,7 @@
         });
 
 
-        words_dancemble = [{% for item in dancembles  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'ensemble' , 'itemId' :item.thesaurusId }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        words_dancemble = [{% for item in dancembles  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.id, 'type' : 'ensemble' , 'itemId' :item.id }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
         $('#wordcloud_dancemble').jQCloud(words_dancemble);
         $('#wordcloud_dancemble').jQCloud('update', words_dancemble, {
             fontSize: {
@@ -474,7 +474,7 @@
 
 
 
-        words_costume = [{% for item in costumes  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.thesaurusId, 'type' : 'costume' , 'itemId' :item.thesaurusId }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        words_costume = [{% for item in costumes  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneItemFromDanceSubgenre', {'subgenreId': myDance.id, 'type' : 'costume' , 'itemId' :item.id }) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
         $('#wordcloud_costume').jQCloud(words_costume);
         $('#wordcloud_costume').jQCloud('update', words_costume, {
             fontSize: {

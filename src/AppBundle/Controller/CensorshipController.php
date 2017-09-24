@@ -173,11 +173,11 @@ class CensorshipController extends Controller
         $query->setParameter('content', $content);
         $myContent = $query->getSingleResult();
 
-        $query = $em->createQuery('SELECT g.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.genre g JOIN f.censorship c  WHERE c.title = :content GROUP BY g.thesaurusId ORDER BY nb DESC');
+        $query = $em->createQuery('SELECT g.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.genre g JOIN f.censorship c  WHERE c.title = :content GROUP BY g.id ORDER BY nb DESC');
         $query->setParameter('content', $content);
         $genres = $query->getResult();
 
-        $query = $em->createQuery('SELECT d.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.danceContent d JOIN f.censorship c  WHERE c.title = :content GROUP BY d.thesaurusId ORDER BY nb DESC');
+        $query = $em->createQuery('SELECT d.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.danceContent d JOIN f.censorship c  WHERE c.title = :content GROUP BY d.id ORDER BY nb DESC');
         $query->setParameter('content', $content);
         $danceContents = $query->getResult();
 
@@ -224,22 +224,22 @@ class CensorshipController extends Controller
         $numberForLegion = $query->getSingleResult();
 
         //genres
-        $query = $em->createQuery('SELECT g.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.genre g WHERE f.legion = :legion GROUP BY g.thesaurusId ORDER BY nb DESC');
+        $query = $em->createQuery('SELECT g.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.genre g WHERE f.legion = :legion GROUP BY g.id ORDER BY nb DESC');
         $query->setParameter('legion', $legion);
         $genres = $query->getResult();
 
         //dance contents
-        $query = $em->createQuery('SELECT d.title as title, f.legion as legion, d.thesaurusId as id, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.danceContent d  WHERE f.legion = :legion GROUP BY d.thesaurusId ORDER BY nb DESC');
+        $query = $em->createQuery('SELECT d.title as title, f.legion as legion, d.id as id, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.danceContent d  WHERE f.legion = :legion GROUP BY d.id ORDER BY nb DESC');
         $query->setParameter('legion', $legion);
         $danceContents = $query->getResult();
 
         //costumes
-        $query = $em->createQuery('SELECT g.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.costumes g WHERE f.legion = :legion GROUP BY g.thesaurusId ORDER BY nb DESC');
+        $query = $em->createQuery('SELECT g.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.costumes g WHERE f.legion = :legion GROUP BY g.id ORDER BY nb DESC');
         $query->setParameter('legion', $legion);
         $costumes = $query->getResult();
 
         //costumes
-        $query = $em->createQuery('SELECT g.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.stereotype g WHERE f.legion = :legion GROUP BY g.thesaurusId ORDER BY nb DESC');
+        $query = $em->createQuery('SELECT g.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.stereotype g WHERE f.legion = :legion GROUP BY g.id ORDER BY nb DESC');
         $query->setParameter('legion', $legion);
         $stereotypes = $query->getResult();
 
@@ -275,12 +275,12 @@ class CensorshipController extends Controller
         $query->setParameter('legion', $legion);
         $myLegion = $query->getSingleResult();
 
-        $query = $em->createQuery('SELECT n.title as number, f.title as film FROM AppBundle:Film f JOIN f.numbers n JOIN n.danceContent d WHERE f.legion = :legion AND d.thesaurusId = :id');
+        $query = $em->createQuery('SELECT n.title as number, f.title as film FROM AppBundle:Film f JOIN f.numbers n JOIN n.danceContent d WHERE f.legion = :legion AND d.id = :id');
         $query->setParameter('legion', $legion);
         $query->setParameter('id', $id);
         $filmsAndNumbers = $query->getResult();
 
-        $query = $em->createQuery('SELECT DISTINCT(t.title) as title FROM AppBundle:Thesaurus t WHERE t.thesaurusId = :id');
+        $query = $em->createQuery('SELECT DISTINCT(t.title) as title FROM AppBundle:Thesaurus t WHERE t.id = :id');
         $query->setParameter('id', $id);
         $thesaurus = $query->getSingleResult();
 

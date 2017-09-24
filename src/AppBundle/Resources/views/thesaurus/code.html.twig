@@ -7,7 +7,7 @@
 
         <section class="card">
             {% for item in thesaurus  %}
-                <a href="{{ path('thesaurus_element', {'id' : item.thesaurusId }) }}">{{ item.title }}</a>
+                <a href="{{ path('thesaurus_element', {'id' : item.id }) }}">{{ item.title }}</a>
             {% endfor %}
         </section>
     </div>

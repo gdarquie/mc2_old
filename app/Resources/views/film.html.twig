@@ -444,7 +444,7 @@
         //title, begin-tc, ending-tc
         var items = new vis.DataSet([
             {% for number in numbersOf1Film %}
-            {id: {{loop.index}}, content: '{{number.title}}', start: {{number.beginTc}}, end: {{number.endTc}}, shots: {%  if number.shots != null %}'{{ number.shots }}'{% else %}0{% endif %}, cast: {%  if number.cast != null %}'{{ number.cast.thesaurusId }}'{% else %}0{% endif %} }{% if loop.last %}{% else %},{% endif %}
+            {id: {{loop.index}}, content: '{{number.title}}', start: {{number.beginTc}}, end: {{number.endTc}}, shots: {%  if number.shots != null %}'{{ number.shots }}'{% else %}0{% endif %}, cast: {%  if number.cast != null %}'{{ number.cast.id }}'{% else %}0{% endif %} }{% if loop.last %}{% else %},{% endif %}
             {% endfor %}
         ]);
 

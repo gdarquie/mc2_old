@@ -46,7 +46,7 @@ class DanceApiController extends Controller
     private function serializedance(Thesaurus $dance)
     {
         return array(
-            'danceId' => $dance->getThesaurusId(),
+            'danceId' => $dance->getId(),
             'title' => $dance->getTitle(),
             'category' => $dance->getCategory(),
         );

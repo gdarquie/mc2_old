@@ -36,7 +36,6 @@ class ThesaurusController extends Controller
             return $this->redirectToRoute('thesaurus', array('type' => 'all' ));
         }
 
-
         return $this->render('web/thesaurus/thesaurusNew.html.twig', array(
             'form' => $form->createView(),
         ));
@@ -47,12 +46,12 @@ class ThesaurusController extends Controller
     /**
      * Update Thesaurus
      *
-     * @Route("/thesaurus/edit/{thesaurusId}", name="updateThesaurus")
+     * @Route("/thesaurus/edit/{id}", name="updateThesaurus")
      */
-    public function updateAction(Request $request, $thesaurusId)
+    public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $thesaurus = $em->getRepository('AppBundle:Thesaurus')->find($thesaurusId);
+        $thesaurus = $em->getRepository('AppBundle:Thesaurus')->find($id);
 
 
         if (!$thesaurus) {
@@ -99,10 +98,10 @@ class ThesaurusController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $id = $thesaurus->getThesaurusId();
+        $id = $thesaurus->getId();
 
         //Select type de l'id lié
-        $query = $em->createQuery('SELECT c.content FROM AppBundle:Thesaurus t JOIN t.code c WHERE t.thesaurusId = :id');
+        $query = $em->createQuery('SELECT c.content FROM AppBundle:Thesaurus t JOIN t.code c WHERE t.id = :id');
         $query->setParameter('id', $id);
         $code = $query->getSingleResult();
         $code = $code['content'];
@@ -118,7 +117,7 @@ class ThesaurusController extends Controller
         if($code == "adaptation"){
 
             //Select tous les numbers avec ce type
-            $query = $em->createQuery('SELECT f FROM AppBundle:Film f JOIN f.'.$code.' t WHERE t.thesaurusId = :id');
+            $query = $em->createQuery('SELECT f FROM AppBundle:Film f JOIN f.'.$code.' t WHERE t.id = :id');
             $query->setParameter('id', $id);
             $films = $query->getResult();
 
@@ -131,7 +130,7 @@ class ThesaurusController extends Controller
         else{
 
             //Select tous les numbers avec ce type
-            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.'.$code.' t WHERE t.thesaurusId = :id');
+            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.'.$code.' t WHERE t.id = :id');
             $query->setParameter('id', $id);
             $numbers = $query->getResult();
 

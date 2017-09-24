@@ -57,7 +57,7 @@
                                 <tbody>
                                 {% for item in performance  %}
                                     <tr>
-                                        <td><a href="{{ path('person_search_by_thesaurus' , {'personId': person.personId, 'thesaurusId' : item.id, 'type' : 'performance' } ) }}" >{{ item.title }}</a></td>
+                                        <td><a href="{{ path('person_search_by_thesaurus' , {'personId': person.personId, 'id' : item.id, 'type' : 'performance' } ) }}" >{{ item.title }}</a></td>
                                         <td>{{ item.nb }}</td>
                                     </tr>
                                 {% endfor %}
@@ -169,7 +169,7 @@
                                 <tbody>
                                 {% for item in structure  %}
                                     <tr>
-                                        <td><a href="{{ path('person_search_by_thesaurus' , {'personId': person.personId, 'thesaurusId' : item.id, 'type' : 'structure' } ) }}" >{{ item.title }}</a></td>
+                                        <td><a href="{{ path('person_search_by_thesaurus' , {'personId': person.personId, 'id' : item.id, 'type' : 'structure' } ) }}" >{{ item.title }}</a></td>
                                         <td>{{ item.nb }}</td>
                                     </tr>
                                 {% endfor %}
@@ -340,7 +340,7 @@
                                 <tbody>
                                 {% for item in completeness  %}
                                     <tr>
-                                        <td><a href="{{ path('person_search_by_thesaurus' , {'personId': person.personId, 'thesaurusId' : item.id, 'type' : 'completeness' } ) }}" >{{ item.title }}</a></td>
+                                        <td><a href="{{ path('person_search_by_thesaurus' , {'personId': person.personId, 'id' : item.id, 'type' : 'completeness' } ) }}" >{{ item.title }}</a></td>
                                         <td>{{ item.nb }}</td>
                                     </tr>
                                 {% endfor %}

@@ -13,10 +13,6 @@ cms:
     type:     annotation
     prefix:   /
 
-app_test:
-    resource: "@AppBundle/Controller/Test"
-    type:     annotation
-
 #FoS
 fos_user:
   resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -21,28 +21,30 @@ class ThesaurusRepository extends EntityRepository
  
     }
 
-    public function findAllThesaurusByType($type)
+    public function findAllThesaurusByType($code)
     {
-        return $this->createQueryBuilder('thesaurus')
-            ->where('thesaurus.type = :type')
+        $result = $this->createQueryBuilder('thesaurus')
+            ->where('thesaurus.title = :code')
             ->orderBy('thesaurus.title', 'ASC')
-            ->setParameter('type', $type);
+            ->setParameter('code', $code);
+
+        return $result;
     }
 
-    public function findAllThesaurusByTypeAndCategory($type, $category)
-    {
-        return $this->createQueryBuilder('thesaurus')
-            ->where('thesaurus.type = :type')
-            ->andWhere("thesaurus.category = :category")
-            ->orderBy('thesaurus.title', 'ASC')
-            ->setParameters(array( 'type' => $type, 'category' => $category));
-    }
-
-    public function findNumbersForOneThesaurusId($thesaurusId){
-        return $this->getEntityManager('SELECT t FOM AppBundle:Thesaurus t JOIN WHERE t.thesaurusId = :thesaurusId')->createQuery("")
-            ->setParameter('thesaurusId', $thesaurusId)
-            ->getResult();
-    }
+//    public function findAllThesaurusByTypeAndCategory($type, $category)
+//    {
+//        return $this->createQueryBuilder('thesaurus')
+//            ->where('thesaurus.type = :type')
+//            ->andWhere("thesaurus.category = :category")
+//            ->orderBy('thesaurus.title', 'ASC')
+//            ->setParameters(array( 'type' => $type, 'category' => $category));
+//    }
+//
+//    public function findNumbersForOneId($id){
+//        return $this->getEntityManager('SELECT t FOM AppBundle:Thesaurus t JOIN WHERE t.id = :id')->createQuery("")
+//            ->setParameter('id', $id)
+//            ->getResult();
+//    }
 
 
 

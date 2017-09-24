@@ -56,11 +56,11 @@ class PersonController extends Controller
         $shot_length = $query->getResult();
 
         //Get all Performances
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id, t.definition FROM AppBundle:Number n JOIN n.performance_thesaurus t GROUP BY t.title ");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id, t.definition FROM AppBundle:Number n JOIN n.performance_thesaurus t GROUP BY t.title ");
         $performances = $query->getResult();
 
         //Get a Performance
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id FROM AppBundle:Number n JOIN n.performance_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ");
         $query->setParameter('person', $personId );
         $performance = $query->getResult();
 
@@ -73,18 +73,18 @@ class PersonController extends Controller
         $structures_total = $query->getSingleResult();
 
         //Get ????
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ");
         $query->setParameter('person', $personId );
         $structure = $query->getResult();
 
 //        Topics part (genre, general_mood)
 
         //All genres
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title as title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title as title, t.id as id FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
         $genres = $query->getResult();
 
         //Genre for the person
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $genre = $query->getResult();
 
@@ -93,7 +93,7 @@ class PersonController extends Controller
         $moods = $query->getResult();
 
         //Moods for the person
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.general_mood t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id FROM AppBundle:Number n JOIN n.general_mood t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $mood = $query->getResult();
 
@@ -102,7 +102,7 @@ class PersonController extends Controller
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.exoticism_thesaurus t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
         $exoticisms = $query->getResult();
 
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.exoticism_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id FROM AppBundle:Number n JOIN n.exoticism_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $exoticism = $query->getResult();
 
@@ -111,7 +111,7 @@ class PersonController extends Controller
         $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p GROUP BY t.title ORDER BY nb DESC");
         $sources = $query->getResult();
 
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $source = $query->getResult();
 
@@ -126,11 +126,11 @@ class PersonController extends Controller
         $musical = $query->getResult();
 
 //      Completenesses
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id, t.definition FROM AppBundle:Number n JOIN n.completenessThesaurus t GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id, t.definition FROM AppBundle:Number n JOIN n.completenessThesaurus t GROUP BY t.title ORDER BY nb DESC");
         $completenesses = $query->getResult();
 
 //      Completeness
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $completeness = $query->getResult();
 
@@ -158,7 +158,7 @@ class PersonController extends Controller
         $query = $em->createQuery("SELECT COUNT(t.title) as nb, t.title FROM AppBundle:Number n JOIN n.diegetic_thesaurus t GROUP BY t.title ORDER BY nb DESC");
         $diegetics = $query->getResult();
 
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.thesaurusId as id FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $diegetic = $query->getResult();
 
@@ -374,9 +374,9 @@ class PersonController extends Controller
     }
 
     /**
-     * @Route("/person/search/performerId={personId}/thesaurusId={thesaurusId}/type={type}", name = "person_search_by_thesaurus")
+     * @Route("/person/search/performerId={personId}/id={id}/type={type}", name = "person_search_by_thesaurus")
      */
-    public function getNumberForPerformerByThesaurus($personId, $thesaurusId, $type){
+    public function getNumberForPerformerByThesaurus($personId, $id, $type){
 
 
         $em = $this->getDoctrine()->getManager();
@@ -385,41 +385,41 @@ class PersonController extends Controller
         $person = $query->getSingleResult();
 
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery("SELECT t FROM AppBundle:Thesaurus t WHERE t.thesaurusId = :thesaurus");
-        $query->setParameter('thesaurus', $thesaurusId);
+        $query = $em->createQuery("SELECT t FROM AppBundle:Thesaurus t WHERE t.id = :thesaurus");
+        $query->setParameter('thesaurus', $id);
         $thesaurus = $query->getSingleResult();
 
         if($type == 'topic'){
-            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.genre t JOIN n.performers p WHERE p.personId = :person AND  t.id = :thesaurus");
 
         }
         elseif($type == 'mood'){
-            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.general_mood t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.general_mood t JOIN n.performers p WHERE p.personId = :person AND  t.id = :thesaurus");
         }
         elseif($type == 'exoticism'){
-            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.exoticism_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.exoticism_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.id = :thesaurus");
         }
         elseif($type == 'source'){
-            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.source_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.id = :thesaurus");
         }
         elseif($type == 'diegetic'){
-            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.id = :thesaurus");
         }
         //
         elseif($type == 'completeness'){
-            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.id = :thesaurus");
         }
         elseif($type == 'structure'){
-            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.personId = :person AND  t.id = :thesaurus");
         }
         elseif($type == 'diegetic'){
-            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.thesaurusId = :thesaurus");
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.diegetic_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.id = :thesaurus");
         }
 
 
 
         $query->setParameter('person', $personId);
-        $query->setParameter('thesaurus', $thesaurusId);
+        $query->setParameter('thesaurus', $id);
         $numbers = $query->getResult();
 
 

@@ -56,15 +56,15 @@ class ScenarioController extends Controller
 //        dump($numbers);die();
 
         //number of numbers per dancing type for the selection
-        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.dancingType t  WHERE n.id IN(:numbers)GROUP BY t.thesaurusId  ");
+        $query = $em->createQuery("SELECT t.title as title, COUNT(t.id) as nb FROM AppBundle:Number n JOIN n.dancingType t  WHERE n.id IN(:numbers)GROUP BY t.id  ");
         $query->setParameter('numbers', $numbers );
         $one = $query->getResult();
 
         //number of numbers per dancing type for all
-        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.dancingType t GROUP BY t.thesaurusId ORDER BY t.title");
+        $query = $em->createQuery("SELECT t.title as title, COUNT(t.id) as nb FROM AppBundle:Number n JOIN n.dancingType t GROUP BY t.id ORDER BY t.title");
         $all = $query->getResult();
 
-        $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.dancingType t GROUP BY t.thesaurusId ORDER BY t.title ASC");
+        $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.dancingType t GROUP BY t.id ORDER BY t.title ASC");
         $titles = $query->getResult();
 
         $max = count($all);
@@ -174,15 +174,15 @@ class ScenarioController extends Controller
         $numbers = $query->getResult();
 
         //number of numbers per dancing type for the selection
-        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t  WHERE n.id IN(:numbers)GROUP BY t.thesaurusId  ");
+        $query = $em->createQuery("SELECT t.title as title, COUNT(t.id) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t  WHERE n.id IN(:numbers)GROUP BY t.id  ");
         $query->setParameter('numbers', $numbers );
         $one = $query->getResult();
 
         //number of numbers per dancing type for all
-        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t GROUP BY t.thesaurusId ORDER BY t.title");
+        $query = $em->createQuery("SELECT t.title as title, COUNT(t.id) as nb FROM AppBundle:Number n JOIN n.danceSubgenre t GROUP BY t.id ORDER BY t.title");
         $all = $query->getResult();
 
-        $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.danceSubgenre t GROUP BY t.thesaurusId ORDER BY t.title ASC");
+        $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.danceSubgenre t GROUP BY t.id ORDER BY t.title ASC");
         $titles = $query->getResult();
 
         $max = count($all);
@@ -285,15 +285,15 @@ class ScenarioController extends Controller
         $numbers = $query->getResult();
 
         //number of numbers per dancing type for the selection
-        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.danceContent t  WHERE n.id IN(:numbers)GROUP BY t.thesaurusId  ");
+        $query = $em->createQuery("SELECT t.title as title, COUNT(t.id) as nb FROM AppBundle:Number n JOIN n.danceContent t  WHERE n.id IN(:numbers)GROUP BY t.id  ");
         $query->setParameter('numbers', $numbers );
         $one = $query->getResult();
 
         //number of numbers per dancing type for all
-        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb FROM AppBundle:Number n JOIN n.danceContent t GROUP BY t.thesaurusId ORDER BY t.title");
+        $query = $em->createQuery("SELECT t.title as title, COUNT(t.id) as nb FROM AppBundle:Number n JOIN n.danceContent t GROUP BY t.id ORDER BY t.title");
         $all = $query->getResult();
 
-        $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.danceContent t GROUP BY t.thesaurusId ORDER BY t.title ASC");
+        $query = $em->createQuery("SELECT t.title as title FROM AppBundle:Number n JOIN n.danceContent t GROUP BY t.id ORDER BY t.title ASC");
         $titles = $query->getResult();
 
         $max = count($all);

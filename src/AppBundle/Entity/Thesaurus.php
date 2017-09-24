@@ -21,7 +21,7 @@ class Thesaurus
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $thesaurusId;
+    private $id;
 
     /**
      * @var string
@@ -40,12 +40,12 @@ class Thesaurus
      */
     private $code;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=255, nullable=false)
-     */
-    private $type;
+//    /**
+//     * @var string
+//     *
+//     * @ORM\Column(name="type", type="string", length=255, nullable=false)
+//     */
+//    private $type;
 
     /**
      * @var string
@@ -74,13 +74,6 @@ class Thesaurus
      * @ORM\Column(name="example", type="text", length=65535, nullable=true)
      */
     private $example;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="category", type="string", length=500, nullable=true)
-     */
-    private $category;
 
     /**
      * @ORM\Column(name="date_creation", type="datetime")
@@ -130,6 +123,13 @@ class Thesaurus
         $this->last_update = new \DateTime();
     }
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set title
@@ -155,29 +155,6 @@ class Thesaurus
         return $this->title;
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Thesaurus
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
 
     /**
      * Set comment
@@ -275,44 +252,6 @@ class Thesaurus
         return $this->example;
     }
 
-    /**
-     * Set category
-     *
-     * @param string $category
-     *
-     * @return Thesaurus
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return string
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Get thesaurusId
-     *
-     * @return integer
-     */
-    public function getThesaurusId()
-    {
-        return $this->thesaurusId;
-    }
-
-    public function __toString()
-    {
-        return $this->getTitle();
-    }
 
     /**
      * @return string
@@ -412,6 +351,10 @@ class Thesaurus
 
 
 
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 
 
 }

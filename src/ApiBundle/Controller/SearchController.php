@@ -91,7 +91,7 @@ class SearchController extends Controller
         //end test
 
 
-//        $query = $em->createQuery("SELECT t.title as title, COUNT(t.thesaurusId) as nb, SUM(t.thesaurusId) as total FROM AppBundle:Number n JOIN n.dancingType t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ");
+//        $query = $em->createQuery("SELECT t.title as title, COUNT(t.id) as nb, SUM(t.id) as total FROM AppBundle:Number n JOIN n.dancingType t WHERE t.type = :type AND t.category = :category GROUP BY t.id ");
 //        $query->setParameter('type', $type);
 //        $query->setParameter('category', $category);
 //        $dancingtypes = $query->getResult();
@@ -146,7 +146,7 @@ class SearchController extends Controller
             $end = 2000;
         }
 
-        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.exoticism_thesaurus e JOIN n.film f JOIN f.studios s WHERE e.thesaurusId LIKE :exoticisms AND s.studioId LIKE :studio AND f.released > :begin AND f.released < :end");
+        $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.exoticism_thesaurus e JOIN n.film f JOIN f.studios s WHERE e.id LIKE :exoticisms AND s.studioId LIKE :studio AND f.released > :begin AND f.released < :end");
         $query->setParameter('exoticisms', $exoticisms);
         $query->setParameter('studio', $studio);
         $query->setParameter('begin', $begin);

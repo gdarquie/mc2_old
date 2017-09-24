@@ -132,10 +132,10 @@
                     </tr>
                     {% for item in lastthesaurus  %}
                         <tr>
-                            <td><a href="{{ path('thesaurus_item' , {'id' : item.thesaurusId}) }}">{{ item.title }}</a></td>
+                            <td><a href="{{ path('thesaurus_item' , {'id' : item.id}) }}">{{ item.title }}</a></td>
                             <td>{{ item.type }}</td>
-                            <td><a href="{{ path('updateThesaurus' , {'thesaurusId' : item.thesaurusId}) }}"><i class="material-icons tiny">mode_edit</i></a></td>
-                            <td><a href="#thesaurus{{ item.thesaurusId }}" class="modal-trigger"><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
+                            <td><a href="{{ path('updateThesaurus' , {'id' : item.id}) }}"><i class="material-icons tiny">mode_edit</i></a></td>
+                            <td><a href="#thesaurus{{ item.id }}" class="modal-trigger"><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -146,7 +146,7 @@
                 {% for item in lastthesaurus  %}
 
                     <!-- Modal Structure -->
-                    <div id="thesaurus{{ item.thesaurusId }}" class="modal">
+                    <div id="thesaurus{{ item.id }}" class="modal">
                         <div class="modal-content">
                             <h3 class="uk-modal-title">Delete this item?</h3>
                             <p>
@@ -156,7 +156,7 @@
                         </div>
                         <div class="modal-footer">
                             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-                            <a href="{{ path('thesaurus_delete', { id : item.thesaurusId}) }}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                            <a href="{{ path('thesaurus_delete', { id : item.id}) }}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                         </div>
                     </div>
                 {% endfor %}

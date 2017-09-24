@@ -90,7 +90,7 @@
             {#<div class='wordcloud col s12 row' id='wordcloud_type' style="height: 300px"></div>#}
 
             {% for item in populardancing  %}
-                <a href="{{ path('getOneDancingType', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
+                <a href="{{ path('getOneDancingType', {'dance' : item.id}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
             {% endfor %}
 
             <div id="chart_div" style="height: 400px; margin-top: 20px;"></div>
@@ -122,7 +122,7 @@
             {#<div class='wordcloud col s12 row' id='wordcloud_subgenre' style="height: 300px"></div>#}
 
             {% for item in popularsubgenre  %}
-               <a href="{{ path('getOneDanceSubgenre', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
+               <a href="{{ path('getOneDanceSubgenre', {'dance' : item.id}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
             {% endfor %}
 
             <div id="chart_div2" style="height: 400px; margin-top: 20px;"></div>
@@ -154,7 +154,7 @@
             {#<div class='wordcloud col s12 row' id='wordcloud_content' style="height: 300px"></div>#}
 
             {% for item in popularcontent  %}
-               <a href="{{ path('getOneDanceContent', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
+               <a href="{{ path('getOneDanceContent', {'dance' : item.id}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>
             {% endfor %}
 
             <div id="chart_div3" style="height: 400px; margin-top: 20px;"></div>
@@ -358,7 +358,7 @@
 
     <script>
 
-        words_type = [{% for item in populardancing  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneDancingType', {'dance' : item.thesaurusId}) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        words_type = [{% for item in populardancing  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneDancingType', {'dance' : item.id}) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
         $('#wordcloud_type').jQCloud(words_type);
         $('#wordcloud_type').jQCloud('update', words_type, {
             fontSize: {
@@ -370,7 +370,7 @@
 
 
 
-        words_subgenre = [{% for item in popularsubgenre  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneDanceSubgenre', {'dance' : item.thesaurusId}) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        words_subgenre = [{% for item in popularsubgenre  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneDanceSubgenre', {'dance' : item.id}) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
         $('#wordcloud_subgenre').jQCloud(words_subgenre);
         $('#wordcloud_subgenre').jQCloud('update', words_subgenre, {
             fontSize: {
@@ -381,7 +381,7 @@
         });
 
 
-        words_content = [{% for item in popularcontent  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneDanceContent', {'dance' : item.thesaurusId}) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
+        words_content = [{% for item in popularcontent  %}{ text : "{{ item.title }}", weight : {{ item.nb }}, link : "{{ path('getOneDanceContent', {'dance' : item.id}) }}"  } {% if loop.last %}{% else %},{% endif %}{% endfor %}];
         $('#wordcloud_content').jQCloud(words_content);
         $('#wordcloud_content').jQCloud('update', words_content, {
             fontSize: {
@@ -393,7 +393,7 @@
 
 
         {#{% for item in popularcontent  %}#}
-        {#<a href="{{ path('getOneDanceContent', {'dance' : item.thesaurusId}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>#}
+        {#<a href="{{ path('getOneDanceContent', {'dance' : item.id}) }}"><p class="chip">{{ item.title }} ({{ item.nb }})</p></a>#}
         {#{% endfor %}#}
 
 

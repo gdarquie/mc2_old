@@ -227,7 +227,6 @@ fos_elastica:
                         completeReference: { type: keyword }
                         completenessThesaurus: { type: keyword }
                         film.sample: { type: keyword }
-
                     persistence:
                         # the driver can be orm, mongodb, phpcr or propel
                         # listener and finder are not supported by
@@ -236,3 +235,13 @@ fos_elastica:
                         model: AppBundle\Entity\Number
                         provider: ~
                         finder: ~
+                thesaurus:
+                    mappings:
+                        title: { type: keyword }
+                    persistence:
+                        # the driver can be orm, mongodb, phpcr or propel
+                        # listener and finder are not supported by
+                        # propel and should be removed
+                        driver: orm
+                        model: AppBundle\Entity\Thesaurus
+                        provider: ~

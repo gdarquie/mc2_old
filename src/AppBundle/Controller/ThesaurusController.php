@@ -13,9 +13,8 @@ use AppBundle\Form\ThesaurusType;
 class ThesaurusController extends Controller
 {
 
-
     /**
-     * @Route("/thesaurus", name="thesaurus_accueil")
+     * @Route("/thesaurus", name="thesaurus")
      */
     public function thesaurusAction()
     {
@@ -68,12 +67,12 @@ class ThesaurusController extends Controller
         //les opérations sont construites à partir de 'code'
 
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('SELECT t FROM AppBundle:Thesaurus t WHERE t.thesaurusId = :id');
+        $query = $em->createQuery('SELECT t FROM AppBundle:Thesaurus t WHERE t.id = :id');
         $query->setParameter('id', $id);
         $thesaurus = $query->getSingleResult();
 
-        //Select type de l'id lié
-        $query = $em->createQuery('SELECT c.content FROM AppBundle:Thesaurus t JOIN t.code c WHERE t.thesaurusId = :id');
+        //Select code de l'id lié
+        $query = $em->createQuery('SELECT c.content FROM AppBundle:Thesaurus t JOIN t.code c WHERE t.id = :id');
         $query->setParameter('id', $id);
         $code = $query->getSingleResult();
         $code = $code['content'];
@@ -85,14 +84,14 @@ class ThesaurusController extends Controller
 
 
         if($code == "adaptation"){
-            //Select toutes les songs avec ce type
-            $query = $em->createQuery('SELECT f FROM AppBundle:Film f JOIN f.'.$code.' t WHERE t.thesaurusId = :id');
+            //Select toutes les songs avec ce code
+            $query = $em->createQuery('SELECT f FROM AppBundle:Film f JOIN f.'.$code.' t WHERE t.id = :id');
             $query->setParameter('id', $id);
             $films = $query->getResult();
         }
 
         else if($code == "songtype"){
-            $query = $em->createQuery('SELECT s FROM AppBundle:Song s JOIN s.'.$code.' t WHERE t.thesaurusId = :id');
+            $query = $em->createQuery('SELECT s FROM AppBundle:Song s JOIN s.'.$code.' t WHERE t.id = :id');
             $query->setParameter('id', $id);
             $songs = $query->getResult();
         }
@@ -102,14 +101,14 @@ class ThesaurusController extends Controller
             //et les stage numbers
             if($code == "musicals" OR $code == "costumes" OR $code == "dancemble" OR $code == "musensemble" OR $code == "cast" OR $code == "dancing_type" OR $code == "dance_subgenre" OR $code == "dance_content" OR $code == "genre" OR $code == "general_mood"){
 
-                $query = $em->createQuery('SELECT n FROM AppBundle:Stagenumber n JOIN n.'.$code.' t WHERE t.thesaurusId = :id');
+                $query = $em->createQuery('SELECT n FROM AppBundle:Stagenumber n JOIN n.'.$code.' t WHERE t.id = :id');
                 $query->setParameter('id', $id);
                 $stagenumbers = $query->getResult();
 
             }
 
-            //Select tous les numbers avec ce type (dans tous les cas)
-            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.'.$code.' t WHERE t.thesaurusId = :id');
+            //Select tous les numbers avec ce code (dans tous les cas)
+            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.'.$code.' t WHERE t.id = :id');
             $query->setParameter('id', $id);
             $numbers = $query->getResult();
 
@@ -126,70 +125,8 @@ class ThesaurusController extends Controller
     }
 
 
-    //Tout le reste est à supprimer?
-    /**
-     * @Route("/thesaurus/id={id}", name="thesaurus_item")
-     */
-    public function numberByThesaurusIdAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
 
-        $thesaurus = $em->getRepository('AppBundle:Thesaurus')->find($id);
-
-        if (!$thesaurus) {
-            throw $this->createNotFoundException('No thesaurus found');
-        }
-
-        //Select type de l'id lié
-        $query = $em->createQuery('SELECT t.type FROM AppBundle:Thesaurus t WHERE t.thesaurusId = :id');
-        $query->setParameter('id', $id);
-        $type = $query->getSingleResult();
-        $type = $type['type'];
-
-        //Select tous les numbers avec ce type
-        $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.'.$type.' t WHERE t.thesaurusId = :id');
-        $query->setParameter('id', $id);
-        $numbers = $query->getResult();
-
-//        dump($numbers);die();
-
-        return $this->render('AppBundle:thesaurus:item.html.twig', array(
-            'thesaurus' => $thesaurus,
-            'numbers' => $numbers,
-        ));
-
-    }
-
-    /**
-     * @Route("/thesaurus/{type}", name="thesaurus")
-     */
-    public function thesaurusEditorAction($type){
-
-        $em = $this->getDoctrine()->getManager();
-
-        if($type == "all")
-        {
-            $thesaurus = $em->getRepository('AppBundle:Thesaurus')->findAll();
-        }
-        else{
-            $query = $em->createQuery('SELECT t FROM AppBundle:Thesaurus t WHERE t.type = :type');
-            $query->setParameter('type', $type);
-            $thesaurus = $query->getResult();
-        }
-
-        $query = $em->createQuery('SELECT t FROM AppBundle:Thesaurus t GROUP BY t.type');
-        $thesaurusType = $query->getResult();
-
-        //compter le nombre d'item pour chaque thesaurus ???
-
-
-        return $this->render('web/thesaurus/thesaurus.html.twig', array(
-            'thesaurus' => $thesaurus,
-            'thesaurusType' => $thesaurusType
-        ));
-
-    }
-
+   //supprimer le reste?
 
 
     /**
@@ -232,16 +169,16 @@ class ThesaurusController extends Controller
         $exoticism = $query->getResult();
 
         //all most popular exoticism in numbers
-        $query = $em -> createQuery('SELECT t.title as title, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type AND t.thesaurusId != 436 GROUP BY t.thesaurusId ORDER BY nb DESC');
+        $query = $em -> createQuery('SELECT t.title as title, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type AND t.id != 436 GROUP BY t.id ORDER BY nb DESC');
         $query->setParameter('type', 'exoticism');
         $popularexoticism = $query->getResult();
 
         //all most popular exoticism in numbers
-        $query = $em -> createQuery('SELECT t.title as title, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type AND t.thesaurusId != 436 GROUP BY t.thesaurusId ORDER BY title');
+        $query = $em -> createQuery('SELECT t.title as title, COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type AND t.id != 436 GROUP BY t.id ORDER BY title');
         $query->setParameter('type', 'exoticism');
         $popularexoticismCartouche = $query->getResult();
 
-        $query = $em -> createQuery('SELECT t.title as label, COUNT(t.title) as value FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type GROUP BY t.thesaurusId ORDER BY value DESC');
+        $query = $em -> createQuery('SELECT t.title as label, COUNT(t.title) as value FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type GROUP BY t.id ORDER BY value DESC');
         $query->setParameter('type', 'exoticism');
         $popularexoticismJson = $query->getResult();
         $popularexoticismJson = new JsonResponse($popularexoticismJson);
@@ -249,17 +186,17 @@ class ThesaurusController extends Controller
 
 
         //the most popular
-        $query = $em -> createQuery('SELECT t.title as title,  COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type GROUP BY t.thesaurusId ORDER BY nb DESC')->setMaxResults(1);
+        $query = $em -> createQuery('SELECT t.title as title,  COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type GROUP BY t.id ORDER BY nb DESC')->setMaxResults(1);
         $query->setParameter('type', 'exoticism');
         $mostPopular = $query->getSingleResult();
 
         //total of cited exoticism
-        $query = $em -> createQuery('SELECT COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type AND t.thesaurusId != 436');
+        $query = $em -> createQuery('SELECT COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type AND t.id != 436');
         $query->setParameter('type', 'exoticism');
         $total = $query->getSingleResult();
 
         //total of number with exoticism
-        $query = $em -> createQuery('SELECT COUNT(DISTINCT(n.id)) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type AND t.thesaurusId != 436 ');
+        $query = $em -> createQuery('SELECT COUNT(DISTINCT(n.id)) as nb FROM AppBundle:Number n JOIN n.exoticism_thesaurus t WHERE t.type = :type AND t.id != 436 ');
         $query->setParameter('type', 'exoticism');
         $totalNumber = $query->getSingleResult();
 
@@ -350,18 +287,18 @@ class ThesaurusController extends Controller
         $mood = $query->getResult();
 
         //all most popular exoticism in numbers
-        $query = $em -> createQuery('SELECT t.thesaurusId as itemId, t.title as title, COUNT(t.title) as nb, t.category as category FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC');
+        $query = $em -> createQuery('SELECT t.id as itemId, t.title as title, COUNT(t.title) as nb, t.category as category FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category GROUP BY t.id ORDER BY nb DESC');
         $query->setParameter('type', 'mood');
         $query->setParameter('category', 'general');
         $popularmood = $query->getResult();
 
-        $query = $em -> createQuery('SELECT t.thesaurusId as itemId, t.title as title, COUNT(t.title) as nb, t.category as category FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY title');
+        $query = $em -> createQuery('SELECT t.id as itemId, t.title as title, COUNT(t.title) as nb, t.category as category FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category GROUP BY t.id ORDER BY title');
         $query->setParameter('type', 'mood');
         $query->setParameter('category', 'general');
         $popularmoodCartouche = $query->getResult();
 
         //the most popular
-        $query = $em -> createQuery('SELECT t.title as title,  COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC')->setMaxResults(1);
+        $query = $em -> createQuery('SELECT t.title as title,  COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category GROUP BY t.id ORDER BY nb DESC')->setMaxResults(1);
         $query->setParameter('type', 'mood');
         $query->setParameter('category', 'general');
         $mostPopular = $query->getSingleResult();
@@ -387,20 +324,20 @@ class ThesaurusController extends Controller
         $moodGenre = $query->getResult();
 
         //all most popular exoticism in numbers
-        $query = $em -> createQuery('SELECT t.thesaurusId as itemId, t.title as title, COUNT(t.title) as nb, t.category as category FROM AppBundle:Number n JOIN n.genre t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC');
+        $query = $em -> createQuery('SELECT t.id as itemId, t.title as title, COUNT(t.title) as nb, t.category as category FROM AppBundle:Number n JOIN n.genre t WHERE t.type = :type AND t.category = :category GROUP BY t.id ORDER BY nb DESC');
         $query->setParameter('type', 'mood');
         $query->setParameter('category', 'genre');
         $popularmoodGenre = $query->getResult();
 
 
         //all most popular exoticism in numbers
-        $query = $em -> createQuery('SELECT t.thesaurusId as itemId, t.title as title, COUNT(t.title) as nb, t.category as category FROM AppBundle:Number n JOIN n.genre t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY title');
+        $query = $em -> createQuery('SELECT t.id as itemId, t.title as title, COUNT(t.title) as nb, t.category as category FROM AppBundle:Number n JOIN n.genre t WHERE t.type = :type AND t.category = :category GROUP BY t.id ORDER BY title');
         $query->setParameter('type', 'mood');
         $query->setParameter('category', 'genre');
         $popularmoodGenreCartouche = $query->getResult();
 
         //the most popular
-        $query = $em -> createQuery('SELECT t.title as title,  COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category GROUP BY t.thesaurusId ORDER BY nb DESC')->setMaxResults(1);
+        $query = $em -> createQuery('SELECT t.title as title,  COUNT(t.title) as nb FROM AppBundle:Number n JOIN n.general_mood t WHERE t.type = :type AND t.category = :category GROUP BY t.id ORDER BY nb DESC')->setMaxResults(1);
         $query->setParameter('type', 'mood');
         $query->setParameter('category', 'genre');
         $mostPopularGenre = $query->getSingleResult();
@@ -444,7 +381,7 @@ class ThesaurusController extends Controller
         $em = $this -> getDoctrine()->getManager();
 
         //1 exoticism
-        $query = $em -> createQuery('SELECT e FROM AppBundle:Thesaurus e WHERE e.type = :type AND e.thesaurusId = :item AND e.category = :category');
+        $query = $em -> createQuery('SELECT e FROM AppBundle:Thesaurus e WHERE e.type = :type AND e.id = :item AND e.category = :category');
         $query->setParameter('type', 'mood');
         $query->setParameter('category', $category);
         $query->setParameter('item', $itemId);
@@ -452,10 +389,10 @@ class ThesaurusController extends Controller
 
         //list of numbers for 1 mood
         if (strtoupper($category) == strtoupper("General")) {
-            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.general_mood g JOIN n.film f WHERE g.type = :type AND g.thesaurusId = :item ORDER by f.filmId');
+            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.general_mood g JOIN n.film f WHERE g.type = :type AND g.id = :item ORDER by f.filmId');
         }
         else if(strtoupper($category) == strtoupper("genre")){
-            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.genre g JOIN n.film f WHERE g.type = :type AND g.thesaurusId = :item ORDER by f.filmId');
+            $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.genre g JOIN n.film f WHERE g.type = :type AND g.id = :item ORDER by f.filmId');
         }
         $query->setParameter('type', 'mood');
         $query->setParameter('item', $itemId);
@@ -463,10 +400,10 @@ class ThesaurusController extends Controller
 //
         //list of films for 1 exoticism
         if (strtoupper($category) == strtoupper("general")){
-            $query = $em -> createQuery('SELECT f.title as filmTitle, f.filmId as filmId, f.idImdb as imdb, COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.general_mood e JOIN n.film f  WHERE e.type = :type AND e.thesaurusId = :item GROUP BY f.filmId');
+            $query = $em -> createQuery('SELECT f.title as filmTitle, f.filmId as filmId, f.idImdb as imdb, COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.general_mood e JOIN n.film f  WHERE e.type = :type AND e.id = :item GROUP BY f.filmId');
         }
         else if(strtoupper($category) == strtoupper("genre")){
-            $query = $em -> createQuery('SELECT f.title as filmTitle, f.filmId as filmId, f.idImdb as imdb, COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.genre e JOIN n.film f  WHERE e.type = :type AND e.thesaurusId = :item GROUP BY f.filmId');
+            $query = $em -> createQuery('SELECT f.title as filmTitle, f.filmId as filmId, f.idImdb as imdb, COUNT(n.id) as nb FROM AppBundle:Number n JOIN n.genre e JOIN n.film f  WHERE e.type = :type AND e.id = :item GROUP BY f.filmId');
         }
         $query->setParameter('type', 'mood');
         $query->setParameter('item', $itemId);
@@ -474,10 +411,10 @@ class ThesaurusController extends Controller
 
 
         if (strtoupper($category) == strtoupper("general")){
-            $query = $em -> createQuery('SELECT n.source as label, count(n.id) as value FROM AppBundle:Number n JOIN n.general_mood e WHERE e.type = :type AND e.thesaurusId = :item GROUP BY label ORDER BY value desc');
+            $query = $em -> createQuery('SELECT n.source as label, count(n.id) as value FROM AppBundle:Number n JOIN n.general_mood e WHERE e.type = :type AND e.id = :item GROUP BY label ORDER BY value desc');
         }
         else if(strtoupper($category) == strtoupper("genre")){
-            $query = $em -> createQuery('SELECT n.source as label, count(n.id) as value FROM AppBundle:Number n JOIN n.genre e WHERE e.type = :type AND e.thesaurusId = :item GROUP BY label ORDER BY value desc');
+            $query = $em -> createQuery('SELECT n.source as label, count(n.id) as value FROM AppBundle:Number n JOIN n.genre e WHERE e.type = :type AND e.id = :item GROUP BY label ORDER BY value desc');
         }
         $query->setParameter('type', 'mood');
         $query->setParameter('item', $itemId);
