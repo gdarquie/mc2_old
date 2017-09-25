@@ -5,11 +5,49 @@
     <div class="container">
         <h2>{{ code.title }}</h2>
 
-        <section class="card">
-            {% for item in thesaurus  %}
-                <a href="{{ path('thesaurus_element', {'id' : item.id }) }}">{{ item.title }}</a>
-            {% endfor %}
-        </section>
+        <div class="row">
+            <section class="card col s12">
+
+                <ul class="row my-list">
+                    {% for item in thesaurus  %}
+                        <li class="col s4 title"><a href="{{ path('thesaurus_element', {'id' : item.id }) }}">{{ item.title }}</a></li>
+                    {% endfor %}
+                </ul>
+
+                <ul class="pagination"></ul>
+
+            </section>
+        </div>
+
     </div>
+
+{% endblock %}
+
+
+{% block javascript %}
+
+    {{ parent() }}
+
+    <script>
+
+        //-- list.js
+
+        var maxPagination = 2;
+        var minPagination = 1;
+        var pages = 15;
+
+        var options = {
+            valueNames: [ 'title' ],
+            page: pages,
+            pagination: [{
+                innerWindow:maxPagination,
+                outerWindow:minPagination,
+            }],
+        };
+
+        var myList = new List('my-list', options);
+
+
+    </script>
 
 {% endblock %}

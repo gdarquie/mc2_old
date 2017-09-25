@@ -56,7 +56,7 @@ class Film
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Distributor", inversedBy="films")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Distributor")
      * @ORM\JoinTable(name="film_has_distributor",
      *   joinColumns={
      *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
@@ -289,7 +289,7 @@ class Film
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="filmDirector")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="film_has_director",
      *   joinColumns={
      *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
@@ -305,7 +305,7 @@ class Film
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="filmProducer")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="film_has_producer",
      *   joinColumns={
      *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")
@@ -325,7 +325,7 @@ class Film
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Studio", inversedBy="films")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Studio")
      * @ORM\JoinTable(name="film_has_studio",
      *   joinColumns={
      *     @ORM\JoinColumn(name="film_id", referencedColumnName="film_id")

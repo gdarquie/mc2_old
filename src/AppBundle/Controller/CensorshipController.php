@@ -89,7 +89,7 @@ class CensorshipController extends Controller
         $nbFilmsWithCensorship = $query->getSingleResult();
 
 
-        return $this->render('web/censorship/index.html.twig', array(
+        return $this->render('AppBundle:censorship:index.html.twig', array(
             'legion' => $legion,
             'legionJSON' => $legionJSON,
             'nbLegion' => $nbLegion,
@@ -110,7 +110,7 @@ class CensorshipController extends Controller
     }
 
     /**
-     * @Route("/scenario/censorship/verdict/{verdict}", name="censorship_verdict")
+     * @Route("/censorship/verdict/{verdict}", name="censorship_verdict")
      */
     public function verdictAction($verdict){
 
@@ -140,7 +140,7 @@ class CensorshipController extends Controller
         $query->setParameter('null', '');
         $nbFilmsWithVerdictByStudio = $query->getResult();
 
-        return $this->render('web/censorship/verdict.html.twig', array(
+        return $this->render('AppBundle:censorship:verdict.html.twig', array(
             'filmsByVerdict' => $filmsByVerdict,
             'studiosByVerdict' => $studiosByVerdict,
             'verdict' => $verdict,
@@ -177,13 +177,13 @@ class CensorshipController extends Controller
         $query->setParameter('content', $content);
         $genres = $query->getResult();
 
-        $query = $em->createQuery('SELECT d.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.danceContent d JOIN f.censorship c  WHERE c.title = :content GROUP BY d.id ORDER BY nb DESC');
+        $query = $em->createQuery('SELECT d.title as title, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.dance_content d JOIN f.censorship c  WHERE c.title = :content GROUP BY d.id ORDER BY nb DESC');
         $query->setParameter('content', $content);
         $danceContents = $query->getResult();
 
 
 
-        return $this->render('web/censorship/content.html.twig', array(
+        return $this->render('AppBundle:censorship:content.html.twig', array(
             'filmsByContent' => $filmsByContent,
             'films' => $films,
             'studiosByContent' => $studiosByContent,
@@ -229,7 +229,7 @@ class CensorshipController extends Controller
         $genres = $query->getResult();
 
         //dance contents
-        $query = $em->createQuery('SELECT d.title as title, f.legion as legion, d.id as id, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.danceContent d  WHERE f.legion = :legion GROUP BY d.id ORDER BY nb DESC');
+        $query = $em->createQuery('SELECT d.title as title, f.legion as legion, d.id as id, COUNT(f.filmId) as nb FROM AppBundle:Number n JOIN n.film f JOIN n.dance_content d  WHERE f.legion = :legion GROUP BY d.id ORDER BY nb DESC');
         $query->setParameter('legion', $legion);
         $danceContents = $query->getResult();
 
@@ -248,7 +248,7 @@ class CensorshipController extends Controller
         $query->setParameter('legion', $legion);
         $studiosByLegion = $query->getResult();
 
-        return $this->render('web/censorship/legion.html.twig', array(
+        return $this->render('AppBundle:censorship:legion.html.twig', array(
             'filmsByLegion' => $filmsByLegion,
             'films' => $films,
             'myLegion' => $myLegion,
@@ -259,58 +259,9 @@ class CensorshipController extends Controller
             'studiosByLegion' => $studiosByLegion,
             'numberForLegion' => $numberForLegion,
             'filmsByYear' => $filmsByYear
-
-        ));
-
-    }
-
-    /**
-     * @Route("/censorship/legion/{legion}/{type}/{id}", name="censorship_legion_thesaurus")
-     */
-    public function legionThesaurusAction($legion, $type, $id){
-
-        $em = $this->getDoctrine()->getManager();
-
-        $query = $em->createQuery('SELECT DISTINCT(f.legion) as title, COUNT(DISTINCT(f.filmId)) as nb FROM AppBundle:Film f WHERE f.legion = :legion');
-        $query->setParameter('legion', $legion);
-        $myLegion = $query->getSingleResult();
-
-        $query = $em->createQuery('SELECT n.title as number, f.title as film FROM AppBundle:Film f JOIN f.numbers n JOIN n.danceContent d WHERE f.legion = :legion AND d.id = :id');
-        $query->setParameter('legion', $legion);
-        $query->setParameter('id', $id);
-        $filmsAndNumbers = $query->getResult();
-
-        $query = $em->createQuery('SELECT DISTINCT(t.title) as title FROM AppBundle:Thesaurus t WHERE t.id = :id');
-        $query->setParameter('id', $id);
-        $thesaurus = $query->getSingleResult();
-
-        return $this->render('web/censorship/legionThesaurus.html.twig', array(
-            'myLegion' => $myLegion,
-            'filmsAndNumbers' => $filmsAndNumbers,
-            'thesaurus' => $thesaurus,
-            'type' => $type
         ));
     }
 
-    /**
-     * @Route("/censorship/legion/{legion}/{year}", name="censorship_legion_year")
-     */
-    public function getOnelegionByYear($legion, $year){
-
-        $em = $this->getDoctrine()->getManager();
-
-        $query = $em->createQuery('SELECT f FROM AppBundle:Film f WHERE f.legion = :legion AND f.released = :year');
-        $query->setParameter('legion', $legion);
-        $query->setParameter('year', $year);
-        $films= $query->getResult();
-
-        return $this->render('web/censorship/year.html.twig', array(
-            'films' => $films,
-            'year' => $year,
-            'legion' => $legion
-        ));
-
-    }
 
     /**
      * Voir un item

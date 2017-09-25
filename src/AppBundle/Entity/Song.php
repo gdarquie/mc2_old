@@ -104,7 +104,7 @@ class Song
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="song_lyricist")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="song_has_lyricist",
      *   joinColumns={
      *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
@@ -119,7 +119,7 @@ class Song
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="song_composer")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="song_has_composer",
      *   joinColumns={
      *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")
@@ -168,7 +168,7 @@ class Song
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", inversedBy="song")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinTable(name="song_has_editor",
      *   joinColumns={
      *     @ORM\JoinColumn(name="song_id", referencedColumnName="song_id")

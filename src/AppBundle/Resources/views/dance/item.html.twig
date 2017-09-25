@@ -14,11 +14,11 @@
 
     <section class="container">
 
-        <h2>Numbers with subgenre {{ subgenre.title }} and {{ item.type }} <!--{{ item.category }} --> {{ item.title }}</h2>
+        <h2>Numbers with subgenre {{ subgenre.title }} and {{ item.code.content }} {{ item.title }}</h2>
 
         <article class="card">
             <div class="row">
-                <h3>Number of occurences of {{ subgenre.title }} with {{ item.title }} ({{ item.type }}) by year</h3>
+                <h3>Number of occurences of {{ subgenre.title }} with {{ item.title }} ({{ item.code.content }}) by year</h3>
                 <div id="diagram"></div>
             </div>
         </article>

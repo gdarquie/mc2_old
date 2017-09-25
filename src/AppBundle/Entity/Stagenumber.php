@@ -58,7 +58,7 @@ class Stagenumber
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="number")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinTable(name="stagenumber_has_dancingtype",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
@@ -162,7 +162,7 @@ class Stagenumber
     /**
      * @var \AppBundle\Entity\Stageshow
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Stageshow", inversedBy="stagenumbers")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Stageshow",inversedBy="stagenumbers")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id", nullable=false)
      * })
@@ -203,7 +203,7 @@ class Stagenumber
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinTable(name="stagenumber_has_dancemble",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
@@ -218,7 +218,7 @@ class Stagenumber
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="stagenumber")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinTable(name="stagenumber_has_musensemble",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")
@@ -233,7 +233,7 @@ class Stagenumber
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="performersStagenumber")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="stagenumber_has_performer",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stagenumber_id", referencedColumnName="stagenumber_id")

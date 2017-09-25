@@ -66,7 +66,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("begin");
+                    return $repo->findAllThesaurusByCode("begin");
                 },
                 'empty_data' => null,
             ))
@@ -76,7 +76,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("ending");
+                    return $repo->findAllThesaurusByCode("ending");
                 },
                 'empty_data' => null
             ))
@@ -85,7 +85,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("completeness");
+                    return $repo->findAllThesaurusByCode("completeness");
                 }
             ))
             ->add('completOptions', EntityType::class, array(
@@ -94,7 +94,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("completOptions");
+                    return $repo->findAllThesaurusByCode("completOptions");
                 }
             ))
             ->add('commentTc')
@@ -120,7 +120,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("structure");
+                    return $repo->findAllThesaurusByCode("structure");
                 }
             ))
             ->add('commentStructure')
@@ -170,7 +170,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title',
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("performance");
+                    return $repo->findAllThesaurusByCode("performance");
                 }
             ))
             ->add('commentPerformance')
@@ -190,7 +190,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title',
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("spectators");
+                    return $repo->findAllThesaurusByCode("spectators");
                 }
             ))
             //->add('diegtic',)
@@ -199,7 +199,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title',
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("diegetic");
+                    return $repo->findAllThesaurusByCode("diegetic");
                 }
             ))
             //->add('musician')
@@ -208,7 +208,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title',
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("musician");
+                    return $repo->findAllThesaurusByCode("musician");
                 }
             ))
 
@@ -228,7 +228,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("costumes");
+                    return $repo->findAllThesaurusByCode("costumes");
                 },
                 'required'    => false,
                 'empty_data'  => null
@@ -240,7 +240,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("Ethnic stereotypes");
+                    return $repo->findAllThesaurusByCode("Ethnic stereotypes");
                 }
             ))
             ->add('diegetic_place_thesaurus', EntityType::class, array(
@@ -248,7 +248,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title',
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("diegetic place");
+                    return $repo->findAllThesaurusByCode("diegetic place");
                 }
             ))
             ->add('general_localisation', EntityType::class, array(
@@ -257,7 +257,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("general localisation");
+                    return $repo->findAllThesaurusByCode("general localisation");
                 }
             ))
             ->add('imaginary', EntityType::class, array(
@@ -265,7 +265,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("imaginary place");
+                    return $repo->findAllThesaurusByCode("imaginary place");
                 }
             ))
 //            ->add('exoticism')
@@ -274,7 +274,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("exoticism");
+                    return $repo->findAllThesaurusByCode("exoticism");
                 }
             ))
             ->add('commentTheme')
@@ -293,7 +293,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByTypeAndCategory("mood", "general");
+                    return $repo->findAllThesaurusByCode("mood", "general_mood");
                 }// diviser par type ensuite
             ))
             ->add('genre', EntityType::class, array(
@@ -301,7 +301,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByTypeAndCategory("mood", "genre");
+                    return $repo->findAllThesaurusByCode("mood", "genre");
                 }// diviser par type ensuite
             ))
             ->add('commentMood')
@@ -330,7 +330,7 @@ class NumberType extends AbstractType
                 'choice_label' => 'title', //order by alpha
                 'multiple' => true,
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("dancemble");
+                    return $repo->findAllThesaurusByCode("dancemble");
                 }// il faudra ne prendre que ceux de type dance
             ))
             ->add('dancingType', EntityType::class, array(
@@ -338,7 +338,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByTypeAndCategory("dance", "Dancing type");
+                    return $repo->findAllThesaurusByCode("dancing_type", "Dancing type");
                 }
             ))
             ->add('danceSubgenre', EntityType::class, array(
@@ -346,7 +346,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByTypeAndCategory("dance", "Dance sub-genre");
+                    return $repo->findAllThesaurusByCode("dance_subgenre", "Dance sub-genre");
                 }
             ))
             ->add('danceContent', EntityType::class, array(
@@ -354,7 +354,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByTypeAndCategory("dance", "Dance content");
+                    return $repo->findAllThesaurusByCode("dance_content", "Dance content");
                 }
             ))
             ->add('commentDance')
@@ -382,7 +382,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("musensemble");
+                    return $repo->findAllThesaurusByCode("musensemble");
                 }//il faudra ne prendre que ceux de type music
             ))
             ->add('dubbing')
@@ -392,7 +392,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("tempo");
+                    return $repo->findAllThesaurusByCode("tempo");
                 }//il faudra ne prendre que ceux de type music
             ))
             ->add('musical_thesaurus', EntityType::class, array(
@@ -400,7 +400,7 @@ class NumberType extends AbstractType
                     'class' => 'AppBundle:Thesaurus',
                     'choice_label' => 'title', //order by alpha
                     'query_builder' => function(ThesaurusRepository $repo) {
-                        return $repo->findAllThesaurusByType("musical styles");
+                        return $repo->findAllThesaurusByCode("musical styles");
                     }//il faudra ne prendre que ceux de type music
                 ))
             ->add('arrangers', EntityType::class, array(
@@ -451,7 +451,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("quotation");
+                    return $repo->findAllThesaurusByCode("quotation");
                 }
             ))
             ->add('quotation_text')
@@ -462,7 +462,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("source");
+                    return $repo->findAllThesaurusByCode("source");
                 }
             ))
             ->add('commentReference')
@@ -480,7 +480,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("cast");
+                    return $repo->findAllThesaurusByCode("cast");
                 },
                 'empty_data' => null,
             ))

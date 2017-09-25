@@ -132,8 +132,8 @@
                     </tr>
                     {% for item in lastthesaurus  %}
                         <tr>
-                            <td><a href="{{ path('thesaurus_item' , {'id' : item.id}) }}">{{ item.title }}</a></td>
-                            <td>{{ item.type }}</td>
+                            <td><a href="{{ path('thesaurus_element' , {'id' : item.id}) }}">{{ item.title }}</a></td>
+                            <td>{{ item.code.title }}</td>
                             <td><a href="{{ path('updateThesaurus' , {'id' : item.id}) }}"><i class="material-icons tiny">mode_edit</i></a></td>
                             <td><a href="#thesaurus{{ item.id }}" class="modal-trigger"><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
                         </tr>

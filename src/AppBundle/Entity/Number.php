@@ -768,7 +768,7 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Stagenumber", inversedBy="numbers")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Stagenumber", inversedBy="number")
      * @ORM\JoinTable(name="number_has_stagenumber",
      *   joinColumns={
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")

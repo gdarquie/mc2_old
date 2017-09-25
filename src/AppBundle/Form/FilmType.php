@@ -62,7 +62,7 @@ class FilmType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("adaptation");
+                    return $repo->findAllThesaurusByCode("adaptation");
                 },
                 'empty_data' => null,
             ))

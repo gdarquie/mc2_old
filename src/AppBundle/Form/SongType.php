@@ -45,7 +45,7 @@ class SongType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByType("songtype");
+                    return $repo->findAllThesaurusByCode("songtype");
                 }
             ))
             ->add('composer'

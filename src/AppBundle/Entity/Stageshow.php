@@ -55,7 +55,7 @@ class Stageshow
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Film", inversedBy="stageshows")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Film")
      * @ORM\JoinTable(name="stageshow_has_film",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
@@ -122,7 +122,7 @@ class Stageshow
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowComposer")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="stageshow_has_composer",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
@@ -137,7 +137,7 @@ class Stageshow
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowBook")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="stageshow_has_book",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
@@ -152,7 +152,7 @@ class Stageshow
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowLyricist")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="stageshow_has_lyricist",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
@@ -167,7 +167,7 @@ class Stageshow
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowChoreographer")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="stageshow_has_choreographer",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
@@ -183,7 +183,7 @@ class Stageshow
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowDirector")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="stageshow_has_director",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")
@@ -198,7 +198,7 @@ class Stageshow
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="stageshowDesign")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="stageshow_has_design",
      *   joinColumns={
      *     @ORM\JoinColumn(name="stageshow_id", referencedColumnName="stageshow_id")

@@ -40,7 +40,7 @@ class MusicController extends Controller
         $query = $em -> createQuery('SELECT m.title as title, m.id as id, count(n.id) as nb FROM AppBundle:Number n JOIN n.musical_thesaurus m GROUP BY title ORDER BY nb desc ')->setMaxResults(15);
         $musicalStyleViz = $query->getResult();
 
-        return $this->render('web/music/music.html.twig' , array(
+        return $this->render('AppBundle:music:music.html.twig' , array(
             'listComposers' => $listComposers,
             'listNumberComposers' => $listNumberComposers,
             'listLyricists' => $listLyricists,
@@ -81,7 +81,7 @@ class MusicController extends Controller
         $numbersFinal = $query->getResult();
 
 
-        return $this->render('web/music/oneMusicalStyle.html.twig', array(
+        return $this->render('AppBundle:music:oneMusicalStyle.html.twig', array(
             'myMusicalStyle' => $myMusicalStyle,
             'musicalStyleByYear' => $musicalStyleByYear,
             'musicalEnsemble' => $musicalEnsemble,
