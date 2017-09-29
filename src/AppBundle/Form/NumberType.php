@@ -84,7 +84,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("completOptions");
+                    return $repo->findAllThesaurusByCode("complet_options");
                 }
             ))
             ->add('commentTc')
@@ -177,7 +177,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title',
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("spectators");
+                    return $repo->findAllThesaurusByCode("spectators_thesaurus");
                 }
             ))
             //->add('diegtic',)
@@ -379,7 +379,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("tempo");
+                    return $repo->findAllThesaurusByCode("tempo_thesaurus");
                 }//il faudra ne prendre que ceux de type music
             ))
             ->add('musical_thesaurus', EntityType::class, array(
@@ -387,7 +387,7 @@ class NumberType extends AbstractType
                     'class' => 'AppBundle:Thesaurus',
                     'choice_label' => 'title', //order by alpha
                     'query_builder' => function(ThesaurusRepository $repo) {
-                        return $repo->findAllThesaurusByCode("musicalstyles");
+                        return $repo->findAllThesaurusByCode("musical_thesaurus");
                     }//il faudra ne prendre que ceux de type music
                 ))
             ->add('arrangers', EntityType::class, array(
@@ -450,7 +450,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("source");
+                    return $repo->findAllThesaurusByCode("source_thesaurus");
                 }
             ))
             ->add('commentReference')
