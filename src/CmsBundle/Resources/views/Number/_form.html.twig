@@ -1,413 +1,74 @@
-<div class="cartouche">
 
-	<h3>Title</h3>
+<ul id="menu_admin" class="side-nav fixed collection">
 
-    {{ form_errors(numberForm) }}
+    <li class="collection-item avatar">
+        <span data-display="title"><i class="material-icons circle">movie</i>Title</span>
+    </li>
+    <li class="collection-item avatar">
+        <span data-display="director"><i class="material-icons circle">movie</i>Director</span>
+    </li>
+    <li class="collection-item avatar">
+        <span data-display="outlines"><i class="material-icons circle">movie</i>Outlines</span>
+    </li>
+    <li class="collection-item avatar">
+        <span data-display="structure"><i class="material-icons circle">movie</i>Structure</span>
+    </li>
+    <li class="collection-item avatar">
+        <span data-display="shots"><i class="material-icons circle">movie</i>Shots</span>
+    </li>
+    <li class="collection-item avatar">
+        <span data-display="performers"><i class="material-icons circle">movie</i>Performers</span>
+    </li>
+    <li class="collection-item avatar">
+        <span data-display="backstage"><i class="material-icons circle">movie</i>Backstage</span>
+    </li>
+    <li class="collection-item avatar">
+        <span data-display="themes"><i class="material-icons circle">movie</i>Themes</span>
+    </li>
+    <li class="collection-item avatar">
+        <span data-display="tone"><i class="material-icons circle">movie</i>Tone</span>
+    </li>
+    <li class="collection-item avatar">
+        <span data-display="dance"><i class="material-icons circle">movie</i>Dance</span>
+    </li>
+    <li class="collection-item avatar">
+        <span data-display="music"><i class="material-icons circle">movie</i>Music</span>
+    </li>
+    <li class="collection-item avatar">
+        <span data-display="source"><i class="material-icons circle">movie</i>Source(s)</span>
+    </li>
+    <li class="collection-item avatar">
+        <span data-display="complement"><i class="material-icons circle">movie</i>Complement</span>
+    </li>
 
-	{{form_row(numberForm.title)}}
 
-	{#{{form_row(numberForm.film)}}#}
-	{# {% if filmId %}
-		numberForm.film = filmId
-	{% elseif filmId is null %} #}
-	{# {{form_row(numberForm.film)}} #}
-	{# 	{% endif %} #}
-
-	{# {{form_row(numberForm.film)}} #}
-
-	{{ form_label(numberForm.commentTitle, "Title comment(s)") }}
-	{{ form_widget(numberForm.commentTitle, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
+</ul>
 
 
-	{{ form_widget(numberForm.completeTitle) }}
-	{{ form_label(numberForm.completeTitle, "Completed? (check when you're done with the whole section)") }}
-	{{ form_errors(numberForm.completeTitle) }}
+<div class="main number-title">
 
-    {#{% if is_granted('ROLE_ADMIN') %}#}
-		{#{{ form_widget(numberForm.validationTitle) }}#}
-		{#{{ form_label(numberForm.validationTitle, "Validate") }}#}
-		{#{{ form_errors(numberForm.validationTitle) }}#}
-	{#{% endif %}#}
-
-</div>
-
-
-
-<div class="cartouche">
-	<h3>Director</h3>
-
-	{{ form_label(numberForm.director, "Only if different from the whole film")}}
-	{{ form_widget(numberForm.director)}}
-
-	<p><a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a></p>
-	{{ form_label(numberForm.commentDirector, "Director comments and source") }}
-	{{ form_widget(numberForm.commentDirector, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
-
-	{{ form_widget(numberForm.completeDirector) }}
-	{{ form_label(numberForm.completeDirector, "Completed?") }}
-	{{ form_errors(numberForm.completeDirector) }}
+    <h1 class="center">{% if number is defined %}{{number.title}} ({{ number.film }}){% else %}Add a new number{% endif %}</h1>
 
 </div>
 
+{% include 'CmsBundle:Number:tabs/_title.html.twig' %}
+{% include 'CmsBundle:Number:tabs/_director.html.twig' %}
+{% include 'CmsBundle:Number:tabs/_outlines.html.twig' %}
+{% include 'CmsBundle:Number:tabs/_structure.html.twig' %}
+{% include 'CmsBundle:Number:tabs/_shots.html.twig' %}
+{% include 'CmsBundle:Number:tabs/_performers.html.twig' %}
+{% include 'CmsBundle:Number:tabs/_backstage.html.twig' %}
+{% include 'CmsBundle:Number:tabs/_themes.html.twig' %}
+{% include 'CmsBundle:Number:tabs/_tone.html.twig' %}
+{% include 'CmsBundle:Number:tabs/_dance.html.twig' %}
+{% include 'CmsBundle:Number:tabs/_music.html.twig' %}
+{% include 'CmsBundle:Number:tabs/_source.html.twig' %}
+{% include 'CmsBundle:Number:tabs/_complement.html.twig' %}
 
-<div class="cartouche">
 
-	<h3>Outlines</h3>
 
-	<div id="tc_widget_beginTc">
-		<div class="col s3">
-			<label for="tc_hour_begin" >Hour(s)</label><input name="tc_hour_begin" id="tc_hour_begin" type="number"  min="0" max="4">
-		</div>
-		<div class="col s3">
-			<label for="tc_min_begin">Minute(s)</label><input name="tc_min_begin" id="tc_min_begin" type="number" min="0" max="60">
-		</div>
-		<div class="col s3">
-			<label for="tc_sec_begin">Seconde(s)</label><input name="tc_sec_begin" id="tc_sec_begin" type="number" min="0" max="60">
-		</div>
-	</div>
-	<div class="col s3">
-	{{form_row(numberForm.beginTc, {
-		'label' : "Begin timecode"
-	})}}
-	</div>
-	<div id="tc_widget_endTc">
-		<div class="col s3">
-			<label for="tc_hour_end" >Hour(s)</label><input name="tc_hour_end" id="tc_hour_end" type="number"  min="0" max="4">
-		</div>
-		<div class="col s3">
-			<label for="tc_min_end">Minute(s)</label><input name="tc_min_end" id="tc_min_end" type="number" min="0" max="60">
-		</div>
-		<div class="col s3">
-			<label for="tc_sec_end">Seconde(s)</label> <input name="tc_sec_end" id="tc_sec_end" type="number" min="0" max="60">
-		</div>
-	</div>
-	<div class="col s3">
-	{{form_row(numberForm.endTc, {
-		'label' : "End timecode"
-	})}}
-	</div>
-	{{form_row(numberForm.beginThesaurus,{ 
-		'label' : "Begin (from thesaurus) (1 choice) (mandatory)"
-	})}}
-	{{form_row(numberForm.endingThesaurus,{ 
-		'label' : "Ending (from thesaurus) (1 choice) (mandatory)"
-	})}}
-	{{ form_row(numberForm.completenessThesaurus, {
-		'label' : "Is the number closed and \"satisfying\"? (from thesaurus) (1 choice) (mandatory)"
-	}) }}
-	{{ form_row(numberForm.completOptions, {
-		'label' : "Is the number interrupted and/or the song repeated in the film ? (from thesaurus) (multi) (optional)"
-	}) }}
 
-	{{ form_label(numberForm.commentTc, "Timecode comment(s)") }}
-	{{ form_widget(numberForm.commentTc, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
 
-	{{ form_widget(numberForm.completeTc) }}
-	{{ form_label(numberForm.completeTc, "Completed?") }}
-	{{ form_errors(numberForm.completeTc) }}
-
-
-	{#{{form_row(numberForm.validationTc)}}#}
-</div>
-
-
-<div class="cartouche">
-
-	<h3>Structure</h3>
-
-	{{form_row(numberForm.structure, {
-		'label' : "Structure (from thesaurus) (1 choice) (mandatory)"
-	})}}
-
-	{{ form_label(numberForm.commentStructure, "Structure comment(s)") }}
-	{{ form_widget(numberForm.commentStructure, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
-
-	{{ form_widget(numberForm.completeStructure) }}
-	{{ form_label(numberForm.completeStructure, "Completed?") }}
-	{{ form_errors(numberForm.completeStructure) }}
-	{#{{form_row(numberForm.validationStructure)}}#}
-
-</div>
-
-<div class="cartouche">
-	<h3>Shots</h3>
-
-
-
-	{{form_row(numberForm.shots, {
-		'label' : "Number of shots"
-	})}}
-	{{ form_label(numberForm.commentShots, "Shots comment(s)") }}
-	{{ form_widget(numberForm.commentShots, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
-
-	{{ form_widget(numberForm.completeShots) }}
-	{{ form_label(numberForm.completeShots, "Completed?") }}
-	{{ form_errors(numberForm.completeShots) }}
-	{#{{form_row(numberForm.validationShots)}}#}
-
-</div>
-
-
-<div class="cartouche">
-
-	<h3>Performers</h3>
-
-	{{form_row(numberForm.performance_thesaurus, {
-		'label' : "Performance type (from thesaurus) (1 choice) (mandatory)"
-	})}}
-
-	{{ form_row(numberForm.performers, {
-		'label' : "Performers (multi)"
-	})}}
-	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
-
-	<div>
-	{{ form_row(numberForm.figurants, {
-		'label' : "Stars who don't participate (ex : as spectators) (optional) (multi)"
-	}) }}
-	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
-	</div>
-
-	{{ form_row(numberForm.cast, {
-		'label' : "Cast"
-	}) }}
-
-	{{ form_label(numberForm.commentPerformance, "Performance comment(s)") }}
-
-	{{ form_widget(numberForm.commentPerformance, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
-
-	{{ form_widget(numberForm.completePerformance) }}
-	{{ form_label(numberForm.completePerformance, "Completed?") }}
-	{{ form_errors(numberForm.completePerformance) }}
-	{#{{form_row(numberForm.validationPerformance)}}#}
-
-</div>
-
-{# ok pour Performers sauf
-#}
-
-<div class="cartouche">
-
-	<h3>Backstage</h3>
-
-	{{form_row(numberForm.spectators_thesaurus, {
-		'label' : "Are there spectators within the scene ? + Is there a direct adress (camera look and / or stage frontality) (from thesaurus) (1 choice) (mandatory)"
-	})}}
-	{{form_row(numberForm.diegetic_thesaurus,{
-		'label' : "Is this an onstage number or a diegetic performance ? (from thesaurus) (1 choice) (mandatory)"
-	} )}}
-	{{form_row(numberForm.musician_thesaurus, {
-		'label' : "Are there diegetic musicians? (from thesaurus) (1 choice) (mandatory)"
-	})}}
-
-	{{ form_label(numberForm.commentBackstage, "Backstage comment(s)") }}
-	{{ form_widget(numberForm.commentBackstage, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
-
-	{{ form_widget(numberForm.completeBackstage) }}
-	{{ form_label(numberForm.completeBackstage, "Completed?") }}
-	{{ form_errors(numberForm.completeBackstage) }}
-	{#{{form_row(numberForm.validationBackstage)}}#}
-
-</div>
-
-
-<div class="cartouche">
-
-	<h3>Themes, spaces and exoticisms</h3>
-
-	{{form_row(numberForm.costumes, {
-		'label' : "Costumes (from thesaurus) (multi) (mandatory)"
-	})}}
-
-	{{ form_row(numberForm.stereotype, {
-		'label' : "Ethnic stereotypes : is there any ethnic impersonation (accent,  make up, ...)? (from thesaurus) (multi)"
-	}) }}
-	{#{{ form_row(numberForm.diegeticPlace) }}#}
-	{#{{ form_row(numberForm.socialPlace) }}#}
-	{{ form_row(numberForm.diegetic_place_thesaurus, {
-		'label' : "Diegetic place (from thesaurus) (multi) (mandatory)"
-	}) }}
-	{{ form_row(numberForm.general_localisation, {
-		"label" : "General localisation (from thesaurus) (multi) (optional)"
-	}) }}
-	{{form_row(numberForm.imaginary, {
-		'label' : "Imaginary place (from thesaurus) (multi) (optional)"
-	})}}
-
-	{{form_row(numberForm.exoticism_thesaurus, {
-		"label" : "General exoticism (linked to dancing styles, settings, ...) (from thesaurus) (multi) (optional)"
-	})}}
-
-	{{ form_label(numberForm.commentTheme, "Theme comment(s)") }}
-	{{ form_widget(numberForm.commentTheme, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
-
-	{{ form_widget(numberForm.completeTheme) }}
-	{{ form_label(numberForm.completeTheme, "Completed?") }}
-	{{ form_errors(numberForm.completeTheme) }}
-
-	{#{{form_row(numberForm.validationTheme)}}#}
-</div>
-
-<div class="cartouche">
-
-	<h3>Tone and topics</h3>
-
-	{{ form_row(numberForm.general_mood, {
-		"label" : "Tone (from thesaurus) (multi) (optional if genre is completed)",
-	}) }}
-	{{ form_row(numberForm.genre, {
-		"label" : "Topic(s) (from thesaurus) (multi) (optional)"
-	}) }}
-	{{ form_label(numberForm.commentMood, "Comment(s)") }}
-	{{ form_widget(numberForm.commentMood, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
-
-	{{ form_widget(numberForm.completeMood) }}
-	{{ form_label(numberForm.completeMood, "Completed?") }}
-	{{ form_errors(numberForm.completeMood) }}
-
-	{#{{form_row(numberForm.validationMood)}}#}
-
-
-</div>
-
-<div class="cartouche">
-
-	<h3>Dance</h3>
-
-	{{form_row(numberForm.choregraphers, {
-		label : "Choreographers"
-	})}}
-    {#{{ dump(numberForm.choregraphers.vars) }}#}
-	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
-
-
-	{{form_row(numberForm.dancemble, {
-		"label" : "Dancing ensemble (from thesaurus) (multi) (mandatory)"
-	})}}
-	{{form_row(numberForm.dancingType, {
-		"label" : "Dancing type (from thesaurus) (multi) (mandatory if danse ensemble != NA)"
-	})}}
-	{{form_row(numberForm.danceSubgenre, {
-		"label" : "Dance subgenre (from thesaurus) (multi) (optional)"
-	})}}
-	{{form_row(numberForm.danceContent, {
-		"label" : "Dance content (from thesaurus) (multi) (optional)"
-	})}}
-
-	{{ form_label(numberForm.commentDance, "Dance comment(s)") }}
-	{{ form_widget(numberForm.commentDance, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
-
-	{{ form_widget(numberForm.completeDance) }}
-	{{ form_label(numberForm.completeDance, "Completed?") }}
-	{{ form_errors(numberForm.completeDance) }}
-
-	{#{{form_row(numberForm.validationDance)}}#}
-</div>
-
-<div class="cartouche">
-
-	<h3>Music</h3>
-
-	{{form_row(numberForm.song)}}
-	{{form_row(numberForm.musensemble, {
-		"label" : "music ensemble (from thesaurus) (multi) (mandatory)"
-	})}}
-	{{form_row(numberForm.dubbing, {
-		"label" : "Dubber name + star name in brackets. Ex. Martha Mears (Rita Hayworth). If no dubbing : \"no\""
-	})}}
-	{{form_row(numberForm.tempo_thesaurus, {
-		"label" : "Tempo (from thesaurus) (1 choice) (mandatory)"
-	})}}
-
-	{{form_row(numberForm.musical_thesaurus, {
-		'label' : "Musical style (from thesaurus) (multi) (mandatory)"
-	})}}
-
-	{{form_row(numberForm.arrangers )}}
-	<a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a>
-
-	{{form_row(numberForm.arrangerComment)}}
-
-	{{ form_label(numberForm.commentMusic, "music comment(s) (for openings please list here the order of the musical themes)") }}
-	{{ form_widget(numberForm.commentMusic, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
-
-	{{ form_widget(numberForm.completeMusic) }}
-	{{ form_label(numberForm.completeMusic, "Completed?") }}
-	{{ form_errors(numberForm.completeMusic) }}
-
-	{#{{form_row(numberForm.validationMusic)}}#}
-
-
-</div>
-
-<div class="cartouche">
-
-	<h3>Source(s)</h3>
-
-	{{form_row(numberForm.source_thesaurus, {
-		'label' : "(from thesaurus) (mandatory) (1 choice)"
-	})}}
-
-    {{ form_row(numberForm.stagenumbers, {
-        'label' : "Original stage number (if relevant)"
-	})}}
-
-	{{ form_label(numberForm.commentReference, 'Details of the source (title of the stage show...)') }}
-	{{ form_widget(numberForm.commentReference, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
-
-	{{ form_widget(numberForm.completeReference) }}
-	{{ form_label(numberForm.completeReference, "Completed?") }}
-	{{ form_errors(numberForm.completeReference) }}
-
-	{#{{form_row(numberForm.validationReference)}}#}
-
-</div>
-
-
-<div class="cartouche">
-
-	<h3>Complement</h3>
-
-
-	{{form_row(numberForm.quotation_thesaurus, {
-		'label' : "Quotation (from thesaurus) (optional) (multi)"
-	})}}
-
-	{{form_label(numberForm.quotation_text, 'Besides your comments, use here one of the four keywords : "history", "literature and arts", "mythology" and "Bible" ')}}
-	{{form_widget(numberForm.quotation_text, {
-		'attr': {'class': 'materialize-textarea'}
-	}) }}
-
-	{{form_row(numberForm.lyrics, { 'attr': {'class': 'materialize-textarea'}})}}
-
-	{{form_row(numberForm.cost)}}
-	{{form_row(numberForm.costComment, { 'attr': {'class': 'materialize-textarea'}}) }}
-
-</div>
 
 
 

@@ -277,24 +277,15 @@ width: 100vw;
   </div>
 
   <!-- Stats -->
-  <section class="container">
-    <article>
-      <h2>Films & numbers per year</h2>
-      <div id="chart_div"></div>
-      <p>MC2 database contains <strong>{{films|length}}</strong> films, <strong>{{ filmsWithNumber|length }}</strong> films with numbers and <strong>{{numbers|length}}</strong> <a href="{{ path('numbers') }}">numbers</a>.</p>
-      <p class="center"><a class="btn myBtn" href="{{ path('stats') }}">See more stats</a></p>
-    </article>
-
-
-
+  {#<section class="container">#}
     {#<article>#}
-    {#<h2>List of persons</h2>#}
-    {#<ul class='items'>#}
-    {#{% for person in persons %}#}
-    {#<li class="btn" >{{person.name}}</li>#}
-    {#{% endfor %}#}
-    {#</ul>#}
+      {#<h2>Films & numbers per year</h2>#}
+      {#<div id="chart_div"></div>#}
+      {#<p>MC2 database contains <strong>{{films|length}}</strong> films, <strong>{{ filmsWithNumber|length }}</strong> films with numbers and <strong>{{numbers|length}}</strong> <a href="{{ path('numbers') }}">numbers</a>.</p>#}
+      {#<p class="center"><a class="btn myBtn" href="{{ path('stats') }}">See more stats</a></p>#}
     {#</article>#}
+
+
 
   </section>
 
@@ -411,7 +402,7 @@ width: 100vw;
 
       <div class="card sticky-action col s6 offset-s3">
         <div class="card-image waves-effect waves-block waves-light">
-          {#<img class="activator posterImage" src="{{ asset('img/oklahoma.jpg') }}">#}
+          <img class="activator posterImage" src="{{ asset('img/81pYjCir5iL._SL1500_.jpg') }}">
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">Music<i class="material-icons right">more_vert</i></span>
@@ -757,6 +748,7 @@ width: 100vw;
 
     $("#showNumbers").click(
             function(){
+              $(this).hide();
               $(".filmsHidden").fadeIn();
               $("#shownNumbers").hide();
             }

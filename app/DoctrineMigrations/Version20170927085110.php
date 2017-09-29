@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20170924220105 extends AbstractMigration
+class Version20170927085110 extends AbstractMigration
 {
     /**
      * @param Schema $schema
@@ -18,7 +18,7 @@ class Version20170924220105 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE thesaurus DROP type, DROP category');
+        $this->addSql('ALTER TABLE validation DROP description');
     }
 
     /**
@@ -29,6 +29,6 @@ class Version20170924220105 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE thesaurus ADD type VARCHAR(255) NOT NULL COLLATE utf8_general_ci, ADD category VARCHAR(500) DEFAULT NULL COLLATE utf8_general_ci');
+        $this->addSql('ALTER TABLE validation ADD description VARCHAR(255) NOT NULL COLLATE utf8_unicode_ci');
     }
 }

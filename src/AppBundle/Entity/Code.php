@@ -41,7 +41,7 @@ class Code
 
 
     /**
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -132,6 +132,15 @@ class Code
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    public function addEditors(User $user)
+    {
+        if ($this->editors->contains($user)) {
+            return;
+        }
+
+        $this->editors[] = $user;
     }
 
     /**

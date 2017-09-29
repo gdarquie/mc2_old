@@ -44,15 +44,6 @@
 
     <!-- Nav & Log FOS -->
 
-        <ul id="menu_editor" class="dropdown-content">
-            <li><a href="{{ path('editor') }}">dashboard</a></li>
-            {#<li><a href="{{ path('editor_assist') }}">assist</a></li>#}
-            <li class="divider"></li>
-            <li><a href="{{ path('editorNewPerson') }}">add person</a></li>
-            <li><a href="{{ path('editorNewSong') }}">add song</a></li>
-        </ul>
-
-
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper container">
@@ -63,16 +54,14 @@
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         {% if is_granted('ROLE_MEMBER') %}
-                            <li><a class="dropdown-button" href="#!" data-activates="menu_editor">edition<i class="material-icons right">arrow_drop_down</i></a></li>
+                            <li><a href="{{ path('editor') }}">edition</a></li>
                         {% endif %}
                         {% if is_granted('ROLE_ADMIN') %}
                             <li><a href="{{ path('admin') }}">admin</a></li>
                         {% endif %}
                     {% endif %}
-
 
 
                     <li><a href="{{ path('thesaurus') }}">thesaurus</a></li>
@@ -131,7 +120,7 @@
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    2017 - Version 0.10
+                    2017 - Version 1.0
                     <a class="grey-text text-lighten-4 right" href="{{ path('about')}}">About</a>
                 </div>
             </div>

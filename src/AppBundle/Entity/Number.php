@@ -83,11 +83,20 @@ class Number
      */
     private $completeTitle;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Validation")
-//     * @ORM\JoinColumn(name="validation_id", referencedColumnName="validation_id")
-//     */
-//    private $validationTitle;
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_title",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_title", referencedColumnName="validation_id")
+     *   }
+     * )
+     */
+    private $validationTitle;
 
 
     // -- Director
@@ -95,7 +104,7 @@ class Number
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="numbers_director")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="number_has_director",
      *   joinColumns={
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
@@ -108,9 +117,17 @@ class Number
     private $director;
 
     /**
-     * @var integer
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\Column(name="validation_director", type="integer", nullable=true)
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_director",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_director", referencedColumnName="validation_id")
+     *   }
+     * )
      */
     private $validationDirector;
 
@@ -203,9 +220,17 @@ class Number
     private $completeTc;
 
     /**
-     * @var integer
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\Column(name="validation_tc", type="integer", nullable=true)
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_tc",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_tc", referencedColumnName="validation_id")
+     *   }
+     * )
      */
     private $validationTc;
 
@@ -214,7 +239,7 @@ class Number
 
     /** @var  \AppBundle\Entity\Thesaurus
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus", inversedBy="numbers_with_structure")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thesaurus")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="structure_id", referencedColumnName="thesaurus_id")
      * })
@@ -227,16 +252,24 @@ class Number
     private $commentStructure;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="validation_structure", type="integer", nullable=true)
-     */
-    private $validationStructure;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $completeStructure;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_structure",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_structure", referencedColumnName="validation_id")
+     *   }
+     * )
+     */
+    private $validationStructure;
 
 
     // -- Shots
@@ -255,18 +288,27 @@ class Number
      */
     private $commentShots;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="validation_shots", type="integer", nullable=true)
-     */
-    private $validationShots;
-
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $completeShots;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_shots",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_shots", referencedColumnName="validation_id")
+     *   }
+     * )
+     */
+    private $validationShots;
+
 
 
     // -- Performers
@@ -282,7 +324,7 @@ class Number
 
     /**
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person", inversedBy="numbers_performers")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Person")
      * @ORM\JoinTable(name="number_has_performer",
      *   joinColumns={
      *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
@@ -319,13 +361,6 @@ class Number
     private $cast;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="validation_performance", type="integer", nullable=true)
-     */
-    private $validationPerformance;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $completePerformance;
@@ -334,6 +369,21 @@ class Number
      * @ORM\Column(type="text", nullable=true)
      */
     private $commentPerformance;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_performance",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_performance", referencedColumnName="validation_id")
+     *   }
+     * )
+     */
+    private $validationPerformance;
 
 
 
@@ -367,13 +417,6 @@ class Number
     private $musician_thesaurus;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="validation_backstage", type="integer", nullable=true)
-     */
-    private $validationBackstage;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $completeBackstage;
@@ -382,6 +425,21 @@ class Number
      * @ORM\Column(type="text", nullable=true)
      */
     private $commentBackstage;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_backstage",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_backstage", referencedColumnName="validation_id")
+     *   }
+     * )
+     */
+    private $validationBackstage;
 
 
 
@@ -477,25 +535,30 @@ class Number
      */
     private $exoticism_thesaurus;
 
-
     /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $commentTheme;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="validation_theme", type="integer", nullable=true)
-     */
-    private $validationTheme;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $completeTheme;
 
-
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_theme",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_theme", referencedColumnName="validation_id")
+     *   }
+     * )
+     */
+    private $validationTheme;
 
     // -- Tone
 
@@ -535,16 +598,24 @@ class Number
     private $commentMood;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="validation_mood", type="integer", nullable=true)
-     */
-    private $validationMood;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $completeMood;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_mood",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_mood", referencedColumnName="validation_id")
+     *   }
+     * )
+     */
+    private $validationMood;
 
 
 
@@ -631,17 +702,24 @@ class Number
     private $commentDance;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="validation_dance", type="integer", nullable=true)
-     */
-    private $validationDance;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $completeDance;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_dance",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_dance", referencedColumnName="validation_id")
+     *   }
+     * )
+     */
+    private $validationDance;
 
 
     // -- Music
@@ -735,18 +813,26 @@ class Number
      */
     private $commentMusic;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="validation_music", type="integer", nullable=true)
-     */
-    private $validationMusic;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $completeMusic;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_music",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_music", referencedColumnName="validation_id")
+     *   }
+     * )
+     */
+    private $validationMusic;
 
     // -- Source(s)
 
@@ -782,13 +868,6 @@ class Number
 
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="validation_reference", type="integer", nullable=true)
-     */
-    private $validationReference;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $completeReference;
@@ -798,6 +877,20 @@ class Number
      */
     private $commentReference;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_reference",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_reference", referencedColumnName="validation_id")
+     *   }
+     * )
+     */
+    private $validationReference;
 
 
     // -- Complement
@@ -844,16 +937,24 @@ class Number
     private $costComment;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="validation_cost", type="integer", nullable=true)
-     */
-    private $validationCost;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $completeCost;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Validation", cascade= {"persist"})
+     * @ORM\JoinTable(name="number_has_validation_cost",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="number_id", referencedColumnName="number_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="validation_cost", referencedColumnName="validation_id")
+     *   }
+     * )
+     */
+    private $validationCost;
 
 
     /**

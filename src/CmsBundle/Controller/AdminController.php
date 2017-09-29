@@ -48,7 +48,7 @@ class AdminController extends Controller
 
         //Films
         $query = $em->createQuery(
-            'SELECT f FROM AppBundle:Film f ORDER by f.last_update ASC '
+            'SELECT f FROM AppBundle:Film f ORDER by f.last_update DESC '
         );
         $query->setMaxResults($max);
         $lastFilms = $query->getResult();

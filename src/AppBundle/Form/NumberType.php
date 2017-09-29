@@ -2,12 +2,11 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Stagenumber;
 use AppBundle\Repository\StagenumberRepository;
-use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -17,11 +16,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-use AppBundle\Entity\Film;
-use AppBundle\Entity\Song;
-use AppBundle\Entity\Thesaurus;
-
-use AppBundle\Repository\FilmRepository;
 use AppBundle\Repository\PersonRepository;
 use AppBundle\Repository\SongRepository;
 use AppBundle\Repository\ThesaurusRepository;
@@ -47,36 +41,28 @@ class NumberType extends AbstractType
                     "complete for me but need help" => 2,
                     ]
             ])
-//            ->add('validationTitle', ChoiceType::class, [
-//                'choices' => [
-//                    //créer un repository pour validation?
-//                    // <option value="" disabled selected>Choose your option</option> http://materializecss.com/forms.html
-//                    'No validation' => 0,
-//                    'Validation 1' => 1,
-//                    'Validation 2' => 3,
-//                ]
-//                ])
-
             //length
             ->add('beginTc') // convertir en min/secondes
             ->add('endTc') // convertir en min/secondes
+
+
+            //Outlines
 
             ->add('beginThesaurus', EntityType::class, array(
                 'placeholder' => '',
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("begin");
+                    return $repo->findAllThesaurusByCode("begin_thesaurus");
                 },
                 'empty_data' => null,
             ))
-            //Ending (Thesaurus)
             ->add('endingThesaurus', EntityType::class, array(
                 'placeholder' => '',
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("ending");
+                    return $repo->findAllThesaurusByCode("ending_thesaurus");
                 },
                 'empty_data' => null
             ))
@@ -85,9 +71,13 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("completeness");
+                    return $repo->findAllThesaurusByCode("completeness_thesaurus");
                 }
             ))
+
+
+            //Structure
+
             ->add('completOptions', EntityType::class, array(
                 'placeholder' => '',
                 'multiple' => true,
@@ -105,16 +95,10 @@ class NumberType extends AbstractType
                     "complete for me but need help" => 2,
                 ]
             ])
-//            ->add('validationTc', ChoiceType::class, [
-//                'choices' => [
-//                    //créer un repository pour validation?
-//                    'No validation' => 0,
-//                    'Validation 1' => 1,
-//                    'Validation 2' => 3,
-//                ]
-//                ])
+
 
             //structure
+
             ->add('structure', EntityType::class, array(
                 'placeholder' => '',
                 'class' => 'AppBundle:Thesaurus',
@@ -131,9 +115,11 @@ class NumberType extends AbstractType
                     "complete for me but need help" => 2,
                 ]
             ])
-//            ->add('validationStructure')
+
+
 
             //Shots
+
             ->add('shots')
             ->add('commentShots')
             ->add('completeShots', ChoiceType::class, [
@@ -146,6 +132,7 @@ class NumberType extends AbstractType
 //            ->add('validationShots')
 
             //Performers
+
             ->add('performers'
                 , EntityType::class, array(
                 'class' => 'AppBundle:Person',
@@ -170,7 +157,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title',
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("performance");
+                    return $repo->findAllThesaurusByCode("performance_thesaurus");
                 }
             ))
             ->add('commentPerformance')
@@ -181,10 +168,10 @@ class NumberType extends AbstractType
                     "complete for me but need help" => 2,
                 ]
             ])
-//            ->add('validationPerformance')
+
 
             //Backstage
-            //->add('spectators')
+
             ->add('spectators_thesaurus', EntityType::class, array(
                 'placeholder' => '',
                 'class' => 'AppBundle:Thesaurus',
@@ -199,7 +186,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title',
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("diegetic");
+                    return $repo->findAllThesaurusByCode("diegetic_thesaurus");
                 }
             ))
             //->add('musician')
@@ -208,7 +195,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title',
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("musician");
+                    return $repo->findAllThesaurusByCode("musician_thesaurus");
                 }
             ))
 
@@ -220,9 +207,10 @@ class NumberType extends AbstractType
                     "complete for me but need help" => 2,
                 ]
             ])
-//            ->add('validationBackstage')
-            
+
+
             //Themes
+
             ->add('costumes', EntityType::class, array(
                 'class' => 'AppBundle:Thesaurus',
                 'multiple' => true,
@@ -240,7 +228,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("Ethnic stereotypes");
+                    return $repo->findAllThesaurusByCode("stereotype");
                 }
             ))
             ->add('diegetic_place_thesaurus', EntityType::class, array(
@@ -248,7 +236,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title',
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("diegetic place");
+                    return $repo->findAllThesaurusByCode("diegetic_place_thesaurus");
                 }
             ))
             ->add('general_localisation', EntityType::class, array(
@@ -257,7 +245,7 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("general localisation");
+                    return $repo->findAllThesaurusByCode("general_localisation");
                 }
             ))
             ->add('imaginary', EntityType::class, array(
@@ -265,16 +253,15 @@ class NumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("imaginary place");
+                    return $repo->findAllThesaurusByCode("imaginary");
                 }
             ))
-//            ->add('exoticism')
             ->add('exoticism_thesaurus', EntityType::class, array(
                 'class' => 'AppBundle:Thesaurus',
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("exoticism");
+                    return $repo->findAllThesaurusByCode("exoticism_thesaurus");
                 }
             ))
             ->add('commentTheme')
@@ -285,15 +272,16 @@ class NumberType extends AbstractType
                     "complete for me but need help" => 2,
                 ]
             ])
-//            ->add('validationTheme')
+
 
             //Mood
+
             ->add('general_mood', EntityType::class, array(
                 'class' => 'AppBundle:Thesaurus',
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("mood", "general_mood");
+                    return $repo->findAllThesaurusByCode("general_mood");
                 }// diviser par type ensuite
             ))
             ->add('genre', EntityType::class, array(
@@ -301,7 +289,7 @@ class NumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("mood", "genre");
+                    return $repo->findAllThesaurusByCode( "genre");
                 }// diviser par type ensuite
             ))
             ->add('commentMood')
@@ -312,9 +300,10 @@ class NumberType extends AbstractType
                     "complete for me but need help" => 2,
                 ]
             ])
-//            ->add('validationMood')
+
 
             //Dance
+
             ->add('choregraphers', EntityType::class, array(
                 'class' => 'AppBundle:Person',
                 'multiple' => true,
@@ -323,8 +312,6 @@ class NumberType extends AbstractType
                     return $repo->createAlphabeticalQueryBuilder();
                 }
             ))
-            //ensemble type dancing
-            //type of dancing
             ->add('dancemble', EntityType::class, array(
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
@@ -365,9 +352,10 @@ class NumberType extends AbstractType
                     "complete for me but need help" => 2,
                 ]
             ])
-//            ->add('validationDance')
+
 
             //music
+
             ->add('song', EntityType::class, array(
                 'class' => 'AppBundle:Song',
                 'multiple' => true,
@@ -386,7 +374,6 @@ class NumberType extends AbstractType
                 }//il faudra ne prendre que ceux de type music
             ))
             ->add('dubbing')
-//            ->add('tempo')
             ->add('tempo_thesaurus', EntityType::class, array(
                 'placeholder' => '',
                 'class' => 'AppBundle:Thesaurus',
@@ -400,7 +387,7 @@ class NumberType extends AbstractType
                     'class' => 'AppBundle:Thesaurus',
                     'choice_label' => 'title', //order by alpha
                     'query_builder' => function(ThesaurusRepository $repo) {
-                        return $repo->findAllThesaurusByCode("musical styles");
+                        return $repo->findAllThesaurusByCode("musicalstyles");
                     }//il faudra ne prendre que ceux de type music
                 ))
             ->add('arrangers', EntityType::class, array(
@@ -420,10 +407,10 @@ class NumberType extends AbstractType
                     "complete for me but need help" => 2,
                 ]
             ])
-//            ->add('validationMusic')
 
 
             //Complement
+
             ->add('director', EntityType::class, array(
                 'class' => 'AppBundle:Person',
                 'multiple' => true,
@@ -442,16 +429,17 @@ class NumberType extends AbstractType
                     "complete for me but need help" => 2,
                 ]
             ])
-//            ->add('validationCost')
+
 
             //Reference
+
             ->add('quotation_thesaurus', EntityType::class, array(
                 'multiple' => true,
                 'class' => 'AppBundle:Thesaurus',
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("quotation");
+                    return $repo->findAllThesaurusByCode("quotation_thesaurus");
                 }
             ))
             ->add('quotation_text')
@@ -473,7 +461,6 @@ class NumberType extends AbstractType
                     "complete for me but need help" => 2,
                 ]
             ])
-//            ->add('validationReference')
             ->add('lyrics')
             ->add('cast', EntityType::class, array(
                 'placeholder' => '',
@@ -496,9 +483,91 @@ class NumberType extends AbstractType
             ))
 
 
+            //Validations
+
+            ->add('validationTitle', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationDirector', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationTc', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationStructure', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationShots', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationPerformance', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationBackstage', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationTheme', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationMood', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationDance', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationMusic', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationReference', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationCost', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+
+
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

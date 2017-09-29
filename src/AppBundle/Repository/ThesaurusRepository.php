@@ -27,16 +27,9 @@ class ThesaurusRepository extends EntityRepository
     public function findAllThesaurusByCode($code)
     {
 
-        //return $this->getEntityManager()->createQuery('SELECT DISTINCT u.name FROM UserBundle:Users u ORDER BY u.name DESC')->getResult();
-
-//        $em = $this->getEntityManager();
-//        $query = $em->createQuery('SELECT t FROM AppBundle:Thesaurus t JOIN t.code c WHERE c.content = :code');
-//        $query->setParameter('code', $code);
-//        $result = $query->getResult();
-
         $qb = $this->createQueryBuilder('thesaurus')
             ->join('thesaurus.code', 'c')
-            ->where('c.title = :code')
+            ->where('c.content = :code')
             ->orderBy('thesaurus.title', 'ASC')
             ->setParameter('code', $code);
 

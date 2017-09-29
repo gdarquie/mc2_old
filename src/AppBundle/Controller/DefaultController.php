@@ -95,7 +95,7 @@ class DefaultController extends Controller
      */
     public function howto(){
 
-        return $this->render('howto.html.twig');
+        return $this->render('AppBundle:other:howto.html.twig');
     }
 
     /**
@@ -103,7 +103,7 @@ class DefaultController extends Controller
      */
     public function apropos(){
 
-        return $this->render('about.html.twig');
+        return $this->render('AppBundle:other:about.html.twig');
     }
 
     /**
@@ -111,7 +111,7 @@ class DefaultController extends Controller
      */
     public function newTo(){
 
-        return $this->render('news.html.twig');
+        return $this->render('AppBundle:other:news.html.twig');
     }
 
 

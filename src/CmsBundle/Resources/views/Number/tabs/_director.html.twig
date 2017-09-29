@@ -1,0 +1,75 @@
+{% import _self as formMacros %}
+
+{% macro printValidationDirectorRow(validationForm) %}
+    <div class="col s12 js-director-validation-item">
+        <a href="" class="js-remove-director-validation right">
+            <i class="material-icons black-text" >delete</i>
+        </a>
+
+        {{ form_errors(validationForm) }}
+        {{ form_row(validationForm.title, {'label' : "title"}) }}
+
+    </div>
+{% endmacro %}
+
+<div id="director" class="row container main">
+
+    <h3>Director</h3>
+
+    <div class="row color-cartouche">
+        <article class="col s12 ">
+
+            {{ form_label(numberForm.director, "Only if different from the whole film")}}
+            {{ form_widget(numberForm.director)}}
+
+            <p><a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a></p>
+            <br><br><br>
+
+
+            {{ form_label(numberForm.commentDirector, "Director comments and source") }}
+            {{ form_widget(numberForm.commentDirector, {
+                'attr': {'class': 'materialize-textarea'}
+            }) }}
+
+            {{ form_widget(numberForm.completeDirector) }}
+            {{ form_label(numberForm.completeDirector, "Completed?") }}
+            {{ form_errors(numberForm.completeDirector) }}
+
+        </article>
+    </div>
+
+    <div class="color-cartouche">
+
+        {%  if validationDirector is defined %}
+            {% for item in validationDirector  %}
+                <div class="chip js-director-validation-item">
+                    {{  item.title }} by {{ item.user }}, {{ item.dateCreation|date() }}
+                    <a href="" class="js-remove-director-validation">
+                        {#<i class="material-icons black-text" >delete</i>#}
+                        <i class="close material-icons black-text">close</i>
+                    </a>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if is_granted('ROLE_EDITOR') %}
+
+            <div class="row js-director-validation-wrapper" data-prototype="{{ formMacros.printValidationDirectorRow(numberForm.validationDirector.vars.prototype)|e('html_attr') }}">
+
+                <div class="col s12">
+                    <a href="#" class="js-add-director-validation valign-wrapper col s12">
+                        <i class="material-icons black-text ">add</i>
+                        Add a validation
+                    </a>
+                </div>
+            </div>
+
+            <div class="hide">
+                {{ form_widget(numberForm.validationDirector) }}
+            </div>
+
+        {% endif %}
+    </div>
+
+
+</div>

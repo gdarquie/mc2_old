@@ -17,9 +17,7 @@
         }
 
         #menu_admin{
-            top :65px;
-            border-right: 1px solid #CC0000;
-
+            top :64px;
         }
 
         header, .main, footer, #alert-panel {
@@ -32,15 +30,16 @@
             }
         }
 
-        #menu_admin .wrapper{
-            margin : 0px 20px;
-        }
-
         .main h1{
             font-size:1.5em;
         }
         .main h2{
             font-size:1.3em;
+        }
+
+
+        #menu_admin .collection-item div, #menu_admin .collection-header{
+            text-transform: uppercase;
         }
 
     </style>
@@ -49,143 +48,165 @@
 {% block body %}
 
 
-    <div class="side-nav fixed" id="menu_admin">
-        <div class="wrapper">
-
-            <li><a href="{{ path('editorNewFilm') }}">add Film</a></li>
-            <li class="divider"></li>
-            <li><a href="{{ path('stageshow_new') }}">add Stage Show</a></li>
-            <li><a href="{{ path('stageshows') }}">all Stage Shows</a></li>
-            <li class="divider"></li>
-
-        </div>
-    </div>
-
-    <section class='container-fluid row main'>
+    <div class="container-fluid ">
 
         <div class="row">
-            <div class="col s12">
-                <ul class="tabs">
-                    <li class="tab col s3 active"><a href="#activity">Activity</a></li>
-                    <li class="tab col s3"><a href="#validation">Validation</a></li>
-                    <li class="tab col s3"><a href="#users">Users</a></li>
-                    <li class="tab col s3"><a href="#other">Other</a></li>
+
+            <div id="menu_admin" class="col s12 m3">
+
+                <ul class="collection with-header">
+
+                    <li class="collection-header"><h4>Administration</h4></li>
+
+                    <li class="collection-item"><div><a href="{{ path('numbers') }}">Numbers</a></div></li>
+
+                    <li class="collection-item"><div><a href="{{ path('films') }}">Films</a><a href="{{ path('editorNewFilm') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+
+                    <li class="collection-item"><div><a href="{{ path('persons') }}">Persons</a><a href="#!" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+
+                    <li class="collection-item"><div><a href="{{ path('thesaurus') }}">Thesaurus</a><a href="#!" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+
+                    <li class="collection-item"><div><a href="{{ path('songs') }}">Songs</a><a href="#!" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+
+                    <li class="collection-item"><div><a href="{{ path('stageshows') }}">Stage Shows</a><a href="{{ path('stageshow_new') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+
+                    {#<li class="collection-item"><div><a href="{{ path('censorship') }}">Censorships</a></div></li>#}
+
+                    <li class="collection-item"><div><a href="{{ path('stageshows') }}">Thesaurus types</a></div></li>
+                    <li class="collection-item"><div><a href="{{ path('admin_studio_index') }}">Studios<a href="#!" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+
+                    <li class="collection-item"><div><a href="{{ path('admin_distributor_index')}}">Distributors</a><a href="{{ path('admin_distributor_new') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+
+
                 </ul>
+
+
             </div>
-        </div>
 
-        {% include 'CmsBundle:Admin:_activity.html.twig' %}
+            <section class='row main col s12 m9'>
 
-        {% include 'CmsBundle:Admin:_users.html.twig' %}
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab col s3 active"><a href="#activity">Activity</a></li>
+                            <li class="tab col s3"><a href="#users">Users</a></li>
+                            <li class="tab col s3"><a href="#other">Other</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-        {% include 'CmsBundle:Admin:_other.html.twig' %}
+                {% include 'CmsBundle:Admin:_activity.html.twig' %}
+
+                {% include 'CmsBundle:Admin:_users.html.twig' %}
+
+                {% include 'CmsBundle:Admin:_other.html.twig' %}
 
 
 
-        <div class="col s10 tab" id="other">
+                <div class="col s10 tab" id="other">
 
-            {#<article>#}
-                {#<iframe src="http://54.93.50.108:5601/app/kibana#/dashboard/f8b20cd0-67d6-11e7-8385-0bb2de6337bd?embed=true&_g=()&_a=(description:'',filters:!(),options:(darkTheme:!f),panels:!((col:1,id:e4ccd1a0-67d6-11e7-8385-0bb2de6337bd,panelIndex:1,row:1,size_x:6,size_y:3,type:visualization),(col:7,id:abff6a60-67d4-11e7-8385-0bb2de6337bd,panelIndex:2,row:1,size_x:6,size_y:3,type:visualization)),query:(query_string:(analyze_wildcard:!t,query:'*')),timeRestore:!f,title:monitoring-test,uiState:(P-1:(vis:(params:(sort:(columnIndex:!n,direction:!n)))),P-2:(vis:(params:(sort:(columnIndex:3,direction:desc))))),viewMode:view)" height="600" width="800"></iframe>#}
-            {#</article>#}
-            <article>
-                <h2>Count of new numbers by day</h2>
+                    {#<article>#}
+                        {#<iframe src="http://54.93.50.108:5601/app/kibana#/dashboard/f8b20cd0-67d6-11e7-8385-0bb2de6337bd?embed=true&_g=()&_a=(description:'',filters:!(),options:(darkTheme:!f),panels:!((col:1,id:e4ccd1a0-67d6-11e7-8385-0bb2de6337bd,panelIndex:1,row:1,size_x:6,size_y:3,type:visualization),(col:7,id:abff6a60-67d4-11e7-8385-0bb2de6337bd,panelIndex:2,row:1,size_x:6,size_y:3,type:visualization)),query:(query_string:(analyze_wildcard:!t,query:'*')),timeRestore:!f,title:monitoring-test,uiState:(P-1:(vis:(params:(sort:(columnIndex:!n,direction:!n)))),P-2:(vis:(params:(sort:(columnIndex:3,direction:desc))))),viewMode:view)" height="600" width="800"></iframe>#}
+                    {#</article>#}
+                    <article>
+                        <h2>Count of new numbers by day</h2>
 
-                <div id="chart_div">
+                        <div id="chart_div">
+
+                        </div>
+
+                        {#<table class="striped">#}
+                        {#<tr>#}
+                        {#<td>Count</td>#}
+                        {#<td>Date</td>#}
+                        {#</tr>#}
+                        {#{% for number in numberByMonth %}#}
+                        {#<tr>#}
+                        {#<td>{{ number.nb }}</td>#}
+                        {#<td>{{ number.day }} - {{ number.month }} - {{ number.year }}</td>#}
+                        {#</tr>#}
+                        {#{% endfor %}#}
+                        {#</table>#}
+                    </article>
+
+
+                    {#<svg width="960" height="500"></svg>#}
+
+                    <article>
+                        <h2>All users</h2>
+                        <table class="striped tablesorter">
+                            <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>email</th>
+                                <th>enabled</th>
+                                <th>role</th>
+                                <th>last login</th>
+                                <th>promote</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {%  for user in users %}
+                                <tr>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.enabled }}</td>
+                                    <td>
+                                        {% for role in user.roles %}
+                                            {{ role }}{% if loop|last %}{% else %},{% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {{ user.lastLogin|date() }}
+                                    </td>
+                                    <td><a href="">promote</a> (soon)</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </article>
+
+                    <article>
+                        <h2>Numbers by editor</h2>
+
+                        <table class="striped">
+                            <tr>
+                                <th>Username</th>
+                                <th>Count</th>
+                            </tr>
+                            {%  for number in numbersByEditor %}
+                                <tr>
+                                    <td>{{  number.name }}</td>
+                                    <td>{{ number.nb }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </article>
+
+                    <article>
+                        <h2>Last numbers</h2>
+                        <table class="striped">
+                            {% for number in lastnumbers %}
+                                <tr>
+                                    <td>{{ number.title }}</td>
+                                    <td>{{ number.lastUpdate | date() }}</td>
+                                    {#<td>{{ number.editors.username }}</td>#}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </article>
+
+                    <article>
+                        <h2>Numbers waiting for validation</h2>
+                        <p>[in progress]</p>
+                    </article>
+
 
                 </div>
 
-                {#<table class="striped">#}
-                {#<tr>#}
-                {#<td>Count</td>#}
-                {#<td>Date</td>#}
-                {#</tr>#}
-                {#{% for number in numberByMonth %}#}
-                {#<tr>#}
-                {#<td>{{ number.nb }}</td>#}
-                {#<td>{{ number.day }} - {{ number.month }} - {{ number.year }}</td>#}
-                {#</tr>#}
-                {#{% endfor %}#}
-                {#</table>#}
-            </article>
-
-
-            {#<svg width="960" height="500"></svg>#}
-
-            <article>
-                <h2>All users</h2>
-                <table class="striped tablesorter">
-                    <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>email</th>
-                        <th>enabled</th>
-                        <th>role</th>
-                        <th>last login</th>
-                        <th>promote</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {%  for user in users %}
-                        <tr>
-                            <td>{{ user.username }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.enabled }}</td>
-                            <td>
-                                {% for role in user.roles %}
-                                    {{ role }}{% if loop|last %}{% else %},{% endif %}
-                                {% endfor %}
-                            </td>
-                            <td>
-                                {{ user.lastLogin|date() }}
-                            </td>
-                            <td><a href="">promote</a> (soon)</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </article>
-
-            <article>
-                <h2>Numbers by editor</h2>
-
-                <table class="striped">
-                    <tr>
-                        <th>Username</th>
-                        <th>Count</th>
-                    </tr>
-                    {%  for number in numbersByEditor %}
-                        <tr>
-                            <td>{{  number.name }}</td>
-                            <td>{{ number.nb }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </article>
-
-            <article>
-                <h2>Last numbers</h2>
-                <table class="striped">
-                    {% for number in lastnumbers %}
-                        <tr>
-                            <td>{{ number.title }}</td>
-                            <td>{{ number.lastUpdate | date() }}</td>
-                            {#<td>{{ number.editors.username }}</td>#}
-                        </tr>
-                    {% endfor %}
-                </table>
-            </article>
-
-            <article>
-                <h2>Numbers waiting for validation</h2>
-                <p>[in progress]</p>
-            </article>
-
-
+            </section>
         </div>
-
-
-
-    </section>
+    </div>
 
 {% endblock %}
 

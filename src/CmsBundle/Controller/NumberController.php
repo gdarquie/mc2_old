@@ -49,6 +49,8 @@ class NumberController extends Controller
             $number->setDateCreation($now);
             $number->setLastUpdate($now);
 
+            $this->validate($number, $user);
+
             $em->persist($number);
             $em->flush();
 
@@ -57,7 +59,7 @@ class NumberController extends Controller
             return $this->redirectToRoute('film', array('filmId' => $filmId));
         }
 
-        return $this->render('CmsBundle:Number:new.html.twig',array(
+        return $this->render('CmsBundle:Number:save.html.twig',array(
             'numberForm' => $form->createView(),
             'filmId' => $filmId,
         ));
@@ -73,6 +75,19 @@ class NumberController extends Controller
         $film = $number->getFilm();
         $filmId = $film->getFilmId();
 
+        $validationTitle = $number->getValidationTitle();
+        $validationDirector = $number->getValidationDirector();
+        $validationTc = $number->getValidationTc();
+        $validationStructure = $number->getValidationStructure();
+        $validationShots = $number->getValidationShots();
+        $validationPerformance = $number->getValidationPerformance();
+        $validationBackstage = $number->getValidationBackstage();
+        $validationTheme = $number->getValidationTheme();
+        $validationMood = $number->getValidationMood();
+        $validationDance = $number->getValidationDance();
+        $validationMusic = $number->getValidationMusic();
+        $validationReference = $number->getValidationReference();
+        $validationCost = $number->getValidationCost();
 
         $form = $this->createForm(NumberType::class, $number);
 
@@ -93,6 +108,8 @@ class NumberController extends Controller
             $now = new \DateTime();
             $number->setLastUpdate($now);
 
+            $this->validate($number, $user);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($number);
             $em->flush();
@@ -100,9 +117,23 @@ class NumberController extends Controller
             return $this->redirectToRoute('film', array('filmId' => $filmId));
         }
 
-        return $this->render('CmsBundle:Number:edit.html.twig', array(
+        return $this->render('CmsBundle:Number:save.html.twig', array(
             'number' => $number,
             'numberForm' => $form->createView(),
+            'validationTitle' => $validationTitle,
+            'validationDirector' => $validationDirector,
+            'validationTc' => $validationTc,
+            'validationStructure' => $validationStructure,
+            'validationShots' => $validationShots,
+            'validationPerformance' => $validationPerformance,
+            'validationBackstage' => $validationBackstage,
+            'validationTheme' => $validationTheme,
+            'validationMood' => $validationMood,
+            'validationDance' => $validationDance,
+            'validationMusic' => $validationMusic,
+            'validationReference' => $validationReference,
+            'validationCost'=> $validationCost,
+
         ));
     }
 
@@ -169,6 +200,54 @@ class NumberController extends Controller
             ->setMethod('DELETE')
             ->getForm()
             ;
+    }
+
+
+    private function validate(Number $number, $user){
+
+        $types = array();
+        $types[0] = "validationTitle";
+        $types[1] = "validationDirector";
+        $types[2] = "validationTc";
+        $types[3] = "validationStructure";
+        $types[4] = "validationShots";
+        $types[5] = "validationPerformance";
+        $types[6] = "validationBackstage";
+        $types[7] = "validationTheme";
+        $types[8] = "validationMood";
+        $types[9] = "validationDance";
+        $types[10] = "validationMusic";
+        $types[11] = "validationReference";
+        $types[12] = "validationCost";
+
+
+        for ($counter=0 ; $counter<count($types) ; $counter++){
+
+            $part = $types[$counter];
+            $partMaj = ucfirst($part);
+            $getter = "get".$partMaj;
+            $part  = $number->$getter();
+
+
+            foreach($part as $validation){
+                $validation_title = $validation->getTitle();
+
+                if($validation->getTitle() != null){
+
+                    $validation->setTitle($validation_title);
+                    $validation->setUser($user);
+                }
+
+                else{
+                    $validation->setTitle('No title');
+                    $validation->setUser($user);
+                }
+            }
+
+
+        }
+
+
     }
 
 }

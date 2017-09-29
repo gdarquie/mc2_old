@@ -31,6 +31,11 @@ class Validation
     private $user;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $title;
+
+    /**
      * @ORM\Column(name="date_creation", type="datetime")
      */
     private $date_creation;
@@ -110,6 +115,26 @@ class Validation
         $this->last_update = $last_update;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    public function  __toString()
+    {
+        return $this->getDescription();
+    }
 
 
 }

@@ -38,7 +38,9 @@ class FilmController extends Controller
             $em->persist($film);
             $em->flush();
 
-            return $this->redirectToRoute('editor');
+            $filmId = $film->getFilmId();
+
+            return $this->redirectToRoute('film', array('filmId' => $filmId));
         }
 
         return $this->render('CmsBundle:Film:new.html.twig', array(
