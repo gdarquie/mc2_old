@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class ExoticismController extends Controller
+class ThemeExoticismController extends Controller
 {
     /**
      * @Route("/exoticism", name="getExoticism")

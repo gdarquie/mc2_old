@@ -127,6 +127,8 @@
                     <tr>
                         <th>Title</th>
                         <th>Type</th>
+                        <th>Last Update</th>
+                        <th>Editor(s)</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -134,6 +136,12 @@
                         <tr>
                             <td><a href="{{ path('thesaurus_element' , {'id' : item.id}) }}">{{ item.title }}</a></td>
                             <td>{{ item.code.title }}</td>
+                            <td>{{ item.lastUpdate | date() }}</td>
+                            <td>
+                                {% for editor in item.editors  %}
+                                    {{ editor.username }} {% if loop.last %}{% else %} ;{% endif %}
+                                {% endfor %}
+                            </td>
                             <td><a href="{{ path('updateThesaurus' , {'id' : item.id}) }}"><i class="material-icons tiny">mode_edit</i></a></td>
                             <td><a href="#thesaurus{{ item.id }}" class="modal-trigger"><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
                         </tr>
@@ -161,7 +169,7 @@
                     </div>
                 {% endfor %}
 
-                {#<p class="center"><a href="{{ path('thesaurus_all') }}">All thesaurus</a></p>#}
+                <p class="center"><a href="{{ path('thesaurus') }}">Thesaurus home</a></p>
             </article>
         </li>
 
@@ -214,7 +222,7 @@
                     </div>
                 {% endfor %}
 
-                <p class="center">All songs</p>
+                <p class="center"><a href="{{ path('songs') }}">All songs</a></p>
 
             </article>
         </li>
@@ -267,6 +275,8 @@
                         </div>
                     </div>
                 {% endfor %}
+
+                <p class="center"><a href="{{ path('stageshows') }}">All stage shows</a></p>
 
             </article>
         </li>
@@ -321,63 +331,10 @@
                     </div>
                 {% endfor %}
 
+                <p class="center"><a href="{{ path('stagenumbers') }}">All stage numbers</a></p>
             </article>
         </li>
 
-        <!-- Censorship Management -->
-        <li>
-            <div class="collapsible-header"><i class="material-icons">whatshot</i>Last censorships</div>
-            <article class="card collapsible-body">
-                <h2>Censorship</h2>
-
-                <table class="responsive-table mini-table striped">
-                    <tr>
-                        <th>Title</th>
-                        <th>Last Update</th>
-                        <th>Editor</th>
-                        <th>Show</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    {% for item in lastcensorhsip  %}
-                        <tr>
-                            <td><a href="{{ path('censorship_show' , { id : item.censorshipId }) }}">{{ item.title }}</a></td>
-                            <td>{{ item.lastUpdate | date() }}</td>
-                            <td>
-                                {% for editor in item.editors  %}
-                                    {{ editor.username }} {% if loop.last %}{% else %} ;{% endif %}
-                                {% endfor %}
-                            </td>
-                            <td><i class="material-icons tiny">zoom_in</i></td>
-                            <td><i class="material-icons tiny">mode_edit</i></td>
-                            <td><a href="#censorships{{ item.censorshipId }}" class="modal-trigger"><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
-                        </tr>
-                    {% endfor %}
-                </table>
-
-                <!-- Modal for 1 thesaurus -->
-
-                {% for item in lastcensorhsip  %}
-
-                    <!-- Modal Structure -->
-                    <div id="censorships{{ item.censorshipId }}" class="modal">
-                        <div class="modal-content">
-                            <h3 class="uk-modal-title">Delete this item?</h3>
-                            <p>
-                                Are you sure you want to delete  '<b>{{ item.title }}</b>'?<br/>
-                                This cannot be undone.
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-                            <a href="{{ path('censorship_delete', { id : item.censorshipId}) }}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                        </div>
-                    </div>
-                {% endfor %}
-
-                {#<p class="center"><a href="{{ path('thesaurus_all') }}">All thesaurus</a></p>#}
-            </article>
-        </li>
 
     </ul>
 

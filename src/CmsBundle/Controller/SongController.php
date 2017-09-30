@@ -93,7 +93,7 @@ class SongController extends Controller
     /**
      * Effacer un item
      *
-     * @Route("editor/song/id/{id}/delete", name="song_delete")
+     * @Route("admin/song/id/{id}/delete", name="song_delete")
      * @Method({"DELETE","GET"})
      */
     public function deleteAction(Song $item)
@@ -111,7 +111,7 @@ class SongController extends Controller
         $em->flush();
 
         $this->addFlash('success', 'Deleted Successfully!');
-        return $this->redirectToRoute('admin');
+        return $this->redirectToRoute('songs');
     }
 
 }

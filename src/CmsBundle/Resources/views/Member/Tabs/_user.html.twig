@@ -1,0 +1,37 @@
+<div class="col s12 row" id="user">
+
+    <div class="container">
+    <h2>My account</h2>
+
+        <article>
+
+            <div class="mystats card col m3 center red darken-2">
+                <p>{{ myFilms|length }} films</p>
+            </div>
+
+            <div class="mystats card  col m3 center indigo accent-2">
+                <p>{{ myNumbers|length }} numbers</p>
+            </div>
+
+            <div class="mystats card  col m3 center teal lighten-3">
+                <p>{{ myPersons|length }} persons</p>
+            </div>
+
+            <div class="mystats card  col m3 center green accent-3">
+                <p>{{ mySongs|length }} songs</p>
+            </div>
+
+
+
+        </article>
+
+        <article class="row col s12">
+
+            <h3>Options</h3>
+
+            <p><a href="{{ path('avgMovie') }}">Some movies stats</a></p>
+            <p><a href="{{ path('fos_user_change_password') }}">Change password</a></p>
+        </article>
+
+    </div>
+</div>

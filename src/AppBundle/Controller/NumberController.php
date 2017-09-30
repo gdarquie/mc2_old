@@ -10,18 +10,6 @@ use AppBundle\Form\NumberType;
 
 class NumberController extends Controller
 {
-    /**
-     * @Route("/numbers", name = "numbers")
-     */
-    public function showAllAction(){
-
-        $em = $this->getDoctrine()->getManager();
-        $numbers = $em->getRepository('AppBundle:Number')->findAll();
-
-        return $this->render('web/number/numbers.html.twig',array(
-            'numbers' => $numbers
-        ));
-    }
 
     /**
      * @Route("/number/{id}", name = "number")
@@ -30,7 +18,7 @@ class NumberController extends Controller
         $em = $this->getDoctrine()->getManager();
         $number = $em->getRepository('AppBundle:Number')->findOneById($id);
 
-        return $this->render('web/number/number.html.twig',array(
+        return $this->render('AppBundle:number:number.html.twig',array(
             'number' => $number
         ));
     }

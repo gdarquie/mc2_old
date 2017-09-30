@@ -11,6 +11,7 @@ namespace CmsBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 use AppBundle\Entity\Person;
 use AppBundle\Form\PersonType;
@@ -19,7 +20,7 @@ use AppBundle\Form\PersonType;
 class PersonController extends Controller
 {
     /**
-     * @Route("/editor/person/add/new", name="editorNewPerson")
+     * @Route("/member/person/add/new", name="editorNewPerson")
      */
     public function addAction(Request $request)
     {
@@ -55,7 +56,7 @@ class PersonController extends Controller
 
 
     /**
-     * @Route("/editor/person/id/{personId}/edit" , name = "person_edit")
+     * @Route("/member/person/id/{personId}/edit" , name = "person_edit")
      */
     public function personEditAction(Request $request, $personId)
     {
@@ -80,12 +81,38 @@ class PersonController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($person);
             $em->flush();
+
+            return $this->redirectToRoute('person', array('personId' => $person->getPersonId()));
         }
 
         return $this->render('CmsBundle:Person:edit.html.twig', array(
             'person' => $person,
             'personForm' => $form->createView()
         ));
+    }
+
+    /**
+     * Effacer un item
+     *
+     * @Route("admin/person/id/{id}/delete", name="person_delete")
+     * @Method({"DELETE","GET"})
+     */
+    public function deleteAction(Person $item)
+    {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+        if (!$item) {
+            throw $this->createNotFoundException('No item found');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        $em->remove($item);
+        $em->flush();
+
+        $this->addFlash('success', 'Deleted Successfully!');
+        return $this->redirectToRoute('persons');
     }
 }
 

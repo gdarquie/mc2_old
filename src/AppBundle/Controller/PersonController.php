@@ -10,21 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 class PersonController extends Controller
 {
     /**
-     * @Route("/persons", name = "persons")
-     */
-    public function indexAction()
-    {
-
-        $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery("SELECT p FROM AppBundle:Person p WHERE p.name != '' ORDER BY p.name");
-        $persons = $query->getResult();
-
-        return $this->render('AppBundle:person:index.html.twig', array(
-            "persons" => $persons
-        ));
-    }
-
-    /**
      * @Route("/person/{personId}", name = "person")
      */
     public function getOnePerson($personId){
@@ -116,7 +101,7 @@ class PersonController extends Controller
         $source = $query->getResult();
 
 //      Dancing
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.dancingType t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title FROM AppBundle:Number n JOIN n.dancing_type t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $dancing = $query->getResult();
 
@@ -126,31 +111,31 @@ class PersonController extends Controller
         $musical = $query->getResult();
 
 //      Completenesses
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id, t.definition FROM AppBundle:Number n JOIN n.completenessThesaurus t GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id, t.definition FROM AppBundle:Number n JOIN n.completeness_thesaurus t GROUP BY t.title ORDER BY nb DESC");
         $completenesses = $query->getResult();
 
 //      Completeness
-        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
+        $query = $em->createQuery("SELECT COUNT(n) as nb, t.title, t.id as id FROM AppBundle:Number n JOIN n.completeness_thesaurus t JOIN n.performers p WHERE p.personId = :person GROUP BY t.title ORDER BY nb DESC");
         $query->setParameter('person', $personId );
         $completeness = $query->getResult();
 
 //      Completes ???
-        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.completeness_thesaurus t JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId );
         $completes = $query->getSingleResult();
 
 //      Complete ???
-        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person AND t.title = :complete");
+        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.completeness_thesaurus t JOIN n.performers p WHERE p.personId = :person AND t.title = :complete");
         $query->setParameter('person', $personId );
         $query->setParameter('complete', 'complete' );
         $complete = $query->getSingleResult();
 
-        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.completOptions t JOIN n.performers p WHERE p.personId = :person AND t.title = :occurences");
+        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.complet_options t JOIN n.performers p WHERE p.personId = :person AND t.title = :occurences");
         $query->setParameter('person', $personId );
         $query->setParameter('occurences', 'multiple occurrences of a song or partial reprise' );
         $occurences = $query->getSingleResult();
 
-        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.completOptions t JOIN n.performers p WHERE p.personId = :person");
+        $query = $em->createQuery("SELECT COUNT(n) as nb FROM AppBundle:Number n JOIN n.complet_options t JOIN n.performers p WHERE p.personId = :person");
         $query->setParameter('person', $personId );
         $completOptions = $query->getSingleResult();
 
@@ -407,7 +392,7 @@ class PersonController extends Controller
         }
         //
         elseif($type == 'completeness'){
-            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.completenessThesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.id = :thesaurus");
+            $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.completeness_thesaurus t JOIN n.performers p WHERE p.personId = :person AND  t.id = :thesaurus");
         }
         elseif($type == 'structure'){
             $query = $em->createQuery("SELECT n FROM AppBundle:Number n JOIN n.structure t JOIN n.performers p WHERE p.personId = :person AND  t.id = :thesaurus");

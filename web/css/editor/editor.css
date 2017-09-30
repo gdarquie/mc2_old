@@ -78,3 +78,15 @@ padding-left: 3px;
 .hide{
     display:none;
 }
+
+.mystats{
+
+    height : 300px;
+    font-size: 3em;
+
+}
+
+.mystats p{
+    color:white;
+    padding-top : 70px;
+}

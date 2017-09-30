@@ -2,7 +2,7 @@
 
 namespace CmsBundle\Controller;
 
-use Doctrine\ORM\Mapping as ORM;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +13,7 @@ use AppBundle\Form\StagenumberType;
 class StagenumberController extends Controller
 {
     /**
-     * @Route("/editor/stageshow/id/{stageshowId}/stagenumber/new", name="stagenumber_new")
+     * @Route("/member/stageshow/id/{stageshowId}/stagenumber/new", name="stagenumber_new")
      */
     public function addAction(Request $request, $stageshowId){
 
@@ -50,7 +50,7 @@ class StagenumberController extends Controller
 
 
     /**
-     * @Route("/editor/stagenumber/id/{stagenumberId}/edit" , name = "stagenumber_edit")
+     * @Route("/member/stagenumber/id/{stagenumberId}/edit" , name = "stagenumber_edit")
      */
     public function editAction(Request $request, $stagenumberId){
 
@@ -85,6 +85,31 @@ class StagenumberController extends Controller
             'stagenumber' => $stagenumber,
             'stagenumberForm' => $form->createView()
         ));
+    }
+
+
+    /**
+     * Effacer un item
+     *
+     * @Route("admin/stagenumber/id/{id}/delete", name="stagenumber_delete")
+     * @Method({"DELETE","GET"})
+     */
+    public function deleteAction(Stagenumber $item)
+    {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+        if (!$item) {
+            throw $this->createNotFoundException('No item found');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        $em->remove($item);
+        $em->flush();
+
+        $this->addFlash('success', 'Deleted Successfully!');
+        return $this->redirectToRoute('stagenumbers');
     }
 
 }

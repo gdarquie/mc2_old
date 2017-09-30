@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
-class CensorshipController extends Controller
+class ThemeCensorshipController extends Controller
 {
     /**
      * @Route("/censorship", name="censorship")

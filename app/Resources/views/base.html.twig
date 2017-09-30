@@ -55,8 +55,20 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
 
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        {% if is_granted('ROLE_MEMBER') %}
+
+                        <ul id="dropdown1" class="dropdown-content">
                             <li><a href="{{ path('editor') }}">edition</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ path('editorNewSong') }}">add a song</a></li>
+                            <li><a href="{{ path('editorNewPerson') }}">add a person</a></li>
+                        </ul>
+
+                        {% if is_granted('ROLE_MEMBER') %}
+                            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">member<i class="material-icons right">arrow_drop_down</i></a></li>
+                        {% endif %}
+
+                        {% if is_granted('ROLE_EXPERT') %}
+                            <li><a href="{{ path('validation') }}">validation</a></li>
                         {% endif %}
                         {% if is_granted('ROLE_ADMIN') %}
                             <li><a href="{{ path('admin') }}">admin</a></li>

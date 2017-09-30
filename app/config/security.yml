@@ -32,8 +32,12 @@ security:
         - { path: ^/register, role: ROLE_USER }
         - { path: ^/thesaurus, role: ROLE_USER }
         - { path: ^/resetting, role: ROLE_MEMBER }
-        - { path: ^/editor, role: ROLE_MEMBER } #attention, il faut promovoir les users
+
+        - { path: ^/member, role: ROLE_MEMBER } #attention, il faut promovoir les users
+        - { path: ^/editor, role: ROLE_EDITOR }
+        - { path: ^/expert, role: ROLE_EXPERT }
         - { path: ^/admin, role: ROLE_ADMIN }
+
         - { path: ^/censorship, role: ROLE_USER }
         - { path: ^/mood, role: ROLE_USER }
         - { path: ^/exoticism, role: ROLE_USER }

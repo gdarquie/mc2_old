@@ -100,33 +100,6 @@ class FilmController extends Controller
 
     }
 
-    /**
-     * @Route("/films", name = "films")
-     */
-    public function showAllAction(){
-
-        $em = $this->getDoctrine()->getManager();
-        $films = $em->getRepository('AppBundle:Film')->findAll();
-
-
-        $query = $em->createQuery('SELECT f FROM AppBundle:Film f WHERE f.studio IS NOT NULL ORDER BY f.studio ASC');
-        $filmsByStudio = $query->getResult();
-
-        $query = $em->createQuery('SELECT f.title as title, f.idImdb as imdb, COUNT(f.title) as nb FROM AppBundle:Film f GROUP BY f.idImdb ORDER BY nb DESC')->setMaxResults(9);
-        $filmsImdb = $query->getResult();
-
-
-        $query = $em->createQuery('SELECT f.title as title FROM AppBundle:Film f GROUP BY f.idImdb HAVING COUNT(f) > 1');
-        $filmsDuplicate = $query->getResult();
-
-        return $this->render('AppBundle:film:films.html.twig',array(
-            'films' => $films,
-            'filmsByStudio' => $filmsByStudio,
-            'filmsImdb' => $filmsImdb,
-            'filmsDuplicate' => $filmsDuplicate
-        ));
-    }
-
 
     /**
      * @Route("films/avgMovie", name = "avgMovie")

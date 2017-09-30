@@ -171,6 +171,15 @@ class Censorship
         $this->last_update = $last_update;
     }
 
+    public function addEditors(User $user)
+    {
+        if ($this->editors->contains($user)) {
+            return;
+        }
+
+        $this->editors[] = $user;
+    }
+
     /**
      * @return mixed
      */

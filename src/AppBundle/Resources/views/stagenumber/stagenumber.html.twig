@@ -10,13 +10,12 @@
         <h1>{{ stagenumber.title }}</h1>
 
         <p>{{ stagenumber.order }}</p>
-        <p>{{ stagenumber.type }}</p>
-        <p>musicals : {% for item in stagenumber.musicals  %}{{ item.title }}{% endfor %}</p>
+        <p>musicals : {% for item in stagenumber.musicalThesaurus  %}{{ item.title }}{% endfor %}</p>
         <p>dancing type : {% for item in stagenumber.dancingType  %}{{ item.title }}{% endfor %}</p>
         <p>dance subgenre : {% for item in stagenumber.danceSubgenre  %}{{ item.title }}{% endfor %}</p>
         <p>dance content : {% for item in stagenumber.danceContent  %}{{ item.title }}{% endfor %}</p>
         <p>genre : {% for item in stagenumber.genre  %}{{ item.title }}{% endfor %}</p>
-        <p>Mood : {% for item in stagenumber.mood  %}{{ item.title }}{% endfor %}</p>
+        <p>Mood : {% for item in stagenumber.generalMood  %}{{ item.title }}{% endfor %}</p>
         <p>characters: {% for item in stagenumber.characters  %}{{ item.title }}{% endfor %}</p>
         <p>ibdb : {% for item in stagenumber.ibdb  %}{{ item.title }}{% endfor %}</p>
         <p>setting : {% for item in stagenumber.setting  %}{{ item.title }}{% endfor %}</p>

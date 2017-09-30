@@ -12,10 +12,20 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class State
 {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="state_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $stateId;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @ORM\Column(name="title", type="string", length=255, unique=true)
      */
     private $title;
 
@@ -29,18 +39,10 @@ class State
     /**
      * @var float
      *
-     * @ORM\Column(name="long", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="lon", type="float", precision=10, scale=0, nullable=true)
      */
     private $long;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="state_id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $stateId;
 
     /**
      * @var \Doctrine\Common\Collections\Collection

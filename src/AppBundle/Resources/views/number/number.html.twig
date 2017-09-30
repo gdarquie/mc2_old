@@ -23,23 +23,6 @@
 
 {% block body %}
 
-
-    {#Liste des éléments à supprimer dans la BD
-
-    - begin
-    - ending
-    - performance type
-    - spectators
-    - Dancing type
-
-    #}
-
-    {#
-        - rendre les items de la page cliquable à partir de completeness (sauf données numériques) (vers une page listant tous les films et tous les numbers)
-        - faire apparaitre les paroles de la chanson
-        - faire apparaitre l'image du number (en haut à gauche par exemple)
-    #}
-
     <section class="container" id="number">
 
         <div class="row">
@@ -67,14 +50,13 @@
                         <th>Shots</th>
                         <th>Average shot length</th>
                     </tr>
-
                     <tr>
                         <td>{{ ((number.beginTc)/(60*60))|round(0, 'floor') }}h{{ ((number.beginTc)/(60)) |round(0, 'floor')-(60*((number.beginTc)/(60*60)) |round(0, 'floor'))  }}m{{ (number.beginTc) |round(0, 'floor')-(60*((number.beginTc)/(60)) |round(0, 'floor')) }}s</td>
                         <td>{{ ((number.EndTc)/(60*60))|round(0, 'floor') }}h{{ ((number.EndTc)/(60)) |round(0, 'floor')-(60*((number.EndTc)/(60*60)) |round(0, 'floor'))  }}m{{ (number.EndTc) |round(0, 'floor')-(60*((number.EndTc)/(60)) |round(0, 'floor')) }}s</td>
                         <td>{{ number.beginThesaurus  }}</td>
                         <td>{{ number.endingThesaurus  }}</td>
                         {#<td>{{ number.commentTc }}</td>#}
-                        <td>{{ number.completenessThesaurus }}</td>
+                        <td><a href="{{ path('thesaurus_element', {'id': number.completenessThesaurus.id }) }}">{{ number.completenessThesaurus }}</a></td>
                         <td>{% for completoption in number.completoptions %}{{ completoption }}{% endfor %}</td>
                         <td>{{ number.structure }}</td>
                         <td>{{ number.shots }}</td>
@@ -276,39 +258,8 @@
             </div>
         </div>
 
-        {#faire apparaitre ces parties si user#}
-        {#<div class="row">#}
-            {#<div class="col s12">#}
-                {#<h2>Complement</h2>#}
-
-                {#<table class="striped middle-table">#}
-                    {#<tr>#}
-                        {#<th>Director</th>#}
-                        {#<th>Cost</th>#}
-                        {#<th>Cost comments</th>#}
-                    {#</tr>#}
-                    {#<tr>#}
-                        {#<td>{% for person in number.director %}{{ person }}{% if loop|last %}{% else %}, {% endif %}{% endfor %}</td>#}
-                        {#<td>{%  if number.cost == 0 %}{% else %}{{ number.cost }}{%  endif %}</td>#}
-                        {#<td>{{ number.costComment }}</td>#}
-
-                    {#</tr>#}
-                {#</table>#}
-
-            {#</div>#}
-        {#</div>#}
-
-        {#<div class="row">#}
-            {#<div class="col s12">#}
-                {#<h2>Lyrics</h2>#}
-                {#<p>{{ number.lyrics }}</p>#}
-            {#</div>#}
-        {#</div>#}
-
-
         </section>
 
-        {#If admin : une page décrivant l'état #}
 
 
 

@@ -19,7 +19,7 @@ use AppBundle\Form\FilmType;
 class FilmController extends Controller
 {
     /**
-     * @Route("/editor/film/add/new", name="editorNewFilm")
+     * @Route("/member/film/add/new", name="editorNewFilm")
      */
     public function addAction(Request $request){
 
@@ -50,7 +50,7 @@ class FilmController extends Controller
 
 
     /**
-     * @Route("/editor/film/id/{filmId}/edit" , name = "film_edit")
+     * @Route("/member/film/id/{filmId}/edit" , name = "film_edit")
      */
     public function filmEditAction(Request $request, $filmId){
 
@@ -85,7 +85,7 @@ class FilmController extends Controller
     /**
      * Effacer un item
      *
-     * @Route("editor/film/id/{id}/delete", name="film_delete")
+     * @Route("admin/film/id/{id}/delete", name="film_delete")
      * @Method({"DELETE","GET"})
      */
     public function deleteAction(Film $item)
@@ -116,7 +116,7 @@ class FilmController extends Controller
         $em->flush();
 
         $this->addFlash('success', 'Deleted Successfully!');
-        return $this->redirectToRoute('admin');
+        return $this->redirectToRoute('films');
     }
 
 

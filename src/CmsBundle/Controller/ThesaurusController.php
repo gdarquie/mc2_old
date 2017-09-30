@@ -110,33 +110,59 @@ class ThesaurusController extends Controller
         $myGet = "get".ucfirst($code);
         $myGet = preg_replace('#_#','', $myGet);
 
+        $mySet = "set".ucfirst($code);
+        $mySet = preg_replace('#_#','', $mySet);
+
 
         //pb quand ce sont des many to one je crois
 
 
         if($code == "adaptation"){
 
-            //Select tous les numbers avec ce type
+            //Select tous les films avec ce type
             $query = $em->createQuery('SELECT f FROM AppBundle:Film f JOIN f.'.$code.' t WHERE t.id = :id');
             $query->setParameter('id', $id);
             $films = $query->getResult();
 
             foreach ($films as $film){
-                dump($film->$myGet());die;
-                $film->$myGet()->removeElement($thesaurus);
+                $film->$mySet(NULL);
             }
         }
 
         else{
+
+            if($code == 'costumes' OR $code == "dancemble" OR $code == "dancing_type" OR $code == "genre" OR $code == "musensemble" OR $code == "musical_thesaurus" ){
+
+                $query = $em->createQuery('SELECT n FROM AppBundle:Stagenumber n JOIN n.'.$code.' t WHERE t.id = :id');
+                $query->setParameter('id', $id);
+                $stagenumbers = $query->getResult();
+
+                foreach ($stagenumbers as $number){
+                    $number->$myGet()->removeElement($thesaurus);
+
+                }
+            }
+
 
             //Select tous les numbers avec ce type
             $query = $em->createQuery('SELECT n FROM AppBundle:Number n JOIN n.'.$code.' t WHERE t.id = :id');
             $query->setParameter('id', $id);
             $numbers = $query->getResult();
 
-            foreach ($numbers as $number){
-                $number->$myGet()->removeElement($thesaurus);
+            //suppression des many to one
+            if($code == "tempo_thesaurus" OR $code == "cast" OR $code =="diegetic_thesaurus" OR $code == "begin_thesaurus" OR $code == "ending_thesaurus" OR $code =="musician_thesaurus" OR $code == "completeness_thesaurus" OR $code == "performance_thesaurus" OR $code == "songtype" OR $code == "structure" OR $code == "spectators_thesaurus"){
+
+                foreach ($numbers as $number){
+                    $number->$mySet(NULL);
+                }
             }
+            //suppression des many to many
+            else{
+                foreach ($numbers as $number){
+                    $number->$myGet()->removeElement($thesaurus);
+                }
+            }
+
         }
 
 

@@ -26,28 +26,28 @@
                     <span class="sort chip pointer" data-sort="title">title</span>
                     <span class="sort chip pointer" data-sort="film">film</span>
                     <span class="sort chip pointer" data-sort="timestamp">last edition</span>
-                    <span class="sort chip pointer" data-sort="check">status</span>
+                    {#<span class="sort chip pointer" data-sort="check">status</span>#}
                 </div>
 
-                <div class="col">
-                    Filter:
-                    <span class="sort chip pointer" data-filter="title">title</span>
-                    <span class="sort chip pointer" data-filter="timecode">timecode</span>
-                    <span class="sort chip pointer" data-check-completeness="shots">shots</span>
-                    <span class="sort chip pointer" data-check-completeness="structure">structure</span>
-                    <span class="sort chip pointer" data-check-completeness="performance">performance</span>
-                    <span class="sort chip pointer" data-check-completeness="backstage">backstage</span>
-                    <span class="sort chip pointer" data-check-completeness="theme">theme</span>
-                    <span class="sort chip pointer" data-check-completeness="mood">mood</span>
-                    <span class="sort chip pointer" data-check-completeness="music">music</span>
-                    <span class="sort chip pointer" data-check-completeness="reference">reference</span>
-                    <span class="sort chip pointer" data-check-completeness="all">all</span>
-                </div>
+                {#<div class="col">#}
+                    {#Filter:#}
+                    {#<span class="sort chip pointer" data-filter="title">title</span>#}
+                    {#<span class="sort chip pointer" data-filter="timecode">timecode</span>#}
+                    {#<span class="sort chip pointer" data-check-completeness="shots">shots</span>#}
+                    {#<span class="sort chip pointer" data-check-completeness="structure">structure</span>#}
+                    {#<span class="sort chip pointer" data-check-completeness="performance">performance</span>#}
+                    {#<span class="sort chip pointer" data-check-completeness="backstage">backstage</span>#}
+                    {#<span class="sort chip pointer" data-check-completeness="theme">theme</span>#}
+                    {#<span class="sort chip pointer" data-check-completeness="mood">mood</span>#}
+                    {#<span class="sort chip pointer" data-check-completeness="music">music</span>#}
+                    {#<span class="sort chip pointer" data-check-completeness="reference">reference</span>#}
+                    {#<span class="sort chip pointer" data-check-completeness="all">all</span>#}
+                {#</div>#}
             </div>
 
             <ul class="list collection number-list">
                 {% for number in help  %}
-                {% include 'CmsBundle:Editor:Modals/_number.html.twig' %}
+                {% include 'CmsBundle:Member:Modals/_number.html.twig' %}
                 {% endfor %}
             </ul>
 

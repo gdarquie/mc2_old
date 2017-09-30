@@ -9,7 +9,6 @@
     <link href="{{asset('css/film.css')}}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
-
 {% block body %}
 
     <section class='container' id='film'>
@@ -182,7 +181,7 @@
                                 </div>
                             </article>
 
-                            <article class="card light-green col s12 m6">
+                            <article class="card pink darken-4 col s12 m6">
                                 <div class="card-content white-text center-align">
                                     <p class="center-align number">{{((film.length)/60)|round}} min</p>
                                     <p class="center-align number-label">Movie Length</p>
@@ -205,7 +204,7 @@
                                 </div>
                             </article>
 
-                            <article class="card red accent-2 col s12 m6">
+                            <article class="card green darken-3 col s12 m6">
                                 <div class="card-content white-text center-align">
                                     <p class="center-align number">{{film.length}} sec</p>
                                     <p class="center-align number-label">Movie Length</p>
@@ -231,7 +230,7 @@
                         </div>
 
                         <div class="row">
-                            <article class="card  deep-orange col s12 m6">
+                            <article class="card blue darken-4 col s12 m6">
                                 <div class="card-content white-text center-align">
                                     <p class="center-align number">{% for number in numberAverageLength %}{{number.average|round}} sec{% endfor %}</p>
                                     <p class="center-align number-label">Average number length for {{film.title}}</p>

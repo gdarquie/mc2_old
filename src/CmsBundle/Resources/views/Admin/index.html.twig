@@ -62,20 +62,28 @@
 
                     <li class="collection-item"><div><a href="{{ path('films') }}">Films</a><a href="{{ path('editorNewFilm') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
 
-                    <li class="collection-item"><div><a href="{{ path('persons') }}">Persons</a><a href="#!" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+                    <li class="collection-item"><div><a href="{{ path('persons') }}">Persons</a><a href="{{ path('editorNewPerson') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
 
-                    <li class="collection-item"><div><a href="{{ path('thesaurus') }}">Thesaurus</a><a href="#!" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+                    <li class="collection-item"><div><a href="{{ path('admin_studio_index') }}">Studios</a><a href="{{ path('admin_studio_new') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
 
-                    <li class="collection-item"><div><a href="{{ path('songs') }}">Songs</a><a href="#!" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+                    <li class="collection-item"><div><a href="{{ path('admin_distributor_index')}}">Distributors</a><a href="{{ path('admin_distributor_new') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+
+                    <li class="collection-item"><div><a href="{{ path('songs') }}">Songs</a><a href="{{ path('editorNewSong') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+
 
                     <li class="collection-item"><div><a href="{{ path('stageshows') }}">Stage Shows</a><a href="{{ path('stageshow_new') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
 
-                    {#<li class="collection-item"><div><a href="{{ path('censorship') }}">Censorships</a></div></li>#}
+                    <li class="collection-item"><div><a href="{{ path('stagenumbers') }}">Stage Numbers</a></div></li>
 
-                    <li class="collection-item"><div><a href="{{ path('stageshows') }}">Thesaurus types</a></div></li>
-                    <li class="collection-item"><div><a href="{{ path('admin_studio_index') }}">Studios<a href="#!" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+                    <li class="collection-item"><div><a href="{{ path('thesaurus') }}">Thesaurus</a></div></li>
 
-                    <li class="collection-item"><div><a href="{{ path('admin_distributor_index')}}">Distributors</a><a href="{{ path('admin_distributor_new') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+
+                    <li class="collection-item"><div><a href="{{ path('admin_code_index') }}">Thesaurus types</a></div></li>
+
+                    <!-- voir ensuite -->
+                    <li class="collection-item"><div><a href="{{ path('admin_censorship_index') }}">Censorships</a><a href="{{ path('admin_censorship_new') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
+
+                    <li class="collection-item"><div><a href="{{ path('admin_state_index') }}">States</a><a href="{{ path('admin_state_new') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
 
 
                 </ul>
@@ -103,106 +111,7 @@
 
 
 
-                <div class="col s10 tab" id="other">
 
-                    {#<article>#}
-                        {#<iframe src="http://54.93.50.108:5601/app/kibana#/dashboard/f8b20cd0-67d6-11e7-8385-0bb2de6337bd?embed=true&_g=()&_a=(description:'',filters:!(),options:(darkTheme:!f),panels:!((col:1,id:e4ccd1a0-67d6-11e7-8385-0bb2de6337bd,panelIndex:1,row:1,size_x:6,size_y:3,type:visualization),(col:7,id:abff6a60-67d4-11e7-8385-0bb2de6337bd,panelIndex:2,row:1,size_x:6,size_y:3,type:visualization)),query:(query_string:(analyze_wildcard:!t,query:'*')),timeRestore:!f,title:monitoring-test,uiState:(P-1:(vis:(params:(sort:(columnIndex:!n,direction:!n)))),P-2:(vis:(params:(sort:(columnIndex:3,direction:desc))))),viewMode:view)" height="600" width="800"></iframe>#}
-                    {#</article>#}
-                    <article>
-                        <h2>Count of new numbers by day</h2>
-
-                        <div id="chart_div">
-
-                        </div>
-
-                        {#<table class="striped">#}
-                        {#<tr>#}
-                        {#<td>Count</td>#}
-                        {#<td>Date</td>#}
-                        {#</tr>#}
-                        {#{% for number in numberByMonth %}#}
-                        {#<tr>#}
-                        {#<td>{{ number.nb }}</td>#}
-                        {#<td>{{ number.day }} - {{ number.month }} - {{ number.year }}</td>#}
-                        {#</tr>#}
-                        {#{% endfor %}#}
-                        {#</table>#}
-                    </article>
-
-
-                    {#<svg width="960" height="500"></svg>#}
-
-                    <article>
-                        <h2>All users</h2>
-                        <table class="striped tablesorter">
-                            <thead>
-                            <tr>
-                                <th>Username</th>
-                                <th>email</th>
-                                <th>enabled</th>
-                                <th>role</th>
-                                <th>last login</th>
-                                <th>promote</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {%  for user in users %}
-                                <tr>
-                                    <td>{{ user.username }}</td>
-                                    <td>{{ user.email }}</td>
-                                    <td>{{ user.enabled }}</td>
-                                    <td>
-                                        {% for role in user.roles %}
-                                            {{ role }}{% if loop|last %}{% else %},{% endif %}
-                                        {% endfor %}
-                                    </td>
-                                    <td>
-                                        {{ user.lastLogin|date() }}
-                                    </td>
-                                    <td><a href="">promote</a> (soon)</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </article>
-
-                    <article>
-                        <h2>Numbers by editor</h2>
-
-                        <table class="striped">
-                            <tr>
-                                <th>Username</th>
-                                <th>Count</th>
-                            </tr>
-                            {%  for number in numbersByEditor %}
-                                <tr>
-                                    <td>{{  number.name }}</td>
-                                    <td>{{ number.nb }}</td>
-                                </tr>
-                            {% endfor %}
-                        </table>
-                    </article>
-
-                    <article>
-                        <h2>Last numbers</h2>
-                        <table class="striped">
-                            {% for number in lastnumbers %}
-                                <tr>
-                                    <td>{{ number.title }}</td>
-                                    <td>{{ number.lastUpdate | date() }}</td>
-                                    {#<td>{{ number.editors.username }}</td>#}
-                                </tr>
-                            {% endfor %}
-                        </table>
-                    </article>
-
-                    <article>
-                        <h2>Numbers waiting for validation</h2>
-                        <p>[in progress]</p>
-                    </article>
-
-
-                </div>
 
             </section>
         </div>

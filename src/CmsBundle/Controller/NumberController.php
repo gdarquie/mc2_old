@@ -15,7 +15,7 @@ class NumberController extends Controller
 //Number (add a number for a pre-existing film)
 
     /**
-     * @Route("/editor/film/id/{filmId}/number/new" , name = "number_new")
+     * @Route("/member/film/id/{filmId}/number/new" , name = "number_new")
      */
     public function numberNewAction(Request $request, $filmId)
     {
@@ -66,7 +66,7 @@ class NumberController extends Controller
     }
 
     /**
-     * @Route("/editor/number/id/{id}/edit" , name = "number_edit")
+     * @Route("/member/number/id/{id}/edit" , name = "number_edit")
      */
     public function numberEditAction(Request $request, $id){
 
@@ -140,7 +140,7 @@ class NumberController extends Controller
     /**
      * Fonction pour effacer via ajax un number
      *
-     * @Route("number/delete/{numberId}", name="number_ajax_delete")
+     * @Route("member/delete/{numberId}", name="number_ajax_delete")
      * @Method("DELETE")
      */
     public function deleteAjaxAction($numberId)
@@ -166,7 +166,7 @@ class NumberController extends Controller
     /**
      * Effacer un item
      *
-     * @Route("number/{id}/delete", name="number_delete")
+     * @Route("admin/{id}/delete", name="number_delete")
      * @Method({"DELETE","GET"})
      */
     public function deleteAction(Number $number)
@@ -183,7 +183,7 @@ class NumberController extends Controller
         $em->flush();
 
         $this->addFlash('success', 'Deleted Successfully!');
-        return $this->redirectToRoute('admin');
+        return $this->redirectToRoute('numbers');
     }
 
     /**

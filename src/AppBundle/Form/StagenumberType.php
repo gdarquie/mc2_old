@@ -44,8 +44,8 @@ class StagenumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCode("musical styles");
-                }//il faudra ne prendre que ceux de type music
+                    return $repo->findAllThesaurusByCode("musical_thesaurus");
+                }
             ))
 
             ->add('dancemble', EntityType::class, array(
@@ -61,7 +61,7 @@ class StagenumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCodeAndCategory("dance", "Dancing type");
+                    return $repo->findAllThesaurusByCode("dancing_type");
                 }
             ))
             ->add('danceSubgenre', EntityType::class, array(
@@ -69,7 +69,7 @@ class StagenumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCodeAndCategory("dance", "Dance sub-genre");
+                    return $repo->findAllThesaurusByCode("dance_subgenre");
                 }
             ))
             ->add('danceContent', EntityType::class, array(
@@ -77,7 +77,7 @@ class StagenumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCodeAndCategory("dance", "Dance content");
+                    return $repo->findAllThesaurusByCode("dance_content");
                 }
             ))
             ->add('general_mood', EntityType::class, array(
@@ -85,7 +85,7 @@ class StagenumberType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCodeAndCategory("mood", "general");
+                    return $repo->findAllThesaurusByCode("general_mood");
                 }// diviser par type ensuite
             ))
             ->add('genre', EntityType::class, array(
@@ -93,7 +93,7 @@ class StagenumberType extends AbstractType
                 'class' => 'AppBundle:Thesaurus',
                 'choice_label' => 'title', //order by alpha
                 'query_builder' => function(ThesaurusRepository $repo) {
-                    return $repo->findAllThesaurusByCodeAndCategory("mood", "genre");
+                    return $repo->findAllThesaurusByCode("genre");
                 }// diviser par type ensuite
             ))
 

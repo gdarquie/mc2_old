@@ -83,7 +83,7 @@ class StageshowController extends Controller
     /**
      * Effacer un item
      *
-     * @Route("editor/stageshow/id/{id}/delete", name="stageshow_delete")
+     * @Route("admin/stageshow/id/{id}/delete", name="stageshow_delete")
      * @Method({"DELETE","GET"})
      */
     public function deleteAction(Stageshow $item)
@@ -115,7 +115,7 @@ class StageshowController extends Controller
         $em->flush();
 
         $this->addFlash('success', 'Deleted Successfully!');
-        return $this->redirectToRoute('admin');
+        return $this->redirectToRoute('stageshows');
     }
 
 }

@@ -478,7 +478,6 @@ class NumberType extends AbstractType
                 'choice_label' => 'title',
                 'query_builder' => function(StagenumberRepository $repo) {
                     return $repo->createAlphabeticalQueryBuilder();
-                    //return $repo->findAllOrderdByTitleWhereSelected();
                 },
             ))
 
