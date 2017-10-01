@@ -10,7 +10,7 @@
                 <th>Username</th>
                 <th>Email</th>
                 <th>Role</th>
-                <th>Enabled</th>
+                {#<th>Enabled</th>#}
                 <th>Last login</th>
                 <th>Edit</th>
             </tr>
@@ -25,7 +25,7 @@
                             {{ role }}{% if loop|last %}{% else %},{% endif %}
                         {% endfor %}
                     </td>
-                    <td>{{ user.enabled }}</td>
+                    {#<td>{{ user.enabled }}</td>#}
                     <td>
                         {{ user.lastLogin|date() }}
                     </td>

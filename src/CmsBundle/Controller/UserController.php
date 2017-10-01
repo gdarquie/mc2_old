@@ -37,7 +37,7 @@ class UserController extends Controller
         }
 
 
-        return $this->render('user/edit.html.twig', array(
+        return $this->render('CmsBundle:User:edit.html.twig', array(
             'user' => $user,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
