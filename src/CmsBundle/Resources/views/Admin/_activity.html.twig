@@ -118,6 +118,60 @@
             </article>
         </li>
 
+        <!-- Persons Management -->
+        <li>
+            <div class="collapsible-header"><i class="material-icons">whatshot</i>Last persons</div>
+            <article class="card collapsible-body">
+
+                <table class="responsive-table mini-table striped">
+                    <tr>
+                        <th>Name</th>
+                        <th>Last Update</th>
+                        <th>Editor(s)</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for item in lastpersons  %}
+                        <tr>
+                            <td><a href="{{ path('person' , {'personId' : item.personId}) }}">{{ item.name }}</a></td>
+                            <td>{{ item.lastUpdate | date() }}</td>
+                            <td>
+                                {% for editor in item.editors  %}
+                                    {{ editor.username }} {% if loop.last %}{% else %} ;{% endif %}
+                                {% endfor %}
+                            </td>
+                            <td><a href="{{ path('person_edit' , {'personId' : item.personId}) }}"><i class="material-icons tiny">mode_edit</i></a></td>
+                            <td><a href="#persons{{ item.personId }}" class="modal-trigger"><i class="material-icons tiny red-text text-darken-2">delete_forever</i></a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+
+                <!-- Modal for 1 person -->
+
+                {% for item in lastpersons  %}
+
+                    <!-- Modal Structure -->
+                    <div id="persons{{ item.personId }}" class="modal">
+                        <div class="modal-content">
+                            <h3 class="uk-modal-title">Delete this item?</h3>
+                            <p>
+                                Are you sure you want to delete  '<b>{{ item.name }}</b>'?<br/>
+                                This cannot be undone.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                            <a href="{{ path('person_delete', { id : item.personId}) }}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <p class="center"><a href="{{ path('thesaurus') }}">Thesaurus home</a></p>
+            </article>
+        </li>
+
+
         <!-- Thesaurus Management -->
         <li>
             <div class="collapsible-header"><i class="material-icons">whatshot</i>Last thesaurus</div>

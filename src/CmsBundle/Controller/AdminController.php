@@ -81,12 +81,19 @@ class AdminController extends Controller
         $query->setMaxResults($max);
         $lastCensorhsip = $query->getResult();
 
-        //Thésaurus (voir si pas spécial)
+        //Thésaurus
         $query = $em->createQuery(
             'SELECT t FROM AppBundle:Thesaurus t ORDER by t.title ASC '
         );
         $query->setMaxResults($max);
         $lastThesaurus = $query->getResult();
+
+        $query = $em->createQuery(
+            'SELECT t FROM AppBundle:Person t ORDER by t.name ASC '
+        );
+        $query->setMaxResults($max);
+        $lastpersons = $query->getResult();
+
 
         //number by month
         $query = $em->createQuery(
@@ -109,7 +116,8 @@ class AdminController extends Controller
             'laststageshows' => $lastStageshows,
             'laststagenumbers' => $lastStagenumbers,
             'lastcensorhsip' => $lastCensorhsip,
-            'lastthesaurus' => $lastThesaurus
+            'lastthesaurus' => $lastThesaurus,
+            'lastpersons' => $lastpersons
         ));
     }
 
