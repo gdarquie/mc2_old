@@ -19,7 +19,7 @@ use AppBundle\Form\FilmType;
 class FilmController extends Controller
 {
     /**
-     * @Route("/member/film/add/new", name="editorNewFilm")
+     * @Route("/expert/film/add/new", name="editorNewFilm")
      */
     public function addAction(Request $request){
 
@@ -50,7 +50,7 @@ class FilmController extends Controller
 
 
     /**
-     * @Route("/member/film/id/{filmId}/edit" , name = "film_edit")
+     * @Route("/expert/film/id/{filmId}/edit" , name = "film_edit")
      */
     public function filmEditAction(Request $request, $filmId){
 

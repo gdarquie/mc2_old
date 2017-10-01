@@ -1,75 +1,77 @@
+<div class="row">
 
-<ul id="menu_admin" class="side-nav fixed collection">
+    <div class="col s3" id="menu_admin">
 
-    <li class="collection-item avatar">
-        <span data-display="title"><i class="material-icons circle">movie</i>Title</span>
-    </li>
-    <li class="collection-item avatar">
-        <span data-display="director"><i class="material-icons circle">movie</i>Director</span>
-    </li>
-    <li class="collection-item avatar">
-        <span data-display="outlines"><i class="material-icons circle">movie</i>Outlines</span>
-    </li>
-    <li class="collection-item avatar">
-        <span data-display="structure"><i class="material-icons circle">movie</i>Structure</span>
-    </li>
-    <li class="collection-item avatar">
-        <span data-display="shots"><i class="material-icons circle">movie</i>Shots</span>
-    </li>
-    <li class="collection-item avatar">
-        <span data-display="performers"><i class="material-icons circle">movie</i>Performers</span>
-    </li>
-    <li class="collection-item avatar">
-        <span data-display="backstage"><i class="material-icons circle">movie</i>Backstage</span>
-    </li>
-    <li class="collection-item avatar">
-        <span data-display="themes"><i class="material-icons circle">movie</i>Themes</span>
-    </li>
-    <li class="collection-item avatar">
-        <span data-display="tone"><i class="material-icons circle">movie</i>Tone</span>
-    </li>
-    <li class="collection-item avatar">
-        <span data-display="dance"><i class="material-icons circle">movie</i>Dance</span>
-    </li>
-    <li class="collection-item avatar">
-        <span data-display="music"><i class="material-icons circle">movie</i>Music</span>
-    </li>
-    <li class="collection-item avatar">
-        <span data-display="source"><i class="material-icons circle">movie</i>Source(s)</span>
-    </li>
-    <li class="collection-item avatar">
-        <span data-display="complement"><i class="material-icons circle">movie</i>Complement</span>
-    </li>
+        <ul class="collection">
 
+            <li class="collection-item">
+                <span data-display="title">Title</span>
+            </li>
+            <li class="collection-item">
+                <span data-display="director">Director</span>
+            </li>
+            <li class="collection-item">
+                <span data-display="outlines">Outlines</span>
+            </li>
+            <li class="collection-item">
+                <span data-display="structure">Structure</span>
+            </li>
+            <li class="collection-item">
+                <span data-display="shots">Shots</span>
+            </li>
+            <li class="collection-item">
+                <span data-display="performers">Performers</span>
+            </li>
+            <li class="collection-item">
+                <span data-display="backstage">Backstage</span>
+            </li>
+            <li class="collection-item">
+                <span data-display="themes">Themes</span>
+            </li>
+            <li class="collection-item">
+                <span data-display="tone">Tone</span>
+            </li>
+            <li class="collection-item">
+                <span data-display="dance">Dance</span>
+            </li>
+            <li class="collection-item">
+                <span data-display="music">Music</span>
+            </li>
+            <li class="collection-item">
+                <span data-display="source">Source(s)</span>
+            </li>
+            <li class="collection-item">
+                <span data-display="complement">Complement</span>
+            </li>
 
-</ul>
+        </ul>
 
+    </div>
 
-<div class="main number-title">
+    <div class="col s9">
+        <div class="main number-title">
 
-    <h1 class="center">{% if number is defined %}{{number.title}} ({{ number.film }}){% else %}Add a new number{% endif %}</h1>
+            <h1 class="center">{% if number is defined %}{{number.title}} ({{ number.film }}){% else %}Add a new number{% endif %}</h1>
+
+        </div>
+
+        {% include 'CmsBundle:Number:tabs/_title.html.twig' %}
+        {% include 'CmsBundle:Number:tabs/_director.html.twig' %}
+        {% include 'CmsBundle:Number:tabs/_outlines.html.twig' %}
+        {% include 'CmsBundle:Number:tabs/_structure.html.twig' %}
+        {% include 'CmsBundle:Number:tabs/_shots.html.twig' %}
+        {% include 'CmsBundle:Number:tabs/_performers.html.twig' %}
+        {% include 'CmsBundle:Number:tabs/_backstage.html.twig' %}
+        {% include 'CmsBundle:Number:tabs/_themes.html.twig' %}
+        {% include 'CmsBundle:Number:tabs/_tone.html.twig' %}
+        {% include 'CmsBundle:Number:tabs/_dance.html.twig' %}
+        {% include 'CmsBundle:Number:tabs/_music.html.twig' %}
+        {% include 'CmsBundle:Number:tabs/_source.html.twig' %}
+        {% include 'CmsBundle:Number:tabs/_complement.html.twig' %}
+
+    </div>
 
 </div>
-
-{% include 'CmsBundle:Number:tabs/_title.html.twig' %}
-{% include 'CmsBundle:Number:tabs/_director.html.twig' %}
-{% include 'CmsBundle:Number:tabs/_outlines.html.twig' %}
-{% include 'CmsBundle:Number:tabs/_structure.html.twig' %}
-{% include 'CmsBundle:Number:tabs/_shots.html.twig' %}
-{% include 'CmsBundle:Number:tabs/_performers.html.twig' %}
-{% include 'CmsBundle:Number:tabs/_backstage.html.twig' %}
-{% include 'CmsBundle:Number:tabs/_themes.html.twig' %}
-{% include 'CmsBundle:Number:tabs/_tone.html.twig' %}
-{% include 'CmsBundle:Number:tabs/_dance.html.twig' %}
-{% include 'CmsBundle:Number:tabs/_music.html.twig' %}
-{% include 'CmsBundle:Number:tabs/_source.html.twig' %}
-{% include 'CmsBundle:Number:tabs/_complement.html.twig' %}
-
-
-
-
-
-
 
 
 

@@ -4,6 +4,7 @@ namespace CmsBundle\Controller;
 
 use AppBundle\Entity\Number;
 use AppBundle\Form\NumberType;
+use AppBundle\Form\EditorNumberType;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -89,7 +90,12 @@ class NumberController extends Controller
         $validationReference = $number->getValidationReference();
         $validationCost = $number->getValidationCost();
 
-        $form = $this->createForm(NumberType::class, $number);
+        if($this->isGranted('ROLE_EDITOR')){
+            $form = $this->createForm(EditorNumberType::class, $number);
+        }
+        else{
+            $form = $this->createForm(NumberType::class, $number);
+        }
 
         $form->handleRequest($request);
 
@@ -108,7 +114,9 @@ class NumberController extends Controller
             $now = new \DateTime();
             $number->setLastUpdate($now);
 
-            $this->validate($number, $user);
+            if($this->isGranted('ROLE_EDITOR')){
+                $this->validate($number, $user);
+            }
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($number);

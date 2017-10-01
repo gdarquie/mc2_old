@@ -42,6 +42,15 @@
             text-transform: uppercase;
         }
 
+        #chart_div{
+            width : 600px;
+        }
+
+        .option{
+            font-size:0.6em;
+            vertical-align: top;
+        }
+
     </style>
 {% endblock %}
 
@@ -75,7 +84,7 @@
 
                     <li class="collection-item"><div><a href="{{ path('stagenumbers') }}">Stage Numbers</a></div></li>
 
-                    <li class="collection-item"><div><a href="{{ path('thesaurus') }}">Thesaurus</a></div></li>
+                    <li class="collection-item"><div><a href="{{ path('thesaurus') }}">Thesaurus</a><a href="{{ path('newThesaurus') }}" class="secondary-content"><i class="material-icons">add</i></a></div></li>
 
 
                     <li class="collection-item"><div><a href="{{ path('admin_code_index') }}">Thesaurus types</a></div></li>
@@ -165,7 +174,9 @@
 
             var options = {
                 title: 'New numbers by day',
-                legend: { position: 'bottom' }
+                legend: { position: 'bottom' },
+                width : 1000,
+                height : 550
             };
 
 

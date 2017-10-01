@@ -20,7 +20,7 @@ use AppBundle\Form\PersonType;
 class PersonController extends Controller
 {
     /**
-     * @Route("/member/person/add/new", name="editorNewPerson")
+     * @Route("/expert/person/add/new", name="editorNewPerson")
      */
     public function addAction(Request $request)
     {
@@ -56,7 +56,7 @@ class PersonController extends Controller
 
 
     /**
-     * @Route("/member/person/id/{personId}/edit" , name = "person_edit")
+     * @Route("/expert/person/id/{personId}/edit" , name = "person_edit")
      */
     public function personEditAction(Request $request, $personId)
     {

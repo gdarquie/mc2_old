@@ -14,11 +14,16 @@
 
 <div id="outlines" class="row container main">
 
-    <div class="color-cartouche row">
+    {% if ( validationTc |length < 2 or is_granted('ROLE_EDITOR')) %}
+    <article class="col s12">
+    {% else %}
+    <article class="col s12 hide">
+    {% endif %}
 
-        <article class="col s12">
+        <h3>Outlines</h3>
 
-            <h3>Outlines</h3>
+        <div class="color-cartouche row">
+
 
             <div id="tc_widget_beginTc" class="row">
                 <div class="col s3">
@@ -54,6 +59,7 @@
                 </div>
             </div>
 
+
             {{form_row(numberForm.beginThesaurus,{
                 'label' : "Begin (from thesaurus) (1 choice) (mandatory)"
             })}}
@@ -76,39 +82,48 @@
             {{ form_label(numberForm.completeTc, "Completed?") }}
             {{ form_errors(numberForm.completeTc) }}
 
-        </article>
-    </div>
-
-    <div class="color-cartouche">
-
-        {%  if validationTc is defined %}
-            {% for item in validationTc  %}
-                <div class="chip js-outlines-validation-item">
-                    {{  item.title }} by {{ item.user }}, {{ item.dateCreation|date() }}
-                    <a href="" class="js-remove-outlines-validation">
-                        {#<i class="material-icons black-text" >delete</i>#}
-                        <i class="close material-icons black-text">close</i>
-                    </a>
-                </div>
-            {% endfor %}
-        {% endif %}
+        </div>
 
         {% if is_granted('ROLE_EDITOR') %}
 
-            <div class="row js-outlines-validation-wrapper" data-prototype="{{ formMacros.printValidationOutlinesRow(numberForm.validationTc.vars.prototype)|e('html_attr') }}">
+            <div class="color-cartouche">
 
-                <div class="col s12">
-                    <a href="#" class="js-add-outlines-validation valign-wrapper col s12">
-                        <i class="material-icons black-text ">add</i>
-                        Add a validation
-                    </a>
+                {%  if validationTc is defined %}
+                    {% for item in validationTc  %}
+                        <div class="chip js-outlines-validation-item">
+                            {{  item.title }} by {{ item.user }}, {{ item.dateCreation|date() }}
+                            <a href="" class="js-remove-outlines-validation">
+                                {#<i class="material-icons black-text" >delete</i>#}
+                                <i class="close material-icons black-text">close</i>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+
+                <div class="row js-outlines-validation-wrapper" data-prototype="{{ formMacros.printValidationOutlinesRow(numberForm.validationTc.vars.prototype)|e('html_attr') }}">
+
+                    <div class="col s12">
+                        <a href="#" class="js-add-outlines-validation valign-wrapper col s12">
+                            <i class="material-icons black-text ">add</i>
+                            Add a validation
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="hide">
-                {{ form_widget(numberForm.validationTc) }}
+                <div class="hide">
+                    {{ form_widget(numberForm.validationTc) }}
+                </div>
+
             </div>
 
         {% endif %}
-    </div>
+
+    </article>
+    {% if ( validationTc |length < 2 or is_granted('ROLE_EDITOR')) %}
+
+    {% else %}
+        {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+    {% endif %}
+
 </div>

@@ -13,7 +13,7 @@ use AppBundle\Form\StagenumberType;
 class StagenumberController extends Controller
 {
     /**
-     * @Route("/member/stageshow/id/{stageshowId}/stagenumber/new", name="stagenumber_new")
+     * @Route("/editor/stageshow/id/{stageshowId}/stagenumber/new", name="stagenumber_new")
      */
     public function addAction(Request $request, $stageshowId){
 
@@ -50,7 +50,7 @@ class StagenumberController extends Controller
 
 
     /**
-     * @Route("/member/stagenumber/id/{stagenumberId}/edit" , name = "stagenumber_edit")
+     * @Route("/editor/stagenumber/id/{stagenumberId}/edit" , name = "stagenumber_edit")
      */
     public function editAction(Request $request, $stagenumberId){
 

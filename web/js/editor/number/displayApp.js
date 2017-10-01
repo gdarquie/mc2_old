@@ -55,8 +55,13 @@ $(document).ready(function() {
 
     displayApp.init('#title');
 
-    $('#menu_admin .collection-item span').on('click', function(){
-            $item = $(this).data("display");
+    // $('#menu_admin .collection-item span').on('click', function(){
+    //         $item = $(this).data("display");
+    //     displayApp.displayItem($item);
+    // });
+
+    $('#menu_admin .collection-item').on('click', function(){
+        $item = $(this).find('span').data("display");
         displayApp.displayItem($item);
     });
 

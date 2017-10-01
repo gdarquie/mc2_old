@@ -54,7 +54,7 @@ class ThemeExoticismController extends Controller
 
         //number of exoticism group by decades
 
-        return $this->render('web/thesaurus/exoticism.html.twig' , array(
+        return $this->render('AppBundle:themes:exoticism.html.twig' , array(
             'exoticism' => $exoticism,
             'popularexoticism' => $popularexoticism,
             'popularexoticismCartouche' => $popularexoticismCartouche,
@@ -109,7 +109,7 @@ class ThemeExoticismController extends Controller
         $studios = $query->getResult();
 
 
-        return $this->render('web/thesaurus/oneexoticism.html.twig' , array(
+        return $this->render('AppBundle:themes:oneexoticism.html.twig' , array(
             'exoticism' => $exoticism,
             'numbers' => $numbers,
             'numbersTotal' => $numbersTotal,

@@ -30,6 +30,11 @@ class Distributor
     private $title;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Film", mappedBy="distributors")
+     */
+    private $filmsDistributors;
+
+    /**
      * @ORM\Column(name="date_creation", type="datetime")
      */
     private $date_creation;
@@ -101,6 +106,22 @@ class Distributor
     public function setLastUpdate($last_update)
     {
         $this->last_update = $last_update;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFilmsDistributors()
+    {
+        return $this->filmsDistributors;
+    }
+
+    /**
+     * @param mixed $filmsDistributors
+     */
+    public function setFilmsDistributors($filmsDistributors)
+    {
+        $this->filmsDistributors = $filmsDistributors;
     }
 
     public function __toString()

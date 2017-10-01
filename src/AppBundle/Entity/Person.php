@@ -66,6 +66,17 @@ class Person
      */
     private $personId;
 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Film", mappedBy="directors")
+     */
+    private $filmsDirector;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Film", mappedBy="producers")
+     */
+    private $filmsProducer;
+
     /**
      * @ORM\ManyToMany(targetEntity="Number", mappedBy="choregraphers")
      */
@@ -90,6 +101,43 @@ class Person
      * @ORM\ManyToMany(targetEntity="Number", mappedBy="figurants")
      */
     private $numbersFigurant;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Stageshow", mappedBy="composers")
+     */
+    private $stageshowComposer;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Stageshow", mappedBy="books")
+     */
+    private $stageshowBook;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Stageshow", mappedBy="lyricists")
+     */
+    private $stageshowLyricist;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Stageshow", mappedBy="choreographers")
+     */
+    private $stageshowChoreographers;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Stageshow", mappedBy="directors")
+     */
+    private $stageshowDirector;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Stageshow", mappedBy="designs")
+     */
+    private $stageshowDesign;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Stagenumber", mappedBy="performers")
+     */
+    private $stagenumberComposer;
 
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Song", mappedBy="lyricist")
@@ -421,9 +469,6 @@ class Person
     }
 
 
-
-
-
     /**
      * Add numbersChoregrapher
      *
@@ -635,6 +680,167 @@ class Person
     {
         return $this->songComposer;
     }
+
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getQuotation()
+    {
+        return $this->quotation;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\ArrayCollection $quotation
+     */
+    public function setQuotation($quotation)
+    {
+        $this->quotation = $quotation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFilmsDirector()
+    {
+        return $this->filmsDirector;
+    }
+
+    /**
+     * @param mixed $filmsDirector
+     */
+    public function setFilmsDirector($filmsDirector)
+    {
+        $this->filmsDirector = $filmsDirector;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFilmsProducer()
+    {
+        return $this->filmsProducer;
+    }
+
+    /**
+     * @param mixed $filmsProducer
+     */
+    public function setFilmsProducer($filmsProducer)
+    {
+        $this->filmsProducer = $filmsProducer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStageshowComposer()
+    {
+        return $this->stageshowComposer;
+    }
+
+    /**
+     * @param mixed $stageshowComposer
+     */
+    public function setStageshowComposer($stageshowComposer)
+    {
+        $this->stageshowComposer = $stageshowComposer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStageshowBook()
+    {
+        return $this->stageshowBook;
+    }
+
+    /**
+     * @param mixed $stageshowBook
+     */
+    public function setStageshowBook($stageshowBook)
+    {
+        $this->stageshowBook = $stageshowBook;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStageshowLyricist()
+    {
+        return $this->stageshowLyricist;
+    }
+
+    /**
+     * @param mixed $stageshowLyricist
+     */
+    public function setStageshowLyricist($stageshowLyricist)
+    {
+        $this->stageshowLyricist = $stageshowLyricist;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStageshowChoreographers()
+    {
+        return $this->stageshowChoreographers;
+    }
+
+    /**
+     * @param mixed $stageshowChoreographers
+     */
+    public function setStageshowChoreographers($stageshowChoreographers)
+    {
+        $this->stageshowChoreographers = $stageshowChoreographers;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStageshowDirector()
+    {
+        return $this->stageshowDirector;
+    }
+
+    /**
+     * @param mixed $stageshowDirector
+     */
+    public function setStageshowDirector($stageshowDirector)
+    {
+        $this->stageshowDirector = $stageshowDirector;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStageshowDesign()
+    {
+        return $this->stageshowDesign;
+    }
+
+    /**
+     * @param mixed $stageshowDesign
+     */
+    public function setStageshowDesign($stageshowDesign)
+    {
+        $this->stageshowDesign = $stageshowDesign;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStagenumberComposer()
+    {
+        return $this->stagenumberComposer;
+    }
+
+    /**
+     * @param mixed $stagenumberComposer
+     */
+    public function setStagenumberComposer($stagenumberComposer)
+    {
+        $this->stagenumberComposer = $stagenumberComposer;
+    }
+
 
     public function __toString()
     {

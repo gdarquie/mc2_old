@@ -2,6 +2,8 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Repository\CodeRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,14 +23,17 @@ class ThesaurusType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
-            ->add('type' , TextType::class)
-            ->add('comment', TextType::class, array('required'=> false))
-            // ->add('link', TextType::class, array('required'=> false))
-            ->add('example', TextType::class, array('required'=> false))
-            ->add('definition', TextType::class, array('required'=> false))
-            ->add('category', TextType::class, array('required'=> false))
-            // ->add('timestamp', TextType::class, array('data' => date('d/m/Y h:m:s'), 'required' => false))
-            ->add('save', SubmitType::class, array('label' => 'Create Thesaurus'))
+            ->add('code' , EntityType::class, array(
+                'class' => 'AppBundle:Code',
+                'choice_label' => 'title',
+                'query_builder' => function(CodeRepository $repo) {
+                    return $repo->createAlphabeticalQueryBuilder();
+                }
+            ))
+            ->add('comment')
+            ->add('example')
+            ->add('definition')
+
         ;
     }
     
@@ -42,3 +47,5 @@ class ThesaurusType extends AbstractType
         ));
     }
 }
+
+

@@ -28,7 +28,7 @@
 
         <div class="row">
             <h1 class="center">{{ stageshow.title }}
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% if is_granted("ROLE_EDITOR") %}
                    <a class="waves-effect waves-light btn red darken-2" href="{{ path('stageshow_edit' , {"stageshowId" : stageshow.stageshowId}) }}">edit</a>
                     <a class="waves-effect waves-light btn" href="{{ path('stagenumber_new', {'stageshowId': stageshow.stageshowId}) }}">Add a stage number</a>
                 {% endif %} </h1>

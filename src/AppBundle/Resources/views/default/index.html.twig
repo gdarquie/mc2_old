@@ -191,7 +191,10 @@ width: 100vw;
           <section class="container box">
             <div class="col s12">
              <div class="row">
-              <h2>Search a movie</h2>
+              <h2 class="col">Search a film</h2>
+                {% if is_granted('ROLE_ADMIN') %}
+                  <span class="col valign"><a href="{{ path('films') }}">all films</a></span>
+                {% endif %}
              </div>
               <input type="text" id="searchMovie" placeholder ="Write the title of a film (3 characters min)">
             </div>
@@ -212,7 +215,10 @@ width: 100vw;
           <section class="container box">
             <div class="col s12">
               <div class="row">
-                <h2>Search a number</h2>
+                <h2 class="col">Search a number</h2>
+                {% if is_granted('ROLE_ADMIN') %}
+                  <span class="col valign"><a href="{{ path('numbers') }}">all numbers</a></span>
+                {% endif %}
               </div>
               <input type="text" id="searchNumber" placeholder ="Write the title of a number (3 characters min)">
             </div>
@@ -232,7 +238,9 @@ width: 100vw;
             <div class="col s12">
               <div class="row">
                 <h2 class="col">Search a song</h2>
-                <span class="col valign"><a href="{{ path('songs') }}">all songs</a></span>
+                {% if is_granted('ROLE_ADMIN') %}
+                  <span class="col valign"><a href="{{ path('songs') }}">all songs</a></span>
+                {% endif %}
               </div>
               <input type="text" id="searchSong" class="black-text" placeholder ="Write the name of a song (3 characters min)">
             </div>
@@ -250,7 +258,9 @@ width: 100vw;
             <div class="col s12">
               <div class="row">
                 <h2 class="col">Search a person</h2>
-                <span class="col valign"><a href="{{ path('persons') }}">all persons</a></span>
+                {% if is_granted('ROLE_ADMIN') %}
+                  <span class="col valign"><a href="{{ path('persons') }}">all persons</a></span>
+                {% endif %}
               </div>
               <input type="text" id="searchPerson" placeholder ="Write the name of a person (3 characters min)">
             </div>
@@ -266,7 +276,9 @@ width: 100vw;
           <div class="col s12">
             <div class="row">
               <h2 class="col">Search a Stage Show</h2>
-              <span class="col valign"><a href="{{ path('stageshows') }}">all stage shows</a></span>
+                {% if is_granted('ROLE_ADMIN') %}
+                  <span class="col valign"><a href="{{ path('stageshows') }}">all stage shows</a></span>
+                {% endif %}
             </div>
             <input type="text" id="searchShow" placeholder ="Write the name of a Stage Show (3 characters min)">
           </div>

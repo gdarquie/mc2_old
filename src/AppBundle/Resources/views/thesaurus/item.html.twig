@@ -1,12 +1,41 @@
 {% extends "base.html.twig" %}
 
+{% block javascripts %}
+
+    <style>
+        header h1 a{
+            font-size:0.4em;
+            vertical-align: text-top;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
 
     <div class="container">
 
         <div class="card row">
-            <h1 class="center">{{ thesaurus.title }}</h1>
-            <p class="col s6 center">Type : {{ thesaurus.code.title }}</p>
+
+            <header class="col s12 row">
+                <h1 class="center">{{ thesaurus.title }} <a href="{{ path('updateThesaurus', {'id' : thesaurus.id }) }}">modifier</a></h1>
+
+            </header>
+
+            <div class="col s4">
+                <h2>Type</h2>
+                <p><a href="{{ path('thesaurus_type', {'content' : thesaurus.code.content }) }}">{{ thesaurus.code.title }}</a></p>
+            </div>
+
+            <div class="col s4">
+                <h2>Definition</h2>
+                <p>{{ thesaurus.definition }}</p>
+            </div>
+
+            <div class="col s4">
+                <h2>Example</h2>
+                {{ thesaurus.example }}
+            </div>
+
         </div>
 
         <!-- numbers -->

@@ -14,6 +14,12 @@
 
 <div id="shots" class="row container main">
 
+    {% if ( validationShots |length < 2 or is_granted('ROLE_EDITOR')) %}
+    <article class="col s12">
+    {% else %}
+    <article class="col s12 hide">
+    {% endif %}
+
     <h3>Shots</h3>
 
     <div class="color-cartouche">
@@ -33,21 +39,23 @@
 
     </div>
 
-    <div class="color-cartouche">
+    {% if is_granted('ROLE_EDITOR') %}
 
-        {%  if validationShots is defined %}
-            {% for item in validationShots  %}
-                <div class="chip js-shots-validation-item">
-                    {{  item.title }} by {{ item.user }}, {{ item.dateCreation|date() }}
-                    <a href="" class="js-remove-shots-validation">
-                        {#<i class="material-icons black-text" >delete</i>#}
-                        <i class="close material-icons black-text">close</i>
-                    </a>
-                </div>
-            {% endfor %}
-        {% endif %}
+        <div class="color-cartouche">
 
-        {% if is_granted('ROLE_EDITOR') %}
+            {%  if validationShots is defined %}
+                {% for item in validationShots  %}
+                    <div class="chip js-shots-validation-item">
+                        {{  item.title }} by {{ item.user }}, {{ item.dateCreation|date() }}
+                        <a href="" class="js-remove-shots-validation">
+                            {#<i class="material-icons black-text" >delete</i>#}
+                            <i class="close material-icons black-text">close</i>
+                        </a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+
 
             <div class="row js-shots-validation-wrapper" data-prototype="{{ formMacros.printValidationShotsRow(numberForm.validationShots.vars.prototype)|e('html_attr') }}">
 
@@ -63,9 +71,16 @@
                 {{ form_widget(numberForm.validationShots) }}
             </div>
 
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
 
+    </article>
+
+    {% if ( validationShots |length < 2 or is_granted('ROLE_EDITOR')) %}
+
+    {% else %}
+        {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+    {% endif %}
 </div>
 
 

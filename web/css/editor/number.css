@@ -13,13 +13,13 @@ input, .form-group{
     font-size : 0.6em!important;
 }
 
-header, .main, footer{
-    padding-left: 300px;
-}
-
 #menu_admin{
     top :65px;
     padding-bottom: 120px;
+}
+
+#menu_admin li{
+    cursor:pointer
 }
 
 .main h3{

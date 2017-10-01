@@ -15,6 +15,12 @@
 
 <div id="structure" class="row container main">
 
+    {% if ( validationStructure |length < 2 or is_granted('ROLE_EDITOR')) %}
+    <article class="col s12">
+    {% else %}
+    <article class="col s12 hide">
+    {% endif %}
+
     <h3>Structure</h3>
 
     <div class="row color-cartouche">
@@ -36,21 +42,23 @@
         </article>
     </div>
 
-    <div class="color-cartouche">
+    {% if is_granted('ROLE_EDITOR') %}
 
-        {%  if validationStructure is defined %}
-            {% for item in validationStructure  %}
-                <div class="chip js-structure-validation-item">
-                    {{  item.title }} by {{ item.user }}, {{ item.dateCreation|date() }}
-                    <a href="" class="js-remove-structure-validation">
-                        {#<i class="material-icons black-text" >delete</i>#}
-                        <i class="close material-icons black-text">close</i>
-                    </a>
-                </div>
-            {% endfor %}
-        {% endif %}
+        <div class="color-cartouche">
 
-        {% if is_granted('ROLE_EDITOR') %}
+            {%  if validationStructure is defined %}
+                {% for item in validationStructure  %}
+                    <div class="chip js-structure-validation-item">
+                        {{  item.title }} by {{ item.user }}, {{ item.dateCreation|date() }}
+                        <a href="" class="js-remove-structure-validation">
+                            {#<i class="material-icons black-text" >delete</i>#}
+                            <i class="close material-icons black-text">close</i>
+                        </a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+
 
             <div class="row js-structure-validation-wrapper" data-prototype="{{ formMacros.printValidationStructureRow(numberForm.validationStructure.vars.prototype)|e('html_attr') }}">
 
@@ -66,7 +74,16 @@
                 {{ form_widget(numberForm.validationStructure) }}
             </div>
 
-        {% endif %}
-    </div>
+
+        </div>
+    {% endif %}
+
+    </article>
+
+    {% if ( validationStructure |length < 2 or is_granted('ROLE_EDITOR')) %}
+
+    {% else %}
+        {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+    {% endif %}
 
 </div>

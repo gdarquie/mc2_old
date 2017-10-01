@@ -3,18 +3,40 @@
 {% block body %}
 
     <div class="container">
-        <h2>{{ code.title }}</h2>
+        <h2>{{ code.title | capitalize}}</h2>
 
         <div class="row">
-            <section class="card col s12">
 
-                <ul class="row my-list">
-                    {% for item in thesaurus  %}
-                        <li class="col s4 title"><a href="{{ path('thesaurus_element', {'id' : item.id }) }}">{{ item.title }}</a></li>
-                    {% endfor %}
-                </ul>
+            {% if code.description %}
+                <section class="card row">
 
-                <ul class="pagination"></ul>
+                    <div class="col s12">
+                        <h3>Description</h3>
+                        {{ code.description }}
+                    </div>
+
+
+                </section>
+            {% endif %}
+
+
+            <section class="card row">
+
+                <div class="col s12">
+                    <h3>Elements</h3>
+
+                    <ul class="row my-list">
+                        {% for item in thesaurus  %}
+                            <li class="col s4 title"><a href="{{ path('thesaurus_element', {'id' : item.id }) }}">{{ item.title }}</a>
+                            {% if is_granted('ROLE_EDITOR') %}
+                                <a href="{{ path('updateThesaurus' , {'id' : item.id}) }}"><i class="material-icons tiny black-text">edit</i></a>
+                            {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    <ul class="pagination"></ul>
+                </div>
 
             </section>
         </div>

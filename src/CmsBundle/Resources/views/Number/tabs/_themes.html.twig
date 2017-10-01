@@ -15,6 +15,12 @@
 
 <div id="themes" class="row container main">
 
+    {% if ( validationTheme |length < 2 or is_granted('ROLE_EDITOR')) %}
+    <article class="col s12">
+    {% else %}
+    <article class="col s12 hide">
+    {% endif %}
+
     <h3>Themes, spaces and exoticisms</h3>
 
     <div class="color-cartouche">
@@ -53,21 +59,23 @@
     {#{{form_row(numberForm.validationTheme)}}#}
     </div>
 
-    <div class="color-cartouche">
+    {% if is_granted('ROLE_EDITOR') %}
 
-        {%  if validationTheme is defined %}
-            {% for item in validationTheme  %}
-                <div class="chip js-theme-validation-item">
-                    {{  item.title }} by {{ item.user }}, {{ item.dateCreation|date() }}
-                    <a href="" class="js-remove-theme-validation">
-                        {#<i class="material-icons black-text" >delete</i>#}
-                        <i class="close material-icons black-text">close</i>
-                    </a>
-                </div>
-            {% endfor %}
-        {% endif %}
+        <div class="color-cartouche">
 
-        {% if is_granted('ROLE_EDITOR') %}
+            {%  if validationTheme is defined %}
+                {% for item in validationTheme  %}
+                    <div class="chip js-theme-validation-item">
+                        {{  item.title }} by {{ item.user }}, {{ item.dateCreation|date() }}
+                        <a href="" class="js-remove-theme-validation">
+                            {#<i class="material-icons black-text" >delete</i>#}
+                            <i class="close material-icons black-text">close</i>
+                        </a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+
 
             <div class="row js-theme-validation-wrapper" data-prototype="{{ formMacros.printValidationThemeRow(numberForm.validationTheme.vars.prototype)|e('html_attr') }}">
 
@@ -83,6 +91,17 @@
                 {{ form_widget(numberForm.validationTheme) }}
             </div>
 
-        {% endif %}
-    </div>
+        </div>
+
+    {% endif %}
+
+    </article>
+
+    {% if ( validationTheme |length < 2 or is_granted('ROLE_EDITOR')) %}
+
+    {% else %}
+        {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+    {% endif %}
+
+
 </div>

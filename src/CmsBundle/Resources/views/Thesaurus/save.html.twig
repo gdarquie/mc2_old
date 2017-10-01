@@ -23,10 +23,24 @@
 
 <section class="container">
 
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+	<h2>Thesaurus form</h2>
+
+	{{ form_start(form) }}
+
+    	{{ include('CmsBundle:Thesaurus:_form.html.twig')}}
+
+		<button class="btn black" type="submit" formnovalidate >Save thesaurus</button>
+
+	{{ form_end(form) }}
+
 
 </section>
+
+{% endblock %}
+
+{% block javascripts %}
+
+	{{ parent() }}
+
 
 {% endblock %}

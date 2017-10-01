@@ -20,7 +20,7 @@ use AppBundle\Repository\PersonRepository;
 use AppBundle\Repository\SongRepository;
 use AppBundle\Repository\ThesaurusRepository;
 
-class NumberType extends AbstractType
+class EditorNumberType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -32,14 +32,14 @@ class NumberType extends AbstractType
             //title
 
             ->add('title', TextType::class, array(
-                ))
+            ))
             ->add('commentTitle')
             ->add('completeTitle', ChoiceType::class, [
                 'choices' =>[
                     "not complete" => 0,
                     "complete" => 1,
                     "complete for me but need help" => 2,
-                    ]
+                ]
             ])
             //length
             ->add('beginTc') // convertir en min/secondes
@@ -135,13 +135,13 @@ class NumberType extends AbstractType
 
             ->add('performers'
                 , EntityType::class, array(
-                'class' => 'AppBundle:Person',
-                'multiple' => true,
+                    'class' => 'AppBundle:Person',
+                    'multiple' => true,
 //                'empty_data' => null,
-                'choice_label' => 'name',
-                'query_builder' => function(PersonRepository $repo) {
-                    return $repo->createAlphabeticalQueryBuilder();
-                }
+                    'choice_label' => 'name',
+                    'query_builder' => function(PersonRepository $repo) {
+                        return $repo->createAlphabeticalQueryBuilder();
+                    }
                 )
             )
             ->add('figurants', EntityType::class, array(
@@ -383,13 +383,13 @@ class NumberType extends AbstractType
                 }//il faudra ne prendre que ceux de type music
             ))
             ->add('musical_thesaurus', EntityType::class, array(
-                    'multiple' => true,
-                    'class' => 'AppBundle:Thesaurus',
-                    'choice_label' => 'title', //order by alpha
-                    'query_builder' => function(ThesaurusRepository $repo) {
-                        return $repo->findAllThesaurusByCode("musical_thesaurus");
-                    }//il faudra ne prendre que ceux de type music
-                ))
+                'multiple' => true,
+                'class' => 'AppBundle:Thesaurus',
+                'choice_label' => 'title', //order by alpha
+                'query_builder' => function(ThesaurusRepository $repo) {
+                    return $repo->findAllThesaurusByCode("musical_thesaurus");
+                }//il faudra ne prendre que ceux de type music
+            ))
             ->add('arrangers', EntityType::class, array(
                 'class' => 'AppBundle:Person',
                 'multiple' => true,
@@ -480,6 +480,89 @@ class NumberType extends AbstractType
                     return $repo->createAlphabeticalQueryBuilder();
                 },
             ))
+
+
+            //Validations
+
+            ->add('validationTitle', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationDirector', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationTc', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationStructure', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationShots', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationPerformance', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationBackstage', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationTheme', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationMood', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationDance', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationMusic', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationReference', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('validationCost', CollectionType::class, [
+                'entry_type' => ValidationEmbeded::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+
 
         ;
     }

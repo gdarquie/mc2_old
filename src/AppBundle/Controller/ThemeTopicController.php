@@ -166,7 +166,7 @@ class ThemeTopicController extends Controller
 //        $exoticismByYear = $query->getResult();
 
 
-        return $this->render('web/thesaurus/onemood.html.twig' , array(
+        return $this->render('AppBundle:themes:onemood.html.twig' , array(
             'mood' => $mood,
             'numbers' => $numbers,
             'films' => $films,

@@ -36,12 +36,10 @@ class ThesaurusController extends Controller
             return $this->redirectToRoute('thesaurus', array('type' => 'all' ));
         }
 
-        return $this->render('web/thesaurus/thesaurusNew.html.twig', array(
+        return $this->render('CmsBundle:Thesaurus:save.html.twig', array(
             'form' => $form->createView(),
         ));
-
     }
-
 
     /**
      * Update Thesaurus
@@ -53,13 +51,11 @@ class ThesaurusController extends Controller
         $em = $this->getDoctrine()->getManager();
         $thesaurus = $em->getRepository('AppBundle:Thesaurus')->find($id);
 
-
         if (!$thesaurus) {
             throw $this->createNotFoundException(
                 'No item found for id '
             );
         }
-
 
         $form = $this->createForm(ThesaurusType::class, $thesaurus);
 
@@ -71,10 +67,10 @@ class ThesaurusController extends Controller
             $em->persist($thesaurus);
             $em->flush();
 
-            return $this->redirectToRoute('thesaurus', array('type' => $thesaurus->getType() ));
+            return $this->redirectToRoute('thesaurus_element', array('id' => $thesaurus->getId() ));
         }
 
-        return $this->render('web/thesaurus/thesaurusNew.html.twig', array(
+        return $this->render('CmsBundle:Thesaurus:save.html.twig', array(
             'form' => $form->createView(),
         ));
     }

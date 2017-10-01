@@ -14,62 +14,77 @@
 
 <div id="director" class="row container main">
 
-    <h3>Director</h3>
+    {% if ( validationDirector |length < 2 or is_granted('ROLE_EDITOR')) %}
+    <article class="col s12">
+    {% else %}
+    <article class="col s12 hide">
+    {% endif %}
 
-    <div class="row color-cartouche">
-        <article class="col s12 ">
+        <h3>Director</h3>
 
-            {{ form_label(numberForm.director, "Only if different from the whole film")}}
-            {{ form_widget(numberForm.director)}}
+        <div class="row color-cartouche">
+            <article class="col s12 ">
 
-            <p><a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a></p>
-            <br><br><br>
+                {{ form_label(numberForm.director, "Only if different from the whole film")}}
+                {{ form_widget(numberForm.director)}}
+
+                <p><a href="{{ path('editorNewPerson') }}" target="_blank" title="Create a new person if not already in the database">add a person</a></p>
+                <br><br><br>
 
 
-            {{ form_label(numberForm.commentDirector, "Director comments and source") }}
-            {{ form_widget(numberForm.commentDirector, {
-                'attr': {'class': 'materialize-textarea'}
-            }) }}
+                {{ form_label(numberForm.commentDirector, "Director comments and source") }}
+                {{ form_widget(numberForm.commentDirector, {
+                    'attr': {'class': 'materialize-textarea'}
+                }) }}
 
-            {{ form_widget(numberForm.completeDirector) }}
-            {{ form_label(numberForm.completeDirector, "Completed?") }}
-            {{ form_errors(numberForm.completeDirector) }}
+                {{ form_widget(numberForm.completeDirector) }}
+                {{ form_label(numberForm.completeDirector, "Completed?") }}
+                {{ form_errors(numberForm.completeDirector) }}
 
-        </article>
-    </div>
+            </article>
+        </div>
 
-    <div class="color-cartouche">
-
-        {%  if validationDirector is defined %}
-            {% for item in validationDirector  %}
-                <div class="chip js-director-validation-item">
-                    {{  item.title }} by {{ item.user }}, {{ item.dateCreation|date() }}
-                    <a href="" class="js-remove-director-validation">
-                        {#<i class="material-icons black-text" >delete</i>#}
-                        <i class="close material-icons black-text">close</i>
-                    </a>
-                </div>
-            {% endfor %}
-        {% endif %}
 
         {% if is_granted('ROLE_EDITOR') %}
 
-            <div class="row js-director-validation-wrapper" data-prototype="{{ formMacros.printValidationDirectorRow(numberForm.validationDirector.vars.prototype)|e('html_attr') }}">
+            <div class="color-cartouche">
 
-                <div class="col s12">
-                    <a href="#" class="js-add-director-validation valign-wrapper col s12">
-                        <i class="material-icons black-text ">add</i>
-                        Add a validation
-                    </a>
+                {%  if validationDirector is defined %}
+                    {% for item in validationDirector  %}
+                        <div class="chip js-director-validation-item">
+                            {{  item.title }} by {{ item.user }}, {{ item.dateCreation|date() }}
+                            <a href="" class="js-remove-director-validation">
+                                {#<i class="material-icons black-text" >delete</i>#}
+                                <i class="close material-icons black-text">close</i>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+
+
+                <div class="row js-director-validation-wrapper" data-prototype="{{ formMacros.printValidationDirectorRow(numberForm.validationDirector.vars.prototype)|e('html_attr') }}">
+
+                    <div class="col s12">
+                        <a href="#" class="js-add-director-validation valign-wrapper col s12">
+                            <i class="material-icons black-text ">add</i>
+                            Add a validation
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hide">
+                    {{ form_widget(numberForm.validationDirector) }}
                 </div>
             </div>
-
-            <div class="hide">
-                {{ form_widget(numberForm.validationDirector) }}
-            </div>
-
         {% endif %}
-    </div>
 
+    </article>
+
+    {% if ( validationDirector |length < 2 or is_granted('ROLE_EDITOR')) %}
+
+    {% else %}
+        {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+    {% endif %}
 
 </div>

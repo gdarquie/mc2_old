@@ -93,6 +93,9 @@
                     {% for item in codes  %}
                         <li class="col s12 m6 l4 thesaurus-element center">
                             <a href="{{ path('thesaurus_type', {'content' : item.content}) }}">{{ item.title }}</a>
+                            <a href="{{ path('admin_code_edit' , {'codeId' : item.codeId}) }}">{% if is_granted('ROLE_ADMIN') %}
+                                <i class="material-icons tiny lightgrey">edit</i>
+                            {% endif %}</a>
                         </li>
                     {% endfor %}
                     </ul>
@@ -101,10 +104,6 @@
             </section>
 
         </div>
-        {#<section class="card">#}
-            {#<h3>Search a specific title of a thesaurus element</h3>#}
-            {#<input type="text">#}
-        {#</section>#}
     </div>
 
 {% endblock %}

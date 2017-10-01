@@ -31,6 +31,11 @@ class Studio
     private $title;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Film", mappedBy="studios")
+     */
+    private $filmsStudios;
+
+    /**
      * @ORM\Column(name="date_creation", type="datetime")
      */
     private $date_creation;
@@ -109,6 +114,23 @@ class Studio
     {
         $this->last_update = $last_update;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getFilmsStudios()
+    {
+        return $this->filmsStudios;
+    }
+
+    /**
+     * @param mixed $filmsStudios
+     */
+    public function setFilmsStudios($filmsStudios)
+    {
+        $this->filmsStudios = $filmsStudios;
+    }
+
 
 
 
