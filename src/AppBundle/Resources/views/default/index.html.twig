@@ -533,7 +533,7 @@ width: 100vw;
       var selection = [];
 
       jQuery.when(
-              jQuery.getJSON('/api/films/')
+              jQuery.getJSON('/mc2/api/films/')
       ).done(function (json){
 
         if (input.length > 2){
@@ -583,7 +583,7 @@ width: 100vw;
         var selection = [];
 
         jQuery.when(
-                jQuery.getJSON('/api/persons/')
+                jQuery.getJSON('/mc2/api/persons/')
         ).done(function (json){
 
           if (input.length > 2){
@@ -627,7 +627,7 @@ width: 100vw;
         var selection = [];
 
         jQuery.when(
-                jQuery.getJSON('/api/numbers/')
+                jQuery.getJSON('/mc2/api/numbers/')
         ).done(function (json){
 
           if (input.length > 2){
@@ -671,7 +671,7 @@ width: 100vw;
             var selection = [];
 
             jQuery.when(
-                jQuery.getJSON('api/stageshows')
+                jQuery.getJSON('mc2/api/stageshows')
             ).done(function (json){
 
                 if (input.length > 2){
@@ -714,7 +714,7 @@ width: 100vw;
         var selection = [];
 
         jQuery.when(
-                jQuery.getJSON('/api/songs/')
+                jQuery.getJSON('/mc2/api/songs/')
         ).done(function (json){
 
           if (input.length > 2){
