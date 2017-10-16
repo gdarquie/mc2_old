@@ -565,7 +565,7 @@ width: 100vw;
 
           $("#results").html("<div class='col s12'><h2>Result(s)</h2></div>");
           for(var i = 0; i < selection.length ; i++){
-            txt = "<div class='card col s4 film'><h3>"+selection[i]['title']+" ("+selection[i]['released']+")"+"</h3><a href='/editor/film/id/"+selection[i]['filmId']+"/number/new' class='btn teal'>Add a number</a><a href='/film/id/"+selection[i]['filmId']+"' class='teal btn'>See the description</a></div>";
+            txt = "<div class='card col s4 film'><h3>"+selection[i]['title']+" ("+selection[i]['released']+")"+"</h3><a href='/mc2/editor/film/id/"+selection[i]['filmId']+"/number/new' class='btn teal'>Add a number</a><a href='/mc2/film/id/"+selection[i]['filmId']+"' class='teal btn'>See the description</a></div>";
             $("#results").append(txt);
           }
         }
