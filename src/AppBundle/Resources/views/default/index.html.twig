@@ -313,7 +313,7 @@ width: 100vw;
           <div class="col s3 film card">
             <a href="/mc2/film/id/{{film.filmId}}">
             <h4 class="center">{{film.title}}({{film.released}})</h4>
-            <img class="poster col s12" src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=300" alt="poster">
+            <img class="poster col s12" src="{{ asset('img/films/'~ film.idImdb ~'.jpg') }}" alt="poster">
             </a>
           </div>
           {#<a href="/mc2/film/id/{{film.filmId}}"><li class="btn" >{{film.title}}({{film.released}})</li></a>#}
@@ -323,7 +323,7 @@ width: 100vw;
           <div class="col s3 film card filmsHidden">
             <a href="/mc2/film/id/{{film.filmId}}">
               <h4 class="center">{{film.title}}({{film.released}})</h4>
-              <img class="poster col s12" src="http://img.omdbapi.com/?i={{ film.idImdb }}&apikey=1733f6a&h=300" alt="poster">
+              <img class="poster col s12" src="{{ asset('img/films/'~ film.idImdb ~'.jpg') }}" alt="poster">
             </a>
           </div>
           {#<a href="/mc2/film/id/{{film.filmId}}"><li class="btn" >{{film.title}}({{film.released}})</li></a>#}
