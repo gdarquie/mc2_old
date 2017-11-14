@@ -4,8 +4,6 @@
 
 Le projet est développé avec Symfony 3.
 
-Une présentation de l'application est disponible via l'adresse : https://docs.google.com/document/d/1rSrwxTDqFWnMuGd7McCf30hrAYY8Iu9CQITCpd7GoIA/edit?usp=sharing
-
 
 ##Présentation du projet
 
