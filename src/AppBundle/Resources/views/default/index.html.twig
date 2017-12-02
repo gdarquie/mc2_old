@@ -311,7 +311,7 @@ width: 100vw;
       <div class="items row">
         {% for film in filmsWithNumber |slice(0,8) %}
           <div class="col s3 film card">
-            <a href="/mc2/film/id/{{film.filmId}}">
+            <a href="{{ path('film', {'filmId' : film.filmId}) }}">
             <h4 class="center">{{film.title}}({{film.released}})</h4>
             <img class="poster col s12" src="{{ asset('img/films/'~ film.idImdb ~'.jpg') }}" alt="poster">
             </a>
