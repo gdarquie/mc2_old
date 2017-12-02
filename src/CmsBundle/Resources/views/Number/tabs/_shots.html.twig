@@ -56,7 +56,7 @@
             {% endif %}
 
 
-
+            {%  if not create %}
             <div class="row js-shots-validation-wrapper" data-prototype="{{ formMacros.printValidationShotsRow(numberForm.validationShots.vars.prototype)|e('html_attr') }}">
 
                 <div class="col s12">
@@ -70,6 +70,7 @@
             <div class="hide">
                 {{ form_widget(numberForm.validationShots) }}
             </div>
+            {% endif %}
 
         </div>
     {% endif %}

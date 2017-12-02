@@ -58,7 +58,7 @@
                     {% endfor %}
                 {% endif %}
 
-
+                {%  if not create %}
                 <div class="row js-backstage-validation-wrapper" data-prototype="{{ formMacros.printValidationBackstageRow(numberForm.validationBackstage.vars.prototype)|e('html_attr') }}">
 
                     <div class="col s12">
@@ -72,6 +72,8 @@
                 <div class="hide">
                     {{ form_widget(numberForm.validationBackstage) }}
                 </div>
+                {% endif %}
+
             </div>
         {% endif %}
     </article>
