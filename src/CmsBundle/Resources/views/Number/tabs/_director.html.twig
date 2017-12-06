@@ -14,7 +14,7 @@
 
 <div id="director" class="row container main">
 
-    {% if ( validationDirector |length < 2 or is_granted('ROLE_EDITOR')) %}
+    {% if ( validationDirector is defined and validationDirector|length < 2 or is_granted('ROLE_EDITOR')) %}
     <article class="col s12">
     {% else %}
     <article class="col s12 hide">
@@ -82,10 +82,12 @@
 
     </article>
 
-    {% if ( validationDirector |length < 2 or is_granted('ROLE_EDITOR')) %}
+    {% if not create %}
+        {% if ( validationDirector |length < 2 or is_granted('ROLE_EDITOR')) %}
 
-    {% else %}
-        {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% else %}
+            {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% endif %}
     {% endif %}
 
 </div>

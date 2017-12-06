@@ -14,7 +14,7 @@
 
 <div id="backstage" class="row container main">
 
-    {% if ( validationBackstage |length < 2 or is_granted('ROLE_EDITOR')) %}
+    {% if ( validationBackstage is defined and validationBackstage|length < 2 or is_granted('ROLE_EDITOR')) %}
     <article class="col s12">
     {% else %}
     <article class="col s12 hide">
@@ -78,10 +78,12 @@
         {% endif %}
     </article>
 
-    {% if ( validationBackstage |length < 2 or is_granted('ROLE_EDITOR')) %}
+    {%  if not create %}
+        {% if ( validationBackstage |length < 2 or is_granted('ROLE_EDITOR')) %}
 
-    {% else %}
-        {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% else %}
+            {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% endif %}
     {% endif %}
 
 </div>

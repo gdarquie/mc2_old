@@ -15,7 +15,7 @@
 
 <div id="tone" class="row container main">
 
-    {% if ( validationMood |length < 2 or is_granted('ROLE_EDITOR')) %}
+    {% if ( validationMood is defined and validationMood|length < 2 or is_granted('ROLE_EDITOR')) %}
     <article class="col s12">
     {% else %}
     <article class="col s12 hide">
@@ -79,10 +79,12 @@
 
     </article>
 
-    {% if ( validationMood |length < 2 or is_granted('ROLE_EDITOR')) %}
+    {%  if not create %}
+        {% if ( validationMood |length < 2 or is_granted('ROLE_EDITOR')) %}
 
-    {% else %}
-        {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% else %}
+            {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% endif %}
     {% endif %}
 
 </div>

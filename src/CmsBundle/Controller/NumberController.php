@@ -21,6 +21,9 @@ class NumberController extends Controller
     public function numberNewAction(Request $request, $filmId)
     {
 
+        $validationTitle = "";
+
+
         $form = $this->createForm(NumberType::class);
         $form->handleRequest($request);
 

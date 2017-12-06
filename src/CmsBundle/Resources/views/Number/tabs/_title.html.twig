@@ -91,11 +91,12 @@
 
     </article>
 
+    {%  if not create %}
+        {% if ( validationTitle |length < 2 or is_granted('ROLE_EDITOR')) %}
 
-    {% if ( validationTitle |length < 2 or is_granted('ROLE_EDITOR')) %}
-
-    {% else %}
-        {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% else %}
+            {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% endif %}
     {% endif %}
 
 </div>

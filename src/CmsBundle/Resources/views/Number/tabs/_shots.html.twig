@@ -14,7 +14,7 @@
 
 <div id="shots" class="row container main">
 
-    {% if ( validationShots |length < 2 or is_granted('ROLE_EDITOR')) %}
+    {% if ( validationShots is defined and validationShots|length < 2 or is_granted('ROLE_EDITOR')) %}
     <article class="col s12">
     {% else %}
     <article class="col s12 hide">
@@ -77,10 +77,12 @@
 
     </article>
 
-    {% if ( validationShots |length < 2 or is_granted('ROLE_EDITOR')) %}
+    {%  if not create %}
+        {% if ( validationShots |length < 2 or is_granted('ROLE_EDITOR')) %}
 
-    {% else %}
-        {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% else %}
+            {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% endif %}
     {% endif %}
 </div>
 

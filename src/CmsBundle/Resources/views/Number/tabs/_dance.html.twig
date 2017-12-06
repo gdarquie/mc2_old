@@ -15,11 +15,11 @@
 
 <div id="dance" class="row container main">
 
-    {% if ( validationDance |length < 2 or is_granted('ROLE_EDITOR')) %}
-    <article class="col s12">
-    {% else %}
-    <article class="col s12 hide">
-    {% endif %}
+        {% if ( validationDance is defined and validationDance|length < 2 or is_granted('ROLE_EDITOR')) %}
+        <article class="col s12">
+        {% else %}
+        <article class="col s12 hide">
+        {% endif %}
 
         <h3>Dance</h3>
 
@@ -91,10 +91,12 @@
 
     </article>
 
-    {% if ( validationDance |length < 2 or is_granted('ROLE_EDITOR')) %}
+    {%  if not create %}
+        {% if ( validationDance |length < 2 or is_granted('ROLE_EDITOR')) %}
 
-    {% else %}
-        {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% else %}
+            {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% endif %}
     {% endif %}
 
 </div>

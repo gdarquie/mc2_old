@@ -40,13 +40,6 @@ class Thesaurus
      */
     private $code;
 
-//    /**
-//     * @var string
-//     *
-//     * @ORM\Column(name="type", type="string", length=255, nullable=false)
-//     */
-//    private $type;
-
     /**
      * @var string
      *

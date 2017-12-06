@@ -14,7 +14,7 @@
 
 <div id="outlines" class="row container main">
 
-    {% if ( validationTc |length < 2 or is_granted('ROLE_EDITOR')) %}
+    {% if ( validationTc is defined and validationTc|length < 2 or is_granted('ROLE_EDITOR')) %}
     <article class="col s12">
     {% else %}
     <article class="col s12 hide">
@@ -121,10 +121,13 @@
         {% endif %}
 
     </article>
-    {% if ( validationTc |length < 2 or is_granted('ROLE_EDITOR')) %}
 
-    {% else %}
-        {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+    {%  if not create %}
+        {% if ( validationTc |length < 2 or is_granted('ROLE_EDITOR')) %}
+
+        {% else %}
+            {% include 'CmsBundle:Number:modal/_validationComplete.html.twig' %}
+        {% endif %}
     {% endif %}
 
 </div>
