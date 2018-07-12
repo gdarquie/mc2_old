@@ -1,10 +1,10 @@
 {
-    "name": "gaetan/mc2_2016.04.30",
+    "name": "mc2",
     "license": "proprietary",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "": "src/",
             "AppBundle\\": "src/AppBundle",
             "QuizzBundle\\": "src/QuizzBundle"
         },
